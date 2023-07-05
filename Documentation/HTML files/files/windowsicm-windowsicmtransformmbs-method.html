@@ -1,0 +1,466 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - WindowsICMTransformMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="WindowsICMTransformMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">WindowsICMTransformMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-windowsicmtransformmbs.html">WindowsICMTransformMBS</a> class.  </p>
+<div class="W">
+<b><a href="class-windowsicmtransformmbs.html">WindowsICMTransformMBS</a>.<A name="1">CheckColors(InputColors() as <A href="class-windowsicmcolormbs.html">WindowsICMColorMBS</A>, ctInput as Integer, Results() as Integer) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-windowsicm.html" translate="no">Windows ICM</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+The CheckColors function determines whether the colors in an array lie within the output gamut of a specified transform.<BR>
+<B>Notes:</B> 
+<BR>
+InputColors: an array of colors.<BR>
+ctInput: Specifies the input color type.<BR>
+Results: An array of nColors bytes that receives the results of the test.<BR>
+<BR>
+If this function succeeds, the return value is TRUE.<BR>
+<BR>
+If this function fails, the return value is FALSE. For extended error information, call GetLastError.<BR>
+<BR>
+Remarks<BR>
+<BR>
+If the input color type is not compatible with the color transform, CheckColors fails.<BR>
+<BR>
+The function places results of the tests in the array pointed to by paResult. Each byte in the array corresponds to a COLOR element in the array pointed to by paInputColors and has an unsigned value between 0 and 255. The value 0 denotes that the color is in gamut, while a nonzero value denotes that it is out of gamut. For any integer n such that 0 &lt; n &lt; 255, a result value of n+1 indicates that the corresponding color is at least as far out of gamut as would be indicated by a result value of n.<BR>
+<BR>
+The out-of-gamut information in the gamut tags created in WCS use the perceptual color distance in CIECAM02, which is the mean square root in CIECAM02 Jab space. The distance in the legacy ICC profile gamut tags is the mean square root in CIELAB space. We recommend that you use the CIECAM02 space when it is available because it provides more perceptually accurate distance metrics.<BR>
+</div>
+<div class="W">
+<b><a href="class-windowsicmtransformmbs.html">WindowsICMTransformMBS</a>.<A name="2">Constructor(LogColorSpace as <A href="class-windowsicmlogcolorspacembs.html">WindowsICMLogColorSpaceMBS</A>, DestProfile as <A href="class-windowsicmprofilembs.html">WindowsICMProfileMBS</A>, TargetProfile as <A href="class-windowsicmprofilembs.html">WindowsICMProfileMBS</A>, Flags as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-windowsicm.html" translate="no">Windows ICM</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+The CreateColorTransform function creates a color transform that applications can use to perform color management.<BR>
+<B>Notes:</B> 
+<BR>
+LogColorSpace: The input colorspace.<BR>
+<BR>
+DestProfile: The profile of the destination device. The function determines whether the profile contains International Color Consortium (ICC) or Windows Color System (WCS) profile information.<BR>
+<BR>
+TargetProfile: The profile of the target device. The function determines whether the profile contains ICC or WCS profile information.<BR>
+<BR>
+Flags: Specifies flags to used control creation of the transform. See Remarks.<BR>
+<BR>
+On success the handle property is not zero.<BR>
+<BR>
+If the target profile is nil, the transform goes from the source logical color space to the destination profile. If the target profile is given, the transform goes from the source logical color space to the target profile and then to the destination profile. This allows previewing output meant for the target device on the destination device.<BR>
+<BR>
+The values in Flags are intended as hints only. The color management module must determine the best way to use them.<BR>
+<BR>
+Windows Vista: Three new flags have been added that can be used with dwFlags:<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">PRESERVEBLACK</TD><TD valign="top">If this bit is set, the transform engine inserts the appropriate black generation GMMP as the last GMMP in the transform sequence. This flag only works in a pure WCS transform.</TD></TR>
+<TR><TD valign="top">SEQUENTIAL_TRANSFORM</TD><TD valign="top">If this bit is set, each step in the WCS processing pipeline is performed for every pixel in the image and no optimized color transform is built. This flag only works in a pure WCS transform.</TD></TR>
+</TABLE>
+Restrictions: A transform created with the SEQUENTIAL_TRANSFORM flag set may only be used in the thread on which it was created and only for one color translation call at a time. COM must be initialized prior to creating the sequential transform and must remain initialized for the lifetime of the transform object.<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">WCS_ALWAYS</TD><TD valign="top">If this bit is set, even all-ICC transforms will use the WCS code path.</TD></TR>
+</TABLE>
+<BR>
+For details, see CMM Transform Creation Flags. All of the flags mentioned there are supported for all types of transforms, except for FAST_TRANSLATE, which only works in a pure ICC-to-ICC transform.<BR>
+<BR>
+The CreateColorTransform function is used outside of a device context. Colors may shift when transforming from a color profile to the same color profile. This is due to precision errors. Therefore, a color transform should not be performed under these circumstances.<BR>
+<BR>
+The B2Ax tags are required for any profile that is the target of a transform.<BR>
+<BR>
+WCS transform support for ICC ColorSpace profiles is limited to RGB colorspace profiles. The following ICC profile types cannot be used in a CITE-processed transform, either a mixed WCS/ICC transform or an all-ICC transform with WCS_ALWAYS set:<BR>
+<BR>
+Non-RGB ColorSpace profiles<BR>
+NamedColor profiles<BR>
+n-channel profiles (where n &gt; 8)<BR>
+DeviceLink profiles<BR>
+Abstract profiles<BR>
+<p>See also:<ul>
+<li><A href="windowsicm-windowsicmtransformmbs-method.html#3">Constructor(Profiles() as WindowsICMProfileMBS, Intents() as Integer, Flags as Integer, indexPreferredCMM as Integer)</A></li>
+</ul></p>
+</div>
+<div class="W">
+<b><a href="class-windowsicmtransformmbs.html">WindowsICMTransformMBS</a>.<A name="3">Constructor(Profiles() as <A href="class-windowsicmprofilembs.html">WindowsICMProfileMBS</A>, Intents() as Integer, Flags as Integer, indexPreferredCMM as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-windowsicm.html" translate="no">Windows ICM</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+The CreateMultiProfileTransform function accepts an array of profiles or a single device link profile and creates a color transform that applications can use to perform color mapping.<BR>
+<B>Notes:</B> 
+<BR>
+Profiles: An array of profiles to be used. The function determines whether the HPROFILEs contain International Color Consortium (ICC) or Windows Color System (WCS) profile information and processes them appropriately. When valid WCS profiles are returned by OpenColorProfile, these profiles contain the combination of DMP, CAMP, and GMMP profiles.<BR>
+Intent: An array of intents to use. Each intent is one of the following values:<BR>
+<BR>
+INTENT_PERCEPTUAL<BR>
+INTENT_SATURATION<BR>
+INTENT_RELATIVE_COLORIMETRIC<BR>
+INTENT_ABSOLUTE_COLORIMETRIC<BR>
+<BR>
+GMMPs are a generalization of intents. There are two possible sources of intents: the &quot;destination&quot; profile and the intent list parameter to CreateMultiProfileTransform. The term &quot;destination&quot; is not used since all but two of the profiles in the profile list parameter will serve as first destination and then source.<BR>
+<BR>
+For more information, see Rendering Intents.<BR>
+<BR>
+nIntents<BR>
+Specifies the number of elements in the intents array: can either be 1 or the same value as nProfiles. For profile arrays that contain any WCS profiles, the first rendering intent is ignored and only nProfiles -1 elements are used for these profile arrays. The maximum number of nIntents is 10.<BR>
+<BR>
+Flags: Specifies flags used to control creation of the transform. <BR>
+<BR>
+indexPreferredCMM: Specifies the one-based index of the color profile that indicates what color management module (CMM) to use. The application developer may allow Windows to choose the CMM by setting this parameter to INDEX_DONT_CARE. See Using Color Management Modules (CMM) Third party CMMs are only available for ICC workflows. Profile arrays containing WCS profiles will ignore this flag. It is also ignored when only ICC profiles are used and when the WCS_ALWAYS flag is used.<BR>
+<BR>
+On success the handle property is not zero.<BR>
+<BR>
+If a device link profile is being used, the function will fail if Profiles contains more than one value.<BR>
+<BR>
+The array of intents specifies how profiles should be combined. The nth intent is used for combining the nth profile in the array. If only one intent is specified, it is used for the first profile, and all other profiles are combined using Match intent.<BR>
+<BR>
+The values in Flags are intended as hints only. The color management module must determine the best way to use them.<BR>
+<BR>
+Windows Vista: Three new flags have been added that can be used with dwFlags:<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">PRESERVEBLACK</TD><TD valign="top">If this bit is set, the transform engine inserts the appropriate black generation GMMP as the last GMMP in the transform sequence. This flag only works in a pure WCS transform.</TD></TR>
+<TR><TD valign="top">SEQUENTIAL_TRANSFORM</TD><TD valign="top">If this bit is set, each step in the WCS processing pipeline is performed for every pixel in the image and no optimized color transform is built. This flag only works in a pure WCS transform.</TD></TR>
+</TABLE>
+Restrictions: A transform created with the SEQUENTIAL_TRANSFORM flag set may only be used in the thread on which it was created and only for one color translation call at a time. COM must be initialized prior to creating the sequential transform and must remain initialized for the lifetime of the transform object.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">WCS_ALWAYS</TD><TD valign="top">If this bit is set, even all-ICC transforms will use the WCS code path.</TD></TR>
+</TABLE>
+<BR>
+For details, see CMM Transform Creation Flags. All of the flags mentioned there are supported for all types of transforms, except for FAST_TRANSLATE and USE_RELATIVE_COLORIMETRIC, which only work in a pure ICC-to-ICC transform.<BR>
+<BR>
+The CreateMultiProfileTransform function is used outside of a device context. Colors may shift when transforming from a color profile to the same color profile. This is due to precision errors. Therefore, a color transform should not be performed under these circumstances.<BR>
+<BR>
+We recommend that there be only one GMMP between a source and destination DMP. Gamut boundary descriptions (GBDs) are created from the DMP/CAMP combinations. The subsequent GMMPs use the GDBs prior to them in the processing chain until there exists a DMP/CAMP GBD next in the sequence to be used. For example, assume a sequence DMP1, CAMP1, GMMP1, GMMP2, GMMP3, DMP2, CAMP2, GMMP4, GMMP5, CAMP3, DMP3. Then GMMP1, GMMP2 use GBD1 as their source and destination. Then GMMP3 uses GBD1 as source and GBD2 as destination. Then GMMP4 uses GBD2 as source and destination. Finally GMMP5 uses GBD2 as source and GBD3 as destination. This assumes no GMMP is identical to one next to it.<BR>
+<BR>
+For WCS profiles, we recommend that the rendering intents be set to DWORD_MAX in order to use the GMMP within the WCS profile handle. This is because the array of rendering intents takes precedence over the rendering intents or gamut mapping models specified or contained in the profiles specified by the PROFILEs. The array of rendering intents references the default GMMP for those rendering intents. Ideally, only one gamut mapping is performed between a source and destination device by setting one or the other GMMP to NULL when creating the HPROFILE with WCS profile information. Any legacy application that uses a WCS DMP will invoke a sequence of GMMPs. GDBs are chosen based on DMPs and CAMPs. For intermediate GMMP gamut boundaries, the source and destination GBDs are used.<BR>
+<BR>
+In summary, if ubound(Intents)=0, then the first GMM is set based on the GMMP that is set as default* for the padwIntent value, unless that value is DWORD_MAX, in which case the embedded GMM information from the second profile is used (The embedded GMM information is either a GMMP or, in the case of an ICC profile, the baseline GMM corresponding to** the intent from the profile header). The remainder of the GMMs are set based on the GMMP that is set as default* for RelativeColorimetric.<BR>
+<BR>
+If ubound(Intents) = ubound(Profiles) - 1, then each GMM is set based on the GMMP that is set as default* for the value in the padwIntent array at the corresponding index, except where padwIntent values are DWORD_MAX. For values in the padwIntent array that are DWORD_MAX, the GMMs at corresponding positions are set based on the embedded GMM information from the second of the two profiles whose gamuts are mapped by the GMM. (Again, the embedded GMM information is either a GMMP or, in the case of an ICC profile, the baseline GMM corresponding to** the intent from the profile header).<BR>
+<BR>
+If ubound(Intents) = ubound(Profiles), then first intent is ignored and funtion behaves as it does in the case when ubound(Intents) = ubound(Profiles) - 1.<BR>
+<BR>
+Any other combination of padwIntents and nIntents will return an error.<BR>
+<BR>
+<UL><LI>
+&quot;set as default&quot; means that the default GMMP is queried using WcsGetDefaultColorProfile with its profileManagementScope parameter set to WCS_PROFILE_MANAGEMENT_SCOPE_CURRENT_USER. This may return either current-user or system-wide defaults as described in the documentation for WcsGetDefaultColorProfile.
+</LI></UL>
+<BR>
+<UL><LI>
+&quot;GMM corresponding to&quot; does not mean &quot;GMM from the GMMP set as default for&quot;. Instead it means &quot;a constant association between ICC profile intents and baseline GMM algorithms.&quot;
+</LI></UL>
+<BR>
+WCS transform support for ICC ColorSpace profiles is limited to RGB colorspace profiles. The following ICC profile types cannot be used in a CITE-processed transform, either a mixed WCS/ICC transform or an all-ICC transform with WCS_ALWAYS set:<BR>
+<BR>
+<UL><LI>
+Non-RGB ColorSpace profiles
+</LI><LI>
+NamedColor profiles
+</LI><LI>
+n-channel profiles (where n &gt; 8)
+</LI><LI>
+DeviceLink profiles
+</LI><LI>
+Abstract profiles
+</UL>
+<p>See also:<ul>
+<li><A href="windowsicm-windowsicmtransformmbs-method.html#2">Constructor(LogColorSpace as WindowsICMLogColorSpaceMBS, DestProfile as WindowsICMProfileMBS, TargetProfile as WindowsICMProfileMBS, Flags as Integer)</A></li>
+</ul></p>
+</div>
+<div class="W">
+<b><a href="class-windowsicmtransformmbs.html">WindowsICMTransformMBS</a>.<A name="4">GetCMMInfo(what as Integer) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-windowsicm.html" translate="no">Windows ICM</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+The GetCMMInfo function retrieves various information about the color management module (CMM) that created the specified color transform.<BR>
+<B>Notes:</B> 
+<BR>
+what: Specifies the information to be retrieved. This parameter can take one of the following constant values.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Value</TD><TD valign="top">Meaning</TD></TR>
+<TR><TD valign="top">CMM_WIN_VERSION</TD><TD valign="top">Retrieves the version of Windows targeted by the color management module (CMM).</TD></TR>
+<TR><TD valign="top">CMM_DLL_VERSION</TD><TD valign="top">Retrieves the version number of the CMM.</TD></TR>
+<TR><TD valign="top">CMM_IDENT</TD><TD valign="top">Retrieves the CMM signature registered with the International Color Consortium (ICC).</TD></TR>
+</TABLE>
+<BR>
+If this function succeeds, the return value is the information specified in What.<BR>
+If this function fails, the return value is zero.<BR>
+</div>
+<div class="W">
+<b><a href="class-windowsicmtransformmbs.html">WindowsICMTransformMBS</a>.<A name="5">TranslateBitmapBits(SrcBits as memoryblock, InputType as Integer, Width as Integer, Height as Integer, InputRowBytes as Integer, DestBits as memoryblock, DestType as Integer, DestRowBytes as Integer) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-windowsicm.html" translate="no">Windows ICM</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+The TranslateBitmapBits function translates the colors of a bitmap having a defined format so as to produce another bitmap in a requested format.<BR>
+<B>Notes:</B> 
+<BR>
+SrcBits: Pointer to the bitmap to translate.<BR>
+InputType: Specifies the format of the input bitmap. Use one of the BM_* constants.<BR>
+Width: Specifies the number of pixels per scan line in the input bitmap.<BR>
+Height: Specifies the number of scan lines in the input bitmap.<BR>
+InputRowBytes: Specifies the number of bytes from the beginning of one scan line to the beginning of the next in the input bitmap; if set to zero, the function assumes that scan lines are padded so as to be DWORD-aligned.<BR>
+DestBits: Pointer to the buffer in which to place the translated bitmap.<BR>
+DestType: Specifies the format of the output bitmap. Use one of the BM_* constants.<BR>
+DestRowBytes: Specifies the number of bytes from the beginning of one scan line to the beginning of the next in the output bitmap; if set to zero, the function assumes that scan lines should be padded to be DWORD-aligned.<BR>
+<BR>
+If this function succeeds, the return value is TRUE.<BR>
+If this function fails, the return value is FALSE. <BR>
+<BR>
+Remarks<BR>
+<BR>
+If the input and output formats are not compatible with the color transform, this function fails.<BR>
+<BR>
+When either of the floating point BMFORMATs, BM_32b_scARGB or BM_32b_scRGB are used, the color data being translated should not contain NaN or infinity. NaN and infinity are not considered to represent legitimate color component values, and the result of translating pixels containing NaN or infinity is meaningless in color terms. NaN or infinity values in the color data being processed will be handled silently, and an error will not be returned.<BR>
+</div>
+<div class="W">
+<b><a href="class-windowsicmtransformmbs.html">WindowsICMTransformMBS</a>.<A name="6">TranslateColors(InputColors() as <A href="class-windowsicmcolormbs.html">WindowsICMColorMBS</A>, ctInput as Integer, OutputColors() as <A href="class-windowsicmcolormbs.html">WindowsICMColorMBS</A>, ctOutput as Integer) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-windowsicm.html" translate="no">Windows ICM</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+The TranslateColors function translates an array of colors from the source color space to the destination color space as defined by a color transform.<BR>
+<B>Notes:</B> 
+<BR>
+InputColors: The input color.<BR>
+ctInput: Specifies the input color type.<BR>
+OutputColors: The output color.<BR>
+ctOutput: Specifies the output color type.<BR>
+<BR>
+Returns true on success and false on failure.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-win-icm-windowsicmconvertcolors.html">/Win/ICM/Windows ICM Convert Colors</A></li>
+</ul>
+</div>
+<div class="W">
+<b><a href="class-windowsicmtransformmbs.html">WindowsICMTransformMBS</a>.<A name="7">TranslatePictures(InputPicture as picture, OutputPicture as picture) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-windowsicm.html" translate="no">Windows ICM</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+The TranslateBitmapBits function translates the colors of a bitmap having a defined format so as to produce another bitmap in a requested format.<BR>
+<B>Notes:</B> 
+<BR>
+InputPicture: input picture<BR>
+OutputPicture: output picture<BR>
+<BR>
+If this function succeeds, the return value is TRUE.<BR>
+If this function fails, the return value is FALSE. <BR>
+<BR>
+Make sure the pictures have the same size.<BR>
+<BR>
+If the input and output formats are not compatible with the color transform, this function fails.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-win-icm-windowsicmconvertpicture.html">/Win/ICM/Windows ICM Convert Picture</A></li>
+</ul>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbswinplugin.html">MBS Win Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=windowsicm-windowsicmtransformmbs-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

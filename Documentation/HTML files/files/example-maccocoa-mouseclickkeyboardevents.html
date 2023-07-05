@@ -1,0 +1,573 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /MacCocoa/Mouse Click &amp; Keyboard Events</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /MacCocoa/Mouse Click &amp; Keyboard Events</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/MacCocoa/Mouse Click &amp; Keyboard Events</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS MacBase Plugin, MBS MacFrameworks Plugin, MBS Main Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /MacCocoa/Mouse Click &amp; Keyboard Events<BR>
+This example is the version from Mon, 5th May 2019.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Mouse</span> <span style="color:#6500FE">Click</span> <span style="color:#6500FE">&amp;</span> <span style="color:#6500FE">Keyboard</span> <span style="color:#6500FE">Events.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#0000FF;font-weight: bold">call</span> Window1.AppEventMonitor.addLocalMonitorForEventsMatchingMask(NSEventMBS.NSAnyEventMask)
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> myEventMonitor <span style="color:#0000FF;font-weight: bold">As</span> MyNSEventMonitor</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Window1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control AppEventMonitor <span style="color:#0000FF;font-weight: bold">Inherits</span> MyNSEventMonitor</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance AppEventMonitor <span style="color:#0000FF;font-weight: bold">Inherits</span> MyNSEventMonitor</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> AnyLocalEvent(e <span style="color:#0000FF;font-weight: bold">As</span> NSEventMBS)
+				laEventInfo.Text = e.description
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> KeyDown(Key <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>, KeyCode <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, Repeated <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>, Modifier <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, mc <span style="color:#0000FF;font-weight: bold">As</span> ModifierKeyClass)
+				<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> Repeated <span style="color:#0000FF;font-weight: bold">then</span> s = <span style="color:#6500FE">&quot;</span>   <span style="color:#6500FE">Repeated</span> <span style="color:#6500FE">&quot;</span>
+				
+				laEvent.Text = <span style="color:#6500FE">&quot;KeyDown:</span> <span style="color:#6500FE">&quot;</span> + key + <span style="color:#6500FE">&quot;</span>   <span style="color:#6500FE">KeyCode:</span> <span style="color:#6500FE">&quot;</span> + Str( KeyCode ) + s + <span style="color:#6500FE">&quot;</span>  <span style="color:#6500FE">&quot;</span> + mc.ModifierString
+				
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">All</span> <span style="color:#7F0000;text-style:italic">Properties</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">read</span> <span style="color:#7F0000;text-style:italic">only</span>
+				
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.ShiftKey</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">any</span> <span style="color:#7F0000;text-style:italic">shift</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.ShiftLeft</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">left</span> <span style="color:#7F0000;text-style:italic">shift</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.ShiftRight</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">right</span> <span style="color:#7F0000;text-style:italic">shift</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.AltKey</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">any</span> <span style="color:#7F0000;text-style:italic">alt</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.AltLeft</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">left</span> <span style="color:#7F0000;text-style:italic">alt</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.AltRight</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">right</span> <span style="color:#7F0000;text-style:italic">alt</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.CmdKey</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">any</span> <span style="color:#7F0000;text-style:italic">cmd</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.CmdLeft</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">left</span> <span style="color:#7F0000;text-style:italic">cmd</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.CmdRight</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">right</span> <span style="color:#7F0000;text-style:italic">cmd</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.CapsLockKey</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">caps</span> <span style="color:#7F0000;text-style:italic">lock</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">down</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.CtrlKey</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">ctrl</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.FnKey</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">fn</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.ModifierString</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">String</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">Returns</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">string</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">pressed</span> <span style="color:#7F0000;text-style:italic">modifier</span> <span style="color:#7F0000;text-style:italic">keys</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> KeyUp(Key <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>, KeyCode <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, Modifier <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, mc <span style="color:#0000FF;font-weight: bold">As</span> ModifierKeyClass)
+				laEvent.Text = <span style="color:#6500FE">&quot;KeyUp:</span> <span style="color:#6500FE">&quot;</span> + key + <span style="color:#6500FE">&quot;</span>   <span style="color:#6500FE">KeyCode:</span> <span style="color:#6500FE">&quot;</span> + Str( KeyCode ) + <span style="color:#6500FE">&quot;</span>  <span style="color:#6500FE">&quot;</span> + mc.ModifierString
+				
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">All</span> <span style="color:#7F0000;text-style:italic">Properties</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">read</span> <span style="color:#7F0000;text-style:italic">only</span>
+				
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.ShiftKey</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">any</span> <span style="color:#7F0000;text-style:italic">shift</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.ShiftLeft</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">left</span> <span style="color:#7F0000;text-style:italic">shift</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.ShiftRight</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">right</span> <span style="color:#7F0000;text-style:italic">shift</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.AltKey</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">any</span> <span style="color:#7F0000;text-style:italic">alt</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.AltLeft</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">left</span> <span style="color:#7F0000;text-style:italic">alt</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.AltRight</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">right</span> <span style="color:#7F0000;text-style:italic">alt</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.CmdKey</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">any</span> <span style="color:#7F0000;text-style:italic">cmd</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.CmdLeft</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">left</span> <span style="color:#7F0000;text-style:italic">cmd</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.CmdRight</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">right</span> <span style="color:#7F0000;text-style:italic">cmd</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.CapsLockKey</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">caps</span> <span style="color:#7F0000;text-style:italic">lock</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">down</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.CtrlKey</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">ctrl</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.FnKey</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">fn</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.ModifierString</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">String</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">Returns</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">string</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">pressed</span> <span style="color:#7F0000;text-style:italic">modifier</span> <span style="color:#7F0000;text-style:italic">keys</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> ModifierKeyHasChanged(e <span style="color:#0000FF;font-weight: bold">As</span> NSEventMBS, Flags <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, KeyCode <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, mc <span style="color:#0000FF;font-weight: bold">As</span> ModifierKeyClass)
+				laModifierEvent.Text = <span style="color:#6500FE">&quot;KeyCode:</span> <span style="color:#6500FE">&quot;</span> + str( KeyCode) + <span style="color:#6500FE">&quot;</span>   <span style="color:#6500FE">&quot;</span> +mc.ModifierString
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">All</span> <span style="color:#7F0000;text-style:italic">Properties</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">read</span> <span style="color:#7F0000;text-style:italic">only</span>
+				
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.ShiftKey</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">any</span> <span style="color:#7F0000;text-style:italic">shift</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.ShiftLeft</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">left</span> <span style="color:#7F0000;text-style:italic">shift</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.ShiftRight</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">right</span> <span style="color:#7F0000;text-style:italic">shift</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.AltKey</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">any</span> <span style="color:#7F0000;text-style:italic">alt</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.AltLeft</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">left</span> <span style="color:#7F0000;text-style:italic">alt</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.AltRight</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">right</span> <span style="color:#7F0000;text-style:italic">alt</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.CmdKey</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">any</span> <span style="color:#7F0000;text-style:italic">cmd</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.CmdLeft</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">left</span> <span style="color:#7F0000;text-style:italic">cmd</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.CmdRight</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">right</span> <span style="color:#7F0000;text-style:italic">cmd</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.CapsLockKey</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">caps</span> <span style="color:#7F0000;text-style:italic">lock</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">down</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.CtrlKey</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">ctrl</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.FnKey</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">fn</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+				
+				<span style="color:#7F0000;text-style:italic">&#39;ModifierKeyClass.ModifierString</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">String</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">Returns</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">string</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">pressed</span> <span style="color:#7F0000;text-style:italic">modifier</span> <span style="color:#7F0000;text-style:italic">keys</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> MouseDown(RightClick <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>)
+				<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+				
+				<span style="color:#0000FF;font-weight: bold">If</span> RightClick <span style="color:#0000FF;font-weight: bold">then</span>
+					s = <span style="color:#6500FE">&quot;RightClick</span> <span style="color:#6500FE">Down&quot;</span>
+					
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					s = <span style="color:#6500FE">&quot;LeftClick</span> <span style="color:#6500FE">Down&quot;</span>
+					
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				laEvent.Text = s
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> MouseUp(RightClick <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>)
+				<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+				
+				<span style="color:#0000FF;font-weight: bold">If</span> RightClick <span style="color:#0000FF;font-weight: bold">then</span>
+					s = <span style="color:#6500FE">&quot;RightClick</span> <span style="color:#6500FE">Up&quot;</span>
+					
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					s = <span style="color:#6500FE">&quot;LeftClick</span> <span style="color:#6500FE">Up&quot;</span>
+					
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				laEvent.Text = s
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control GroupBoxs <span style="color:#0000FF;font-weight: bold">Inherits</span> GroupBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance GroupBoxs(<span style="color:#326598">0</span>) <span style="color:#0000FF;font-weight: bold">Inherits</span> GroupBox</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance GroupBoxs(<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">Inherits</span> GroupBox</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance GroupBoxs(<span style="color:#326598">2</span>) <span style="color:#0000FF;font-weight: bold">Inherits</span> GroupBox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control laEvent <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance laEvent <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control laModifierEvent <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance laModifierEvent <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control laEventInfo <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance laEventInfo <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> KeyDown(Key <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">just</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">prevent</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">system</span> <span style="color:#7F0000;text-style:italic">beep</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyNSEventMonitor <span style="color:#0000FF;font-weight: bold">Inherits</span> NSEventMonitorMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Event</span> AnyLocalEvent(e <span style="color:#0000FF;font-weight: bold">As</span> NSEventMBS)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Event</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Event</span> KeyDown(Key <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>, KeyCode <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, Repeated <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>, Modifier <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, mc <span style="color:#0000FF;font-weight: bold">As</span> ModifierKeyClass)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Event</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Event</span> KeyUp(Key <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>, KeyCode <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, Modifier <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, mc <span style="color:#0000FF;font-weight: bold">As</span> ModifierKeyClass)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Event</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Event</span> ModifierKeyHasChanged(e <span style="color:#0000FF;font-weight: bold">As</span> NSEventMBS, Flags <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, KeyCode <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, mc <span style="color:#0000FF;font-weight: bold">As</span> ModifierKeyClass)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Event</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Event</span> MouseDown(RightClick <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Event</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Event</span> MouseUp(RightClick <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Event</span></div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> GlobalEvent(e <span style="color:#0000FF;font-weight: bold">as</span> NSEventMBS)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Not</span> <span style="color:#7F0000;text-style:italic">used</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">app</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> LocalEvent(e <span style="color:#0000FF;font-weight: bold">as</span> NSEventMBS) <span style="color:#0000FF;font-weight: bold">As</span> NSEventMBS
+			<span style="color:#0000FF;font-weight: bold">Dim</span> mc <span style="color:#0000FF;font-weight: bold">As</span> ModifierKeyClass
+			
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">Case</span> e.type
+				
+			<span style="color:#0000FF;font-weight: bold">Case</span> <span style="color:#326598">1</span>, <span style="color:#326598">3</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">LMouseDown,</span> <span style="color:#7F0000;text-style:italic">RMousedown</span>
+				MouseDown e.type = <span style="color:#326598">3</span>
+				
+			<span style="color:#0000FF;font-weight: bold">Case</span> <span style="color:#326598">2</span>, <span style="color:#326598">4</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">LMouseUp,</span> <span style="color:#7F0000;text-style:italic">RMouseUp</span>
+				MouseUp e.type = <span style="color:#326598">4</span>
+				
+			<span style="color:#0000FF;font-weight: bold">Case</span> <span style="color:#326598">10</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">KeyDown</span>
+				mc = <span style="color:#0000FF;font-weight: bold">new</span> ModifierKeyClass( e.modifierFlags )
+				KeyDown e.characters, e.keyCode, e.isARepeat, e.modifierFlags, mc
+				
+			<span style="color:#0000FF;font-weight: bold">Case</span> <span style="color:#326598">11</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">KeyUp</span>
+				mc = <span style="color:#0000FF;font-weight: bold">new</span> ModifierKeyClass( e.modifierFlags )
+				KeyUp e.characters, e.keyCode, e.modifierFlags, mc
+				
+			<span style="color:#0000FF;font-weight: bold">Case</span> <span style="color:#326598">12</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">FlagsChanged</span> <span style="color:#7F0000;text-style:italic">(Modifier)</span>
+				mc = <span style="color:#0000FF;font-weight: bold">new</span> ModifierKeyClass( e.modifierFlags )
+				ModifierKeyHasChanged e, e.modifierFlags, e.keyCode, mc
+				
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">AnyLocalEvet</span>
+			AnyLocalEvent e
+			
+			
+			<span style="color:#0000FF;font-weight: bold">Finally</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Return</span> <span style="color:#7F0000;text-style:italic">event,</span> <span style="color:#7F0000;text-style:italic">because</span> <span style="color:#7F0000;text-style:italic">else</span> <span style="color:#7F0000;text-style:italic">your</span> <span style="color:#7F0000;text-style:italic">app</span> <span style="color:#7F0000;text-style:italic">can&#39;t</span> <span style="color:#7F0000;text-style:italic">do</span> <span style="color:#7F0000;text-style:italic">anything</span>
+			<span style="color:#0000FF;font-weight: bold">Return</span> e
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Note">		Note <span style="color:#6500FE">&quot;Future</span> <span style="color:#6500FE">Code&quot;</span>
+<div class="RB_Comment">			Select Case e.type
+			
+			Case 1, 3 // LMouseDown, RMousedown
+			MouseDown e.type = 3
+			
+			Case 2, 4 // LMouseUp, RMouseUp
+			MouseUp e.type = 4
+			
+			Case 5 // MouseMoved
+			
+			Case 6 // MouseDragged
+			
+			Case 7 // RMouseDragged
+			
+			Case 8 // MouseEntered
+			
+			Case 9 // MouseExited
+			
+			Case 10 // KeyDown
+			KeyDown e.characters, e.keyCode, e.modifierFlags, e.isARepeat
+			
+			Case 11 // KeyUp
+			KeyUp e.characters, e.keyCode, e.modifierFlags
+			
+			Case 12 // FlagsChanged (Modifier)
+			
+			if LastModifierFlags <> e.modifierFlags then
+			ModifierKeyHasChanged e, e.modifierFlags, e.keyCode
+			LastModifierFlags = e.modifierFlags
+			end if
+			
+			Case 13 // kitdefined
+			
+			Case 14 // SysDefined
+			
+			Case 17 // CursorUpdate
+			
+			Case 19 // BeginGesture
+			
+			Case 20 // EndGesture
+			
+			Case 21 // ProcessNotification
+			
+			Case 22 // ScrollWheel
+			
+			
+			Else
+			
+			break
+			End Select
+			
+			'Window1.Title = str( e.type )
+			
+			
+			Finally
+			
+			// Return event, because else your app can't do anything
+			Return e</div>
+</div>
+<div class="RB_Note">		Note <span style="color:#6500FE">&quot;ModifierFlags&quot;</span>
+<div class="RB_Comment">			000000100000000000000000 Shift Key
+			000000100000000000000010 Left Shift
+			000000100000000000000100 Right Shift
+			
+			000010000000000000000000 alt Key
+			000010000000000000100000 Left alt
+			000010000000000001000000 Right alt
+			
+			000100000000000000000000 cmd Key
+			000100000000000000001000 Left cmd
+			000100000000000000010000 Right cmd
+			
+			100000000000000000000000 fn Key
+			000001000000000000000001 ctrl key
+			000000010000000000000000 Caps Lock</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> LastModifierFlags <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">256</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> ModifierKeyClass</div>
+<div class="RB_Code">		ComputedProperty AltKey <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">			<span style="color:#0000FF;font-weight: bold">Sub</span> <span style="color:#0000FF;font-weight: bold">Get</span>()
+				<span style="color:#0000FF;font-weight: bold">Return</span> AltLeft <span style="color:#0000FF;font-weight: bold">or</span> AltRight
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">any</span> <span style="color:#7F0000;text-style:italic">alt</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Get</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> ComputedProperty</div>
+<div class="RB_Code">		ComputedProperty CmdKey <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">			<span style="color:#0000FF;font-weight: bold">Sub</span> <span style="color:#0000FF;font-weight: bold">Get</span>()
+				<span style="color:#0000FF;font-weight: bold">Return</span> CmdLeft <span style="color:#0000FF;font-weight: bold">or</span> CmdRight
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">any</span> <span style="color:#7F0000;text-style:italic">cmd</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">pressed</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Get</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> ComputedProperty</div>
+<div class="RB_Code">		ComputedProperty ModifierString <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span></div>
+<div class="RB_Code">			<span style="color:#0000FF;font-weight: bold">Sub</span> <span style="color:#0000FF;font-weight: bold">Get</span>()
+				<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> ShiftLeft <span style="color:#0000FF;font-weight: bold">then</span> s = s + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">ShiftLeft&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> ShiftRight <span style="color:#0000FF;font-weight: bold">then</span> s = s + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">ShiftRight&quot;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> AltLeft <span style="color:#0000FF;font-weight: bold">then</span> s = s + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">AltLeft&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> AltRight <span style="color:#0000FF;font-weight: bold">then</span> s = s + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">AltRight&quot;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> CmdLeft <span style="color:#0000FF;font-weight: bold">then</span> s = s + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">CmdLeft&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> CmdRight <span style="color:#0000FF;font-weight: bold">then</span> s = s + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">CmdRight&quot;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> CtrlKey <span style="color:#0000FF;font-weight: bold">then</span> s = s + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">CtrlKey&quot;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> FnKey <span style="color:#0000FF;font-weight: bold">then</span> s = s + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">FnKey&quot;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> CapsLockKey <span style="color:#0000FF;font-weight: bold">then</span> s = s + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">CapsLockKey&quot;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">Return</span> s
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Get</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> ComputedProperty</div>
+<div class="RB_Code">		ComputedProperty ShiftKey <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">			<span style="color:#0000FF;font-weight: bold">Sub</span> <span style="color:#0000FF;font-weight: bold">Get</span>()
+				<span style="color:#0000FF;font-weight: bold">Return</span> ShiftLeft <span style="color:#0000FF;font-weight: bold">or</span> ShiftRight
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Get</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> ComputedProperty</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> Alt_Key = <span style="color:#326598">&amp;b000010000000000000000000</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> Alt_Left = <span style="color:#326598">&amp;b000010000000000000100000</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> Alt_Right = <span style="color:#326598">&amp;b000010000000000001000000</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> Caps_Lock = <span style="color:#326598">&amp;b000000010000000000000000</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> Cmd_Key = <span style="color:#326598">&amp;b000100000000000000000000</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> Cmd_Left = <span style="color:#326598">&amp;b000100000000000000001000</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> Cmd_Right = <span style="color:#326598">&amp;b000100000000000000010000</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> Shift_Key = <span style="color:#326598">&amp;b000000100000000000000000</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> Shift_Left = <span style="color:#326598">&amp;b000000100000000000000010</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> Shift_Right = <span style="color:#326598">&amp;b000000100000000000000100</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> ctrl_Key = <span style="color:#326598">&amp;b000001000000000000000001</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> fn_Key = <span style="color:#326598">&amp;b100000000000000000000000</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(flags <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">Properties</span>
+			ShiftLeft = ((Shift_Left <span style="color:#0000FF;font-weight: bold">And</span> flags) = Shift_Left)
+			ShiftRight = ((Shift_Right <span style="color:#0000FF;font-weight: bold">And</span> flags) = Shift_Right)
+			
+			AltLeft = ((Alt_Left <span style="color:#0000FF;font-weight: bold">And</span> flags) = Alt_Left)
+			AltRight = ((Alt_Right <span style="color:#0000FF;font-weight: bold">And</span> flags) = Alt_Right)
+			
+			CmdLeft = ((Cmd_Left <span style="color:#0000FF;font-weight: bold">And</span> flags) = Cmd_Left)
+			CmdRight = ((Cmd_Right <span style="color:#0000FF;font-weight: bold">And</span> flags) = Cmd_Right)
+			
+			CtrlKey = ((ctrl_Key <span style="color:#0000FF;font-weight: bold">And</span> flags) = ctrl_Key)
+			
+			FnKey = ((fn_Key <span style="color:#0000FF;font-weight: bold">And</span> flags) = fn_Key)
+			
+			CapsLockKey = ((Caps_Lock <span style="color:#0000FF;font-weight: bold">And</span> flags) = Caps_Lock)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Note">		Note <span style="color:#6500FE">&quot;Info&quot;</span>
+<div class="RB_Comment">			All Properties are read only
+			
+			ModifierKeyClass.ShiftKey As Boolean
+			// any shift key is pressed
+			
+			ModifierKeyClass.ShiftLeft As Boolean
+			// left shift key is pressed
+			
+			ModifierKeyClass.ShiftRight As Boolean
+			// right shift key is pressed
+			
+			
+			ModifierKeyClass.AltKey As Boolean
+			// any alt key is pressed
+			
+			ModifierKeyClass.AltLeft As Boolean
+			// left alt key is pressed
+			
+			ModifierKeyClass.AltRight As Boolean
+			// right alt key is pressed
+			
+			
+			ModifierKeyClass.CmdKey As Boolean
+			// any cmd key is pressed
+			
+			ModifierKeyClass.CmdLeft As Boolean
+			// left cmd key is pressed
+			
+			ModifierKeyClass.CmdRight As Boolean
+			// right cmd key is pressed
+			
+			
+			ModifierKeyClass.CapsLockKey As Boolean
+			// caps lock key is down
+			
+			ModifierKeyClass.CtrlKey As Boolean
+			// ctrl key is pressed
+			
+			ModifierKeyClass.FnKey As Boolean
+			// fn key is pressed
+			
+			ModifierKeyClass.ModifierString As String
+			// Returns a string with all pressed modifier keys</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> AltLeft <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> AltRight <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> CapsLockKey <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> CmdLeft <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> CmdRight <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> CtrlKey <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> FnKey <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> ShiftLeft <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> ShiftRight <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-maccocoa-mouseclickkeyboardevents">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

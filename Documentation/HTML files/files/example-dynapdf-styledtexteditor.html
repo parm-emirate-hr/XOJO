@@ -1,0 +1,469 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /DynaPDF/StyledText Editor</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /DynaPDF/StyledText Editor</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/DynaPDF/StyledText Editor</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS DynaPDF Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /DynaPDF/StyledText Editor<BR>
+This example is the version from Mon, 16th Jan 2022.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;StyledText</span> <span style="color:#6500FE">Editor.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Window1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> testRTF = <span style="color:#6500FE">&quot;{\rtf1\ansi\ansicpg1252{\fonttbl{\f0\fnil</span> <span style="color:#6500FE">Helvetica;}{\f1\fnil</span> <span style="color:#6500FE">Arial;}{\f2\fnil</span> <span style="color:#6500FE">Times;}{\f3\fnil</span> <span style="color:#6500FE">Comic</span> <span style="color:#6500FE">Sans</span> <span style="color:#6500FE">MS;}}{\colortbl\red0\green0\blue0;\red217\green11\blue0;\red46\green111\blue253;\red102\green177\blue50;}\uc0</span> <span style="color:#6500FE">\ql\f0\fs36</span> <span style="color:#6500FE">Hello</span> <span style="color:#6500FE">World\par\par</span> <span style="color:#6500FE">\cf1</span> <span style="color:#6500FE">red\cf0</span>  <span style="color:#6500FE">\cf2</span> <span style="color:#6500FE">blue\cf0</span>  <span style="color:#6500FE">\cf3</span> <span style="color:#6500FE">green\par</span> <span style="color:#6500FE">\cf0</span> <span style="color:#6500FE">\par</span> <span style="color:#6500FE">\fs28</span> <span style="color:#6500FE">14</span> <span style="color:#6500FE">point\fs24</span> <span style="color:#6500FE">\par</span> <span style="color:#6500FE">\fs20</span> <span style="color:#6500FE">10</span> <span style="color:#6500FE">point\par</span> <span style="color:#6500FE">\fs36</span> <span style="color:#6500FE">\par</span> <span style="color:#6500FE">\b</span> <span style="color:#6500FE">bold\b0</span> <span style="color:#6500FE">,</span> <span style="color:#6500FE">\i</span> <span style="color:#6500FE">italic\i0</span> <span style="color:#6500FE">,</span> <span style="color:#6500FE">\ul</span> <span style="color:#6500FE">underline\ul0</span> <span style="color:#6500FE">\par</span> <span style="color:#6500FE">\par</span> <span style="color:#6500FE">\f1</span> <span style="color:#6500FE">Arial</span> <span style="color:#6500FE">\b</span> <span style="color:#6500FE">bold\b0</span>  <span style="color:#6500FE">\i</span> <span style="color:#6500FE">italic\par</span> <span style="color:#6500FE">\i0\f2</span> <span style="color:#6500FE">Times</span> <span style="color:#6500FE">\b</span> <span style="color:#6500FE">bold\b0</span>  <span style="color:#6500FE">\i</span> <span style="color:#6500FE">italic\par</span> <span style="color:#6500FE">\i0\f3</span> <span style="color:#6500FE">Comic</span> <span style="color:#6500FE">Sans</span> <span style="color:#6500FE">\b</span> <span style="color:#6500FE">bold\b0</span>  <span style="color:#6500FE">italic\par</span> <span style="color:#6500FE">}&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Editor <span style="color:#0000FF;font-weight: bold">Inherits</span> TextArea</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Editor <span style="color:#0000FF;font-weight: bold">Inherits</span> TextArea</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> SelChange()
+				NoEvents = <span style="color:#0000FF;font-weight: bold">true</span>
+				
+				boldButton.Value = <span style="color:#0000FF;font-weight: bold">me</span>.SelBold
+				ItalicButton.Value = <span style="color:#0000FF;font-weight: bold">me</span>.SelItalic
+				underlineButton.Value = <span style="color:#0000FF;font-weight: bold">me</span>.SelUnderline
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = <span style="color:#0000FF;font-weight: bold">me</span>.SelTextFont
+				<span style="color:#0000FF;font-weight: bold">if</span> n = <span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					PopupFont.ListIndex = -<span style="color:#326598">1</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">schrift</span> <span style="color:#7F0000;text-style:italic">suchen</span> <span style="color:#7F0000;text-style:italic">und</span> <span style="color:#7F0000;text-style:italic">eintrag</span> <span style="color:#7F0000;text-style:italic">setzen</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> u <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = PopupFont.ListCount-<span style="color:#326598">1</span>
+					<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> u
+						<span style="color:#0000FF;font-weight: bold">if</span> PopupFont.List(i) = n <span style="color:#0000FF;font-weight: bold">then</span>
+							PopupFont.ListIndex = i
+							<span style="color:#0000FF;font-weight: bold">exit</span>
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					<span style="color:#0000FF;font-weight: bold">next</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				ColorPickerButton1.value = <span style="color:#0000FF;font-weight: bold">me</span>.SelTextColor
+				
+				<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">case</span> <span style="color:#0000FF;font-weight: bold">me</span>.SelAlignment
+				<span style="color:#0000FF;font-weight: bold">case</span> <span style="color:#0000FF;font-weight: bold">me</span>.AlignRight
+					RightButton.Value = <span style="color:#0000FF;font-weight: bold">true</span>
+					LeftButton.Value = <span style="color:#0000FF;font-weight: bold">false</span>
+					CenterButton.Value = <span style="color:#0000FF;font-weight: bold">false</span>
+				<span style="color:#0000FF;font-weight: bold">case</span> <span style="color:#0000FF;font-weight: bold">me</span>.AlignCenter
+					RightButton.Value = <span style="color:#0000FF;font-weight: bold">false</span>
+					LeftButton.Value = <span style="color:#0000FF;font-weight: bold">false</span>
+					CenterButton.Value = <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					RightButton.Value = <span style="color:#0000FF;font-weight: bold">false</span>
+					LeftButton.Value = <span style="color:#0000FF;font-weight: bold">true</span>
+					CenterButton.Value = <span style="color:#0000FF;font-weight: bold">false</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+				
+				NoEvents = <span style="color:#0000FF;font-weight: bold">false</span>
+				
+				RedrawTimer.Mode = timer.ModeSingle
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control BoldButton <span style="color:#0000FF;font-weight: bold">Inherits</span> BevelButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance BoldButton <span style="color:#0000FF;font-weight: bold">Inherits</span> BevelButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				Editor.SelBold = <span style="color:#0000FF;font-weight: bold">me</span>.Value
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control ItalicButton <span style="color:#0000FF;font-weight: bold">Inherits</span> BevelButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance ItalicButton <span style="color:#0000FF;font-weight: bold">Inherits</span> BevelButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				Editor.SelItalic = <span style="color:#0000FF;font-weight: bold">me</span>.Value
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control underlineButton <span style="color:#0000FF;font-weight: bold">Inherits</span> BevelButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance underlineButton <span style="color:#0000FF;font-weight: bold">Inherits</span> BevelButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				Editor.SelUnderline = <span style="color:#0000FF;font-weight: bold">me</span>.Value
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control SaveButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance SaveButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = GetSaveFolderItem(FileTypes1.Rtf, <span style="color:#6500FE">&quot;test.rtf&quot;</span>)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> f = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BinaryStream = BinaryStream.Create(f)
+				
+				b.Write editor.StyledText.RTFData
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control OpenButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance OpenButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = GetopenFolderItem(FileTypes1.Rtf)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> f = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BinaryStream = BinaryStream.open(f)
+				
+				editor.StyledText.RTFData = b.Read(B.Length)
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PopupFont <span style="color:#0000FF;font-weight: bold">Inherits</span> PopupMenu</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PopupFont <span style="color:#0000FF;font-weight: bold">Inherits</span> PopupMenu</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Change()
+				<span style="color:#0000FF;font-weight: bold">if</span> NoEvents <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">nicht</span> <span style="color:#7F0000;text-style:italic">setzen,</span> <span style="color:#7F0000;text-style:italic">wenn</span> <span style="color:#7F0000;text-style:italic">wir</span> <span style="color:#7F0000;text-style:italic">selber</span> <span style="color:#7F0000;text-style:italic">setzen</span>
+				
+				editor.SelTextFont = <span style="color:#0000FF;font-weight: bold">me</span>.Text
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+				<span style="color:#0000FF;font-weight: bold">dim</span> u <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = FontCount-<span style="color:#326598">1</span>
+				<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> u
+					<span style="color:#0000FF;font-weight: bold">dim</span> n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = font(i)
+					
+					PopupFont.AddRow n
+				<span style="color:#0000FF;font-weight: bold">next</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control ColorPickerButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> ColorPickerButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance ColorPickerButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> ColorPickerButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> ColorChanged()
+				editor.SelTextColor = <span style="color:#0000FF;font-weight: bold">me</span>.value
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control LeftButton <span style="color:#0000FF;font-weight: bold">Inherits</span> BevelButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance LeftButton <span style="color:#0000FF;font-weight: bold">Inherits</span> BevelButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				Editor.SelAlignment = editor.AlignLeft
+				
+				RightButton.Value = <span style="color:#0000FF;font-weight: bold">false</span>
+				CenterButton.Value = <span style="color:#0000FF;font-weight: bold">false</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CenterButton <span style="color:#0000FF;font-weight: bold">Inherits</span> BevelButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CenterButton <span style="color:#0000FF;font-weight: bold">Inherits</span> BevelButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				Editor.SelAlignment = editor.AlignCenter
+				
+				LeftButton.Value = <span style="color:#0000FF;font-weight: bold">false</span>
+				RightButton.Value = <span style="color:#0000FF;font-weight: bold">false</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control RightButton <span style="color:#0000FF;font-weight: bold">Inherits</span> BevelButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance RightButton <span style="color:#0000FF;font-weight: bold">Inherits</span> BevelButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				Editor.SelAlignment = editor.AlignRight
+				
+				
+				LeftButton.Value = <span style="color:#0000FF;font-weight: bold">false</span>
+				CenterButton.Value = <span style="color:#0000FF;font-weight: bold">false</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CreateButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CreateButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = GetSaveFolderItem(FileTypes1.pdf, <span style="color:#6500FE">&quot;test.pdf&quot;</span>)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> f = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> pdf <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MyDynapdfMBS
+				
+				pdf.SetLicenseKey <span style="color:#6500FE">&quot;Starter&quot;</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">For</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">example</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">Starter,</span> <span style="color:#7F0000;text-style:italic">Lite,</span> <span style="color:#7F0000;text-style:italic">Pro</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">Enterprise</span> <span style="color:#7F0000;text-style:italic">License</span>
+				
+				<span style="color:#0000FF;font-weight: bold">call</span> pdf.CreateNewPDF(f)
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">add</span> <span style="color:#7F0000;text-style:italic">page</span>
+				<span style="color:#0000FF;font-weight: bold">call</span> pdf.append
+				<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFont(<span style="color:#6500FE">&quot;Helvetica&quot;</span>)
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">start</span> <span style="color:#7F0000;text-style:italic">horizontal</span> <span style="color:#7F0000;text-style:italic">110</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">left</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">start</span> <span style="color:#7F0000;text-style:italic">veritical</span> <span style="color:#7F0000;text-style:italic">100</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">top</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">width</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">page</span> <span style="color:#7F0000;text-style:italic">width</span> <span style="color:#7F0000;text-style:italic">minus</span> <span style="color:#7F0000;text-style:italic">130</span> <span style="color:#7F0000;text-style:italic">pixels</span> <span style="color:#7F0000;text-style:italic">left</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">50</span> <span style="color:#7F0000;text-style:italic">right</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">height</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">page</span> <span style="color:#7F0000;text-style:italic">height</span> <span style="color:#7F0000;text-style:italic">minus</span> <span style="color:#7F0000;text-style:italic">100</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">bottom</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">250</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">top</span>
+				
+				<span style="color:#0000FF;font-weight: bold">call</span> pdf.settextrect <span style="color:#326598">110</span>, pdf.getpageHeight -<span style="color:#326598">100</span>, pdf.getpageWidth-<span style="color:#326598">110</span>-<span style="color:#326598">50</span>, pdf.getpageHeight-<span style="color:#326598">100</span>-<span style="color:#326598">100</span>
+				<span style="color:#0000FF;font-weight: bold">call</span> pdf.writeStyledText(pdf.ktaLeft, window1.Editor.StyledText)
+				
+				<span style="color:#0000FF;font-weight: bold">call</span> pdf.EndPage
+				<span style="color:#0000FF;font-weight: bold">call</span> pdf.closefile
+				
+				f.Launch
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Preview <span style="color:#0000FF;font-weight: bold">Inherits</span> Canvas</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Preview <span style="color:#0000FF;font-weight: bold">Inherits</span> Canvas</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Paint(g <span style="color:#0000FF;font-weight: bold">As</span> Graphics, areas() <span style="color:#0000FF;font-weight: bold">As</span> REALbasic.Rect)
+				<span style="color:#0000FF;font-weight: bold">if</span> pic &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					g.DrawPicture pic, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, g.Width, g.Height, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, pic.Width, pic.Height
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control RedrawTimer <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance RedrawTimer <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				UpdatePreview
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			editor.StyledText.RTFData = testRTF
+			
+			
+			
+			UpdatePreview
+			
+			
+			
+			<span style="color:#0000FF;font-weight: bold">If</span> XojoVersion &gt;= <span style="color:#006532">2018.03</span> <span style="color:#0000FF;font-weight: bold">And</span> IsDarkMode <span style="color:#0000FF;font-weight: bold">Then</span>
+				MsgBox <span style="color:#6500FE">&quot;Please</span> <span style="color:#6500FE">be</span> <span style="color:#6500FE">aware</span> <span style="color:#6500FE">that</span> <span style="color:#6500FE">in</span> <span style="color:#6500FE">dark</span> <span style="color:#6500FE">mode</span> <span style="color:#6500FE">the</span> <span style="color:#6500FE">white</span> <span style="color:#6500FE">text</span> <span style="color:#6500FE">may</span> <span style="color:#6500FE">be</span> <span style="color:#6500FE">hard</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">see</span> <span style="color:#6500FE">on</span> <span style="color:#6500FE">white</span> <span style="color:#6500FE">paper.&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Resized()
+			RedrawTimer.Mode = timer.ModeSingle
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Resizing()
+			RedrawTimer.Mode = timer.ModeSingle
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> UpdatePreview()
+			<span style="color:#0000FF;font-weight: bold">dim</span> pdf <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MyDynapdfMBS
+			
+			pdf.SetLicenseKey <span style="color:#6500FE">&quot;Pro&quot;</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">For</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">example</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">Starter,</span> <span style="color:#7F0000;text-style:italic">Lite,</span> <span style="color:#7F0000;text-style:italic">Pro</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">Enterprise</span> <span style="color:#7F0000;text-style:italic">License</span>
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CreateNewPDF(<span style="color:#0000FF;font-weight: bold">nil</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">add</span> <span style="color:#7F0000;text-style:italic">page</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.append
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFont(<span style="color:#6500FE">&quot;Helvetica&quot;</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetPageWidth(preview.Width)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetPageHeight(preview.Height)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetColorSpace(pdf.kcsDeviceRGB)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFillColor(<span style="color:#326598">0</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">black</span>
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.settextrect <span style="color:#326598">5</span>, pdf.getpageHeight-<span style="color:#326598">5</span>, pdf.getpageWidth-<span style="color:#326598">10</span>, pdf.getpageHeight-<span style="color:#326598">10</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.writeStyledText(pdf.ktaLeft, window1.Editor.StyledText)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.EndPage
+			
+			pic = pdf.RenderPagePicture(<span style="color:#326598">1</span>, preview.Width * <span style="color:#326598">2</span>, preview.Height * <span style="color:#326598">2</span>)
+			preview.Invalidate
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> NoEvents <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> pic <span style="color:#0000FF;font-weight: bold">As</span> Picture</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MainMenuBar</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator2 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	FileTypes1</div>
+<div class="RB_Code">		Filetype application/rtf</div>
+<div class="RB_Code">		Filetype application/pdf</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> FileTypes1</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> ColorPickerButton <span style="color:#0000FF;font-weight: bold">Inherits</span> BevelButton</div>
+<div class="RB_Code">		ComputedProperty value <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">color</span></div>
+<div class="RB_Code">			<span style="color:#0000FF;font-weight: bold">Sub</span> <span style="color:#0000FF;font-weight: bold">Set</span>()
+				mvalue = value
+				
+				update
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Set</span></div>
+<div class="RB_Code">			<span style="color:#0000FF;font-weight: bold">Sub</span> <span style="color:#0000FF;font-weight: bold">Get</span>()
+				<span style="color:#0000FF;font-weight: bold">return</span> mvalue
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Get</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> ComputedProperty</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Event</span> ColorChanged()
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Event</span></div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+			<span style="color:#0000FF;font-weight: bold">dim</span> c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">color</span> = mvalue
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> SelectColor(c, <span style="color:#6500FE">&quot;Farbe?&quot;</span>) <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.value = c <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">farbe</span> <span style="color:#7F0000;text-style:italic">merken</span> <span style="color:#7F0000;text-style:italic">und</span> <span style="color:#7F0000;text-style:italic">icon</span> <span style="color:#7F0000;text-style:italic">generieren</span>
+				
+				<span style="color:#0000FF;font-weight: bold">RaiseEvent</span> ColorChanged
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> update()
+			<span style="color:#0000FF;font-weight: bold">dim</span> p <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> Picture(<span style="color:#326598">16</span>, <span style="color:#326598">16</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> g <span style="color:#0000FF;font-weight: bold">as</span> Graphics = p.Graphics
+			
+			g.ForeColor = mvalue
+			g.FillOval <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, <span style="color:#326598">16</span>, <span style="color:#326598">16</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Icon = p
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> mvalue <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">color</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyDynapdfMBS <span style="color:#0000FF;font-weight: bold">Inherits</span> DynapdfMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> Error(ErrorCode <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, ErrorMessage <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, ErrorType <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">output</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">messages</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">console:</span>
+			System.DebugLog str(ErrorCode)+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+ErrorMessage
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">dialog:</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">New</span> MessageDialog <span style="color:#7F0000;text-style:italic">//declare</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">MessageDialog</span> <span style="color:#7F0000;text-style:italic">object</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> MessageDialogButton <span style="color:#7F0000;text-style:italic">//for</span> <span style="color:#7F0000;text-style:italic">handling</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">result</span>
+			
+			d.icon=MessageDialog.GraphicCaution <span style="color:#7F0000;text-style:italic">//display</span> <span style="color:#7F0000;text-style:italic">warning</span> <span style="color:#7F0000;text-style:italic">icon</span>
+			d.ActionButton.Caption=<span style="color:#6500FE">&quot;Continue&quot;</span>
+			d.CancelButton.Visible=<span style="color:#0000FF;font-weight: bold">True</span>    <span style="color:#7F0000;text-style:italic">//show</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Cancel</span> <span style="color:#7F0000;text-style:italic">button</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">warning</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">error?</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> BitAnd(ErrorType, <span style="color:#0000FF;font-weight: bold">me</span>.kE_WARNING) = <span style="color:#0000FF;font-weight: bold">me</span>.kE_WARNING <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">user</span> <span style="color:#7F0000;text-style:italic">decided</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">ignore,</span> <span style="color:#7F0000;text-style:italic">we&#39;ll</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> IgnoreWarnings <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span>
+				
+				d.Message=<span style="color:#6500FE">&quot;A</span> <span style="color:#6500FE">warning</span> <span style="color:#6500FE">occurred</span> <span style="color:#6500FE">while</span> <span style="color:#6500FE">processing</span> <span style="color:#6500FE">your</span> <span style="color:#6500FE">PDF</span> <span style="color:#6500FE">code.&quot;</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">third</span> <span style="color:#7F0000;text-style:italic">button</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">warnings</span>
+				d.AlternateActionButton.Caption = <span style="color:#6500FE">&quot;Ignore</span> <span style="color:#6500FE">warnings&quot;</span>
+				d.AlternateActionButton.Visible = <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				d.Message=<span style="color:#6500FE">&quot;An</span> <span style="color:#6500FE">error</span> <span style="color:#6500FE">occurred</span> <span style="color:#6500FE">while</span> <span style="color:#6500FE">processing</span> <span style="color:#6500FE">your</span> <span style="color:#6500FE">PDF</span> <span style="color:#6500FE">code.&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			d.Explanation = str(ErrorCode)+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+ErrorMessage
+			
+			b=d.ShowModal <span style="color:#7F0000;text-style:italic">//display</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">dialog</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">Case</span> b <span style="color:#7F0000;text-style:italic">//determine</span> <span style="color:#7F0000;text-style:italic">which</span> <span style="color:#7F0000;text-style:italic">button</span> <span style="color:#7F0000;text-style:italic">was</span> <span style="color:#7F0000;text-style:italic">pressed.</span>
+			<span style="color:#0000FF;font-weight: bold">Case</span> d.ActionButton
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+			<span style="color:#0000FF;font-weight: bold">Case</span> d.AlternateActionButton
+				IgnoreWarnings = <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+			<span style="color:#0000FF;font-weight: bold">Case</span> d.CancelButton
+				<span style="color:#0000FF;font-weight: bold">Return</span> -<span style="color:#326598">1</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">stop</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">select</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> PageBreak(LastPosX <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>, LastPosY <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>, PageBreak <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">boolean</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#326598">1</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">cut</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> IgnoreWarnings <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> template <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-dynapdf-styledtexteditor">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

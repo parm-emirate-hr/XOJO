@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - PHAssetCollectionChangeRequestMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="PHAssetCollectionChangeRequestMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">PHAssetCollectionChangeRequestMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>PHAssetCollectionChangeRequestMBS class</H3>
+<P>Super class: <A href="class-phchangerequestmbs.html">PHChangeRequestMBS</A></p>
+<div class="M">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-photos.html" translate="no">Photos</A></td>
+<td class=grau><a href="plugins-mbsmac64bitplugin.html">MBS Mac64bit Plugin</a></td>
+<td class=grau><a href="newinversion202.shtml" class=version>20.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>Desktop & iOS</td>
+</tr>
+</table>
+<B>Function:</B> 
+A request to create, delete, or modify a Photos asset collection, for use in a photo library change block.<BR>
+<B>Notes:</B> 
+<BR>
+You use the PHAssetCollectionChangeRequestMBS class to request changes for <A href="class-phassetcollectionmbs.html">PHAssetCollectionMBS</A> objects. To make changes to asset collections (such as user-created albums) in the Photos library, create a change request using the appropriate class method for the change you want to perform.<BR>
+<BR>
+<UL><LI>
+Call the creationRequestForAssetCollectionWithTitle: method to create a new asset collection.
+</LI><LI>
+Call the deleteAssetCollections: method to delete existing asset collections.
+</LI><LI>
+Call the changeRequestForAssetCollection: or changeRequestForAssetCollection:assets: method to modify a collection&rsquo;s metadata or list of member assets.
+</LI></UL>
+<BR>
+Before creating a change request, use the canPerformEditOperation: method to verify that the collection allows the edit operation you&rsquo;re requesting. If you attempt to perform an unsupported edit operation, Photos throws an exception.<BR>
+A change request for creating or modifying an asset collection works like a mutable version of the asset collection object. Use the change request&rsquo;s properties and instance methods to request changes to the asset collection itself. <BR>
+<BR>
+After Photos runs the change block and calls your completion handler, the asset collection&rsquo;s state reflects the changes you requested in the block.<BR>
+If you create or use a change request object outside a photo library change block, Photos raises an Objective-C exception. For details on change blocks, see <A href="class-phphotolibrarymbs.html">PHPhotoLibraryMBS</A>.<BR>
+Subclass of the <A href="class-phchangerequestmbs.html">PHChangeRequestMBS</A> class.<BR>
+</div>
+<ul>
+<LI>2 properties<UL>
+<li class="M">property <A href="photos-phassetcollectionchangerequestmbs-property.html">placeholderForCreatedAssetCollection</A> as <A href="class-phobjectplaceholdermbs.html">PHObjectPlaceholderMBS</A></li>
+<li class="M">property <A href="photos-phassetcollectionchangerequestmbs-property.html#2">title</A> as String</li>
+</UL></LI>
+<LI>13 methods<UL>
+<li class="M">method <A href="photos-phassetcollectionchangerequestmbs-method.html">addAsset</A>(asset as <A href="class-phassetmbs.html">PHAssetMBS</A>)</li>
+<li class="M">method <A href="photos-phassetcollectionchangerequestmbs-method.html#2">addAssets</A>(assets() as <A href="class-phassetmbs.html">PHAssetMBS</A>)</li>
+<li class="M">method <A href="photos-phassetcollectionchangerequestmbs-method.html#3">Constructor</A></li>
+<li class="M">method <A href="photos-phassetcollectionchangerequestmbs-method.html#4">insertAsset</A>(asset as <A href="class-phassetmbs.html">PHAssetMBS</A>, index as Integer)</li>
+<li class="M">method <A href="photos-phassetcollectionchangerequestmbs-method.html#5">insertAssets</A>(assets() as <A href="class-phassetmbs.html">PHAssetMBS</A>, indexes as <A href="class-nsindexsetmbs.html">NSIndexSetMBS</A>)</li>
+<li class="M">method <A href="photos-phassetcollectionchangerequestmbs-method.html#6">moveAsset</A>(fromIndex as Integer, toIndex as Integer)</li>
+<li class="M">method <A href="photos-phassetcollectionchangerequestmbs-method.html#7">moveAssets</A>(fromIndexes as <A href="class-nsindexsetmbs.html">NSIndexSetMBS</A>, toIndex as Integer)</li>
+<li class="M">method <A href="photos-phassetcollectionchangerequestmbs-method.html#8">removeAsset</A>(asset as <A href="class-phassetmbs.html">PHAssetMBS</A>)</li>
+<li class="M">method <A href="photos-phassetcollectionchangerequestmbs-method.html#9">removeAsset</A>(AtIndex as Integer)</li>
+<li class="M">method <A href="photos-phassetcollectionchangerequestmbs-method.html#10">removeAssets</A>(assets() as <A href="class-phassetmbs.html">PHAssetMBS</A>)</li>
+<li class="M">method <A href="photos-phassetcollectionchangerequestmbs-method.html#11">removeAssets</A>(AtIndexes as <A href="class-nsindexsetmbs.html">NSIndexSetMBS</A>)</li>
+<li class="M">method <A href="photos-phassetcollectionchangerequestmbs-method.html#12">replaceAsset</A>(AtIndex as Integer, asset as <A href="class-phassetmbs.html">PHAssetMBS</A>)</li>
+<li class="M">method <A href="photos-phassetcollectionchangerequestmbs-method.html#13">replaceAssets</A>(AtIndexes as <A href="class-nsindexsetmbs.html">NSIndexSetMBS</A>, assets() as <A href="class-phassetmbs.html">PHAssetMBS</A>)</li>
+</UL></LI>
+<LI>5 shared methods<UL>
+<li class="M">shared method <A href="photos-phassetcollectionchangerequestmbs-shared-method.html">available</A> as boolean</li>
+<li class="M">shared method <A href="photos-phassetcollectionchangerequestmbs-shared-method.html#2">changeRequestForAssetCollection</A>(assetCollection as <A href="class-phassetcollectionmbs.html">PHAssetCollectionMBS</A>) as PHAssetCollectionChangeRequestMBS</li>
+<li class="M">shared method <A href="photos-phassetcollectionchangerequestmbs-shared-method.html#3">changeRequestForAssetCollection</A>(assetCollection as <A href="class-phassetcollectionmbs.html">PHAssetCollectionMBS</A>, assets as <A href="class-phfetchresultmbs.html">PHFetchResultMBS</A>) as PHAssetCollectionChangeRequestMBS</li>
+<li class="M">shared method <A href="photos-phassetcollectionchangerequestmbs-shared-method.html#4">creationRequestForAssetCollectionWithTitle</A>(title as string) as PHAssetCollectionChangeRequestMBS</li>
+<li class="M">shared method <A href="photos-phassetcollectionchangerequestmbs-shared-method.html#5">deleteAssetCollections</A>(Collections() as <A href="class-phcollectionlistmbs.html">PHCollectionListMBS</A>)</li>
+</UL></LI>
+</ul>
+<h4>Super class <A href="class-phchangerequestmbs.html">PHChangeRequestMBS</A></h4>
+<ul>
+<li class="M">property <A href="photos-phchangerequestmbs-property.html">Handle</A> as Integer</li>
+<li class="M">method <A href="photos-phchangerequestmbs-method.html">Constructor</A> &nbsp; <b style="color: #8B0000"> Private </b></li>
+<li class="M">shared method <A href="photos-phchangerequestmbs-shared-method.html">available</A> as boolean</li>
+</ul>
+<p>This class has no sub classes.</p>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmac64bitplugin.html">MBS Mac64bit Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-phassetchangerequestmbs.html">PHAssetChangeRequestMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-phassetcollectionmbs.html">PHAssetCollectionMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-phassetcollectionchangerequestmbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

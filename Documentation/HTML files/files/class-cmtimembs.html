@@ -1,0 +1,309 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - CMTimeMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="CMTimeMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">CMTimeMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>CMTimeMBS class</H3>
+<div class="M">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-avfoundation.html" translate="no">AVFoundation</A></td>
+<td class=grau><a href="plugins-mbsavfoundationplugin.html">MBS AVFoundation Plugin</a></td>
+<td class=grau><a href="newinversion132.shtml" class=version>13.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+CMTime is a class representing times (either timestamps or durations).<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> t <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> CMTimeMBS(<span style="color: #336698;">1200</span>, <span style="color: #336698;">600</span>)<br />MsgBox t.Description</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+A CMTime is represented as a rational number, with a numerator (an int64 value), and a denominator (an int32 timescale). Conceptually, the timescale specifies the fraction of a second each unit in the numerator occupies. Thus if the timescale is 4, each unit represents a quarter of a second; if the timescale is 10, each unit represents a tenth of a second, and so on. In addition to a simple time value, a CMTime can represent non-numeric values: +infinity, -infinity, and indefinite. Using a flag CMTime indicates whether the time been rounded at some point.<BR>
+<BR>
+CMTimes contain an epoch number, which is usually set to 0, but can be used to distinguish unrelated timelines: for example, it could be incremented each time through a presentation loop, to differentiate between time N in loop 0 from time N in loop 1.<BR>
+<BR>
+Additional functions for managing dates and times are described in Time Utilities Reference. Note that CMTime is designed for media timelines whereas functions in Time Utilities Reference are designed for working with wall-clock time in Core Foundation framework; see also AV Foundation Constants Reference.<BR>
+</div>
+<ul>
+<LI>12 properties<UL>
+<li class="M">property <A href="avfoundation-cmtimembs-property.html">Epoch</A> as Int64</li>
+<li class="M">property <A href="avfoundation-cmtimembs-property.html#2">Flags</A> as Integer</li>
+<li class="M">property <A href="avfoundation-cmtimembs-property.html#3">HasBeenRounded</A> as Boolean</li>
+<li class="M">property <A href="avfoundation-cmtimembs-property.html#4">IsIndefinite</A> as Boolean</li>
+<li class="M">property <A href="avfoundation-cmtimembs-property.html#5">IsInvalid</A> as Boolean</li>
+<li class="M">property <A href="avfoundation-cmtimembs-property.html#6">IsNegativeInfinity</A> as Boolean</li>
+<li class="M">property <A href="avfoundation-cmtimembs-property.html#7">IsNumeric</A> as Boolean</li>
+<li class="M">property <A href="avfoundation-cmtimembs-property.html#8">IsPositiveInfinity</A> as Boolean</li>
+<li class="M">property <A href="avfoundation-cmtimembs-property.html#9">IsValid</A> as Boolean</li>
+<li class="M">property <A href="avfoundation-cmtimembs-property.html#10">Seconds</A> as Double</li>
+<li class="M">property <A href="avfoundation-cmtimembs-property.html#11">Timescale</A> as Integer</li>
+<li class="M">property <A href="avfoundation-cmtimembs-property.html#12">Value</A> as Int64</li>
+</UL></LI>
+<LI>10 methods<UL>
+<li class="M">method <A href="avfoundation-cmtimembs-method.html">AbsoluteValue</A> as CMTimeMBS</li>
+<li class="M">method <A href="avfoundation-cmtimembs-method.html#2">Add</A>(other as CMTimeMBS) as CMTimeMBS</li>
+<li class="M">method <A href="avfoundation-cmtimembs-method.html#3">Compare</A>(other as CMTimeMBS) as Integer</li>
+<li class="M">method <A href="avfoundation-cmtimembs-method.html#4">Constructor</A>(Value as Int64, Timescale as Integer, Flags as Integer = 1, Epoch as Int64 = 0)</li>
+<li class="M">method <A href="avfoundation-cmtimembs-method.html#5">ConvertScale</A>(newTimescale as Integer, RoundingMethod as Integer = 1) as CMTimeMBS</li>
+<li class="M">method <A href="avfoundation-cmtimembs-method.html#6">Description</A> as string</li>
+<li class="M">method <A href="avfoundation-cmtimembs-method.html#7">Multiply</A>(multiplier as Integer) as CMTimeMBS</li>
+<li class="M">method <A href="avfoundation-cmtimembs-method.html#8">MultiplyByFloat</A>(multiplier as Double) as CMTimeMBS</li>
+<li class="M">method <A href="avfoundation-cmtimembs-method.html#9">Show</A></li>
+<li class="M">method <A href="avfoundation-cmtimembs-method.html#10">Subtract</A>(other as CMTimeMBS) as CMTimeMBS</li>
+</UL></LI>
+<LI>10 shared methods<UL>
+<li class="M">shared method <A href="avfoundation-cmtimembs-shared-method.html">kCMTimeIndefinite</A> as CMTimeMBS</li>
+<li class="M">shared method <A href="avfoundation-cmtimembs-shared-method.html#2">kCMTimeInvalid</A> as CMTimeMBS</li>
+<li class="M">shared method <A href="avfoundation-cmtimembs-shared-method.html#3">kCMTimeNegativeInfinity</A> as CMTimeMBS</li>
+<li class="M">shared method <A href="avfoundation-cmtimembs-shared-method.html#4">kCMTimePositiveInfinity</A> as CMTimeMBS</li>
+<li class="M">shared method <A href="avfoundation-cmtimembs-shared-method.html#5">kCMTimeZero</A> as CMTimeMBS</li>
+<li class="M">shared method <A href="avfoundation-cmtimembs-shared-method.html#6">Make</A>(value as Int64, timescale as Integer) as CMTimeMBS</li>
+<li class="M">shared method <A href="avfoundation-cmtimembs-shared-method.html#7">MakeWithEpoch</A>(value as Int64, timescale as Integer, Epoch as Int64) as CMTimeMBS</li>
+<li class="M">shared method <A href="avfoundation-cmtimembs-shared-method.html#8">MakeWithSeconds</A>(seconds as Double, preferredTimeScale as Int32 = 600) as CMTimeMBS</li>
+<li class="M">shared method <A href="avfoundation-cmtimembs-shared-method.html#9">Maximum</A>(t1 as CMTimeMBS, t2 as CMTimeMBS) as CMTimeMBS</li>
+<li class="M">shared method <A href="avfoundation-cmtimembs-shared-method.html#10">Minimum</A>(t1 as CMTimeMBS, t2 as CMTimeMBS) as CMTimeMBS</li>
+</UL></LI>
+<LI>14 constants<UL>
+<li class="M">const <A href="avfoundation-cmtimembs-const.html#7">kCMTimeMaxTimescale</A> = &h7fffffff</li>
+</UL></LI>
+</ul>
+<h3 lang="en">Flags</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmtimembs-const.html">kCMTimeFlags_HasBeenRounded </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates that the time has been rounded.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmtimembs-const.html#2">kCMTimeFlags_ImpliedValueFlagsMask </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 28</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates that the time is +infinity, -infinity, or indefinite.<BR>
+Use this value with bitwiseAnd on the flags.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmtimembs-const.html#3">kCMTimeFlags_Indefinite </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 16</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates that the time is indefinite.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmtimembs-const.html#4">kCMTimeFlags_NegativeInfinity </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 8</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates that the time is -infinity.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmtimembs-const.html#5">kCMTimeFlags_PositiveInfinity </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 4</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates that the time is +infinity.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmtimembs-const.html#6">kCMTimeFlags_Valid </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates that the time is valid.<BR>
+</td>
+</tr>
+</table>
+<h3 lang="en">Rounding Methods</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmtimembs-const.html#8">kCMTimeRoundingMethod_Default </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+Synonym for kCMTimeRoundingMethod_RoundHalfAwayFromZero.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmtimembs-const.html#9">kCMTimeRoundingMethod_QuickTime </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 4</td>
+<td bgcolor="#DDDDDD" valign=top>
+Use kCMTimeRoundingMethod_RoundTowardZero if converting from larger to smaller scale (that is, from more precision to less precision), but use kCMTimeRoundingMethod_RoundAwayFromZero if converting from smaller to larger scale (i.e. from less precision to more precision).<BR>
+Also, never round a negative number down to 0; always return the smallest magnitude negative CMTime in this case (-1/newTimescale).<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmtimembs-const.html#10">kCMTimeRoundingMethod_RoundAwayFromZero </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+Round away from zero if abs(fraction) is &gt; 0.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmtimembs-const.html#11">kCMTimeRoundingMethod_RoundHalfAwayFromZero </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+Round towards zero if abs(fraction) is &lt; 0.5, away from 0 if abs(fraction) is &gt;= 0.5.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmtimembs-const.html#12">kCMTimeRoundingMethod_RoundTowardNegativeInfinity </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 6</td>
+<td bgcolor="#DDDDDD" valign=top>
+Round towards -infinity if fraction is not 0.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmtimembs-const.html#13">kCMTimeRoundingMethod_RoundTowardPositiveInfinity </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 5</td>
+<td bgcolor="#DDDDDD" valign=top>
+Round towards +infinity if fraction is not 0.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmtimembs-const.html#14">kCMTimeRoundingMethod_RoundTowardZero </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+Round towards zero if fraction is not 0.<BR>
+</td>
+</tr>
+</table>
+<p>This class has no sub classes.</p>
+<h4>Some methods using this class:</h4><ul>
+<li class="M"><A href="avfoundation-avcapturefileoutputmbs-method.html#10" translate="no">AVCaptureFileOutputMBS.recordedDuration</A> as CMTimeMBS</li>
+<li class="M"><A href="avfoundation-avmutablecompositionmbs-method.html#14" translate="no">AVMutableCompositionMBS.scaleTimeRange</A>(timeRange as <A href="class-cmtimerangembs.html">CMTimeRangeMBS</A>, duration as CMTimeMBS)</li>
+<li class="M"><A href="avfoundation-avmutablecompositiontrackmbs-method.html#5" translate="no">AVMutableCompositionTrackMBS.insertTimeRange</A>(timeRange as <A href="class-cmtimerangembs.html">CMTimeRangeMBS</A>, AssetTrack as <A href="class-avassettrackmbs.html">AVAssetTrackMBS</A>, startTime as CMTimeMBS, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as boolean</li>
+<li class="M"><A href="avmovie-avmutablemovietrackmbs-method.html#8" translate="no">AVMutableMovieTrackMBS.scaleTimeRange</A>(timeRange as <A href="class-cmtimerangembs.html">CMTimeRangeMBS</A>, duration as CMTimeMBS)</li>
+<li class="M"><A href="avfoundation-avplayeritemoutputmbs-method.html#2" translate="no">AVPlayerItemOutputMBS.itemTimeForHostTime</A>(hostTimeInSeconds as Double) as CMTimeMBS</li>
+<li class="M"><A href="avfoundation-avplayermbs-method.html#17" translate="no">AVPlayerMBS.seekToTime</A>(time as CMTimeMBS, fireEvent as boolean = false, tag as Variant = nil)</li>
+<li class="M"><A href="avfoundation-avplayermbs-method.html#20" translate="no">AVPlayerMBS.setRate</A>(rate as Double, time as CMTimeMBS, HostTime as CMTimeMBS)</li>
+<li class="M"><A href="avfoundation-avvideocompositionlayerinstructionmbs-method.html#3" translate="no">AVVideoCompositionLayerInstructionMBS.getCropRectangleRampForTime</A>(time as CMTimeMBS, byref startCropRectangle as <A href="class-cgrectmbs.html">CGRectMBS</A>, byref endCropRectangle as <A href="class-cgrectmbs.html">CGRectMBS</A>, byref timeRange as <A href="class-cmtimerangembs.html">CMTimeRangeMBS</A>) as Boolean</li>
+<li class="M"><A href="avfoundation-avvideocompositionlayerinstructionmbs-method.html#4" translate="no">AVVideoCompositionLayerInstructionMBS.getOpacityRampForTime</A>(time as CMTimeMBS, byref startOpacity as Double, byref endOpacity as Double, byref timeRange as <A href="class-cmtimerangembs.html">CMTimeRangeMBS</A>) as boolean</li>
+<li class="M"><A href="avfoundation-cmtimerangembs-shared-method.html#6" translate="no">CMTimeRangeMBS.Make</A>(start as CMTimeMBS, duration as CMTimeMBS) as <A href="class-cmtimerangembs.html">CMTimeRangeMBS</A></li>
+</ul>
+<h4>Some properties using for this class:</h4><ul>
+<li class="M"><A href="avfoundation-avcaptureconnectionmbs-property.html#8" translate="no">AVCaptureConnectionMBS.videoMaxFrameDuration</A> as CMTimeMBS</li>
+<li class="M"><A href="avfoundation-avmetadataitemmbs-property.html#5" translate="no">AVMetadataItemMBS.duration</A> as CMTimeMBS</li>
+<li class="M"><A href="avfoundation-avmetadataitemmbs-property.html#13" translate="no">AVMetadataItemMBS.time</A> as CMTimeMBS</li>
+<li class="M"><A href="avfoundation-avplayeritemmbs-property.html#18" translate="no">AVPlayerItemMBS.forwardPlaybackEndTime</A> as CMTimeMBS</li>
+<li class="M"><A href="avfoundation-avplayeritemmbs-property.html#27" translate="no">AVPlayerItemMBS.reversePlaybackEndTime</A> as CMTimeMBS</li>
+<li class="M"><A href="avfoundation-avplayermbs-property.html#6" translate="no">AVPlayerMBS.currentTime</A> as CMTimeMBS</li>
+<li class="M"><A href="avfoundation-cmsamplebuffermbs-property.html#13" translate="no">CMSampleBufferMBS.PresentationTimeStamp</A> as CMTimeMBS</li>
+<li class="M"><A href="avfoundation-avassetimagegeneratormbs-method.html#6" translate="no">AVAssetImageGeneratorMBS.requestedTimeToleranceAfter</A> as CMTimeMBS</li>
+<li class="M"><A href="avfoundation-avassetimagegeneratormbs-method.html#7" translate="no">AVAssetImageGeneratorMBS.requestedTimeToleranceBefore</A> as CMTimeMBS</li>
+<li class="M"><A href="avfoundation-avcapturemoviefileoutputmbs-method.html#4" translate="no">AVCaptureMovieFileOutputMBS.movieFragmentInterval</A> as CMTimeMBS</li>
+</ul>
+<h4>Some events using this class:</h4><ul>
+<li class="M"><A href="avfoundation-avfoundationmbs-event.html#28">AVFoundationMBS.generateCGImagesAsynchronouslyForTimesCompleted</A>(generator as <A href="class-avassetimagegeneratormbs.html">AVAssetImageGeneratorMBS</A>, requestedTime as CMTimeMBS, image as Variant, actualTime as CMTimeMBS, result as Integer, error as <A href="class-nserrormbs.html">NSErrorMBS</A>, tag as Variant)</li>
+<li class="M"><A href="avfoundation-avfoundationmbs-event.html#29">AVFoundationMBS.legibleOutputDidOutputAttributedStrings</A>(output as <A href="class-avplayeritemlegibleoutputmbs.html">AVPlayerItemLegibleOutputMBS</A>, strings() as Variant, nativeSamples() as <A href="class-cmsamplebuffermbs.html">CMSampleBufferMBS</A>, itemTime as CMTimeMBS)</li>
+<li class="M"><A href="avfoundation-avfoundationmbs-event1.html#4">AVFoundationMBS.PeriodicTimeObserver</A>(Player as <A href="class-avplayermbs.html">AVPlayerMBS</A>, time as CMTimeMBS, tag as Variant)</li>
+<li class="M"><A href="avfoundation-avfoundationmbs-event1.html#11">AVFoundationMBS.playerItemSeekToTimeFinished</A>(player as <A href="class-avplayeritemmbs.html">AVPlayerItemMBS</A>, time as CMTimeMBS, toleranceBefore as CMTimeMBS, toleranceAfter as CMTimeMBS, finished as boolean, tag as Variant)</li>
+<li class="M"><A href="avfoundation-avfoundationmbs-event1.html#14">AVFoundationMBS.playerSeekToTimeFinished</A>(player as <A href="class-avplayermbs.html">AVPlayerMBS</A>, time as CMTimeMBS, toleranceBefore as CMTimeMBS, toleranceAfter as CMTimeMBS, finished as boolean, tag as Variant)</li>
+</ul>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-avfoundation-addtexttovideo.html">/AVFoundation/Add text to video</A></li>
+<li class=""><A href="example-avfoundation-makevideofromimages.html">/AVFoundation/Make Video From Images</A></li>
+<li class=""><A href="example-avfoundation-makevideofromimageswithtransparency.html">/AVFoundation/Make Video From Images with transparency</A></li>
+<li class=""><A href="example-avfoundation-mergeandcropvideos.html">/AVFoundation/Merge and Crop Videos</A></li>
+<li class=""><A href="example-avfoundation-mergeaudioandvideo.html">/AVFoundation/Merge Audio and Video</A></li>
+<li class=""><A href="example-avfoundation-overlayvideotrackwithpicture.html">/AVFoundation/Overlay video track with picture</A></li>
+<li class=""><A href="example-avfoundation-simpleplayer.html">/AVFoundation/Simple Player</A></li>
+<li class=""><A href="example-avfoundation-thumbnailsync.html">/AVFoundation/Thumbnail sync</A></li>
+<li class=""><A href="example-avfoundation-transcode.html">/AVFoundation/Transcode</A></li>
+<li class=""><A href="example-avfoundation-transcodeparallel.html">/AVFoundation/Transcode parallel</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2016-10-25/Automated_video_editing_with_X/monkeybreadsoftware_blog_xojo">Automated video editing with Xojo</a></li>
+</ul>
+<h4>Xojo Developer Magazine</h4>
+<ul>
+<li><a href="http://www.xdevmag.com/browse/12.2/">12.2, page 45: Moving to AVFoundation, Leaving QuickTime behind by Christian Schmitz</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsavfoundationplugin.html">MBS AVFoundation Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-cmtimemappingmbs.html">CMTimeMappingMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-cmtimerangembs.html">CMTimeRangeMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-cmtimembs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

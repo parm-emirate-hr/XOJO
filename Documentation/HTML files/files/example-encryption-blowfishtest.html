@@ -1,0 +1,415 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Encryption/Blowfish Test</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Encryption/Blowfish Test</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Encryption/Blowfish Test</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS Encryption Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Encryption/Blowfish Test<BR>
+This example is the version from Mon, 18th Oct 2015.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Blowfish</span> <span style="color:#6500FE">Test.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	FileTypes</div>
+<div class="RB_Code">		Filetype text</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> FileTypes</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;Quit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;Clear&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			Test1
+			Test2
+			Test3
+			Test4
+			Test5
+			Test6
+			Test7
+			Test8
+			Test9
+			Test10
+			
+			MsgBox <span style="color:#6500FE">&quot;Everything</span> <span style="color:#6500FE">ok</span> <span style="color:#6500FE">if</span> <span style="color:#6500FE">no</span> <span style="color:#6500FE">error</span> <span style="color:#6500FE">was</span> <span style="color:#6500FE">reported.&quot;</span>
+			quit
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Protected</span> <span style="color:#0000FF;font-weight: bold">Sub</span> Test1()
+			<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BlowfishMBS
+			
+			m=NewMemoryBlock(<span style="color:#326598">8</span>)
+			m.UInt32Value(<span style="color:#326598">0</span>)=<span style="color:#326598">1</span>
+			m.UInt32Value(<span style="color:#326598">4</span>)=<span style="color:#326598">2</span>
+			
+			b=<span style="color:#0000FF;font-weight: bold">new</span> BlowfishMBS
+			
+			b.SetKey <span style="color:#6500FE">&quot;TESTKEY&quot;</span>
+			b.Encrypt m
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> m.UInt32Value(<span style="color:#326598">0</span>)=<span style="color:#326598">&amp;hDF333FD2</span> <span style="color:#0000FF;font-weight: bold">and</span> m.UInt32Value(<span style="color:#326598">4</span>)=<span style="color:#326598">&amp;h30A71BB4</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//MsgBox</span> <span style="color:#7F0000;text-style:italic">&quot;ok&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				MsgBox <span style="color:#6500FE">&quot;failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">decrypt</span> <span style="color:#6500FE">1a&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			b.Decrypt m
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> m.UInt32Value(<span style="color:#326598">0</span>)=<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">and</span> m.UInt32Value(<span style="color:#326598">4</span>)=<span style="color:#326598">2</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//MsgBox</span> <span style="color:#7F0000;text-style:italic">&quot;ok&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				MsgBox <span style="color:#6500FE">&quot;failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">decrypt</span> <span style="color:#6500FE">1b&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Protected</span> <span style="color:#0000FF;font-weight: bold">Sub</span> Test10()
+			<span style="color:#0000FF;font-weight: bold">dim</span> temp <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BlowfishMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> r,i1,i2,o1,o2,r1,r2 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			
+			i1=<span style="color:#6500FE">&quot;Security</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">someti&quot;</span>
+			i2=<span style="color:#6500FE">&quot;mes</span> <span style="color:#6500FE">possible.</span> <span style="color:#6500FE">&quot;</span>
+			
+			b=<span style="color:#0000FF;font-weight: bold">new</span> BlowfishMBS
+			b.SetKey <span style="color:#6500FE">&quot;TESTKEY&quot;</span>
+			o1=b.EncryptOFB64(i1,temp)
+			o2=b.EncryptOFB64(i2,temp)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">output</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">platform</span> <span style="color:#7F0000;text-style:italic">independend</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MsgBox</span> <span style="color:#7F0000;text-style:italic">EncodingToHexMBS(m.StringValue(0,32))</span>
+			
+			temp=<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">reset</span>
+			
+			b=<span style="color:#0000FF;font-weight: bold">new</span> BlowfishMBS
+			b.SetKey <span style="color:#6500FE">&quot;TESTKEY&quot;</span>
+			r1=b.DecryptOFB64(o1,temp)
+			r2=b.DecryptOFB64(o2,temp)
+			
+			r=r1+r2
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MsgBox</span> <span style="color:#7F0000;text-style:italic">r</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> r=<span style="color:#6500FE">&quot;Security</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">sometimes</span> <span style="color:#6500FE">possible.</span> <span style="color:#6500FE">&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//MsgBox</span> <span style="color:#7F0000;text-style:italic">&quot;ok&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				MsgBox <span style="color:#6500FE">&quot;failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">decrypt</span> <span style="color:#6500FE">10&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Protected</span> <span style="color:#0000FF;font-weight: bold">Sub</span> Test2()
+			<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BlowfishMBS
+			
+			m=NewMemoryBlock(<span style="color:#326598">8</span>)
+			m.StringValue(<span style="color:#326598">0</span>,<span style="color:#326598">8</span>)=<span style="color:#6500FE">&quot;Security&quot;</span>
+			
+			b=<span style="color:#0000FF;font-weight: bold">new</span> BlowfishMBS
+			
+			b.SetKey <span style="color:#6500FE">&quot;TESTKEY&quot;</span>
+			b.Encrypt m
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">output</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">platform</span> <span style="color:#7F0000;text-style:italic">dependend</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MsgBox</span> <span style="color:#7F0000;text-style:italic">EncodingToHexMBS(m.StringValue(0,8))</span>
+			
+			b.Decrypt m
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> m.StringValue(<span style="color:#326598">0</span>,<span style="color:#326598">8</span>)=<span style="color:#6500FE">&quot;Security&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MsgBox</span> <span style="color:#7F0000;text-style:italic">&quot;ok&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				MsgBox <span style="color:#6500FE">&quot;failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">decrypt</span> <span style="color:#6500FE">2&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Protected</span> <span style="color:#0000FF;font-weight: bold">Sub</span> Test3()
+			<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BlowfishMBS
+			
+			m=NewMemoryBlock(<span style="color:#326598">8</span>)
+			m.StringValue(<span style="color:#326598">0</span>,<span style="color:#326598">8</span>)=<span style="color:#6500FE">&quot;Security&quot;</span>
+			
+			b=<span style="color:#0000FF;font-weight: bold">new</span> BlowfishMBS
+			
+			b.SetKey <span style="color:#6500FE">&quot;TESTKEY&quot;</span>
+			b.EncryptECB m,m,<span style="color:#326598">0</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">output</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">platform</span> <span style="color:#7F0000;text-style:italic">independend</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MsgBox</span> <span style="color:#7F0000;text-style:italic">EncodingToHexMBS(m.StringValue(0,8))</span>
+			
+			b.DecryptECB m,m,<span style="color:#326598">0</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> m.StringValue(<span style="color:#326598">0</span>,<span style="color:#326598">8</span>)=<span style="color:#6500FE">&quot;Security&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//MsgBox</span> <span style="color:#7F0000;text-style:italic">&quot;ok&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				MsgBox <span style="color:#6500FE">&quot;failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">decrypt</span> <span style="color:#6500FE">3&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Protected</span> <span style="color:#0000FF;font-weight: bold">Sub</span> Test4()
+			<span style="color:#0000FF;font-weight: bold">dim</span> i,o,r <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BlowfishMBS
+			
+			i=<span style="color:#6500FE">&quot;Security&quot;</span>
+			
+			b=<span style="color:#0000FF;font-weight: bold">new</span> BlowfishMBS
+			
+			b.SetKey <span style="color:#6500FE">&quot;TESTKEY&quot;</span>
+			o=b.EncryptECB(i)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">output</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">platform</span> <span style="color:#7F0000;text-style:italic">independend</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MsgBox</span> <span style="color:#7F0000;text-style:italic">EncodingToHexMBS(m.StringValue(0,8))</span>
+			
+			r=b.DecryptECB(o)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> r=<span style="color:#6500FE">&quot;Security&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MsgBox</span> <span style="color:#7F0000;text-style:italic">&quot;ok&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				MsgBox <span style="color:#6500FE">&quot;failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">decrypt</span> <span style="color:#6500FE">4&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Protected</span> <span style="color:#0000FF;font-weight: bold">Sub</span> Test5()
+			<span style="color:#0000FF;font-weight: bold">dim</span> m,temp <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BlowfishMBS
+			
+			temp=NewMemoryBlock(<span style="color:#326598">8</span>)
+			
+			m=NewMemoryBlock(<span style="color:#326598">32</span>)
+			m.StringValue(<span style="color:#326598">0</span>,<span style="color:#326598">32</span>)=<span style="color:#6500FE">&quot;Security</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">sometimes</span> <span style="color:#6500FE">possible.</span> <span style="color:#6500FE">&quot;</span>
+			
+			b=<span style="color:#0000FF;font-weight: bold">new</span> BlowfishMBS
+			b.SetKey <span style="color:#6500FE">&quot;TESTKEY&quot;</span>
+			b.EncryptCBC m,m, <span style="color:#326598">0</span>,<span style="color:#326598">8</span>,temp
+			b.EncryptCBC m,m, <span style="color:#326598">8</span>,<span style="color:#326598">8</span>,temp
+			b.EncryptCBC m,m,<span style="color:#326598">16</span>,<span style="color:#326598">8</span>,temp
+			b.EncryptCBC m,m,<span style="color:#326598">24</span>,<span style="color:#326598">8</span>,temp
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">output</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">platform</span> <span style="color:#7F0000;text-style:italic">independend</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MsgBox</span> <span style="color:#7F0000;text-style:italic">EncodingToHexMBS(m.StringValue(0,32))</span>
+			
+			temp=NewMemoryBlock(<span style="color:#326598">8</span>)
+			
+			b=<span style="color:#0000FF;font-weight: bold">new</span> BlowfishMBS
+			b.SetKey <span style="color:#6500FE">&quot;TESTKEY&quot;</span>
+			b.DecryptCBC m,m, <span style="color:#326598">0</span>,<span style="color:#326598">8</span>,temp
+			b.DecryptCBC m,m, <span style="color:#326598">8</span>,<span style="color:#326598">8</span>,temp
+			b.DecryptCBC m,m,<span style="color:#326598">16</span>,<span style="color:#326598">8</span>,temp
+			b.DecryptCBC m,m,<span style="color:#326598">24</span>,<span style="color:#326598">8</span>,temp
+			
+			<span style="color:#7F0000;text-style:italic">&#39;MsgBox</span> <span style="color:#7F0000;text-style:italic">m.StringValue(0,32)</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> m.StringValue(<span style="color:#326598">0</span>,<span style="color:#326598">32</span>)=<span style="color:#6500FE">&quot;Security</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">sometimes</span> <span style="color:#6500FE">possible.</span> <span style="color:#6500FE">&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//MsgBox</span> <span style="color:#7F0000;text-style:italic">&quot;ok&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				MsgBox <span style="color:#6500FE">&quot;failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">decrypt</span> <span style="color:#6500FE">5&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Protected</span> <span style="color:#0000FF;font-weight: bold">Sub</span> Test6()
+			<span style="color:#0000FF;font-weight: bold">dim</span> temp <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BlowfishMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> r,i1,i2,o1,o2,r1,r2 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			
+			i1=<span style="color:#6500FE">&quot;Security&quot;</span>
+			i2=<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">sometimes</span> <span style="color:#6500FE">possible.</span> <span style="color:#6500FE">&quot;</span>
+			
+			b=<span style="color:#0000FF;font-weight: bold">new</span> BlowfishMBS
+			b.SetKey <span style="color:#6500FE">&quot;TESTKEY&quot;</span>
+			o1=b.EncryptCBC(i1,temp)
+			o2=b.EncryptCBC(i2,temp)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">output</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">platform</span> <span style="color:#7F0000;text-style:italic">independend</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MsgBox</span> <span style="color:#7F0000;text-style:italic">EncodingToHexMBS(m.StringValue(0,32))</span>
+			
+			temp=<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">reset</span>
+			
+			b=<span style="color:#0000FF;font-weight: bold">new</span> BlowfishMBS
+			b.SetKey <span style="color:#6500FE">&quot;TESTKEY&quot;</span>
+			r1=b.DecryptCBC(o1,temp)
+			r2=b.DecryptCBC(o2,temp)
+			
+			r=r1+r2
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MsgBox</span> <span style="color:#7F0000;text-style:italic">r</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> r=<span style="color:#6500FE">&quot;Security</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">sometimes</span> <span style="color:#6500FE">possible.</span> <span style="color:#6500FE">&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//MsgBox</span> <span style="color:#7F0000;text-style:italic">&quot;ok&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				MsgBox <span style="color:#6500FE">&quot;failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">decrypt</span> <span style="color:#6500FE">6&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Protected</span> <span style="color:#0000FF;font-weight: bold">Sub</span> Test7()
+			<span style="color:#0000FF;font-weight: bold">dim</span> m,temp <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BlowfishMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			
+			temp=NewMemoryBlock(<span style="color:#326598">8</span>)
+			
+			m=NewMemoryBlock(<span style="color:#326598">32</span>)
+			m.StringValue(<span style="color:#326598">0</span>,<span style="color:#326598">32</span>)=<span style="color:#6500FE">&quot;Security</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">sometimes</span> <span style="color:#6500FE">possible.</span> <span style="color:#6500FE">&quot;</span>
+			
+			n=<span style="color:#326598">0</span>
+			b=<span style="color:#0000FF;font-weight: bold">new</span> BlowfishMBS
+			b.SetKey <span style="color:#6500FE">&quot;TESTKEY&quot;</span>
+			b.EncryptCFB64 m,m, <span style="color:#326598">0</span>,<span style="color:#326598">8</span>,temp,n
+			b.EncryptCFB64 m,m, <span style="color:#326598">8</span>,<span style="color:#326598">7</span>,temp,n
+			b.EncryptCFB64 m,m,<span style="color:#326598">15</span>,<span style="color:#326598">9</span>,temp,n
+			b.EncryptCFB64 m,m,<span style="color:#326598">24</span>,<span style="color:#326598">8</span>,temp,n
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">output</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">platform</span> <span style="color:#7F0000;text-style:italic">independend</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MsgBox</span> <span style="color:#7F0000;text-style:italic">EncodingToHexMBS(m.StringValue(0,32))</span>
+			
+			temp=NewMemoryBlock(<span style="color:#326598">8</span>)
+			
+			n=<span style="color:#326598">0</span>
+			b=<span style="color:#0000FF;font-weight: bold">new</span> BlowfishMBS
+			b.SetKey <span style="color:#6500FE">&quot;TESTKEY&quot;</span>
+			b.DecryptCFB64 m,m, <span style="color:#326598">0</span>,<span style="color:#326598">8</span>,temp,n
+			b.DecryptCFB64 m,m, <span style="color:#326598">8</span>,<span style="color:#326598">7</span>,temp,n
+			b.DecryptCFB64 m,m,<span style="color:#326598">15</span>,<span style="color:#326598">9</span>,temp,n
+			b.DecryptCFB64 m,m,<span style="color:#326598">24</span>,<span style="color:#326598">8</span>,temp,n
+			
+			<span style="color:#7F0000;text-style:italic">&#39;MsgBox</span> <span style="color:#7F0000;text-style:italic">m.StringValue(0,32)</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> m.StringValue(<span style="color:#326598">0</span>,<span style="color:#326598">32</span>)=<span style="color:#6500FE">&quot;Security</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">sometimes</span> <span style="color:#6500FE">possible.</span> <span style="color:#6500FE">&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//MsgBox</span> <span style="color:#7F0000;text-style:italic">&quot;ok&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				MsgBox <span style="color:#6500FE">&quot;failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">decrypt</span> <span style="color:#6500FE">7&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Protected</span> <span style="color:#0000FF;font-weight: bold">Sub</span> Test8()
+			<span style="color:#0000FF;font-weight: bold">dim</span> temp <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BlowfishMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> r,i1,i2,o1,o2,r1,r2 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			
+			i1=<span style="color:#6500FE">&quot;Security</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">someti&quot;</span>
+			i2=<span style="color:#6500FE">&quot;mes</span> <span style="color:#6500FE">possible.</span> <span style="color:#6500FE">&quot;</span>
+			
+			b=<span style="color:#0000FF;font-weight: bold">new</span> BlowfishMBS
+			b.SetKey <span style="color:#6500FE">&quot;TESTKEY&quot;</span>
+			o1=b.EncryptCFB64(i1,temp)
+			o2=b.EncryptCFB64(i2,temp)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">output</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">platform</span> <span style="color:#7F0000;text-style:italic">independend</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MsgBox</span> <span style="color:#7F0000;text-style:italic">EncodingToHexMBS(m.StringValue(0,32))</span>
+			
+			temp=<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">reset</span>
+			
+			b=<span style="color:#0000FF;font-weight: bold">new</span> BlowfishMBS
+			b.SetKey <span style="color:#6500FE">&quot;TESTKEY&quot;</span>
+			r1=b.DecryptCFB64(o1,temp)
+			r2=b.DecryptCFB64(o2,temp)
+			
+			r=r1+r2
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MsgBox</span> <span style="color:#7F0000;text-style:italic">r</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> r=<span style="color:#6500FE">&quot;Security</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">sometimes</span> <span style="color:#6500FE">possible.</span> <span style="color:#6500FE">&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//MsgBox</span> <span style="color:#7F0000;text-style:italic">&quot;ok&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				MsgBox <span style="color:#6500FE">&quot;failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">decrypt</span> <span style="color:#6500FE">8&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Protected</span> <span style="color:#0000FF;font-weight: bold">Sub</span> Test9()
+			<span style="color:#0000FF;font-weight: bold">dim</span> m,temp <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BlowfishMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			
+			temp=NewMemoryBlock(<span style="color:#326598">8</span>)
+			
+			m=NewMemoryBlock(<span style="color:#326598">32</span>)
+			m.StringValue(<span style="color:#326598">0</span>,<span style="color:#326598">32</span>)=<span style="color:#6500FE">&quot;Security</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">sometimes</span> <span style="color:#6500FE">possible.</span> <span style="color:#6500FE">&quot;</span>
+			
+			n=<span style="color:#326598">0</span>
+			b=<span style="color:#0000FF;font-weight: bold">new</span> BlowfishMBS
+			b.SetKey <span style="color:#6500FE">&quot;TESTKEY&quot;</span>
+			b.EncryptOFB64 m,m, <span style="color:#326598">0</span>,<span style="color:#326598">8</span>,temp,n
+			b.EncryptOFB64 m,m, <span style="color:#326598">8</span>,<span style="color:#326598">7</span>,temp,n
+			b.EncryptOFB64 m,m,<span style="color:#326598">15</span>,<span style="color:#326598">9</span>,temp,n
+			b.EncryptOFB64 m,m,<span style="color:#326598">24</span>,<span style="color:#326598">8</span>,temp,n
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">output</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">platform</span> <span style="color:#7F0000;text-style:italic">independend</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MsgBox</span> <span style="color:#7F0000;text-style:italic">EncodingToHexMBS(m.StringValue(0,32))</span>
+			
+			temp=NewMemoryBlock(<span style="color:#326598">8</span>)
+			
+			n=<span style="color:#326598">0</span>
+			b=<span style="color:#0000FF;font-weight: bold">new</span> BlowfishMBS
+			b.SetKey <span style="color:#6500FE">&quot;TESTKEY&quot;</span>
+			b.DecryptOFB64 m,m, <span style="color:#326598">0</span>,<span style="color:#326598">8</span>,temp,n
+			b.DecryptOFB64 m,m, <span style="color:#326598">8</span>,<span style="color:#326598">7</span>,temp,n
+			b.DecryptOFB64 m,m,<span style="color:#326598">15</span>,<span style="color:#326598">9</span>,temp,n
+			b.DecryptOFB64 m,m,<span style="color:#326598">24</span>,<span style="color:#326598">8</span>,temp,n
+			
+			<span style="color:#7F0000;text-style:italic">&#39;MsgBox</span> <span style="color:#7F0000;text-style:italic">m.StringValue(0,32)</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> m.StringValue(<span style="color:#326598">0</span>,<span style="color:#326598">32</span>)=<span style="color:#6500FE">&quot;Security</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">sometimes</span> <span style="color:#6500FE">possible.</span> <span style="color:#6500FE">&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//MsgBox</span> <span style="color:#7F0000;text-style:italic">&quot;ok&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				MsgBox <span style="color:#6500FE">&quot;failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">decrypt</span> <span style="color:#6500FE">9&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-encryption-blowfishcbc.html">/Encryption/Blowfish CBC</A></li>
+<li><A href="example-encryption-blowfishopenssltests.html">/Encryption/Blowfish OpenSSL Tests</A></li>
+<li><A href="example-encryption-blowfishwithphp-blowfishwithphp.html">/Encryption/Blowfish with PHP/Blowfish with PHP</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsencryptionplugin.html">MBS Encryption Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-encryption-blowfishtest">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,385 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Images/LCMS2/Query Display Profile</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Images/LCMS2/Query Display Profile</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Images/LCMS2/Query Display Profile</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS MacBase Plugin, MBS Images Plugin, MBS Main Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Images/LCMS2/Query Display Profile<BR>
+This example is the version from Mon, 5th May 2019.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Query</span> <span style="color:#6500FE">Display</span> <span style="color:#6500FE">Profile.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Window1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control ProfileTextArea <span style="color:#0000FF;font-weight: bold">Inherits</span> TextArea</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance ProfileTextArea <span style="color:#0000FF;font-weight: bold">Inherits</span> TextArea</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Close()
+			<span style="color:#0000FF">#if</span> TargetMacOS <span style="color:#0000FF;font-weight: bold">then</span>
+				Quit
+			<span style="color:#0000FF">#endif</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Moved()
+			<span style="color:#0000FF;font-weight: bold">Dim</span> ICCprofile_Name <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> ICCprofile_Display <span style="color:#0000FF;font-weight: bold">As</span> LCMS2ProfileMBS
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">name</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">associated</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">monitor</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">which</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">dialog</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">shown</span>
+			ICCprofile_Name = GetWindowProfile(<span style="color:#0000FF;font-weight: bold">self</span>.Handle, <span style="color:#0000FF;font-weight: bold">Self</span>.Left, <span style="color:#0000FF;font-weight: bold">Self</span>.Top, <span style="color:#0000FF;font-weight: bold">Self</span>.Width, <span style="color:#0000FF;font-weight: bold">Self</span>.Height, ICCprofile_Display)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">show</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">name</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">text</span> <span style="color:#7F0000;text-style:italic">area</span>
+			ProfileTextArea.Text = ICCprofile_Name
+			ProfileTextArea.Alignment = TextArea.AlignCenter
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">do</span> <span style="color:#7F0000;text-style:italic">something</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">ICCprofile_Display</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">required...</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#0000FF">#if</span> TargetMacOS <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">Dim</span> ICCprofile_Name <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+				<span style="color:#0000FF;font-weight: bold">Dim</span> ICCprofile_Display <span style="color:#0000FF;font-weight: bold">As</span> LCMS2ProfileMBS
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">name</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">associated</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">monitor</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">which</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">dialog</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">shown</span>
+				ICCprofile_Name = GetWindowProfile(<span style="color:#0000FF;font-weight: bold">self</span>.Handle, <span style="color:#0000FF;font-weight: bold">Self</span>.Left, <span style="color:#0000FF;font-weight: bold">Self</span>.Top, <span style="color:#0000FF;font-weight: bold">Self</span>.Width, <span style="color:#0000FF;font-weight: bold">Self</span>.Height, ICCprofile_Display)
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">show</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">name</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">text</span> <span style="color:#7F0000;text-style:italic">area</span>
+				ProfileTextArea.Text = ICCprofile_Name
+				ProfileTextArea.Alignment = TextArea.AlignCenter
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">do</span> <span style="color:#7F0000;text-style:italic">something</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">ICCprofile_Display</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">required...</span>
+				
+			<span style="color:#0000FF">#endif</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> GetWindowProfile(winHandle <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, winLeft <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, winTop <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, winWidth <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, winHeight <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, <span style="color:#0000FF;font-weight: bold">ByRef</span> DisplayProfile <span style="color:#0000FF;font-weight: bold">As</span> LCMS2ProfileMBS) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> RetValue <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> profileName <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">GET</span> <span style="color:#7F0000;text-style:italic">THE</span> <span style="color:#7F0000;text-style:italic">PROFILE</span> <span style="color:#7F0000;text-style:italic">AND</span> <span style="color:#7F0000;text-style:italic">PROFILE</span> <span style="color:#7F0000;text-style:italic">NAME</span> <span style="color:#7F0000;text-style:italic">OF</span> <span style="color:#7F0000;text-style:italic">THE</span> <span style="color:#7F0000;text-style:italic">MONITOR</span> <span style="color:#7F0000;text-style:italic">IN</span> <span style="color:#7F0000;text-style:italic">WHICH</span> <span style="color:#7F0000;text-style:italic">THE</span> <span style="color:#7F0000;text-style:italic">WINDOW</span> <span style="color:#7F0000;text-style:italic">IS</span> <span style="color:#7F0000;text-style:italic">LOCATED</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">PROFILE</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">LCMS2</span> <span style="color:#7F0000;text-style:italic">Profile</span> <span style="color:#7F0000;text-style:italic">(MBS</span> <span style="color:#7F0000;text-style:italic">Class)</span> <span style="color:#7F0000;text-style:italic">returned</span> <span style="color:#7F0000;text-style:italic">ByRef</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">PROFILE</span> <span style="color:#7F0000;text-style:italic">NAME</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">String</span> <span style="color:#7F0000;text-style:italic">returned</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Function</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MBS</span> <span style="color:#7F0000;text-style:italic">Plugin</span> <span style="color:#7F0000;text-style:italic">required</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">Windows:</span> <span style="color:#7F0000;text-style:italic">MBS</span> <span style="color:#7F0000;text-style:italic">LCMS2</span> <span style="color:#7F0000;text-style:italic">Plugin</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MBS</span> <span style="color:#7F0000;text-style:italic">Plugins</span> <span style="color:#7F0000;text-style:italic">required</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">Mac:</span> <span style="color:#7F0000;text-style:italic">MBS</span> <span style="color:#7F0000;text-style:italic">LCMS2</span> <span style="color:#7F0000;text-style:italic">Plugin,</span> <span style="color:#7F0000;text-style:italic">MBS</span> <span style="color:#7F0000;text-style:italic">CocoaBase</span> <span style="color:#7F0000;text-style:italic">Plugin</span>
+			
+			<span style="color:#0000FF">#if</span> TargetWin32 <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF;font-weight: bold">Dim</span> winDC, NSize, LastError <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				<span style="color:#0000FF;font-weight: bold">Dim</span> profilePath <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+				<span style="color:#0000FF;font-weight: bold">Dim</span> mbPath, mbMonInfoEx, mbDeviceName <span style="color:#0000FF;font-weight: bold">As</span> MemoryBlock
+				<span style="color:#0000FF;font-weight: bold">Dim</span> HMONITOR <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">UInt32</span>
+				<span style="color:#0000FF;font-weight: bold">Dim</span> f <span style="color:#0000FF;font-weight: bold">As</span> FolderItem
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">define</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">DLL</span> <span style="color:#7F0000;text-style:italic">calls</span>
+				<span style="color:#0000FF;font-weight: bold">Soft</span> <span style="color:#0000FF;font-weight: bold">Declare</span> <span style="color:#0000FF;font-weight: bold">Function</span> CreateDC <span style="color:#0000FF;font-weight: bold">Lib</span> <span style="color:#6500FE">&quot;gdi32&quot;</span> Alias <span style="color:#6500FE">&quot;CreateDCA&quot;</span> (lpszDriver <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Ptr</span>, lpszDevice <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Ptr</span>, lpszOutput <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Ptr</span>, lpInitData <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Ptr</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				<span style="color:#0000FF;font-weight: bold">Soft</span> <span style="color:#0000FF;font-weight: bold">Declare</span> <span style="color:#0000FF;font-weight: bold">Function</span> DeleteDC <span style="color:#0000FF;font-weight: bold">Lib</span> <span style="color:#6500FE">&quot;gdi32&quot;</span> (hdc <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				<span style="color:#0000FF;font-weight: bold">Soft</span> <span style="color:#0000FF;font-weight: bold">Declare</span> <span style="color:#0000FF;font-weight: bold">Function</span> GetICMProfile <span style="color:#0000FF;font-weight: bold">Lib</span> <span style="color:#6500FE">&quot;gdi32&quot;</span> Alias <span style="color:#6500FE">&quot;GetICMProfileA&quot;</span> (hdc <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, <span style="color:#0000FF;font-weight: bold">ByRef</span> dw <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, Pointer <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Ptr</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				<span style="color:#0000FF;font-weight: bold">Soft</span> <span style="color:#0000FF;font-weight: bold">Declare</span> <span style="color:#0000FF;font-weight: bold">Function</span> GetLastError <span style="color:#0000FF;font-weight: bold">Lib</span> <span style="color:#6500FE">&quot;kernel32&quot;</span> Alias <span style="color:#6500FE">&quot;GetLastError&quot;</span> () <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				
+				<span style="color:#0000FF;font-weight: bold">Soft</span> <span style="color:#0000FF;font-weight: bold">Declare</span> <span style="color:#0000FF;font-weight: bold">Function</span> GetMonitorInfo <span style="color:#0000FF;font-weight: bold">Lib</span> <span style="color:#6500FE">&quot;user32&quot;</span> Alias <span style="color:#6500FE">&quot;GetMonitorInfoA&quot;</span> (hMonitor <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">UInt32</span>, lpmi <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Ptr</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Note:</span> <span style="color:#7F0000;text-style:italic">There</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">2</span> <span style="color:#7F0000;text-style:italic">options</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">lpmi</span> <span style="color:#7F0000;text-style:italic">Structure:</span> <span style="color:#7F0000;text-style:italic">MONITORINFO</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">MONITORINFOEX</span> <span style="color:#7F0000;text-style:italic">defined</span> <span style="color:#7F0000;text-style:italic">respectively</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">shown</span> <span style="color:#7F0000;text-style:italic">below.</span>
+				<span style="color:#7F0000;text-style:italic">//</span>            <span style="color:#7F0000;text-style:italic">We</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">MONITORINFOEX</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">https://msdn.microsoft.com/en-us/library/windows/desktop/dd144901(v=vs.85).aspx</span>  <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">GetMonitorInfo</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">https://msdn.microsoft.com/en-us/library/windows/desktop/dd145066(v=vs.85).aspx</span>  <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MONITORINFOEX</span> <span style="color:#7F0000;text-style:italic">structure</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">typedef</span> <span style="color:#7F0000;text-style:italic">struct</span> <span style="color:#7F0000;text-style:italic">tagMONITORINFO</span> <span style="color:#7F0000;text-style:italic">{</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">DWORD</span> <span style="color:#7F0000;text-style:italic">cbSize;</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">RECT</span>  <span style="color:#7F0000;text-style:italic">rcMonitor;</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">RECT</span>  <span style="color:#7F0000;text-style:italic">rcWork;</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">DWORD</span> <span style="color:#7F0000;text-style:italic">dwFlags;</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">}</span> <span style="color:#7F0000;text-style:italic">MONITORINFO,</span> <span style="color:#7F0000;text-style:italic">*LPMONITORINFO;</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">typedef</span> <span style="color:#7F0000;text-style:italic">struct</span> <span style="color:#7F0000;text-style:italic">tagMONITORINFOEX</span> <span style="color:#7F0000;text-style:italic">{</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">DWORD</span> <span style="color:#7F0000;text-style:italic">cbSize;</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">RECT</span>  <span style="color:#7F0000;text-style:italic">rcMonitor;</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">RECT</span>  <span style="color:#7F0000;text-style:italic">rcWork;</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">DWORD</span> <span style="color:#7F0000;text-style:italic">dwFlags;</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">TCHAR</span> <span style="color:#7F0000;text-style:italic">szDevice[CCHDEVICENAME];</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">}</span> <span style="color:#7F0000;text-style:italic">MONITORINFOEX,</span> <span style="color:#7F0000;text-style:italic">*LPMONITORINFOEX;</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Note:</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">structure</span> <span style="color:#7F0000;text-style:italic">components</span> <span style="color:#7F0000;text-style:italic">sizes</span> <span style="color:#7F0000;text-style:italic">are:</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">DWORD</span> <span style="color:#7F0000;text-style:italic">cbSize;</span>  <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">4</span> <span style="color:#7F0000;text-style:italic">bytes</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">RECT</span>  <span style="color:#7F0000;text-style:italic">rcMonitor;</span>  <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">(4*4)</span> <span style="color:#7F0000;text-style:italic">bytes</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">RECT</span>  <span style="color:#7F0000;text-style:italic">rcWork;</span>  <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">(4*4)</span> <span style="color:#7F0000;text-style:italic">bytes</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">DWORD</span> <span style="color:#7F0000;text-style:italic">dwFlags;</span>  <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">4</span> <span style="color:#7F0000;text-style:italic">bytes</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">TCHAR</span> <span style="color:#7F0000;text-style:italic">szDevice[CCHDEVICENAME];</span>  <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">32</span> <span style="color:#7F0000;text-style:italic">bytes</span>
+				
+				<span style="color:#0000FF;font-weight: bold">Soft</span> <span style="color:#0000FF;font-weight: bold">Declare</span> <span style="color:#0000FF;font-weight: bold">Function</span> MonitorFromWindow <span style="color:#0000FF;font-weight: bold">Lib</span> <span style="color:#6500FE">&quot;user32&quot;</span> (hwnd <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">UInt32</span>, dwFlags <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">UInt32</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">dwFlags</span> <span style="color:#7F0000;text-style:italic">values</span>
+				<span style="color:#0000FF;font-weight: bold">Const</span> MONITOR_DEFAULTTONEAREST = <span style="color:#326598">&amp;h00000002</span>
+				<span style="color:#0000FF;font-weight: bold">Const</span> MONITOR_DEFAULTTONULL = <span style="color:#326598">&amp;h00000000</span>
+				<span style="color:#0000FF;font-weight: bold">Const</span> MONITOR_DEFAULTTOPRIMARY = <span style="color:#326598">&amp;h00000001</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">define</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">Memoryblock</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">device</span> <span style="color:#7F0000;text-style:italic">name</span>
+				mbDeviceName = <span style="color:#0000FF;font-weight: bold">New</span> MemoryBlock(<span style="color:#326598">32</span>)
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">monitor</span> <span style="color:#7F0000;text-style:italic">handle</span>
+				HMONITOR = MonitorFromWindow(winHandle, MONITOR_DEFAULTTONEAREST)
+				mbMonInfoEx = <span style="color:#0000FF;font-weight: bold">New</span> MemoryBlock(<span style="color:#326598">72</span>)  <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">4</span> <span style="color:#7F0000;text-style:italic">+</span> <span style="color:#7F0000;text-style:italic">(4*4)</span> <span style="color:#7F0000;text-style:italic">+</span> <span style="color:#7F0000;text-style:italic">(4*4)</span> <span style="color:#7F0000;text-style:italic">+</span> <span style="color:#7F0000;text-style:italic">4</span> <span style="color:#7F0000;text-style:italic">+</span> <span style="color:#7F0000;text-style:italic">32</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">cbSize</span> <span style="color:#7F0000;text-style:italic">member</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">MONITORINFOEX</span> <span style="color:#7F0000;text-style:italic">structure</span> <span style="color:#7F0000;text-style:italic">before</span> <span style="color:#7F0000;text-style:italic">calling</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">GetMonitorInfo</span> <span style="color:#7F0000;text-style:italic">function</span>
+				mbMonInfoEx.Int32Value(<span style="color:#326598">0</span>) = mbMonInfoEx.Size
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">monitor</span> <span style="color:#7F0000;text-style:italic">info</span>
+				RetValue = GetMonitorInfo(HMONITOR, mbMonInfoEx)
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">device</span> <span style="color:#7F0000;text-style:italic">name</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">MONITORINFOEX</span> <span style="color:#7F0000;text-style:italic">structure</span>
+				mbDeviceName.CString(<span style="color:#326598">0</span>) = mbMonInfoEx.CString(<span style="color:#326598">40</span>)
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">create</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">Device</span> <span style="color:#7F0000;text-style:italic">Context</span> <span style="color:#7F0000;text-style:italic">(DC)</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">device</span> <span style="color:#7F0000;text-style:italic">name</span>
+				winDC = CreateDC(mbDeviceName, mbDeviceName, <span style="color:#0000FF;font-weight: bold">nil</span>, <span style="color:#0000FF;font-weight: bold">nil</span>)
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">check</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">DC</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">created</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> winDC = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">DC</span> <span style="color:#7F0000;text-style:italic">NOT</span> <span style="color:#7F0000;text-style:italic">created</span>
+					profileName = <span style="color:#6500FE">&quot;(display</span> <span style="color:#6500FE">&#39;Device</span> <span style="color:#6500FE">Context&#39;</span> <span style="color:#6500FE">cannot</span> <span style="color:#6500FE">be</span> <span style="color:#6500FE">created)&quot;</span>
+					
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">DC</span> <span style="color:#7F0000;text-style:italic">created;</span> <span style="color:#7F0000;text-style:italic">define</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">Memoryblock</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">PATH</span>
+					mbPath = <span style="color:#0000FF;font-weight: bold">New</span> MemoryBlock(<span style="color:#326598">256</span>)
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">define</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">buffer</span> <span style="color:#7F0000;text-style:italic">size</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">used</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">store</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">PATH</span> <span style="color:#7F0000;text-style:italic">Name</span>
+					NSize = <span style="color:#326598">256</span>
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">DC</span>
+					<span style="color:#0000FF;font-weight: bold">if</span> GetICMProfile(winDC, NSize, mbPath) = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						profilePath = mbPath.StringValue(<span style="color:#326598">0</span>, <span style="color:#326598">256</span>)
+						
+						<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">PATH</span> <span style="color:#7F0000;text-style:italic">Name</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">returned</span> <span style="color:#7F0000;text-style:italic">buffer</span> <span style="color:#7F0000;text-style:italic">size,</span> <span style="color:#7F0000;text-style:italic">minus</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">last</span> <span style="color:#7F0000;text-style:italic">character</span> <span style="color:#7F0000;text-style:italic">(which</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">NULL)</span>
+						profilePath = Left(profilePath, NSize-<span style="color:#326598">1</span>)
+						
+						<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">define</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">folder</span> <span style="color:#7F0000;text-style:italic">item</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">default</span> <span style="color:#7F0000;text-style:italic">file</span> <span style="color:#7F0000;text-style:italic">profile</span>
+						f = GetFolderItem(profilePath, FolderItem.PathTypeAbsolute)
+						
+						<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">check</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">folder</span> <span style="color:#7F0000;text-style:italic">item</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">available</span>
+						<span style="color:#0000FF;font-weight: bold">if</span> f.Exists <span style="color:#0000FF;font-weight: bold">then</span>
+							<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">FolderItem</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">available;</span> <span style="color:#7F0000;text-style:italic">try</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">open</span> <span style="color:#7F0000;text-style:italic">it</span>
+							DisplayProfile = LCMS2ProfileMBS.OpenProfileFromFile(f, <span style="color:#0000FF;font-weight: bold">False</span>)
+							
+							<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">check</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">was</span> <span style="color:#7F0000;text-style:italic">opened</span>
+							<span style="color:#0000FF;font-weight: bold">if</span> DisplayProfile &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+								<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">was</span> <span style="color:#7F0000;text-style:italic">opened;</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">name</span>
+								profileName = DisplayProfile.Name
+							<span style="color:#0000FF;font-weight: bold">else</span>
+								<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">NOT</span> <span style="color:#7F0000;text-style:italic">opened</span>
+								profileName = <span style="color:#6500FE">&quot;(profile</span> <span style="color:#6500FE">cannot</span> <span style="color:#6500FE">be</span> <span style="color:#6500FE">opened)&quot;</span>
+							<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+							
+						<span style="color:#0000FF;font-weight: bold">else</span>
+							<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">folder</span> <span style="color:#7F0000;text-style:italic">item</span> <span style="color:#7F0000;text-style:italic">NOT</span> <span style="color:#7F0000;text-style:italic">available</span>
+							profileName = <span style="color:#6500FE">&quot;(profile</span> <span style="color:#6500FE">folder</span> <span style="color:#6500FE">not</span> <span style="color:#6500FE">available)&quot;</span>
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+						
+					<span style="color:#0000FF;font-weight: bold">else</span>
+						<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">there</span> <span style="color:#7F0000;text-style:italic">was</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">error</span> <span style="color:#7F0000;text-style:italic">while</span> <span style="color:#7F0000;text-style:italic">retrieving</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">profile</span>
+						LastError = GetLastError()
+						profileName = <span style="color:#6500FE">&quot;(Get</span> <span style="color:#6500FE">profile</span> <span style="color:#6500FE">error</span> <span style="color:#6500FE">#</span> <span style="color:#6500FE">&quot;</span> + str(LastError) + <span style="color:#6500FE">&quot;)&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">delete</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">DC</span>
+					<span style="color:#0000FF;font-weight: bold">if</span> DeleteDC(winDC) = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">DC</span> <span style="color:#7F0000;text-style:italic">could</span> <span style="color:#7F0000;text-style:italic">NOT</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">deleted</span>
+						MsgBox <span style="color:#6500FE">&quot;The</span> <span style="color:#6500FE">display</span> <span style="color:#6500FE">&#39;Device</span> <span style="color:#6500FE">Context&#39;</span> <span style="color:#6500FE">could</span> <span style="color:#6500FE">NOT</span> <span style="color:#6500FE">be</span> <span style="color:#6500FE">deleted!&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF">#endif</span>
+			
+			
+			<span style="color:#0000FF">#if</span> TargetMacOS <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">Dim</span> i, ScreenIndex, DisplayIDs(<span style="color:#326598">0</span>), CurrentDisplayID <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				<span style="color:#0000FF;font-weight: bold">Dim</span> windowCenterX, windowCenterY <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Single</span>
+				<span style="color:#0000FF;font-weight: bold">Dim</span> maxNumDisplays, DisplayCnt, DisplayCntPoint <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">UInt32</span>
+				<span style="color:#0000FF;font-weight: bold">Dim</span> mbDisplayCnt, mbDisplayIDs <span style="color:#0000FF;font-weight: bold">As</span> MemoryBlock
+				<span style="color:#0000FF;font-weight: bold">Dim</span> NS_Screen() <span style="color:#0000FF;font-weight: bold">as</span> NSScreenMBS
+				<span style="color:#0000FF;font-weight: bold">Dim</span> NS_Space <span style="color:#0000FF;font-weight: bold">as</span> NSColorSpaceMBS
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">define</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">&quot;CoreGraphics&quot;</span> <span style="color:#7F0000;text-style:italic">calls</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">SWIFT</span> <span style="color:#7F0000;text-style:italic">DECLARATION</span>
+				<span style="color:#7F0000;text-style:italic">&#39;func</span> <span style="color:#7F0000;text-style:italic">CGGetDisplaysWithPoint(_</span> <span style="color:#7F0000;text-style:italic">point:</span> <span style="color:#7F0000;text-style:italic">CGPoint,</span>
+				<span style="color:#7F0000;text-style:italic">&#39;_</span> <span style="color:#7F0000;text-style:italic">maxDisplays:</span> <span style="color:#7F0000;text-style:italic">UInt32,</span>
+				<span style="color:#7F0000;text-style:italic">&#39;_</span> <span style="color:#7F0000;text-style:italic">dspys:</span> <span style="color:#7F0000;text-style:italic">UnsafeMutablePointer&lt;CGDirectDisplayID&gt;,</span>
+				<span style="color:#7F0000;text-style:italic">&#39;_</span> <span style="color:#7F0000;text-style:italic">dspyCnt:</span> <span style="color:#7F0000;text-style:italic">UnsafeMutablePointer&lt;UInt32&gt;)</span> <span style="color:#7F0000;text-style:italic">-&gt;</span> <span style="color:#7F0000;text-style:italic">CGError</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Note:</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">case,</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">point</span> <span style="color:#7F0000;text-style:italic">Ptr</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">recognized</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">CGPoint</span> <span style="color:#7F0000;text-style:italic">structure,</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">workaround</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">separate</span> <span style="color:#7F0000;text-style:italic">singles</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">define</span> <span style="color:#7F0000;text-style:italic">CGPoint</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">declare</span> <span style="color:#7F0000;text-style:italic">function</span> <span style="color:#7F0000;text-style:italic">CGGetDisplaysWithPoint</span> <span style="color:#7F0000;text-style:italic">lib</span> <span style="color:#7F0000;text-style:italic">&quot;CoreGraphics&quot;</span> <span style="color:#7F0000;text-style:italic">(point</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Ptr,</span> <span style="color:#7F0000;text-style:italic">maxDisplays</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">Uint32,</span> <span style="color:#7F0000;text-style:italic">dspys</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Ptr,</span> <span style="color:#7F0000;text-style:italic">dspyCnt</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Ptr)</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Integer</span>
+				<span style="color:#0000FF;font-weight: bold">declare</span> <span style="color:#0000FF;font-weight: bold">function</span> CGGetDisplaysWithPoint <span style="color:#0000FF;font-weight: bold">lib</span> <span style="color:#6500FE">&quot;CoreGraphics&quot;</span> (x <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Single</span>, y <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Single</span>, maxDisplays <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Uint32</span>, dspys <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Ptr</span>, dspyCnt <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Ptr</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				
+				<span style="color:#7F0000;text-style:italic">&#39;func</span> <span style="color:#7F0000;text-style:italic">CGGetDisplaysWithRect(_</span> <span style="color:#7F0000;text-style:italic">rect:</span> <span style="color:#7F0000;text-style:italic">CGRect,</span>
+				<span style="color:#7F0000;text-style:italic">&#39;_</span> <span style="color:#7F0000;text-style:italic">maxDisplays:</span> <span style="color:#7F0000;text-style:italic">UInt32,</span>
+				<span style="color:#7F0000;text-style:italic">&#39;_</span> <span style="color:#7F0000;text-style:italic">dspys:</span> <span style="color:#7F0000;text-style:italic">UnsafeMutablePointer&lt;CGDirectDisplayID&gt;,</span>
+				<span style="color:#7F0000;text-style:italic">&#39;_</span> <span style="color:#7F0000;text-style:italic">dspyCnt:</span> <span style="color:#7F0000;text-style:italic">UnsafeMutablePointer&lt;UInt32&gt;)</span> <span style="color:#7F0000;text-style:italic">-&gt;</span> <span style="color:#7F0000;text-style:italic">CGError</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Note:</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">case,</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">rect</span> <span style="color:#7F0000;text-style:italic">Ptr</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">recognized</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">CGRect</span> <span style="color:#7F0000;text-style:italic">structure,</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">workaround</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">separate</span> <span style="color:#7F0000;text-style:italic">singles</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">define</span> <span style="color:#7F0000;text-style:italic">CGRect</span>
+				<span style="color:#0000FF;font-weight: bold">declare</span> <span style="color:#0000FF;font-weight: bold">function</span> CGGetDisplaysWithRect <span style="color:#0000FF;font-weight: bold">lib</span> <span style="color:#6500FE">&quot;CoreGraphics&quot;</span> (x <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Single</span>, y <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Single</span>, xRect <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Single</span>, yRect <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Single</span>, maxDisplays <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Uint32</span>, dspys <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Ptr</span>, dspyCnt <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Ptr</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				
+				<span style="color:#7F0000;text-style:italic">&#39;func</span> <span style="color:#7F0000;text-style:italic">CGGetActiveDisplayList(_</span> <span style="color:#7F0000;text-style:italic">maxDisplays:</span> <span style="color:#7F0000;text-style:italic">UInt32,</span>
+				<span style="color:#7F0000;text-style:italic">&#39;_</span> <span style="color:#7F0000;text-style:italic">activeDspys:</span> <span style="color:#7F0000;text-style:italic">UnsafeMutablePointer&lt;CGDirectDisplayID&gt;,</span>
+				<span style="color:#7F0000;text-style:italic">&#39;_</span> <span style="color:#7F0000;text-style:italic">dspyCnt:</span> <span style="color:#7F0000;text-style:italic">UnsafeMutablePointer&lt;UInt32&gt;)</span> <span style="color:#7F0000;text-style:italic">-&gt;</span> <span style="color:#7F0000;text-style:italic">CGError</span>
+				<span style="color:#0000FF;font-weight: bold">declare</span> <span style="color:#0000FF;font-weight: bold">function</span> CGGetActiveDisplayList <span style="color:#0000FF;font-weight: bold">lib</span> <span style="color:#6500FE">&quot;CoreGraphics&quot;</span> (maxDisplays <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Uint32</span>, dspys <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Ptr</span>, dspyCnt <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Ptr</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">current</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">ID</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">window</span> <span style="color:#7F0000;text-style:italic">center</span> <span style="color:#7F0000;text-style:italic">position</span>
+				maxNumDisplays = <span style="color:#326598">32</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">max</span> <span style="color:#7F0000;text-style:italic">number</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">monitors</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">returned</span> <span style="color:#7F0000;text-style:italic">ID</span> <span style="color:#7F0000;text-style:italic">array</span>
+				mbDisplayIDs = <span style="color:#0000FF;font-weight: bold">New</span> MemoryBlock(<span style="color:#326598">4</span> * maxNumDisplays)
+				mbDisplayCnt = <span style="color:#0000FF;font-weight: bold">New</span> MemoryBlock(<span style="color:#326598">4</span>)
+				windowCenterX = winLeft + (winWidth/<span style="color:#326598">2</span>)
+				windowCenterY = winTop + (winHeight/<span style="color:#326598">2</span>)
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Note:</span> <span style="color:#7F0000;text-style:italic">RetValue</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">0</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">Success</span>
+				RetValue = CGGetDisplaysWithPoint(windowCenterX, windowCenterY, maxNumDisplays, mbDisplayIDs, mbDisplayCnt)
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">current</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">ID</span> <span style="color:#7F0000;text-style:italic">(the</span> <span style="color:#7F0000;text-style:italic">first</span> <span style="color:#7F0000;text-style:italic">array</span> <span style="color:#7F0000;text-style:italic">element)</span>
+				CurrentDisplayID = mbDisplayIDs.UInt32Value(<span style="color:#326598">0</span>)
+				DisplayCntPoint = mbDisplayCnt.UInt32Value(<span style="color:#326598">0</span>)
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">check</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">obtained</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">ID</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Note:</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">obtain</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">ID=0</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">window</span> <span style="color:#7F0000;text-style:italic">center</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">outside</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">monitor</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> CurrentDisplayID = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">window</span> <span style="color:#7F0000;text-style:italic">center</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">outside</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">monitor;</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">ID</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">window</span> <span style="color:#7F0000;text-style:italic">rectangle</span>
+					RetValue = CGGetDisplaysWithRect(winLeft, winTop, winWidth, winHeight, maxNumDisplays, mbDisplayIDs, mbDisplayCnt)
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">current</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">ID</span> <span style="color:#7F0000;text-style:italic">(the</span> <span style="color:#7F0000;text-style:italic">first</span> <span style="color:#7F0000;text-style:italic">array</span> <span style="color:#7F0000;text-style:italic">element)</span>
+					CurrentDisplayID = mbDisplayIDs.UInt32Value(<span style="color:#326598">0</span>)
+					DisplayCntPoint = mbDisplayCnt.UInt32Value(<span style="color:#326598">0</span>)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">active</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">list</span>
+				RetValue = CGGetActiveDisplayList(maxNumDisplays, mbDisplayIDs, mbDisplayCnt)
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">number</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">active</span> <span style="color:#7F0000;text-style:italic">displays</span>
+				DisplayCnt = mbDisplayCnt.UInt32Value(<span style="color:#326598">0</span>)
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">ID</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">active</span> <span style="color:#7F0000;text-style:italic">displays</span>
+				<span style="color:#0000FF;font-weight: bold">Redim</span> DisplayIDs(DisplayCnt-<span style="color:#326598">1</span>)
+				<span style="color:#0000FF;font-weight: bold">for</span> i = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> DisplayCnt-<span style="color:#326598">1</span>
+					DisplayIDs(i) = mbDisplayIDs.UInt32Value(<span style="color:#326598">4</span>*i)
+				<span style="color:#0000FF;font-weight: bold">next</span> i
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">screen</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">active</span> <span style="color:#7F0000;text-style:italic">displays</span>
+				<span style="color:#0000FF;font-weight: bold">Redim</span> NS_Screen(DisplayCnt-<span style="color:#326598">1</span>)
+				NS_Screen() = NSScreenMBS.screens
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">find</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">screen</span> <span style="color:#7F0000;text-style:italic">index</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">ID</span> <span style="color:#7F0000;text-style:italic">array</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Note:</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">ID</span> <span style="color:#7F0000;text-style:italic">list</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">sync</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Screen(i)</span> <span style="color:#7F0000;text-style:italic">index</span>
+				ScreenIndex = DisplayIDs.IndexOf(CurrentDisplayID)
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">space</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">current</span> <span style="color:#7F0000;text-style:italic">screen</span>
+				NS_Space = NS_Screen(ScreenIndex).colorSpace
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">screen</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">space</span> <span style="color:#7F0000;text-style:italic">data</span>
+				<span style="color:#0000FF;font-weight: bold">Dim</span> mbProfile <span style="color:#0000FF;font-weight: bold">As</span> MemoryBlock
+				mbProfile = <span style="color:#0000FF;font-weight: bold">New</span> MemoryBlock(<span style="color:#326598">1024</span>)  <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">MemoryBlock</span> <span style="color:#7F0000;text-style:italic">will</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">resized</span>
+				mbProfile = NS_Space.ICCProfileData
+				DisplayProfile = LCMS2ProfileMBS.OpenProfileFromMemory(mbProfile)
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">check</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">was</span> <span style="color:#7F0000;text-style:italic">opened</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> DisplayProfile &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">was</span> <span style="color:#7F0000;text-style:italic">opened;</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">name</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">path</span>
+					profileName = DisplayProfile.Name
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">NOT</span> <span style="color:#7F0000;text-style:italic">opened</span>
+					profileName = <span style="color:#6500FE">&quot;(profile</span> <span style="color:#6500FE">cannot</span> <span style="color:#6500FE">be</span> <span style="color:#6500FE">opened)&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF">#Endif</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">return</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">name</span>
+			<span style="color:#0000FF;font-weight: bold">Return</span> profileName
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">RUNTIME</span> <span style="color:#7F0000;text-style:italic">EXCEPTION</span> <span style="color:#7F0000;text-style:italic">CODE</span>
+			<span style="color:#0000FF;font-weight: bold">Exception</span> err
+			profileName = <span style="color:#6500FE">&quot;(Cannot</span> <span style="color:#6500FE">identify</span> <span style="color:#6500FE">the</span> <span style="color:#6500FE">monitor)&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">Return</span> profileName
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Note">		Note <span style="color:#6500FE">&quot;About&quot;</span>
+<div class="RB_Comment">			Hi,
+			
+			this is a project written by Danny Pascale <dpascale@babelcolor.com> 
+			to show how to get current display profile for a current display.</div>
+</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-images-lcms2-querydisplayprofile">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

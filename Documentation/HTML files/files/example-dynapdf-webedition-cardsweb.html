@@ -1,0 +1,242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /DynaPDF/Web Edition/Cards Web</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /DynaPDF/Web Edition/Cards Web</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/DynaPDF/Web Edition/Cards Web</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS DynaPDF Plugin, MBS CURL Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /DynaPDF/Web Edition/Cards Web<BR>
+This example is the version from Wed, 3rd Jan 2023.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Cards</span> <span style="color:#6500FE">Web.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> WebApplication</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Opening(args() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span>)
+			<span style="color:#7F0000;text-style:italic">&#39;LoadImageFolder</span>
+			LoadImageRemote
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> FindFile(name <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>) <span style="color:#0000FF;font-weight: bold">As</span> FolderItem
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Look</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">file</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">parent</span> <span style="color:#7F0000;text-style:italic">folders</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">executable</span> <span style="color:#7F0000;text-style:italic">on</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> parent <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = app.ExecutableFile.Parent
+			
+			<span style="color:#0000FF;font-weight: bold">while</span> parent&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> file <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = parent.Child(name)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> file&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">and</span> file.Exists <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> file
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				parent = parent.Parent
+			<span style="color:#0000FF;font-weight: bold">wend</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> LoadFile(name <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>) <span style="color:#0000FF;font-weight: bold">As</span> FolderItem
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">load</span> <span style="color:#7F0000;text-style:italic">image</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">MBS</span> <span style="color:#7F0000;text-style:italic">Website</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Static</span> tempfolder <span style="color:#0000FF;font-weight: bold">As</span> FolderItem
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> tempfolder = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				tempfolder = SpecialFolder.Temporary.Child(<span style="color:#6500FE">&quot;Cards&quot;</span>)
+				tempfolder.CreateAsFolder
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> file <span style="color:#0000FF;font-weight: bold">As</span> FolderItem = tempfolder.Child(name)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">e.g.</span> <span style="color:#7F0000;text-style:italic">https://www.monkeybreadsoftware.de/xojo/images/Cards/thumb4.jpg</span>
+			
+			<span style="color:#0000FF;font-weight: bold">If</span> <span style="color:#0000FF;font-weight: bold">Not</span> file.Exists <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF;font-weight: bold">Dim</span> URL <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = <span style="color:#6500FE">&quot;https://www.monkeybreadsoftware.de/xojo/images/Cards/&quot;</span>+name
+				
+				<span style="color:#0000FF;font-weight: bold">Dim</span> c <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> CURLSMBS
+				
+				c.OptionURL = url
+				
+				<span style="color:#0000FF;font-weight: bold">Call</span> c.CreateMTOutputFile(file)
+				
+				<span style="color:#0000FF;font-weight: bold">Dim</span> e <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = c.Perform
+				
+				<span style="color:#0000FF;font-weight: bold">If</span> e &lt;&gt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">Dim</span> DebugLog <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = c.DebugMessages
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">got</span> <span style="color:#7F0000;text-style:italic">error?</span> <span style="color:#7F0000;text-style:italic">Check</span> <span style="color:#7F0000;text-style:italic">log!</span>
+					Break
+				<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+				
+				
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> file
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> LoadImageFolder()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Please</span> <span style="color:#7F0000;text-style:italic">provide</span> <span style="color:#7F0000;text-style:italic">your</span> <span style="color:#7F0000;text-style:italic">own</span> <span style="color:#7F0000;text-style:italic">Cards</span> <span style="color:#7F0000;text-style:italic">folder</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">files:</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">thumb*.jpg</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">little</span> <span style="color:#7F0000;text-style:italic">thumbnails</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">pictures</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">pic*.jpg</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">actual</span> <span style="color:#7F0000;text-style:italic">pictures</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">back*.jpg</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">backgrounds</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">thumbnail</span> <span style="color:#7F0000;text-style:italic">pictures</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">back*.pdf</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">actual</span> <span style="color:#7F0000;text-style:italic">backgrounds</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">PDF</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">back*small.pdf</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">actual</span> <span style="color:#7F0000;text-style:italic">backgrounds</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">PDF</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">lower</span> <span style="color:#7F0000;text-style:italic">resolution</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> f <span style="color:#0000FF;font-weight: bold">As</span> FolderItem = FindFile(<span style="color:#6500FE">&quot;Cards&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">While</span> <span style="color:#0000FF;font-weight: bold">Not</span> f.Exists
+				
+				<span style="color:#0000FF;font-weight: bold">If</span> f.parent.parent = <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+					Print <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">find</span> <span style="color:#6500FE">Cards</span> <span style="color:#6500FE">folder&quot;</span>
+					Break
+					Quit
+				<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+				
+				f = f.parent.parent.Child(<span style="color:#6500FE">&quot;Cards&quot;</span>)
+				
+			<span style="color:#0000FF;font-weight: bold">Wend</span>
+			
+			<span style="color:#0000FF;font-weight: bold">If</span> f = <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				Break
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			
+			Thumbnails.Append <span style="color:#0000FF;font-weight: bold">New</span> WebPicture(Picture.Open(f.Child(<span style="color:#6500FE">&quot;thumb1.jpg&quot;</span>)), Picture.FormatJPEG)
+			Thumbnails.Append <span style="color:#0000FF;font-weight: bold">New</span> WebPicture(Picture.Open(f.Child(<span style="color:#6500FE">&quot;thumb2.jpg&quot;</span>)), Picture.FormatJPEG)
+			Thumbnails.Append <span style="color:#0000FF;font-weight: bold">New</span> WebPicture(Picture.Open(f.Child(<span style="color:#6500FE">&quot;thumb3.jpg&quot;</span>)), Picture.FormatJPEG)
+			Thumbnails.Append <span style="color:#0000FF;font-weight: bold">New</span> WebPicture(Picture.Open(f.Child(<span style="color:#6500FE">&quot;thumb4.jpg&quot;</span>)), Picture.FormatJPEG)
+			
+			pictureFiles.Append f.Child(<span style="color:#6500FE">&quot;pic1.jpg&quot;</span>)
+			pictureFiles.Append f.Child(<span style="color:#6500FE">&quot;pic2.jpg&quot;</span>)
+			pictureFiles.Append f.Child(<span style="color:#6500FE">&quot;pic3.jpg&quot;</span>)
+			pictureFiles.Append f.Child(<span style="color:#6500FE">&quot;pic4.jpg&quot;</span>)
+			
+			BackPictures.Append <span style="color:#0000FF;font-weight: bold">New</span> WebPicture(Picture.Open(f.Child(<span style="color:#6500FE">&quot;back1.jpg&quot;</span>)), Picture.FormatJPEG)
+			BackPictures.Append <span style="color:#0000FF;font-weight: bold">New</span> WebPicture(Picture.Open(f.Child(<span style="color:#6500FE">&quot;back2.jpg&quot;</span>)), Picture.FormatJPEG)
+			BackPictures.Append <span style="color:#0000FF;font-weight: bold">New</span> WebPicture(Picture.Open(f.Child(<span style="color:#6500FE">&quot;back3.jpg&quot;</span>)), Picture.FormatJPEG)
+			BackPictures.Append <span style="color:#0000FF;font-weight: bold">New</span> WebPicture(Picture.Open(f.Child(<span style="color:#6500FE">&quot;back4.jpg&quot;</span>)), Picture.FormatJPEG)
+			
+			backs.Append f.Child(<span style="color:#6500FE">&quot;back1.pdf&quot;</span>)
+			backs.Append f.Child(<span style="color:#6500FE">&quot;back2.pdf&quot;</span>)
+			backs.Append f.Child(<span style="color:#6500FE">&quot;back3.pdf&quot;</span>)
+			backs.Append f.Child(<span style="color:#6500FE">&quot;back4.pdf&quot;</span>)
+			
+			backsmall.Append f.Child(<span style="color:#6500FE">&quot;back1small.pdf&quot;</span>)
+			backsmall.Append f.Child(<span style="color:#6500FE">&quot;back2small.pdf&quot;</span>)
+			backsmall.Append f.Child(<span style="color:#6500FE">&quot;back3small.pdf&quot;</span>)
+			backsmall.Append f.Child(<span style="color:#6500FE">&quot;back4small.pdf&quot;</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> LoadImageRemote()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Please</span> <span style="color:#7F0000;text-style:italic">provide</span> <span style="color:#7F0000;text-style:italic">your</span> <span style="color:#7F0000;text-style:italic">own</span> <span style="color:#7F0000;text-style:italic">Cards</span> <span style="color:#7F0000;text-style:italic">folder</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">files:</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">thumb*.jpg</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">little</span> <span style="color:#7F0000;text-style:italic">thumbnails</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">pictures</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">pic*.jpg</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">actual</span> <span style="color:#7F0000;text-style:italic">pictures</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">back*.jpg</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">backgrounds</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">thumbnail</span> <span style="color:#7F0000;text-style:italic">pictures</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">back*.pdf</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">actual</span> <span style="color:#7F0000;text-style:italic">backgrounds</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">PDF</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">back*small.pdf</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">actual</span> <span style="color:#7F0000;text-style:italic">backgrounds</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">PDF</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">lower</span> <span style="color:#7F0000;text-style:italic">resolution</span>
+			
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">load</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">MBS</span> <span style="color:#7F0000;text-style:italic">Website</span>
+			
+			Thumbnails.Append <span style="color:#0000FF;font-weight: bold">New</span> WebPicture(Picture.Open(LoadFile(<span style="color:#6500FE">&quot;thumb1.jpg&quot;</span>)), Picture.FormatJPEG)
+			Thumbnails.Append <span style="color:#0000FF;font-weight: bold">New</span> WebPicture(Picture.Open(LoadFile(<span style="color:#6500FE">&quot;thumb2.jpg&quot;</span>)), Picture.FormatJPEG)
+			Thumbnails.Append <span style="color:#0000FF;font-weight: bold">New</span> WebPicture(Picture.Open(LoadFile(<span style="color:#6500FE">&quot;thumb3.jpg&quot;</span>)), Picture.FormatJPEG)
+			Thumbnails.Append <span style="color:#0000FF;font-weight: bold">New</span> WebPicture(Picture.Open(LoadFile(<span style="color:#6500FE">&quot;thumb4.jpg&quot;</span>)), Picture.FormatJPEG)
+			
+			pictureFiles.Append LoadFile(<span style="color:#6500FE">&quot;pic1.jpg&quot;</span>)
+			pictureFiles.Append LoadFile(<span style="color:#6500FE">&quot;pic2.jpg&quot;</span>)
+			pictureFiles.Append LoadFile(<span style="color:#6500FE">&quot;pic3.jpg&quot;</span>)
+			pictureFiles.Append LoadFile(<span style="color:#6500FE">&quot;pic4.jpg&quot;</span>)
+			
+			BackPictures.Append <span style="color:#0000FF;font-weight: bold">New</span> WebPicture(Picture.Open(LoadFile(<span style="color:#6500FE">&quot;back1.jpg&quot;</span>)), Picture.FormatJPEG)
+			BackPictures.Append <span style="color:#0000FF;font-weight: bold">New</span> WebPicture(Picture.Open(LoadFile(<span style="color:#6500FE">&quot;back2.jpg&quot;</span>)), Picture.FormatJPEG)
+			BackPictures.Append <span style="color:#0000FF;font-weight: bold">New</span> WebPicture(Picture.Open(LoadFile(<span style="color:#6500FE">&quot;back3.jpg&quot;</span>)), Picture.FormatJPEG)
+			BackPictures.Append <span style="color:#0000FF;font-weight: bold">New</span> WebPicture(Picture.Open(LoadFile(<span style="color:#6500FE">&quot;back4.jpg&quot;</span>)), Picture.FormatJPEG)
+			
+			backs.Append LoadFile(<span style="color:#6500FE">&quot;back1.pdf&quot;</span>)
+			backs.Append LoadFile(<span style="color:#6500FE">&quot;back2.pdf&quot;</span>)
+			backs.Append LoadFile(<span style="color:#6500FE">&quot;back3.pdf&quot;</span>)
+			backs.Append LoadFile(<span style="color:#6500FE">&quot;back4.pdf&quot;</span>)
+			
+			backsmall.Append LoadFile(<span style="color:#6500FE">&quot;back1small.pdf&quot;</span>)
+			backsmall.Append LoadFile(<span style="color:#6500FE">&quot;back2small.pdf&quot;</span>)
+			backsmall.Append LoadFile(<span style="color:#6500FE">&quot;back3small.pdf&quot;</span>)
+			backsmall.Append LoadFile(<span style="color:#6500FE">&quot;back4small.pdf&quot;</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> BackPictures() <span style="color:#0000FF;font-weight: bold">As</span> WebPicture</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Backs() <span style="color:#0000FF;font-weight: bold">As</span> folderitem</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Thumbnails() <span style="color:#0000FF;font-weight: bold">As</span> WebPicture</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> backsmall() <span style="color:#0000FF;font-weight: bold">As</span> folderitem</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> pictureFiles() <span style="color:#0000FF;font-weight: bold">As</span> folderitem</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyDynaPDFMBS <span style="color:#0000FF;font-weight: bold">Inherits</span> DynaPDFMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> Error(ErrorCode <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, ErrorMessage <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, ErrorType <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">output</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">messages</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">console:</span>
+			System.DebugLog str(ErrorCode)+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+ErrorMessage
+			
+			MessageBox ErrorMessage
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> IgnoreWarnings <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-dynapdf-webedition-createpdfweb.html">/DynaPDF/Web Edition/Create PDF Web</A></li>
+<li><A href="example-dynapdf-webedition-webrtftopdfweb.html">/DynaPDF/Web Edition/Web RTF to PDF Web</A></li>
+<li><A href="example-dynapdf-webedition-webpdfweb.html">/DynaPDF/Web Edition/WebPDF Web</A></li>
+<li><A href="example-dynapdf-webedition-webpicturefrompdfpageweb.html">/DynaPDF/Web Edition/WebPicture from PDF Page Web</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-dynapdf-webedition-cardsweb">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

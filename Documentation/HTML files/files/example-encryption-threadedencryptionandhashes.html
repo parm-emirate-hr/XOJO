@@ -1,0 +1,457 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Encryption/Threaded Encryption and Hashes</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Encryption/Threaded Encryption and Hashes</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Encryption/Threaded Encryption and Hashes</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS Encryption Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Encryption/Threaded Encryption and Hashes<BR>
+This example is the version from Mon, 16th Jul 2017.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Threaded</span> <span style="color:#6500FE">Encryption</span> <span style="color:#6500FE">and</span> <span style="color:#6500FE">Hashes.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;L&ouml;schen&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;Beenden&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MainWindow <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control BevelButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> BevelButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance BevelButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> BevelButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = GetOpenFolderItem(<span style="color:#6500FE">&quot;&quot;</span>)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> f = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+				
+				file = f
+				
+				RunThreadedButton.Enabled = <span style="color:#0000FF;font-weight: bold">true</span>
+				RunWithoutThreads.Enabled = <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control list <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance list <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> CellClick(row <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, column <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, x <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, y <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> Clipboard
+				
+				c.SetText <span style="color:#0000FF;font-weight: bold">me</span>.Cell(row, column)
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control RunThreadedButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance RunThreadedButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				prepare
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">run</span> <span style="color:#7F0000;text-style:italic">each</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">thread</span>
+				Runthreaded <span style="color:#0000FF;font-weight: bold">AddressOf</span> TestCipherAES
+				Runthreaded <span style="color:#0000FF;font-weight: bold">AddressOf</span> TestCipherBlowfish
+				Runthreaded <span style="color:#0000FF;font-weight: bold">AddressOf</span> TestDigestMD5
+				Runthreaded <span style="color:#0000FF;font-weight: bold">AddressOf</span> TestDigestSHA512
+				Runthreaded <span style="color:#0000FF;font-weight: bold">AddressOf</span> TestMD5
+				Runthreaded <span style="color:#0000FF;font-weight: bold">AddressOf</span> TestSHA1
+				Runthreaded <span style="color:#0000FF;font-weight: bold">AddressOf</span> TestSHA256
+				Runthreaded <span style="color:#0000FF;font-weight: bold">AddressOf</span> TestSHA512
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control RunWithoutThreads <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance RunWithoutThreads <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				Prepare
+				
+				
+				TestCipherAES
+				TestCipherBlowfish
+				
+				TestDigestMD5
+				TestDigestSHA512
+				TestMD5
+				TestSHA1
+				TestSHA256
+				TestSHA512
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Timer1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Timer1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">while</span> ForList.Ubound&gt;=<span style="color:#326598">0</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> v <span style="color:#0000FF;font-weight: bold">as</span> Variant = ForList(<span style="color:#326598">0</span>)
+					ForList.Remove <span style="color:#326598">0</span>
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">array</span> <span style="color:#7F0000;text-style:italic">back</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">variant</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> s() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = v
+					list.AddRow s
+					
+				<span style="color:#0000FF;font-weight: bold">wend</span>
+				
+				
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> running <span style="color:#0000FF;font-weight: bold">and</span> isDone <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = ticks - LaunchTicks
+					list.AddRow <span style="color:#6500FE">&quot;All</span> <span style="color:#6500FE">done&quot;</span>, FormatTicks(t), <span style="color:#6500FE">&quot;&quot;</span>
+					
+					running = <span style="color:#0000FF;font-weight: bold">false</span>
+					ProgressWheel1.Visible = <span style="color:#0000FF;font-weight: bold">false</span>
+					RunThreadedButton.Enabled = <span style="color:#0000FF;font-weight: bold">true</span>
+					RunWithoutThreads.Enabled = <span style="color:#0000FF;font-weight: bold">true</span>
+					
+					<span style="color:#0000FF;font-weight: bold">redim</span> Threads(-<span style="color:#326598">1</span>)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control ProgressWheel1 <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressWheel</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance ProgressWheel1 <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressWheel</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Close()
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem <span style="color:#0000FF;font-weight: bold">in</span> filesToDelete
+				f.Delete
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Add(<span style="color:#0000FF;font-weight: bold">paramArray</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">add</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">array</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">string</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">array</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">variants</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> app.CurrentThread = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">main</span> <span style="color:#7F0000;text-style:italic">thread</span>
+				list.AddRow s
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">add</span> <span style="color:#7F0000;text-style:italic">later</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">timer</span>
+				ForList.Append s
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> CheckNextThread()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">launch</span> <span style="color:#7F0000;text-style:italic">more</span> <span style="color:#7F0000;text-style:italic">threads</span>
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> t <span style="color:#0000FF;font-weight: bold">as</span> myThread <span style="color:#0000FF;font-weight: bold">in</span> threads
+				<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> t.Started <span style="color:#0000FF;font-weight: bold">then</span>
+					t.Started = <span style="color:#0000FF;font-weight: bold">true</span>
+					t.run
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> FormatTicks(t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">Return</span> Format(t / <span style="color:#006532">60.0</span>, <span style="color:#6500FE">&quot;0.0&quot;</span>)+<span style="color:#6500FE">&quot;s&quot;</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Prepare()
+			LaunchTicks = ticks
+			Running = <span style="color:#0000FF;font-weight: bold">true</span>
+			ProgressWheel1.Visible = <span style="color:#0000FF;font-weight: bold">true</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Runthreaded(t <span style="color:#0000FF;font-weight: bold">as</span> ThreadFunc)
+			<span style="color:#0000FF;font-weight: bold">dim</span> thread <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> myThread(T)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> UBound(threads) &lt; <span style="color:#326598">4</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				thread.Started = <span style="color:#0000FF;font-weight: bold">true</span>
+				thread.run
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			threads.Append thread
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> TestCipherAES()
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = ticks
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> CipherMBS = CipherMBS.aes_256_cfb128
+			<span style="color:#0000FF;font-weight: bold">dim</span> outfile <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = GetTemporaryFolderItem
+			filesToDelete.append outfile
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> CKey <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock = <span style="color:#6500FE">&quot;1234567812345678&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> CIV <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> d.EncryptInit Ckey, CIV
+			
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> d.ProcessFile(file, outfile) <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				t = ticks - t
+				
+				Add <span style="color:#6500FE">&quot;Cipher</span> <span style="color:#6500FE">AES</span> <span style="color:#6500FE">256</span> <span style="color:#6500FE">CFB</span> <span style="color:#6500FE">128</span> <span style="color:#6500FE">encrypt&quot;</span>, FormatTicks(t)
+				
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				Add <span style="color:#6500FE">&quot;Cipher</span> <span style="color:#6500FE">AES</span> <span style="color:#6500FE">256</span> <span style="color:#6500FE">CFB</span> <span style="color:#6500FE">128</span> <span style="color:#6500FE">encrypt&quot;</span>, <span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#6500FE">&quot;Failed.&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			
+			t = ticks
+			d = CipherMBS.aes_256_cfb128
+			<span style="color:#0000FF;font-weight: bold">dim</span> defile <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = GetTemporaryFolderItem
+			filesToDelete.append defile
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> d.DecryptInit Ckey, CIV
+			
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> d.ProcessFile(outfile, defile) <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				t = ticks - t
+				
+				Add <span style="color:#6500FE">&quot;Cipher</span> <span style="color:#6500FE">AES</span> <span style="color:#6500FE">256</span> <span style="color:#6500FE">CFB</span> <span style="color:#6500FE">128</span> <span style="color:#6500FE">decrypt&quot;</span>, FormatTicks(t)
+				
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				Add <span style="color:#6500FE">&quot;Cipher</span> <span style="color:#6500FE">AES</span> <span style="color:#6500FE">256</span> <span style="color:#6500FE">CFB</span> <span style="color:#6500FE">128</span> <span style="color:#6500FE">decrypt&quot;</span>, <span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#6500FE">&quot;Failed.&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> TestCipherBlowfish()
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = ticks
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> CipherMBS = CipherMBS.bf_cfb64
+			<span style="color:#0000FF;font-weight: bold">dim</span> outfile <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = GetTemporaryFolderItem
+			filesToDelete.append outfile
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> CKey <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock = <span style="color:#6500FE">&quot;1234567812345678&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> CIV <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> d.EncryptInit Ckey, CIV
+			
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> d.ProcessFile(file, outfile) <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				t = ticks - t
+				
+				Add <span style="color:#6500FE">&quot;Cipher</span> <span style="color:#6500FE">Blowfish</span> <span style="color:#6500FE">encrypt&quot;</span>, FormatTicks(t)
+				
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				Add <span style="color:#6500FE">&quot;Cipher</span> <span style="color:#6500FE">Blowfish</span> <span style="color:#6500FE">encrypt&quot;</span>, <span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#6500FE">&quot;Failed.&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			
+			t = ticks
+			d = CipherMBS.bf_cfb64
+			<span style="color:#0000FF;font-weight: bold">dim</span> defile <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = GetTemporaryFolderItem
+			filesToDelete.append defile
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> d.DecryptInit Ckey, CIV
+			
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> d.ProcessFile(outfile, defile) <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				t = ticks - t
+				
+				Add <span style="color:#6500FE">&quot;Cipher</span> <span style="color:#6500FE">Blowfish</span> <span style="color:#6500FE">decrypt&quot;</span>, FormatTicks(t)
+				
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				Add <span style="color:#6500FE">&quot;Cipher</span> <span style="color:#6500FE">Blowfish</span> <span style="color:#6500FE">decrypt&quot;</span>, <span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#6500FE">&quot;Failed.&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> TestDigestMD5()
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = ticks
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> DigestMBS = DigestMBS.MD5
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> d.Process(file) <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> h <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = d.FinalText
+				t = ticks - t
+				
+				Add <span style="color:#6500FE">&quot;Digest</span> <span style="color:#6500FE">MD5&quot;</span>, FormatTicks(t), h
+				
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				Add <span style="color:#6500FE">&quot;Digest</span> <span style="color:#6500FE">MD5&quot;</span>, <span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#6500FE">&quot;Failed.&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> TestDigestSHA512()
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = ticks
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> DigestMBS = DigestMBS.SHA512
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> d.Process(file) <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> h <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = d.FinalText
+				t = ticks - t
+				
+				Add <span style="color:#6500FE">&quot;Digest</span> <span style="color:#6500FE">SHA512&quot;</span>, FormatTicks(t), h
+				
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				Add <span style="color:#6500FE">&quot;Digest</span> <span style="color:#6500FE">SHA512&quot;</span>, <span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#6500FE">&quot;Failed.&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> TestMD5()
+			<span style="color:#0000FF;font-weight: bold">dim</span> h <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = ticks
+			
+			h = MD5DigestMBS.HashFile(file, <span style="color:#0000FF;font-weight: bold">true</span>)
+			
+			t = ticks - t
+			
+			Add <span style="color:#6500FE">&quot;MD5</span> <span style="color:#6500FE">HashFile&quot;</span>, FormatTicks(t), h
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> TestSHA1()
+			<span style="color:#0000FF;font-weight: bold">dim</span> h <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = ticks
+			
+			h = SHA1MBS.HashFile(file, <span style="color:#0000FF;font-weight: bold">true</span>)
+			
+			t = ticks - t
+			
+			Add <span style="color:#6500FE">&quot;SHA1</span> <span style="color:#6500FE">HashFile&quot;</span>, FormatTicks(t), h
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> TestSHA256()
+			<span style="color:#0000FF;font-weight: bold">dim</span> h <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = ticks
+			
+			h = SHA256MBS.HashFile(file, <span style="color:#0000FF;font-weight: bold">true</span>)
+			
+			t = ticks - t
+			
+			Add <span style="color:#6500FE">&quot;SHA256</span> <span style="color:#6500FE">HashFile&quot;</span>, FormatTicks(t), h
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> TestSHA512()
+			<span style="color:#0000FF;font-weight: bold">dim</span> h <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = ticks
+			
+			h = SHA512MBS.HashFile(file, <span style="color:#0000FF;font-weight: bold">true</span>)
+			
+			t = ticks - t
+			
+			Add <span style="color:#6500FE">&quot;SHA512</span> <span style="color:#6500FE">HashFile&quot;</span>, FormatTicks(t), h
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> isDone() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> UBound(threads) = -<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> t <span style="color:#0000FF;font-weight: bold">as</span> myThread <span style="color:#0000FF;font-weight: bold">in</span> threads
+				<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> t.started <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">false</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> t.state = t.Running <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">false</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> ForList() <span style="color:#0000FF;font-weight: bold">As</span> Variant
+<div class="RB_Comment">			array of variants which will contain string arrays</div></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> LaunchTicks <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Running <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> file <span style="color:#0000FF;font-weight: bold">As</span> FolderItem</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> filesToDelete() <span style="color:#0000FF;font-weight: bold">As</span> FolderItem</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> threads() <span style="color:#0000FF;font-weight: bold">As</span> myThread</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;Ablage&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Bearbeiten&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;R&uuml;ckg&auml;ngig&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;&amp;Ausschneiden&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Kopieren&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Einf&uuml;gen&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;&amp;Alles</span> <span style="color:#6500FE">ausw&auml;hlen&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> myThread <span style="color:#0000FF;font-weight: bold">Inherits</span> thread</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Run()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">run</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">function</span> <span style="color:#7F0000;text-style:italic">threaded</span>
+			t.Invoke
+			t = <span style="color:#0000FF;font-weight: bold">nil</span>
+			
+			MainWindow.CheckNextThread
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(f <span style="color:#0000FF;font-weight: bold">as</span> ThreadFunc)
+			t = f
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Started <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> t <span style="color:#0000FF;font-weight: bold">As</span> ThreadFunc</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Module</span> Module1</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Delegate</span> <span style="color:#0000FF;font-weight: bold">Sub</span> ThreadFunc()</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Module</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsencryptionplugin.html">MBS Encryption Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-encryption-threadedencryptionandhashes">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /XL/Generate</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /XL/Generate</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/XL/Generate</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS XL Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /XL/Generate<BR>
+This example is the version from Sun, 20th Jan 2018.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Generate.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;L&ouml;schen&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;Beenden&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			RegisterLibXL
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">create</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">xls</span> <span style="color:#7F0000;text-style:italic">file</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> book <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> XLBookMBS(<span style="color:#0000FF;font-weight: bold">false</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">create</span> <span style="color:#7F0000;text-style:italic">sheet</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> sheet <span style="color:#0000FF;font-weight: bold">as</span> XLSheetMBS = book.AddSheet(<span style="color:#6500FE">&quot;Sheet1&quot;</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">write</span> <span style="color:#7F0000;text-style:italic">some</span> <span style="color:#7F0000;text-style:italic">values</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> sheet.WriteString <span style="color:#326598">2</span>, <span style="color:#326598">1</span>, <span style="color:#6500FE">&quot;Hello</span> <span style="color:#6500FE">World&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> sheet.WriteNumber <span style="color:#326598">3</span>, <span style="color:#326598">1</span>, <span style="color:#006532">1000.0</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">write</span> <span style="color:#7F0000;text-style:italic">date</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> dateFormat <span style="color:#0000FF;font-weight: bold">as</span> XLFormatMBS = book.AddFormat
+			dateFormat.NumFormat = dateFormat.NumformatDate
+			<span style="color:#0000FF;font-weight: bold">call</span> sheet.WriteNumber <span style="color:#326598">4</span>, <span style="color:#326598">1</span>, book.PackDate(<span style="color:#326598">2008</span>, <span style="color:#326598">4</span>, <span style="color:#326598">29</span>), dateFormat
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">column</span> <span style="color:#7F0000;text-style:italic">1</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">width</span> <span style="color:#7F0000;text-style:italic">12</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> sheet.SetCol <span style="color:#326598">1</span>, <span style="color:#326598">1</span>, <span style="color:#326598">12</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">write</span> <span style="color:#7F0000;text-style:italic">file</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> file <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;Generate.xls&quot;</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> book.Save(file) <span style="color:#0000FF;font-weight: bold">then</span>
+				file.Launch
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				MsgBox <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">create</span> <span style="color:#6500FE">file.&quot;</span>+EndOfLine+EndOfLine+book.ErrorMessage
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			quit
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> RegisterLibXL()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">once</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">bought</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">LibXL</span> <span style="color:#7F0000;text-style:italic">license,</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">put</span> <span style="color:#7F0000;text-style:italic">your</span> <span style="color:#7F0000;text-style:italic">license</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">here</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">see</span> <span style="color:#7F0000;text-style:italic">order</span> <span style="color:#7F0000;text-style:italic">links</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">our</span> <span style="color:#7F0000;text-style:italic">website</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">http://www.monkeybreadsoftware.de/xojo/plugin-xls.shtml</span>
+			
+			
+			<span style="color:#0000FF">#if</span> TargetMacOS <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				XLBookMBS.SetKeyGlobal <span style="color:#6500FE">&quot;your</span> <span style="color:#6500FE">name&quot;</span>, <span style="color:#6500FE">&quot;your</span> <span style="color:#6500FE">Mac</span> <span style="color:#6500FE">LibXL</span> <span style="color:#6500FE">license</span> <span style="color:#6500FE">key&quot;</span>
+				
+			<span style="color:#0000FF">#elseif</span> TargetWin32 <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				XLBookMBS.SetKeyGlobal <span style="color:#6500FE">&quot;your</span> <span style="color:#6500FE">name&quot;</span>, <span style="color:#6500FE">&quot;your</span> <span style="color:#6500FE">Windows</span> <span style="color:#6500FE">LibXL</span> <span style="color:#6500FE">license</span> <span style="color:#6500FE">key&quot;</span>
+				
+			<span style="color:#0000FF">#elseif</span> TargetLinux <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				XLBookMBS.SetKeyGlobal <span style="color:#6500FE">&quot;your</span> <span style="color:#6500FE">name&quot;</span>, <span style="color:#6500FE">&quot;your</span> <span style="color:#6500FE">Linux</span> <span style="color:#6500FE">LibXL</span> <span style="color:#6500FE">license</span> <span style="color:#6500FE">key&quot;</span>
+				
+			<span style="color:#0000FF">#endif</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;Ablage&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Bearbeiten&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;R&uuml;ckg&auml;ngig&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;&amp;Ausschneiden&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Kopieren&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Einf&uuml;gen&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;&amp;Alles</span> <span style="color:#6500FE">ausw&auml;hlen&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsxlplugin.html">MBS XL Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-xl-generate">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

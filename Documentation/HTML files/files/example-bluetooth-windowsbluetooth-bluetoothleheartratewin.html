@@ -1,0 +1,260 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Bluetooth/Windows Bluetooth/Bluetooth LE Heart Rate Win</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Bluetooth/Windows Bluetooth/Bluetooth LE Heart Rate Win</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Bluetooth/Windows Bluetooth/Bluetooth LE Heart Rate Win</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS Bluetooth Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Bluetooth/Windows Bluetooth/Bluetooth LE Heart Rate Win<BR>
+This example is the version from Sat, 9th Sep 2022.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Bluetooth</span> <span style="color:#6500FE">LE</span> <span style="color:#6500FE">Heart</span> <span style="color:#6500FE">Rate</span> <span style="color:#6500FE">Win.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MainWindow <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">ID</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">our</span> <span style="color:#7F0000;text-style:italic">Bluetooth</span> <span style="color:#7F0000;text-style:italic">Heart</span> <span style="color:#7F0000;text-style:italic">Rate</span> <span style="color:#7F0000;text-style:italic">Monitor:</span> <span style="color:#7F0000;text-style:italic">180D</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> ServiceUUID <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = <span style="color:#6500FE">&quot;{0000180D-0000-1000-8000-00805F9B34FB}&quot;</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">look</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">registry</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">path</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">connected</span> <span style="color:#7F0000;text-style:italic">devices</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> paths() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span> = WindowsBlueToothLEMBS.DevicePathsForClassGUID(ServiceUUID)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> paths = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				list.Log <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">list.&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">elseif</span> UBound(paths) &lt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				list.Log <span style="color:#6500FE">&quot;Device</span> <span style="color:#6500FE">not</span> <span style="color:#6500FE">found&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> path <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = paths(<span style="color:#326598">0</span>)
+			list.log <span style="color:#6500FE">&quot;Path:</span> <span style="color:#6500FE">&quot;</span>+path
+			
+			
+			ble = <span style="color:#0000FF;font-weight: bold">new</span> MyWindowsBlueToothLEMBS(path)
+			ble.list = list
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> Services() <span style="color:#0000FF;font-weight: bold">as</span> WindowsBlueToothLEServiceMBS = ble.Services
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> Services = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				list.log <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">query</span> <span style="color:#6500FE">Services&quot;</span> + str(ble.LastError) + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span> + ble.LastErrorMessage
+				<span style="color:#0000FF;font-weight: bold">return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			list.log str(Services.Ubound+<span style="color:#326598">1</span>)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">services</span> <span style="color:#6500FE">found&quot;</span>
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> service <span style="color:#0000FF;font-weight: bold">as</span> WindowsBlueToothLEServiceMBS <span style="color:#0000FF;font-weight: bold">in</span> Services
+				list.log <span style="color:#6500FE">&quot;Service</span> <span style="color:#6500FE">found</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">UUID</span> <span style="color:#6500FE">&quot;</span>+service.ServiceUUID+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">and</span> <span style="color:#6500FE">AttributeHandle</span> <span style="color:#6500FE">&quot;</span>+str(service.AttributeHandle)
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> Characteristics() <span style="color:#0000FF;font-weight: bold">as</span> WindowsBlueToothLECharacteristicMBS = ble.Characteristics(service)
+				<span style="color:#0000FF;font-weight: bold">if</span> Characteristics = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					list.log <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">query</span> <span style="color:#6500FE">Characteristics&quot;</span> + str(ble.LastError) + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span> + ble.LastErrorMessage
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> Characteristic <span style="color:#0000FF;font-weight: bold">as</span> WindowsBlueToothLECharacteristicMBS <span style="color:#0000FF;font-weight: bold">in</span> Characteristics
+						list.log <span style="color:#6500FE">&quot;</span>  <span style="color:#6500FE">Characteristic</span> <span style="color:#6500FE">found:</span> <span style="color:#6500FE">&quot;</span>+Characteristic.CharacteristicUuid
+						list.log <span style="color:#6500FE">&quot;</span>    <span style="color:#6500FE">IsReadable:</span> <span style="color:#6500FE">&quot;</span>+yesno(Characteristic.IsReadable)
+						list.log <span style="color:#6500FE">&quot;</span>    <span style="color:#6500FE">IsWritable:</span> <span style="color:#6500FE">&quot;</span>+yesno(Characteristic.IsWritable)
+						list.log <span style="color:#6500FE">&quot;</span>    <span style="color:#6500FE">IsNotifiable:</span> <span style="color:#6500FE">&quot;</span>+yesno(Characteristic.IsNotifiable)
+						
+						<span style="color:#0000FF;font-weight: bold">if</span> Characteristic.IsNotifiable <span style="color:#0000FF;font-weight: bold">then</span>
+							ble.RegisterChangeEvent <span style="color:#0000FF;font-weight: bold">array</span>(Characteristic)
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+						
+						<span style="color:#0000FF;font-weight: bold">dim</span> Descriptors() <span style="color:#0000FF;font-weight: bold">as</span> WindowsBlueToothLEDescriptorMBS = ble.Descriptors(Characteristic)
+						<span style="color:#0000FF;font-weight: bold">if</span> Descriptors = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+							list.log <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">query</span> <span style="color:#6500FE">Descriptors&quot;</span> + str(ble.LastError) + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span> + ble.LastErrorMessage
+						<span style="color:#0000FF;font-weight: bold">else</span>
+							<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> Descriptor <span style="color:#0000FF;font-weight: bold">as</span> WindowsBlueToothLEDescriptorMBS <span style="color:#0000FF;font-weight: bold">in</span> Descriptors
+								list.log <span style="color:#6500FE">&quot;</span>    <span style="color:#6500FE">Descriptor</span> <span style="color:#6500FE">found:</span> <span style="color:#6500FE">&quot;</span>+Descriptor.DescriptorUuid
+								list.log <span style="color:#6500FE">&quot;</span>    <span style="color:#6500FE">Descriptor</span> <span style="color:#6500FE">type:</span> <span style="color:#6500FE">&quot;</span>+str(Descriptor.DescriptorType)
+								
+								<span style="color:#0000FF;font-weight: bold">dim</span> dv <span style="color:#0000FF;font-weight: bold">as</span> WindowsBlueToothLEDescriptorValueMBS = ble.GetDescriptorValue(Descriptor)
+								<span style="color:#0000FF;font-weight: bold">if</span> dv = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">or</span> ble.LastError &lt;&gt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+									list.Log <span style="color:#6500FE">&quot;</span>    <span style="color:#6500FE">Descriptor</span> <span style="color:#6500FE">witout</span> <span style="color:#6500FE">data:</span> <span style="color:#6500FE">&quot;</span>+ble.LastErrorMessage
+								<span style="color:#0000FF;font-weight: bold">else</span>
+									list.log <span style="color:#6500FE">&quot;</span>     <span style="color:#6500FE">DescriptorUuid:</span> <span style="color:#6500FE">&quot;</span>+dv.DescriptorUuid
+									list.log <span style="color:#6500FE">&quot;</span>      <span style="color:#6500FE">DescriptorType:</span> <span style="color:#6500FE">&quot;</span>+str(dv.DescriptorType)
+									<span style="color:#0000FF;font-weight: bold">if</span> dv.Data &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+										<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = dv.data
+										list.log <span style="color:#6500FE">&quot;</span>     <span style="color:#6500FE">Data:</span> <span style="color:#6500FE">&quot;</span>+EncodeHex(d)
+										<span style="color:#7F0000;text-style:italic">&#39;if</span> <span style="color:#7F0000;text-style:italic">Encodings.UTF16LE.IsValidData(d)</span> <span style="color:#7F0000;text-style:italic">then</span>
+										d = DefineEncoding(d, encodings.UTF16LE)
+										list.log <span style="color:#6500FE">&quot;</span>      <span style="color:#6500FE">Data</span> <span style="color:#6500FE">as</span> <span style="color:#6500FE">UTF16:</span> <span style="color:#6500FE">&quot;</span>+d
+										<span style="color:#7F0000;text-style:italic">&#39;end</span> <span style="color:#7F0000;text-style:italic">if</span>
+										
+										dv.data = ConvertEncoding(<span style="color:#6500FE">&quot;Xojo&quot;</span>+chr(<span style="color:#326598">0</span>), encodings.UTF16LE)
+										
+										<span style="color:#0000FF;font-weight: bold">if</span> ble.SetDescriptorValue(Descriptor, dv) <span style="color:#0000FF;font-weight: bold">then</span>
+											<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ok</span>
+										<span style="color:#0000FF;font-weight: bold">else</span>
+											list.Log <span style="color:#6500FE">&quot;</span>    <span style="color:#6500FE">Descriptor</span> <span style="color:#6500FE">write</span> <span style="color:#6500FE">failed:</span> <span style="color:#6500FE">&quot;</span>+ble.LastErrorMessage
+										<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+									<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+								<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+							<span style="color:#0000FF;font-weight: bold">next</span>
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+						
+						<span style="color:#0000FF;font-weight: bold">if</span> Characteristic.IsWritable <span style="color:#0000FF;font-weight: bold">then</span>
+							<span style="color:#0000FF;font-weight: bold">dim</span> data <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MemoryBlock(<span style="color:#326598">4</span>)
+							data.Int32Value(<span style="color:#326598">0</span>) = <span style="color:#326598">&amp;h12345678</span>
+							
+							<span style="color:#0000FF;font-weight: bold">dim</span> WriteID <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">int64</span> = ble.BeginReliableWrite
+							<span style="color:#0000FF;font-weight: bold">if</span> ble.LastError &lt;&gt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+								list.Log <span style="color:#6500FE">&quot;</span>    <span style="color:#6500FE">BeginReliableWrite</span> <span style="color:#6500FE">failed:</span> <span style="color:#6500FE">&quot;</span>+ble.LastErrorMessage
+							<span style="color:#0000FF;font-weight: bold">else</span>
+								list.log <span style="color:#6500FE">&quot;Write</span> <span style="color:#6500FE">ID:</span> <span style="color:#6500FE">&quot;</span>+str(WriteID)
+								<span style="color:#0000FF;font-weight: bold">call</span> ble.SetCharacteristicValue(Characteristic, data, WriteID)
+								list.log <span style="color:#6500FE">&quot;Write</span> <span style="color:#6500FE">value</span> <span style="color:#6500FE">done:</span> <span style="color:#6500FE">&quot;</span>+ble.LastErrorMessage
+								ble.EndReliableWrite WriteID
+							<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+						
+						<span style="color:#0000FF;font-weight: bold">if</span> Characteristic.IsReadable <span style="color:#0000FF;font-weight: bold">then</span>
+							<span style="color:#0000FF;font-weight: bold">dim</span> data <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock = ble.GetCharacteristicValue(Characteristic)
+							<span style="color:#0000FF;font-weight: bold">if</span> data &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+								list.log <span style="color:#6500FE">&quot;</span>    <span style="color:#6500FE">Value:</span> <span style="color:#6500FE">&quot;</span>+EncodeHex(data)
+							<span style="color:#0000FF;font-weight: bold">else</span>
+								list.log <span style="color:#6500FE">&quot;No</span> <span style="color:#6500FE">data</span> <span style="color:#6500FE">read:</span> <span style="color:#6500FE">&quot;</span>+ble.LastErrorMessage
+							<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+						
+					<span style="color:#0000FF;font-weight: bold">next</span>
+					
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> ble <span style="color:#0000FF;font-weight: bold">As</span> MyWindowsBlueToothLEMBS</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MainMenuBar</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator2 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Module</span> Module1</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Log(<span style="color:#0000FF;font-weight: bold">extends</span> l <span style="color:#0000FF;font-weight: bold">as</span> listbox, row <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			l.AddRow row
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">scroll</span> <span style="color:#7F0000;text-style:italic">at</span> <span style="color:#7F0000;text-style:italic">bottom</span>
+			l.ScrollPosition = l.ListCount
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> yesno(b <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> b <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;yes&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;no&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Module</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyWindowsBlueToothLEMBS <span style="color:#0000FF;font-weight: bold">Inherits</span> WindowsBlueToothLEMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> ChangeEvent(ChangedAttributeHandle <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, CharacteristicValue <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock)
+			list.log CurrentMethodName+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+str(ChangedAttributeHandle)+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+EncodeHex(CharacteristicValue)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">show</span> <span style="color:#7F0000;text-style:italic">BPM</span> <span style="color:#7F0000;text-style:italic">based</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">package</span> <span style="color:#7F0000;text-style:italic">content</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> data <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock = CharacteristicValue
+			<span style="color:#0000FF;font-weight: bold">if</span> data &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">and</span> data.size &gt;= <span style="color:#326598">2</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> bpm <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> BitwiseAnd(data.UInt8Value(<span style="color:#326598">0</span>), <span style="color:#326598">1</span>) = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					
+					bpm = data.uint8Value(<span style="color:#326598">1</span>)
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					
+					bpm = data.uint8Value(<span style="color:#326598">1</span>) * <span style="color:#326598">256</span> + data.uint8Value(<span style="color:#326598">2</span>)
+					
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				list.Log <span style="color:#6500FE">&quot;BPM:</span> <span style="color:#6500FE">&quot;</span>+str(bpm)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> list <span style="color:#0000FF;font-weight: bold">As</span> listbox</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-bluetooth-windowsbluetooth-windowsbledevices.html">/Bluetooth/Windows Bluetooth/Windows BLE Devices</A></li>
+<li><A href="example-bluetooth-windowsbluetooth-windowsbluetooth.html">/Bluetooth/Windows Bluetooth/Windows Bluetooth</A></li>
+<li><A href="example-bluetooth-windowsbluetooth-windowsbluetoothservices.html">/Bluetooth/Windows Bluetooth/Windows Bluetooth Services</A></li>
+<li><A href="example-bluetooth-windowsbluetooth-windowsbluetoothsocket.html">/Bluetooth/Windows Bluetooth/Windows Bluetooth Socket</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsbluetoothplugin.html">MBS Bluetooth Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-bluetooth-windowsbluetooth-bluetoothleheartratewin">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

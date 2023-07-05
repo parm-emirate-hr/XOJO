@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - NSUserDefaultsMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="NSUserDefaultsMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">NSUserDefaultsMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>NSUserDefaultsMBS class</H3>
+<div class="M">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-cocoa.html" translate="no">Cocoa</A></td>
+<td class=grau><a href="plugins-mbsmacbaseplugin.html">MBS MacBase Plugin</a></td>
+<td class=grau><a href="newinversion103.shtml" class=version>10.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The Cocoa class to handle preferences.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> u <span style="color: #0000FF;">as</span> NSUserDefaultsMBS = NSUserDefaultsMBS.standardUserDefaults<br />u.setStringValue <span style="color: #6600FE;">&quot;test&quot;</span>, <span style="color: #6600FE;">&quot;Hello World&quot;</span><br />MsgBox u.stringForKey(<span style="color: #6600FE;">&quot;test&quot;</span>)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+The NSUserDefaults class provides a programmatic interface for interacting with the defaults system. The defaults system allows an application to customize its behavior to match a user&#39;s preferences. For example, you can allow users to determine what units of measurement your application displays or how often documents are automatically saved. Applications record such preferences by assigning values to a set of parameters in a user&#39;s defaults database. The parameters are referred to as defaults since they&#39;re commonly used to determine an application&#39;s default state at startup or the way it acts by default.<BR>
+<BR>
+At runtime, you use an NSUserDefaults object to read the defaults that your application uses from a user&#39;s defaults database. NSUserDefaults caches the information to avoid having to open the user&#39;s defaults database each time you need a default value. The synchronize method, which is automatically invoked at periodic intervals, keeps the in-memory cache in sync with a user&#39;s defaults database.<BR>
+<BR>
+The NSUserDefaults class provides convenience methods for accessing common types such as floats, doubles, integers, Booleans, and URLs. A default object must be a property list, that is, an instance of (or for collections a combination of instances of): NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary. If you want to store any other type of object, you should typically archive it to create an instance of NSData.<BR>
+<BR>
+Values returned from NSUserDefaults are immutable, even if you set a mutable object as the value. For example, if you set a mutable string as the value for &quot;MyStringDefault&quot;, the string you later retrieve using stringForKey will be immutable.<BR>
+<BR>
+A defaults database is created automatically for each user. The NSUserDefaults class does not currently support per-host preferences. To do this, you must use the <A href="class-cfpreferencesmbs.html">CFPreferencesMBS</A> class. However, NSUserDefaults correctly reads per-host preferences, so you can safely mix <A href="class-cfpreferencesmbs.html">CFPreferencesMBS</A> code with NSUserDefaultsMBS code.<BR>
+<BR>
+If your application supports managed environments, you can use an NSUserDefaults object to determine which preferences are managed by an administrator for the benefit of the user. Managed environments correspond to computer labs or classrooms where an administrator or teacher may want to configure the systems in a particular way. In these situations, the teacher can establish a set of default preferences and force those preferences on users. If a preference is managed in this manner, applications should prevent users from editing that preference by disabling any appropriate controls.<BR>
+<BR>
+The NSUserDefaults class is thread-safe.<BR>
+</div>
+<ul>
+<LI>10 properties<UL>
+<li class="M">property <A href="cocoa-nsuserdefaultsmbs-method.html#3">boolForKey</A>(key as string) as boolean</li>
+<li class="M">property <A href="cocoa-nsuserdefaultsmbs-method.html#6">dataForKey</A>(key as string) as memoryblock</li>
+<li class="M">property <A href="cocoa-nsuserdefaultsmbs-method.html#7">dictionaryForKey</A>(key as string) as dictionary</li>
+<li class="M">property <A href="cocoa-nsuserdefaultsmbs-method.html#9">doubleForKey</A>(key as string) as Double</li>
+<li class="M">property <A href="cocoa-nsuserdefaultsmbs-method.html#10">fileForKey</A>(key as string) as folderitem</li>
+<li class="M">property <A href="cocoa-nsuserdefaultsmbs-method.html#11">floatForKey</A>(key as string) as single</li>
+<li class="M">property <A href="cocoa-nsuserdefaultsmbs-method.html#12">integerForKey</A>(key as string) as Integer</li>
+<li class="M">property <A href="cocoa-nsuserdefaultsmbs-method1.html#8">stringForKey</A>(key as string) as string</li>
+<li class="M">property <A href="cocoa-nsuserdefaultsmbs-method1.html#10">URLForKey</A>(key as string) as string</li>
+<li class="M">property <A href="cocoa-nsuserdefaultsmbs-method1.html#11">variantForKey</A>(key as string) as Variant</li>
+</UL></LI>
+<LI>32 methods<UL>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method.html">addSuiteNamed</A>(suiteName as string)</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method.html#2">arrayForKey</A>(key as string) as Variant()</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method.html#4">Constructor</A></li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method.html#5">Constructor</A>(username as string)</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method.html#8">dictionaryRepresentation</A> as dictionary</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method.html#13">objectIsForcedForKey</A>(key as string) as boolean</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method.html#14">objectIsForcedForKey</A>(key as string, domain as string) as boolean</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method.html#15">persistentDomainForName</A>(domainName as string) as dictionary</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method.html#16">persistentDomainNames</A> as string()</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method.html#17">registerDefaults</A>(dic as dictionary)</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method.html#18">removeObjectForKey</A>(defaultName as string)</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method.html#19">removePersistentDomainForName</A>(domainName as string)</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method.html#20">removeSuiteNamed</A>(suiteName as string)</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method.html#21">removeVolatileDomainForName</A>(domainName as string)</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method.html#22">setArrayValue</A>(key as string, values() as Variant)</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method.html#23">setBoolValue</A>(key as string, value as boolean)</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method.html#24">setDataValue</A>(key as string, value as memoryblock)</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method.html#25">setDictionaryValue</A>(key as string, value as dictionary)</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method.html#26">setDoubleValue</A>(key as string, value as Double)</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method.html#27">setFileValue</A>(key as string, value as folderitem)</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method.html#28">setFloatValue</A>(key as string, value as single)</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method.html#29">setIntegerValue</A>(key as string, value as Integer)</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method1.html">setPersistentDomain</A>(domain as dictionary, domainName as string)</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method1.html#2">setStringArrayValue</A>(key as string, values() as string)</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method1.html#3">setStringValue</A>(key as string, value as string)</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method1.html#4">setURLValue</A>(key as string, value as string)</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method1.html#5">setVariantValue</A>(key as string, value as Variant)</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method1.html#6">setVolatileDomain</A>(domain as dictionary, domainName as string)</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method1.html#7">stringArrayForKey</A>(key as string) as string()</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method1.html#9">synchronize</A> as boolean</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method1.html#12">volatileDomainForName</A>(domainName as string) as dictionary</li>
+<li class="M">method <A href="cocoa-nsuserdefaultsmbs-method1.html#13">volatileDomainNames</A> as string()</li>
+</UL></LI>
+<LI>6 shared methods<UL>
+<li class="M">shared method <A href="cocoa-nsuserdefaultsmbs-shared-method.html">NSArgumentDomain</A> as string</li>
+<li class="M">shared method <A href="cocoa-nsuserdefaultsmbs-shared-method.html#2">NSGlobalDomain</A> as string</li>
+<li class="M">shared method <A href="cocoa-nsuserdefaultsmbs-shared-method.html#3">NSRegistrationDomain</A> as string</li>
+<li class="M">shared method <A href="cocoa-nsuserdefaultsmbs-shared-method.html#4">NSUserDefaultsDidChangeNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nsuserdefaultsmbs-shared-method.html#5">resetStandardUserDefaults</A></li>
+<li class="M">shared method <A href="cocoa-nsuserdefaultsmbs-shared-method.html#6">standardUserDefaults</A> as NSUserDefaultsMBS</li>
+</UL></LI>
+</ul>
+<p>This class has no sub classes.</p>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-maccocoa-nsuserdefaults.html">/MacCocoa/NSUserDefaults</A></li>
+<li class=""><A href="example-maccocoa-nsuserdefaultsdidchangenotificationtest.html">/MacCocoa/NSUserDefaultsDidChangeNotification Test</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2011-10-21/Important_note_for_Webkit_enab/monkeybreadsoftware_blog_xojo">Important note for Webkit enabled applications in the Mac App Store</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2010-06-15/MBS_Plugins_103_Release_Notes/monkeybreadsoftware_blog_xojo">MBS Plugins 10.3 Release Notes</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2010-05-25/MBS_REALbasic_Plugins_version_/monkeybreadsoftware_blog_xojo">MBS REALbasic Plugins, version 10.3pr6</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmacbaseplugin.html">MBS MacBase Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-nsuserautomatortaskmbs.html">NSUserAutomatorTaskMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-nsusernotificationactionmbs.html">NSUserNotificationActionMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-nsuserdefaultsmbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

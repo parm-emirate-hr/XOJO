@@ -1,0 +1,228 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Network/Bonjour/Find computer Console</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Network/Bonjour/Find computer Console</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Network/Bonjour/Find computer Console</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS Util Plugin, MBS Network Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Network/Bonjour/Find computer Console<BR>
+This example is the version from Sat, 9th Feb 2018.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Find</span> <span style="color:#6500FE">computer</span> <span style="color:#6500FE">Console.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> ConsoleApplication</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> Run(args() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+			print <span style="color:#6500FE">&quot;Press</span> <span style="color:#6500FE">control-C</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">quit.&quot;</span>
+			
+			StartBrowse <span style="color:#6500FE">&quot;_ftp._tcp&quot;</span>,<span style="color:#6500FE">&quot;FTP</span> <span style="color:#6500FE">Server&quot;</span>
+			StartBrowse <span style="color:#6500FE">&quot;_afpovertcp._tcp&quot;</span>,<span style="color:#6500FE">&quot;Apple</span> <span style="color:#6500FE">File</span> <span style="color:#6500FE">Sharing&quot;</span>
+			StartBrowse <span style="color:#6500FE">&quot;_nfs._tcp&quot;</span>,<span style="color:#6500FE">&quot;Network</span> <span style="color:#6500FE">File</span> <span style="color:#6500FE">System&quot;</span>
+			StartBrowse <span style="color:#6500FE">&quot;_http._tcp&quot;</span>,<span style="color:#6500FE">&quot;Webserver&quot;</span>
+			StartBrowse <span style="color:#6500FE">&quot;_printer._tcp&quot;</span>,<span style="color:#6500FE">&quot;Printer&quot;</span>
+			StartBrowse <span style="color:#6500FE">&quot;_ichat._tcp&quot;</span>,<span style="color:#6500FE">&quot;iChat</span> <span style="color:#6500FE">(old)&quot;</span>
+			StartBrowse <span style="color:#6500FE">&quot;_presence._tcp&quot;</span>,<span style="color:#6500FE">&quot;iChat&quot;</span>
+			StartBrowse <span style="color:#6500FE">&quot;_daap._tcp&quot;</span>,<span style="color:#6500FE">&quot;iTunes&quot;</span>
+			StartBrowse <span style="color:#6500FE">&quot;_dpap._tcp&quot;</span>,<span style="color:#6500FE">&quot;iPhoto&quot;</span>
+			StartBrowse <span style="color:#6500FE">&quot;_ipp._tcp&quot;</span>,<span style="color:#6500FE">&quot;Intenet</span> <span style="color:#6500FE">Printing</span> <span style="color:#6500FE">Protocol&quot;</span>
+			StartBrowse <span style="color:#6500FE">&quot;_pdl-datastream._tcp&quot;</span>,<span style="color:#6500FE">&quot;PDL</span> <span style="color:#6500FE">Data</span> <span style="color:#6500FE">Stream&quot;</span>
+			StartBrowse <span style="color:#6500FE">&quot;_distcc._tcp&quot;</span>,<span style="color:#6500FE">&quot;XCode&quot;</span>
+			StartBrowse <span style="color:#6500FE">&quot;_xserveraid._tcp&quot;</span>,<span style="color:#6500FE">&quot;XServe</span> <span style="color:#6500FE">RAID&quot;</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">do</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">give</span> <span style="color:#7F0000;text-style:italic">time</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">system</span> <span style="color:#7F0000;text-style:italic">threads</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">timers</span>
+				DelayMBS <span style="color:#006532">0.1</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">give</span> <span style="color:#7F0000;text-style:italic">time</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">RB</span> <span style="color:#7F0000;text-style:italic">timers,</span> <span style="color:#7F0000;text-style:italic">sockets</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">threads</span>
+				DoEvents
+			<span style="color:#0000FF;font-weight: bold">loop</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> ClearAddrInfos()
+			<span style="color:#0000FF;font-weight: bold">dim</span> u <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = UBound(addrinfos)
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = u <span style="color:#0000FF;font-weight: bold">downto</span> <span style="color:#326598">0</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> addrinfos(i).done <span style="color:#0000FF;font-weight: bold">then</span>
+					addrinfos.Remove i
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> ClearLookups()
+			<span style="color:#0000FF;font-weight: bold">dim</span> l <span style="color:#0000FF;font-weight: bold">as</span> MyLookup
+			<span style="color:#0000FF;font-weight: bold">dim</span> i,c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			
+			c=UBound(lookup)
+			<span style="color:#0000FF;font-weight: bold">for</span> i=c <span style="color:#0000FF;font-weight: bold">downto</span> <span style="color:#326598">0</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> lookup(i).done <span style="color:#0000FF;font-weight: bold">then</span>
+					lookup.Remove i
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> StartAddrInfo(name <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, type <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, domain <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, reason <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, hostname <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, port <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MyAddrInfo
+			
+			ClearAddrInfos
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> b.AddrInfo(<span style="color:#326598">0</span>, b.kProtocolIPv4, hostname) <span style="color:#0000FF;font-weight: bold">then</span>
+				b.Reason = reason
+				b.name = name
+				b.port = port
+				addrinfos.Append b
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Protected</span> <span style="color:#0000FF;font-weight: bold">Sub</span> StartBrowse(typ <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, reason <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> MyBrowser
+			
+			b=<span style="color:#0000FF;font-weight: bold">new</span> MyBrowser
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> b.Browse(b.kInterfaceIndexAny, typ, <span style="color:#6500FE">&quot;&quot;</span>) <span style="color:#0000FF;font-weight: bold">then</span>
+				b.Reason=reason
+				browser.Append b
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				print <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">init</span> <span style="color:#6500FE">browser</span> <span style="color:#6500FE">for</span> <span style="color:#6500FE">&quot;</span>+typ
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> StartLookup(name <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, type <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, domain <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, reason <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> MyLookup
+			
+			ClearLookups
+			b=<span style="color:#0000FF;font-weight: bold">new</span> MyLookup
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> b.Resolve(b.kInterfaceIndexAny, name, type, domain) <span style="color:#0000FF;font-weight: bold">then</span>
+				b.Reason = reason
+				b.name = name
+				b.type = type
+				b.domain = domain
+				lookup.Append b
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> addrinfos() <span style="color:#0000FF;font-weight: bold">As</span> MyAddrInfo</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> browser() <span style="color:#0000FF;font-weight: bold">As</span> MyBrowser</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> lookup() <span style="color:#0000FF;font-weight: bold">As</span> MyLookup</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyLookup <span style="color:#0000FF;font-weight: bold">Inherits</span> DNSServiceResolveMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> ServiceResolve(flags <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, InterfaceIndex <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, ErrorCode <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, Fullname <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, Hosttarget <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, Port <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, TxtRecord <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			print <span style="color:#6500FE">&quot;Service</span> <span style="color:#6500FE">found:</span> <span style="color:#6500FE">&quot;</span>+name+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">host:</span> <span style="color:#6500FE">&quot;</span>+Hosttarget
+			
+			app.StartAddrInfo name, type, domain, reason, Hosttarget, port
+			
+			done = (BitwiseAnd(flags, <span style="color:#0000FF;font-weight: bold">me</span>.kFlagsMoreComing) = <span style="color:#326598">0</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> domain <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> done <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> name <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> reason <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> type <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyBrowser <span style="color:#0000FF;font-weight: bold">Inherits</span> DNSServiceBrowseMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> ServiceBrowse(Flags <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, InterfaceIndex <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, ErrorCode <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, ServiceName <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, RegType <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, Domain <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			<span style="color:#0000FF;font-weight: bold">const</span> kDNSServiceFlagsAdd=<span style="color:#326598">2</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			
+			f=BitwiseAnd(Flags, kDNSServiceFlagsAdd)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> f&lt;&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">added</span>
+				
+				app.StartLookup ServiceName,RegType,domain,reason
+				
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">removed</span>
+				
+				print <span style="color:#6500FE">&quot;Service</span> <span style="color:#6500FE">gone:&quot;</span>
+				print <span style="color:#6500FE">&quot;Name:</span>   <span style="color:#6500FE">&quot;</span>+ServiceName
+				print <span style="color:#6500FE">&quot;Type:</span>   <span style="color:#6500FE">&quot;</span>+reason
+				print <span style="color:#6500FE">&quot;Domain:</span> <span style="color:#6500FE">&quot;</span>+domain
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> reason <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyAddrInfo <span style="color:#0000FF;font-weight: bold">Inherits</span> DNSServiceAddrInfoMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> ServiceAddrInfo(Flags <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, InterfaceIndex <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, ErrorCode <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, AddressFamily <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, IP <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, SockAddr <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock, HostName <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, ttl <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> IPs.HasKey(IP) <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">avoid</span> <span style="color:#7F0000;text-style:italic">duplicates</span>
+				
+				print HostName+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">-&gt;</span> <span style="color:#6500FE">&quot;</span>+IP+<span style="color:#6500FE">&quot;:&quot;</span>+str(port)
+				
+				IPS.Value(IP) = <span style="color:#0000FF;font-weight: bold">nil</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			done = (BitwiseAnd(flags, <span style="color:#0000FF;font-weight: bold">me</span>.kFlagsMoreComing) = <span style="color:#326598">0</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor()
+			IPs = <span style="color:#0000FF;font-weight: bold">new</span> Dictionary
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> IPs <span style="color:#0000FF;font-weight: bold">As</span> Dictionary</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> done <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> name <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> port <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> reason <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-network-bonjour-findcomputer.html">/Network/Bonjour/Find computer</A></li>
+<li><A href="example-network-bonjour-findcomputerinnetwork.html">/Network/Bonjour/Find computer in Network</A></li>
+<li><A href="example-network-bonjour-findcomputerios.html">/Network/Bonjour/Find Computer iOS</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsnetworkplugin.html">MBS Network Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-network-bonjour-findcomputerconsole">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

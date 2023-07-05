@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Bluetooth/Windows Bluetooth/Windows Bluetooth</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Bluetooth/Windows Bluetooth/Windows Bluetooth</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Bluetooth/Windows Bluetooth/Windows Bluetooth</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS Bluetooth Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Bluetooth/Windows Bluetooth/Windows Bluetooth<BR>
+This example is the version from Sun, 23th Jun 2018.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Windows</span> <span style="color:#6500FE">Bluetooth.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MainWindow <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> ExpandRow(row <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+				<span style="color:#0000FF;font-weight: bold">dim</span> v <span style="color:#0000FF;font-weight: bold">as</span> Variant = <span style="color:#0000FF;font-weight: bold">me</span>.RowTag(row)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> v <span style="color:#0000FF;font-weight: bold">isa</span> WindowsBlueToothDeviceInfoMBS <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> WindowsBlueToothDeviceInfoMBS = v
+					
+					List.AddRow <span style="color:#6500FE">&quot;Address&quot;</span>, d.Address
+					List.AddRow <span style="color:#6500FE">&quot;Authenticated&quot;</span>, YesNo(d.Authenticated)
+					List.AddRow <span style="color:#6500FE">&quot;ClassofDevice&quot;</span>, str(d.ClassofDevice)
+					List.AddRow <span style="color:#6500FE">&quot;Connected&quot;</span>, YesNo(d.Connected)
+					List.AddRow <span style="color:#6500FE">&quot;LastSeen&quot;</span>, d.LastSeen.LongDate
+					List.AddRow <span style="color:#6500FE">&quot;LastUsed&quot;</span>, d.LastUsed.LongDate
+					List.AddRow <span style="color:#6500FE">&quot;Name&quot;</span>, d.Name
+					List.AddRow <span style="color:#6500FE">&quot;Remembered&quot;</span>, YesNo(d.Remembered)
+					
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> v <span style="color:#0000FF;font-weight: bold">isa</span> WindowsBlueToothRadioMBS <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> WindowsBlueToothRadioMBS = v
+					<span style="color:#0000FF;font-weight: bold">dim</span> i <span style="color:#0000FF;font-weight: bold">as</span> WindowsBlueToothRadioInfoMBS = d.Info
+					
+					List.AddRow <span style="color:#6500FE">&quot;Address&quot;</span>, i.Address
+					List.AddRow <span style="color:#6500FE">&quot;Name&quot;</span>, i.Name
+					List.AddRow <span style="color:#6500FE">&quot;Manufacturer</span> <span style="color:#6500FE">ID&quot;</span>, str(i.manufacturer)
+					List.AddRow <span style="color:#6500FE">&quot;Subversion&quot;</span>, str(i.Subversion)
+					
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control SelectButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance SelectButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> WindowsBlueToothSelectDeviceDialogMBS
+				
+				d.Parent = <span style="color:#0000FF;font-weight: bold">self</span>
+				d.Info = <span style="color:#6500FE">&quot;Please</span> <span style="color:#6500FE">pick</span> <span style="color:#6500FE">device&quot;</span>
+				d.ShowAuthenticated = <span style="color:#0000FF;font-weight: bold">true</span>
+				d.ShowRemembered = <span style="color:#0000FF;font-weight: bold">true</span>
+				d.ShowUnknown = <span style="color:#0000FF;font-weight: bold">true</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> d.ShowDialog <span style="color:#0000FF;font-weight: bold">then</span>
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> devices() <span style="color:#0000FF;font-weight: bold">as</span> WindowsBlueToothDeviceInfoMBS = d.Devices
+					<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> dev <span style="color:#0000FF;font-weight: bold">as</span> WindowsBlueToothDeviceInfoMBS <span style="color:#0000FF;font-weight: bold">in</span> devices
+						
+						add dev
+						
+					<span style="color:#0000FF;font-weight: bold">next</span>
+					
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#0000FF;font-weight: bold">dim</span> radios() <span style="color:#0000FF;font-weight: bold">as</span> WindowsBlueToothRadioMBS = WindowsBlueToothRadioMBS.Radios
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> radio <span style="color:#0000FF;font-weight: bold">as</span> WindowsBlueToothRadioMBS <span style="color:#0000FF;font-weight: bold">in</span> radios
+				add Radio
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> SearchParameter <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> WindowsBlueToothDeviceSearchParameterMBS
+			SearchParameter.ReturnAuthenticated = <span style="color:#0000FF;font-weight: bold">true</span>
+			SearchParameter.ReturnConnected = <span style="color:#0000FF;font-weight: bold">true</span>
+			SearchParameter.ReturnRemembered = <span style="color:#0000FF;font-weight: bold">true</span>
+			SearchParameter.ReturnUnknown = <span style="color:#0000FF;font-weight: bold">true</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> Devices() <span style="color:#0000FF;font-weight: bold">as</span> WindowsBlueToothDeviceInfoMBS = WindowsBlueToothDeviceInfoMBS.Devices
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> Device <span style="color:#0000FF;font-weight: bold">as</span> WindowsBlueToothDeviceInfoMBS <span style="color:#0000FF;font-weight: bold">in</span> Devices
+				add Device
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Add(dev <span style="color:#0000FF;font-weight: bold">as</span> WindowsBlueToothDeviceInfoMBS)
+			List.AddFolder <span style="color:#6500FE">&quot;Device&quot;</span>
+			List.cell(List.LastIndex, <span style="color:#326598">1</span>) = dev.Name
+			List.RowTag(List.LastIndex) = dev
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Add(dev <span style="color:#0000FF;font-weight: bold">as</span> WindowsBlueToothRadioMBS)
+			List.AddFolder <span style="color:#6500FE">&quot;Radio&quot;</span>
+			List.cell(List.LastIndex, <span style="color:#326598">1</span>) = dev.Info.Name
+			List.RowTag(List.LastIndex) = dev
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Shared</span> <span style="color:#0000FF;font-weight: bold">Function</span> YesNo(b <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> b <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;yes&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;no&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MainMenuBar</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator2 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-bluetooth-windowsbluetooth-bluetoothleheartratewin.html">/Bluetooth/Windows Bluetooth/Bluetooth LE Heart Rate Win</A></li>
+<li><A href="example-bluetooth-windowsbluetooth-windowsbledevices.html">/Bluetooth/Windows Bluetooth/Windows BLE Devices</A></li>
+<li><A href="example-bluetooth-windowsbluetooth-windowsbluetoothservices.html">/Bluetooth/Windows Bluetooth/Windows Bluetooth Services</A></li>
+<li><A href="example-bluetooth-windowsbluetooth-windowsbluetoothsocket.html">/Bluetooth/Windows Bluetooth/Windows Bluetooth Socket</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsbluetoothplugin.html">MBS Bluetooth Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-bluetooth-windowsbluetooth-windowsbluetooth">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

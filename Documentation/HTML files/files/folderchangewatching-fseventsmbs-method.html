@@ -1,0 +1,716 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - FSEventsMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="FSEventsMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">FSEventsMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-fseventsmbs.html">FSEventsMBS</a> class.  </p>
+<div class="M">
+<b><a href="class-fseventsmbs.html">FSEventsMBS</a>.<A name="1">Constructor(DeviceToWatch as Integer, path as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-folderchangewatching.html" translate="no">Folder Change Watching</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion84.shtml" class=version>8.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a new FS event stream object for a particular device with the given parameters. <BR>
+<B>Notes:</B> 
+<BR>
+In order to start receiving callbacks you must also call Start().<BR>
+<BR>
+deviceToWatch:   <BR>
+A dev_t corresponding to the device which you want to receive  notifications from. Use GetDeviceID to get such a device ID.<BR>
+<BR>
+pathsToWatchRelativeToDevice:   <BR>
+A string, specifying a relative path to a directory on the device identified by the dev parameter. The path should be relative to the root of the device.  For example, if a volume &quot;MyData&quot; is mounted at &quot;/Volumes/MyData&quot; and you want to watch &quot;/Volumes/MyData/Pictures/July&quot;, specify a path string of &quot;Pictures/July&quot;. To watch the root of a volume pass a path of &quot;&quot; (the empty string).  <BR>
+<BR>
+sinceWhen: <BR>
+The service will supply events that have happened after the given event ID. To ask for events &quot;since now&quot; pass the constant kFSEventStreamEventIdSinceNow. Often, clients will supply the highest-numbered FSEventStreamEventId they have received in a callback, which they can obtain via the GetLatestEventId() accessor. Do not pass zero for sinceWhen, unless you want to receive events for every directory modified since &quot;the beginning of time&quot; -- an unlikely   scenario.  <BR>
+<BR>
+latency: <BR>
+The number of seconds the service should wait after hearing about an event from the kernel before passing it along to the client via its event. Specifying a larger value may result in more effective temporal coalescing, resulting in fewer callbacks.  <BR>
+<BR>
+flags:   <BR>
+Flags that modify the behavior of the stream being created.<BR>
+<BR>
+On success the handle property is not 0.<BR>
+<p>See also:<ul>
+<li><A href="folderchangewatching-fseventsmbs-method.html#2">Constructor(DeviceToWatch as Integer, paths() as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#3">Constructor(path as folderitem, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#4">Constructor(path as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#5">Constructor(paths() as folderitem, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#6">Constructor(paths() as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-fseventsmbs.html">FSEventsMBS</a>.<A name="2">Constructor(DeviceToWatch as Integer, paths() as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-folderchangewatching.html" translate="no">Folder Change Watching</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion84.shtml" class=version>8.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a new FS event stream object with the given parameters.<BR>
+<B>Notes:</B> 
+<BR>
+In order to start receiving callbacks you must also call Start.<BR>
+<BR>
+paths: The folders you want to watch. (more exactly the root folders of the folder hierarchies you want to watch)<BR>
+sinceWhen: The service will supply events that have happened after the given event ID. To ask for events &quot;since now&quot; pass the constant kFSEventStreamEventIdSinceNow. Often, clients will supply the highest-numbered FSEventStreamEventId they have received in a callback, which they can obtain via the GetLatestEventId() accessor. Do not pass zero for sinceWhen, unless you want to receive events for every directory modified since &quot;the beginning of time&quot; -- an unlikely scenario.<BR>
+latency:  The number of seconds the service should wait after hearing about an event from the kernel before passing it along to the client via its callback. Specifying a larger value may result in more effective temporal coalescing, resulting in fewer callbacks and greater overall efficiency.<BR>
+flags: Flags that modify the behavior of the stream being created.<BR>
+<p>See also:<ul>
+<li><A href="folderchangewatching-fseventsmbs-method.html">Constructor(DeviceToWatch as Integer, path as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#3">Constructor(path as folderitem, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#4">Constructor(path as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#5">Constructor(paths() as folderitem, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#6">Constructor(paths() as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-fseventsmbs.html">FSEventsMBS</a>.<A name="3">Constructor(path as folderitem, sinceWhen as UInt64, latency as Double, flags as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-folderchangewatching.html" translate="no">Folder Change Watching</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion81.shtml" class=version>8.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a new FS event stream object with the given parameters.<BR>
+<B>Notes:</B> 
+<BR>
+In order to start receiving callbacks you must also call Start.<BR>
+<BR>
+path: The folder you want to watch. (more exactly the root folder of the folder hierarchie you want to watch)<BR>
+sinceWhen: The service will supply events that have happened after the given event ID. To ask for events &quot;since now&quot; pass the constant kFSEventStreamEventIdSinceNow. Often, clients will supply the highest-numbered FSEventStreamEventId they have received in a callback, which they can obtain via the GetLatestEventId() accessor. Do not pass zero for sinceWhen, unless you want to receive events for every directory modified since &quot;the beginning of time&quot; -- an unlikely scenario.<BR>
+latency:  The number of seconds the service should wait after hearing about an event from the kernel before passing it along to the client via its callback. Specifying a larger value may result in more effective temporal coalescing, resulting in fewer callbacks and greater overall efficiency.<BR>
+flags: Flags that modify the behavior of the stream being created.<BR>
+<p>See also:<ul>
+<li><A href="folderchangewatching-fseventsmbs-method.html">Constructor(DeviceToWatch as Integer, path as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#2">Constructor(DeviceToWatch as Integer, paths() as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#4">Constructor(path as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#5">Constructor(paths() as folderitem, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#6">Constructor(paths() as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-fseventsmbs.html">FSEventsMBS</a>.<A name="4">Constructor(path as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-folderchangewatching.html" translate="no">Folder Change Watching</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion84.shtml" class=version>8.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a new FS event stream object with the given parameters.<BR>
+<B>Notes:</B> 
+<BR>
+In order to start receiving callbacks you must also call Start.<BR>
+<BR>
+path: The folder you want to watch. (more exactly the root folder of the folder hierarchie you want to watch)<BR>
+sinceWhen: The service will supply events that have happened after the given event ID. To ask for events &quot;since now&quot; pass the constant kFSEventStreamEventIdSinceNow. Often, clients will supply the highest-numbered FSEventStreamEventId they have received in a callback, which they can obtain via the GetLatestEventId() accessor. Do not pass zero for sinceWhen, unless you want to receive events for every directory modified since &quot;the beginning of time&quot; -- an unlikely scenario.<BR>
+latency:  The number of seconds the service should wait after hearing about an event from the kernel before passing it along to the client via its callback. Specifying a larger value may result in more effective temporal coalescing, resulting in fewer callbacks and greater overall efficiency.<BR>
+flags: Flags that modify the behavior of the stream being created.<BR>
+<p>See also:<ul>
+<li><A href="folderchangewatching-fseventsmbs-method.html">Constructor(DeviceToWatch as Integer, path as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#2">Constructor(DeviceToWatch as Integer, paths() as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#3">Constructor(path as folderitem, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#5">Constructor(paths() as folderitem, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#6">Constructor(paths() as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-fseventsmbs.html">FSEventsMBS</a>.<A name="5">Constructor(paths() as folderitem, sinceWhen as UInt64, latency as Double, flags as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-folderchangewatching.html" translate="no">Folder Change Watching</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion81.shtml" class=version>8.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a new FS event stream object with the given parameters.<BR>
+<B>Notes:</B> 
+<BR>
+In order to start receiving callbacks you must also call Start.<BR>
+<BR>
+paths: The folders you want to watch. (more exactly the root folders of the folder hierarchies you want to watch)<BR>
+sinceWhen: The service will supply events that have happened after the given event ID. To ask for events &quot;since now&quot; pass the constant kFSEventStreamEventIdSinceNow. Often, clients will supply the highest-numbered FSEventStreamEventId they have received in a callback, which they can obtain via the GetLatestEventId() accessor. Do not pass zero for sinceWhen, unless you want to receive events for every directory modified since &quot;the beginning of time&quot; -- an unlikely scenario.<BR>
+latency:  The number of seconds the service should wait after hearing about an event from the kernel before passing it along to the client via its callback. Specifying a larger value may result in more effective temporal coalescing, resulting in fewer callbacks and greater overall efficiency.<BR>
+flags: Flags that modify the behavior of the stream being created.<BR>
+<p>See also:<ul>
+<li><A href="folderchangewatching-fseventsmbs-method.html">Constructor(DeviceToWatch as Integer, path as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#2">Constructor(DeviceToWatch as Integer, paths() as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#3">Constructor(path as folderitem, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#4">Constructor(path as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#6">Constructor(paths() as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-fseventsmbs.html">FSEventsMBS</a>.<A name="6">Constructor(paths() as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-folderchangewatching.html" translate="no">Folder Change Watching</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion84.shtml" class=version>8.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a new FS event stream object for a particular device with the given parameters. <BR>
+<B>Notes:</B> 
+<BR>
+In order to start receiving callbacks you must also call Start().<BR>
+<BR>
+deviceToWatch:   <BR>
+A dev_t corresponding to the device which you want to receive  notifications from. Use GetDeviceID to get such a device ID.<BR>
+<BR>
+pathsToWatchRelativeToDevice:   <BR>
+An array of strings, each specifying a relative path to a directory on the device identified by the dev parameter. The paths should be relative to the root of the device.  For example, if a volume &quot;MyData&quot; is mounted at &quot;/Volumes/MyData&quot; and you want to watch &quot;/Volumes/MyData/Pictures/July&quot;, specify a path string of &quot;Pictures/July&quot;. To watch the root of a volume pass a path of &quot;&quot; (the empty string).  <BR>
+<BR>
+sinceWhen: <BR>
+The service will supply events that have happened after the given event ID. To ask for events &quot;since now&quot; pass the constant kFSEventStreamEventIdSinceNow. Often, clients will supply the highest-numbered FSEventStreamEventId they have received in a callback, which they can obtain via the GetLatestEventId() accessor. Do not pass zero for sinceWhen, unless you want to receive events for every directory modified since &quot;the beginning of time&quot; -- an unlikely   scenario.  <BR>
+<BR>
+latency: <BR>
+The number of seconds the service should wait after hearing about an event from the kernel before passing it along to the client via its event. Specifying a larger value may result in more effective temporal coalescing, resulting in fewer callbacks.  <BR>
+<BR>
+flags:   <BR>
+Flags that modify the behavior of the stream being created.<BR>
+<BR>
+On success the handle property is not 0.<BR>
+<p>See also:<ul>
+<li><A href="folderchangewatching-fseventsmbs-method.html">Constructor(DeviceToWatch as Integer, path as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#2">Constructor(DeviceToWatch as Integer, paths() as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#3">Constructor(path as folderitem, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#4">Constructor(path as string, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+<li><A href="folderchangewatching-fseventsmbs-method.html#5">Constructor(paths() as folderitem, sinceWhen as UInt64, latency as Double, flags as Integer)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-fseventsmbs.html">FSEventsMBS</a>.<A name="7">Description as string</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-folderchangewatching.html" translate="no">Folder Change Watching</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion81.shtml" class=version>8.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns a string containing the description of the stream. <BR>
+<B>Notes:</B> 
+For debugging only.<BR>
+</div>
+<div class="M">
+<b><a href="class-fseventsmbs.html">FSEventsMBS</a>.<A name="8">DeviceBeingWatched as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-folderchangewatching.html" translate="no">Folder Change Watching</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion84.shtml" class=version>8.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Fetches the dev_t supplied when the stream was created using a Device ID.<BR>
+<B>Notes:</B> 
+Returns 0 if there was an error.<BR>
+</div>
+<div class="M">
+<b><a href="class-fseventsmbs.html">FSEventsMBS</a>.<A name="9">ExclusionPaths as String()</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-folderchangewatching.html" translate="no">Folder Change Watching</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion160.shtml" class=version>16.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Queries exclusion paths.<BR>
+</div>
+<div class="M">
+<b><a href="class-fseventsmbs.html">FSEventsMBS</a>.<A name="10">FlushAsync as UInt64</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-folderchangewatching.html" translate="no">Folder Change Watching</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion81.shtml" class=version>8.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Flushes all events.<BR>
+<B>Notes:</B> 
+<BR>
+Asks the FS Events service to flush out any events that have occurred but have not yet been delivered, due to the latency parameter that was supplied when the stream was created.  This flushing occurs asynchronously -- do not expect the events to have already been delivered by the time this call returns. FlushAsync() can only be called after the stream has been started, via Start().<BR>
+<BR>
+Returns The largest event id of any event ever queued for this stream, otherwise zero if no events have been queued for this stream.<BR>
+</div>
+<div class="M">
+<b><a href="class-fseventsmbs.html">FSEventsMBS</a>.<A name="11">FlushSync</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-folderchangewatching.html" translate="no">Folder Change Watching</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion81.shtml" class=version>8.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Flushes all events.<BR>
+<B>Notes:</B> 
+Asks the FS Events service to flush out any events that have occurred but have not yet been delivered, due to the latency parameter that was supplied when the stream was created.  This flushing occurs synchronously -- by the time this call returns, your callback will have been invoked for every event that had already occurred at the time you made this call. FlushSync() can only be called after the stream has been started, via Start().<BR>
+</div>
+<div class="M">
+<b><a href="class-fseventsmbs.html">FSEventsMBS</a>.<A name="12">GetLatestEventId as UInt64</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-folderchangewatching.html" translate="no">Folder Change Watching</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion81.shtml" class=version>8.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Fetches the sinceWhen property of the stream. <BR>
+<B>Notes:</B> 
+Upon receiving an event (and just before invoking the client&#39;s callback) this attribute is updated to the highest-numbered event ID mentioned in the event.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-maccontrols-listboxandtableviewdemos-nsoutlineview-diskbrowser.html">/MacControls/Listbox and TableView Demos/NSOutlineView/Disk Browser</A></li>
+<li><A href="example-macframeworks-fsevents-fseventsmbsdemo.html">/MacFrameworks/FSEvents/FSEventsMBS Demo</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-fseventsmbs.html">FSEventsMBS</a>.<A name="13">PathsBeingWatched as String()</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-folderchangewatching.html" translate="no">Folder Change Watching</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion84.shtml" class=version>8.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns an array with the paths being watched.<BR>
+<B>Notes:</B> 
+Works only on the RB Versions which support arry creation in plugins.<BR>
+</div>
+<div class="M">
+<b><a href="class-fseventsmbs.html">FSEventsMBS</a>.<A name="14">SetExclusionPaths(paths() as String) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-folderchangewatching.html" translate="no">Folder Change Watching</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion160.shtml" class=version>16.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Sets the exclusion paths.<BR>
+<B>Notes:</B> 
+<BR>
+Sets directories to be filtered from the EventStream.<BR>
+A maximum of 8 directories maybe specified.<BR>
+<BR>
+Requires OS X 10.9 or newer.<BR>
+Returns true on success or false on failure.<BR>
+</div>
+<div class="M">
+<b><a href="class-fseventsmbs.html">FSEventsMBS</a>.<A name="15">Show</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-folderchangewatching.html" translate="no">Folder Change Watching</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion81.shtml" class=version>8.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Prints a description of the supplied stream to stderr.<BR>
+<B>Notes:</B> 
+For debugging only.<BR>
+</div>
+<div class="M">
+<b><a href="class-fseventsmbs.html">FSEventsMBS</a>.<A name="16">Start as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-folderchangewatching.html" translate="no">Folder Change Watching</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion81.shtml" class=version>8.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Attempts to register with the FS Events service to receive events per the parameters in the stream. <BR>
+<B>Notes:</B> 
+<BR>
+Once started, the stream can be stopped via Stop().<BR>
+<BR>
+Returns true if it succeeds, otherwise False if it fails.  It ought to always succeed, but in the event it does not then your code should fall back to performing recursive scans of the directories of interest as appropriate.<BR>
+</div>
+<div class="M">
+<b><a href="class-fseventsmbs.html">FSEventsMBS</a>.<A name="17">Stop</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-folderchangewatching.html" translate="no">Folder Change Watching</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion81.shtml" class=version>8.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Unregisters with the FS Events service.  <BR>
+<B>Notes:</B> 
+The client callback will  not be called for this stream while it is stopped.  Stop() can only be called if the stream has been  started, via Start(). Once stopped, the stream can  be restarted via Start(), at which point it will  resume receiving events from where it left off (&quot;sinceWhen&quot;).<BR>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=folderchangewatching-fseventsmbs-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /DynaPDF/OptimizePDF tool</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /DynaPDF/OptimizePDF tool</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/DynaPDF/OptimizePDF tool</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS DynaPDF Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /DynaPDF/OptimizePDF tool<BR>
+This example is the version from Sun, 21th Jan 2017.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;OptimizePDF</span> <span style="color:#6500FE">tool.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> ConsoleApplication</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> Run(args() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">This</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">command</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">tool</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">optimize</span> <span style="color:#7F0000;text-style:italic">PDFs</span> <span style="color:#7F0000;text-style:italic">automatically</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> UBound(args) &lt; <span style="color:#326598">2</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				print <span style="color:#6500FE">&quot;OptimizePDF</span> <span style="color:#6500FE">InputFile</span> <span style="color:#6500FE">OutputFile&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">2</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> InputPath  <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = args(<span style="color:#326598">1</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> OutputPath <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = args(<span style="color:#326598">2</span>)
+			
+			<span style="color:#0000FF">#if</span> RBVersion &lt; <span style="color:#326598">2013</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> InputFile  <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = GetFolderItem(InputPath,  FolderItem.PathTypeShell)
+				<span style="color:#0000FF;font-weight: bold">dim</span> OutputFile <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = GetFolderItem(OutputPath, FolderItem.PathTypeShell)
+			<span style="color:#0000FF">#else</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> InputFile  <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = GetFolderItem(InputPath,  FolderItem.PathTypeNative)
+				<span style="color:#0000FF;font-weight: bold">dim</span> OutputFile <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = GetFolderItem(OutputPath, FolderItem.PathTypeNative)
+			<span style="color:#0000FF">#endif</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> InputFile = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				print <span style="color:#6500FE">&quot;Invalid</span> <span style="color:#6500FE">file</span> <span style="color:#6500FE">path:</span> <span style="color:#6500FE">&quot;</span>+InputPath
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">3</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> Process(inputFile, outputFile) <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> UnhandledException(error <span style="color:#0000FF;font-weight: bold">As</span> RuntimeException) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			print CurrentMethodName
+			print Introspection.GetType(error).fullname
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> Process(InputFile <span style="color:#0000FF;font-weight: bold">as</span> FolderItem, OutputFile <span style="color:#0000FF;font-weight: bold">as</span> FolderItem) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> pdf <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MyDynapdfMBS
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">pdf.SetLicenseKey</span> <span style="color:#7F0000;text-style:italic">&quot;Pro&quot;</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">For</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">example</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">Pro</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">Enterprise</span> <span style="color:#7F0000;text-style:italic">License</span>
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CreateNewPDF <span style="color:#0000FF;font-weight: bold">nil</span>
+			
+			<span style="color:#7F0000;text-style:italic">///</span> <span style="color:#7F0000;text-style:italic">If</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">imported</span> <span style="color:#7F0000;text-style:italic">document</span> <span style="color:#7F0000;text-style:italic">should</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">edited</span> <span style="color:#7F0000;text-style:italic">then</span> <span style="color:#7F0000;text-style:italic">avoid</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">conversion</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">pages</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">templates</span> <span style="color:#7F0000;text-style:italic">(see</span> <span style="color:#7F0000;text-style:italic">SetImportFlags()</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">further</span> <span style="color:#7F0000;text-style:italic">information).</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetImportFlags(bitwiseOr(pdf.kifImportAll, pdf.kifImportAsPage))
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">import</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">remove</span> <span style="color:#7F0000;text-style:italic">duplicates</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">images,</span> <span style="color:#7F0000;text-style:italic">colorspaces,</span> <span style="color:#7F0000;text-style:italic">templates</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">pattern</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">flag</span> <span style="color:#7F0000;text-style:italic">if2UseProxy</span> <span style="color:#7F0000;text-style:italic">reduces</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">memory</span> <span style="color:#7F0000;text-style:italic">usage.</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">duplicate</span> <span style="color:#7F0000;text-style:italic">check</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">optional</span> <span style="color:#7F0000;text-style:italic">but</span> <span style="color:#7F0000;text-style:italic">recommended.</span>
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetImportFlags2(bitwiseOr(pdf.kif2UseProxy, pdf.kif2DuplicateCheck))
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Import</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">PDF</span> <span style="color:#7F0000;text-style:italic">file</span> <span style="color:#7F0000;text-style:italic">so</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">edited</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> pdf.OpenImportFile(InputFile) &lt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">false</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> pageCount <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = pdf.ImportPDFFile(<span style="color:#326598">1</span>, <span style="color:#006532">1.0</span>, <span style="color:#006532">1.0</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">If</span> <span style="color:#7F0000;text-style:italic">DestPage</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">1,</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">return</span> <span style="color:#7F0000;text-style:italic">value</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">number</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">pages</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> pageCount &lt;= <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">false</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CloseImportFile
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">It</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">allowed</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">call</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">function</span> <span style="color:#7F0000;text-style:italic">twice</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">same</span> <span style="color:#7F0000;text-style:italic">document</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">memory!</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">In</span> <span style="color:#7F0000;text-style:italic">addition,</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">either</span> <span style="color:#7F0000;text-style:italic">optimize</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">entire</span> <span style="color:#7F0000;text-style:italic">PDF</span> <span style="color:#7F0000;text-style:italic">file</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">nothing.</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Note</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">function</span> <span style="color:#7F0000;text-style:italic">requires</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">DynaPDF</span> <span style="color:#7F0000;text-style:italic">Pro.</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> flags <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = Bitwise.BitOr(_
+					pdf.kofInMemory, _ <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Optimize</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">file</span> <span style="color:#7F0000;text-style:italic">fully</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">memory.</span> <span style="color:#7F0000;text-style:italic">Only</span> <span style="color:#7F0000;text-style:italic">useful</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">small</span> <span style="color:#7F0000;text-style:italic">PDF</span> <span style="color:#7F0000;text-style:italic">files.</span>
+					pdf.kofNewLinkNames, _ <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">If</span> <span style="color:#7F0000;text-style:italic">set,</span> <span style="color:#7F0000;text-style:italic">rename</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">object</span> <span style="color:#7F0000;text-style:italic">links</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">short</span> <span style="color:#7F0000;text-style:italic">names</span> <span style="color:#7F0000;text-style:italic">like</span> <span style="color:#7F0000;text-style:italic">F1,</span> <span style="color:#7F0000;text-style:italic">F2</span> <span style="color:#7F0000;text-style:italic">etc.</span>
+					pdf.kofDeleteInvPaths, _ <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Delete</span> <span style="color:#7F0000;text-style:italic">invisible</span> <span style="color:#7F0000;text-style:italic">paths.</span>
+					pdf.kofDeletePrivateData, _ <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Delete</span> <span style="color:#7F0000;text-style:italic">private</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">objects</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">pages,</span> <span style="color:#7F0000;text-style:italic">templates,</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">images.</span>
+					pdf.kofIgnoreZeroLineWidth, _
+					pdf.kofDeleteAlternateImages, _ <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">If</span> <span style="color:#7F0000;text-style:italic">set,</span> <span style="color:#7F0000;text-style:italic">alternate</span> <span style="color:#7F0000;text-style:italic">images</span> <span style="color:#7F0000;text-style:italic">will</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">deleted.</span>
+					pdf.kofDeleteThumbnails) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Thumbnails</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">deleted</span> <span style="color:#7F0000;text-style:italic">since</span> <span style="color:#7F0000;text-style:italic">PDF</span> <span style="color:#7F0000;text-style:italic">viewers</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">create</span> <span style="color:#7F0000;text-style:italic">thumbnails</span> <span style="color:#7F0000;text-style:italic">easily</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">demand.</span>
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">pdf.kofInMemory</span>          <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Optimize</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">file</span> <span style="color:#7F0000;text-style:italic">fully</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">memory.</span> <span style="color:#7F0000;text-style:italic">Only</span> <span style="color:#7F0000;text-style:italic">useful</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">small</span> <span style="color:#7F0000;text-style:italic">PDF</span> <span style="color:#7F0000;text-style:italic">files.</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">pdf.kofConvertAllColors</span>  <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">If</span> <span style="color:#7F0000;text-style:italic">set,</span> <span style="color:#7F0000;text-style:italic">Separation,</span> <span style="color:#7F0000;text-style:italic">DeviceN,</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">NChannel</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">spaces</span> <span style="color:#7F0000;text-style:italic">will</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">converted</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">device</span> <span style="color:#7F0000;text-style:italic">space.</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">pdf.kofIgnoreICCBased</span>    <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">If</span> <span style="color:#7F0000;text-style:italic">set,</span> <span style="color:#7F0000;text-style:italic">ICCBased</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">spaces</span> <span style="color:#7F0000;text-style:italic">will</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">left</span> <span style="color:#7F0000;text-style:italic">unchanged.</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">pdf.kofScaleImages</span>       <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Scale</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">images</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">pdf.kofNewLinkNames</span>      <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">If</span> <span style="color:#7F0000;text-style:italic">set,</span> <span style="color:#7F0000;text-style:italic">rename</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">object</span> <span style="color:#7F0000;text-style:italic">links</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">short</span> <span style="color:#7F0000;text-style:italic">names</span> <span style="color:#7F0000;text-style:italic">like</span> <span style="color:#7F0000;text-style:italic">F1,</span> <span style="color:#7F0000;text-style:italic">F2</span> <span style="color:#7F0000;text-style:italic">etc.</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">pdf.kofDeleteInvPaths</span>    <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Delete</span> <span style="color:#7F0000;text-style:italic">invisible</span> <span style="color:#7F0000;text-style:italic">paths.</span> <span style="color:#7F0000;text-style:italic">An</span> <span style="color:#7F0000;text-style:italic">invisible</span> <span style="color:#7F0000;text-style:italic">path</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">path</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">was</span> <span style="color:#7F0000;text-style:italic">finished</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">no-op</span> <span style="color:#7F0000;text-style:italic">operator</span> <span style="color:#7F0000;text-style:italic">&quot;n&quot;.</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> o <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> DynaPDFOptimizeParamsMBS
+			
+			o.MinColorRes = <span style="color:#326598">100</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">scale</span> <span style="color:#7F0000;text-style:italic">images</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">more</span> <span style="color:#7F0000;text-style:italic">than</span> <span style="color:#7F0000;text-style:italic">100</span> <span style="color:#7F0000;text-style:italic">dpi</span>
+			o.ResColorImages = <span style="color:#326598">150</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">down</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">150</span> <span style="color:#7F0000;text-style:italic">dpi</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> pdf.Optimize(flags, o)  <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">false</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> pdf.OpenOutputFile(OutputFile) <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">false</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CloseFile
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> InputLen <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = InputFile.length
+			<span style="color:#0000FF;font-weight: bold">dim</span> OutputLen <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = OutputFile.Length
+			
+			print str(InputLen,<span style="color:#6500FE">&quot;0&quot;</span>)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">before,</span> <span style="color:#6500FE">&quot;</span>+str(OutputLen, <span style="color:#6500FE">&quot;0&quot;</span>)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">after,</span> <span style="color:#6500FE">&quot;</span>+str(InputLen - OutputLen, <span style="color:#6500FE">&quot;0&quot;</span>)+ <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">saved.&quot;</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyDynaPDFMBS <span style="color:#0000FF;font-weight: bold">Inherits</span> DynaPDFMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> Error(ErrorCode <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, ErrorMessage <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, ErrorType <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">output</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">messages</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">console:</span>
+			print str(ErrorCode)+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+ErrorMessage
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> IgnoreWarnings <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-dynapdf-optimizepdftool">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

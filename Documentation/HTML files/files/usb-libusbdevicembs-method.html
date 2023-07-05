@@ -1,0 +1,1216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - LibUSBDeviceMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="LibUSBDeviceMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">LibUSBDeviceMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-libusbdevicembs.html">LibUSBDeviceMBS</a> class.  </p>
+<p>
+ 
+<a href="usb-libusbdevicembs-method1.html">Next items</a>
+</p>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="1">AttachKernelDriver(interfaceNumber as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Re-attach an interface&#39;s kernel driver, which was previously detached using libusb_detach_kernel_driver().<BR>
+<B>Notes:</B> 
+<BR>
+This call is only effective on Linux and returns kErrorNotSupported on all other platforms.<BR>
+<BR>
+This functionality is not available on Darwin or Windows.<BR>
+<BR>
+Parameters:<BR>
+interfaceNumber: the interface to attach the driver from<BR>
+<BR>
+Lasterror is set:<BR>
+0 on success<BR>
+kErrorNotFound if no kernel driver was active<BR>
+kErrorInvalidParam if the interface does not exist<BR>
+kErrorNoDevice if the device has been disconnected<BR>
+kErrorNotSupported on platforms where the functionality is not available<BR>
+kErrorBusy if the driver cannot be attached because the interface is claimed by a program or driver<BR>
+another error code on other failure<BR>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="2">BulkTransfer(endpoint as Integer, data as Ptr, Length as Integer, byref ActualLength as Integer, Timeout as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Perform a USB bulk transfer.<BR>
+<B>Notes:</B> 
+<BR>
+The direction of the transfer is inferred from the direction bits of the endpoint address.<BR>
+<BR>
+For bulk reads, the length field indicates the maximum length of data you are expecting to receive. If less data arrives than expected, this function will return that data, so be sure to check the transferred output parameter.<BR>
+<BR>
+You should also check the transferred parameter for bulk writes. Not all of the data may have been written.<BR>
+<BR>
+Also check transferred when dealing with a timeout error code. libusb may have to split your transfer into a number of chunks to satisfy underlying O/S requirements, meaning that the timeout may expire after the first few chunks have completed. libusb is careful not to lose any data that may have been transferred; do not assume that timeout conditions indicate a complete lack of I/O.<BR>
+<BR>
+Parameters:<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">endpoint</TD><TD valign="top">the address of a valid endpoint to communicate with</TD></TR>
+<TR><TD valign="top">data</TD><TD valign="top">a suitably-sized data buffer for either input or output (depending on endpoint)</TD></TR>
+<TR><TD valign="top">length</TD><TD valign="top">for bulk writes, the number of bytes from data to be sent. for bulk reads, the maximum number of bytes to receive into the data buffer.</TD></TR>
+<TR><TD valign="top">transferred</TD><TD valign="top">output location for the number of bytes actually transferred.</TD></TR>
+<TR><TD valign="top">timeout</TD><TD valign="top">timeout (in millseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use value 0.</TD></TR>
+</TABLE>
+<BR>
+Lasterror is set to:<BR>
+0 on success (and populates transferred)<BR>
+kErrorTimeout if the transfer timed out (and populates transferred)<BR>
+kErrorPipe if the endpoint halted<BR>
+kErrorOverflow if the device offered more data, see Packets and overflows<BR>
+kErrorNoDevice if the device has been disconnected<BR>
+another error code on other failures<BR>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="3">ClaimInterface(interfaceNumber as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Claim an interface on a given device handle.<BR>
+<B>Notes:</B> 
+<BR>
+You must claim the interface you wish to use before you can perform I/O on any of its endpoints.<BR>
+<BR>
+It is legal to attempt to claim an already-claimed interface, in which case libusb just returns 0 without doing anything.<BR>
+<BR>
+Claiming of interfaces is a purely logical operation; it does not cause any requests to be sent over the bus. Interface claiming is used to instruct the underlying operating system that your application wishes to take ownership of the interface.<BR>
+<BR>
+This is a non-blocking function.<BR>
+<BR>
+Parameters:<BR>
+interfaceNumber: the bInterfaceNumber of the interface you wish to claim<BR>
+<BR>
+Lasterror is set:<BR>
+0 on success<BR>
+kErrorNotFound if the requested interface does not exist<BR>
+kErrorBusy if another program or driver has claimed the interface<BR>
+kErrorNoDevice if the device has been disconnected<BR>
+a error code on other failure<BR>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="4">ClearHalt(endpoint as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Clear the halt/stall condition for an endpoint.<BR>
+<B>Notes:</B> 
+<BR>
+Endpoints with halt status are unable to receive or transmit data until the halt condition is stalled.<BR>
+<BR>
+You should cancel all pending transfers before attempting to clear the halt condition.<BR>
+<BR>
+This is a blocking function.<BR>
+<BR>
+Parameters:<BR>
+endpoint: the endpoint to clear halt status<BR>
+<BR>
+Returns:<BR>
+0 on success<BR>
+kErrorNotFound if the endpoint does not exist<BR>
+kErrorNoDevice if the device has been disconnected<BR>
+another error code on other failure<BR>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="5">Close</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Close a device handle.<BR>
+<B>Notes:</B> 
+<BR>
+Should be called on all open handles before your application exits.<BR>
+Internally, this function destroys the reference that was added by Open on the given device.<BR>
+This is a non-blocking function; no requests are sent over the bus.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="6">ControlTransfer(requestType as Integer, Request as Integer, Value as Integer, Index as Integer, data as Ptr, Length as Integer, Timeout as Integer) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Perform a USB control transfer.<BR>
+<B>Notes:</B> 
+<BR>
+The direction of the transfer is inferred from the RequestType field of the setup packet.<BR>
+<BR>
+The Value, Index and Length fields values should be given in host-endian byte order.<BR>
+<BR>
+Parameters:<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">RequestType</TD><TD valign="top">the request type field for the setup packet</TD></TR>
+<TR><TD valign="top">Request</TD><TD valign="top">the request field for the setup packet</TD></TR>
+<TR><TD valign="top">Value</TD><TD valign="top">the value field for the setup packet</TD></TR>
+<TR><TD valign="top">Index</TD><TD valign="top">the index field for the setup packet</TD></TR>
+<TR><TD valign="top">data</TD><TD valign="top">a suitably-sized data buffer for either input or output (depending on direction bits within bmRequestType)</TD></TR>
+<TR><TD valign="top">Length</TD><TD valign="top">the length field for the setup packet. The data buffer should be at least this size.</TD></TR>
+<TR><TD valign="top">timeout</TD><TD valign="top">timeout (in millseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use value 0.</TD></TR>
+</TABLE>
+<BR>
+on success, the number of bytes actually transferred is returned.<BR>
+<BR>
+Lasterror is set to:<BR>
+kErrorTimeout if the transfer timed out<BR>
+kErrorPipe if the control request was not supported by the device<BR>
+kErrorNoDevice if the device has been disconnected<BR>
+another error code on other failures<BR>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="7">DetachKernelDriver(interfaceNumber as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Detach a kernel driver from an interface.<BR>
+<B>Notes:</B> 
+<BR>
+If successful, you will then be able to claim the interface and perform I/O.<BR>
+This functionality is not available on Darwin or Windows.<BR>
+<BR>
+Parameters:<BR>
+interfaceNumber: the interface to detach the driver from<BR>
+<BR>
+Lasterror is set:<BR>
+0 on success<BR>
+kErrorNotFound if no kernel driver was active<BR>
+kErrorInvalidParam if the interface does not exist<BR>
+kErrorNoDevice if the device has been disconnected<BR>
+kErrorNotSupported on platforms where the functionality is not available<BR>
+another error code on other failure<BR>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="8">GetActiveConfigDescriptor as <A href="class-libusbconfigdescriptormbs.html">LibUSBConfigDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Get the USB configuration descriptor for the currently active configuration.<BR>
+<B>Notes:</B> 
+<BR>
+This is a non-blocking function which does not involve any requests being sent to the device.<BR>
+<BR>
+Lasterror is set to:<BR>
+0 on success<BR>
+kErrorNotFound if the device is in unconfigured state<BR>
+another error code on error.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="9">GetConfigDescriptor(Index as Integer) as <A href="class-libusbconfigdescriptormbs.html">LibUSBConfigDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Get a USB configuration descriptor based on its index.<BR>
+<B>Notes:</B> 
+<BR>
+This is a non-blocking function which does not involve any requests being sent to the device.<BR>
+<BR>
+Parameters:<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Index</TD><TD valign="top">the index of the configuration you wish to retrieve</TD></TR>
+</TABLE>
+<BR>
+Lasterror is set to:<BR>
+0 on success<BR>
+kErrorNotFound if the configuration does not exist<BR>
+another error code on error<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-usb-libusbtest.html">/USB/LibUSB Test</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="10">GetConfigDescriptorByValue(Value as Integer) as <A href="class-libusbconfigdescriptormbs.html">LibUSBConfigDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Get a USB configuration descriptor with a specific ConfigurationValue.<BR>
+<B>Notes:</B> 
+<BR>
+This is a non-blocking function which does not involve any requests being sent to the device.<BR>
+<BR>
+Value: the bConfigurationValue of the configuration you wish to retrieve.<BR>
+<BR>
+Lasterror is set to:<BR>
+0 on success<BR>
+kErrorNotFound if the configuration does not exist<BR>
+another error code on error<BR>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="11">GetConfiguration as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Determine the bConfigurationValue of the currently active configuration.<BR>
+<B>Notes:</B> 
+<BR>
+You could formulate your own control request to obtain this information, but this function has the advantage that it may be able to retrieve the information from operating system caches (no I/O involved).<BR>
+<BR>
+If the OS does not cache this information, then this function will block while a control transfer is submitted to retrieve the information.<BR>
+<BR>
+This function will return a value of 0 in the config output parameter if the device is in unconfigured state.<BR>
+<BR>
+Returns Configuration value of the active configuration (only valid for return code 0)<BR>
+<BR>
+The lasterror is set to:<BR>
+0 on success<BR>
+kErrorNoDevice if the device has been disconnected<BR>
+another error code on other failure<BR>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="12">GetDescriptor(descType as Integer, descIndex as Integer, data as Ptr, Length as Integer) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Retrieve a descriptor from the default control pipe.<BR>
+<B>Notes:</B> 
+<BR>
+This is a convenience function which formulates the appropriate control message to retrieve the descriptor.<BR>
+<BR>
+Parameters:<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">descType</TD><TD valign="top">the descriptor type, see libusb_descriptor_type</TD></TR>
+<TR><TD valign="top">descIndex</TD><TD valign="top">the index of the descriptor to retrieve</TD></TR>
+<TR><TD valign="top">data</TD><TD valign="top">output buffer for descriptor</TD></TR>
+<TR><TD valign="top">length</TD><TD valign="top">size of data buffer</TD></TR>
+</TABLE>
+<BR>
+Returns number of bytes returned in data or zero. <BR>
+Sets lasterror to error code on failure<BR>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="13">GetDeviceDescriptor as <A href="class-libusbdevicedescriptormbs.html">LibUSBDeviceDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Get the USB device descriptor for a given device.<BR>
+<B>Notes:</B> 
+<BR>
+This is a non-blocking function; the device descriptor is cached in memory.<BR>
+<BR>
+Returns 0 on success or a error code on failure.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-usb-libusbtest.html">/USB/LibUSB Test</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="14">GetMaxISOPacketSize(EndPoint as Integer) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Calculate the maximum packet size which a specific endpoint is capable is sending or receiving in the duration of 1 microframe.<BR>
+<B>Notes:</B> 
+<BR>
+Only the active configution is examined. The calculation is based on the wMaxPacketSize field in the endpoint descriptor as described in section 9.6.6 in the USB 2.0 specifications.<BR>
+<BR>
+If acting on an isochronous or interrupt endpoint, this function will multiply the value found in bits 0:10 by the number of transactions per microframe (determined by bits 11:12). Otherwise, this function just returns the numeric value found in bits 0:10.<BR>
+<BR>
+This function is useful for setting up isochronous transfers, for example you might pass the return value from this function to libusb_set_iso_packet_lengths() in order to set the length field of every isochronous packet in a transfer.<BR>
+<BR>
+Since v1.0.3.<BR>
+<BR>
+Parameters:<BR>
+endpoint: address of the endpoint in question<BR>
+<BR>
+Returns the maximum packet size which can be sent/received on this endpoint.<BR>
+<BR>
+The lasterror is set to:<BR>
+0 for success.<BR>
+kErrorNotFound if the endpoint does not exist<BR>
+kErrorOther on other failure<BR>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="15">GetMaxPacketSize(EndPoint as Integer) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Convenience function to retrieve the wMaxPacketSize value for a particular endpoint in the active device configuration.<BR>
+<B>Notes:</B> 
+<BR>
+This function was originally intended to be of assistance when setting up isochronous transfers, but a design mistake resulted in this function instead. It simply returns the wMaxPacketSize value without considering its contents. If you&#39;re dealing with isochronous transfers, you probably want libusb_get_max_iso_packet_size() instead.<BR>
+<BR>
+Parameters:<BR>
+endpoint: address of the endpoint in question<BR>
+<BR>
+Returns the Max Packet Size value.<BR>
+<BR>
+The lasterror is set:<BR>
+0 for success.<BR>
+kErrorNotFound if the endpoint does not exist<BR>
+kErrorOther on other failure<BR>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="16">GetStringDescriptor(descIndex as Integer, LangID as Integer = 0) as String</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Retrieve a descriptor from a device.<BR>
+<B>Notes:</B> 
+<BR>
+This is a convenience function which formulates the appropriate control message to retrieve the descriptor. The string returned is Unicode, as detailed in the USB specifications.<BR>
+<BR>
+Parameters:<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">descIndex</TD><TD valign="top">the index of the descriptor to retrieve</TD></TR>
+<TR><TD valign="top">LangID</TD><TD valign="top">the language ID for the string descriptor</TD></TR>
+</TABLE>
+<BR>
+Returns string.<BR>
+Lasterror is set to zero or error code on failure.<BR>
+<p>See also:<ul>
+<li><A href="usb-libusbdevicembs-method.html#17">GetStringDescriptor(descIndex as Integer, LangID as Integer = 0, data as Ptr, Length as Integer) as Integer</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-usb-libusbtest.html">/USB/LibUSB Test</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="17">GetStringDescriptor(descIndex as Integer, LangID as Integer = 0, data as Ptr, Length as Integer) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Retrieve a descriptor from a device.<BR>
+<B>Notes:</B> 
+<BR>
+This is a convenience function which formulates the appropriate control message to retrieve the descriptor. The string returned is Unicode, as detailed in the USB specifications.<BR>
+<BR>
+Parameters:<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">descIndex</TD><TD valign="top">the index of the descriptor to retrieve</TD></TR>
+<TR><TD valign="top">LangID</TD><TD valign="top">the language ID for the string descriptor</TD></TR>
+<TR><TD valign="top">data</TD><TD valign="top">output buffer for descriptor</TD></TR>
+<TR><TD valign="top">length</TD><TD valign="top">size of data buffer</TD></TR>
+</TABLE>
+<BR>
+Returns number of bytes returned in data.<BR>
+Lasterror is set to zero or error code on failure.<BR>
+<p>See also:<ul>
+<li><A href="usb-libusbdevicembs-method.html#16">GetStringDescriptor(descIndex as Integer, LangID as Integer = 0) as String</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="18">GetStringDescriptorAscii(descIndex as Integer) as String</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Retrieve a string descriptor in ASCII.<BR>
+<B>Notes:</B> 
+<BR>
+Wrapper around GetStringDescriptor(). Uses the first language supported by the device.<BR>
+<BR>
+Parameters:<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">descIndex</TD><TD valign="top">the index of the descriptor to retrieve</TD></TR>
+</TABLE>
+<BR>
+Returns string.<BR>
+Lasterror is set to error code on failure and zero on success.<BR>
+<p>See also:<ul>
+<li><A href="usb-libusbdevicembs-method.html#19">GetStringDescriptorAscii(descIndex as Integer, data as Ptr, Length as Integer) as Integer</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-usb-libusbtest.html">/USB/LibUSB Test</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="19">GetStringDescriptorAscii(descIndex as Integer, data as Ptr, Length as Integer) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Retrieve a string descriptor in ASCII.<BR>
+<B>Notes:</B> 
+<BR>
+Wrapper around GetStringDescriptor(). Uses the first language supported by the device.<BR>
+<BR>
+Parameters:<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">descIndex</TD><TD valign="top">the index of the descriptor to retrieve</TD></TR>
+<TR><TD valign="top">data</TD><TD valign="top">output buffer for ASCII string descriptor</TD></TR>
+<TR><TD valign="top">length</TD><TD valign="top">size of data buffer</TD></TR>
+</TABLE>
+<BR>
+Returns number of bytes returned in data.<BR>
+Lasterror is set to error code on failure and zero on success.<BR>
+<p>See also:<ul>
+<li><A href="usb-libusbdevicembs-method.html#18">GetStringDescriptorAscii(descIndex as Integer) as String</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="20">InterruptTransfer(endpoint as Integer, data as Ptr, Length as Integer, byref ActualLength as Integer, Timeout as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Perform a USB interrupt transfer.<BR>
+<B>Notes:</B> 
+<BR>
+The direction of the transfer is inferred from the direction bits of the endpoint address.<BR>
+<BR>
+For interrupt reads, the length field indicates the maximum length of data you are expecting to receive. If less data arrives than expected, this function will return that data, so be sure to check the transferred output parameter.<BR>
+<BR>
+You should also check the transferred parameter for interrupt writes. Not all of the data may have been written.<BR>
+<BR>
+Also check transferred when dealing with a timeout error code. libusb may have to split your transfer into a number of chunks to satisfy underlying O/S requirements, meaning that the timeout may expire after the first few chunks have completed. libusb is careful not to lose any data that may have been transferred; do not assume that timeout conditions indicate a complete lack of I/O.<BR>
+<BR>
+The default endpoint bInterval value is used as the polling interval.<BR>
+<BR>
+Parameters:<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">endpoint</TD><TD valign="top">the address of a valid endpoint to communicate with</TD></TR>
+<TR><TD valign="top">data</TD><TD valign="top">a suitably-sized data buffer for either input or output (depending on endpoint)</TD></TR>
+<TR><TD valign="top">length</TD><TD valign="top">for bulk writes, the number of bytes from data to be sent. for bulk reads, the maximum number of bytes to receive into the data buffer.</TD></TR>
+<TR><TD valign="top">transferred</TD><TD valign="top">output location for the number of bytes actually transferred.</TD></TR>
+<TR><TD valign="top">timeout</TD><TD valign="top">timeout (in millseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use value 0.</TD></TR>
+</TABLE>
+<BR>
+The lasterror property is set to:<BR>
+0 on success (and populates transferred)<BR>
+kErrorTimeout if the transfer timed out<BR>
+kErrorPipe if the endpoint halted<BR>
+kErrorOverflow if the device offered more data, see Packets and overflows<BR>
+kErrorNoDevice if the device has been disconnected<BR>
+another error code on other error<BR>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="21">KernelDriverActive(interfaceNumber as Integer) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Determine if a kernel driver is active on an interface.<BR>
+<B>Notes:</B> 
+<BR>
+If a kernel driver is active, you cannot claim the interface, and libusb will be unable to perform I/O.<BR>
+<BR>
+This functionality is not available on Windows.<BR>
+<BR>
+Parameters:<BR>
+interfaceNumber: the interface to check<BR>
+<BR>
+Lasterror is set:<BR>
+0 if no kernel driver is active<BR>
+1 if a kernel driver is active<BR>
+kErrorNoDevice if the device has been disconnected<BR>
+kErrorNotSupported on platforms where the functionality is not available<BR>
+another error code on other failure<BR>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="22">Open as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Open a device and obtain a device handle.<BR>
+<B>Notes:</B> 
+<BR>
+A handle allows you to perform I/O on the device in question.<BR>
+<BR>
+Internally, this function adds a reference to the device. This reference is removed during Close().<BR>
+<BR>
+This is a non-blocking function; no requests are sent over the bus.<BR>
+<BR>
+The last error to:<BR>
+0 on success<BR>
+kErrorNoMemory on memory allocation failure<BR>
+kErrorAccess if the user has insufficient permissions<BR>
+kErrorNoDevice if the device has been disconnected<BR>
+another error code on other failure<BR>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="23">ReleaseInterface(interfaceNumber as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Release an interface previously claimed with ClaimInterface.<BR>
+<B>Notes:</B> 
+<BR>
+You should release all claimed interfaces before closing a device handle.<BR>
+<BR>
+This is a blocking function. A SET_INTERFACE control request will be sent to the device, resetting interface state to the first alternate setting.<BR>
+<BR>
+Parameters:<BR>
+interfaceNumber: the bInterfaceNumber of the previously-claimed interface<BR>
+<BR>
+The lasterror:<BR>
+0 on success<BR>
+kErrorNotFound if the interface was not claimed<BR>
+kErrorNoDevice if the device has been disconnected<BR>
+another error code on other failure<BR>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="24">Reset</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Perform a USB port reset to reinitialize a device.<BR>
+<B>Notes:</B> 
+<BR>
+The system will attempt to restore the previous configuration and alternate settings after the reset has completed.<BR>
+<BR>
+If the reset fails, the descriptors change, or the previous state cannot be restored, the device will appear to be disconnected and reconnected. This means that the device handle is no longer valid (you should close it) and rediscover the device. An error code of kErrorNotFound indicates when this is the case.<BR>
+<BR>
+This is a blocking function which usually incurs a noticeable delay.<BR>
+<BR>
+Lasterror is set:<BR>
+0 on success<BR>
+kErrorNotFound if re-enumeration is required, or if the device has been disconnected<BR>
+another error code on other failure<BR>
+</div>
+<div class="WLM">
+<b><a href="class-libusbdevicembs.html">LibUSBDeviceMBS</a>.<A name="25">SetConfiguration(configuration as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Set the active configuration for a device.<BR>
+<B>Notes:</B> 
+<BR>
+The operating system may or may not have already set an active configuration on the device. It is up to your application to ensure the correct configuration is selected before you attempt to claim interfaces and perform other operations.<BR>
+<BR>
+If you call this function on a device already configured with the selected configuration, then this function will act as a lightweight device reset: it will issue a SET_CONFIGURATION request using the current configuration, causing most USB-related device state to be reset (altsetting reset to zero, endpoint halts cleared, toggles reset).<BR>
+<BR>
+You cannot change/reset configuration if your application has claimed interfaces - you should free them with libusb_release_interface() first. You cannot change/reset configuration if other applications or drivers have claimed interfaces.<BR>
+<BR>
+A configuration value of -1 will put the device in unconfigured state. The USB specifications state that a configuration value of 0 does this, however buggy devices exist which actually have a configuration 0.<BR>
+<BR>
+You should always use this function rather than formulating your own SET_CONFIGURATION control request. This is because the underlying operating system needs to know when such changes happen.<BR>
+<BR>
+This is a blocking function.<BR>
+<BR>
+Parameters:<BR>
+configuration: the bConfigurationValue of the configuration you wish to activate, or -1 if you wish to put the device in unconfigured state<BR>
+<BR>
+The lasterror is set to:<BR>
+0 on success<BR>
+kErrorNotFound if the requested configuration does not exist<BR>
+kErrorBusy if interfaces are currently claimed<BR>
+kErrorNoDevice if the device has been disconnected<BR>
+another error code on other failure<BR>
+</div>
+<p>
+ 
+<a href="usb-libusbdevicembs-method1.html">Next items</a>
+</p>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsusbplugin.html">MBS USB Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=usb-libusbdevicembs-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

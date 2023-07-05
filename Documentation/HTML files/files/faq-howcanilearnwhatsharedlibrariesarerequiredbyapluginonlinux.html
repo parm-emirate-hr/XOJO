@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - FAQ</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="FAQ: How can I learn what shared libraries are required by a plugin on Linux?">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">FAQ</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="M">
+<b>FAQ.<A name="1">How can I learn what shared libraries are required by a plugin on Linux?</A></b><br>
+<B>Answer:</B> 
+Please use the ldd command in the terminal.<BR>
+<B>Notes:</B> 
+<BR>
+You build an app on any platform, but for Linux.<BR>
+For the resulting .so files in the libs folder, you can run the ldd command with the library path as parameter. It shows you references lib files and you can make sure you have those installed.<BR>
+<BR>
+This is a sample run of our graphicsmagick plugin:<BR>
+<BR>
+cs@Ubuntu32:~/MeinProgramm/MeinProgramm Libs$ ldd libMBSGraphicsMagickPlugin17744.so <BR>
+linux-gate.so.1 =&gt;  (0xb76ee000)<BR>
+libdl.so.2 =&gt; /lib/i386-linux-gnu/libdl.so.2 (0xb6f0e000)<BR>
+libgtk-x11-2.0.so.0 =&gt; /usr/lib/i386-linux-gnu/libgtk-x11-2.0.so.0 (0xb6aa6000)<BR>
+libpthread.so.0 =&gt; /lib/i386-linux-gnu/libpthread.so.0 (0xb6a8a000)<BR>
+libstdc++.so.6 =&gt; /usr/lib/i386-linux-gnu/libstdc++.so.6 (0xb69a5000)<BR>
+libm.so.6 =&gt; /lib/i386-linux-gnu/libm.so.6 (0xb6979000)<BR>
+libgcc_s.so.1 =&gt; /lib/i386-linux-gnu/libgcc_s.so.1 (0xb695b000)<BR>
+libc.so.6 =&gt; /lib/i386-linux-gnu/libc.so.6 (0xb67b1000)<BR>
+/lib/ld-linux.so.2 (0xb76ef000)<BR>
+libgdk-x11-2.0.so.0 =&gt; /usr/lib/i386-linux-gnu/libgdk-x11-2.0.so.0 (0xb6701000)<BR>
+libpangocairo-1.0.so.0 =&gt; /usr/lib/i386-linux-gnu/libpangocairo-1.0.so.0 (0xb66f4000)<BR>
+libX11.so.6 =&gt; /usr/lib/i386-linux-gnu/libX11.so.6 (0xb65c0000)<BR>
+libXfixes.so.3 =&gt; /usr/lib/i386-linux-gnu/libXfixes.so.3 (0xb65ba000)<BR>
+libatk-1.0.so.0 =&gt; /usr/lib/i386-linux-gnu/libatk-1.0.so.0 (0xb659a000)<BR>
+libcairo.so.2 =&gt; /usr/lib/i386-linux-gnu/libcairo.so.2 (0xb64ce000)<BR>
+libgdk_pixbuf-2.0.so.0 =&gt; /usr/lib/i386-linux-gnu/libgdk_pixbuf-2.0.so.0 (0xb64ad000)<BR>
+libgio-2.0.so.0 =&gt; /usr/lib/i386-linux-gnu/libgio-2.0.so.0 (0xb6356000)<BR>
+libpangoft2-1.0.so.0 =&gt; /usr/lib/i386-linux-gnu/libpangoft2-1.0.so.0 (0xb632a000)<BR>
+libpango-1.0.so.0 =&gt; /usr/lib/i386-linux-gnu/libpango-1.0.so.0 (0xb62e0000)<BR>
+libfontconfig.so.1 =&gt; /usr/lib/i386-linux-gnu/libfontconfig.so.1 (0xb62ab000)<BR>
+libgobject-2.0.so.0 =&gt; /usr/lib/i386-linux-gnu/libgobject-2.0.so.0 (0xb625c000)<BR>
+libglib-2.0.so.0 =&gt; /lib/i386-linux-gnu/libglib-2.0.so.0 (0xb6163000)<BR>
+libXext.so.6 =&gt; /usr/lib/i386-linux-gnu/libXext.so.6 (0xb6151000)<BR>
+libXrender.so.1 =&gt; /usr/lib/i386-linux-gnu/libXrender.so.1 (0xb6147000)<BR>
+libXinerama.so.1 =&gt; /usr/lib/i386-linux-gnu/libXinerama.so.1 (0xb6142000)<BR>
+libXi.so.6 =&gt; /usr/lib/i386-linux-gnu/libXi.so.6 (0xb6132000)<BR>
+libXrandr.so.2 =&gt; /usr/lib/i386-linux-gnu/libXrandr.so.2 (0xb6129000)<BR>
+libXcursor.so.1 =&gt; /usr/lib/i386-linux-gnu/libXcursor.so.1 (0xb611e000)<BR>
+libXcomposite.so.1 =&gt; /usr/lib/i386-linux-gnu/libXcomposite.so.1 (0xb611a000)<BR>
+libXdamage.so.1 =&gt; /usr/lib/i386-linux-gnu/libXdamage.so.1 (0xb6115000)<BR>
+libfreetype.so.6 =&gt; /usr/lib/i386-linux-gnu/libfreetype.so.6 (0xb607b000)<BR>
+libxcb.so.1 =&gt; /usr/lib/i386-linux-gnu/libxcb.so.1 (0xb605a000)<BR>
+libpixman-1.so.0 =&gt; /usr/lib/i386-linux-gnu/libpixman-1.so.0 (0xb5fc2000)<BR>
+libpng12.so.0 =&gt; /lib/i386-linux-gnu/libpng12.so.0 (0xb5f98000)<BR>
+libxcb-shm.so.0 =&gt; /usr/lib/i386-linux-gnu/libxcb-shm.so.0 (0xb5f93000)<BR>
+libxcb-render.so.0 =&gt; /usr/lib/i386-linux-gnu/libxcb-render.so.0 (0xb5f89000)<BR>
+libz.so.1 =&gt; /lib/i386-linux-gnu/libz.so.1 (0xb5f73000)<BR>
+libgmodule-2.0.so.0 =&gt; /usr/lib/i386-linux-gnu/libgmodule-2.0.so.0 (0xb5f6e000)<BR>
+libselinux.so.1 =&gt; /lib/i386-linux-gnu/libselinux.so.1 (0xb5f4f000)<BR>
+libresolv.so.2 =&gt; /lib/i386-linux-gnu/libresolv.so.2 (0xb5f36000)<BR>
+libexpat.so.1 =&gt; /lib/i386-linux-gnu/libexpat.so.1 (0xb5f0c000)<BR>
+libffi.so.6 =&gt; /usr/lib/i386-linux-gnu/libffi.so.6 (0xb5f05000)<BR>
+libpcre.so.3 =&gt; /lib/i386-linux-gnu/libpcre.so.3 (0xb5ec9000)<BR>
+librt.so.1 =&gt; /lib/i386-linux-gnu/librt.so.1 (0xb5ec0000)<BR>
+libXau.so.6 =&gt; /usr/lib/i386-linux-gnu/libXau.so.6 (0xb5ebb000)<BR>
+libXdmcp.so.6 =&gt; /usr/lib/i386-linux-gnu/libXdmcp.so.6 (0xb5eb4000)<BR>
+cs@Ubuntu32:~/MeinProgramm/MeinProgramm Libs$ <BR>
+<BR>
+As you see all library have been found and their load address is printed behind the na,e.<BR>
+If a library is missing, you usually see the address missing there or being zero.<BR>
+</div>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=faq-howcanilearnwhatsharedlibrariesarerequiredbyapluginonlinux">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

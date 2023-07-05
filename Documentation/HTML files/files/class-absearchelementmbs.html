@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - ABSearchElementMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="ABSearchElementMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">ABSearchElementMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>ABSearchElementMBS class &nbsp; <b style="color: #8B0000"> Deprecated </b></H3>
+<div class="M">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-addressbook.html" translate="no">Addressbook</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion71.shtml" class=version>7.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+A class for a search element.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #800000;">// search and display all entries with a given name in a 2 column listbox with address</span><br /><br /><span style="color: #800000;">// Save reference to caller.</span><br /><span style="color: #0000FF;">dim</span> addr <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-abaddressbookmbs.html">ABAddressBookMBS</A> <span style="color: #800000;">// Initialise the Address Book plugin</span><br /><span style="color: #0000FF;">dim</span> searchName <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = <span style="color: #6600FE;">&quot;Schmitz&quot;</span> <span style="color: #800000;">// search on.</span><br /><br /><span style="color: #800000;">// Do the search</span><br /><span style="color: #0000FF;">dim</span> srch <span style="color: #0000FF;">as</span> ABSearchElementMBS = addr.searchElementForPersonProperty(addr.kABLastNameProperty, <span style="color: #6600FE;">&quot;&quot;</span>, <span style="color: #6600FE;">&quot;&quot;</span>, searchName, addr.kABContainsSubStringCaseInsensitive)<br /><span style="color: #0000FF;">dim</span> srchRes() <span style="color: #0000FF;">as</span> <A href="class-abrecordmbs.html">ABRecordMBS</A> = addr.recordsMatchingSearchElement(srch) <span style="color: #800000;">// Get the results into an array</span><br /><br /><span style="color: #0000FF;">for</span> <span style="color: #0000FF;">each</span> rc <span style="color: #0000FF;">as</span> <A href="class-abrecordmbs.html">ABRecordMBS</A> <span style="color: #0000FF;">in</span> srchRes<br />  <span style="color: #0000FF;">if</span> rc <span style="color: #0000FF;">isa</span> <A href="class-abpersonmbs.html">ABPersonMBS</A> <span style="color: #0000FF;">then</span> <span style="color: #800000;">// Is it a person record?</span><br />    <span style="color: #0000FF;">dim</span> pers <span style="color: #0000FF;">as</span> <A href="class-abpersonmbs.html">ABPersonMBS</A> = <A href="class-abpersonmbs.html">ABPersonMBS</A>(rc) <span style="color: #800000;">// Get it into a personnel record</span><br />    <br />    <span style="color: #800000;">// Now get out the names and addresses.</span><br />    listbox1.AddRow(pers.valueForProperty(addr.kABFirstNameProperty) + <span style="color: #6600FE;">&quot; &quot;</span> + pers.valueForProperty(addr.kABLastNameProperty))<br />    listbox1.RowTag(listbox1.LastIndex) = pers.valueForProperty(addr.kABUIDProperty)<br />    <br />    <span style="color: #800000;">// Need to find the home address.</span><br />    <span style="color: #0000FF;">dim</span> mlv <span style="color: #0000FF;">as</span> <A href="class-abmultivaluembs.html">ABMultiValueMBS</A> = pers.valueForProperty(addr.kABAddressProperty)<br />    <span style="color: #0000FF;">if</span> mlv &lt;&gt; <span style="color: #0000FF;">nil</span> <span style="color: #0000FF;">Then</span><br />      <span style="color: #800000;">// get home address</span><br />      <span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> Dictionary = mlv.valueForLabel(addr.kABHomeLabel)<br />      <br />      <span style="color: #0000FF;">if</span> d = <span style="color: #0000FF;">nil</span> <span style="color: #0000FF;">then</span><br />        <span style="color: #800000;">// get primary</span><br />        d = mlv.valueForIdentifier(mlv.primaryIdentifier)<br />      <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br />      <br />      <span style="color: #0000FF;">if</span> d&lt;&gt;Nil <span style="color: #0000FF;">then</span><br />        <span style="color: #800000;">// show address with street and city</span><br />        listbox1.Cell(listbox1.LastIndex,<span style="color: #336698;">1</span>) = d.Lookup(addr.kABAddressStreetKey,<span style="color: #6600FE;">&quot;&quot;</span>)+<span style="color: #6600FE;">&quot; &quot;</span>+d.Lookup(addr.kABAddressCityKey,<span style="color: #6600FE;">&quot;&quot;</span>)<br />      <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br />    <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br />  <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br /><span style="color: #0000FF;">next</span></span>
+</pre>
+</div>
+<DIV style="width: 300px; float: right; margin: 3pt; padding: 3pt; background-color: #FEE; border-width: 3pt;">
+This item is deprecated and should no longer be used. 
+You can use <A href="class-cncontactfetchrequestmbs.html">CNContactFetchRequestMBS</A> class instead.
+</DIV>
+<B>Notes:</B> 
+<BR>
+Use searchElementForProperty in <A href="class-abpersonmbs.html">ABPersonMBS</A> and <A href="class-abgroupmbs.html">ABGroupMBS</A> classes to create objects.<BR>
+<BR>
+All methods in this class will catch exceptions from Cocoa and raise a <A href="class-nsexceptionmbs.html">NSExceptionMBS</A> instead. Using the message, name and reason properties you can see what was the reason for this exception. Please report if you find a method which does not handle exceptions correct.<BR>
+This is an abstract class. You can&#39;t create an instance, but you can get one from various plugin functions.<BR>
+</div>
+<ul>
+<LI>3 properties<UL>
+<li class="M">property <A href="addressbook-absearchelementmbs-property.html">Addressbook</A> as <A href="class-abaddressbookmbs.html">ABAddressBookMBS</A></li>
+<li class="M">property <A href="addressbook-absearchelementmbs-property.html#2">Description</A> as string</li>
+<li class="M">property <A href="addressbook-absearchelementmbs-property.html#3">Handle</A> as Integer</li>
+</UL></LI>
+<LI>2 methods<UL>
+<li class="M">method <A href="addressbook-absearchelementmbs-method.html">Constructor</A> &nbsp; <b style="color: #8B0000"> Private </b></li>
+<li class="M">method <A href="addressbook-absearchelementmbs-method.html#2">matchesRecord</A>(record as <A href="class-abrecordmbs.html">ABRecordMBS</A>) as boolean</li>
+</UL></LI>
+<li class="M">shared method <A href="addressbook-absearchelementmbs-shared-method.html">searchElementForConjunction</A>(conjunction as Integer, children() as ABSearchElementMBS) as ABSearchElementMBS</li>
+<LI>2 constants<UL>
+<li class="M">const <A href="addressbook-absearchelementmbs-const.html">kABSearchAnd</A> = 0</li>
+<li class="M">const <A href="addressbook-absearchelementmbs-const.html#2">kABSearchOr</A> = 1</li>
+</UL></LI>
+</ul>
+<p>This class has no sub classes.</p>
+<h4>Some methods using this class:</h4><ul>
+<li class="M"><A href="addressbook-abaddressbookmbs-method.html#26" translate="no">ABAddressBookMBS.recordsMatchingSearchElement</A>(search as ABSearchElementMBS) as <A href="class-abrecordmbs.html">ABRecordMBS</A>()</li>
+<li class="M"><A href="addressbook-abaddressbookmbs-shared-method3.html#30" translate="no">ABAddressBookMBS.searchElementForConjunction</A>(conjunction as Integer, children() as ABSearchElementMBS) as ABSearchElementMBS</li>
+<li class="M"><A href="addressbook-abaddressbookmbs-shared-method4.html" translate="no">ABAddressBookMBS.searchElementForGroupProperty</A>(PropertyName as string, Label as string, Key as string, value as Variant, comparison as Integer) as ABSearchElementMBS</li>
+<li class="M"><A href="addressbook-abaddressbookmbs-shared-method4.html#2" translate="no">ABAddressBookMBS.searchElementForPersonProperty</A>(PropertyName as string, Label as string, Key as string, value as Variant, comparison as Integer) as ABSearchElementMBS</li>
+<li class="M"><A href="addressbook-abgroupmbs-shared-method.html#5" translate="no">ABGroupMBS.searchElementForProperty</A>(PropertyName as string, Label as string, Key as string, value as Variant, comparison as Integer) as ABSearchElementMBS</li>
+<li class="M"><A href="addressbook-abpersonmbs-shared-method.html#5" translate="no">ABPersonMBS.searchElementForProperty</A>(PropertyName as string, Label as string, Key as string, value as Variant, comparison as Integer) as ABSearchElementMBS</li>
+</ul>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-maccocoa-addressbook-addperson.html">/MacCocoa/Addressbook/Add person</A></li>
+<li class=""><A href="example-maccocoa-addressbook-easysearch.html">/MacCocoa/Addressbook/Easy search</A></li>
+<li class=""><A href="example-maccocoa-addressbook-searchperson.html">/MacCocoa/Addressbook/Search Person</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2021-10-28/Saying_goodbye_to_AddressBook_/monkeybreadsoftware_blog_xojo">Saying goodbye to AddressBook framework</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2012-05-18/MBS_Real_Studio_Plugins_versio/monkeybreadsoftware_blog_xojo">MBS Real Studio Plugins, version 12.3pr2</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-abrecordmbs.html">ABRecordMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-acaccountcredentialmbs.html">ACAccountCredentialMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-absearchelementmbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

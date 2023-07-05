@@ -1,0 +1,217 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - CBPeripheralMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="CBPeripheralMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">CBPeripheralMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>CBPeripheralMBS class</H3>
+<P>Super class: <A href="class-cbpeermbs.html">CBPeerMBS</A></p>
+<div class="M">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-bluetooth.html" translate="no">Bluetooth</A></td>
+<td class=grau><a href="plugins-mbsbluetoothplugin.html">MBS Bluetooth Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The CBPeripheral class represents remote peripheral devices that your app&mdash;by means of a central manager (an instance of CBCentralManager)&mdash;has discovered advertising or is currently connected to. <BR>
+<B>Notes:</B> 
+<BR>
+Peripherals are identified by universally unique identifiers (UUIDs), represented by NSUUID objects. Peripherals may contain one or more services or provide useful information about their connected signal strength.<BR>
+<BR>
+You use this class to discover, explore, and interact with the services available on a remote peripheral that supports Bluetooth low energy. A service encapsulates the way part of the device behaves. For example, one service of a heart rate monitor may be to expose heart rate data from the monitor&rsquo;s heart rate sensor. Services themselves are made up of characteristics or included services (references to other services). Characteristics provide further details about a peripheral&rsquo;s service. For example, the heart rate service just described may contain one characteristic that describes the intended body location of the device&rsquo;s heart rate sensor and another characteristic that transmits heart rate measurement data. Finally, characteristics contain any number of descriptors that provide more information about the characteristic&rsquo;s value, such as a human-readable description and a way to format the value.<BR>
+Subclass of the <A href="class-cbpeermbs.html">CBPeerMBS</A> class.<BR>
+</div>
+<ul>
+<LI>15 events<UL>
+<li class="M">event <A href="bluetooth-cbperipheralmbs-event.html">DidDiscoverCharacteristicsForService</A>(service as <A href="class-cbservicembs.html">CBServiceMBS</A>, error as <A href="class-nserrormbs.html">NSErrorMBS</A>)</li>
+<li class="M">event <A href="bluetooth-cbperipheralmbs-event.html#2">DidDiscoverDescriptorsForCharacteristic</A>(characteristic as <A href="class-cbcharacteristicmbs.html">CBCharacteristicMBS</A>, error as <A href="class-nserrormbs.html">NSErrorMBS</A>)</li>
+<li class="M">event <A href="bluetooth-cbperipheralmbs-event.html#3">DidDiscoverIncludedServicesForService</A>(service as <A href="class-cbservicembs.html">CBServiceMBS</A>, error as <A href="class-nserrormbs.html">NSErrorMBS</A>)</li>
+<li class="M">event <A href="bluetooth-cbperipheralmbs-event.html#4">DidDiscoverServices</A>(error as <A href="class-nserrormbs.html">NSErrorMBS</A>)</li>
+<li class="M">event <A href="bluetooth-cbperipheralmbs-event.html#5">DidModifyServices</A>(invalidatedServices() as <A href="class-cbservicembs.html">CBServiceMBS</A>)</li>
+<li class="M">event <A href="bluetooth-cbperipheralmbs-event.html#6">DidOpenL2CAPChannel</A>(channel as <A href="class-cbl2capchannelmbs.html">CBL2CAPChannelMBS</A>, error as <A href="class-nserrormbs.html">NSErrorMBS</A>)</li>
+<li class="M">event <A href="bluetooth-cbperipheralmbs-event.html#7">DidReadRSSI</A>(RSSI as String, error as <A href="class-nserrormbs.html">NSErrorMBS</A>)</li>
+<li class="M">event <A href="bluetooth-cbperipheralmbs-event.html#8">DidUpdateName</A></li>
+<li class="M">event <A href="bluetooth-cbperipheralmbs-event.html#9">DidUpdateNotificationStateForCharacteristic</A>(characteristic as <A href="class-cbcharacteristicmbs.html">CBCharacteristicMBS</A>, error as <A href="class-nserrormbs.html">NSErrorMBS</A>)</li>
+<li class="M">event <A href="bluetooth-cbperipheralmbs-event.html#10">DidUpdateRSSI</A>(error as <A href="class-nserrormbs.html">NSErrorMBS</A>)</li>
+<li class="M">event <A href="bluetooth-cbperipheralmbs-event.html#11">DidUpdateValueForCharacteristic</A>(characteristic as <A href="class-cbcharacteristicmbs.html">CBCharacteristicMBS</A>, error as <A href="class-nserrormbs.html">NSErrorMBS</A>)</li>
+<li class="M">event <A href="bluetooth-cbperipheralmbs-event.html#12">DidUpdateValueForDescriptor</A>(descriptor as <A href="class-cbdescriptormbs.html">CBDescriptorMBS</A>, error as <A href="class-nserrormbs.html">NSErrorMBS</A>)</li>
+<li class="M">event <A href="bluetooth-cbperipheralmbs-event.html#13">DidWriteValueForCharacteristic</A>(characteristic as <A href="class-cbcharacteristicmbs.html">CBCharacteristicMBS</A>, error as <A href="class-nserrormbs.html">NSErrorMBS</A>)</li>
+<li class="M">event <A href="bluetooth-cbperipheralmbs-event.html#14">DidWriteValueForDescriptor</A>(descriptor as <A href="class-cbdescriptormbs.html">CBDescriptorMBS</A>, error as <A href="class-nserrormbs.html">NSErrorMBS</A>)</li>
+<li class="M">event <A href="bluetooth-cbperipheralmbs-event.html#15">IsReadyToSendWriteWithoutResponse</A></li>
+</UL></LI>
+<LI>4 properties<UL>
+<li class="M">property <A href="bluetooth-cbperipheralmbs-property.html">CanSendWriteWithoutResponse</A> as Boolean</li>
+<li class="M">property <A href="bluetooth-cbperipheralmbs-property.html#2">Name</A> as String</li>
+<li class="M">property <A href="bluetooth-cbperipheralmbs-property.html#3">RSSI</A> as String</li>
+<li class="M">property <A href="bluetooth-cbperipheralmbs-property.html#4">State</A> as Integer</li>
+</UL></LI>
+<LI>14 methods<UL>
+<li class="M">method <A href="bluetooth-cbperipheralmbs-method.html">Constructor</A>(Peripheral as CBPeripheralMBS)</li>
+<li class="M">method <A href="bluetooth-cbperipheralmbs-method.html#2">Destructor</A></li>
+<li class="M">method <A href="bluetooth-cbperipheralmbs-method.html#3">discoverCharacteristics</A>(characteristicUUIDs() as <A href="class-cbuuidmbs.html">CBUUIDMBS</A> = nil, service as <A href="class-cbservicembs.html">CBServiceMBS</A>)</li>
+<li class="M">method <A href="bluetooth-cbperipheralmbs-method.html#4">discoverDescriptorsForCharacteristic</A>(Characteristic as <A href="class-cbcharacteristicmbs.html">CBCharacteristicMBS</A>)</li>
+<li class="M">method <A href="bluetooth-cbperipheralmbs-method.html#5">discoverIncludedServices</A>(includedServiceUUIDs() as <A href="class-cbuuidmbs.html">CBUUIDMBS</A> = nil, service as <A href="class-cbservicembs.html">CBServiceMBS</A>)</li>
+<li class="M">method <A href="bluetooth-cbperipheralmbs-method.html#6">discoverServices</A>(serviceUUIDs() as <A href="class-cbuuidmbs.html">CBUUIDMBS</A> = nil)</li>
+<li class="M">method <A href="bluetooth-cbperipheralmbs-method.html#7">maximumWriteValueLengthForType</A>(Type as Integer) as Integer</li>
+<li class="M">method <A href="bluetooth-cbperipheralmbs-method.html#8">readRSSI</A></li>
+<li class="M">method <A href="bluetooth-cbperipheralmbs-method.html#9">readValueForCharacteristic</A>(Characteristic as <A href="class-cbcharacteristicmbs.html">CBCharacteristicMBS</A>)</li>
+<li class="M">method <A href="bluetooth-cbperipheralmbs-method.html#10">readValueForDescriptor</A>(descriptor as <A href="class-cbdescriptormbs.html">CBDescriptorMBS</A>)</li>
+<li class="M">method <A href="bluetooth-cbperipheralmbs-method.html#11">services</A> as <A href="class-cbservicembs.html">CBServiceMBS</A>()</li>
+<li class="M">method <A href="bluetooth-cbperipheralmbs-method.html#12">setNotifyValue</A>(enabled as Boolean, Characteristic as <A href="class-cbcharacteristicmbs.html">CBCharacteristicMBS</A>)</li>
+<li class="M">method <A href="bluetooth-cbperipheralmbs-method.html#13">writeValue</A>(data as MemoryBlock, Characteristic as <A href="class-cbcharacteristicmbs.html">CBCharacteristicMBS</A>, Type as Integer)</li>
+<li class="M">method <A href="bluetooth-cbperipheralmbs-method.html#14">writeValue</A>(data as MemoryBlock, Descriptor as <A href="class-cbdescriptormbs.html">CBDescriptorMBS</A>)</li>
+</UL></LI>
+<li class="M">shared method <A href="bluetooth-cbperipheralmbs-shared-method.html">Available</A> as boolean</li>
+<LI>6 constants<UL>
+<li class="M">const <A href="bluetooth-cbperipheralmbs-const.html#5">kWriteWithoutResponse</A> = 1</li>
+<li class="M">const <A href="bluetooth-cbperipheralmbs-const.html#6">kWriteWithResponse</A> = 0</li>
+</UL></LI>
+</ul>
+<h3 lang="en">States</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbperipheralmbs-const.html">kStateConnected </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+The peripheral is currently connected to the central manager.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbperipheralmbs-const.html#2">kStateConnecting </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+The peripheral is currently in the process of connecting to the central manager.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbperipheralmbs-const.html#3">kStateDisconnected </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 0</td>
+<td bgcolor="#DDDDDD" valign=top>
+The peripheral is currently not connected to the central manager.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbperipheralmbs-const.html#4">kStateDisconnecting </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+The peripheral is currently in the process of disconnecting from the central manager.<BR>
+</td>
+</tr>
+</table>
+<h4>Super class <A href="class-cbpeermbs.html">CBPeerMBS</A></h4>
+<ul>
+<LI>2 properties<UL>
+<li class="M">property <A href="bluetooth-cbpeermbs-property.html">Handle</A> as Integer</li>
+<li class="M">property <A href="bluetooth-cbpeermbs-property.html#2">identifier</A> as String</li>
+</UL></LI>
+<LI>2 methods<UL>
+<li class="M">method <A href="bluetooth-cbpeermbs-method.html">Constructor</A> &nbsp; <b style="color: #8B0000"> Private </b></li>
+<li class="M">method <A href="bluetooth-cbpeermbs-method.html#2">copy</A> as <A href="class-cbpeermbs.html">CBPeerMBS</A></li>
+</UL></LI>
+<li class="M">shared method <A href="bluetooth-cbpeermbs-shared-method.html">Available</A> as boolean</li>
+</ul>
+<p>This class has no sub classes.</p>
+<h4>Some methods using this class:</h4><ul>
+<li class="M"><A href="bluetooth-cbcentralmanagermbs-method.html" translate="no">CBCentralManagerMBS.cancelPeripheralConnection</A>(Peripheral as CBPeripheralMBS)</li>
+<li class="M"><A href="bluetooth-cbcentralmanagermbs-method.html#2" translate="no">CBCentralManagerMBS.connectPeripheral</A>(peripheral as CBPeripheralMBS, options as Dictionary = nil)</li>
+<li class="M"><A href="bluetooth-cbcentralmanagermbs-method.html#5" translate="no">CBCentralManagerMBS.retrieveConnectedPeripheralsWithServices</A>(serviceUUIDs() as <A href="class-cbuuidmbs.html">CBUUIDMBS</A>) as CBPeripheralMBS()</li>
+<li class="M"><A href="bluetooth-cbcentralmanagermbs-method.html#6" translate="no">CBCentralManagerMBS.retrievePeripheralsWithIdentifiers</A>(identifiers() as <A href="class-nsuuidmbs.html">NSUUIDMBS</A>) as CBPeripheralMBS()</li>
+</ul>
+<h4>Some properties using for this class:</h4><ul>
+<li class="M"><A href="bluetooth-cbservicembs-property.html#2" translate="no">CBServiceMBS.peripheral</A> as CBPeripheralMBS</li>
+</ul>
+<h4>Some events using this class:</h4><ul>
+<li class="M"><A href="bluetooth-cbcentralmanagermbs-event.html">CBCentralManagerMBS.DidConnectPeripheral</A>(peripheral as CBPeripheralMBS)</li>
+<li class="M"><A href="bluetooth-cbcentralmanagermbs-event.html#2">CBCentralManagerMBS.DidDisconnectPeripheral</A>(peripheral as CBPeripheralMBS, error as <A href="class-nserrormbs.html">NSErrorMBS</A>)</li>
+<li class="M"><A href="bluetooth-cbcentralmanagermbs-event.html#3">CBCentralManagerMBS.DidDiscoverPeripheral</A>(peripheral as CBPeripheralMBS, advertisementData as Dictionary, RSSI as String)</li>
+<li class="M"><A href="bluetooth-cbcentralmanagermbs-event.html#4">CBCentralManagerMBS.DidFailToConnectPeripheral</A>(peripheral as CBPeripheralMBS, error as <A href="class-nserrormbs.html">NSErrorMBS</A>)</li>
+</ul>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-bluetooth-macbluetooth-bluetoothleheartratemac.html">/Bluetooth/Mac Bluetooth/Bluetooth LE Heart Rate Mac</A></li>
+<li class=""><A href="example-bluetooth-macbluetooth-corebluetoothdevices.html">/Bluetooth/Mac Bluetooth/CoreBluetooth Devices</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2018-06-25/Bluetooth_for_Xojo/monkeybreadsoftware_blog_xojo">Bluetooth for Xojo</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsbluetoothplugin.html">MBS Bluetooth Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-cbperipheralmanagermbs.html">CBPeripheralManagerMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-cbservicembs.html">CBServiceMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-cbperipheralmbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

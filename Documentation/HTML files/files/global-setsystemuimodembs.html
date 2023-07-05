@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - System: SetSystemUIModeMBS</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="System">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">System: SetSystemUIModeMBS</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="M">
+<b><A name="1">SetSystemUIModeMBS(mode as Integer, Options as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>global method</td>
+<td class=grau><A href="topic-system.html" translate="no">System</A></td>
+<td class=grau><a href="plugins-mbsmacosxplugin.html">MBS MacOSX Plugin</a></td>
+<td class=grau><a href="newinversion28.shtml" class=version>2.8</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Sets the current System UI mode for your application.<BR>
+<B>Notes:</B> 
+<BR>
+Details from Apple&#39;s documentation:<BR>
+<BR>
+Sets the presentation mode for system-provided user interface elements.<BR>
+<BR>
+The presentation mode of an application determines which system-provided user interface elements are visible on thes screen. When the frontmost application changes its presentation mode, a kEventAppSystemUIModeChanged Carbon event is sent to all applications that have registered for the event. This event is also sent when an application is activated; it contains the newly active application&#39;s presentation mode.<BR>
+<BR>
+Note that the system UI mode is a per-process state. Switching from a process that is suppressing system UI to another processthat is not will cause system UI elements to become visible automatically. Switching back to the first process will suppress system UI elements again.<BR>
+<BR>
+The modes available:<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">kUIModeNormal</TD><TD valign="top">0</TD><TD valign="top">In this mode, all standard system UI elements are visible.</TD></TR>
+<TR><TD valign="top">kUIModeContentSuppressed</TD><TD valign="top">1</TD><TD valign="top">In this mode, system UI elements which cover the &quot;content area&quot; of the screen (the area other than the menubar) are hidden. However, these elements may automatically show themselves in response to mouse movements or other user activity; specifically, the Dock will still show itself automatically when the mouse moves into the Dock&#39;s auto-show region.</TD></TR>
+<TR><TD valign="top">kUIModeContentHidden</TD><TD valign="top">2</TD><TD valign="top">In this mode, system UI elements which cover the &quot;content area&quot; of the screen (the area other than the menubar) are hidden. Unlike kUIModeContentSuppressed, most UI elements will not automatically show themselves in this mode.</TD></TR>
+<TR><TD valign="top">kUIModeAllHidden</TD><TD valign="top">3</TD><TD valign="top">In this mode, all system UI elements, including the menubar, are hidden. Most system UI elements will not automatically show themselves in this mode. The application may request that the menubar automatically show itself while in this mode by passing the kUIOptionAutoShowMenuBar flag to SetSystemUIMode.</TD></TR>
+</TABLE>
+<BR>
+The options which you can combine:<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">kUIOptionAutoShowMenuBar</TD><TD valign="top">1</TD><TD valign="top">Requests that the menubar automatically show itself when the user moves the mouse into the screen area that would ordinarily be occupied by the menubar. Only valid with kUIModeAllHidden.</TD></TR>
+<TR><TD valign="top">kUIOptionAnimateMenuBar</TD><TD valign="top">2</TD><TD valign="top">Requests that the menubar animate on or offscreen, if the UIMode is also being changed such that the menubar will change visibility. Unlike other UI options, this option is not stored and only affects the behavior of this call to SetSystemUIMode. Valid for all modes. Available in Mac OS X 10.7 and later.</TD></TR>
+<TR><TD valign="top">kUIOptionDisableAppleMenu</TD><TD valign="top">4</TD><TD valign="top">Disables all items in the Apple menu. Valid for all modes.</TD></TR>
+<TR><TD valign="top">kUIOptionDisableProcessSwitch</TD><TD valign="top">8</TD><TD valign="top">The active application may not be changed while this process is active. Currently disables the Command-Tab and Command-Shift-Tab key sequences to switch the active process, and the global window rotation key sequence selected by the user in the Keyboard preference pane. SetFrontProcess may still be used to explicitly switch the active process. Only valid with modes other than kUIModeNormal.</TD></TR>
+<TR><TD valign="top">kUIOptionDisableForceQuit</TD><TD valign="top">16</TD><TD valign="top">The Force Quit window may not be displayed while this process is active. Currently disables the Command-Option-Escape key sequence to open the Force Quit window and the Force Quit menu item in the Apple menu. Only valid with modes other than kUIModeNormal.</TD></TR>
+<TR><TD valign="top">kUIOptionDisableSessionTerminate</TD><TD valign="top">32</TD><TD valign="top">The current login session may not be terminated while this process is active. Currently disables the Power key and the Restart, Shut Down, and Log Out menu items in the Apple menu. Only valid with modes other than kUIModeNormal.</TD></TR>
+</TABLE>
+<BR>
+Please use presentationOptions in <A href="class-nsapplicationmbs.html">NSApplicationMBS</A> for Cocoa applications.<BR>
+<h4>Some examples using this global method:</h4>
+<ul translate="no">
+<li><A href="example-maccf-kioskapplication.html">/MacCF/Kiosk application</A></li>
+<li><A href="example-macosx-systemuimode.html">/MacOSX/System UI Mode</A></li>
+</ul>
+<h4>Some FAQ entries about this method:</h4>
+<ul>
+<li><A href="faq-howtodisableforcequit.html">How to disable force quit?</A></li>
+</ul>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmacosxplugin.html">MBS MacOSX Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=global-setsystemuimodembs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

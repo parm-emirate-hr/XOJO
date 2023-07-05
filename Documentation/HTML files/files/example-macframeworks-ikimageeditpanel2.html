@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /MacFrameworks/IKImageEditPanel2</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /MacFrameworks/IKImageEditPanel2</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/MacFrameworks/IKImageEditPanel2</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS AVFoundation Plugin, MBS MacCocoa Plugin, MBS MacBase Plugin, MBS Main Plugin, MBS MacCG Plugin, MBS MacCF Plugin, MBS MacControls Plugin, MBS Picture Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /MacFrameworks/IKImageEditPanel2<BR>
+This example is the version from Fri, 17th Nov 2016.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;IKImageEditPanel2.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	FileTypes</div>
+<div class="RB_Code">		Filetype text</div>
+<div class="RB_Code">		Filetype special/any</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> FileTypes</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Window1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Close()
+			panel.close
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> DropObject(obj <span style="color:#0000FF;font-weight: bold">As</span> DragItem, action <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> folderitem
+			<span style="color:#0000FF;font-weight: bold">dim</span> p <span style="color:#0000FF;font-weight: bold">as</span> picture
+			
+			<span style="color:#0000FF;font-weight: bold">do</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> obj.folderItemavailable <span style="color:#0000FF;font-weight: bold">then</span>
+					f=obj.folderItem
+					<span style="color:#0000FF;font-weight: bold">if</span> f&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						p=f.openaspicture
+						<span style="color:#0000FF;font-weight: bold">if</span> p&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+							pic=p
+							panel.reloadData
+							refresh
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">loop</span> <span style="color:#0000FF;font-weight: bold">until</span> <span style="color:#0000FF;font-weight: bold">not</span> obj.nextItem
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#0000FF;font-weight: bold">dim</span> p,mask <span style="color:#0000FF;font-weight: bold">as</span> picture
+			<span style="color:#0000FF;font-weight: bold">dim</span> w,h <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.acceptfileDrop <span style="color:#6500FE">&quot;special/any&quot;</span>
+			
+			p=screenshotMBS
+			
+			w=p.width/<span style="color:#326598">2</span>
+			h=p.height/<span style="color:#326598">2</span>
+			
+			pic = <span style="color:#0000FF;font-weight: bold">New</span> Picture(w,h,<span style="color:#326598">32</span>)
+			pic.graphics.drawpicture p,<span style="color:#326598">0</span>,<span style="color:#326598">0</span>,w,h,<span style="color:#326598">0</span>,<span style="color:#326598">0</span>,p.width,p.height
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">try</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">mask</span>
+			pic.mask.graphics.foreColor=&amp;c<span style="color:#FF0000">FF</span><span style="color:#00FF00">FF</span><span style="color:#0000FF">FF</span>
+			pic.mask.graphics.fillrect <span style="color:#326598">0</span>,<span style="color:#326598">0</span>,pic.width,pic.height
+			pic.mask.graphics.foreColor=&amp;c<span style="color:#FF0000">00</span><span style="color:#00FF00">00</span><span style="color:#0000FF">00</span>
+			pic.mask.graphics.filloval <span style="color:#326598">0</span>,<span style="color:#326598">0</span>,pic.width,pic.height
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">resize</span> <span style="color:#7F0000;text-style:italic">window</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">match</span> <span style="color:#7F0000;text-style:italic">picture</span>
+			width=w
+			height=h
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">show</span> <span style="color:#7F0000;text-style:italic">panel</span>
+			panel=<span style="color:#0000FF;font-weight: bold">new</span> imageeditPanel
+			panel.left=w+<span style="color:#0000FF;font-weight: bold">me</span>.left
+			panel.top=screen(<span style="color:#326598">0</span>).height-<span style="color:#0000FF;font-weight: bold">me</span>.top-panel.height
+			panel.show
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Paint(g <span style="color:#0000FF;font-weight: bold">As</span> Graphics, areas() <span style="color:#0000FF;font-weight: bold">As</span> REALbasic.Rect)
+			g.drawpicture pic,<span style="color:#326598">0</span>,<span style="color:#326598">0</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> panel <span style="color:#0000FF;font-weight: bold">As</span> imageeditPanel</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> pic <span style="color:#0000FF;font-weight: bold">As</span> picture</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;Quit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;Clear&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> ImageEditPanel <span style="color:#0000FF;font-weight: bold">Inherits</span> IKImageEditPanelMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Changed(pic <span style="color:#0000FF;font-weight: bold">as</span> picture, CGImageHandle <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, metaData <span style="color:#0000FF;font-weight: bold">as</span> dictionary)
+			window1.pic=pic
+			window1.refresh
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> Image() <span style="color:#0000FF;font-weight: bold">As</span> picture
+			<span style="color:#0000FF;font-weight: bold">return</span> window1.pic
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-macframeworks-ikimageeditpanel2">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+xattr -cr  "Builds - Push Notification/OS X 64 bit/Push Notification.app"
+
+codesign -f --sign "Developer ID Application: Christian Schmitz Software GmbH (RZ52899P4B)" --options runtime Builds\ -\ Push\ Notification/OS\ X\ 64\ bit/Push\ Notification.app/Contents/Frameworks/*
+
+
+
+codesign -f --sign "Developer ID Application: Christian Schmitz Software GmbH (RZ52899P4B)" --entitlements test.entitlements --options runtime Builds\ -\ Push\ Notification/OS\ X\ 64\ bit/Push\ Notification.app
+
+
+

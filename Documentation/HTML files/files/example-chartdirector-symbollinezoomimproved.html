@@ -1,0 +1,728 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /ChartDirector/symbolline zoom improved</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /ChartDirector/symbolline zoom improved</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/ChartDirector/symbolline zoom improved</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS ChartDirector Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /ChartDirector/symbolline zoom improved<BR>
+This example is the version from Mon, 12th Jan 2020.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;symbolline</span> <span style="color:#6500FE">zoom</span> <span style="color:#6500FE">improved.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> PicWindow <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> zoomInRatio = <span style="color:#006532">2.0</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> zoomOutRatio = <span style="color:#006532">0.5</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control cntSymbolLineZoom1 <span style="color:#0000FF;font-weight: bold">Inherits</span> cntSymbolLineZoom</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance cntSymbolLineZoom1 <span style="color:#0000FF;font-weight: bold">Inherits</span> cntSymbolLineZoom</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> getXY(x <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, y <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			<span style="color:#7F0000;text-style:italic">////Private</span> <span style="color:#7F0000;text-style:italic">Sub</span> <span style="color:#7F0000;text-style:italic">ChtImage_Mousemove(Button</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Integer,</span> <span style="color:#7F0000;text-style:italic">Shift</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Integer,</span> <span style="color:#7F0000;text-style:italic">X</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Single,</span> <span style="color:#7F0000;text-style:italic">Y</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Single)</span>
+			<span style="color:#7F0000;text-style:italic">//</span>
+			<span style="color:#7F0000;text-style:italic">//&#39;Translate</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">VB</span> <span style="color:#7F0000;text-style:italic">coordinates</span> <span style="color:#7F0000;text-style:italic">(typically</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">TWIPS)</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">pixel</span> <span style="color:#7F0000;text-style:italic">coordinates</span>
+			<span style="color:#7F0000;text-style:italic">//xPixel</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">ScaleX(X,</span> <span style="color:#7F0000;text-style:italic">Me.ScaleMode,</span> <span style="color:#7F0000;text-style:italic">vbPixels)</span>
+			<span style="color:#7F0000;text-style:italic">//yPixel</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">ScaleY(Y,</span> <span style="color:#7F0000;text-style:italic">Me.ScaleMode,</span> <span style="color:#7F0000;text-style:italic">vbPixels)</span>
+			<span style="color:#7F0000;text-style:italic">//</span>
+			<span style="color:#7F0000;text-style:italic">//out.AcceptFileDrop</span>
+			<span style="color:#7F0000;text-style:italic">//&#39;get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">axis</span> <span style="color:#7F0000;text-style:italic">scale</span>
+			<span style="color:#7F0000;text-style:italic">//maxX1</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">chtDist.xAxis.getMaxValue</span>
+			<span style="color:#7F0000;text-style:italic">//minX1</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">chtDist.xAxis.getMinValue</span>
+			<span style="color:#7F0000;text-style:italic">//minY1</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">chtDist.yAxis.getMinValue</span>
+			<span style="color:#7F0000;text-style:italic">//maxY1</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">chtDist.yAxis.getMaxValue</span>
+			<span style="color:#7F0000;text-style:italic">//</span>
+			<span style="color:#7F0000;text-style:italic">//&#39;with</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">above</span> <span style="color:#7F0000;text-style:italic">information,</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">x</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">y</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">value</span>
+			<span style="color:#7F0000;text-style:italic">//xValue</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">(xPixel</span> <span style="color:#7F0000;text-style:italic">-</span> <span style="color:#7F0000;text-style:italic">plotAreaLeft)</span> <span style="color:#7F0000;text-style:italic">/</span> <span style="color:#7F0000;text-style:italic">plotAreaWidth</span> <span style="color:#7F0000;text-style:italic">*</span> <span style="color:#7F0000;text-style:italic">(maxX1</span> <span style="color:#7F0000;text-style:italic">-</span> <span style="color:#7F0000;text-style:italic">minX1)</span>
+			<span style="color:#7F0000;text-style:italic">//xValue</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">(plotAreaBottom</span> <span style="color:#7F0000;text-style:italic">-</span> <span style="color:#7F0000;text-style:italic">yPixel)</span> <span style="color:#7F0000;text-style:italic">/</span> <span style="color:#7F0000;text-style:italic">plotAreaHeight</span> <span style="color:#7F0000;text-style:italic">*</span> <span style="color:#7F0000;text-style:italic">(maxY1</span> <span style="color:#7F0000;text-style:italic">-</span> <span style="color:#7F0000;text-style:italic">minY1)</span>
+			<span style="color:#7F0000;text-style:italic">//</span>
+			<span style="color:#7F0000;text-style:italic">//Debug.Print</span> <span style="color:#7F0000;text-style:italic">xValue</span> <span style="color:#7F0000;text-style:italic">&amp;</span> <span style="color:#7F0000;text-style:italic">&quot;,&quot;</span> <span style="color:#7F0000;text-style:italic">&amp;</span> <span style="color:#7F0000;text-style:italic">yValue</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> zoomLineCanvas <span style="color:#0000FF;font-weight: bold">Inherits</span> canvas</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> allowDrag = <span style="color:#0000FF;font-weight: bold">true</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> allowMove = <span style="color:#0000FF;font-weight: bold">true</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> allowZoom = <span style="color:#0000FF;font-weight: bold">true</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> zoomInRatio = <span style="color:#006532">2.0</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> zoomOutRatio = <span style="color:#006532">0.5</span></div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> MouseDown(X <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, Y <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			isMouseDown = <span style="color:#0000FF;font-weight: bold">true</span>
+			
+			<span style="color:#7F0000;text-style:italic">//if</span> <span style="color:#7F0000;text-style:italic">cntSymbolLineZoom(window).ToolMove.Value</span> <span style="color:#7F0000;text-style:italic">then</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> allowMove <span style="color:#0000FF;font-weight: bold">and</span> (<span style="color:#0000FF;font-weight: bold">not</span> Keyboard.AsyncAltKey) <span style="color:#0000FF;font-weight: bold">and</span> (<span style="color:#0000FF;font-weight: bold">not</span> Keyboard.AsyncShiftKey) <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.MouseCursor=System.Cursors.HandClosed
+				StartX=X
+				StartY=Y
+				viewport.startDrag
+				
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">zoom</span>
+				
+				StartX=X
+				StartY=Y
+				StartX2=X
+				StartY2=Y
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> MouseDrag(X <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, Y <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+			<span style="color:#0000FF;font-weight: bold">If</span> (<span style="color:#0000FF;font-weight: bold">Not</span> Keyboard.AsyncShiftKey) <span style="color:#0000FF;font-weight: bold">And</span> (<span style="color:#0000FF;font-weight: bold">Not</span> Keyboard.AsyncAltKey) <span style="color:#0000FF;font-weight: bold">And</span> allowMove <span style="color:#0000FF;font-weight: bold">Then</span><span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">cntSymbolLineZoom(window).ToolMove.Value</span> <span style="color:#7F0000;text-style:italic">then</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> viewport.dragTo(CDBaseChartMBS.kDirectionHorizontalVertical, x-Startx,y-Starty) <span style="color:#0000FF;font-weight: bold">then</span>
+					redraw
+					cntSymbolLineZoom(window).LabelX.Text=<span style="color:#6500FE">&quot;x:</span> <span style="color:#6500FE">&quot;</span>+str(getXdata(x))
+					cntSymbolLineZoom(window).LabelY.Text=<span style="color:#6500FE">&quot;y:</span> <span style="color:#6500FE">&quot;</span>+str(getYdata(y))
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				StartX2=X
+				StartY2=Y
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> l,t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> w,h <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+				
+				l=min(StartX,StartX2)
+				t=min(StartY,StartY2)
+				w=StartX2-StartX
+				h=StartY2-StartY
+				<span style="color:#0000FF;font-weight: bold">if</span> w&lt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span> w=-w
+				<span style="color:#0000FF;font-weight: bold">if</span> h&lt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span> h=-h
+				
+				cntSymbolLineZoom(Window).LabelX.Text=<span style="color:#6500FE">&quot;x:</span> <span style="color:#6500FE">&quot;</span>+Str(getXdata(x))
+				cntSymbolLineZoom(Window).LabelY.Text=<span style="color:#6500FE">&quot;y:</span> <span style="color:#6500FE">&quot;</span>+Str(getYdata(y))
+				
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">trigger</span> <span style="color:#7F0000;text-style:italic">refresh</span>
+				RectangleTop = t
+				rectangleLeft = l
+				rectangleWidth = w
+				rectangleHeight = h
+				<span style="color:#0000FF;font-weight: bold">me</span>.Invalidate
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> MouseMove(X <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, Y <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+			<span style="color:#7F0000;text-style:italic">//cntSymbolLineZoom(parent).LabelX.Text=str(me.viewport.getViewPortLeft)</span>
+			<span style="color:#7F0000;text-style:italic">//cntSymbolLineZoom(parent).LabelY.Text=str(me.viewport.getViewPortTop)</span>
+			
+			<span style="color:#0000FF;font-weight: bold">If</span> (AllowZoom = <span style="color:#0000FF;font-weight: bold">True</span>) <span style="color:#0000FF;font-weight: bold">And</span> (Keyboard.AsyncOptionKey = <span style="color:#0000FF;font-weight: bold">True</span>) <span style="color:#0000FF;font-weight: bold">Then</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Zoom</span> <span style="color:#7F0000;text-style:italic">In</span>
+				MouseCursor = System.Cursors.MagnifyLarger
+				CleanUp  <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Finalize</span> <span style="color:#7F0000;text-style:italic">redraw</span>
+				
+			<span style="color:#0000FF;font-weight: bold">ElseIf</span> (AllowZoom = <span style="color:#0000FF;font-weight: bold">True</span>) <span style="color:#0000FF;font-weight: bold">And</span> (Keyboard.AsyncShiftKey = <span style="color:#0000FF;font-weight: bold">True</span>) <span style="color:#0000FF;font-weight: bold">Then</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Zoom</span> <span style="color:#7F0000;text-style:italic">Out</span>
+				MouseCursor = System.Cursors.MagnifySmaller
+				CleanUp  <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Finalize</span> <span style="color:#7F0000;text-style:italic">redraw</span>
+				
+			<span style="color:#0000FF;font-weight: bold">Else</span>
+				
+				<span style="color:#0000FF;font-weight: bold">Dim</span> HotSpotID <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Check</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">over</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">hotspot;</span> <span style="color:#7F0000;text-style:italic">Nil</span> <span style="color:#7F0000;text-style:italic">check</span> <span style="color:#7F0000;text-style:italic">prevents</span> <span style="color:#7F0000;text-style:italic">spurious</span> <span style="color:#7F0000;text-style:italic">NilObjectExceptions</span>
+				<span style="color:#0000FF;font-weight: bold">If</span> (ImageMapHandler &lt;&gt; <span style="color:#0000FF;font-weight: bold">Nil</span>) <span style="color:#0000FF;font-weight: bold">Then</span> HotSpotID = ImageMapHandler.getHotSpot(X, Y)
+				
+				<span style="color:#0000FF;font-weight: bold">If</span> (HotSpotID &gt; <span style="color:#326598">0</span>) <span style="color:#0000FF;font-weight: bold">Then</span>
+					cntSymbolLineZoom(window).Timer1.Mode=<span style="color:#326598">0</span>
+					MouseCursor = System.Cursors.StandardPointer
+					
+					DrawItemInfo(X, Y)
+					
+				<span style="color:#0000FF;font-weight: bold">ElseIf</span> (AllowMove = <span style="color:#0000FF;font-weight: bold">True</span>) <span style="color:#0000FF;font-weight: bold">Then</span>
+					
+					MouseCursor = System.Cursors.HandOpen
+					CleanUp  <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Finalize</span> <span style="color:#7F0000;text-style:italic">redraw</span>
+					cntSymbolLineZoom(window).Timer1.Mode=<span style="color:#326598">2</span>
+					
+				<span style="color:#0000FF;font-weight: bold">Else</span>
+					
+					MouseCursor = System.Cursors.StandardPointer
+					CleanUp  <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Finalize</span> <span style="color:#7F0000;text-style:italic">redraw</span>
+					cntSymbolLineZoom(window).Timer1.Mode=<span style="color:#326598">2</span>
+					
+				<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+				
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			<span style="color:#7F0000;text-style:italic">//dim</span> <span style="color:#7F0000;text-style:italic">maxX,maxY,curX,curY</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">integer</span>
+			<span style="color:#7F0000;text-style:italic">//dim</span> <span style="color:#7F0000;text-style:italic">maxXdata,maxYdata,minXdata,minYdata,curXdata,curYdata</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">double</span>
+			<span style="color:#7F0000;text-style:italic">//</span>
+			<span style="color:#7F0000;text-style:italic">//maxX=c.getPlotArea.getWidth-1</span>
+			<span style="color:#7F0000;text-style:italic">//maxY=c.getPlotArea.getHeight-1</span>
+			<span style="color:#7F0000;text-style:italic">//</span>
+			<span style="color:#7F0000;text-style:italic">//minXdata=c.xAxis.getMinValue</span>
+			<span style="color:#7F0000;text-style:italic">//maxXdata=c.xAxis.getMaxValue</span>
+			<span style="color:#7F0000;text-style:italic">//minYdata=c.yAxis.getMinValue</span>
+			<span style="color:#7F0000;text-style:italic">//maxYdata=c.yAxis.getMaxValue</span>
+			<span style="color:#7F0000;text-style:italic">//</span>
+			<span style="color:#7F0000;text-style:italic">//curX=x-c.getPlotArea.getLeftX</span>
+			<span style="color:#7F0000;text-style:italic">//curY=c.getPlotArea.getHeight+c.getPlotArea.getTopY-y</span>
+			<span style="color:#7F0000;text-style:italic">//</span>
+			<span style="color:#7F0000;text-style:italic">//curXdata=minXdata+curX*(maxXdata-minXdata)/maxX</span>
+			<span style="color:#7F0000;text-style:italic">//curYdata=minYdata+curY*(maxYdata-minYdata)/maxY</span>
+			
+			cntSymbolLineZoom(window).LabelX.Text=<span style="color:#6500FE">&quot;x:</span> <span style="color:#6500FE">&quot;</span>+str(getXdata(x))
+			cntSymbolLineZoom(window).LabelY.Text=<span style="color:#6500FE">&quot;y:</span> <span style="color:#6500FE">&quot;</span>+str(getYdata(y))
+			<span style="color:#7F0000;text-style:italic">//cntSymbolLineZoom(window).LabelXax.Text=&quot;xax:</span> <span style="color:#7F0000;text-style:italic">&quot;+str(minXdata)+&quot;,&quot;+str(maxXdata)</span>
+			<span style="color:#7F0000;text-style:italic">//cntSymbolLineZoom(window).LabelYax.Text=&quot;yax:</span> <span style="color:#7F0000;text-style:italic">&quot;+str(minYdata)+&quot;,&quot;+str(maxYdata)</span>
+			
+			<span style="color:#0000FF;font-weight: bold">exception</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> MouseUp(X <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, Y <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+			<span style="color:#0000FF;font-weight: bold">Me</span>.rectangleWidth = <span style="color:#326598">0</span>
+			isMouseDown = <span style="color:#0000FF;font-weight: bold">false</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> allowMove <span style="color:#0000FF;font-weight: bold">and</span> (<span style="color:#0000FF;font-weight: bold">not</span> Keyboard.AsyncAltKey) <span style="color:#0000FF;font-weight: bold">and</span> (<span style="color:#0000FF;font-weight: bold">not</span> Keyboard.AsyncShiftKey) <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#7F0000;text-style:italic">//cntSymbolLineZoom(window).ToolMove.Value</span> <span style="color:#7F0000;text-style:italic">then</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.MouseCursor=System.Cursors.HandOpen
+			<span style="color:#0000FF;font-weight: bold">elseif</span> allowZoom <span style="color:#0000FF;font-weight: bold">and</span> Keyboard.AsyncAltKey <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#7F0000;text-style:italic">//cntSymbolLineZoom(window).ToolZoomIn.Value</span> <span style="color:#7F0000;text-style:italic">then</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">zoom</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">point?</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> abs(X-StartX)&lt;<span style="color:#326598">3</span> <span style="color:#0000FF;font-weight: bold">and</span> abs(Y-StartY)&lt;<span style="color:#326598">3</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">zoom</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">point</span>
+					<span style="color:#0000FF;font-weight: bold">if</span> viewport.canZoomIn(CDBaseChartMBS.kDirectionHorizontalVertical) <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#0000FF;font-weight: bold">if</span> viewport.zoomAt(CDBaseChartMBS.kDirectionHorizontalVertical, x, y, <span style="color:#0000FF;font-weight: bold">me</span>.zoomInRatio) <span style="color:#0000FF;font-weight: bold">then</span>
+							redraw
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					<span style="color:#0000FF;font-weight: bold">else</span>
+						redraw
+						beep
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">zoom</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">rectangle</span>
+					<span style="color:#0000FF;font-weight: bold">if</span> viewport.canZoomIn(CDBaseChartMBS.kDirectionHorizontalVertical) <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#0000FF;font-weight: bold">if</span> viewport.zoomTo(CDBaseChartMBS.kDirectionHorizontalVertical, x, y, StartX, StartY) <span style="color:#0000FF;font-weight: bold">then</span>
+							redraw
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					<span style="color:#0000FF;font-weight: bold">else</span>
+						redraw
+						beep
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+			<span style="color:#0000FF;font-weight: bold">elseif</span> allowZoom <span style="color:#0000FF;font-weight: bold">and</span> Keyboard.AsyncShiftKey <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#7F0000;text-style:italic">//cntSymbolLineZoom(window).ToolZoomOut.Value</span> <span style="color:#7F0000;text-style:italic">then</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">zoom</span> <span style="color:#7F0000;text-style:italic">out</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">point</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> viewport.canZoomOut(CDBaseChartMBS.kDirectionHorizontalVertical) <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">if</span> viewport.zoomAt(CDBaseChartMBS.kDirectionHorizontalVertical, x, y, zoomOutRatio) <span style="color:#0000FF;font-weight: bold">then</span>
+						redraw
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					redraw
+					beep
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#0000FF;font-weight: bold">Me</span>.viewport=<span style="color:#0000FF;font-weight: bold">New</span> CDViewPortManagerMBS
+			
+			viewport.setViewPortHeight <span style="color:#326598">1</span>
+			viewport.setViewPortTop <span style="color:#326598">0</span>
+			viewport.setViewPortWidth <span style="color:#326598">1</span>
+			viewport.setViewPortLeft <span style="color:#326598">0</span>
+			
+			viewport.setZoomInWidthLimit <span style="color:#006532">0.001</span>
+			<span style="color:#7F0000;text-style:italic">&#39;viewport.setZoomInHeightLimit</span> <span style="color:#7F0000;text-style:italic">0.01</span>
+			viewport.setZoomOutWidthLimit <span style="color:#006532">0.2</span>
+			<span style="color:#7F0000;text-style:italic">&#39;viewport.setZoomOutHeightLimit</span> <span style="color:#7F0000;text-style:italic">1.0</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> x0 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>=<span style="color:#326598">70</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> x1 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>=<span style="color:#326598">50</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> x2 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>=<span style="color:#326598">30</span>
+			
+			data0.Append x0
+			data1.Append x1
+			data2.Append x2
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>=<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">100</span>
+				x0=x0+rnd*<span style="color:#006532">5.0</span>-<span style="color:#006532">2.5</span>
+				x1=x1+rnd*<span style="color:#006532">5.0</span>-<span style="color:#006532">2.5</span>
+				x2=x2+rnd*<span style="color:#006532">5.0</span>-<span style="color:#006532">2.5</span>
+				data0.Append x0
+				data1.Append x1
+				data2.Append x2
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">selection</span> <span style="color:#7F0000;text-style:italic">box</span>
+			rectanglePicture=<span style="color:#0000FF;font-weight: bold">New</span> Picture(<span style="color:#326598">32</span>,<span style="color:#326598">32</span>,<span style="color:#326598">32</span>)
+			rectanglePicture.Graphics.ForeColor=&amp;c<span style="color:#FF0000">FF</span><span style="color:#00FF00">00</span><span style="color:#0000FF">00</span>
+			rectanglePicture.Graphics.FillRect <span style="color:#326598">0</span>,<span style="color:#326598">0</span>,<span style="color:#326598">32</span>,<span style="color:#326598">32</span>
+			rectanglePicture.mask.Graphics.ForeColor=&amp;c<span style="color:#FF0000">CC</span><span style="color:#00FF00">CC</span><span style="color:#0000FF">CC</span>
+			rectanglePicture.mask.Graphics.FillRect <span style="color:#326598">0</span>,<span style="color:#326598">0</span>,<span style="color:#326598">32</span>,<span style="color:#326598">32</span>
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.MouseCursor=System.Cursors.HandOpen
+			
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">fix</span> <span style="color:#7F0000;text-style:italic">some</span> <span style="color:#7F0000;text-style:italic">properties</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">wrong</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">IDE</span>
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.DoubleBuffer = <span style="color:#0000FF;font-weight: bold">false</span>
+			<span style="color:#0000FF;font-weight: bold">me</span>.EraseBackground = <span style="color:#0000FF;font-weight: bold">false</span>
+			
+			<span style="color:#0000FF">#if</span> RBVersion &gt;= <span style="color:#006532">2013.0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Transparent = <span style="color:#0000FF;font-weight: bold">False</span>
+			<span style="color:#0000FF">#endif</span>
+			
+			redraw
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Paint(g <span style="color:#0000FF;font-weight: bold">As</span> Graphics, areas() <span style="color:#0000FF;font-weight: bold">As</span> REALbasic.Rect)
+			<span style="color:#0000FF;font-weight: bold">If</span> g &lt;&gt; <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF;font-weight: bold">If</span> overlay &lt;&gt; <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+					g.DrawPicture overlay,<span style="color:#326598">0</span>,<span style="color:#326598">0</span>
+				<span style="color:#0000FF;font-weight: bold">Else</span>
+					g.DrawPicture lastpicture,<span style="color:#326598">0</span>,<span style="color:#326598">0</span>
+					
+					<span style="color:#0000FF;font-weight: bold">If</span> rectangleWidth &gt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+						g.DrawPicture rectanglePicture, rectangleLeft, rectangleTop, rectangleWidth, rectangleHeight, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, rectanglePicture.Width, rectanglePicture.Height
+					<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> CleanUp()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Finalize</span> <span style="color:#7F0000;text-style:italic">redraw</span>
+			<span style="color:#0000FF;font-weight: bold">Me</span>.rectangleWidth = <span style="color:#326598">0</span>
+			<span style="color:#0000FF;font-weight: bold">Me</span>.Invalidate
+			<span style="color:#0000FF;font-weight: bold">Me</span>.NeedClear = <span style="color:#0000FF;font-weight: bold">False</span>
+			<span style="color:#0000FF;font-weight: bold">Me</span>.Overlay = <span style="color:#0000FF;font-weight: bold">Nil</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> DrawItemInfo(X <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, Y <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> Index <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> Key, KeyValue <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> XLabel <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> XValue <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> DataSet <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> DataSetName <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> Value <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> Title <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> Sector <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> Label <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Error</span> <span style="color:#7F0000;text-style:italic">check</span>
+			<span style="color:#0000FF;font-weight: bold">If</span> (ImageMapHandler = <span style="color:#0000FF;font-weight: bold">Nil</span>) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Do</span> <span style="color:#7F0000;text-style:italic">key/value</span> <span style="color:#7F0000;text-style:italic">pair</span> <span style="color:#7F0000;text-style:italic">priming</span> <span style="color:#7F0000;text-style:italic">calls</span>
+			Index = <span style="color:#326598">0</span>
+			Key = ImageMapHandler.getKey(Index)
+			KeyValue = ImageMapHandler.getValue(Index)
+			
+			
+			<span style="color:#0000FF;font-weight: bold">Do</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">NOTE:</span> <span style="color:#7F0000;text-style:italic">This</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">complete</span> <span style="color:#7F0000;text-style:italic">supported</span> <span style="color:#7F0000;text-style:italic">list</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">parameters;</span> <span style="color:#7F0000;text-style:italic">Refer</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">ChartDirector</span> <span style="color:#7F0000;text-style:italic">documentation</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">&#39;Parameter</span> <span style="color:#7F0000;text-style:italic">Substitution</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">Formatting&#39;</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">additional</span> <span style="color:#7F0000;text-style:italic">parameters</span>
+				<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">Case</span> Key
+					
+				<span style="color:#0000FF;font-weight: bold">Case</span> <span style="color:#6500FE">&quot;xlabel&quot;</span>
+					XLabel = KeyValue
+					
+				<span style="color:#0000FF;font-weight: bold">Case</span> <span style="color:#6500FE">&quot;x&quot;</span>
+					XValue = KeyValue
+					
+				<span style="color:#0000FF;font-weight: bold">Case</span> <span style="color:#6500FE">&quot;dataset&quot;</span>
+					DataSet = KeyValue
+					
+				<span style="color:#0000FF;font-weight: bold">Case</span> <span style="color:#6500FE">&quot;datasetname&quot;</span>
+					DataSetName = KeyValue
+					
+				<span style="color:#0000FF;font-weight: bold">Case</span> <span style="color:#6500FE">&quot;value&quot;</span>
+					Value = KeyValue
+					
+				<span style="color:#0000FF;font-weight: bold">Case</span> <span style="color:#6500FE">&quot;title&quot;</span>
+					Title = KeyValue
+					
+				<span style="color:#0000FF;font-weight: bold">Case</span> <span style="color:#6500FE">&quot;sector&quot;</span>
+					Sector = KeyValue
+					
+				<span style="color:#0000FF;font-weight: bold">Case</span> <span style="color:#6500FE">&quot;label&quot;</span>
+					Label = KeyValue
+					
+				<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+				
+				Index = Index + <span style="color:#326598">1</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Get</span> <span style="color:#7F0000;text-style:italic">next</span> <span style="color:#7F0000;text-style:italic">key/value</span> <span style="color:#7F0000;text-style:italic">pair</span>
+				Key = ImageMapHandler.getKey(Index)
+				KeyValue = ImageMapHandler.getValue(Index)
+				
+			<span style="color:#0000FF;font-weight: bold">Loop</span> <span style="color:#0000FF;font-weight: bold">Until</span> Key.Len = <span style="color:#326598">0</span>
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Compose</span> <span style="color:#7F0000;text-style:italic">label</span> <span style="color:#7F0000;text-style:italic">graphic</span>
+			<span style="color:#0000FF;font-weight: bold">If</span> (Label &lt;&gt; <span style="color:#6500FE">&quot;&quot;</span>) <span style="color:#0000FF;font-weight: bold">Then</span> Value = Label + <span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span> + Value
+			
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> B <span style="color:#0000FF;font-weight: bold">As</span> Picture = <span style="color:#0000FF;font-weight: bold">New</span> Picture(Width, Height, <span style="color:#326598">32</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> G <span style="color:#0000FF;font-weight: bold">As</span> Graphics = B.Graphics
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> W <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">6</span> + G.StringWidth(Value)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> H <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">20</span>
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">some</span> <span style="color:#7F0000;text-style:italic">space</span> <span style="color:#7F0000;text-style:italic">between</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">cursor</span> <span style="color:#7F0000;text-style:italic">position</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">initial</span> <span style="color:#7F0000;text-style:italic">label</span> <span style="color:#7F0000;text-style:italic">drawing</span> <span style="color:#7F0000;text-style:italic">position</span>
+			X = X + <span style="color:#326598">10</span>
+			Y = Y + <span style="color:#326598">10</span>
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">If</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">too</span> <span style="color:#7F0000;text-style:italic">close</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">right,</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">need</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">move</span> <span style="color:#7F0000;text-style:italic">our</span> <span style="color:#7F0000;text-style:italic">label</span> <span style="color:#7F0000;text-style:italic">drawing</span> <span style="color:#7F0000;text-style:italic">position</span> <span style="color:#7F0000;text-style:italic">left</span>
+			<span style="color:#0000FF;font-weight: bold">If</span> (X + W &gt; G.Width) <span style="color:#0000FF;font-weight: bold">Then</span> X = X - <span style="color:#326598">20</span> - W
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">If</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">too</span> <span style="color:#7F0000;text-style:italic">close</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">bottom,</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">need</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">move</span> <span style="color:#7F0000;text-style:italic">our</span> <span style="color:#7F0000;text-style:italic">label</span> <span style="color:#7F0000;text-style:italic">drawing</span> <span style="color:#7F0000;text-style:italic">position</span> <span style="color:#7F0000;text-style:italic">up</span>
+			<span style="color:#0000FF;font-weight: bold">If</span> (Y + H &gt; G.Height) <span style="color:#0000FF;font-weight: bold">Then</span> Y = Y - <span style="color:#326598">20</span> - H
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Draw</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">current</span> <span style="color:#7F0000;text-style:italic">composited</span> <span style="color:#7F0000;text-style:italic">chart</span> <span style="color:#7F0000;text-style:italic">image</span>
+			B.Graphics.DrawPicture(LastPicture, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>)
+			B.Mask.Graphics.DrawPicture(LastPicture.Mask, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>)
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Draw</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">label</span> <span style="color:#7F0000;text-style:italic">graphic</span>
+			G.ForeColor = &amp;c<span style="color:#FF0000">CC</span><span style="color:#00FF00">CC</span><span style="color:#0000FF">00</span>
+			G.FillRect(X, Y, W, H)
+			G.ForeColor = &amp;c<span style="color:#FF0000">00</span><span style="color:#00FF00">00</span><span style="color:#0000FF">00</span>
+			G.DrawString(Value, X + <span style="color:#326598">3</span>, Y + <span style="color:#326598">15</span>)
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Update</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">composited</span> <span style="color:#7F0000;text-style:italic">chart</span> <span style="color:#7F0000;text-style:italic">image</span>
+			Overlay = b
+			<span style="color:#0000FF;font-weight: bold">Me</span>.Invalidate
+			NeedClear = <span style="color:#0000FF;font-weight: bold">True</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> UpdateMouseCursor()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">call</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">timer</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">your</span> <span style="color:#7F0000;text-style:italic">window</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">keep</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mouse</span> <span style="color:#7F0000;text-style:italic">cursor</span> <span style="color:#7F0000;text-style:italic">change</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">pressing</span> <span style="color:#7F0000;text-style:italic">alt</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">shift</span> <span style="color:#7F0000;text-style:italic">keys.</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">zoom</span> <span style="color:#7F0000;text-style:italic">allowed?</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> AllowZoom <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> isMouseDown <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> x <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#0000FF;font-weight: bold">me</span>.MouseX
+			<span style="color:#0000FF;font-weight: bold">dim</span> y <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#0000FF;font-weight: bold">me</span>.MouseY
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">check</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">mouse</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">inside</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> X&lt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> Y&lt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> X&gt;<span style="color:#0000FF;font-weight: bold">me</span>.Width <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> Y&gt;<span style="color:#0000FF;font-weight: bold">me</span>.Height <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">now</span> <span style="color:#7F0000;text-style:italic">update</span>
+			
+			<span style="color:#0000FF;font-weight: bold">If</span> Keyboard.AsyncOptionKey <span style="color:#0000FF;font-weight: bold">Then</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Zoom</span> <span style="color:#7F0000;text-style:italic">In</span>
+				MouseCursor = System.Cursors.MagnifyLarger
+				
+			<span style="color:#0000FF;font-weight: bold">ElseIf</span> Keyboard.AsyncShiftKey <span style="color:#0000FF;font-weight: bold">Then</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Zoom</span> <span style="color:#7F0000;text-style:italic">Out</span>
+				MouseCursor = System.Cursors.MagnifySmaller
+				
+			<span style="color:#0000FF;font-weight: bold">Else</span>
+				
+				<span style="color:#0000FF;font-weight: bold">Dim</span> HotSpotID <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Check</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">over</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">hotspot;</span> <span style="color:#7F0000;text-style:italic">Nil</span> <span style="color:#7F0000;text-style:italic">check</span> <span style="color:#7F0000;text-style:italic">prevents</span> <span style="color:#7F0000;text-style:italic">spurious</span> <span style="color:#7F0000;text-style:italic">NilObjectExceptions</span>
+				<span style="color:#0000FF;font-weight: bold">If</span> (ImageMapHandler &lt;&gt; <span style="color:#0000FF;font-weight: bold">Nil</span>) <span style="color:#0000FF;font-weight: bold">Then</span> HotSpotID = ImageMapHandler.getHotSpot(X, Y)
+				
+				<span style="color:#0000FF;font-weight: bold">If</span> (HotSpotID &gt; <span style="color:#326598">0</span>) <span style="color:#0000FF;font-weight: bold">Then</span>
+					
+					MouseCursor = System.Cursors.StandardPointer
+					
+					
+					
+				<span style="color:#0000FF;font-weight: bold">ElseIf</span> (AllowMove = <span style="color:#0000FF;font-weight: bold">True</span>) <span style="color:#0000FF;font-weight: bold">Then</span>
+					
+					MouseCursor = System.Cursors.HandOpen
+					
+				<span style="color:#0000FF;font-weight: bold">Else</span>
+					
+					MouseCursor = System.Cursors.StandardPointer
+					
+				<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+				
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> getXdata(x <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">double</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> maxX,curX <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> maxXdata,minXdata <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>
+			
+			maxX=c.getPlotArea.getWidth-<span style="color:#326598">1</span>
+			
+			minXdata=c.xAxis.getMinValue
+			maxXdata=c.xAxis.getMaxValue
+			
+			curX=x-c.getPlotArea.getLeftX
+			
+			<span style="color:#0000FF;font-weight: bold">return</span> minXdata+curX*(maxXdata-minXdata)/maxX
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> getYdata(y <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> maxY,curY <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> maxYdata,minYdata <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>
+			
+			maxY=c.getPlotArea.getHeight<span style="color:#7F0000;text-style:italic">//-1</span>
+			
+			minYdata=c.yAxis.getMinValue
+			maxYdata=c.yAxis.getMaxValue
+			
+			curY=c.getPlotArea.getHeight+c.getPlotArea.getTopY-y
+			
+			<span style="color:#0000FF;font-weight: bold">return</span> minYdata+curY*(maxYdata-minYdata)/maxY
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Protected</span> <span style="color:#0000FF;font-weight: bold">Sub</span> redraw()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">chart</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> i <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+			
+			viewport.validateViewPort
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Create</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">XYChart</span> <span style="color:#7F0000;text-style:italic">object</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">size</span> <span style="color:#7F0000;text-style:italic">600</span> <span style="color:#7F0000;text-style:italic">x</span> <span style="color:#7F0000;text-style:italic">375</span> <span style="color:#7F0000;text-style:italic">pixels</span>
+			c = <span style="color:#0000FF;font-weight: bold">New</span> CDXYChartMBS(<span style="color:#0000FF;font-weight: bold">Me</span>.width, <span style="color:#0000FF;font-weight: bold">Me</span>.height)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">title</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">chart</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">18</span> <span style="color:#7F0000;text-style:italic">pts</span> <span style="color:#7F0000;text-style:italic">Times</span> <span style="color:#7F0000;text-style:italic">Bold</span> <span style="color:#7F0000;text-style:italic">Italic</span> <span style="color:#7F0000;text-style:italic">font</span>
+			<span style="color:#0000FF;font-weight: bold">Call</span> c.addTitle(<span style="color:#6500FE">&quot;Product</span> <span style="color:#6500FE">Line</span> <span style="color:#6500FE">Global</span> <span style="color:#6500FE">Revenue&quot;</span>, <span style="color:#6500FE">&quot;timesbi.ttf&quot;</span>, <span style="color:#326598">18</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">plotarea</span> <span style="color:#7F0000;text-style:italic">at</span> <span style="color:#7F0000;text-style:italic">(50,</span> <span style="color:#7F0000;text-style:italic">55)</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">500</span> <span style="color:#7F0000;text-style:italic">x</span> <span style="color:#7F0000;text-style:italic">280</span> <span style="color:#7F0000;text-style:italic">pixels</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">size.</span> <span style="color:#7F0000;text-style:italic">Use</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">vertical</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">gradient</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">light</span> <span style="color:#7F0000;text-style:italic">blue</span> <span style="color:#7F0000;text-style:italic">(f9f9ff)</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">sky</span> <span style="color:#7F0000;text-style:italic">blue</span> <span style="color:#7F0000;text-style:italic">(aaccff)</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">background.</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">border</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">transparent</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">grid</span> <span style="color:#7F0000;text-style:italic">lines</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">white</span> <span style="color:#7F0000;text-style:italic">(ffffff).</span>
+			<span style="color:#0000FF;font-weight: bold">Call</span> c.setPlotArea(<span style="color:#326598">50</span>, <span style="color:#326598">55</span>, <span style="color:#0000FF;font-weight: bold">Me</span>.width-<span style="color:#326598">100</span>, <span style="color:#0000FF;font-weight: bold">Me</span>.height-<span style="color:#326598">110</span>, c.linearGradientColor(<span style="color:#326598">0</span>, <span style="color:#326598">55</span>, <span style="color:#326598">0</span>, <span style="color:#326598">335</span>, <span style="color:#326598">&amp;hf9fcff</span>, <span style="color:#326598">&amp;haaccff</span>), -<span style="color:#326598">1</span>, c.kTransparent, <span style="color:#326598">&amp;hffffff</span>)
+			<span style="color:#0000FF;font-weight: bold">Call</span> c.setClipping
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">legend</span> <span style="color:#7F0000;text-style:italic">box</span> <span style="color:#7F0000;text-style:italic">at</span> <span style="color:#7F0000;text-style:italic">(50,</span> <span style="color:#7F0000;text-style:italic">28)</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">horizontal</span> <span style="color:#7F0000;text-style:italic">layout.</span> <span style="color:#7F0000;text-style:italic">Use</span> <span style="color:#7F0000;text-style:italic">10pts</span> <span style="color:#7F0000;text-style:italic">Arial</span> <span style="color:#7F0000;text-style:italic">Bold</span> <span style="color:#7F0000;text-style:italic">as</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">font,</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">transparent</span> <span style="color:#7F0000;text-style:italic">background.</span>
+			c.addLegend(<span style="color:#326598">50</span>, <span style="color:#326598">28</span>, <span style="color:#0000FF;font-weight: bold">False</span>, <span style="color:#6500FE">&quot;arialbd.ttf&quot;</span>, <span style="color:#326598">10</span>).setBackground(c.kTransparent)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">x</span> <span style="color:#7F0000;text-style:italic">axis</span> <span style="color:#7F0000;text-style:italic">labels</span>
+			<span style="color:#7F0000;text-style:italic">&#39;call</span> <span style="color:#7F0000;text-style:italic">c.xAxis.setLabels(labels)</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">y-axis</span> <span style="color:#7F0000;text-style:italic">tick</span> <span style="color:#7F0000;text-style:italic">density</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">30</span> <span style="color:#7F0000;text-style:italic">pixels.</span> <span style="color:#7F0000;text-style:italic">ChartDirector</span> <span style="color:#7F0000;text-style:italic">auto-scaling</span> <span style="color:#7F0000;text-style:italic">will</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">this</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">guideline</span> <span style="color:#7F0000;text-style:italic">when</span> <span style="color:#7F0000;text-style:italic">putting</span> <span style="color:#7F0000;text-style:italic">ticks</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">y-axis.</span>
+			c.yAxis.setTickDensity(<span style="color:#326598">30</span>)
+			c.yAxis2.setTickDensity(<span style="color:#326598">30</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">axis</span> <span style="color:#7F0000;text-style:italic">label</span> <span style="color:#7F0000;text-style:italic">style</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">8pts</span> <span style="color:#7F0000;text-style:italic">Arial</span> <span style="color:#7F0000;text-style:italic">Bold</span>
+			<span style="color:#0000FF;font-weight: bold">Call</span> c.xAxis.setLabelStyle(<span style="color:#6500FE">&quot;arialbd.ttf&quot;</span>, <span style="color:#326598">8</span>)
+			<span style="color:#0000FF;font-weight: bold">Call</span> c.yAxis.setLabelStyle(<span style="color:#6500FE">&quot;arialbd.ttf&quot;</span>, <span style="color:#326598">8</span>)
+			<span style="color:#0000FF;font-weight: bold">Call</span> c.yAxis2.setLabelStyle(<span style="color:#6500FE">&quot;arialbd.ttf&quot;</span>, <span style="color:#326598">8</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">axis</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">width</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">2</span> <span style="color:#7F0000;text-style:italic">pixels</span>
+			c.xAxis.setWidth(<span style="color:#326598">2</span>)
+			c.yAxis.setWidth(<span style="color:#326598">2</span>)
+			c.yAxis2.setWidth(<span style="color:#326598">2</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">axis</span> <span style="color:#7F0000;text-style:italic">title</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">10pts</span> <span style="color:#7F0000;text-style:italic">Arial</span> <span style="color:#7F0000;text-style:italic">Bold</span> <span style="color:#7F0000;text-style:italic">Italic</span> <span style="color:#7F0000;text-style:italic">font</span>
+			<span style="color:#0000FF;font-weight: bold">Call</span> c.yAxis.setTitle(<span style="color:#6500FE">&quot;Revenue</span> <span style="color:#6500FE">in</span> <span style="color:#6500FE">US</span> <span style="color:#6500FE">millions&quot;</span>, <span style="color:#6500FE">&quot;arialbi.ttf&quot;</span>, <span style="color:#326598">10</span>)
+			<span style="color:#0000FF;font-weight: bold">Call</span> c.yAxis2.setTitle(<span style="color:#6500FE">&quot;Revenue</span> <span style="color:#6500FE">in</span> <span style="color:#6500FE">US</span> <span style="color:#6500FE">millions&quot;</span>, <span style="color:#6500FE">&quot;arialbi.ttf&quot;</span>, <span style="color:#326598">10</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">scroll</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> axisLowerLimit <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> axisUpperLimit <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span>
+			
+			axisUpperLimit = <span style="color:#006532">100.0</span> *(viewport.getViewPortLeft + viewport.getViewPortWidth)
+			axisLowerLimit = <span style="color:#006532">100.0</span> * viewport.getViewPortLeft
+			
+			c.xAxis.setLinearScale(axisLowerLimit,axisUpperLimit)
+			c.xAxis.setRounding(<span style="color:#0000FF;font-weight: bold">False</span>, <span style="color:#0000FF;font-weight: bold">False</span>)
+			
+			axisLowerLimit =  <span style="color:#006532">100.0</span>-<span style="color:#006532">100.0</span> *(viewport.getViewPortTop + viewport.getViewPortHeight)
+			axisUpperLimit =  <span style="color:#006532">100.0</span>-<span style="color:#006532">100.0</span> * viewport.getViewPortTop
+			
+			c.yAxis.setLinearScale(axisLowerLimit,axisUpperLimit)
+			c.yAxis.setRounding(<span style="color:#0000FF;font-weight: bold">False</span>, <span style="color:#0000FF;font-weight: bold">False</span>)
+			c.yAxis2.setLinearScale(axisLowerLimit,axisUpperLimit)
+			c.yAxis2.setRounding(<span style="color:#0000FF;font-weight: bold">False</span>, <span style="color:#0000FF;font-weight: bold">False</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">layer</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">chart</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> layer <span style="color:#0000FF;font-weight: bold">As</span> CDLineLayerMBS
+			layer = c.addLineLayer
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">width</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">3</span> <span style="color:#7F0000;text-style:italic">pixels</span>
+			layer.setLineWidth(<span style="color:#326598">3</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">three</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">sets</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">layer,</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">circles,</span> <span style="color:#7F0000;text-style:italic">diamands</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">X</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">shapes</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">symbols</span>
+			layer.addDataSet(data0, <span style="color:#326598">&amp;hff0000</span>, <span style="color:#6500FE">&quot;Quantum</span> <span style="color:#6500FE">Computer&quot;</span>).setDataSymbol(c.kCircleSymbol, <span style="color:#326598">9</span>)
+			layer.addDataSet(data1, <span style="color:#326598">&amp;h00ff00</span>, <span style="color:#6500FE">&quot;Atom</span> <span style="color:#6500FE">Synthesizer&quot;</span>).setDataSymbol(c.kDiamondSymbol, <span style="color:#326598">11</span>)
+			layer.addDataSet(data2, <span style="color:#326598">&amp;hff6600</span>, <span style="color:#6500FE">&quot;Proton</span> <span style="color:#6500FE">Cannon&quot;</span>).setDataSymbol(c.Cross2Shape, <span style="color:#326598">11</span>)
+			
+			lastpicture=c.makeChartPicture
+			
+			viewport.setChartMetrics c.getChartMetrics
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Process</span> <span style="color:#7F0000;text-style:italic">ImageMap</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">support</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">point</span> <span style="color:#7F0000;text-style:italic">rollovers,</span> <span style="color:#7F0000;text-style:italic">etc.</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> ImageMapString <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			
+			ImageMapString = c.getHTMLImageMap(<span style="color:#6500FE">&quot;myurl&quot;</span> )
+			ImageMapHandler = <span style="color:#0000FF;font-weight: bold">New</span> CDImageMapHandlerMBS(ImageMapString)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">trigger</span> <span style="color:#7F0000;text-style:italic">refresh</span>
+			<span style="color:#0000FF;font-weight: bold">me</span>.Invalidate
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> CleanGraphicsBeforeDrawing <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> ImageMapHandler <span style="color:#0000FF;font-weight: bold">As</span> CDImageMapHandlerMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> NeedClear <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Overlay <span style="color:#0000FF;font-weight: bold">As</span> Picture</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> StartX <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> StartX2 <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> StartY <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> StartY2 <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> c <span style="color:#0000FF;font-weight: bold">As</span> CDXYChartMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> data0() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">double</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> data1() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">double</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> data2() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">double</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> isMouseDown <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> lastpicture <span style="color:#0000FF;font-weight: bold">As</span> picture</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> maxvalue <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">double</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> minvalue <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">double</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> mouseXvalue <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">double</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> mouseYvalue <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">double</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> rectangleHeight <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> rectangleLeft <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> rectanglePicture <span style="color:#0000FF;font-weight: bold">As</span> picture</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> rectangleTop <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> rectangleWidth <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> viewport <span style="color:#0000FF;font-weight: bold">As</span> cdviewPortManagerMBS</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> cntSymbolLineZoom <span style="color:#0000FF;font-weight: bold">Inherits</span> ContainerControl</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control out <span style="color:#0000FF;font-weight: bold">Inherits</span> zoomLineCanvas</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance out <span style="color:#0000FF;font-weight: bold">Inherits</span> zoomLineCanvas</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control LabelX <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance LabelX <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control LabelY <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance LabelY <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Timer1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Timer1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				out.UpdateMouseCursor
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control LabelZoomOut <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance LabelZoomOut <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control LabelZoomIn <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance LabelZoomIn <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-chartdirector-symbolline.html">/ChartDirector/symbolline</A></li>
+<li><A href="example-chartdirector-symbollinedatezoom.html">/ChartDirector/symbolline datezoom</A></li>
+<li><A href="example-chartdirector-symbollinedatezoomwithdate.html">/ChartDirector/symbolline datezoom with date</A></li>
+<li><A href="example-chartdirector-symbollinezoom.html">/ChartDirector/symbolline zoom</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-chartdirector-symbollinezoomimproved">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

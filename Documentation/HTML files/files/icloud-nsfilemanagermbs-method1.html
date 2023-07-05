@@ -1,0 +1,1174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - NSFileManagerMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="NSFileManagerMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">NSFileManagerMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-nsfilemanagermbs.html">NSFileManagerMBS</a> class.  </p>
+<p>
+<a href="icloud-nsfilemanagermbs-method.html">Previous items</a>
+ 
+</p>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="1">isExecutableFile(path as folderitem) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns a Boolean value that indicates whether the operating system appears able to execute a specified file.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> m <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-nsfilemanagermbs.html">NSFileManagerMBS</A><br /><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;notes.rtf&quot;</span>)<br /><br />MsgBox <span style="color: #6600FE;">&quot;Can execute: &quot;</span>+str(m.isExecutableFile(f))</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+path: A file path.<BR>
+<BR>
+Returns true if the current process has execute privileges for the file at path; otherwise false if the process does not have execute privileges or the existence of the file could not be determined.<BR>
+<BR>
+If the file at path is inaccessible to your application, perhaps because it does not have search privileges for one or more parent directories, this method returns false. This method traverses symbolic links in the path. This method also uses the real user ID and group ID, as opposed to the effective user and group IDs, to determine if the file is executable.<BR>
+<BR>
+Note: Attempting to predicate behavior based on the current state of the file system or a particular file on the file system is not recommended. Doing so can cause odd behavior or race conditions. It&#39;s far better to attempt an operation (such as loading a file or creating a directory), check for errors, and handle those errors gracefully than it is to try to figure out ahead of time whether the operation will succeed. For more information on file system race conditions, see Race Conditions, File Operations, and Interprocess Communication in Secure Coding Guide:<BR>
+<a href="http://developer.apple.com/library/mac/documentation/Security/Conceptual/SecureCodingGuide/Articles/RaceConditions.html#//apple_ref/doc/uid/TP40002585" target=_blank>http://developer.apple.com/library/mac/documentation/Security/Conceptual/SecureCodingGuide/Articles/RaceConditions.html#//apple_ref/doc/uid/TP40002585</a><BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="2">isReadableFile(path as folderitem) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns a Boolean value that indicates whether the invoking object appears able to read a specified file.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> m <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-nsfilemanagermbs.html">NSFileManagerMBS</A><br /><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;notes.rtf&quot;</span>)<br /><br />MsgBox <span style="color: #6600FE;">&quot;Can read: &quot;</span>+str(m.isReadableFile(f))</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+path: A file path.<BR>
+<BR>
+Returns true if the current process has read privileges for the file at path; otherwise false if the process does not have read privileges or the existence of the file could not be determined.<BR>
+<BR>
+If the file at path is inaccessible to your application, perhaps because it does not have search privileges for one or more parent directories, this method returns false. This method traverses symbolic links in the path. This method also uses the real user ID and group ID, as opposed to the effective user and group IDs, to determine if the file is readable.<BR>
+<BR>
+Note: Attempting to predicate behavior based on the current state of the file system or a particular file on the file system is not recommended. Doing so can cause odd behavior or race conditions. It&#39;s far better to attempt an operation (such as loading a file or creating a directory), check for errors, and handle those errors gracefully than it is to try to figure out ahead of time whether the operation will succeed. For more information on file system race conditions, see Race Conditions, File Operations, and Interprocess Communication in Secure Coding Guide.<BR>
+<a href="http://developer.apple.com/library/mac/documentation/Security/Conceptual/SecureCodingGuide/Articles/RaceConditions.html#//apple_ref/doc/uid/TP40002585" target=_blank>http://developer.apple.com/library/mac/documentation/Security/Conceptual/SecureCodingGuide/Articles/RaceConditions.html#//apple_ref/doc/uid/TP40002585</a><BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="3">isUbiquitousItem(item as folderitem) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns a Boolean indicating whether the item is targeted for storage in iCloud.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> m <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-nsfilemanagermbs.html">NSFileManagerMBS</A><br /><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;notes.rtf&quot;</span>)<br /><br />MsgBox <span style="color: #6600FE;">&quot;Is in iCloud: &quot;</span>+str(m.isUbiquitousItem(f))</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+item: Specify the folderitem for the file or directory whose status you want to check.<BR>
+<BR>
+Returns true if the item is targeted for iCloud storage or false if it is not. This method also returns false if no item exists at url.<BR>
+<BR>
+This method reflects only whether the item should be stored in iCloud because a call was made to the setUbiquitous method with a value of true for its flag parameter. This method does not reflect whether the file has actually been uploaded to any iCloud servers. To determine a file&#39;s upload status, check the <A href="folderitem-isuploadedmbs.html">IsUploadedMBS</A> function in the folderitem class.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilemanagermbs-method1.html#4">isUbiquitousItem(URL as string) as boolean</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="4">isUbiquitousItem(URL as string) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion121.shtml" class=version>12.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns a Boolean indicating whether the item is targeted for storage in iCloud.<BR>
+<B>Notes:</B> 
+<BR>
+item: Specify the URL for the file or directory whose status you want to check.<BR>
+<BR>
+Returns true if the item is targeted for iCloud storage or false if it is not. This method also returns false if no item exists at url.<BR>
+<BR>
+This method reflects only whether the item should be stored in iCloud because a call was made to the setUbiquitous method with a value of true for its flag parameter. This method does not reflect whether the file has actually been uploaded to any iCloud servers. To determine a file&#39;s upload status, check the <A href="folderitem-isuploadedmbs.html">IsUploadedMBS</A> function in the folderitem class.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilemanagermbs-method1.html#3">isUbiquitousItem(item as folderitem) as boolean</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="5">isWritableFile(path as folderitem) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns a Boolean value that indicates whether the invoking object appears able to write to a specified file.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> m <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-nsfilemanagermbs.html">NSFileManagerMBS</A><br /><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;notes.rtf&quot;</span>)<br /><br />MsgBox <span style="color: #6600FE;">&quot;Can write: &quot;</span>+str(m.isWritableFile(f))</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+path: A file path.<BR>
+<BR>
+Returns true if the current process has write privileges for the file at path; otherwise false if the process does not have write privileges or the existence of the file could not be determined.<BR>
+<BR>
+If the file at path is inaccessible to your application, perhaps because it does not have search privileges for one or more parent directories, this method returns false. This method traverses symbolic links in the path. This method also uses the real user ID and group ID, as opposed to the effective user and group IDs, to determine if the file is writable.<BR>
+<BR>
+Note: Attempting to predicate behavior based on the current state of the file system or a particular file on the file system is not recommended. Doing so can cause odd behavior or race conditions. It&#39;s far better to attempt an operation (such as loading a file or creating a directory), check for errors, and handle those errors gracefully than it is to try to figure out ahead of time whether the operation will succeed. For more information on file system race conditions, see Race Conditions, File Operations, and Interprocess Communication in Secure Coding Guide:<BR>
+<a href="http://developer.apple.com/library/mac/documentation/Security/Conceptual/SecureCodingGuide/Articles/RaceConditions.html#//apple_ref/doc/uid/TP40002585" target=_blank>http://developer.apple.com/library/mac/documentation/Security/Conceptual/SecureCodingGuide/Articles/RaceConditions.html#//apple_ref/doc/uid/TP40002585</a><BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="6">linkItem(source as folderItem, dest as folderItem, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion134.shtml" class=version>13.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a hard link between the items at the specified paths.<BR>
+<B>Notes:</B> 
+<BR>
+Source: The path that specifies the item you wish to link to. The value in this parameter must not be nil.<BR>
+Dest: The path that identifies the location where the link will be created. The value in this parameter must not be nil.<BR>
+error: If an error occurs, this pointer is set to an actual error object containing the error information.<BR>
+<BR>
+Returns true if the hard link was created or NO if an error occurred. This method also returns false if a file, directory, or link already exists at dstPath.<BR>
+<BR>
+Use this method to create hard links between files in the current file system. If Source is a directory, this method creates a new directory at Dest and then creates hard links for the items in that directory. If Source is (or contains) a symbolic link, the symbolic link is copied to the new location and not converted to a hard link.<BR>
+<BR>
+Available in OS X v10.5 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilemanagermbs-method1.html#7">linkItem(sourcePath as String, destPath as String, byref error as NSErrorMBS) as boolean</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="7">linkItem(sourcePath as String, destPath as String, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion195.shtml" class=version>19.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a hard link between the items at the specified paths.<BR>
+<B>Notes:</B> 
+<BR>
+Source: The path that specifies the item you wish to link to. The value in this parameter must not be nil.<BR>
+Dest: The path that identifies the location where the link will be created. The value in this parameter must not be nil.<BR>
+error: If an error occurs, this pointer is set to an actual error object containing the error information.<BR>
+<BR>
+Returns true if the hard link was created or NO if an error occurred. This method also returns false if a file, directory, or link already exists at dstPath.<BR>
+<BR>
+Use this method to create hard links between files in the current file system. If Source is a directory, this method creates a new directory at Dest and then creates hard links for the items in that directory. If Source is (or contains) a symbolic link, the symbolic link is copied to the new location and not converted to a hard link.<BR>
+<BR>
+Available in OS X v10.5 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilemanagermbs-method1.html#6">linkItem(source as folderItem, dest as folderItem, byref error as NSErrorMBS) as boolean</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="8">moveItem(source as folderItem, dest as folderItem, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion134.shtml" class=version>13.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Moves the file or directory at the specified path to a new location synchronously.<BR>
+<B>Notes:</B> 
+<BR>
+source:  The path to the file or directory you want to move. This parameter must not be nil.<BR>
+dest: The new path for the item in Source. This path must include the name of the file or directory in its new location. This parameter must not be nil.<BR>
+error: If an error occurs, this is set to an actual error object containing the error information.<BR>
+<BR>
+Returns true if the item was moved successfully or the file manager&#39;s delegate aborted the operation deliberately. Returns NO if an error occurred.<BR>
+<BR>
+When moving items, the current process must have permission to read the item at Source and write the parent directory of Dest. If the item at Source is a directory, this method moves the directory and all of its contents, including any hidden files. If an item with the same name already exists at Dest, this method aborts the move attempt and returns an appropriate error. If the last component of Source is a symbolic link, only the link is moved to the new path; the item pointed to by the link remains at its current location.<BR>
+<BR>
+If the source and destination of the move operation are not on the same volume, this method copies the item first and then removes it from its current location. This behavior may trigger additional delegate notifications related to copying and removing individual items.<BR>
+<BR>
+Available in OS X v10.5 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilemanagermbs-method1.html#9">moveItem(sourcePath as String, destPath as String, byref error as NSErrorMBS) as boolean</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="9">moveItem(sourcePath as String, destPath as String, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion195.shtml" class=version>19.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Moves the file or directory at the specified path to a new location synchronously.<BR>
+<B>Notes:</B> 
+<BR>
+source:  The path to the file or directory you want to move. This parameter must not be nil.<BR>
+dest: The new path for the item in Source. This path must include the name of the file or directory in its new location. This parameter must not be nil.<BR>
+error: If an error occurs, this is set to an actual error object containing the error information.<BR>
+<BR>
+Returns true if the item was moved successfully or the file manager&#39;s delegate aborted the operation deliberately. Returns NO if an error occurred.<BR>
+<BR>
+When moving items, the current process must have permission to read the item at Source and write the parent directory of Dest. If the item at Source is a directory, this method moves the directory and all of its contents, including any hidden files. If an item with the same name already exists at Dest, this method aborts the move attempt and returns an appropriate error. If the last component of Source is a symbolic link, only the link is moved to the new path; the item pointed to by the link remains at its current location.<BR>
+<BR>
+If the source and destination of the move operation are not on the same volume, this method copies the item first and then removes it from its current location. This behavior may trigger additional delegate notifications related to copying and removing individual items.<BR>
+<BR>
+Available in OS X v10.5 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilemanagermbs-method1.html#8">moveItem(source as folderItem, dest as folderItem, byref error as NSErrorMBS) as boolean</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="10">removeItem(file as folderitem, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion134.shtml" class=version>13.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Removes the file or directory at the specified path.<BR>
+<B>Notes:</B> 
+<BR>
+path: A path string indicating the file or directory to remove. If the path specifies a directory, the contents of that directory are recursively removed. <BR>
+error: If an error occurs, this is set to an actual error object containing the error information. <BR>
+<BR>
+Returns true if the item was removed successfully or if path was nil. Returns false if an error occurred. If the delegate aborts the operation for a file, this method returns true. However, if the delegate aborts the operation for a directory, this method returns false.<BR>
+<BR>
+Available in OS X v10.5 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilemanagermbs-method1.html#11">removeItem(path as string, byref error as NSErrorMBS) as boolean</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="11">removeItem(path as string, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion134.shtml" class=version>13.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Removes the file or directory at the specified path.<BR>
+<B>Notes:</B> 
+<BR>
+path: A path string indicating the file or directory to remove. If the path specifies a directory, the contents of that directory are recursively removed. <BR>
+error: If an error occurs, this is set to an actual error object containing the error information. <BR>
+<BR>
+Returns true if the item was removed successfully or if path was nil. Returns false if an error occurred. If the delegate aborts the operation for a file, this method returns true. However, if the delegate aborts the operation for a directory, this method returns false.<BR>
+<BR>
+Available in OS X v10.5 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilemanagermbs-method1.html#10">removeItem(file as folderitem, byref error as NSErrorMBS) as boolean</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="12">replaceItem(originalItem as FolderItem, newItem as FolderItem, backupItemName as String, options as integer, byref resultingItem as FolderItem, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion193.shtml" class=version>19.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Replaces the contents of the item at the specified URL in a manner that ensures no data loss occurs.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">Dim</span> fileManager <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">New</span> <A href="class-nsfilemanagermbs.html">NSFileManagerMBS</A><br /><br /><span style="color: #0000FF;">Dim</span> source <span style="color: #0000FF;">As</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test.rtf&quot;</span>)<br /><span style="color: #0000FF;">Dim</span> dest <span style="color: #0000FF;">As</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;dest.rtf&quot;</span>)<br /><br /><span style="color: #0000FF;">Dim</span> result <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">Boolean</span><br /><span style="color: #0000FF;">Dim</span> output <span style="color: #0000FF;">As</span> FolderItem<br /><span style="color: #0000FF;">Dim</span> error <span style="color: #0000FF;">As</span> <A href="class-nserrormbs.html">NSErrorMBS</A><br /><br />result = fileManager.replaceItemAtURL(dest, source, <span style="color: #6600FE;">&quot;&quot;</span>, <span style="color: #336698;">0</span>, output, error)<br /><br /><span style="color: #0000FF;">If</span> result <span style="color: #0000FF;">Then</span><br />  MsgBox output.NativePath<br /><span style="color: #0000FF;">Else</span><br />  MsgBox error.LocalizedDescription<br /><span style="color: #0000FF;">End</span> <span style="color: #0000FF;">If</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+originalItem: The item containing the content you want to replace.<BR>
+newItem: The item containing the new content for originalItem. It is recommended that you put this item in a temporary directory as provided by the OS. If a temporary directory is not available, put this item in a uniquely named directory that is in the same directory as the original item.<BR>
+backupItemName: If provided, the name used to create a backup of the original item.<BR>
+The backup is automatically placed in the same directory as the original item. If an error occurs during the creation of the backup item, the operation fails. If there is already an item with the same name as the backup item, that item will be removed.<BR>
+The backup item will be removed in the event of success unless the NSFileManagerItemReplacementWithoutDeletingBackupItem option is provided in options.<BR>
+options: The options to use during the replacement. Typically, you pass NSFileManagerItemReplacementUsingNewMetadataOnly for this parameter, which uses only the metadata from the new item. You can also combine the options described in NSFileManagerItemReplacementOptions using the C-bitwise OR operator.<BR>
+resultingItem: On input, a variale for a folderitem variable. When the item is replaced, this variable is set to the folderitem of the new item. If no new file system object is required, the folderitem in this parameter may be the same passed to the originalItem parameter. However, if a new file system object is required, the folderitem may be different. For example, replacing an RTF document with an RTFD document requires the creation of a new file.<BR>
+error: On input, a variable for an error object. If an error occurs, this variable is set to an error object containing the error information. <BR>
+<BR>
+Returns true if the replacement was successful or false if an error occurred.<BR>
+<BR>
+By default, the creation date, permissions, Finder label and color, and Spotlight comments of the original item are preserved on the new item. You can configure which metadata is preserved using the options parameter.<BR>
+This method works only when the originalItem and newItem parameters are located on the same volume. Attempting to call this method by passing originalItem and newItem parameters that have locations on different volumes results in an error. Instead, you can call the URLForDirectory method, passing NSItemReplacementDirectory as the search path directory, to get a temporary URL on the destination&#39;s volume that is suitable for use with this method.<BR>
+If an error occurs and the original item is not in the original location or a temporary location, the resulting error object contains a user info dictionary with the key &quot;NSFileOriginalItemLocationKey&quot;. The value assigned to that key is an URL with the location of the item. The error code is one of the file-related errors described in NSError Codes.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-maccocoa-nsfilemanagerwithauthorization.html">/MacCocoa/NSFileManager with authorization</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="13">replaceItemAtURL(originalItemURL as string, newItemURL as String, backupItemName as String, options as integer, byref resultingURL as String, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion193.shtml" class=version>19.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Replaces the contents of the item at the specified URL in a manner that ensures no data loss occurs.<BR>
+<B>Notes:</B> 
+<BR>
+originalItemURL: The item containing the content you want to replace.<BR>
+newItemURL: The item containing the new content for originalItemURL. It is recommended that you put this item in a temporary directory as provided by the OS. If a temporary directory is not available, put this item in a uniquely named directory that is in the same directory as the original item.<BR>
+backupItemName: If provided, the name used to create a backup of the original item.<BR>
+The backup is automatically placed in the same directory as the original item. If an error occurs during the creation of the backup item, the operation fails. If there is already an item with the same name as the backup item, that item will be removed.<BR>
+The backup item will be removed in the event of success unless the NSFileManagerItemReplacementWithoutDeletingBackupItem option is provided in options.<BR>
+options: The options to use during the replacement. Typically, you pass NSFileManagerItemReplacementUsingNewMetadataOnly for this parameter, which uses only the metadata from the new item. You can also combine the options described in NSFileManagerItemReplacementOptions using the C-bitwise OR operator.<BR>
+resultingURL: On input, a variale for an URL variable. When the item is replaced, this variable is set to the URL of the new item. If no new file system object is required, the URL object in this parameter may be the same passed to the originalItemURL parameter. However, if a new file system object is required, the URL object may be different. For example, replacing an RTF document with an RTFD document requires the creation of a new file.<BR>
+error: On input, a variable for an error object. If an error occurs, this variable is set to an error object containing the error information. <BR>
+<BR>
+Returns true if the replacement was successful or false if an error occurred.<BR>
+<BR>
+By default, the creation date, permissions, Finder label and color, and Spotlight comments of the original item are preserved on the new item. You can configure which metadata is preserved using the options parameter.<BR>
+This method works only when the originalItemURL and newItemURL parameters are located on the same volume. Attempting to call this method by passing originalItemURL and newItemURL parameters that have locations on different volumes results in an error. Instead, you can call the URLForDirectory method, passing NSItemReplacementDirectory as the search path directory, to get a temporary URL on the destination&#39;s volume that is suitable for use with this method.<BR>
+If an error occurs and the original item is not in the original location or a temporary location, the resulting error object contains a user info dictionary with the key &quot;NSFileOriginalItemLocationKey&quot;. The value assigned to that key is an URL with the location of the item. The error code is one of the file-related errors described in NSError Codes.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="14">setAttributes(attributesDic as dictionary, item as folderitem, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion123.shtml" class=version>12.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Sets the attributes of the specified file or directory.<BR>
+<B>Notes:</B> 
+<BR>
+attributes: A dictionary containing as keys the attributes to set for path and as values the corresponding value for the attribute. You can set the following attributes: NSFileBusy, NSFileCreationDate, NSFileExtensionHidden, NSFileGroupOwnerAccountID, NSFileGroupOwnerAccountName, NSFileHFSCreatorCode, NSFileHFSTypeCode, NSFileImmutable, NSFileModificationDate, NSFileOwnerAccountID, NSFileOwnerAccountName, NSFilePosixPermissions. You can change single attributes or any combination of attributes; you need not specify keys for all attributes.<BR>
+item: The folderitem of a file or directory.<BR>
+error: If an error occurs, this is set to an actual error object containing the error information.<BR>
+<BR>
+Returns true if all changes succeed. If any change fails, returns false, but it is undefined whether any changes actually occurred.<BR>
+<BR>
+Discussion<BR>
+As in the POSIX standard, the application either must own the file or directory or must be running as superuser for attribute changes to take effect. The method attempts to make all changes specified in attributes and ignores any rejection of an attempted modification. If the last component of the path is a symbolic link it is traversed.<BR>
+<BR>
+The NSFilePosixPermissions value must be initialized with the code representing the POSIX file-permissions bit pattern. NSFileHFSCreatorCode and NSFileHFSTypeCode will only be heeded when path specifies a file.<BR>
+<BR>
+Available in Mac OS X v10.5 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilemanagermbs-method1.html#15">setAttributes(attributesDic as dictionary, path as string, byref error as NSErrorMBS) as boolean</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="15">setAttributes(attributesDic as dictionary, path as string, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion123.shtml" class=version>12.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Sets the attributes of the specified file or directory.<BR>
+<B>Notes:</B> 
+<BR>
+attributes: A dictionary containing as keys the attributes to set for path and as values the corresponding value for the attribute. You can set the following attributes: NSFileBusy, NSFileCreationDate, NSFileExtensionHidden, NSFileGroupOwnerAccountID, NSFileGroupOwnerAccountName, NSFileHFSCreatorCode, NSFileHFSTypeCode, NSFileImmutable, NSFileModificationDate, NSFileOwnerAccountID, NSFileOwnerAccountName, NSFilePosixPermissions. You can change single attributes or any combination of attributes; you need not specify keys for all attributes.<BR>
+path: The path of a file or directory.<BR>
+error: If an error occurs, this is set to an actual error object containing the error information.<BR>
+<BR>
+Returns true if all changes succeed. If any change fails, returns false, but it is undefined whether any changes actually occurred.<BR>
+<BR>
+Discussion<BR>
+As in the POSIX standard, the application either must own the file or directory or must be running as superuser for attribute changes to take effect. The method attempts to make all changes specified in attributes and ignores any rejection of an attempted modification. If the last component of the path is a symbolic link it is traversed.<BR>
+<BR>
+The NSFilePosixPermissions value must be initialized with the code representing the POSIX file-permissions bit pattern. NSFileHFSCreatorCode and NSFileHFSTypeCode will only be heeded when path specifies a file.<BR>
+<BR>
+Available in Mac OS X v10.5 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilemanagermbs-method1.html#14">setAttributes(attributesDic as dictionary, item as folderitem, byref error as NSErrorMBS) as boolean</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="16">setUbiquitous(flag as boolean, item as folderitem, destitem as folderitem, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Sets whether the item at the specified URL should be stored in the cloud.<BR>
+<B>Notes:</B> 
+<BR>
+flag: Specify true to move the item to iCloud or false to remove it from iCloud (if it is there currently).<BR>
+item: Specify the folderitem of the item (file or directory) that you want to store in iCloud.<BR>
+destitem: Specify the location in iCloud at which to store the file or directory. This folderitem must be constructed from a folderitem returned by the URLForUbiquityContainerIdentifier method, which you use to retrieve the desired iCloud container directory. The folderitem you specify may contain additional subdirectories so that you can organize your files hierarchically in iCloud. However, you are responsible for creating those intermediate subdirectories (using the <A href="class-nsfilemanagermbs.html">NSFileManagerMBS</A> or folderitem class) in your iCloud container directory.<BR>
+error: If an error occurs, this pointer is set to an NSError object containing information about the error. You may specify nil for this parameter if you do not want the error information.<BR>
+<BR>
+Returns yes if the item&#39;s status was updated successfully or false if an error occurred. If this method returns false and you specified a value for the error parameter, this method returns an error object.<BR>
+<BR>
+Use this method to move a file from its current location to iCloud. For files located in an application&#39;s sandbox, this involves physically removing the file from the sandbox directory. (The system extends your application&#39;s sandbox privileges to give it access to files it moves to iCloud.) You can also use this method to move files out of iCloud and back into a local directory.<BR>
+<BR>
+Your application must have an active file presenter object configured to monitor the specified file or directory before calling this method. When you specify true for the flag parameter, this method attempts to move the file or directory to the cloud and returns true if it is successful. This method also notifies your file presenter of the new location of the file so that your application can continue to operate on it.<BR>
+<BR>
+Important: Do not call this method from your application&#39;s main thread. This method performs a coordinated write operation on the file you specify, and calling this method from the main thread can trigger a deadlock with the file presenter you have monitoring the file. Instead, use a dispatch queue (other than the main thread queue) to perform the method call on a secondary thread. You can always message your main thread after the call finishes to update the rest of your application&#39;s data structures.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilemanagermbs-method1.html#17">setUbiquitous(flag as boolean, item as folderitem, destURL as string, byref error as NSErrorMBS) as boolean</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-maccloud-icloudexample-icloudexample.html">/MacCloud/iCloud Example/iCloud Example</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="17">setUbiquitous(flag as boolean, item as folderitem, destURL as string, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion121.shtml" class=version>12.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Sets whether the item at the specified URL should be stored in the cloud.<BR>
+<B>Notes:</B> 
+<BR>
+flag: Specify true to move the item to iCloud or false to remove it from iCloud (if it is there currently).<BR>
+item: Specify the folderitem of the item (file or directory) that you want to store in iCloud.<BR>
+destitem: Specify the location in iCloud at which to store the file or directory. This folderitem must be constructed from a folderitem returned by the URLForUbiquityContainerIdentifier method, which you use to retrieve the desired iCloud container directory. The folderitem you specify may contain additional subdirectories so that you can organize your files hierarchically in iCloud. However, you are responsible for creating those intermediate subdirectories (using the <A href="class-nsfilemanagermbs.html">NSFileManagerMBS</A> or folderitem class) in your iCloud container directory.<BR>
+error: If an error occurs, this pointer is set to an NSError object containing information about the error. You may specify nil for this parameter if you do not want the error information.<BR>
+<BR>
+Returns yes if the item&#39;s status was updated successfully or false if an error occurred. If this method returns false and you specified a value for the error parameter, this method returns an error object.<BR>
+<BR>
+Use this method to move a file from its current location to iCloud. For files located in an application&#39;s sandbox, this involves physically removing the file from the sandbox directory. (The system extends your application&#39;s sandbox privileges to give it access to files it moves to iCloud.) You can also use this method to move files out of iCloud and back into a local directory.<BR>
+<BR>
+Your application must have an active file presenter object configured to monitor the specified file or directory before calling this method. When you specify true for the flag parameter, this method attempts to move the file or directory to the cloud and returns true if it is successful. This method also notifies your file presenter of the new location of the file so that your application can continue to operate on it.<BR>
+<BR>
+Important: Do not call this method from your application&#39;s main thread. This method performs a coordinated write operation on the file you specify, and calling this method from the main thread can trigger a deadlock with the file presenter you have monitoring the file. Instead, use a dispatch queue (other than the main thread queue) to perform the method call on a secondary thread. You can always message your main thread after the call finishes to update the rest of your application&#39;s data structures.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilemanagermbs-method1.html#16">setUbiquitous(flag as boolean, item as folderitem, destitem as folderitem, byref error as NSErrorMBS) as boolean</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="18">startDownloadingUbiquitousItem(item as folderitem, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Starts downloading (if necessary) the specified item to the local system.<BR>
+<B>Notes:</B> 
+<BR>
+item: Specify the folderitem for the file or directory in the cloud that you want to download.<BR>
+error: On input, a pointer to variable for an NSError object. If an error occurs, this pointer is set to an NSError object containing information about the error. Y<BR>
+<BR>
+Returns true if the download started successfully or was not necessary, otherwise false. If false is returned and error is not nil, an NSError object describing the error is returned in that parameter.<BR>
+<BR>
+If a cloud-based file or directory has not been downloaded yet, calling this method starts the download process. If the item exists locally, calling this method synchronizes the local copy with the version in the cloud.<BR>
+<BR>
+For a given folderitem, you can determine if a file is downloaded by getting the value of the IsDownloaded method. You can also use related methods to determine the current progress in downloading the file.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilemanagermbs-method1.html#19">startDownloadingUbiquitousItem(URL as string, byref error as NSErrorMBS) as boolean</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="19">startDownloadingUbiquitousItem(URL as string, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion121.shtml" class=version>12.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Starts downloading (if necessary) the specified item to the local system.<BR>
+<B>Notes:</B> 
+<BR>
+item: Specify the URL for the file or directory in the cloud that you want to download.<BR>
+error: On input, a pointer to variable for an NSError object. If an error occurs, this pointer is set to an NSError object containing information about the error. Y<BR>
+<BR>
+Returns true if the download started successfully or was not necessary, otherwise false. If false is returned and error is not nil, an NSError object describing the error is returned in that parameter.<BR>
+<BR>
+If a cloud-based file or directory has not been downloaded yet, calling this method starts the download process. If the item exists locally, calling this method synchronizes the local copy with the version in the cloud.<BR>
+<BR>
+For a given folderitem, you can determine if a file is downloaded by getting the value of the IsDownloaded method. You can also use related methods to determine the current progress in downloading the file.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilemanagermbs-method1.html#18">startDownloadingUbiquitousItem(item as folderitem, byref error as NSErrorMBS) as boolean</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="20">trashItem(file as folderItem, byref Resulting as folderItem, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion134.shtml" class=version>13.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Moves an item to the trash.<BR>
+<B>Notes:</B> 
+<BR>
+Returns true if the item at url was successfully moved to the trash. Since the operation may require renaming the item to avoid a file name collision, this method returns, by reference, the resulting folderitem that the item was moved to.<BR>
+<BR>
+If this method returns false, the item was not moved to the trash; the error parameter then contains information about the error.<BR>
+<BR>
+Available in OS X v10.8 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilemanagermbs-method1.html#21">trashItem(Path as String, byref Resulting as FolderItem, byref error as NSErrorMBS) as boolean</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="21">trashItem(Path as String, byref Resulting as FolderItem, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion195.shtml" class=version>19.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Moves an item to the trash.<BR>
+<B>Notes:</B> 
+<BR>
+Returns true if the item at url was successfully moved to the trash. Since the operation may require renaming the item to avoid a file name collision, this method returns, by reference, the resulting folderitem that the item was moved to.<BR>
+<BR>
+If this method returns false, the item was not moved to the trash; the error parameter then contains information about the error.<BR>
+<BR>
+Available in OS X v10.8 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilemanagermbs-method1.html#20">trashItem(file as folderItem, byref Resulting as folderItem, byref error as NSErrorMBS) as boolean</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="22">URLForPublishingUbiquitousItem(item as folderitem, byref expirationDate as date, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as string</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns a URL that can be emailed to users to allow them to download a copy of a cloud-based item.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> m <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-nsfilemanagermbs.html">NSFileManagerMBS</A><br /><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test.rtf&quot;</span>)<br /><br /><span style="color: #0000FF;">dim</span> error <span style="color: #0000FF;">as</span> <A href="class-nserrormbs.html">NSErrorMBS</A><br /><span style="color: #0000FF;">dim</span> exdate <span style="color: #0000FF;">as</span> date<br /><span style="color: #0000FF;">dim</span> url <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = m.URLForPublishingUbiquitousItem(f, exdate, error)<br /><br /><span style="color: #800000;">// always fails as desktop folder is not in cloud</span><br /><span style="color: #0000FF;">if</span> error&lt;&gt;nil <span style="color: #0000FF;">then</span><br />  MsgBox error.localizedDescription<br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+url: Specify the URL of the item in the cloud that you want to share. The URL must be prefixed with the base URL returned from the URLForUbiquityContainerIdentifier method that corresponds to the item&#39;s location.<BR>
+expirationDate: On output, this parameter contains the date after which the item is no longer available at the returned URL. <BR>
+error: If an error occurs, this pointer is set to an NSError object containing information about the error.<BR>
+<BR>
+Returns an URL with which users can download a copy of the item at url. Returns nil if the URL could not be created for any reason.<BR>
+<BR>
+Discussion<BR>
+This method creates a snapshot of the specified file and places that copy in a temporary iCloud location where it can be accessed by other users using the returned URL. The snapshot reflects the contents of the file at the time the URL was generated and is not updated when subsequent changes are made to the original file in the user&#39;s iCloud storage. The snapshot file remains available at the specified URL until the date specified in the outDate parameter, after which it is automatically deleted.<BR>
+<BR>
+Your application must have access to the network for this call to succeed.<BR>
+Available in Mac OS X v10.7 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilemanagermbs-method1.html#23">URLForPublishingUbiquitousItem(URL as string, byref expirationDate as date, byref error as NSErrorMBS) as string</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-maccloud-icloudexample-icloudexample.html">/MacCloud/iCloud Example/iCloud Example</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="23">URLForPublishingUbiquitousItem(URL as string, byref expirationDate as date, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as string</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion121.shtml" class=version>12.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns a URL that can be emailed to users to allow them to download a copy of a cloud-based item.<BR>
+<B>Notes:</B> 
+<BR>
+url: Specify the URL of the item in the cloud that you want to share. The URL must be prefixed with the base URL returned from the URLForUbiquityContainerIdentifier method that corresponds to the item&#39;s location.<BR>
+expirationDate: On output, this parameter contains the date after which the item is no longer available at the returned URL. <BR>
+error: If an error occurs, this pointer is set to an NSError object containing information about the error.<BR>
+<BR>
+Returns an URL with which users can download a copy of the item at url. Returns nil if the URL could not be created for any reason.<BR>
+<BR>
+Discussion<BR>
+This method creates a snapshot of the specified file and places that copy in a temporary iCloud location where it can be accessed by other users using the returned URL. The snapshot reflects the contents of the file at the time the URL was generated and is not updated when subsequent changes are made to the original file in the user&#39;s iCloud storage. The snapshot file remains available at the specified URL until the date specified in the outDate parameter, after which it is automatically deleted.<BR>
+<BR>
+Your application must have access to the network for this call to succeed.<BR>
+Available in Mac OS X v10.7 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilemanagermbs-method1.html#22">URLForPublishingUbiquitousItem(item as folderitem, byref expirationDate as date, byref error as NSErrorMBS) as string</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsfilemanagermbs.html">NSFileManagerMBS</a>.<A name="24">URLForUbiquityContainerIdentifier(containerIdentifier as string) as string</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion121.shtml" class=version>12.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns the iCloud directory associated with the specified container ID.<BR>
+<B>Notes:</B> 
+<BR>
+containerID: Specify the container ID of the cloud-based storage container. The string you specify must not contain wildcards and must be of the form &lt;TEAMID&gt;.&lt;CONTAINER&gt;, where &lt;TEAMID&gt; is your development team ID and &lt;CONTAINER&gt; describes the bundle identifier of the container you want to access. The container identifiers for your application must be declared in the com.apple.developer.ubiquity-container-identifiers entitlement.<BR>
+If you specify &quot;&quot;, this method returns the first container listed in the com.apple.developer.ubiquity-container-identifiers entitlement.<BR>
+<BR>
+Returns a folderitem pointing to the specified container directory or nil if the container could not be located or if iCloud storage is unavailable for the current user or device.<BR>
+<BR>
+You can use the folderitem returned by this method to build paths to files and directories in the user&#39;s iCloud storage. Each application that syncs documents to the cloud must have at least one associated container directory in which to put those files. This container directory can be unique to the application or shared by multiple applications. You use this method to retrieve the folderitem for that container directory.<BR>
+<BR>
+In addition to writing to its own container directory, an application can write to any container directory for which it has the appropriate permission. Each additional container directory should be listed as an additional value in the com.apple.developer.ubiquity-container-identifiers entitlement.<BR>
+<BR>
+Note: The development team ID that precedes each container ID string is the unique identifier associated with your development team. You can find this string in the Member Center of the Apple Developer website (http://developer.apple.com/membercenter). From the Member Center home page, select the Your Account tab and then select Organization Profile from the column on the left of that tab. Your team&#39;s identifier is in the Company/Organization ID field.<BR>
+The first time you call this method for a given container directory, iOS extends your application sandbox to include that container directory. Thus, it is important that you call this method at least once before trying to search for files in iCloud. And if your application accesses multiple container directories, you should call the method once for each directory.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+FileForUbiquityContainerIdentifier returns folderitem while URLForUbiquityContainerIdentifier returns URL string.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-maccloud-icloudexample-icloudexample.html">/MacCloud/iCloud Example/iCloud Example</A></li>
+</ul>
+</div>
+<p>
+<a href="icloud-nsfilemanagermbs-method.html">Previous items</a>
+ 
+</p>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=icloud-nsfilemanagermbs-method1">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - FAQ</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="FAQ: ChartDirector: Color Specification">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">FAQ</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="WLM">
+<b>FAQ.<A name="1">ChartDirector: Color Specification</A></b><br>
+<B>Answer:</B> 
+ChartDirector: Color Specification<BR>
+<B>Notes:</B> 
+<BR>
+Many functions in the ChartDirector API accept colors as parameters. ChartDirector supports colors specified in web and HTML compatible ARGB format, in which ARGB refers to the Alpha transparency, Red, Green and Blue components of the color.<BR>
+<BR>
+In addition to ARGB colors, ChartDirector supports &quot;dynamic&quot; colors. A dynamic color is a color that changes depending on the position of the pixels. The &quot;dynamic&quot; colors that ChartDirector supports include &quot;pattern colors&quot;, &quot;metal colors&quot;, &quot;gradient colors&quot;, &quot;zone colors&quot; and &quot;dash line colors&quot;.<BR>
+<BR>
+ChartDirector supports specifying colors indirectly using &quot;palette colors&quot;. When a &quot;palette color&quot; is used, the color is specified as an index to a palette. The actual color is looked up from the palette.ARGB Color<BR>
+ARGB color consists of 4 components - alpha transparency, red, green and blue. The four components are encoded as a 32-bit number, with each component occupying 8 bits. In hexadecimal notation, it is AARRGGBB, where AA, RR, GG and BB are the alpha transparency, red, green and blue components.<BR>
+<BR>
+Each component ranges from 00 - FF (0 - 255), representing its intensity. For example, pure red color is 00FF0000, pure green color is 0000FF00, and pure blue color is 000000FF. White color is 00FFFFFF, and black color is 00000000.<BR>
+<BR>
+Most programming language requires you to put special prefix in front of hexadecimal characters.  For C++, the prefix is &quot;0x&quot;. For example, the syntax for the hexadecimal number 00FFFFFF is 0x00FFFFFF, or simply 0xFFFFFF.<BR>
+For the alpha transparency component, a zero value means the color is not transparent all at. This is equivalent to traditional RGB colors. A non-zero alpha transparency means the the color is partially transparent. The larger the alpha transparency, the more transparent the color will be. If a partially transparent color is used to draw something, the underlying background can still be seen.<BR>
+<BR>
+For example, 80FF0000 is a partially transparent red color, while 00FF0000 is a non-transparent red color.<BR>
+<BR>
+Note that ChartDirector&#39;s ARGB color is web and HTML compatible. For example, red is FF0000, the same as in HTML. There are many resources on the web that provide tables in which you can click a color and it will show its HTML color code. These color codes can be used in ChartDirector.<BR>
+<BR>
+If alpha transparency is FF (255), the color is totally transparent. That means the color is invisible. It does not matter what the RGB components are. So in ChartDirector, only one totally transparent color is used - FF000000. All other colors of the form FFnnnnnn are reserved to represent palette colors and dynamic colors, and should not be interpreted as the normal ARGB colors.<BR>
+<BR>
+The totally transparent color FF000000 is often used in ChartDirector to disable drawing something. For example, if you want to disable drawing the border of a rectangle, you can set the border color to totally transparent.<BR>
+<BR>
+For convenience, ChartDirector defines a constant called Transparent, which is equivalent to FF000000.Pattern Color<BR>
+A pattern color is a dynamic color that changes according to a 2D periodic pattern. When it is used to fill an area, the area will look like being tiled with a wallpaper pattern.<BR>
+<BR>
+Pattern colors are created using BaseChart.patternColor, BaseChart.patternColor2, DrawArea.patternColor and DrawArea.patternColor2. The patternColor method creates pattern colors using an array of colors as a bitmap. The patternColor2 method creates pattern colors by loading the patterns from image files.<BR>
+<BR>
+These methods return a 32-bit integer acting as a handle to the pattern color. The handle can be used in any ChartDirector API that expects a color as its input.Metal Color<BR>
+A metal color is a color of which the brightness varies smoothly across the chart surface as to make the surface looks shiny and metallic. ChartDirector supports using any color as the base color of the metal color. In particular, using yellow and grey as the base colors will result in metal colors that look gold and silver.<BR>
+<BR>
+Metal colors are most often used as background colors of charts. They are created using <A href="class-cdbasechartmbs.html">CDBaseChartMBS</A>.metalColor, <A href="class-cdbasechartmbs.html">CDBaseChartMBS</A>.goldColor and <A href="class-cdbasechartmbs.html">CDBaseChartMBS</A>.silverColor. The first method allows you to specify an arbitrary base color. The second and third methods use yellow and grey as the base colors, resulting in gold and silver metal colors.<BR>
+<BR>
+These methods return a 32-bit integer acting as a handle to the gradient color. The handle can be used in any ChartDirector API that expects a color as its input.Gradient Color<BR>
+A gradient color is a color that changes progressively across a direction.<BR>
+<BR>
+Gradient colors are created using BaseChart.gradientColor, BaseChart.gradientColor2, DrawArea.gradientColor and DrawArea.gradientColor2. The gradientColor method creates a 2-point gradient color that changes from color A to color B. The gradientColor2 method creates a multi-point gradient colors that changes from color A to B to C ....<BR>
+<BR>
+These methods return a 32-bit integer acting as a handle to the gradient color. The handle can be used in any ChartDirector API that expects a color as its input.<BR>
+<BR>
+One common use of multi-point gradient colors is to define colors that have metallic look and feel. Please refer to DrawArea.gradientColor2 for details.Dash Line Colors<BR>
+A dash line color is a color that switches on and off periodically. When used to draw a line, the line will appear as a dash line.<BR>
+<BR>
+Dash line colors are created using BaseChart.dashLineColor and DrawArea.dashLineColor. They accept a line color and a dash pattern code as arguments, and return a 32-bit integer acting as a handle to the dash line color. The handle can be used in any ChartDirector API that expects a color as its input.Zone Colors<BR>
+A zone color is for XY charts only. It is a color that automatically changes upon reaching a data threshold value along the x-axis or y-axis. Zone colors are created using Layer.xZoneColor, Layer.yZoneColor, XYChart.xZoneColor or XYChart.yZoneColor.Palette Colors<BR>
+Palette colors are colors of the format FFFFnnnn, where the least significant 16 bits (nnnn) are the index to the palette. A palette is simply an array of colors. For a palette color, the actual color is obtained by looking up the palette using the index. For example, the color FFFF0001 is the second color in the palette (first color is index 0).<BR>
+<BR>
+The colors in the palette can be ARGB colors or &quot;dynamic&quot; colors (pattern, gradient and dash line colors).<BR>
+<BR>
+The first eight palette colors have special significance. The first three palette colors are the background color, default line color, and default text color of the chart. The 4th to 7th palette colors are reserved for future use. The 8th color is a special dynamic color that is equal to the data color of the &quot;current data set&quot;.<BR>
+<BR>
+The 9th color (index = 8) onwards are used for automatic data colors. For example, in a pie chart, if the sector colors are not specified, ChartDirector will automatically use the 9th color for the first sector, the 10th color for the second sector, and so on. Similarly, for a multi-line chart, if the line colors are not specified, ChartDirector will use the 9th color for the first line, the 10th color for the second line, and so on.<BR>
+<BR>
+The ChartDirector API defines several constants to facilitate using palette colors.<BR>
+<BR>
+ConstantValueDescription <BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Palette</TD><TD valign="top">FFFF0000</TD><TD valign="top">The starting point of the palette. The first palette color is (Palette + 0). The nth palette color is (Palette + n - 1).</TD></TR>
+<TR><TD valign="top">BackgroundColor</TD><TD valign="top">FFFF0000</TD><TD valign="top">The background color. </TD></TR>
+<TR><TD valign="top">LineColor</TD><TD valign="top">FFFF0001</TD><TD valign="top">The default line color. </TD></TR>
+<TR><TD valign="top">TextColor</TD><TD valign="top">FFFF0002</TD><TD valign="top">The default text color. </TD></TR>
+<TR><TD valign="top">[Reserved]</TD><TD valign="top">FFFF0003 - FFFF0006</TD><TD valign="top">These palette positions are reserved. Future versions of ChartDirector may use these palette positions for colors that have special significance.</TD></TR>
+<TR><TD valign="top">SameAsMainColor</TD><TD valign="top">FFFF0007</TD><TD valign="top">A dynamic color that is equal to the data color of the current data set. This color is useful for objects that are associated with data sets. For example, in a pie chart, if the sector label background color is SameAsMainColor, its color will be the same as the corresponding sector color.</TD></TR>
+<TR><TD valign="top">DataColor</TD><TD valign="top">FFFF0008</TD><TD valign="top">The starting point for the automatic data color allocation.</TD></TR>
+</TABLE>
+<BR>
+When a chart is created, it has a default palette. You may modify the palette using BaseChart.setColor, BaseChart.setColors, or BaseChart.setColors2.<BR>
+<BR>
+The advantages of using palette colors are that you can change the color schemes of the chart in one place. ChartDirector comes with several built-in palettes represented by the following predefined constants.<BR>
+<BR>
+ConstantDescription <BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">defaultPalette</TD><TD valign="top">An array of colors representing the default palette. This palette is designed for drawing charts on white backgrounds (or lightly colored backgrounds).</TD></TR>
+<TR><TD valign="top">whiteOnBlackPalette</TD><TD valign="top">An array of colors useful for drawing charts on black backgrounds (or darkly colored backgrounds).</TD></TR>
+<TR><TD valign="top">transparentPalette</TD><TD valign="top">An array of colors useful drawing charts on white backgrounds (or lightly colored backgrounds). The data colors in this palette are all semi-transparent.</TD></TR>
+</TABLE>
+</div>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=faq-chartdirectorcolorspecification">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

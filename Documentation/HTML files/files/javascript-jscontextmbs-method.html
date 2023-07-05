@@ -1,0 +1,720 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - JSContextMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="JSContextMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">JSContextMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-jscontextmbs.html">JSContextMBS</a> class.  </p>
+<div class="WLMI">
+<b><a href="class-jscontextmbs.html">JSContextMBS</a>.<A name="1">CheckScriptSyntax(script as string, sourceURL as String, startingLineNumber as Integer = 1, byref JSException as <A href="class-jsvaluembs.html">JSValueMBS</A>) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-javascript.html" translate="no">JavaScript</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion154.shtml" class=version>15.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Checks for syntax errors in a string of JavaScript.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-jscontextmbs.html">JSContextMBS</A><br /><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <A href="class-jsvaluembs.html">JSValueMBS</A><br /><span style="color: #0000FF;">if</span> c.CheckScriptSyntax(<span style="color: #6600FE;">&quot;1+&quot;</span>, <span style="color: #6600FE;">&quot;&quot;</span>, e) <span style="color: #0000FF;">then</span><br />  MsgBox <span style="color: #6600FE;">&quot;OK&quot;</span><br /><span style="color: #0000FF;">else</span><br />  <span style="color: #800000;">// show error</span><br />  <br />  MsgBox e.StringValue<br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Script: A string containing the script to check for syntax errors.<BR>
+sourceURL: A string containing a URL for the script&#39;s source file. This is only used when reporting exceptions. Pass &quot;&quot; if you do not care to include source file information in exceptions.<BR>
+startingLineNumber: An integer value specifying the script&#39;s starting line number in the file located at sourceURL. This is only used when reporting exceptions. The value is one-based, so the first line is line 1 and invalid values are clamped to 1.<BR>
+exception: A JSValue in which to store a syntax error exception, if any.<BR>
+<BR>
+Returns true if the script is syntactically correct, otherwise false.<BR>
+</div>
+<div class="WLMI">
+<b><a href="class-jscontextmbs.html">JSContextMBS</a>.<A name="2">Constructor</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-javascript.html" translate="no">JavaScript</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion154.shtml" class=version>15.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The constructor.<BR>
+<B>Notes:</B> 
+Creates a global JavaScript execution context.<BR>
+</div>
+<div class="WLMI">
+<b><a href="class-jscontextmbs.html">JSContextMBS</a>.<A name="3">EvaluateScript(script as string, sourceURL as String, thisObject as <A href="class-jsvaluembs.html">JSValueMBS</A>, startingLineNumber as Integer = 1, byref JSException as <A href="class-jsvaluembs.html">JSValueMBS</A>) as <A href="class-jsvaluembs.html">JSValueMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-javascript.html" translate="no">JavaScript</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion154.shtml" class=version>15.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Evaluates a string of JavaScript.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-jscontextmbs.html">JSContextMBS</A><br /><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <A href="class-jsvaluembs.html">JSValueMBS</A><br /><span style="color: #0000FF;">dim</span> v <span style="color: #0000FF;">as</span> <A href="class-jsvaluembs.html">JSValueMBS</A> = c.EvaluateScript(<span style="color: #6600FE;">&quot;1+&quot;</span>, <span style="color: #6600FE;">&quot;&quot;</span>, <span style="color: #0000FF;">nil</span>, e)<br /><br /><span style="color: #0000FF;">if</span> e &lt;&gt; <span style="color: #0000FF;">nil</span> <span style="color: #0000FF;">then</span><br />  <span style="color: #800000;">// show error</span><br />  MsgBox e.StringValue<br /><span style="color: #0000FF;">else</span><br />  <span style="color: #800000;">// show result</span><br />  MsgBox str(v.doubleValue)<br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+script: A string containing the script to evaluate.<BR>
+thisObject: The object to use as &quot;this,&quot; or nil to use the global object as &quot;this.&quot;<BR>
+sourceURL: A string containing a URL for the script&#39;s source file. This is used by debuggers and when reporting exceptions. Pass &quot;&quot; if you do not care to include source file information.<BR>
+startingLineNumber: An integer value specifying the script&#39;s starting line number in the file located at sourceURL. This is only used when reporting exceptions. The value is one-based, so the first line is line 1 and invalid values are clamped to 1.<BR>
+exception: A <A href="class-jsvaluembs.html">JSValueMBS</A> in which to store an exception, if any. <BR>
+<BR>
+Returns the JSValue that results from evaluating script, or nil if an exception is thrown.<BR>
+</div>
+<div class="WLMI">
+<b><a href="class-jscontextmbs.html">JSContextMBS</a>.<A name="4">GarbageCollect</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-javascript.html" translate="no">JavaScript</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion154.shtml" class=version>15.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Performs a JavaScript garbage collection.<BR>
+<B>Notes:</B> 
+<BR>
+JavaScript values that are on the machine stack, in a register, protected by JSValueProtect, set as the global object of an execution context, or reachable from any such value will not be collected.<BR>
+<BR>
+During JavaScript execution, you are not required to call this function; the JavaScript engine will garbage collect as needed. JavaScript values created within a context group are automatically destroyed when the last reference to the context group is released.<BR>
+</div>
+<div class="WLMI">
+<b><a href="class-jscontextmbs.html">JSContextMBS</a>.<A name="5">NewArray(arguments() as <A href="class-jsvaluembs.html">JSValueMBS</A>, byref JSException as <A href="class-jsvaluembs.html">JSValueMBS</A>) as <A href="class-jsobjectmbs.html">JSObjectMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-javascript.html" translate="no">JavaScript</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion154.shtml" class=version>15.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a JavaScript Array object.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-jscontextmbs.html">JSContextMBS</A><br /><br /><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <A href="class-jsvaluembs.html">JSValueMBS</A><br /><span style="color: #0000FF;">dim</span> v <span style="color: #0000FF;">as</span> <A href="class-jsobjectmbs.html">JSObjectMBS</A> = c.NewArray(<span style="color: #0000FF;">nil</span>, e)<br />v.SetPropertyAtIndex(<span style="color: #336698;">0</span>, c.valueWithString(<span style="color: #6600FE;">&quot;Hello&quot;</span>), e)<br />v.SetPropertyAtIndex(<span style="color: #336698;">1</span>, c.valueWithString(<span style="color: #6600FE;">&quot;World&quot;</span>), e)<br />MsgBox v.JSONString</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+arguments: A JSValue array of data to populate the Array with. <BR>
+JSException: A <A href="class-jsvaluembs.html">JSValueMBS</A> in which to store an exception, if any. <BR>
+Returns a JSObject that is an Array.<BR>
+The behavior of this function does not exactly match the behavior of the built-in Array constructor. Specifically, if one argument is supplied, this function returns an array with one element.<BR>
+Requires Mac OS X 10.6 or newer.<BR>
+</div>
+<div class="WLMI">
+<b><a href="class-jscontextmbs.html">JSContextMBS</a>.<A name="6">NewDate(arguments() as <A href="class-jsvaluembs.html">JSValueMBS</A>, byref JSException as <A href="class-jsvaluembs.html">JSValueMBS</A>) as <A href="class-jsobjectmbs.html">JSObjectMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-javascript.html" translate="no">JavaScript</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion154.shtml" class=version>15.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a JavaScript Date object, as if by invoking the built-in Date constructor.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-jscontextmbs.html">JSContextMBS</A><br /><br /><span style="color: #0000FF;">dim</span> year  <span style="color: #0000FF;">as</span> <A href="class-jsvaluembs.html">JSValueMBS</A> = c.valueWithDouble(<span style="color: #336698;">2015</span>)<br /><span style="color: #0000FF;">dim</span> month <span style="color: #0000FF;">as</span> <A href="class-jsvaluembs.html">JSValueMBS</A> = c.valueWithDouble(<span style="color: #336698;">5</span>)<br /><span style="color: #0000FF;">dim</span> day   <span style="color: #0000FF;">as</span> <A href="class-jsvaluembs.html">JSValueMBS</A> = c.valueWithDouble(<span style="color: #336698;">12</span>)<br /><br /><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <A href="class-jsvaluembs.html">JSValueMBS</A> <span style="color: #800000;">// exception</span><br /><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <A href="class-jsvaluembs.html">JSValueMBS</A> = c.NewDate(<span style="color: #0000FF;">array</span>(year, month, day), e)<br /><br />MsgBox d.JSONString</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+arguments: A JSValue array of arguments to pass to the Date Constructor. <BR>
+JSException: A <A href="class-jsvaluembs.html">JSValueMBS</A> in which to store an exception, if any.<BR>
+Returns a JSObject that is a Date.<BR>
+Requires Mac OS X 10.6 or newer.<BR>
+</div>
+<div class="WLMI">
+<b><a href="class-jscontextmbs.html">JSContextMBS</a>.<A name="7">NewError(arguments() as <A href="class-jsvaluembs.html">JSValueMBS</A>, byref JSException as <A href="class-jsvaluembs.html">JSValueMBS</A>) as <A href="class-jsobjectmbs.html">JSObjectMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-javascript.html" translate="no">JavaScript</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion154.shtml" class=version>15.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a JavaScript Error object, as if by invoking the built-in Error constructor.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-jscontextmbs.html">JSContextMBS</A><br /><br /><span style="color: #0000FF;">dim</span> parameters() <span style="color: #0000FF;">as</span> <A href="class-jsvaluembs.html">JSValueMBS</A><br />Parameters.Append c.valueWithString(<span style="color: #6600FE;">&quot;Hello&quot;</span>)<br /><br /><span style="color: #0000FF;">dim</span> ex <span style="color: #0000FF;">as</span> <A href="class-jsvaluembs.html">JSValueMBS</A><br /><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <A href="class-jsvaluembs.html">JSValueMBS</A> = c.NewError(Parameters, ex)<br />MsgBox e.StringValue</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+arguments: A JSValue array of arguments to pass to the Error Constructor.<BR>
+JSException: A <A href="class-jsvaluembs.html">JSValueMBS</A> in which to store an exception, if any. <BR>
+<BR>
+Returns a JSObject that is a Error.<BR>
+Requires Mac OS X 10.6 or newer.<BR>
+</div>
+<div class="WLMI">
+<b><a href="class-jscontextmbs.html">JSContextMBS</a>.<A name="8">NewFunction(name as string) as <A href="class-jsobjectmbs.html">JSObjectMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-javascript.html" translate="no">JavaScript</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion154.shtml" class=version>15.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Convenience method for creating a JavaScript function which raises FunctionCalled event on invokation.<BR>
+<B>Notes:</B> 
+<BR>
+name: A string containing the function&#39;s name. This will be used when converting the function to string. Pass NULL to create an anonymous function.<BR>
+Returns a JSObject that is a function. The object&#39;s prototype will be the default function prototype.<BR>
+<p>See also:<ul>
+<li><A href="javascript-jscontextmbs-method.html#9">NewFunction(name as string, parameterNames() as string, Body as String, SourceURL as string = "", startingLineNumber as Integer = 0, byref JSException as JSValueMBS) as JSValueMBS</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-macframeworks-javascript-javascriptwithnativefunction.html">/MacFrameworks/JavaScript/JavaScript with native function</A></li>
+</ul>
+</div>
+<div class="WLMI">
+<b><a href="class-jscontextmbs.html">JSContextMBS</a>.<A name="9">NewFunction(name as string, parameterNames() as string, Body as String, SourceURL as string = &quot;&quot;, startingLineNumber as Integer = 0, byref JSException as <A href="class-jsvaluembs.html">JSValueMBS</A>) as <A href="class-jsvaluembs.html">JSValueMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-javascript.html" translate="no">JavaScript</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion154.shtml" class=version>15.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a function with a given script as its body.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-jscontextmbs.html">JSContextMBS</A><br /><br /><span style="color: #800000;">// create a function</span><br /><span style="color: #0000FF;">dim</span> parameterNames() <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = <span style="color: #0000FF;">array</span>(<span style="color: #6600FE;">&quot;value&quot;</span>)<br /><span style="color: #0000FF;">dim</span> body <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = <span style="color: #6600FE;">&quot;return value*value;&quot;</span><br /><span style="color: #0000FF;">dim</span> name <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = <span style="color: #6600FE;">&quot;test&quot;</span><br /><br /><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <A href="class-jsvaluembs.html">JSValueMBS</A><br /><span style="color: #0000FF;">dim</span> v <span style="color: #0000FF;">as</span> <A href="class-jsvaluembs.html">JSValueMBS</A> = c.NewFunction(name, parameterNames, body, e )<br /><br />MsgBox v.StringValue<br /><br /><span style="color: #800000;">// put it in global memory</span><br />c.globalObject.SetProperty <span style="color: #6600FE;">&quot;test&quot;</span>, v, e<br /><br /><span style="color: #800000;">// and call it</span><br /><span style="color: #0000FF;">dim</span> r <span style="color: #0000FF;">as</span> <A href="class-jsvaluembs.html">JSValueMBS</A> = c.EvaluateScript(<span style="color: #6600FE;">&quot;test(5)&quot;</span>, <span style="color: #6600FE;">&quot;&quot;</span>, <span style="color: #0000FF;">nil</span>, e)<br />MsgBox r.StringValue</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+name: A string containing the function&#39;s name. This will be used when converting the function to string. Pass &quot;&quot; to create an anonymous function.<BR>
+parameterNames: A string array containing the names of the function&#39;s parameters. <BR>
+body: A string containing the script to use as the function&#39;s body.<BR>
+sourceURL: A string containing a URL for the script&#39;s source file. This is only used when reporting exceptions. Pass &quot;&quot; if you do not care to include source file information in exceptions.<BR>
+startingLineNumber: An integer value specifying the script&#39;s starting line number in the file located at sourceURL. This is only used when reporting exceptions. The value is one-based, so the first line is line 1 and invalid values are clamped to 1.<BR>
+exception: A <A href="class-jsvaluembs.html">JSValueMBS</A> in which to store a syntax error exception, if any. Pass nil if you do not care to store a syntax error exception.<BR>
+A JSObject that is a function, or nil if either body or parameterNames contains a syntax error. The object&#39;s prototype will be the default function prototype.<BR>
+Use this method when you want to execute a script repeatedly, to avoid the cost of re-parsing the script before each execution.<BR>
+<p>See also:<ul>
+<li><A href="javascript-jscontextmbs-method.html#8">NewFunction(name as string) as JSObjectMBS</A></li>
+</ul></p>
+</div>
+<div class="WLMI">
+<b><a href="class-jscontextmbs.html">JSContextMBS</a>.<A name="10">NewObject as <A href="class-jsobjectmbs.html">JSObjectMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-javascript.html" translate="no">JavaScript</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion154.shtml" class=version>15.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a new object.<BR>
+</div>
+<div class="WLMI">
+<b><a href="class-jscontextmbs.html">JSContextMBS</a>.<A name="11">NewRegExp(arguments() as <A href="class-jsvaluembs.html">JSValueMBS</A>, byref JSException as <A href="class-jsvaluembs.html">JSValueMBS</A>) as <A href="class-jsobjectmbs.html">JSObjectMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-javascript.html" translate="no">JavaScript</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion154.shtml" class=version>15.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a JavaScript RegExp object, as if by invoking the built-in RegExp constructor.<BR>
+<B>Notes:</B> 
+<BR>
+arguments: A JSValue array of arguments to pass to the RegExp Constructor. <BR>
+JSException: A <A href="class-jsvaluembs.html">JSValueMBS</A> in which to store an exception, if any. <BR>
+Returns a JSObject that is a RegExp.<BR>
+Requires Mac OS X 10.6 or newer.<BR>
+</div>
+<div class="WLMI">
+<b><a href="class-jscontextmbs.html">JSContextMBS</a>.<A name="12">valueWithBool(value as boolean) as <A href="class-jsvaluembs.html">JSValueMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-javascript.html" translate="no">JavaScript</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion154.shtml" class=version>15.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a JavaScript value of the boolean type.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-jscontextmbs.html">JSContextMBS</A><br /><span style="color: #0000FF;">dim</span> v <span style="color: #0000FF;">as</span> <A href="class-jsvaluembs.html">JSValueMBS</A> = c.valueWithBool(<span style="color: #0000FF;">true</span>)<br />MsgBox v.JSONString</span>
+</pre>
+</div>
+</div>
+<div class="WLMI">
+<b><a href="class-jscontextmbs.html">JSContextMBS</a>.<A name="13">valueWithDouble(value as Double) as <A href="class-jsvaluembs.html">JSValueMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-javascript.html" translate="no">JavaScript</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion154.shtml" class=version>15.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a JavaScript value of the number type.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-jscontextmbs.html">JSContextMBS</A><br /><br /><span style="color: #0000FF;">dim</span> v <span style="color: #0000FF;">as</span> <A href="class-jsvaluembs.html">JSValueMBS</A> = c.valueWithDouble(<span style="color: #006633;">5.6</span>)<br />MsgBox v.StringValue</span>
+</pre>
+</div>
+</div>
+<div class="WLMI">
+<b><a href="class-jscontextmbs.html">JSContextMBS</a>.<A name="14">valueWithJSON(JSON as string) as <A href="class-jsvaluembs.html">JSValueMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-javascript.html" translate="no">JavaScript</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion154.shtml" class=version>15.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a JavaScript value from a JSON formatted string.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-jscontextmbs.html">JSContextMBS</A><br /><br /><span style="color: #0000FF;">dim</span> v <span style="color: #0000FF;">as</span> <A href="class-jsvaluembs.html">JSValueMBS</A> = c.valueWithJSON(<span style="color: #6600FE;">&quot;[1,2,3]&quot;</span>)<br /><span style="color: #0000FF;">dim</span> o <span style="color: #0000FF;">as</span> <A href="class-jsobjectmbs.html">JSObjectMBS</A> = <A href="class-jsobjectmbs.html">JSObjectMBS</A>(v) <span style="color: #800000;">// arrays are objects</span><br /><br /><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <A href="class-jsvaluembs.html">JSValueMBS</A><br /><span style="color: #0000FF;">dim</span> p <span style="color: #0000FF;">as</span> <A href="class-jsvaluembs.html">JSValueMBS</A> = o.GetProperty(<span style="color: #6600FE;">&quot;length&quot;</span>, e)<br /><br />MsgBox p.StringValue <span style="color: #800000;">// shows 3</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Returns a JSValue containing the parsed value, or nil if the input is invalid.<BR>
+Available on Mac OS X 10.7 and newer<BR>
+</div>
+<div class="WLMI">
+<b><a href="class-jscontextmbs.html">JSContextMBS</a>.<A name="15">valueWithNull as <A href="class-jsvaluembs.html">JSValueMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-javascript.html" translate="no">JavaScript</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion154.shtml" class=version>15.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a JavaScript value of the null type.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-jscontextmbs.html">JSContextMBS</A><br /><span style="color: #0000FF;">dim</span> j <span style="color: #0000FF;">as</span> <A href="class-jsvaluembs.html">JSValueMBS</A> = c.valueWithNull<br /><br /><span style="color: #0000FF;">if</span> j.Type = <A href="class-jsvaluembs.html">JSValueMBS</A>.kJSTypeNull <span style="color: #0000FF;">then</span><br />  MsgBox <span style="color: #6600FE;">&quot;null&quot;</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+</div>
+<div class="WLMI">
+<b><a href="class-jscontextmbs.html">JSContextMBS</a>.<A name="16">valueWithString(value as string) as <A href="class-jsvaluembs.html">JSValueMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-javascript.html" translate="no">JavaScript</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion154.shtml" class=version>15.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a JavaScript value of the string type.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-jscontextmbs.html">JSContextMBS</A><br /><br /><span style="color: #0000FF;">dim</span> v <span style="color: #0000FF;">as</span> <A href="class-jsvaluembs.html">JSValueMBS</A> = c.valueWithString(<span style="color: #6600FE;">&quot;Hello&quot;</span>)<br />MsgBox v.StringValue</span>
+</pre>
+</div>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-macframeworks-javascript-javascriptwithnativefunction.html">/MacFrameworks/JavaScript/JavaScript with native function</A></li>
+</ul>
+</div>
+<div class="WLMI">
+<b><a href="class-jscontextmbs.html">JSContextMBS</a>.<A name="17">valueWithUndefined as <A href="class-jsvaluembs.html">JSValueMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-javascript.html" translate="no">JavaScript</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion154.shtml" class=version>15.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a JavaScript value of the undefined type.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-jscontextmbs.html">JSContextMBS</A><br /><span style="color: #0000FF;">dim</span> j <span style="color: #0000FF;">as</span> <A href="class-jsvaluembs.html">JSValueMBS</A> = c.valueWithUndefined<br /><br /><span style="color: #0000FF;">if</span> j.Type = <A href="class-jsvaluembs.html">JSValueMBS</A>.kJSTypeUndefined <span style="color: #0000FF;">then</span><br />  MsgBox <span style="color: #6600FE;">&quot;undefined&quot;</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=javascript-jscontextmbs-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

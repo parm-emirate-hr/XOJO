@@ -1,0 +1,432 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - OpenCLMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="OpenCLMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">OpenCLMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="module-openclmbs.html">OpenCLMBS</a> module. </p>
+<div class="M">
+<b><a href="module-openclmbs.html">OpenCLMBS</a>.<A name="1">AllDeviceCount(types as Int64) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Queries number of devices with given types.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = <A href="module-openclmbs.html">OpenCLMBS</A>.AllDeviceCount(<A href="class-cldevicembs.html">CLDeviceMBS</A>.kDeviceTypeCPU)<br /><span style="color: #0000FF;">dim</span> g <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = <A href="module-openclmbs.html">OpenCLMBS</A>.AllDeviceCount(<A href="class-cldevicembs.html">CLDeviceMBS</A>.kDeviceTypeGPU)<br />MsgBox str(c)+<span style="color: #6600FE;">&quot; CPU and &quot;</span>+str(g)+<span style="color: #6600FE;">&quot; GPU&quot;</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+types: A bitfield that identifies the type of OpenCL device. The device_type can be used to query specific OpenCL devices or all OpenCL devices available. The valid values for device_type are specified in the following table.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">cl_device_type</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">kDeviceTypeCPU</TD><TD valign="top">An OpenCL device that is the host processor. The host processor runs the OpenCL implementations and is a single or multi-core CPU.</TD></TR>
+<TR><TD valign="top">kDeviceTypeGPU</TD><TD valign="top">An OpenCL device that is a GPU. By this we mean that the device can also be used to accelerate a 3D API such as OpenGL or DirectX.</TD></TR>
+<TR><TD valign="top">kDeviceTypeAccelerator</TD><TD valign="top">Dedicated OpenCL accelerators (for example the IBM CELL Blade). These devices communicate with the host processor using a peripheral interconnect such as PCIe.</TD></TR>
+<TR><TD valign="top">kDeviceTypeDefault</TD><TD valign="top">The default OpenCL device in the system.</TD></TR>
+<TR><TD valign="top">kDeviceTypeAll</TD><TD valign="top">All OpenCL devices available in the system.</TD></TR>
+</TABLE>
+<BR>
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="module-openclmbs.html">OpenCLMBS</a>.<A name="2">AllDevices(types as Int64) as <A href="class-cldevicembs.html">CLDeviceMBS</A>()</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Queries devices with given types.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> Devices(-<span style="color: #336698;">1</span>) <span style="color: #0000FF;">as</span> <A href="class-cldevicembs.html">CLDeviceMBS</A> = <A href="module-openclmbs.html">OpenCLMBS</A>.AllDevices(<A href="class-cldevicembs.html">CLDeviceMBS</A>.kDeviceTypeAll)<br /><br /><span style="color: #0000FF;">for</span> <span style="color: #0000FF;">each</span> p <span style="color: #0000FF;">as</span> <A href="class-cldevicembs.html">CLDeviceMBS</A> <span style="color: #0000FF;">in</span> Devices<br />  MsgBox p.Name<br /><span style="color: #0000FF;">next</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+types: A bitfield that identifies the type of OpenCL device. The device_type can be used to query specific OpenCL devices or all OpenCL devices available. The valid values for device_type are specified in the following table.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">cl_device_type</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">kDeviceTypeCPU</TD><TD valign="top">An OpenCL device that is the host processor. The host processor runs the OpenCL implementations and is a single or multi-core CPU.</TD></TR>
+<TR><TD valign="top">kDeviceTypeGPU</TD><TD valign="top">An OpenCL device that is a GPU. By this we mean that the device can also be used to accelerate a 3D API such as OpenGL or DirectX.</TD></TR>
+<TR><TD valign="top">kDeviceTypeAccelerator</TD><TD valign="top">Dedicated OpenCL accelerators (for example the IBM CELL Blade). These devices communicate with the host processor using a peripheral interconnect such as PCIe.</TD></TR>
+<TR><TD valign="top">kDeviceTypeDefault</TD><TD valign="top">The default OpenCL device in the system.</TD></TR>
+<TR><TD valign="top">kDeviceTypeAll</TD><TD valign="top">All OpenCL devices available in the system.</TD></TR>
+</TABLE>
+<BR>
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="module-openclmbs.html">OpenCLMBS</a>.<A name="3">GetExtensionFunctionAddress(name as string) as ptr</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns the address of the extension function named by funcname.<BR>
+<B>Notes:</B> 
+<BR>
+The function GetExtensionFunctionAddress returns the address of the extension function named by funcname. The pointer returned should be cast to a function pointer type matching the extension function&#39;s definition defined in the appropriate extension specification and header file. A return value of nil indicates that the specified function does not exist for the implementation. A non-nil return value for GetExtensionFunctionAddress does not guarantee that an extension function is actually supported. The application must also make a corresponding query using <A href="class-clplatformmbs.html">CLPlatformMBS</A>.Extensions or <A href="class-cldevicembs.html">CLDeviceMBS</A>.Extensions to determine if an extension is supported by the OpenCL implementation.<BR>
+<BR>
+GetExtensionFunctionAddress may not be queried for core (non-extension) functions in OpenCL. For functions that are queryable with clGetExtensionFunctionAddress, implementations may choose to also export those functions statically from the object libraries implementing those functions. However, portable applications cannot rely on this behavior.<BR>
+<BR>
+Since there is no way to qualify the query with a device, the function pointer returned must work for all implementations of that extension on different devices. The behavior of calling a device extension function on a device not supporting that extension is undefined.<BR>
+</div>
+<div class="M">
+<b><a href="module-openclmbs.html">OpenCLMBS</a>.<A name="4">GetPictureImageFormat(pic as picture, byref RowPitch as Integer) as <A href="class-climageformatmbs.html">CLImageFormatMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Queries the image format this picture would need when creating a storage object with <A href="class-clmemmbs.html">CLMemMBS</A>.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> p <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> Picture(<span style="color: #336698;">100</span>,<span style="color: #336698;">100</span>,<span style="color: #336698;">32</span>)<br /><span style="color: #0000FF;">dim</span> rowbytes <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span><br /><span style="color: #0000FF;">dim</span> format <span style="color: #0000FF;">as</span> <A href="class-climageformatmbs.html">CLImageFormatMBS</A> = <A href="module-openclmbs.html">OpenCLMBS</A>.GetPictureImageFormat(p, rowbytes)<br /><br />MsgBox hex(format.ImageChannelOrder)+<span style="color: #6600FE;">&quot; &quot;</span>+hex(format.ImageChannelDataType)+<span style="color: #6600FE;">&quot; &quot;</span>+str(rowbytes)<br /><span style="color: #800000;">// shows 10B7 and 10D2 and 416 on Mac OS X Carbon</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+As Xojo uses 4 bytes per pixel on Mac and Windows, the plugin returns ARGB (or other byte order). The alpha channel is not used as Xojo stores<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-macframeworks-opencl-openclpicturemethodtests.html">/MacFrameworks/OpenCL/OpenCL Picture Method Tests</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="module-openclmbs.html">OpenCLMBS</a>.<A name="5">isAvailable as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Whether OpenCL is available.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">if</span> <span style="color: #0000FF;">not</span> <A href="module-openclmbs.html">OpenCLMBS</A>.isAvailable <span style="color: #0000FF;">then</span><br />  <span style="color: #0000FF;">if</span> TargetMachO <span style="color: #0000FF;">and</span> TargetX86 <span style="color: #0000FF;">then</span><br />    MsgBox <span style="color: #6600FE;">&quot;OpenCL not available. Please install Mac OS X 10.6 to use it.&quot;</span><br />  <span style="color: #0000FF;">else</span><br />    MsgBox <span style="color: #6600FE;">&quot;OpenCL not available. You need a Mac with Intel processor running Mac OS X 10.6.&quot;</span><br />  <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+Should return true on Mac OS X 10.6 and false everywhere else.<BR>
+</div>
+<div class="M">
+<b><a href="module-openclmbs.html">OpenCLMBS</a>.<A name="6">PlatformCount as Int64</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Queries number of platforms available.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;">MsgBox str(<A href="module-openclmbs.html">OpenCLMBS</A>.PlatformCount)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Typically you have two with modern Macs as you get both CPU and GPU listed.<BR>
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="module-openclmbs.html">OpenCLMBS</a>.<A name="7">Platforms as <A href="class-clplatformmbs.html">CLPlatformMBS</A>()</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Obtain the list of platforms available.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> Platforms(-<span style="color: #336698;">1</span>) <span style="color: #0000FF;">as</span> <A href="class-clplatformmbs.html">CLPlatformMBS</A> = <A href="module-openclmbs.html">OpenCLMBS</A>.Platforms<br /><br /><span style="color: #0000FF;">for</span> <span style="color: #0000FF;">each</span> p <span style="color: #0000FF;">as</span> <A href="class-clplatformmbs.html">CLPlatformMBS</A> <span style="color: #0000FF;">in</span> Platforms<br />  MsgBox p.Name<br /><span style="color: #0000FF;">next</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+Lasterror is set.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-macframeworks-opencl-opencl.html">/MacFrameworks/OpenCL/OpenCL</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="module-openclmbs.html">OpenCLMBS</a>.<A name="8">UnloadCompiler</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Allows the implementation to release the resources allocated by the OpenCL compiler.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><A href="module-openclmbs.html">OpenCLMBS</A>.UnloadCompiler<br />MsgBox <A href="module-openclmbs.html">OpenCLMBS</A>.LastErrorMessage</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+This is a hint from the application and does not guarantee that the compiler will not be used in the future or that the compiler will actually be unloaded by the implementation. Calls to BuildProgram after UnloadCompiler will reload the compiler, if necessary, to build the appropriate program executable.<BR>
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="module-openclmbs.html">OpenCLMBS</a>.<A name="9">WaitForEvents(events() as <A href="class-cleventmbs.html">CLEventMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Waits on the host thread for commands identified by event objects to complete.<BR>
+<B>Notes:</B> 
+<BR>
+events: The events specified in event_list act as synchronization points.<BR>
+<BR>
+Waits on the host thread for commands identified by event objects in event_list to complete. A command is considered complete if its execution status is kCommandExecutionStatusComplete or a negative value.<BR>
+<BR>
+Lasterror is set.<BR>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=opencl-openclmbs-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

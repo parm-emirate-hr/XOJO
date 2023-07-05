@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Win/Windows Locale Information</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Win/Windows Locale Information</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Win/Windows Locale Information</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS Win Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Win/Windows Locale Information<BR>
+This example is the version from Sun, 17th Mar 2012.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Windows</span> <span style="color:#6500FE">Locale</span> <span style="color:#6500FE">Information.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;L&ouml;schen&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;Beenden&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Window1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> l <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> WinLocalizationMBS
+				
+				show l
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton2 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton2 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> l <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> WinLocalizationMBS(WinLocalizationMBS.LANG_ENGLISH, WinLocalizationMBS.SUBLANG_ENGLISH_US, WinLocalizationMBS.SORT_DEFAULT)
+				
+				show l
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton3 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton3 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> l <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> WinLocalizationMBS(WinLocalizationMBS.LANG_GERMAN, WinLocalizationMBS.SUBLANG_GERMAN, WinLocalizationMBS.SORT_DEFAULT)
+				
+				show l
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> TargetWin32 <span style="color:#0000FF;font-weight: bold">then</span>
+				MsgBox <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">example</span> <span style="color:#6500FE">works</span> <span style="color:#6500FE">only</span> <span style="color:#6500FE">on</span> <span style="color:#6500FE">Windows.&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Show(l <span style="color:#0000FF;font-weight: bold">as</span> WinLocalizationMBS)
+			List.DeleteAllRows
+			
+			list.addrow <span style="color:#6500FE">&quot;LanguageID&quot;</span>, l.LanguageID
+			list.addrow <span style="color:#6500FE">&quot;LanguageNameLocalized&quot;</span>, l.LanguageNameLocalized
+			list.addrow <span style="color:#6500FE">&quot;LanguageNameEnglish&quot;</span>, l.LanguageNameEnglish
+			list.addrow <span style="color:#6500FE">&quot;LanguageNameAbbreviated&quot;</span>, l.LanguageNameAbbreviated
+			list.addrow <span style="color:#6500FE">&quot;LanguageNameNativ&quot;</span>, l.LanguageNameNativ
+			list.addrow <span style="color:#6500FE">&quot;CountryCode&quot;</span>, l.CountryCode
+			list.addrow <span style="color:#6500FE">&quot;CountryNameLocalized&quot;</span>, l.CountryNameLocalized
+			list.addrow <span style="color:#6500FE">&quot;CountryNameEnglish&quot;</span>, l.CountryNameEnglish
+			list.addrow <span style="color:#6500FE">&quot;CountryNameAbbreviated&quot;</span>, l.CountryNameAbbreviated
+			list.addrow <span style="color:#6500FE">&quot;CountryNameNative&quot;</span>, l.CountryNameNative
+			list.addrow <span style="color:#6500FE">&quot;DefaultLanguageID&quot;</span>, l.DefaultLanguageID
+			list.addrow <span style="color:#6500FE">&quot;DefaultCountryCode&quot;</span>, l.DefaultCountryCode
+			list.addrow <span style="color:#6500FE">&quot;DefaultCodePageOEM&quot;</span>, l.DefaultCodePageOEM
+			list.addrow <span style="color:#6500FE">&quot;DefaultCodePageANSI&quot;</span>, l.DefaultCodePageANSI
+			list.addrow <span style="color:#6500FE">&quot;DefaultCodePageMac&quot;</span>, l.DefaultCodePageMac
+			list.addrow <span style="color:#6500FE">&quot;ListItemSeparator&quot;</span>, l.ListItemSeparator
+			list.addrow <span style="color:#6500FE">&quot;MeasureSystem&quot;</span>, l.MeasureSystem
+			list.addrow <span style="color:#6500FE">&quot;DecimalSeparator&quot;</span>, l.DecimalSeparator
+			list.addrow <span style="color:#6500FE">&quot;ThousandSeparator&quot;</span>, l.ThousandSeparator
+			list.addrow <span style="color:#6500FE">&quot;DigitGrouping&quot;</span>, l.DigitGrouping
+			list.addrow <span style="color:#6500FE">&quot;NumberOfFraction&quot;</span>, l.NumberOfFraction
+			list.addrow <span style="color:#6500FE">&quot;LeadingZeros&quot;</span>, l.LeadingZeros
+			list.addrow <span style="color:#6500FE">&quot;NegativeNumberMode&quot;</span>, l.NegativeNumberMode
+			list.addrow <span style="color:#6500FE">&quot;NativeASCII0to9&quot;</span>, l.NativeASCII0to9
+			list.addrow <span style="color:#6500FE">&quot;CurrencySymbolLocalized&quot;</span>, l.CurrencySymbolLocalized
+			list.addrow <span style="color:#6500FE">&quot;CurrencySymbolInternational&quot;</span>, l.CurrencySymbolInternational
+			list.addrow <span style="color:#6500FE">&quot;CurrencyDecimalSeparator&quot;</span>, l.CurrencyDecimalSeparator
+			list.addrow <span style="color:#6500FE">&quot;CurrencyThousandSeparator&quot;</span>, l.CurrencyThousandSeparator
+			list.addrow <span style="color:#6500FE">&quot;CurrencyGroupingMode&quot;</span>, l.CurrencyGroupingMode
+			list.addrow <span style="color:#6500FE">&quot;CurrencyDigitsLocalized&quot;</span>, l.CurrencyDigitsLocalized
+			list.addrow <span style="color:#6500FE">&quot;CurrencyDigitsInternational&quot;</span>, l.CurrencyDigitsInternational
+			list.addrow <span style="color:#6500FE">&quot;CurrencyPositiveMode&quot;</span>, l.CurrencyPositiveMode
+			list.addrow <span style="color:#6500FE">&quot;CurrencyNegativeMode&quot;</span>, l.CurrencyNegativeMode
+			list.addrow <span style="color:#6500FE">&quot;DateSeparator&quot;</span>, l.DateSeparator
+			list.addrow <span style="color:#6500FE">&quot;TimeSeparator&quot;</span>, l.TimeSeparator
+			list.addrow <span style="color:#6500FE">&quot;DateShortFormatString&quot;</span>, l.DateShortFormatString
+			list.addrow <span style="color:#6500FE">&quot;DateLongFormatString&quot;</span>, l.DateLongFormatString
+			list.addrow <span style="color:#6500FE">&quot;TimeShortFormatString&quot;</span>, l.TimeShortFormatString
+			list.addrow <span style="color:#6500FE">&quot;DateShortFormatOrdering&quot;</span>, l.DateShortFormatOrdering
+			list.addrow <span style="color:#6500FE">&quot;DateLongFormatOrdering&quot;</span>, l.DateLongFormatOrdering
+			list.addrow <span style="color:#6500FE">&quot;TimeFormatSpecifier&quot;</span>, l.TimeFormatSpecifier
+			list.addrow <span style="color:#6500FE">&quot;TimeMarkerPosition&quot;</span>, l.TimeMarkerPosition
+			list.addrow <span style="color:#6500FE">&quot;TimeCenturyFormatSpecifier&quot;</span>, l.TimeCenturyFormatSpecifier
+			list.addrow <span style="color:#6500FE">&quot;TimeLeadingZeros&quot;</span>, l.TimeLeadingZeros
+			list.addrow <span style="color:#6500FE">&quot;DateLeadingZerosDay&quot;</span>, l.DateLeadingZerosDay
+			list.addrow <span style="color:#6500FE">&quot;DateLeadingZerosMonth&quot;</span>, l.DateLeadingZerosMonth
+			list.addrow <span style="color:#6500FE">&quot;TimeAM&quot;</span>, l.TimeAM
+			list.addrow <span style="color:#6500FE">&quot;TimePM&quot;</span>, l.TimePM
+			list.addrow <span style="color:#6500FE">&quot;CalendarTypeSpecifier&quot;</span>, l.CalendarTypeSpecifier
+			list.addrow <span style="color:#6500FE">&quot;CalendarTypeSpecifier2&quot;</span>, l.CalendarTypeSpecifier2
+			list.addrow <span style="color:#6500FE">&quot;FirstDayOfWeek&quot;</span>, l.FirstDayOfWeek
+			list.addrow <span style="color:#6500FE">&quot;FirstWeekOfYear&quot;</span>, l.FirstWeekOfYear
+			
+			list.addrow <span style="color:#6500FE">&quot;SignPositive&quot;</span>, l.SignPositive
+			list.addrow <span style="color:#6500FE">&quot;SignNegative&quot;</span>, l.SignNegative
+			list.addrow <span style="color:#6500FE">&quot;SignPositivePosition&quot;</span>, l.SignPositivePosition
+			list.addrow <span style="color:#6500FE">&quot;SignNegativePosition&quot;</span>, l.SignNegativePosition
+			list.addrow <span style="color:#6500FE">&quot;PosSymPrecedes&quot;</span>, l.PosSymPrecedes
+			list.addrow <span style="color:#6500FE">&quot;PosSepBySpace&quot;</span>, l.PosSepBySpace
+			list.addrow <span style="color:#6500FE">&quot;NegSymPrecedes&quot;</span>, l.NegSymPrecedes
+			list.addrow <span style="color:#6500FE">&quot;NegSepBySpace&quot;</span>, l.NegSepBySpace
+			list.addrow <span style="color:#6500FE">&quot;LanguageNameAbbreviatedISO&quot;</span>, l.LanguageNameAbbreviatedISO
+			list.addrow <span style="color:#6500FE">&quot;CountryNameAbbreviatedISO&quot;</span>, l.CountryNameAbbreviatedISO
+			list.addrow <span style="color:#6500FE">&quot;DefaultCodePageEBCDIC&quot;</span>, l.DefaultCodePageEBCDIC
+			list.addrow <span style="color:#6500FE">&quot;Papersize&quot;</span>, l.Papersize
+			list.addrow <span style="color:#6500FE">&quot;CurrencyNameEnglish&quot;</span>, l.CurrencyNameEnglish
+			list.addrow <span style="color:#6500FE">&quot;CurrencyNameNative&quot;</span>, l.CurrencyNameNative
+			list.addrow <span style="color:#6500FE">&quot;DateShortYearMonth&quot;</span>, l.DateShortYearMonth
+			list.addrow <span style="color:#6500FE">&quot;Sortname&quot;</span>, l.Sortname
+			list.addrow <span style="color:#6500FE">&quot;DigitSubstitution&quot;</span>, l.DigitSubstitution
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;Ablage&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Bearbeiten&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;R&uuml;ckg&auml;ngig&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;&amp;Ausschneiden&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Kopieren&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Einf&uuml;gen&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;&amp;Alles</span> <span style="color:#6500FE">ausw&auml;hlen&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Module</span> Module1</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> AddRow(<span style="color:#0000FF;font-weight: bold">extends</span> l <span style="color:#0000FF;font-weight: bold">as</span> listbox, a <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, b <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			l.AddRow a
+			l.Cell(l.LastIndex,<span style="color:#326598">1</span>)=b
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Module</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-win-windowsaudiomixer.html">/Win/Windows Audio Mixer</A></li>
+<li><A href="example-win-windowsconsole.html">/Win/Windows Console</A></li>
+<li><A href="example-win-windowscpuusage.html">/Win/Windows CPU Usage</A></li>
+<li><A href="example-win-windowsdisplays.html">/Win/Windows Displays</A></li>
+<li><A href="example-win-windowsfont.html">/Win/Windows Font</A></li>
+<li><A href="example-win-windowspipe.html">/Win/Windows Pipe</A></li>
+<li><A href="example-win-windowsqos-windowsqoswithtcpsocket.html">/Win/Windows QOS/Windows QOS with TCPSocket</A></li>
+<li><A href="example-win-windowsspeech-windowsspeechtest.html">/Win/Windows Speech/Windows Speech Test</A></li>
+<li><A href="example-win-windowsswitchprintersforprinting.html">/Win/Windows Switch Printers for printing</A></li>
+<li><A href="example-win-windowssystemtraywithiconfile-windowssystemtraywithiconfile.html">/Win/Windows System Tray with Icon file/Windows System Tray with Icon file</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbswinplugin.html">MBS Win Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-win-windowslocaleinformation">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

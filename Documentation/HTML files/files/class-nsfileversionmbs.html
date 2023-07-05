@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - NSFileVersionMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="NSFileVersionMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">NSFileVersionMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>NSFileVersionMBS class</H3>
+<div class="M">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The class for different file versions on Mac OS X 10.7.<BR>
+<B>Notes:</B> 
+<BR>
+Instances of NSFileVersionMBS for the same version of the same file are equal, and instances of NSFileVersionMBS for different versions of the same file are not equal, but the equality of NSFileVersionMBSs for different files is undefined. Repeated invocations of the methods that return NSFileVersionMBSs do not necessarily return the exact same instance of NSFileVersionMBS.<BR>
+<BR>
+An NSFileVersion object represents a snapshot of a file at a specific point in time. You use the NSFileVersion class to access and create and manage file revisions in your application. Each instance of this class contains meta information about a single revision, such as the location of the file containing the revision data, the modification date of the revision, and whether the revision is discardable.<BR>
+<BR>
+In Mac OS X applications, you can use file version objects to track changes to a local file over time and to prevent the loss of data during editing. When managing local versions, the document architecture creates versions at specific points in the lifetime of your application. Your application can also create versions explicitly at times that your application designates as appropriate.<BR>
+<BR>
+In addition to managing local files, the system also uses this class to manage cloud-based files. For files in the cloud, there is usually only one version of the file at any given time. However, additional file versions may be created in cases where two different computers attempt to save the file to the cloud at the same time. In that case, one file is chosen as the current version and any other versions are tagged as being in conflict with the original. Conflict versions are reported to the appropriate file presenter objects and should be resolved as soon as possible so that the corresponding files can be removed from the cloud.<BR>
+<BR>
+Available on Mac OS X 10.7 or later.<BR>
+Please also check the documentation from Apple for the NSFileVersion class.<BR>
+<BR>
+Works also well with files in backup (Time Machine) to find older versions.<BR>
+This is an abstract class. You can&#39;t create an instance, but you can get one from various plugin functions.<BR>
+</div>
+<ul>
+<LI>3 properties<UL>
+<li class="M">property <A href="icloud-nsfileversionmbs-property.html">Handle</A> as Integer</li>
+<li class="M">property <A href="icloud-nsfileversionmbs-method.html#3">Discardable</A> as boolean</li>
+<li class="M">property <A href="icloud-nsfileversionmbs-method.html#13">Resolved</A> as boolean</li>
+</UL></LI>
+<LI>12 methods<UL>
+<li class="M">method <A href="icloud-nsfileversionmbs-method.html">Conflict</A> as boolean</li>
+<li class="M">method <A href="icloud-nsfileversionmbs-method.html#2">Constructor</A> &nbsp; <b style="color: #8B0000"> Private </b></li>
+<li class="M">method <A href="icloud-nsfileversionmbs-method.html#4">File</A> as folderitem</li>
+<li class="M">method <A href="icloud-nsfileversionmbs-method.html#5">localizedName</A> as string</li>
+<li class="M">method <A href="icloud-nsfileversionmbs-method.html#6">localizedNameOfSavingComputer</A> as string</li>
+<li class="M">method <A href="icloud-nsfileversionmbs-method.html#7">modificationDate</A> as date</li>
+<li class="M">method <A href="icloud-nsfileversionmbs-method.html#8">modificationDateTime</A> as dateTime</li>
+<li class="M">method <A href="icloud-nsfileversionmbs-method.html#9">persistentIdentifier</A> as Memoryblock</li>
+<li class="M">method <A href="icloud-nsfileversionmbs-method.html#10">removeAndReturnError</A>(byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as boolean</li>
+<li class="M">method <A href="icloud-nsfileversionmbs-method.html#11">replaceItemAtURL</A>(file as folderitem, options as Integer, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as string</li>
+<li class="M">method <A href="icloud-nsfileversionmbs-method.html#12">replaceItemAtURL</A>(url as string, options as Integer, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as string</li>
+<li class="M">method <A href="icloud-nsfileversionmbs-method.html#14">URL</A> as string</li>
+</UL></LI>
+<LI>13 shared methods<UL>
+<li class="M">shared method <A href="icloud-nsfileversionmbs-shared-method.html">addVersionOfItemAtURL</A>(url as string, withContentsOfURL as string, options as Integer, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as NSFileVersionMBS</li>
+<li class="M">shared method <A href="icloud-nsfileversionmbs-shared-method.html#2">currentVersionOfItemAtURL</A>(file as folderitem) as NSFileVersionMBS</li>
+<li class="M">shared method <A href="icloud-nsfileversionmbs-shared-method.html#3">currentVersionOfItemAtURL</A>(url as string) as NSFileVersionMBS</li>
+<li class="M">shared method <A href="icloud-nsfileversionmbs-shared-method.html#4">FileURL</A>(file as folderitem) as string</li>
+<li class="M">shared method <A href="icloud-nsfileversionmbs-shared-method.html#5">otherVersionsOfItemAtURL</A>(file as folderitem) as NSFileVersionMBS()</li>
+<li class="M">shared method <A href="icloud-nsfileversionmbs-shared-method.html#6">otherVersionsOfItemAtURL</A>(url as string) as NSFileVersionMBS()</li>
+<li class="M">shared method <A href="icloud-nsfileversionmbs-shared-method.html#7">removeOtherVersionsOfItemAtURL</A>(file as folderitem, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as boolean</li>
+<li class="M">shared method <A href="icloud-nsfileversionmbs-shared-method.html#8">removeOtherVersionsOfItemAtURL</A>(url as string, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as boolean</li>
+<li class="M">shared method <A href="icloud-nsfileversionmbs-shared-method.html#9">temporaryDirectoryURLForNewVersionOfItemAtURL</A>(url as string) as string</li>
+<li class="M">shared method <A href="icloud-nsfileversionmbs-shared-method.html#10">unresolvedConflictVersionsOfItemAtURL</A>(file as folderitem) as NSFileVersionMBS()</li>
+<li class="M">shared method <A href="icloud-nsfileversionmbs-shared-method.html#11">unresolvedConflictVersionsOfItemAtURL</A>(url as string) as NSFileVersionMBS()</li>
+<li class="M">shared method <A href="icloud-nsfileversionmbs-shared-method.html#12">versionOfItemAtURLforPersistentIdentifier</A>(file as folderitem, PersistentIdentifier as Memoryblock) as NSFileVersionMBS</li>
+<li class="M">shared method <A href="icloud-nsfileversionmbs-shared-method.html#13">versionOfItemAtURLforPersistentIdentifier</A>(URL as string, PersistentIdentifier as Memoryblock) as NSFileVersionMBS</li>
+</UL></LI>
+<LI>2 constants<UL>
+<li class="M">const <A href="icloud-nsfileversionmbs-const.html">NSFileVersionAddingByMoving</A> = 1</li>
+<li class="M">const <A href="icloud-nsfileversionmbs-const.html#2">NSFileVersionReplacingByMoving</A> = 1</li>
+</UL></LI>
+</ul>
+<p>This class has no sub classes.</p>
+<h4>Some events using this class:</h4><ul>
+<li class="M"><A href="icloud-nsfilepresentermbs-event.html#4">NSFilePresenterMBS.presentedItemDidGainVersion</A>(version as NSFileVersionMBS)</li>
+<li class="M"><A href="icloud-nsfilepresentermbs-event.html#5">NSFilePresenterMBS.presentedItemDidLoseVersion</A>(version as NSFileVersionMBS)</li>
+<li class="M"><A href="icloud-nsfilepresentermbs-event.html#7">NSFilePresenterMBS.presentedItemDidResolveConflictVersion</A>(version as NSFileVersionMBS)</li>
+<li class="M"><A href="icloud-nsfilepresentermbs-event.html#9">NSFilePresenterMBS.presentedSubitemAtURLdidGainVersion</A>(URL as string, file as FolderItem, version as NSFileVersionMBS)</li>
+<li class="M"><A href="icloud-nsfilepresentermbs-event.html#10">NSFilePresenterMBS.presentedSubitemAtURLdidLoseVersion</A>(URL as string, file as FolderItem, version as NSFileVersionMBS)</li>
+<li class="M"><A href="icloud-nsfilepresentermbs-event.html#12">NSFilePresenterMBS.presentedSubitemAtURLdidResolveConflictVersion</A>(URL as string, file as FolderItem, version as NSFileVersionMBS)</li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2011-07-24/Lion_features_for_Real_Studio/monkeybreadsoftware_blog_xojo">Lion features for Real Studio</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-nsfilepresentermbs.html">NSFilePresenterMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-nsfilewrappermbs.html">NSFileWrapperMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-nsfileversionmbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

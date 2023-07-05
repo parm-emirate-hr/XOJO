@@ -1,0 +1,807 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /DynaPDF/Print PDF</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /DynaPDF/Print PDF</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/DynaPDF/Print PDF</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS DynaPDF Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /DynaPDF/Print PDF<BR>
+This example is the version from Thu, 31th Jul 2019.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Print</span> <span style="color:#6500FE">PDF.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	FileTypes</div>
+<div class="RB_Code">		Filetype text</div>
+<div class="RB_Code">		Filetype Pref</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> FileTypes</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;Quit&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu5 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;Clear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu4 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu3 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem UntitledMenu2 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#0000FF">#if</span> TargetWin32 <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ok</span>
+			<span style="color:#0000FF">#else</span>
+				MsgBox <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">example</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">only</span> <span style="color:#6500FE">for</span> <span style="color:#6500FE">Windows.&quot;</span>
+			<span style="color:#0000FF">#endif</span>
+			
+			
+			System.DebugLog <span style="color:#6500FE">&quot;Xojo</span> <span style="color:#6500FE">&quot;</span>+RBVersionString
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyDynaPDFMBS <span style="color:#0000FF;font-weight: bold">Inherits</span> DynaPDFMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> Error(ErrorCode <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, ErrorMessage <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, ErrorType <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">output</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">messages</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">console:</span>
+			System.DebugLog str(ErrorCode)+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+ErrorMessage
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">dialog:</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">New</span> MessageDialog <span style="color:#7F0000;text-style:italic">//declare</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">MessageDialog</span> <span style="color:#7F0000;text-style:italic">object</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> MessageDialogButton <span style="color:#7F0000;text-style:italic">//for</span> <span style="color:#7F0000;text-style:italic">handling</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">result</span>
+			
+			d.icon=MessageDialog.GraphicCaution <span style="color:#7F0000;text-style:italic">//display</span> <span style="color:#7F0000;text-style:italic">warning</span> <span style="color:#7F0000;text-style:italic">icon</span>
+			d.ActionButton.Caption=<span style="color:#6500FE">&quot;Continue&quot;</span>
+			d.CancelButton.Visible=<span style="color:#0000FF;font-weight: bold">True</span>    <span style="color:#7F0000;text-style:italic">//show</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Cancel</span> <span style="color:#7F0000;text-style:italic">button</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">warning</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">error?</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> BitAnd(ErrorType, <span style="color:#0000FF;font-weight: bold">me</span>.kE_WARNING) = <span style="color:#0000FF;font-weight: bold">me</span>.kE_WARNING <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">user</span> <span style="color:#7F0000;text-style:italic">decided</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">ignore,</span> <span style="color:#7F0000;text-style:italic">we&#39;ll</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> IgnoreWarnings <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span>
+				
+				d.Message=<span style="color:#6500FE">&quot;A</span> <span style="color:#6500FE">warning</span> <span style="color:#6500FE">occurred</span> <span style="color:#6500FE">while</span> <span style="color:#6500FE">processing</span> <span style="color:#6500FE">your</span> <span style="color:#6500FE">PDF</span> <span style="color:#6500FE">code.&quot;</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">third</span> <span style="color:#7F0000;text-style:italic">button</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">warnings</span>
+				d.AlternateActionButton.Caption = <span style="color:#6500FE">&quot;Ignore</span> <span style="color:#6500FE">warnings&quot;</span>
+				d.AlternateActionButton.Visible = <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				d.Message=<span style="color:#6500FE">&quot;An</span> <span style="color:#6500FE">error</span> <span style="color:#6500FE">occurred</span> <span style="color:#6500FE">while</span> <span style="color:#6500FE">processing</span> <span style="color:#6500FE">your</span> <span style="color:#6500FE">PDF</span> <span style="color:#6500FE">code.&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			d.Explanation = str(ErrorCode)+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+ErrorMessage
+			
+			b=d.ShowModal <span style="color:#7F0000;text-style:italic">//display</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">dialog</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">Case</span> b <span style="color:#7F0000;text-style:italic">//determine</span> <span style="color:#7F0000;text-style:italic">which</span> <span style="color:#7F0000;text-style:italic">button</span> <span style="color:#7F0000;text-style:italic">was</span> <span style="color:#7F0000;text-style:italic">pressed.</span>
+			<span style="color:#0000FF;font-weight: bold">Case</span> d.ActionButton
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+			<span style="color:#0000FF;font-weight: bold">Case</span> d.AlternateActionButton
+				IgnoreWarnings = <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+			<span style="color:#0000FF;font-weight: bold">Case</span> d.CancelButton
+				<span style="color:#0000FF;font-weight: bold">Return</span> -<span style="color:#326598">1</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">stop</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">select</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> InitProgress(ProgType <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, MaxCount <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			ProgressMaxCount = MaxCount
+			ProgressPrinting = (ProgType = kptPrintPage)
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> Progress(ActivePage <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> printing <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> g &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">draw</span> <span style="color:#7F0000;text-style:italic">something</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">each</span> <span style="color:#7F0000;text-style:italic">page</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = <span style="color:#6500FE">&quot;Xojo</span> <span style="color:#6500FE">Page</span> <span style="color:#6500FE">&quot;</span>+str(ActivePage-<span style="color:#326598">1</span>) + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">of</span> <span style="color:#6500FE">&quot;</span> + str(ProgressMaxCount)
+					g.DrawString m, <span style="color:#326598">50</span>, <span style="color:#326598">50</span>
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">next</span> <span style="color:#7F0000;text-style:italic">page?</span>
+					<span style="color:#0000FF;font-weight: bold">if</span> ActivePage &gt; <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">start</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">page</span>
+						<span style="color:#7F0000;text-style:italic">&#39;System.DebugLog</span> <span style="color:#7F0000;text-style:italic">&quot;nextpage&quot;</span>
+						g.NextPage
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">now</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">ActivePage</span>
+				
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">show</span> <span style="color:#7F0000;text-style:italic">progress</span>
+				CurrentPage = ActivePage
+				app.YieldToNextThread
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> CurrentPage <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> IgnoreWarnings <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> NumberOfPages <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> PrinterFlags <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> PrinterHandle <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> PrinterMargin <span style="color:#0000FF;font-weight: bold">As</span> DynaPDFRectMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> PrintingDone <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> ProgressMaxCount <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> ProgressPrinting <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> g <span style="color:#0000FF;font-weight: bold">As</span> Graphics</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> mode <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> printerName <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> printing <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> PrintWindow <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = GetOpenFolderItem(FileTypes1.Pdf)
+				
+				SetPDF f
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control InputPath <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance InputPath <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PrintButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PrintButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				PrintWithXojoGraphics
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control RadioColor <span style="color:#0000FF;font-weight: bold">Inherits</span> RadioButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance RadioColor <span style="color:#0000FF;font-weight: bold">Inherits</span> RadioButton</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control RadioGray <span style="color:#0000FF;font-weight: bold">Inherits</span> RadioButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance RadioGray <span style="color:#0000FF;font-weight: bold">Inherits</span> RadioButton</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control RadioBW <span style="color:#0000FF;font-weight: bold">Inherits</span> RadioButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance RadioBW <span style="color:#0000FF;font-weight: bold">Inherits</span> RadioButton</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CheckAuto <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CheckAuto <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label2 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label2 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CheckShrink <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CheckShrink <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CheckFirst <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CheckFirst <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control bar <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressBar</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance bar <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressBar</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Info <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Info <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Thread1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Thread</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Thread1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Thread</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Run()
+				<span style="color:#0000FF;font-weight: bold">if</span> pdf &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					timer1.mode = timer.ModeMultiple
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> pdf.printerName = <span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						
+						<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">print</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">graphics</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">xojo</span>
+						
+						<span style="color:#0000FF;font-weight: bold">dim</span> e <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">boolean</span> = pdf.PrintPDFFile(<span style="color:#0000FF;font-weight: bold">nil</span>, <span style="color:#6500FE">&quot;test&quot;</span>, pdf.PrinterHandle, pdf.PrinterFlags, pdf.PrinterMargin)
+						
+					<span style="color:#0000FF;font-weight: bold">else</span>
+						<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">print</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">named</span> <span style="color:#7F0000;text-style:italic">printer</span>
+						<span style="color:#0000FF;font-weight: bold">dim</span> e <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">boolean</span> = pdf.PrintPDFFile(<span style="color:#0000FF;font-weight: bold">nil</span>, <span style="color:#6500FE">&quot;test&quot;</span>, pdf.printerName, pdf.PrinterFlags, pdf.PrinterMargin)
+						
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">done</span>
+					pdf.printing = <span style="color:#0000FF;font-weight: bold">False</span>
+					<span style="color:#0000FF;font-weight: bold">call</span> pdf.CloseFile
+					
+					pdf.PrintingDone = <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Timer1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Timer1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">if</span> pdf.PrintingDone <span style="color:#0000FF;font-weight: bold">then</span>
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> g <span style="color:#0000FF;font-weight: bold">as</span> Graphics = pdf.g
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> g &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">draw</span> <span style="color:#7F0000;text-style:italic">something</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">last</span> <span style="color:#7F0000;text-style:italic">page</span>
+						<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = <span style="color:#6500FE">&quot;Xojo</span> <span style="color:#6500FE">printing</span> <span style="color:#6500FE">done.&quot;</span>
+						g.DrawString m, <span style="color:#326598">50</span>, <span style="color:#326598">50</span>
+						
+						
+						<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">cleanup</span>
+						g = <span style="color:#0000FF;font-weight: bold">nil</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">cleanup</span> <span style="color:#7F0000;text-style:italic">pdf</span>
+					pdf = <span style="color:#0000FF;font-weight: bold">nil</span>
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">done</span>
+					
+					info.Visible = <span style="color:#0000FF;font-weight: bold">False</span>
+					bar.Visible = <span style="color:#0000FF;font-weight: bold">false</span>
+					<span style="color:#0000FF;font-weight: bold">me</span>.mode = <span style="color:#326598">0</span>
+					
+					MsgBox <span style="color:#6500FE">&quot;Printing</span> <span style="color:#6500FE">done.&quot;</span>
+					
+					<span style="color:#0000FF;font-weight: bold">Return</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = str(pdf.CurrentPage)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">of</span> <span style="color:#6500FE">&quot;</span>+str(pdf.NumberOfPages)
+				
+				System.DebugLog s
+				
+				bar.Value = pdf.CurrentPage
+				info.Text = s
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PrinterButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PrinterButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				PrintToNamedPrinter
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label3 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label3 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control printerName <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance printerName <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label4 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label4 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label5 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label5 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label6 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label6 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PrinterDialogButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PrinterDialogButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				PrintToPrinterWithDialog
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control SaveButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance SaveButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">if</span> PrintSettings = <span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">nothing</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">save</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = GetSaveFolderItem(FileTypes.Pref, <span style="color:#6500FE">&quot;settings.pref&quot;</span>)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> f = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BinaryStream = BinaryStream.Create(f, <span style="color:#0000FF;font-weight: bold">true</span>)
+				b.Write PrintSettings
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control LoadButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance LoadButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = GetOpenFolderItem(FileTypes.Pref)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> f = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BinaryStream = BinaryStream.Open(f)
+				
+				PrintSettings = b.Read(b.Length)
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CheckPrintPageAsIS <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CheckPrintPageAsIS <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PrinterPageDialogButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PrinterPageDialogButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				PrintPageToPrinterWithDialog
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">testing,</span> <span style="color:#7F0000;text-style:italic">preload</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">PDF</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;test.pdf&quot;</span>)
+			SetPDF f
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> PreparePDF(g <span style="color:#0000FF;font-weight: bold">as</span> Graphics = <span style="color:#0000FF;font-weight: bold">nil</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">start</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">PDF</span> <span style="color:#7F0000;text-style:italic">context</span>
+			pdf = <span style="color:#0000FF;font-weight: bold">new</span> MyDynapdfMBS
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CreateNewPDF <span style="color:#0000FF;font-weight: bold">nil</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">import</span> <span style="color:#7F0000;text-style:italic">PDF</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = pdf.OpenImportFile(InputFile, <span style="color:#326598">0</span>, <span style="color:#6500FE">&quot;&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">if</span> n &lt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">false</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">print</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> CheckFirst.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">import</span> <span style="color:#7F0000;text-style:italic">first</span> <span style="color:#7F0000;text-style:italic">page?</span>
+				<span style="color:#0000FF;font-weight: bold">call</span> pdf.ImportPDFPage(<span style="color:#326598">1</span>)
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">import</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">pages?</span>
+				<span style="color:#7F0000;text-style:italic">&#39;call</span> <span style="color:#7F0000;text-style:italic">pdf.ImportPDFFile(1)</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">import</span> <span style="color:#7F0000;text-style:italic">selected</span> <span style="color:#7F0000;text-style:italic">pages</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">given</span> <span style="color:#7F0000;text-style:italic">number</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">copies</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> copies    <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> firstPage <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> numPages  <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = pdf.GetInPageCount <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">pages</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">PDF</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> lastPage  <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = numPages
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> g &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					copies    = g.Copies
+					firstPage = g.FirstPage
+					lastPage  = g.LastPage
+					
+					System.DebugLog <span style="color:#6500FE">&quot;g.FirstPage:</span> <span style="color:#6500FE">&quot;</span>+str(g.FirstPage)
+					System.DebugLog <span style="color:#6500FE">&quot;g.LastPage:</span> <span style="color:#6500FE">&quot;</span>+str(g.LastPage)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> firstPage &lt; <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					firstPage = <span style="color:#326598">1</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> lastPage &gt; numPages <span style="color:#0000FF;font-weight: bold">then</span>
+					lastPage = numPages
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">for</span> c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> Copies
+					<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = firstPage <span style="color:#0000FF;font-weight: bold">to</span> lastPage
+						<span style="color:#0000FF;font-weight: bold">call</span> pdf.ImportPDFPage(i)
+					<span style="color:#0000FF;font-weight: bold">next</span>
+				<span style="color:#0000FF;font-weight: bold">next</span>
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			pdf.NumberOfPages = pdf.GetPageCount
+			System.DebugLog <span style="color:#6500FE">&quot;NumberOfPages:</span> <span style="color:#6500FE">&quot;</span>+str(pdf.NumberOfPages)
+			<span style="color:#0000FF;font-weight: bold">if</span> pdf.NumberOfPages = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				MsgBox <span style="color:#6500FE">&quot;No</span> <span style="color:#6500FE">pages?&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">false</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> PrintPageToPrinterWithDialog()
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> PreparePDF <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">flags</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">need</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">pass</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">Xojo&#39;s</span> <span style="color:#7F0000;text-style:italic">graphics</span> <span style="color:#7F0000;text-style:italic">class</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> flags <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">black/white?</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> RadioBW.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				flags = BitwiseOr(flags, pdf.kpff1Bit)
+			<span style="color:#0000FF;font-weight: bold">elseif</span> RadioColor.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				flags = BitwiseOr(flags, pdf.kpffColor)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">rotate</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">needed</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> CheckAuto.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				flags = BitwiseOr(flags, pdf.kpffAutoRotateAndCenter)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">shrink</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">needed</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> CheckShrink.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				flags = BitwiseOr(flags, pdf.kpffShrinkToPrintArea)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> CheckPrintPageAsIS.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				flags = BitwiseOr(flags, pdf.kpffPrintPageAsIs)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			bar.Maximum = <span style="color:#326598">1</span>
+			bar.Value = <span style="color:#326598">0</span>
+			bar.Visible = <span style="color:#0000FF;font-weight: bold">true</span>
+			
+			pdf.PrinterMargin = <span style="color:#0000FF;font-weight: bold">nil</span>
+			pdf.PrinterFlags = flags
+			pdf.printing = <span style="color:#0000FF;font-weight: bold">true</span>
+			pdf.PrintingDone = <span style="color:#0000FF;font-weight: bold">false</span>
+			pdf.printerName = printerName.Text
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> PrintSettings &lt;&gt; <span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> pdf.PrintSetDevMode(PrintSettings) <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ok</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					MsgBox <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">load</span> <span style="color:#6500FE">print</span> <span style="color:#6500FE">settings.&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">print</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">named</span> <span style="color:#7F0000;text-style:italic">printer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> e <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">boolean</span> = pdf.PrintPDFPageWithDialog(<span style="color:#326598">1</span>, <span style="color:#6500FE">&quot;test&quot;</span>, pdf.PrinterFlags, pdf.PrinterMargin, <span style="color:#0000FF;font-weight: bold">nil</span>, <span style="color:#0000FF;font-weight: bold">self</span>)
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">query</span> <span style="color:#7F0000;text-style:italic">print</span> <span style="color:#7F0000;text-style:italic">settings</span>
+			PrintSettings = pdf.PrintGetDevMode
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">WindowsDeviceModeMBS</span> <span style="color:#7F0000;text-style:italic">class</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">edit</span> <span style="color:#7F0000;text-style:italic">those</span> <span style="color:#7F0000;text-style:italic">settings</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> PrintSettings &lt;&gt; <span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				SaveButton.Enabled = <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> e <span style="color:#0000FF;font-weight: bold">then</span>
+				MsgBox <span style="color:#6500FE">&quot;Printed.&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">cleanup</span>
+			pdf = <span style="color:#0000FF;font-weight: bold">nil</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> PrintToNamedPrinter()
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> PreparePDF <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">flags</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">need</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">pass</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">Xojo&#39;s</span> <span style="color:#7F0000;text-style:italic">graphics</span> <span style="color:#7F0000;text-style:italic">class</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> flags <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">black/white?</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> RadioBW.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				flags = BitwiseOr(flags, pdf.kpff1Bit)
+			<span style="color:#0000FF;font-weight: bold">elseif</span> RadioColor.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				flags = BitwiseOr(flags, pdf.kpffColor)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">rotate</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">needed</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> CheckAuto.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				flags = BitwiseOr(flags, pdf.kpffAutoRotateAndCenter)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">shrink</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">needed</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> CheckShrink.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				flags = BitwiseOr(flags, pdf.kpffShrinkToPrintArea)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> CheckPrintPageAsIS.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				flags = BitwiseOr(flags, pdf.kpffPrintPageAsIs)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			bar.Maximum = pdf.numberOfPages
+			bar.Value = <span style="color:#326598">0</span>
+			bar.Visible = <span style="color:#0000FF;font-weight: bold">true</span>
+			
+			pdf.PrinterMargin = <span style="color:#0000FF;font-weight: bold">nil</span>
+			pdf.PrinterFlags = flags
+			pdf.printing = <span style="color:#0000FF;font-weight: bold">true</span>
+			pdf.PrintingDone = <span style="color:#0000FF;font-weight: bold">false</span>
+			pdf.printerName = printerName.Text
+			
+			
+			Thread1.run
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> PrintToPrinterWithDialog()
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> PreparePDF <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">flags</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">need</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">pass</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">Xojo&#39;s</span> <span style="color:#7F0000;text-style:italic">graphics</span> <span style="color:#7F0000;text-style:italic">class</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> flags <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">black/white?</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> RadioBW.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				flags = BitwiseOr(flags, pdf.kpff1Bit)
+			<span style="color:#0000FF;font-weight: bold">elseif</span> RadioColor.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				flags = BitwiseOr(flags, pdf.kpffColor)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">rotate</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">needed</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> CheckAuto.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				flags = BitwiseOr(flags, pdf.kpffAutoRotateAndCenter)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">shrink</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">needed</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> CheckShrink.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				flags = BitwiseOr(flags, pdf.kpffShrinkToPrintArea)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> CheckPrintPageAsIS.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				flags = BitwiseOr(flags, pdf.kpffPrintPageAsIs)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			bar.Maximum = pdf.numberOfPages
+			bar.Value = <span style="color:#326598">0</span>
+			bar.Visible = <span style="color:#0000FF;font-weight: bold">true</span>
+			
+			pdf.PrinterMargin = <span style="color:#0000FF;font-weight: bold">nil</span>
+			pdf.PrinterFlags = flags
+			pdf.printing = <span style="color:#0000FF;font-weight: bold">true</span>
+			pdf.PrintingDone = <span style="color:#0000FF;font-weight: bold">false</span>
+			pdf.printerName = printerName.Text
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> PrintSettings &lt;&gt; <span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> pdf.PrintSetDevMode(PrintSettings) <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ok</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					MsgBox <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">load</span> <span style="color:#6500FE">print</span> <span style="color:#6500FE">settings.&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">print</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">named</span> <span style="color:#7F0000;text-style:italic">printer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> e <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">boolean</span> = pdf.PrintPDFFileWithDialog(<span style="color:#0000FF;font-weight: bold">nil</span>, <span style="color:#6500FE">&quot;test&quot;</span>, pdf.PrinterFlags, pdf.PrinterMargin, <span style="color:#0000FF;font-weight: bold">nil</span>, <span style="color:#0000FF;font-weight: bold">self</span>)
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">query</span> <span style="color:#7F0000;text-style:italic">print</span> <span style="color:#7F0000;text-style:italic">settings</span>
+			PrintSettings = pdf.PrintGetDevMode
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">WindowsDeviceModeMBS</span> <span style="color:#7F0000;text-style:italic">class</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">edit</span> <span style="color:#7F0000;text-style:italic">those</span> <span style="color:#7F0000;text-style:italic">settings</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> PrintSettings &lt;&gt; <span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				SaveButton.Enabled = <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> e <span style="color:#0000FF;font-weight: bold">then</span>
+				MsgBox <span style="color:#6500FE">&quot;Printed.&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">cleanup</span>
+			pdf = <span style="color:#0000FF;font-weight: bold">nil</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> PrintWithXojoGraphics()
+			<span style="color:#0000FF;font-weight: bold">if</span> RBVersion &gt;= <span style="color:#006532">2016.04</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Warning:</span> <span style="color:#7F0000;text-style:italic">Printing</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">Xojo</span> <span style="color:#7F0000;text-style:italic">Graphics</span> <span style="color:#7F0000;text-style:italic">doesn&#39;t</span> <span style="color:#7F0000;text-style:italic">work</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">Xojo</span> <span style="color:#7F0000;text-style:italic">2016r4</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">2017r1</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">due</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">bugs</span> <span style="color:#7F0000;text-style:italic">related</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">switch</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">DirectDraw.</span> <span style="color:#7F0000;text-style:italic">Feedback</span> <span style="color:#7F0000;text-style:italic">case</span> <span style="color:#7F0000;text-style:italic">47467</span>
+				break
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> pdf.GetPageCount &lt; <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				MsgBox <span style="color:#6500FE">&quot;No</span> <span style="color:#6500FE">PDF</span> <span style="color:#6500FE">pages</span> <span style="color:#6500FE">loaded?&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">print</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> ps <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> PrinterSetup
+			<span style="color:#0000FF;font-weight: bold">dim</span> g <span style="color:#0000FF;font-weight: bold">as</span> Graphics = OpenPrinterDialog(ps)
+			<span style="color:#0000FF;font-weight: bold">if</span> g = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> PreparePDF(g) <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			
+			
+			System.DebugLog <span style="color:#6500FE">&quot;g.width:</span> <span style="color:#6500FE">&quot;</span>+str(g.Width)
+			System.DebugLog <span style="color:#6500FE">&quot;g.height:</span> <span style="color:#6500FE">&quot;</span>+str(g.height)
+			
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> h <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = g.Handle(g.HandleTypeHDC)
+			<span style="color:#0000FF;font-weight: bold">if</span> h = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				MsgBox <span style="color:#6500FE">&quot;no</span> <span style="color:#6500FE">graphics</span> <span style="color:#6500FE">handle?&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> r <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> DynaPDFRectMBS
+			r.Left = <span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Compensate</span> <span style="color:#7F0000;text-style:italic">margin</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">xojo?</span>
+			r.top = <span style="color:#326598">0</span>
+			r.Bottom = <span style="color:#326598">0</span>
+			r.Right = <span style="color:#326598">0</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">flags</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">need</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">pass</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">Xojo&#39;s</span> <span style="color:#7F0000;text-style:italic">graphics</span> <span style="color:#7F0000;text-style:italic">class</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> flags <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = Bitwise.BitOr(pdf.kpffNoEndDoc, pdf.kpffNoStartDoc, pdf.kpffNoStartPage)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">black/white?</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> RadioBW.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				flags = BitwiseOr(flags, pdf.kpff1Bit)
+			<span style="color:#0000FF;font-weight: bold">elseif</span> RadioColor.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				flags = BitwiseOr(flags, pdf.kpffColor)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">rotate</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">needed</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> CheckAuto.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				flags = BitwiseOr(flags, pdf.kpffAutoRotateAndCenter)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">shrink</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">needed</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> CheckShrink.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				flags = BitwiseOr(flags, pdf.kpffShrinkToPrintArea)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> CheckPrintPageAsIS.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				flags = BitwiseOr(flags, pdf.kpffPrintPageAsIs)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			bar.Maximum = pdf.numberOfPages
+			bar.Value = <span style="color:#326598">0</span>
+			bar.Visible = <span style="color:#0000FF;font-weight: bold">true</span>
+			
+			pdf.PrinterMargin = r
+			pdf.PrinterHandle = h
+			pdf.PrinterFlags = flags
+			pdf.printing = <span style="color:#0000FF;font-weight: bold">true</span>
+			pdf.PrintingDone = <span style="color:#0000FF;font-weight: bold">false</span>
+			pdf.g = g
+			
+			Thread1.run
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> SetPDF(f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem)
+			<span style="color:#0000FF;font-weight: bold">if</span> f &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">and</span> f.Exists <span style="color:#0000FF;font-weight: bold">then</span>
+				InputFile = f
+				
+				InputPath.Text = f.NativePath
+				
+				PrintButton.Enabled = <span style="color:#0000FF;font-weight: bold">true</span>
+				PrinterButton.Enabled = <span style="color:#0000FF;font-weight: bold">true</span>
+				PrinterDialogButton.Enabled = <span style="color:#0000FF;font-weight: bold">true</span>
+				PrinterPageDialogButton.Enabled = <span style="color:#0000FF;font-weight: bold">true</span>
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> InputFile <span style="color:#0000FF;font-weight: bold">As</span> FolderItem</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> PDF <span style="color:#0000FF;font-weight: bold">As</span> MyDynaPDFMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> PrintSettings <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	FileTypes1</div>
+<div class="RB_Code">		Filetype application/pdf</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> FileTypes1</div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-dynapdf-printpdf">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

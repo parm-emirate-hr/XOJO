@@ -1,0 +1,1389 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - DynaPDFMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="DynaPDFMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">DynaPDFMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-dynapdfmbs.html">DynaPDFMBS</a> class.  </p>
+<p>
+<a href="dynapdf-dynapdfmbs-method20.html">Previous items</a>
+ 
+<a href="dynapdf-dynapdfmbs-method22.html">Next items</a>
+</p>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="1">RenderPagePicture(PageNum as Integer) as picture</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Renders a picture for the page with the given page number.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> pdf <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> MyDynaPDFMBS<br /><br /><span style="color: #800000;">// For this example you can use a Pro or Enterprise License</span><br />pdf.SetLicenseKey <span style="color: #6600FE;">&quot;Pro&quot;</span><br /><br /><span style="color: #800000;">// create in memory</span><br /><span style="color: #0000FF;">call</span> pdf.CreateNewPDF <span style="color: #0000FF;">nil</span><br /><br /><span style="color: #800000;">// set import flags</span><br /><span style="color: #0000FF;">call</span> pdf.SetImportFlags pdf.kifImportAsPage<br /><br /><span style="color: #800000;">// open the PDF file</span><br /><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test.pdf&quot;</span>)<br /><span style="color: #0000FF;">call</span> pdf.OpenImportFile(f, <span style="color: #336698;">0</span>, <span style="color: #6600FE;">&quot;&quot;</span>)<br /><br /><span style="color: #800000;">// import all the pages</span><br /><span style="color: #0000FF;">call</span> pdf.ImportPDFFile(<span style="color: #336698;">1</span>, <span style="color: #006633;">1.0</span>, <span style="color: #006633;">1.0</span>)<br /><br /><span style="color: #800000;">// and render first page</span><br /><span style="color: #0000FF;">dim</span> out <span style="color: #0000FF;">as</span> Picture = pdf.RenderPagePicture(<span style="color: #336698;">1</span>)<br /><br /><span style="color: #800000;">// display in window</span><br />Backdrop = out</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Please note that for most cases RenderPageToImage and RenderPDFFile are better choices for rendering. Especially if you plan to compress images later anyway. And you avoid trouble with color matching. For this function to work correct you have to initialize DynaPDF with right color space for screen (Generic RGB on Mac and screen profile for Windows).<BR>
+<BR>
+The picture size is set to the Cropbox. If no crop box is defined, it uses the media box.<BR>
+<BR>
+Returns nil on any error.<BR>
+<BR>
+If you render a lot of pages from the same PDF, consider using <A href="class-dynapdfrasterizermbs.html">DynaPDFRasterizerMBS</A> class as it&#39;s faster when you reuse the rasterizer.<BR>
+<BR>
+Currently not available for Linux Desktop apps.<BR>
+Requires DynaPDF Pro license.<BR>
+<BR>
+For pages with orientation of 90 or 270 degree, the plugin will take that into account and swap width/height to have rendered picture have the riuht size.<BR>
+<p>See also:<ul>
+<li><A href="dynapdf-dynapdfmbs-method21.html#2">RenderPagePicture(PageNum as Integer, Width as Integer, Height as Integer, DefScale as Integer = 2, matrix as DynaPDFMatrixMBS = nil) as picture</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-dynapdf-extractpagetextarea.html">/DynaPDF/Extract page Text area</A></li>
+<li><A href="example-dynapdf-pdfpreviewwindow.html">/DynaPDF/PDFPreview Window</A></li>
+<li><A href="example-dynapdf-raster-batchconvertpdftojpg.html">/DynaPDF/Raster/Batch Convert PDF to JPG</A></li>
+<li><A href="example-dynapdf-raster-createandrenderpdfinconsole.html">/DynaPDF/Raster/Create and Render PDF in console</A></li>
+<li><A href="example-dynapdf-raster-dynapdfdisplaypdf.html">/DynaPDF/Raster/DynaPDF Display PDF</A></li>
+<li><A href="example-dynapdf-raster-rendertests-rendertest1.html">/DynaPDF/Raster/Render Tests/Render Test 1</A></li>
+<li><A href="example-dynapdf-raster-rendertests-rendertest3.html">/DynaPDF/Raster/Render Tests/Render Test 3</A></li>
+<li><A href="example-dynapdf-styledtexteditor.html">/DynaPDF/StyledText Editor</A></li>
+<li><A href="example-dynapdf-tables-dynamictable-dynapdftablemultipage.html">/DynaPDF/Tables/Dynamic Table/DynaPDF Table Multi Page</A></li>
+<li><A href="example-dynapdf-textpositions.html">/DynaPDF/Text Positions</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="2">RenderPagePicture(PageNum as Integer, Width as Integer, Height as Integer, DefScale as Integer = 2, matrix as <A href="class-dynapdfmatrixmbs.html">DynaPDFMatrixMBS</A> = nil) as picture</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Renders a picture for the page with the given page number.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> pdf <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> MyDynaPDFMBS<br /><br /><span style="color: #800000;">// For this example you can use a Pro or Enterprise License</span><br />pdf.SetLicenseKey <span style="color: #6600FE;">&quot;Pro&quot;</span><br /><br /><span style="color: #800000;">// create in memory</span><br /><span style="color: #0000FF;">call</span> pdf.CreateNewPDF <span style="color: #0000FF;">nil</span><br /><br /><span style="color: #800000;">// set import flags</span><br /><span style="color: #0000FF;">call</span> pdf.SetImportFlags pdf.kifImportAsPage<br /><br /><span style="color: #800000;">// open the PDF file</span><br /><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test.pdf&quot;</span>)<br /><span style="color: #0000FF;">call</span> pdf.OpenImportFile(f, <span style="color: #336698;">0</span>, <span style="color: #6600FE;">&quot;&quot;</span>)<br /><br /><span style="color: #800000;">// import all the pages</span><br /><span style="color: #0000FF;">call</span> pdf.ImportPDFFile(<span style="color: #336698;">1</span>, <span style="color: #006633;">1.0</span>, <span style="color: #006633;">1.0</span>)<br /><br /><span style="color: #800000;">// and render first page with window size</span><br /><span style="color: #0000FF;">dim</span> out <span style="color: #0000FF;">as</span> Picture = pdf.RenderPagePicture(<span style="color: #336698;">1</span>, Width, Height)<br /><br /><span style="color: #800000;">// display in window</span><br />Backdrop = out</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Please note that for most cases RenderPageToImage and RenderPDFFile are better choices for rendering. Especially if you plan to compress images later anyway. And you avoid trouble with color matching. For this function to work correct you have to initialize DynaPDF with right color space for screen (Generic RGB on Mac and screen profile for Windows).<BR>
+<BR>
+The picture is created with the given size. The PDF page is scaled to fit size. You can use the constants kpsFitBest, kpsFitHeight or kpsFitWidth for the DefScale parameter. The matrix allows you to move, rotate or scale the PDF inside the picture.<BR>
+<BR>
+Returns nil on any error.<BR>
+<BR>
+If you render a lot of pages from the same PDF, consider using <A href="class-dynapdfrasterizermbs.html">DynaPDFRasterizerMBS</A> class as it&#39;s faster when you reuse the rasterizer.<BR>
+<BR>
+Currently not available for Linux Desktop apps.<BR>
+Requires DynaPDF Pro license.<BR>
+<BR>
+If page is rotated, please swap width and height yourself.<BR>
+<p>See also:<ul>
+<li><A href="dynapdf-dynapdfmbs-method21.html">RenderPagePicture(PageNum as Integer) as picture</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="3">RenderPageToImage(PageNumber as UInt32, OutFile as folderitem, Resolution as UInt32, Width as UInt32, Height as UInt32, Flags as UInt32, PixFmt as UInt32, Filter as UInt32, Format as UInt32) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The function renders a PDF page into an image.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> pdf <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> MyDynaPDFMBS <span style="color: #800000;">// your DynaPDF subclass with Error event filled</span><br /><br /><span style="color: #800000;">// where to get PDF page</span><br /><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test.pdf&quot;</span>)<br /><br /><span style="color: #800000;">// where to write</span><br /><span style="color: #0000FF;">dim</span> t <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test.jpg&quot;</span>)<br /><br />pdf.SetLicenseKey <span style="color: #6600FE;">&quot;Pro&quot;</span> <span style="color: #800000;">// For this example you can use a Pro or Enterprise License</span><br /><br /><span style="color: #0000FF;">call</span> pdf.CreateNewPDF <span style="color: #0000FF;">nil</span><br /><span style="color: #0000FF;">call</span> pdf.SetImportFlags(pdf.kifImportAll + pdf.kifImportAsPage)<br /><br /><span style="color: #800000;">// open file</span><br /><span style="color: #0000FF;">call</span> pdf.OpenImportFile(f,<span style="color: #336698;">0</span>,<span style="color: #6600FE;">&quot;&quot;</span>)<br /><br /><span style="color: #800000;">// add page</span><br /><span style="color: #0000FF;">call</span> pdf.Append<br /><br /><span style="color: #800000;">// import the page</span><br /><span style="color: #0000FF;">call</span> pdf.ImportPageEx(<span style="color: #336698;">1</span>,<span style="color: #006633;">1.0</span>,<span style="color: #006633;">1.0</span>)<br /><span style="color: #0000FF;">call</span> pdf.EndPage<br /><br /><span style="color: #800000;">// render the page</span><br /><span style="color: #0000FF;">call</span> pdf.RenderPageToImage(<span style="color: #336698;">1</span>, t, <span style="color: #336698;">72</span>, ImageView1.Width, ImageView1.Height, <A href="class-dynapdfrasterimagembs.html">DynaPDFRasterImageMBS</A>.krfDefault, <A href="class-dynapdfrasterizermbs.html">DynaPDFRasterizerMBS</A>.kpxfRGB, <A href="class-dynapdfmbs.html">DynaPDFMBS</A>.kcfJPEG, <A href="class-dynapdfmbs.html">DynaPDFMBS</A>.kifmJPEG)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+PixFmt: pass kpxf* constants like <A href="class-dynapdfrasterizermbs.html">DynaPDFRasterizerMBS</A>.kpxfRGB. <BR>
+Filter: Pass kcf* constants like <A href="class-dynapdfmbs.html">DynaPDFMBS</A>.kcfJPEG.<BR>
+Format: pass kifm* constants like <A href="class-dynapdfmbs.html">DynaPDFMBS</A>.kifmJPEG.<BR>
+<BR>
+The page that should be rendered must be closed (Append() or EditPage() open a page and EndPage() closes a page).<BR>
+If the parameter OutFile is set to nil the image is created in memory. In this case call GetImageBuffer() to retrieve the image buffer and finally FreeImageBuffer() to release it.<BR>
+<BR>
+The output image size can be calculated in different ways:<BR>
+<UL><LI>
+If Resolution is &gt; 0 the image width and height is calculated according to the specified resolution. On a 32 bit machine it is possible to render pages in up to 1200 DPI depending on the page format. Larger resolutions require special techniques like banding to restrict the memory usage. However, no such feature is available in DynaPDF.
+</LI><LI>
+If Width &gt; 0 and if Height == 0 the image height is calculated according to the given width to archive an image with exact proportions.
+</LI><LI>
+If Width == 0 and if Height &gt; 0 then image width is calculated according to the given height to archive an image with exact proportions.
+</LI><LI>
+If Width &gt; 0 and if Height &gt; 0 the image is scaled to the width and height.
+</LI></UL>
+<BR>
+The pixel format and the output image format must be compatible. Because TIFF is the only image format that supports different compression filters, the parameter Filter will be ignored for all other output formats.<BR>
+If the function succeeds the return value is true. If the function fails the return value is false.<BR>
+Requires DynaPDF Pro license.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-dynapdf-createpreviewsforfolder.html">/DynaPDF/Create Previews for folder</A></li>
+<li><A href="example-dynapdf-dynapdfgraphics-dynapdfgraphicspath.html">/DynaPDF/DynaPDF Graphics/DynaPDF GraphicsPath</A></li>
+<li><A href="example-dynapdf-dynapdfgraphics-reporting-gasreport-gasreport.html">/DynaPDF/DynaPDF Graphics/Reporting/GasReport/GasReport</A></li>
+<li><A href="example-dynapdf-dynapdfgraphics-reporting-listoforders.html">/DynaPDF/DynaPDF Graphics/Reporting/List Of Orders</A></li>
+<li><A href="example-dynapdf-dynapdfgraphics-reporting-listofproductspreview.html">/DynaPDF/DynaPDF Graphics/Reporting/List Of Products Preview</A></li>
+<li><A href="example-dynapdf-dynapdfgraphics-vectorgraphics.html">/DynaPDF/DynaPDF Graphics/VectorGraphics</A></li>
+<li><A href="example-dynapdf-jbigtest.html">/DynaPDF/JBig Test</A></li>
+<li><A href="example-dynapdf-raster-renderpagetoimagevariants.html">/DynaPDF/Raster/RenderPageToImage variants</A></li>
+<li><A href="example-dynapdf-raster-renderpagetoimagewithcolormanagement.html">/DynaPDF/Raster/RenderPageToImage with color management</A></li>
+<li><A href="example-dynapdf-rotaterotatedpdfback.html">/DynaPDF/Rotate rotated PDF back</A></li>
+</ul>
+<p>See also <a href="https://www.monkeybreadsoftware.com/DynaPDF-Manual/RenderPageToImage.shtml">RenderPageToImage</a> function in DynaPDF manual.
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="4">RenderPageToImageMT(PageNumber as UInt32, OutFile as folderitem, Resolution as UInt32, Width as UInt32, Height as UInt32, Flags as UInt32, PixFmt as UInt32, Filter as UInt32, Format as UInt32) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion141.shtml" class=version>14.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The function renders a PDF page into an image.<BR>
+<B>Notes:</B> 
+<BR>
+PixFmt: pass kpxf* constants like <A href="class-dynapdfrasterizermbs.html">DynaPDFRasterizerMBS</A>.kpxfRGB. <BR>
+Filter: Pass kcf* constants like <A href="class-dynapdfmbs.html">DynaPDFMBS</A>.kcfJPEG.<BR>
+Format: pass kifm* constants like <A href="class-dynapdfmbs.html">DynaPDFMBS</A>.kifmJPEG.<BR>
+<BR>
+The page that should be rendered must be closed (Append() or EditPage() open a page and EndPage() closes a page).<BR>
+If the parameter OutFile is set to nil the image is created in memory. In this case call GetImageBuffer() to retrieve the image buffer and finally FreeImageBuffer() to release it.<BR>
+<BR>
+The output image size can be calculated in different ways:<BR>
+<UL><LI>
+If Resolution is &gt; 0 the image width and height is calculated according to the specified resolution. On a 32 bit machine it is possible to render pages in up to 1200 DPI depending on the page format. Larger resolutions require special techniques like banding to restrict the memory usage. However, no such feature is available in DynaPDF.
+</LI><LI>
+If Width &gt; 0 and if Height == 0 the image height is calculated according to the given width to archive an image with exact proportions.
+</LI><LI>
+If Width == 0 and if Height &gt; 0 then image width is calculated according to the given height to archive an image with exact proportions.
+</LI><LI>
+If Width &gt; 0 and if Height &gt; 0 the image is scaled to the width and height.
+</LI></UL>
+<BR>
+The pixel format and the output image format must be compatible. Because TIFF is the only image format that supports different compression filters, the parameter Filter will be ignored for all other output formats.<BR>
+If the function succeeds the return value is true. If the function fails the return value is false.<BR>
+<BR>
+Requires DynaPDF Pro license.<BR>
+<BR>
+The work is performed on a preemptive thread, so this function does not block the application and can yield time to other Xojo threads. Must be called in a Xojo thread to enjoy benefits. If called in main thread will block, but keep other background threads running.<BR>
+If you run several threads calling MT methods, you can get all CPU cores busy while main thread shows GUI with progress window.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-dynapdf-webedition-webpdfweb.html">/DynaPDF/Web Edition/WebPDF Web</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="5">RenderPageToPicture(PageNum as integer, pic as picture, DefScale as integer = 2, matrix as <A href="class-dynapdfmatrixmbs.html">DynaPDFMatrixMBS</A> = nil, RenderWithAlpha as boolean = false) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Renders the page into the given picture.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> pdf <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> MyDynaPDFMBS<br /><br /><span style="color: #800000;">// For this example you can use a Pro or Enterprise License</span><br />pdf.SetLicenseKey <span style="color: #6600FE;">&quot;Pro&quot;</span><br /><br /><span style="color: #800000;">// create in memory</span><br /><span style="color: #0000FF;">call</span> pdf.CreateNewPDF <span style="color: #0000FF;">nil</span><br /><br /><span style="color: #800000;">// set import flags</span><br /><span style="color: #0000FF;">call</span> pdf.SetImportFlags pdf.kifImportAsPage<br /><br /><span style="color: #800000;">// open the PDF file</span><br /><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test.pdf&quot;</span>)<br /><span style="color: #0000FF;">call</span> pdf.OpenImportFile(f, <span style="color: #336698;">0</span>, <span style="color: #6600FE;">&quot;&quot;</span>)<br /><br /><span style="color: #800000;">// import all the pages</span><br /><span style="color: #0000FF;">call</span> pdf.ImportPDFFile(<span style="color: #336698;">1</span>, <span style="color: #006633;">1.0</span>, <span style="color: #006633;">1.0</span>)<br /><br /><span style="color: #800000;">// create picture</span><br /><span style="color: #0000FF;">dim</span> out <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> Picture(<span style="color: #336698;">800</span>, <span style="color: #336698;">600</span>, <span style="color: #336698;">32</span>)<br /><br /><span style="color: #800000;">// render first page in the existing picture</span><br /><span style="color: #0000FF;">call</span> pdf.RenderPageToPicture(<span style="color: #336698;">1</span>, out)<br /><br /><span style="color: #800000;">// display in window</span><br />Backdrop = out</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Please note that for most cases RenderPageToImage and RenderPDFFile are better choices for rendering. Especially if you plan to compress images later anyway. And you avoid trouble with color matching. For this function to work correct you have to initialize DynaPDF with right color space for screen (Generic RGB on Mac and screen profile for Windows).<BR>
+<BR>
+This method draws into an existing picture. The PDF page is scaled to fit size. You can use the constants kpsFitBest, kpsFitHeight or kpsFitWidth for the DefScale parameter. The matrix allows you to move, rotate or scale the PDF inside the picture.<BR>
+<BR>
+Returns nil on any error.<BR>
+<BR>
+This does not work on Linux desktop targets as the plugin can&#39;t write into a picture there.<BR>
+<BR>
+If you render a lot of pages from the same PDF, consider using <A href="class-dynapdfrasterizermbs.html">DynaPDFRasterizerMBS</A> class as it&#39;s faster when you reuse the rasterizer.<BR>
+Requires DynaPDF Pro license.<BR>
+<BR>
+Added RenderWithAlpha parameter in plugin version 19.0.<BR>
+If RenderWithAlpha is true, we render with alpha channel. If the destination is a picture has alpha channel, you should get the alpha there. Otherwise for picture without alpha channel, we only copy RGB channels.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="6">RenderPDFFile(OutFile as folderitem, Resolution as UInt32, Flags as UInt32, PixFmt as UInt32, Filter as UInt32, Format as UInt32) as boolean</A></b> &nbsp; <b style="color: #8B0000"> Deprecated </b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The function renders all PDF pages which are currently in memory and stores the result in a proprietary image format. <BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> file <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test.pdf&quot;</span>)<br /><span style="color: #0000FF;">dim</span> pdf <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> MyDynaPDFMBS<br /><br /><span style="color: #0000FF;">call</span> pdf.CreateNewPDF <span style="color: #0000FF;">nil</span><br /><span style="color: #0000FF;">call</span> pdf.OpenImportFile(file, <span style="color: #336698;">0</span>, <span style="color: #6600FE;">&quot;&quot;</span>)<br /><span style="color: #0000FF;">call</span> pdf.ImportPDFFile(<span style="color: #336698;">1</span>, <span style="color: #006633;">1.0</span>, <span style="color: #006633;">1.0</span>)<br /><br /><span style="color: #800000;">// create a TIFF file:</span><br /><br /><span style="color: #0000FF;">dim</span> outfile <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test.tif&quot;</span>)<br /><br /><span style="color: #0000FF;">dim</span> Flags  <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = <A href="class-dynapdfrasterimagembs.html">DynaPDFRasterImageMBS</A>.krfDefault<br /><span style="color: #0000FF;">dim</span> PixFmt <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = <A href="class-dynapdfrasterizermbs.html">DynaPDFRasterizerMBS</A>.kpxfRGB<br /><span style="color: #0000FF;">dim</span> Format <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = <A href="class-dynapdfmbs.html">DynaPDFMBS</A>.kifmTIFF <span style="color: #800000;">// use kifm* constants</span><br /><span style="color: #0000FF;">dim</span> Filter <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = <A href="class-dynapdfmbs.html">DynaPDFMBS</A>.kcfLZW <span style="color: #800000;">// pick a compression scheme for the file format</span><br /><br /><span style="color: #0000FF;">call</span> pdf.RenderPDFFile(outfile, <span style="color: #336698;">300</span>, Flags, PixFmt, Filter, Format)<br /><br /><span style="color: #800000;">// create a folder of JPEG file:</span><br /><br /><span style="color: #0000FF;">dim</span> outfolder <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test files&quot;</span>)<br />outfolder.CreateAsFolder<br /><br />Flags  = <A href="class-dynapdfrasterimagembs.html">DynaPDFRasterImageMBS</A>.krfDefault<br />PixFmt = <A href="class-dynapdfrasterizermbs.html">DynaPDFRasterizerMBS</A>.kpxfRGB<br />Format = <A href="class-dynapdfmbs.html">DynaPDFMBS</A>.kifmJPEG <span style="color: #800000;">// use kifm* constants</span><br />Filter = <A href="class-dynapdfmbs.html">DynaPDFMBS</A>.kcfJPEG<br /><br /><span style="color: #0000FF;">call</span> pdf.RenderPDFFile(outfolder, <span style="color: #336698;">300</span>, Flags, PixFmt, Filter, Format)</span>
+</pre>
+</div>
+<DIV style="width: 300px; float: right; margin: 3pt; padding: 3pt; background-color: #FEE; border-width: 3pt;">
+This item is deprecated and should no longer be used. 
+You can use RenderPDFFileEx instead.
+</DIV>
+<B>Notes:</B> 
+<BR>
+One page PDF can go to e.g. a JPEG file.<BR>
+Multi page PDF file can go to a TIFF file with several images.<BR>
+Or you specify a folder and get a folder of JPEG/PNG/TIFF files.<BR>
+<p>See also <a href="https://www.monkeybreadsoftware.com/DynaPDF-Manual/RenderPDFFile.shtml">RenderPDFFile</a> function in DynaPDF manual.
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="7">RenderPDFFileEx(OutFile as folderitem, Resolution as UInt32, Width as Integer, Height as Integer, Flags as UInt32, PixFmt as UInt32, Filter as UInt32, Format as UInt32) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion180.shtml" class=version>18.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Renders all PDF pages which are currently in memory and stores the result in a proprietary image format. <BR>
+<B>Notes:</B> 
+<BR>
+The pages in memory could be imported from one or more external PDF files, e.g. with ImportPDFFile(), created with <a href="topic-dynapdf.html">DynaPDF</A> functions, or a combination of both.<BR>
+<BR>
+The parameter OutFile can be a path to an existing directory or the file name of the output image. The latter type can be used with TIFF images because this format supports multi-page output. When a file path is used with a single page image format only the first page will be rendered.<BR>
+<BR>
+The function checks whether the path is a directory or a file name. <BR>
+The function can render pages in a specific resolution, or scale them to a given width or height.<BR>
+<BR>
+Depending on which parameters are set the image size is calculated as follows:<BR>
+<UL><LI>
+Resolution &gt; 0 and Width == 0 and Height == 0: Pages are rendered according to the given resolution. Note that PDF pages can be very large. Therefore, it is maybe not possible to render all pages in the whished resolution.
+</LI><LI>
+Resolution &gt; 0 and Width &lt; 0 and or Height &lt; 0: Pages are rendered according to the given resolution. Negative values of Width and Height are interpreted as maximum width or height if Resolution is greater zero. Since PDF pages can be very large, it is recommended to set the maximum width and height to a value that is low enough so that no out of memory exception occurs, e.g. 5000 x 5000 pixels.
+</LI><LI>
+Resolution == 0 and Width &gt; 0 or Height &gt; 0: Pages are scaled to the given Width or Height. If Width and Height are greater zero then pages are scaled to that size independent of the original page format (not recommended). It is usually best to set the width or height to zero so that the function can calculate the missing value to preserve the aspect ratio.
+</LI></UL>
+<BR>
+On a 32 bit system it is possible to render PDF pages in RGB with up to around 1200 DPI, depending on the page format and available memory. The resolution of gray images can be higher but the encoder must be able to handle such large images. The PNG and bitmap encoders accept images in almost arbitrary resolutions but all other encoders can fail when the resolution is larger than about 2000 DPI.<BR>
+<BR>
+The function calls the progress events.<BR>
+Returns true on success or false on failure.<BR>
+<BR>
+<p>See also <a href="https://www.monkeybreadsoftware.com/DynaPDF-Manual/RenderPDFFileEx.shtml">RenderPDFFileEx</a> function in DynaPDF manual.
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="8">RenderPDFFileExMT(OutFile as folderitem, Resolution as UInt32, Width as Integer, Height as Integer, Flags as UInt32, PixFmt as UInt32, Filter as UInt32, Format as UInt32) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion180.shtml" class=version>18.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Renders all PDF pages which are currently in memory and stores the result in a proprietary image format. <BR>
+<B>Notes:</B> 
+<BR>
+The pages in memory could be imported from one or more external PDF files, e.g. with ImportPDFFile(), created with <a href="topic-dynapdf.html">DynaPDF</A> functions, or a combination of both.<BR>
+<BR>
+The parameter OutFile can be a path to an existing directory or the file name of the output image. The latter type can be used with TIFF images because this format supports multi-page output. When a file path is used with a single page image format only the first page will be rendered.<BR>
+<BR>
+The function checks whether the path is a directory or a file name. <BR>
+The function can render pages in a specific resolution, or scale them to a given width or height.<BR>
+<BR>
+Depending on which parameters are set the image size is calculated as follows:<BR>
+<UL><LI>
+Resolution &gt; 0 and Width == 0 and Height == 0: Pages are rendered according to the given resolution. Note that PDF pages can be very large. Therefore, it is maybe not possible to render all pages in the whished resolution.
+</LI><LI>
+Resolution &gt; 0 and Width &lt; 0 and or Height &lt; 0: Pages are rendered according to the given resolution. Negative values of Width and Height are interpreted as maximum width or height if Resolution is greater zero. Since PDF pages can be very large, it is recommended to set the maximum width and height to a value that is low enough so that no out of memory exception occurs, e.g. 5000 x 5000 pixels.
+</LI><LI>
+Resolution == 0 and Width &gt; 0 or Height &gt; 0: Pages are scaled to the given Width or Height. If Width and Height are greater zero then pages are scaled to that size independent of the original page format (not recommended). It is usually best to set the width or height to zero so that the function can calculate the missing value to preserve the aspect ratio.
+</LI></UL>
+<BR>
+On a 32 bit system it is possible to render PDF pages in RGB with up to around 1200 DPI, depending on the page format and available memory. The resolution of gray images can be higher but the encoder must be able to handle such large images. The PNG and bitmap encoders accept images in almost arbitrary resolutions but all other encoders can fail when the resolution is larger than about 2000 DPI.<BR>
+<BR>
+The function calls the progress events.<BR>
+Returns true on success or false on failure.<BR>
+<BR>
+Same as RenderPDFFile, but multithreaded.<BR>
+<BR>
+Requires DynaPDF Pro license.<BR>
+<BR>
+The work is performed on a preemptive thread, so this function does not block the application and can yield time to other Xojo threads. Must be called in a Xojo thread to enjoy benefits. If called in main thread will block, but keep other background threads running.<BR>
+If you run several threads calling MT methods, you can get all CPU cores busy while main thread shows GUI with progress window.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="9">RenderPDFFileMT(OutFile as folderitem, Resolution as UInt32, Flags as UInt32, PixFmt as UInt32, Filter as UInt32, Format as UInt32) as boolean</A></b> &nbsp; <b style="color: #8B0000"> Deprecated </b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion180.shtml" class=version>18.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The function renders all PDF pages which are currently in memory and stores the result in a proprietary image format. <BR>
+<DIV style="width: 300px; float: right; margin: 3pt; padding: 3pt; background-color: #FEE; border-width: 3pt;">
+This item is deprecated and should no longer be used. 
+You can use RenderPDFFileEx instead.
+</DIV>
+<B>Notes:</B> 
+<BR>
+Same as RenderPDFFile, but multithreaded.<BR>
+Also check the dynapdf manual on the pdfRenderPDFFileA function (pdfRenderPDFFileW on Windows).<BR>
+<BR>
+Requires DynaPDF Pro license.<BR>
+<BR>
+The work is performed on a preemptive thread, so this function does not block the application and can yield time to other Xojo threads. Must be called in a Xojo thread to enjoy benefits. If called in main thread will block, but keep other background threads running.<BR>
+If you run several threads calling MT methods, you can get all CPU cores busy while main thread shows GUI with progress window.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="10">ReOpenImportFile(Handle as Integer) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion132.shtml" class=version>13.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The function re-opens a PDf file so that further contents can be imported from it. <BR>
+<B>Notes:</B> 
+<BR>
+The parameter Handle must be a valid file handle that OpenImportFile() or OpenImportBuffer() returned.<BR>
+When the file is no longer needed close the parser instance with CloseImportFileEx(). <BR>
+If the function succeeds the return value is true. If the function fails the return value is false.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-dynapdf-interlacepdfs.html">/DynaPDF/Interlace PDFs</A></li>
+</ul>
+<p>See also <a href="https://www.monkeybreadsoftware.com/DynaPDF-Manual/ReOpenImportFile.shtml">ReOpenImportFile</a> function in DynaPDF manual.
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="11">ReplaceFont(PDFFontRef as Integer, Name as string, Style as integer = 0, NameIsFamilyName as boolean = true) as integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion172.shtml" class=version>17.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Replaces a PDF font with another one. <BR>
+<B>Notes:</B> 
+<BR>
+The function can be called in the OnFontNotFound event of the function CheckConformance(). The return value of the event should be the return value of this function. The parameter PDFFontRef is a parameter of the event. The font reference is required and must be passed unchanged to the function.<BR>
+<BR>
+On Linux or Unix system fonts must be loaded with AddFontSearchPath() before this function can be called. This should be done before the first PDF file is imported.<BR>
+<BR>
+If the function succeeds the return value is zero. If the function fails the return value is a negative error code.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-dynapdf-pdf-a-combinepdffilestopdfa.html">/DynaPDF/PDF-A/Combine PDF files to PDFA</A></li>
+<li><A href="example-dynapdf-pdf-a-createpdfa.html">/DynaPDF/PDF-A/Create PDFA</A></li>
+<li><A href="example-dynapdf-pdf-a-normalizepdf.html">/DynaPDF/PDF-A/Normalize PDF</A></li>
+<li><A href="example-dynapdf-zugferd20-createpdfwithexistingpdf.html">/DynaPDF/ZUGFeRD 2.0/Create PDF with existing pdf</A></li>
+</ul>
+<p>See also <a href="https://www.monkeybreadsoftware.com/DynaPDF-Manual/ReplaceFont.shtml">ReplaceFont</a> function in DynaPDF manual.
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="12">ReplaceFontAnsi(PDFFontRef as Integer, Name as string, Style as integer = 0, NameIsFamilyName as boolean = true) as integer</A></b> &nbsp; <b style="color: #8B0000"> Deprecated </b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion172.shtml" class=version>17.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Replaces a PDF font with another one. <BR>
+<DIV style="width: 300px; float: right; margin: 3pt; padding: 3pt; background-color: #FEE; border-width: 3pt;">
+This item is deprecated and should no longer be used. 
+You can use the non ANSI function instead.
+</DIV>
+<B>Notes:</B> 
+<BR>
+The function can be called in the OnFontNotFound event of the function CheckConformance(). The return value of the event should be the return value of this function. The parameter PDFFontRef is a parameter of the event. The font reference is required and must be passed unchanged to the function.<BR>
+<BR>
+On Linux or Unix system fonts must be loaded with AddFontSearchPath() before this function can be called. This should be done before the first PDF file is imported.<BR>
+<BR>
+If the function succeeds the return value is zero. If the function fails the return value is a negative error code.<BR>
+<p>See also <a href="https://www.monkeybreadsoftware.com/DynaPDF-Manual/ReplaceFont.shtml">ReplaceFont</a> function in DynaPDF manual.
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="13">ReplaceFontEx(PDFFontRef as Integer, FontFile as FolderItem, Embed as boolean = true) as integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion172.shtml" class=version>17.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Replaces a PDF font with another one.<BR>
+<B>Notes:</B> 
+<BR>
+The font file can be loaded directly. It is not required to install the font on the system. The function can be called in the OnFontNotFound event of the function CheckConformance(). The return value of the event should be the return value of this function. The parameter PDFFontRef is a parameter of the event. The font reference is required and must be passed unchanged to the function.<BR>
+<BR>
+If the function succeeds the return value is zero. If the function fails the return value is a negative error code.<BR>
+<p>See also:<ul>
+<li><A href="dynapdf-dynapdfmbs-method21.html#14">ReplaceFontEx(PDFFontRef as Integer, FontFilePath as string, Embed as boolean = true) as integer</A></li>
+</ul></p>
+<p>See also <a href="https://www.monkeybreadsoftware.com/DynaPDF-Manual/ReplaceFontEx.shtml">ReplaceFontEx</a> function in DynaPDF manual.
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="14">ReplaceFontEx(PDFFontRef as Integer, FontFilePath as string, Embed as boolean = true) as integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion172.shtml" class=version>17.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Replaces a PDF font with another one.<BR>
+<B>Notes:</B> 
+<BR>
+The font file can be loaded directly. It is not required to install the font on the system. The function can be called in the OnFontNotFound event of the function CheckConformance(). The return value of the event should be the return value of this function. The parameter PDFFontRef is a parameter of the event. The font reference is required and must be passed unchanged to the function.<BR>
+<BR>
+If the function succeeds the return value is zero. If the function fails the return value is a negative error code.<BR>
+<p>See also:<ul>
+<li><A href="dynapdf-dynapdfmbs-method21.html#13">ReplaceFontEx(PDFFontRef as Integer, FontFile as FolderItem, Embed as boolean = true) as integer</A></li>
+</ul></p>
+<p>See also <a href="https://www.monkeybreadsoftware.com/DynaPDF-Manual/ReplaceFontEx.shtml">ReplaceFontEx</a> function in DynaPDF manual.
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="15">ReplaceFontExAnsi(PDFFontRef as Integer, FontFilePath as string, Embed as boolean = true) as integer</A></b> &nbsp; <b style="color: #8B0000"> Deprecated </b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion172.shtml" class=version>17.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Replaces a PDF font with another one.<BR>
+<DIV style="width: 300px; float: right; margin: 3pt; padding: 3pt; background-color: #FEE; border-width: 3pt;">
+This item is deprecated and should no longer be used. 
+You can use the non ANSI function instead.
+</DIV>
+<B>Notes:</B> 
+<BR>
+The font file can be loaded directly. It is not required to install the font on the system. The function can be called in the OnFontNotFound event of the function CheckConformance(). The return value of the event should be the return value of this function. The parameter PDFFontRef is a parameter of the event. The font reference is required and must be passed unchanged to the function.<BR>
+<BR>
+If the function succeeds the return value is zero. If the function fails the return value is a negative error code.<BR>
+<p>See also:<ul>
+<li><A href="dynapdf-dynapdfmbs-method21.html#13">ReplaceFontEx(PDFFontRef as Integer, FontFile as FolderItem, Embed as boolean = true) as integer</A></li>
+<li><A href="dynapdf-dynapdfmbs-method21.html#14">ReplaceFontEx(PDFFontRef as Integer, FontFilePath as string, Embed as boolean = true) as integer</A></li>
+</ul></p>
+<p>See also <a href="https://www.monkeybreadsoftware.com/DynaPDF-Manual/ReplaceFontEx.shtml">ReplaceFontEx</a> function in DynaPDF manual.
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="16">ReplaceICCProfile(ColorSpace as Integer, ICCFile as folderitem) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion80.shtml" class=version>8.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+This function is used to dynamically create ICC based color spaces within OnReplaceICCProfile event of CheckConformance().<BR>
+<B>Notes:</B> 
+Use in OnReplaceICCProfile event.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-dynapdf-pdf-a-combinepdffilestopdfa.html">/DynaPDF/PDF-A/Combine PDF files to PDFA</A></li>
+<li><A href="example-dynapdf-pdf-a-createpdfa.html">/DynaPDF/PDF-A/Create PDFA</A></li>
+<li><A href="example-dynapdf-pdf-a-normalizepdf.html">/DynaPDF/PDF-A/Normalize PDF</A></li>
+<li><A href="example-dynapdf-signedpdfa-signedpdfa.html">/DynaPDF/signed pdfa/signed pdfa</A></li>
+<li><A href="example-dynapdf-zugferd20-createpdfwithexistingpdf.html">/DynaPDF/ZUGFeRD 2.0/Create PDF with existing pdf</A></li>
+</ul>
+<p>See also <a href="https://www.monkeybreadsoftware.com/DynaPDF-Manual/ReplaceICCProfile.shtml">ReplaceICCProfile</a> function in DynaPDF manual.
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="17">ReplaceICCProfileEx(ColorSpace as integer, ICCFileData as MemoryBlock) as integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion175.shtml" class=version>17.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Replaces an ICC profile exactly in the same way as ReplaceICCProfile() but accepts a file buffer as input.<BR>
+<B>Notes:</B> 
+<BR>
+If the function succeeds the return value is zero. If the function fails the return value is a negative error code.<BR>
+Use in OnReplaceICCProfile event.<BR>
+<p>See also:<ul>
+<li><A href="dynapdf-dynapdfmbs-method21.html#18">ReplaceICCProfileEx(ColorSpace as integer, ICCFileData as String) as integer</A></li>
+</ul></p>
+<p>See also <a href="https://www.monkeybreadsoftware.com/DynaPDF-Manual/ReplaceICCProfileEx.shtml">ReplaceICCProfileEx</a> function in DynaPDF manual.
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="18">ReplaceICCProfileEx(ColorSpace as integer, ICCFileData as String) as integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion175.shtml" class=version>17.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Replaces an ICC profile exactly in the same way as ReplaceICCProfile() but accepts a file buffer as input.<BR>
+<B>Notes:</B> 
+<BR>
+If the function succeeds the return value is zero. If the function fails the return value is a negative error code.<BR>
+Use in OnReplaceICCProfile event.<BR>
+<p>See also:<ul>
+<li><A href="dynapdf-dynapdfmbs-method21.html#17">ReplaceICCProfileEx(ColorSpace as integer, ICCFileData as MemoryBlock) as integer</A></li>
+</ul></p>
+<p>See also <a href="https://www.monkeybreadsoftware.com/DynaPDF-Manual/ReplaceICCProfileEx.shtml">ReplaceICCProfileEx</a> function in DynaPDF manual.
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="19">ReplaceImage(ImageToReplace as <A href="class-dynapdfimagembs.html">DynaPDFImageMBS</A>, ImageFile as FolderItem, Index as Integer = 1, ColorSpace as Integer = 0, CSHandle as Integer = -1, Flags as Integer = 0) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion175.shtml" class=version>17.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Replaces an image with another image.<BR>
+<B>Notes:</B> 
+<BR>
+The parameter ImageToReplace must be a valid pointer of an image object which is retrieved by functions like GetImageObj() or ParseContent().<BR>
+The resolution, aspect ratio, color space and so on can be freely chosen. However, note that this function does not change the output position or size. If the aspect ratio of the new image is different, then it will be stretched or shrinked to fit into the output rectangle.<BR>
+The parameter ColorSpace specifies the destination color space into which the image should be converted or saved, if the image is already defined in that color space. CSHandle must be the handle of that color space if a non-device space is used. The will be ignored for devices spaces.<BR>
+<BR>
+The function works in the very same way as InsertImageEx() with the following differences:<BR>
+&bull; The color of an image mask cannot be set or changed because this would require changes on the content stream in which the image is used. An image mask will be created if the image color depth is 1 bit and if color key masking is enabled (see SetUseTransparency()). SetUseTransparency() should normally be set to false before calling this function.<BR>
+&bull; The image will never be downscaled, independent of the current resolution, because the size of the output rectangle is not known.<BR>
+<BR>
+If the image that should be replaced is a soft mask of another base image, then make sure that the destination color space is set to kesDeviceGray, kesCalGray, or to a one channel ICC based color space because a soft mask must not contain more than one color channel.<BR>
+The flags kgfUseImageColorSpace, kgfIgnoreICCProfiles, kgfRealPassThrough, and kfNoBitmapAlpha are all supported. See SetGStateFlags() for further information.<BR>
+<BR>
+If the function succeeds the return value is true. If the function fails the return value is false.<BR>
+<p>See also <a href="https://www.monkeybreadsoftware.com/DynaPDF-Manual/ReplaceImage.shtml">ReplaceImage</a> function in DynaPDF manual.
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="20">ReplaceImageEx(ImageToReplace as <A href="class-dynapdfimagembs.html">DynaPDFImageMBS</A>, ImageData as MemoryBlock, Index as Integer = 1, ColorSpace as Integer = 0, CSHandle as Integer = -1, Flags as Integer = 0) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion175.shtml" class=version>17.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Replaces an image with a new image exactly like ReplaceImage() but accepts a file buffer as input.<BR>
+<B>Notes:</B> 
+<BR>
+See ReplaceImage() for further information.<BR>
+<BR>
+If the function succeeds the return value is 1. If the function fails the return value is 0.<BR>
+<p>See also:<ul>
+<li><A href="dynapdf-dynapdfmbs-method21.html#21">ReplaceImageEx(ImageToReplace as DynaPDFImageMBS, ImageData as String, Index as Integer = 1, ColorSpace as Integer = 0, CSHandle as Integer = -1, Flags as Integer = 0) as Boolean</A></li>
+</ul></p>
+<p>See also <a href="https://www.monkeybreadsoftware.com/DynaPDF-Manual/ReplaceImageEx.shtml">ReplaceImageEx</a> function in DynaPDF manual.
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="21">ReplaceImageEx(ImageToReplace as <A href="class-dynapdfimagembs.html">DynaPDFImageMBS</A>, ImageData as String, Index as Integer = 1, ColorSpace as Integer = 0, CSHandle as Integer = -1, Flags as Integer = 0) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion175.shtml" class=version>17.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Replaces an image with a new image exactly like ReplaceImage() but accepts a file buffer as input.<BR>
+<B>Notes:</B> 
+<BR>
+See ReplaceImage() for further information.<BR>
+<BR>
+If the function succeeds the return value is 1. If the function fails the return value is 0.<BR>
+<p>See also:<ul>
+<li><A href="dynapdf-dynapdfmbs-method21.html#20">ReplaceImageEx(ImageToReplace as DynaPDFImageMBS, ImageData as MemoryBlock, Index as Integer = 1, ColorSpace as Integer = 0, CSHandle as Integer = -1, Flags as Integer = 0) as Boolean</A></li>
+</ul></p>
+<p>See also <a href="https://www.monkeybreadsoftware.com/DynaPDF-Manual/ReplaceImageEx.shtml">ReplaceImageEx</a> function in DynaPDF manual.
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="22">ReplacePageText(text as string, stack as <A href="class-dynapdfstackmbs.html">DynaPDFStackMBS</A>) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion77.shtml" class=version>7.7</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The function deletes or replaces a text string of a content stream that was found by the function GetPageText() beforehand. <BR>
+<B>Notes:</B> 
+<BR>
+<BR>
+Be aware that ReplacePageText can&#39;t always replace text as encoding must match and fonts may not have the characters for the new text. For that better use ReplacePageTextEx.<BR>
+<BR>
+If you have problems with asian characters, please make sure you use SetCMapDir and load the CMAPs.<BR>
+Requires DynaPDF Pro license.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-dynapdf-textediting-deletetext.html">/DynaPDF/text editing/delete text</A></li>
+<li><A href="example-dynapdf-textediting-replacetext.html">/DynaPDF/text editing/replace text</A></li>
+</ul>
+<p>See also <a href="https://www.monkeybreadsoftware.com/DynaPDF-Manual/ReplacePageText.shtml">ReplacePageText</a> function in DynaPDF manual.
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="23">ReplacePageTextEx(text as string, stack as <A href="class-dynapdfstackmbs.html">DynaPDFStackMBS</A>) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion77.shtml" class=version>7.7</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The function deletes or replaces a text string of a content stream that was found by the function GetPageText() beforehand. <BR>
+<B>Notes:</B> 
+<BR>
+The text parameter is converted to unicode.<BR>
+<BR>
+If you have problems with asian characters, please make sure you use SetCMapDir and load the CMAPs.<BR>
+Requires DynaPDF Pro license.<BR>
+<p>See also <a href="https://www.monkeybreadsoftware.com/DynaPDF-Manual/ReplacePageTextEx.shtml">ReplacePageTextEx</a> function in DynaPDF manual.
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="24">ReplacePageTextExAnsi(text as string, stack as <A href="class-dynapdfstackmbs.html">DynaPDFStackMBS</A>) as boolean</A></b> &nbsp; <b style="color: #8B0000"> Deprecated </b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion83.shtml" class=version>8.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The function deletes or replaces a text string of a content stream that was found by the function GetPageText() beforehand. <BR>
+<DIV style="width: 300px; float: right; margin: 3pt; padding: 3pt; background-color: #FEE; border-width: 3pt;">
+This item is deprecated and should no longer be used. 
+You can use the non ANSI function instead.
+</DIV>
+<B>Notes:</B> 
+<BR>
+The text parameter is converted to ANSI.<BR>
+Requires DynaPDF Pro license.<BR>
+<p>See also <a href="https://www.monkeybreadsoftware.com/DynaPDF-Manual/ReplacePageTextEx.shtml">ReplacePageTextEx</a> function in DynaPDF manual.
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="25">ResetAnnotAP(Handle as integer = -1) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion203.shtml" class=version>20.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Forces a rebuild of the appearance stream of the specified annotation. <BR>
+<B>Notes:</B> 
+If Handle is set to -1 all annotation appearances will be rebuild. This function be useful if an imported annotation has an invalid or empty appearance stream. <BR>
+<p>See also <a href="https://www.monkeybreadsoftware.com/DynaPDF-Manual/ResetAnnotAP.shtml">ResetAnnotAP</a> function in DynaPDF manual.
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="26">ResetEncryptionSettings as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion170.shtml" class=version>17.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Resets the encryption settings which were imported from an external PDF file so that the PDF file in memory can be saved unencrypted.<BR>
+<B>Notes:</B> 
+If the function succeeds the return value is true. If the function fails the return value is false.<BR>
+<p>See also <a href="https://www.monkeybreadsoftware.com/DynaPDF-Manual/ResetEncryptionSettings.shtml">ResetEncryptionSettings</a> function in DynaPDF manual.
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="27">ResetLineDashPattern as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion80.shtml" class=version>8.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The function resets a previously defined line dash pattern to its default value (straight line). <BR>
+<p>See also <a href="https://www.monkeybreadsoftware.com/DynaPDF-Manual/ResetLineDashPattern.shtml">ResetLineDashPattern</a> function in DynaPDF manual.
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="28">RestoreGraphicState as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion80.shtml" class=version>8.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The function restores a previously saved graphics state. <BR>
+<p>See also <a href="https://www.monkeybreadsoftware.com/DynaPDF-Manual/RestoreGraphicState.shtml">RestoreGraphicState</a> function in DynaPDF manual.
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="29">RotateCoords(alpha as Double, OriginX as Double, OriginY as Double) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion80.shtml" class=version>8.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The function rotates the coordinate system at the point OriginX, OriginY by applying a transformation matrix. <BR>
+<B>Notes:</B> 
+Please do not try to scale/skew/translate back later. use SaveGraphicState and RestoreGraphicState.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-dynapdf-createpdfwithobject2d.html">/DynaPDF/Create PDF with object2d</A></li>
+<li><A href="example-dynapdf-createpdfwithverticaltext.html">/DynaPDF/Create PDF with vertical text</A></li>
+<li><A href="example-dynapdf-placecentered-placecenteredandrotate.html">/DynaPDF/place centered/place centered and rotate</A></li>
+</ul>
+<p>See also <a href="https://www.monkeybreadsoftware.com/DynaPDF-Manual/RotateCoords.shtml">RotateCoords</a> function in DynaPDF manual.
+</div>
+<div class="WLM">
+<b><a href="class-dynapdfmbs.html">DynaPDFMBS</a>.<A name="30">RotateTemplate(OldTemplate as Integer, Rotation as Integer, RotateCoords as boolean = true) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion170.shtml" class=version>17.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Rotates a template.<BR>
+<B>Notes:</B> 
+<BR>
+Returns a new template handle.<BR>
+This is a convenience function which creates a new template and draws the existing template there with rotation.<BR>
+Returns negative number for errors. The plugin uses -1 for plugin errors like wrong rotation angle.<BR>
+<BR>
+RotateCoords: Whether to rotate coordinate system.<BR>
+This is now done by DynaPDF automatically, so for current version of the library, this must be false. But older versions need the true.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-dynapdf-rotaterotatedpdfback.html">/DynaPDF/Rotate rotated PDF back</A></li>
+</ul>
+</div>
+<p>
+<a href="dynapdf-dynapdfmbs-method20.html">Previous items</a>
+ 
+<a href="dynapdf-dynapdfmbs-method22.html">Next items</a>
+</p>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=dynapdf-dynapdfmbs-method21">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

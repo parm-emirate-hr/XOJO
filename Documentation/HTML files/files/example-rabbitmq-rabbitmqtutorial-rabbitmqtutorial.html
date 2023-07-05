@@ -1,0 +1,812 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /RabbitMQ/RabbitMQTutorial/RabbitMQTutorial</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /RabbitMQ/RabbitMQTutorial/RabbitMQTutorial</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/RabbitMQ/RabbitMQTutorial/RabbitMQTutorial</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS RabbitMQ Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /RabbitMQ/RabbitMQTutorial/RabbitMQTutorial<BR>
+This example is the version from Sun, 15th May 2021.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;RabbitMQTutorial.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> ConsoleApplication</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> constBindingKey = <span style="color:#6500FE">&quot;hello&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> constChannel = <span style="color:#326598">1</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> constExchange = <span style="color:#6500FE">&quot;amq.direct&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> constHostname = <span style="color:#6500FE">&quot;localhost&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> constLoginPassword = <span style="color:#6500FE">&quot;guest&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> constLoginUsername = <span style="color:#6500FE">&quot;guest&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> constPort = <span style="color:#326598">5672</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> constQueue_HelloWorld = <span style="color:#6500FE">&quot;hello&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> constQueue_RPC = <span style="color:#6500FE">&quot;rpc_queue&quot;</span></div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> Run(args() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+			AppRandom = <span style="color:#0000FF;font-weight: bold">New</span> Random
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> iChoice <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = Val(<span style="color:#0000FF;font-weight: bold">me</span>.TutorialChoice())
+			
+			<span style="color:#0000FF;font-weight: bold">select</span> <span style="color:#0000FF;font-weight: bold">case</span> iChoice
+				
+			<span style="color:#0000FF;font-weight: bold">case</span> <span style="color:#326598">1</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Tutorial_1_Receive()
+				
+			<span style="color:#0000FF;font-weight: bold">case</span> <span style="color:#326598">2</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Tutorial_2_Send()
+				
+			<span style="color:#0000FF;font-weight: bold">case</span> <span style="color:#326598">3</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Tutorial_3_RPC_Server()
+				
+			<span style="color:#0000FF;font-weight: bold">case</span> <span style="color:#326598">4</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Tutorial_4_RPC_Client()
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">select</span>
+			
+			DoEvents(<span style="color:#326598">100</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> <span style="color:#0000FF;font-weight: bold">me</span>.WaitKeyInput(<span style="color:#6500FE">&quot;Press</span> <span style="color:#6500FE">&lt;enter&gt;</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">exit.&quot;</span>)
+			Quit(<span style="color:#326598">0</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> Failed(r <span style="color:#0000FF;font-weight: bold">as</span> RabbitMQRPCReplyMBS) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#0000FF;font-weight: bold">If</span> r = <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">True</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">Case</span> r.Type
+			<span style="color:#0000FF;font-weight: bold">Case</span> r.ResponseTypeNone
+				Break
+			<span style="color:#0000FF;font-weight: bold">Case</span> r.ResponseTypeNormal
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">False</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">okay</span>
+			<span style="color:#0000FF;font-weight: bold">Case</span> r.ResponseTypeLibraryException
+				<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Library</span> <span style="color:#6500FE">error:</span> <span style="color:#6500FE">&quot;</span>+Str(r.LibraryError)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+RabbitMQConnectionMBS.ErrorString(r.LibraryError))
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">True</span>
+			<span style="color:#0000FF;font-weight: bold">Case</span> r.ResponseTypeServerException
+				<span style="color:#0000FF;font-weight: bold">Dim</span> d <span style="color:#0000FF;font-weight: bold">As</span> Dictionary = r.MethodDecoded
+				<span style="color:#0000FF;font-weight: bold">Dim</span> c <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = d.Lookup(<span style="color:#6500FE">&quot;ReplyCode&quot;</span>, <span style="color:#6500FE">&quot;&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">Dim</span> t <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = d.Lookup(<span style="color:#6500FE">&quot;ReplyText&quot;</span>, <span style="color:#6500FE">&quot;&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Server</span> <span style="color:#6500FE">error</span> <span style="color:#6500FE">&quot;</span>+c+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+t)
+				<span style="color:#0000FF;font-weight: bold">If</span> t = <span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">Then</span> Break
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">True</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Function</span> Fib(n <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+			<span style="color:#0000FF;font-weight: bold">If</span> n &lt; <span style="color:#326598">2</span> <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span> n
+			<span style="color:#0000FF;font-weight: bold">Return</span> Fib(n - <span style="color:#326598">1</span>) + Fib(n - <span style="color:#326598">2</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Function</span> GetGUID() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			<span style="color:#7F0000;text-style:italic">//HACKY...</span> <span style="color:#7F0000;text-style:italic">don&#39;t</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">production</span>
+			
+			eiGuidNr = eiGuidNr + <span style="color:#326598">1</span>
+			
+			<span style="color:#0000FF;font-weight: bold">return</span> Format(eiGuidNr, <span style="color:#6500FE">&quot;00000000&quot;</span>) + <span style="color:#6500FE">&quot;-&quot;</span> + _
+					Format(eiGuidNr, <span style="color:#6500FE">&quot;0000&quot;</span>) + <span style="color:#6500FE">&quot;-&quot;</span> + _
+					Format(eiGuidNr, <span style="color:#6500FE">&quot;0000&quot;</span>) + <span style="color:#6500FE">&quot;-&quot;</span> + _
+					Format(eiGuidNr, <span style="color:#6500FE">&quot;0000&quot;</span>) + <span style="color:#6500FE">&quot;-&quot;</span> + _
+					Format(eiGuidNr, <span style="color:#6500FE">&quot;000000000000&quot;</span>) + <span style="color:#6500FE">&quot;-&quot;</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> Output(psText <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>)
+			StdOut.WriteLine(ReplaceLineEndings(psText, <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>))
+			stdout.Flush()
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Function</span> TutorialChoice() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> conn <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> RabbitMQConnectionMBS
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;MBS</span> <span style="color:#6500FE">Xojo</span> <span style="color:#6500FE">RabbitMQ</span> <span style="color:#6500FE">Plugin&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;************************&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;RabbitMQConnectionMBS.Version:</span> <span style="color:#6500FE">&quot;</span> + conn.Version)
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;RabbitMQ</span> <span style="color:#6500FE">Tutorials&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;------------------&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;https://www.rabbitmq.com/getstarted.html&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;1</span> <span style="color:#6500FE">-</span> <span style="color:#6500FE">Hello</span> <span style="color:#6500FE">World</span> <span style="color:#6500FE">-</span> <span style="color:#6500FE">Receive&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;2</span> <span style="color:#6500FE">-</span> <span style="color:#6500FE">Hello</span> <span style="color:#6500FE">World</span> <span style="color:#6500FE">-</span> <span style="color:#6500FE">Send&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;3</span> <span style="color:#6500FE">-</span> <span style="color:#6500FE">RPC</span>         <span style="color:#6500FE">-</span> <span style="color:#6500FE">Server&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;4</span> <span style="color:#6500FE">-</span> <span style="color:#6500FE">RPC</span>         <span style="color:#6500FE">-</span> <span style="color:#6500FE">Client&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;&quot;</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#0000FF;font-weight: bold">me</span>.WaitKeyInput(<span style="color:#6500FE">&quot;Choice:</span> <span style="color:#6500FE">&quot;</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> Tutorial_1_Receive()
+			<span style="color:#0000FF;font-weight: bold">Dim</span> conn <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> RabbitMQConnectionMBS
+			
+			<span style="color:#0000FF;font-weight: bold">If</span> <span style="color:#0000FF;font-weight: bold">Not</span> conn.NewTCPSocket <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;RabbitMQConnectionMBS:</span> <span style="color:#6500FE">Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">create</span> <span style="color:#6500FE">TCP</span> <span style="color:#6500FE">socket&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> status <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = conn.OpenSocket(constHostname, constPort)
+			<span style="color:#0000FF;font-weight: bold">If</span> status &lt;&gt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;RabbitMQConnectionMBS:</span> <span style="color:#6500FE">Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">open</span> <span style="color:#6500FE">TCP</span> <span style="color:#6500FE">socket&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.LoginPlain&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> r <span style="color:#0000FF;font-weight: bold">As</span> RabbitMQRPCReplyMBS = conn.LoginPlain(<span style="color:#6500FE">&quot;/&quot;</span>, <span style="color:#326598">0</span>, <span style="color:#326598">131072</span>, <span style="color:#326598">0</span>, constLoginUsername, constLoginPassword)
+			<span style="color:#0000FF;font-weight: bold">If</span> Failed(r) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.ChannelOpen&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">Call</span> conn.ChannelOpen(constChannel)
+			r = conn.RPCReply
+			<span style="color:#0000FF;font-weight: bold">If</span> Failed(r) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">Const</span> passive = <span style="color:#0000FF;font-weight: bold">False</span>
+			<span style="color:#0000FF;font-weight: bold">Const</span> durable = <span style="color:#0000FF;font-weight: bold">False</span>
+			<span style="color:#0000FF;font-weight: bold">Const</span> exclusive = <span style="color:#0000FF;font-weight: bold">False</span>
+			<span style="color:#0000FF;font-weight: bold">Const</span> autoDelete = <span style="color:#0000FF;font-weight: bold">False</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> arguments <span style="color:#0000FF;font-weight: bold">As</span> Dictionary = <span style="color:#0000FF;font-weight: bold">Nil</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> frame <span style="color:#0000FF;font-weight: bold">as</span> RabbitMQFrameMBS
+			
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.QueueDeclare&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> QueueDeclareResult <span style="color:#0000FF;font-weight: bold">As</span> Dictionary = conn.QueueDeclare(constChannel, constQueue_HelloWorld, passive, durable, exclusive, autoDelete, arguments)
+			r = conn.RPCReply
+			<span style="color:#0000FF;font-weight: bold">If</span> Failed(r) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> queuename <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = QueueDeclareResult.Value(<span style="color:#6500FE">&quot;queue&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">If</span> queuename.Len = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">Then</span> Break <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">failed?</span>
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;</span>  <span style="color:#6500FE">-&gt;</span> <span style="color:#6500FE">Queuename:</span> <span style="color:#6500FE">&quot;</span>+queuename)
+			
+			<span style="color:#0000FF;font-weight: bold">Const</span> consumerTag = <span style="color:#6500FE">&quot;&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">Const</span> noLocal = <span style="color:#0000FF;font-weight: bold">False</span>
+			<span style="color:#0000FF;font-weight: bold">Const</span> noAck = <span style="color:#0000FF;font-weight: bold">true</span>
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.QueueBind&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> QueueBindResult <span style="color:#0000FF;font-weight: bold">As</span> Dictionary = conn.QueueBind(constChannel, queuename, constExchange, constBindingKey, arguments)
+			r = conn.RPCReply
+			<span style="color:#0000FF;font-weight: bold">If</span> Failed(r) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.BasicConsume&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> BasicConsumeResult <span style="color:#0000FF;font-weight: bold">As</span> Dictionary = conn.BasicConsume(constChannel, queuename, consumerTag, noLocal, noAck, exclusive, arguments)
+			<span style="color:#7F0000;text-style:italic">&#39;*</span> <span style="color:#7F0000;text-style:italic">Synchonously</span> <span style="color:#7F0000;text-style:italic">polls</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">broker</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">queue,</span> <span style="color:#7F0000;text-style:italic">and</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span> <span style="color:#7F0000;text-style:italic">retrieves</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">queue.</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span> <span style="color:#7F0000;text-style:italic">\param</span> <span style="color:#7F0000;text-style:italic">[in]</span> <span style="color:#7F0000;text-style:italic">state</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">connection</span> <span style="color:#7F0000;text-style:italic">object</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span> <span style="color:#7F0000;text-style:italic">\param</span> <span style="color:#7F0000;text-style:italic">[in]</span> <span style="color:#7F0000;text-style:italic">channel</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">channel</span> <span style="color:#7F0000;text-style:italic">identifier</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">use</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span> <span style="color:#7F0000;text-style:italic">\param</span> <span style="color:#7F0000;text-style:italic">[in]</span> <span style="color:#7F0000;text-style:italic">queue</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">queue</span> <span style="color:#7F0000;text-style:italic">name</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">retrieve</span> <span style="color:#7F0000;text-style:italic">from</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span> <span style="color:#7F0000;text-style:italic">\param</span> <span style="color:#7F0000;text-style:italic">[in]</span> <span style="color:#7F0000;text-style:italic">no_ack</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">true</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">automatically</span> <span style="color:#7F0000;text-style:italic">ack&#39;ed</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span>              <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">false</span> <span style="color:#7F0000;text-style:italic">amqp_basic_ack</span> <span style="color:#7F0000;text-style:italic">should</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">called</span> <span style="color:#7F0000;text-style:italic">once</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">message</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span>              <span style="color:#7F0000;text-style:italic">retrieved</span> <span style="color:#7F0000;text-style:italic">has</span> <span style="color:#7F0000;text-style:italic">been</span> <span style="color:#7F0000;text-style:italic">processed</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span> <span style="color:#7F0000;text-style:italic">\return</span> <span style="color:#7F0000;text-style:italic">amqp_rpc_reply</span> <span style="color:#7F0000;text-style:italic">indicating</span> <span style="color:#7F0000;text-style:italic">success</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">failure</span>
+			
+			r = conn.RPCReply
+			<span style="color:#0000FF;font-weight: bold">If</span> Failed(r) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">listening...&quot;</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">While</span> <span style="color:#0000FF;font-weight: bold">True</span>
+				<span style="color:#0000FF;font-weight: bold">Dim</span> res <span style="color:#0000FF;font-weight: bold">As</span> RabbitMQRPCReplyMBS
+				<span style="color:#0000FF;font-weight: bold">dim</span> envelope <span style="color:#0000FF;font-weight: bold">as</span> RabbitMQEnvelopeMBS
+				
+				res = conn.ConsumeMessage(envelope, <span style="color:#006532">0.01</span>)
+				
+				<span style="color:#0000FF;font-weight: bold">If</span> res.Type = res.ResponseTypeNormal <span style="color:#0000FF;font-weight: bold">Then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">got</span> <span style="color:#7F0000;text-style:italic">data</span>
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;&quot;</span>)
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.ConsumeMessage</span> <span style="color:#6500FE">-&gt;</span> <span style="color:#6500FE">got</span> <span style="color:#6500FE">data&quot;</span>)
+					
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.DeliveryTag:</span> <span style="color:#6500FE">&quot;</span>+Str(envelope.DeliveryTag))
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.Exchange:</span> <span style="color:#6500FE">&quot;</span>+envelope.Exchange)
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.Routingkey:</span> <span style="color:#6500FE">&quot;</span>+envelope.Routingkey)
+					
+					<span style="color:#0000FF;font-weight: bold">Dim</span> properties <span style="color:#0000FF;font-weight: bold">As</span> RabbitMQBasicPropertiesMBS = envelope.message.properties
+					
+					<span style="color:#7F0000;text-style:italic">&#39;Dim</span> <span style="color:#7F0000;text-style:italic">Flags</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Integer</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">properties.flags</span>
+					<span style="color:#7F0000;text-style:italic">&#39;If</span> <span style="color:#7F0000;text-style:italic">BitwiseAnd(Flags,</span> <span style="color:#7F0000;text-style:italic">RabbitMQBasicPropertiesMBS.kFlagContentType)</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">RabbitMQBasicPropertiesMBS.kFlagContentType</span> <span style="color:#7F0000;text-style:italic">Then</span>
+					
+					
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.Message.Properties.AppId:</span> <span style="color:#6500FE">&quot;</span> + properties.AppId)
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.Message.Properties.ContentType:</span> <span style="color:#6500FE">&quot;</span> + properties.ContentType)
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.Message.Properties.ContentEncoding:</span> <span style="color:#6500FE">&quot;</span> + properties.ContentEncoding)
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.Message.Properties.Expiration:</span> <span style="color:#6500FE">&quot;</span> + properties.Expiration)
+					
+					<span style="color:#0000FF;font-weight: bold">Dim</span> BodyString <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = envelope.Message.Body
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.Message.Body:</span> <span style="color:#6500FE">&quot;</span> + BodyString)
+					
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					
+					<span style="color:#0000FF;font-weight: bold">If</span> res.ResponseTypeLibraryException = res.Type <span style="color:#0000FF;font-weight: bold">And</span> conn.kStatusUnexpectedState = res.LibraryError <span style="color:#0000FF;font-weight: bold">Then</span>
+						
+						<span style="color:#0000FF;font-weight: bold">Dim</span> ir <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = conn.SimpleWaitFrame(frame)
+						
+						<span style="color:#0000FF;font-weight: bold">If</span> conn.kStatusOk &lt;&gt; ir <span style="color:#0000FF;font-weight: bold">Then</span>
+							<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;conn.kStatusOk</span> <span style="color:#6500FE">&lt;&gt;</span> <span style="color:#6500FE">ir&quot;</span>)
+							<span style="color:#0000FF;font-weight: bold">Return</span>
+						<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+						
+						<span style="color:#0000FF;font-weight: bold">If</span> frame.kFrameMethod = frame.FrameType <span style="color:#0000FF;font-weight: bold">Then</span>
+							<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">Case</span> frame.MethodID
+							<span style="color:#0000FF;font-weight: bold">Case</span> frame.kBasicAckMethod
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">If</span> <span style="color:#7F0000;text-style:italic">we&#39;ve</span> <span style="color:#7F0000;text-style:italic">turned</span> <span style="color:#7F0000;text-style:italic">publisher</span> <span style="color:#7F0000;text-style:italic">confirms</span> <span style="color:#7F0000;text-style:italic">on,</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">we&#39;ve</span> <span style="color:#7F0000;text-style:italic">published</span> <span style="color:#7F0000;text-style:italic">a</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">here</span> <span style="color:#7F0000;text-style:italic">Is</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">being</span> <span style="color:#7F0000;text-style:italic">confirmed.</span>
+								<span style="color:#7F0000;text-style:italic">//*/</span>
+								
+							<span style="color:#0000FF;font-weight: bold">Case</span> frame.kBasicReturnMethod
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">If</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">published</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">couldn&#39;t</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">routed</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mandatory</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">flag</span> <span style="color:#7F0000;text-style:italic">was</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">Is</span> <span style="color:#7F0000;text-style:italic">what</span> <span style="color:#7F0000;text-style:italic">would</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">returned.</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">Then</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">needs</span> <span style="color:#7F0000;text-style:italic">To</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">read.</span>
+								<span style="color:#7F0000;text-style:italic">//*/</span>
+								
+								<span style="color:#0000FF;font-weight: bold">Dim</span> message <span style="color:#0000FF;font-weight: bold">As</span> RabbitMQMessageMBS
+								
+								res = conn.ReadMessage(frame.channel, message)
+								<span style="color:#0000FF;font-weight: bold">If</span> res.ResponseTypeNormal &lt;&gt; res.type <span style="color:#0000FF;font-weight: bold">Then</span>
+									<span style="color:#0000FF;font-weight: bold">Return</span>
+								<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+								
+							<span style="color:#0000FF;font-weight: bold">Case</span> frame.kChannelCloseMethod
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">channel.close</span> <span style="color:#7F0000;text-style:italic">method</span> <span style="color:#7F0000;text-style:italic">happens</span> <span style="color:#7F0000;text-style:italic">when</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">channel</span> <span style="color:#7F0000;text-style:italic">Exception</span> <span style="color:#7F0000;text-style:italic">occurs,</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">happen</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">publishing</span> <span style="color:#7F0000;text-style:italic">To</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">exchange</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">doesn&#39;t</span> <span style="color:#7F0000;text-style:italic">exist</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">For</span> <span style="color:#7F0000;text-style:italic">example.</span>
+								<span style="color:#7F0000;text-style:italic">//*</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">In</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">Case</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">would</span> <span style="color:#7F0000;text-style:italic">need</span> <span style="color:#7F0000;text-style:italic">To</span> <span style="color:#7F0000;text-style:italic">open</span> <span style="color:#7F0000;text-style:italic">another</span> <span style="color:#7F0000;text-style:italic">channel</span> <span style="color:#7F0000;text-style:italic">redeclare</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">any</span> <span style="color:#7F0000;text-style:italic">queues</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">were</span> <span style="color:#7F0000;text-style:italic">declared</span> <span style="color:#7F0000;text-style:italic">Auto-delete,</span> <span style="color:#7F0000;text-style:italic">And</span> <span style="color:#7F0000;text-style:italic">restart</span> <span style="color:#7F0000;text-style:italic">any</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">consumers</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">were</span> <span style="color:#7F0000;text-style:italic">attached</span> <span style="color:#7F0000;text-style:italic">To</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">previous</span> <span style="color:#7F0000;text-style:italic">channel.</span>
+								<span style="color:#7F0000;text-style:italic">//*/</span>
+								<span style="color:#0000FF;font-weight: bold">return</span>
+								
+							<span style="color:#0000FF;font-weight: bold">Case</span> frame.kConnectionCloseMethod
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">connection.close</span> <span style="color:#7F0000;text-style:italic">method</span> <span style="color:#7F0000;text-style:italic">happens</span> <span style="color:#7F0000;text-style:italic">when</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">connection</span> <span style="color:#7F0000;text-style:italic">Exception</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">occurs,</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">happen</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">trying</span> <span style="color:#7F0000;text-style:italic">To</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">channel</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">isn&#39;t</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">open</span> <span style="color:#7F0000;text-style:italic">For</span> <span style="color:#7F0000;text-style:italic">example.</span>
+								<span style="color:#7F0000;text-style:italic">//*</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">In</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">Case</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">whole</span> <span style="color:#7F0000;text-style:italic">connection</span> <span style="color:#7F0000;text-style:italic">must</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">restarted.</span>
+								<span style="color:#7F0000;text-style:italic">//*/</span>
+								<span style="color:#0000FF;font-weight: bold">return</span>
+								
+							<span style="color:#0000FF;font-weight: bold">Else</span>
+								
+								<span style="color:#0000FF;font-weight: bold">me</span>.Output <span style="color:#6500FE">&quot;An</span> <span style="color:#6500FE">unexpected</span> <span style="color:#6500FE">method</span> <span style="color:#6500FE">was</span> <span style="color:#6500FE">received:</span> <span style="color:#6500FE">&quot;</span>+str(frame.MethodID)
+								
+								<span style="color:#0000FF;font-weight: bold">Return</span>
+							<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+						<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+					<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				app.DoEvents(<span style="color:#326598">100</span>)
+			<span style="color:#0000FF;font-weight: bold">wend</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.ConnectionClose&quot;</span>)
+			r = conn.ConnectionClose
+			<span style="color:#0000FF;font-weight: bold">If</span> Failed(r) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> Tutorial_2_Send()
+			<span style="color:#0000FF;font-weight: bold">Const</span> messagebody = <span style="color:#6500FE">&quot;Hello</span> <span style="color:#6500FE">RabbitMQ</span> <span style="color:#6500FE">World</span> <span style="color:#6500FE">from</span> <span style="color:#6500FE">Xojo&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">Const</span> routingkey = <span style="color:#6500FE">&quot;hello&quot;</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> conn <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> RabbitMQConnectionMBS
+			
+			<span style="color:#0000FF;font-weight: bold">If</span> <span style="color:#0000FF;font-weight: bold">Not</span> conn.NewTCPSocket <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;RabbitMQConnectionMBS:</span> <span style="color:#6500FE">Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">create</span> <span style="color:#6500FE">TCP</span> <span style="color:#6500FE">socket&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> status <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = conn.OpenSocket(constHostname, constPort)
+			<span style="color:#0000FF;font-weight: bold">If</span> status &lt;&gt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;RabbitMQConnectionMBS:</span> <span style="color:#6500FE">Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">open</span> <span style="color:#6500FE">TCP</span> <span style="color:#6500FE">socket&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.LoginPlain&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> r <span style="color:#0000FF;font-weight: bold">As</span> RabbitMQRPCReplyMBS = conn.LoginPlain(<span style="color:#6500FE">&quot;/&quot;</span>, <span style="color:#326598">0</span>, <span style="color:#326598">131072</span>, <span style="color:#326598">0</span>, constLoginUsername, constLoginPassword)
+			<span style="color:#0000FF;font-weight: bold">If</span> Failed(r) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.ChannelOpen&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">Call</span> conn.ChannelOpen(constChannel)
+			r = conn.RPCReply
+			<span style="color:#0000FF;font-weight: bold">If</span> Failed(r) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> props <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> RabbitMQBasicPropertiesMBS
+			props.Flags = props.kFlagContentType <span style="color:#0000FF;font-weight: bold">Or</span> props.kFlagDeliveryMode <span style="color:#0000FF;font-weight: bold">or</span> props.kFlagContentEncoding
+			props.ContentType = <span style="color:#6500FE">&quot;text/plain&quot;</span>
+			props.ContentEncoding = <span style="color:#6500FE">&quot;UTF8&quot;</span>
+			props.DeliveryMode = props.kDeliveryPersistent
+			
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> ErrorCode <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = conn.BasicPublish(constChannel, constExchange, routingkey, <span style="color:#0000FF;font-weight: bold">False</span>, <span style="color:#0000FF;font-weight: bold">False</span>, props, messagebody)
+			<span style="color:#0000FF;font-weight: bold">If</span> ErrorCode &lt;&gt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.BasicPublish:</span> <span style="color:#6500FE">Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">publish.&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">Else</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.BasicPublish:</span> <span style="color:#6500FE">sent&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.ChannelClose&quot;</span>)
+			r = conn.ChannelClose(constChannel, RabbitMQRPCReplyMBS.kReplySuccess)
+			<span style="color:#0000FF;font-weight: bold">If</span> Failed(r) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.ConnectionClose&quot;</span>)
+			r = conn.ConnectionClose(RabbitMQRPCReplyMBS.kReplySuccess)
+			<span style="color:#0000FF;font-weight: bold">If</span> Failed(r) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> Tutorial_3_RPC_Server()
+			<span style="color:#0000FF;font-weight: bold">Dim</span> conn <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> RabbitMQConnectionMBS
+			
+			<span style="color:#0000FF;font-weight: bold">If</span> <span style="color:#0000FF;font-weight: bold">Not</span> conn.NewTCPSocket <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;RabbitMQConnectionMBS:</span> <span style="color:#6500FE">Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">create</span> <span style="color:#6500FE">TCP</span> <span style="color:#6500FE">socket&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> status <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = conn.OpenSocket(constHostname, constPort)
+			<span style="color:#0000FF;font-weight: bold">If</span> status &lt;&gt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;RabbitMQConnectionMBS:</span> <span style="color:#6500FE">Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">open</span> <span style="color:#6500FE">TCP</span> <span style="color:#6500FE">socket&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.LoginPlain&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> r <span style="color:#0000FF;font-weight: bold">As</span> RabbitMQRPCReplyMBS = conn.LoginPlain(<span style="color:#6500FE">&quot;/&quot;</span>, <span style="color:#326598">0</span>, <span style="color:#326598">131072</span>, <span style="color:#326598">0</span>, constLoginUsername, constLoginPassword)
+			<span style="color:#0000FF;font-weight: bold">If</span> Failed(r) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.ChannelOpen&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">Call</span> conn.ChannelOpen(constChannel)
+			r = conn.RPCReply
+			<span style="color:#0000FF;font-weight: bold">If</span> Failed(r) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.BasicQOS&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> conn.BasicQOS(constChannel, <span style="color:#326598">0</span>, <span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>) <span style="color:#7F0000;text-style:italic">//param4</span> <span style="color:#7F0000;text-style:italic">-&gt;</span> <span style="color:#7F0000;text-style:italic">global</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Const</span> passive = <span style="color:#0000FF;font-weight: bold">False</span>
+			<span style="color:#0000FF;font-weight: bold">Const</span> durable = <span style="color:#0000FF;font-weight: bold">False</span>
+			<span style="color:#0000FF;font-weight: bold">Const</span> exclusive = <span style="color:#0000FF;font-weight: bold">False</span>
+			<span style="color:#0000FF;font-weight: bold">Const</span> autoDelete = <span style="color:#0000FF;font-weight: bold">False</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> arguments <span style="color:#0000FF;font-weight: bold">As</span> Dictionary = <span style="color:#0000FF;font-weight: bold">Nil</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> frame <span style="color:#0000FF;font-weight: bold">as</span> RabbitMQFrameMBS
+			
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.QueueDeclare&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> QueueDeclareResult <span style="color:#0000FF;font-weight: bold">As</span> Dictionary = conn.QueueDeclare(constChannel, constQueue_RPC, passive, durable, exclusive, autoDelete, arguments)
+			r = conn.RPCReply
+			<span style="color:#0000FF;font-weight: bold">If</span> Failed(r) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> queuename <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = QueueDeclareResult.Value(<span style="color:#6500FE">&quot;queue&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">If</span> queuename.Len = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">Then</span> Break <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">failed?</span>
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;</span>  <span style="color:#6500FE">-&gt;</span> <span style="color:#6500FE">Queuename:</span> <span style="color:#6500FE">&quot;</span>+queuename)
+			
+			<span style="color:#0000FF;font-weight: bold">Const</span> consumerTag = <span style="color:#6500FE">&quot;&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">Const</span> noLocal = <span style="color:#0000FF;font-weight: bold">False</span>
+			<span style="color:#0000FF;font-weight: bold">Const</span> noAck = <span style="color:#0000FF;font-weight: bold">False</span>
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.QueueBind&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> QueueBindResult <span style="color:#0000FF;font-weight: bold">As</span> Dictionary = conn.QueueBind(constChannel, queuename, constExchange, constBindingKey, arguments)
+			r = conn.RPCReply
+			<span style="color:#0000FF;font-weight: bold">If</span> Failed(r) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.BasicConsume&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> BasicConsumeResult <span style="color:#0000FF;font-weight: bold">As</span> Dictionary = conn.BasicConsume(constChannel, queuename, consumerTag, noLocal, noAck, exclusive, arguments)
+			<span style="color:#7F0000;text-style:italic">&#39;*</span> <span style="color:#7F0000;text-style:italic">Synchonously</span> <span style="color:#7F0000;text-style:italic">polls</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">broker</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">queue,</span> <span style="color:#7F0000;text-style:italic">and</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span> <span style="color:#7F0000;text-style:italic">retrieves</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">queue.</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span> <span style="color:#7F0000;text-style:italic">\param</span> <span style="color:#7F0000;text-style:italic">[in]</span> <span style="color:#7F0000;text-style:italic">state</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">connection</span> <span style="color:#7F0000;text-style:italic">object</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span> <span style="color:#7F0000;text-style:italic">\param</span> <span style="color:#7F0000;text-style:italic">[in]</span> <span style="color:#7F0000;text-style:italic">channel</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">channel</span> <span style="color:#7F0000;text-style:italic">identifier</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">use</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span> <span style="color:#7F0000;text-style:italic">\param</span> <span style="color:#7F0000;text-style:italic">[in]</span> <span style="color:#7F0000;text-style:italic">queue</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">queue</span> <span style="color:#7F0000;text-style:italic">name</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">retrieve</span> <span style="color:#7F0000;text-style:italic">from</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span> <span style="color:#7F0000;text-style:italic">\param</span> <span style="color:#7F0000;text-style:italic">[in]</span> <span style="color:#7F0000;text-style:italic">no_ack</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">true</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">automatically</span> <span style="color:#7F0000;text-style:italic">ack&#39;ed</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span>              <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">false</span> <span style="color:#7F0000;text-style:italic">amqp_basic_ack</span> <span style="color:#7F0000;text-style:italic">should</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">called</span> <span style="color:#7F0000;text-style:italic">once</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">message</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span>              <span style="color:#7F0000;text-style:italic">retrieved</span> <span style="color:#7F0000;text-style:italic">has</span> <span style="color:#7F0000;text-style:italic">been</span> <span style="color:#7F0000;text-style:italic">processed</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span> <span style="color:#7F0000;text-style:italic">\return</span> <span style="color:#7F0000;text-style:italic">amqp_rpc_reply</span> <span style="color:#7F0000;text-style:italic">indicating</span> <span style="color:#7F0000;text-style:italic">success</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">failure</span>
+			
+			r = conn.RPCReply
+			<span style="color:#0000FF;font-weight: bold">If</span> Failed(r) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">Awaiting</span> <span style="color:#6500FE">RPC</span> <span style="color:#6500FE">requests...&quot;</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">While</span> <span style="color:#0000FF;font-weight: bold">True</span>
+				
+				<span style="color:#0000FF;font-weight: bold">Dim</span> res <span style="color:#0000FF;font-weight: bold">As</span> RabbitMQRPCReplyMBS
+				<span style="color:#0000FF;font-weight: bold">dim</span> envelope <span style="color:#0000FF;font-weight: bold">as</span> RabbitMQEnvelopeMBS
+				
+				res = conn.ConsumeMessage(envelope, <span style="color:#006532">0.01</span>)
+				
+				<span style="color:#0000FF;font-weight: bold">If</span> res.Type = res.ResponseTypeNormal <span style="color:#0000FF;font-weight: bold">Then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">got</span> <span style="color:#7F0000;text-style:italic">data</span>
+					
+					<span style="color:#7F0000;text-style:italic">&#39;Read</span> <span style="color:#7F0000;text-style:italic">Request</span>
+					<span style="color:#7F0000;text-style:italic">&#39;************</span>
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;&quot;</span>)
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.ConsumeMessage</span> <span style="color:#6500FE">-&gt;</span> <span style="color:#6500FE">got</span> <span style="color:#6500FE">data&quot;</span>)
+					
+					<span style="color:#0000FF;font-weight: bold">Dim</span> iDeliveryTag <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">UInt64</span> = envelope.DeliveryTag
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.DeliveryTag:</span> <span style="color:#6500FE">&quot;</span>+Str(envelope.DeliveryTag))
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.Exchange:</span> <span style="color:#6500FE">&quot;</span>+envelope.Exchange)
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.Routingkey:</span> <span style="color:#6500FE">&quot;</span>+envelope.Routingkey)
+					
+					<span style="color:#0000FF;font-weight: bold">Dim</span> properties <span style="color:#0000FF;font-weight: bold">As</span> RabbitMQBasicPropertiesMBS = envelope.message.properties
+					
+					<span style="color:#7F0000;text-style:italic">&#39;Dim</span> <span style="color:#7F0000;text-style:italic">Flags</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Integer</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">properties.flags</span>
+					<span style="color:#7F0000;text-style:italic">&#39;If</span> <span style="color:#7F0000;text-style:italic">BitwiseAnd(Flags,</span> <span style="color:#7F0000;text-style:italic">RabbitMQBasicPropertiesMBS.kFlagContentType)</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">RabbitMQBasicPropertiesMBS.kFlagContentType</span> <span style="color:#7F0000;text-style:italic">Then</span>
+					
+					
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.Message.Properties.AppId:</span> <span style="color:#6500FE">&quot;</span> + properties.AppId)
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.Message.Properties.ContentType:</span> <span style="color:#6500FE">&quot;</span> + properties.ContentType)
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.Message.Properties.ContentEncoding:</span> <span style="color:#6500FE">&quot;</span> + properties.ContentEncoding)
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.Message.Properties.Expiration:</span> <span style="color:#6500FE">&quot;</span> + properties.Expiration)
+					<span style="color:#0000FF;font-weight: bold">Dim</span> sCorrelationId <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = properties.CorrelationId
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.Message.Properties.CorrelationId:</span> <span style="color:#6500FE">&quot;</span> + properties.CorrelationId)
+					<span style="color:#0000FF;font-weight: bold">Dim</span> sReplyTo <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = properties.ReplyTo
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.Message.Properties.ReplyTo:</span> <span style="color:#6500FE">&quot;</span> + properties.ReplyTo)
+					<span style="color:#0000FF;font-weight: bold">Dim</span> BodyString <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = envelope.Message.Body
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.Message.Body:</span> <span style="color:#6500FE">&quot;</span> + BodyString)
+					
+					<span style="color:#7F0000;text-style:italic">&#39;Process</span> <span style="color:#7F0000;text-style:italic">Request</span>
+					<span style="color:#7F0000;text-style:italic">&#39;***************</span>
+					
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;&quot;</span>)
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">FIB(&quot;</span> + BodyString + <span style="color:#6500FE">&quot;)&quot;</span>)
+					<span style="color:#0000FF;font-weight: bold">Dim</span> fib <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#0000FF;font-weight: bold">me</span>.Fib(Val(BodyString))
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;</span>  <span style="color:#6500FE">-&gt;</span> <span style="color:#6500FE">&quot;</span> + Str(fib))
+					
+					
+					<span style="color:#7F0000;text-style:italic">&#39;Send</span> <span style="color:#7F0000;text-style:italic">Confirmation</span> <span style="color:#7F0000;text-style:italic">Reply</span>
+					<span style="color:#7F0000;text-style:italic">&#39;***********************</span>
+					<span style="color:#0000FF;font-weight: bold">Dim</span> replyProps <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> RabbitMQBasicPropertiesMBS
+					replyProps.Flags = replyProps.kFlagContentType <span style="color:#0000FF;font-weight: bold">Or</span> replyProps.kFlagDeliveryMode <span style="color:#0000FF;font-weight: bold">or</span> replyProps.kFlagContentEncoding <span style="color:#0000FF;font-weight: bold">or</span> replyProps.kFlagCorrelationId
+					replyProps.ContentType = <span style="color:#6500FE">&quot;text/plain&quot;</span>
+					replyProps.ContentEncoding = <span style="color:#6500FE">&quot;UTF8&quot;</span>
+					replyProps.DeliveryMode = replyProps.kDeliveryPersistent
+					replyProps.CorrelationId = sCorrelationId
+					
+					<span style="color:#0000FF;font-weight: bold">Dim</span> sMessagebody <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = Str(fib)
+					
+					<span style="color:#0000FF;font-weight: bold">Dim</span> ErrorCode <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = conn.BasicPublish(constChannel, <span style="color:#6500FE">&quot;&quot;</span>, sReplyTo, <span style="color:#0000FF;font-weight: bold">False</span>, <span style="color:#0000FF;font-weight: bold">False</span>, replyProps, sMessagebody)
+					<span style="color:#0000FF;font-weight: bold">If</span> ErrorCode &lt;&gt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+						<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.BasicPublish:</span> <span style="color:#6500FE">Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">publish.&quot;</span>)
+						<span style="color:#0000FF;font-weight: bold">Return</span>
+					<span style="color:#0000FF;font-weight: bold">Else</span>
+						<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.BasicPublish:</span> <span style="color:#6500FE">sent&quot;</span>)
+					<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+					
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.BasicAck:</span> <span style="color:#6500FE">&quot;</span> + Str(iDeliveryTag))
+					<span style="color:#0000FF;font-weight: bold">call</span> conn.BasicAck(constChannel, iDeliveryTag, <span style="color:#0000FF;font-weight: bold">false</span>)
+					
+					
+					
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					
+					<span style="color:#0000FF;font-weight: bold">If</span> res.ResponseTypeLibraryException = res.Type <span style="color:#0000FF;font-weight: bold">And</span> conn.kStatusUnexpectedState = res.LibraryError <span style="color:#0000FF;font-weight: bold">Then</span>
+						
+						<span style="color:#0000FF;font-weight: bold">Dim</span> ir <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = conn.SimpleWaitFrame(frame)
+						
+						<span style="color:#0000FF;font-weight: bold">If</span> conn.kStatusOk &lt;&gt; ir <span style="color:#0000FF;font-weight: bold">Then</span>
+							<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;conn.kStatusOk</span> <span style="color:#6500FE">&lt;&gt;</span> <span style="color:#6500FE">ir&quot;</span>)
+							<span style="color:#0000FF;font-weight: bold">Return</span>
+						<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+						
+						<span style="color:#0000FF;font-weight: bold">If</span> frame.kFrameMethod = frame.FrameType <span style="color:#0000FF;font-weight: bold">Then</span>
+							<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">Case</span> frame.MethodID
+							<span style="color:#0000FF;font-weight: bold">Case</span> frame.kBasicAckMethod
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">If</span> <span style="color:#7F0000;text-style:italic">we&#39;ve</span> <span style="color:#7F0000;text-style:italic">turned</span> <span style="color:#7F0000;text-style:italic">publisher</span> <span style="color:#7F0000;text-style:italic">confirms</span> <span style="color:#7F0000;text-style:italic">on,</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">we&#39;ve</span> <span style="color:#7F0000;text-style:italic">published</span> <span style="color:#7F0000;text-style:italic">a</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">here</span> <span style="color:#7F0000;text-style:italic">Is</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">being</span> <span style="color:#7F0000;text-style:italic">confirmed.</span>
+								<span style="color:#7F0000;text-style:italic">//*/</span>
+								
+							<span style="color:#0000FF;font-weight: bold">Case</span> frame.kBasicReturnMethod
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">If</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">published</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">couldn&#39;t</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">routed</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mandatory</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">flag</span> <span style="color:#7F0000;text-style:italic">was</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">Is</span> <span style="color:#7F0000;text-style:italic">what</span> <span style="color:#7F0000;text-style:italic">would</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">returned.</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">Then</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">needs</span> <span style="color:#7F0000;text-style:italic">To</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">read.</span>
+								<span style="color:#7F0000;text-style:italic">//*/</span>
+								
+								<span style="color:#0000FF;font-weight: bold">Dim</span> message <span style="color:#0000FF;font-weight: bold">As</span> RabbitMQMessageMBS
+								
+								res = conn.ReadMessage(frame.channel, message)
+								<span style="color:#0000FF;font-weight: bold">If</span> res.ResponseTypeNormal &lt;&gt; res.type <span style="color:#0000FF;font-weight: bold">Then</span>
+									<span style="color:#0000FF;font-weight: bold">Return</span>
+								<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+								
+							<span style="color:#0000FF;font-weight: bold">Case</span> frame.kChannelCloseMethod
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">channel.close</span> <span style="color:#7F0000;text-style:italic">method</span> <span style="color:#7F0000;text-style:italic">happens</span> <span style="color:#7F0000;text-style:italic">when</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">channel</span> <span style="color:#7F0000;text-style:italic">Exception</span> <span style="color:#7F0000;text-style:italic">occurs,</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">happen</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">publishing</span> <span style="color:#7F0000;text-style:italic">To</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">exchange</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">doesn&#39;t</span> <span style="color:#7F0000;text-style:italic">exist</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">For</span> <span style="color:#7F0000;text-style:italic">example.</span>
+								<span style="color:#7F0000;text-style:italic">//*</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">In</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">Case</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">would</span> <span style="color:#7F0000;text-style:italic">need</span> <span style="color:#7F0000;text-style:italic">To</span> <span style="color:#7F0000;text-style:italic">open</span> <span style="color:#7F0000;text-style:italic">another</span> <span style="color:#7F0000;text-style:italic">channel</span> <span style="color:#7F0000;text-style:italic">redeclare</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">any</span> <span style="color:#7F0000;text-style:italic">queues</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">were</span> <span style="color:#7F0000;text-style:italic">declared</span> <span style="color:#7F0000;text-style:italic">Auto-delete,</span> <span style="color:#7F0000;text-style:italic">And</span> <span style="color:#7F0000;text-style:italic">restart</span> <span style="color:#7F0000;text-style:italic">any</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">consumers</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">were</span> <span style="color:#7F0000;text-style:italic">attached</span> <span style="color:#7F0000;text-style:italic">To</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">previous</span> <span style="color:#7F0000;text-style:italic">channel.</span>
+								<span style="color:#7F0000;text-style:italic">//*/</span>
+								<span style="color:#0000FF;font-weight: bold">return</span>
+								
+							<span style="color:#0000FF;font-weight: bold">Case</span> frame.kConnectionCloseMethod
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">connection.close</span> <span style="color:#7F0000;text-style:italic">method</span> <span style="color:#7F0000;text-style:italic">happens</span> <span style="color:#7F0000;text-style:italic">when</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">connection</span> <span style="color:#7F0000;text-style:italic">Exception</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">occurs,</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">happen</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">trying</span> <span style="color:#7F0000;text-style:italic">To</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">channel</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">isn&#39;t</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">open</span> <span style="color:#7F0000;text-style:italic">For</span> <span style="color:#7F0000;text-style:italic">example.</span>
+								<span style="color:#7F0000;text-style:italic">//*</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">In</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">Case</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">whole</span> <span style="color:#7F0000;text-style:italic">connection</span> <span style="color:#7F0000;text-style:italic">must</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">restarted.</span>
+								<span style="color:#7F0000;text-style:italic">//*/</span>
+								<span style="color:#0000FF;font-weight: bold">return</span>
+								
+							<span style="color:#0000FF;font-weight: bold">Else</span>
+								
+								<span style="color:#0000FF;font-weight: bold">me</span>.Output <span style="color:#6500FE">&quot;An</span> <span style="color:#6500FE">unexpected</span> <span style="color:#6500FE">method</span> <span style="color:#6500FE">was</span> <span style="color:#6500FE">received:</span> <span style="color:#6500FE">&quot;</span>+str(frame.MethodID)
+								
+								<span style="color:#0000FF;font-weight: bold">Return</span>
+							<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+						<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+					<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				app.DoEvents(<span style="color:#326598">100</span>)
+			<span style="color:#0000FF;font-weight: bold">wend</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.ChannelClose&quot;</span>)
+			r = conn.ChannelClose(constChannel, RabbitMQRPCReplyMBS.kReplySuccess)
+			<span style="color:#0000FF;font-weight: bold">If</span> Failed(r) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.ConnectionClose&quot;</span>)
+			r = conn.ConnectionClose(RabbitMQRPCReplyMBS.kReplySuccess)
+			<span style="color:#0000FF;font-weight: bold">If</span> Failed(r) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> Tutorial_4_RPC_Client()
+			<span style="color:#0000FF;font-weight: bold">Dim</span> iRandom <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = AppRandom.InRange(<span style="color:#326598">10</span>, <span style="color:#326598">32</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> sGuid <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = <span style="color:#0000FF;font-weight: bold">me</span>.GetGUID()
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> conn <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> RabbitMQConnectionMBS
+			
+			<span style="color:#0000FF;font-weight: bold">If</span> <span style="color:#0000FF;font-weight: bold">Not</span> conn.NewTCPSocket <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;RabbitMQConnectionMBS:</span> <span style="color:#6500FE">Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">create</span> <span style="color:#6500FE">TCP</span> <span style="color:#6500FE">socket&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> status <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = conn.OpenSocket(constHostname, constPort)
+			<span style="color:#0000FF;font-weight: bold">If</span> status &lt;&gt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;RabbitMQConnectionMBS:</span> <span style="color:#6500FE">Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">open</span> <span style="color:#6500FE">TCP</span> <span style="color:#6500FE">socket&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.LoginPlain&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> r <span style="color:#0000FF;font-weight: bold">As</span> RabbitMQRPCReplyMBS = conn.LoginPlain(<span style="color:#6500FE">&quot;/&quot;</span>, <span style="color:#326598">0</span>, <span style="color:#326598">131072</span>, <span style="color:#326598">0</span>, constLoginUsername, constLoginPassword)
+			<span style="color:#0000FF;font-weight: bold">If</span> Failed(r) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.ChannelOpen&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">Call</span> conn.ChannelOpen(constChannel)
+			r = conn.RPCReply
+			<span style="color:#0000FF;font-weight: bold">If</span> Failed(r) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.QueueDeclare&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> QueueDeclareResult <span style="color:#0000FF;font-weight: bold">As</span> Dictionary = conn.QueueDeclare(constChannel, <span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#0000FF;font-weight: bold">true</span>, <span style="color:#0000FF;font-weight: bold">true</span>, <span style="color:#0000FF;font-weight: bold">nil</span>)
+			r = conn.RPCReply
+			<span style="color:#0000FF;font-weight: bold">If</span> Failed(r) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> sReplyQueueName <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = QueueDeclareResult.Value(<span style="color:#6500FE">&quot;queue&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">If</span> sReplyQueueName.Len = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">Then</span> Break <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">failed?</span>
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;</span>  <span style="color:#6500FE">-&gt;</span> <span style="color:#6500FE">Queuename:</span> <span style="color:#6500FE">&quot;</span>+ sReplyQueueName)
+			
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> props <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> RabbitMQBasicPropertiesMBS
+			props.Flags = props.kFlagContentType <span style="color:#0000FF;font-weight: bold">Or</span> props.kFlagDeliveryMode <span style="color:#0000FF;font-weight: bold">or</span> props.kFlagContentEncoding <span style="color:#0000FF;font-weight: bold">or</span> props.kFlagCorrelationId <span style="color:#0000FF;font-weight: bold">or</span> props.kFlagReplyTo
+			props.ContentType = <span style="color:#6500FE">&quot;text/plain&quot;</span>
+			props.ContentEncoding = <span style="color:#6500FE">&quot;UTF8&quot;</span>
+			props.DeliveryMode = props.kDeliveryPersistent
+			props.CorrelationId = sGuid
+			props.ReplyTo = sReplyQueueName
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">props.CorrelationId:</span> <span style="color:#6500FE">&quot;</span> + props.CorrelationId)
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">MessageBody:</span> <span style="color:#6500FE">&quot;</span> + Str(iRandom))
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> messagebody <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = Str(iRandom)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> ErrorCode <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = conn.BasicPublish(constChannel, <span style="color:#6500FE">&quot;&quot;</span>, constQueue_RPC, <span style="color:#0000FF;font-weight: bold">False</span>, <span style="color:#0000FF;font-weight: bold">false</span>, props, messagebody)
+			<span style="color:#0000FF;font-weight: bold">If</span> ErrorCode &lt;&gt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.BasicPublish:</span> <span style="color:#6500FE">Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">publish.&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">Else</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.BasicPublish:</span> <span style="color:#6500FE">sent&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">Const</span> consumerTag = <span style="color:#6500FE">&quot;&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">Const</span> noLocal = <span style="color:#0000FF;font-weight: bold">False</span>
+			<span style="color:#0000FF;font-weight: bold">Const</span> noAck = <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> exclusive = <span style="color:#0000FF;font-weight: bold">false</span>
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.BasicConsume&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> BasicConsumeResult <span style="color:#0000FF;font-weight: bold">As</span> Dictionary = conn.BasicConsume(constChannel, sReplyQueueName, consumerTag, noLocal, noAck, exclusive, <span style="color:#0000FF;font-weight: bold">nil</span>)
+			<span style="color:#7F0000;text-style:italic">&#39;*</span> <span style="color:#7F0000;text-style:italic">Synchonously</span> <span style="color:#7F0000;text-style:italic">polls</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">broker</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">queue,</span> <span style="color:#7F0000;text-style:italic">and</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span> <span style="color:#7F0000;text-style:italic">retrieves</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">queue.</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span> <span style="color:#7F0000;text-style:italic">\param</span> <span style="color:#7F0000;text-style:italic">[in]</span> <span style="color:#7F0000;text-style:italic">state</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">connection</span> <span style="color:#7F0000;text-style:italic">object</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span> <span style="color:#7F0000;text-style:italic">\param</span> <span style="color:#7F0000;text-style:italic">[in]</span> <span style="color:#7F0000;text-style:italic">channel</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">channel</span> <span style="color:#7F0000;text-style:italic">identifier</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">use</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span> <span style="color:#7F0000;text-style:italic">\param</span> <span style="color:#7F0000;text-style:italic">[in]</span> <span style="color:#7F0000;text-style:italic">queue</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">queue</span> <span style="color:#7F0000;text-style:italic">name</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">retrieve</span> <span style="color:#7F0000;text-style:italic">from</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span> <span style="color:#7F0000;text-style:italic">\param</span> <span style="color:#7F0000;text-style:italic">[in]</span> <span style="color:#7F0000;text-style:italic">no_ack</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">true</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">automatically</span> <span style="color:#7F0000;text-style:italic">ack&#39;ed</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span>              <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">false</span> <span style="color:#7F0000;text-style:italic">amqp_basic_ack</span> <span style="color:#7F0000;text-style:italic">should</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">called</span> <span style="color:#7F0000;text-style:italic">once</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">message</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span>              <span style="color:#7F0000;text-style:italic">retrieved</span> <span style="color:#7F0000;text-style:italic">has</span> <span style="color:#7F0000;text-style:italic">been</span> <span style="color:#7F0000;text-style:italic">processed</span>
+			<span style="color:#7F0000;text-style:italic">&#39;*</span> <span style="color:#7F0000;text-style:italic">\return</span> <span style="color:#7F0000;text-style:italic">amqp_rpc_reply</span> <span style="color:#7F0000;text-style:italic">indicating</span> <span style="color:#7F0000;text-style:italic">success</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">failure</span>
+			
+			r = conn.RPCReply
+			<span style="color:#0000FF;font-weight: bold">If</span> Failed(r) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">listening...&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> frame <span style="color:#0000FF;font-weight: bold">as</span> RabbitMQFrameMBS
+			
+			<span style="color:#0000FF;font-weight: bold">While</span> <span style="color:#0000FF;font-weight: bold">True</span>
+				<span style="color:#0000FF;font-weight: bold">Dim</span> res <span style="color:#0000FF;font-weight: bold">As</span> RabbitMQRPCReplyMBS
+				<span style="color:#0000FF;font-weight: bold">dim</span> envelope <span style="color:#0000FF;font-weight: bold">as</span> RabbitMQEnvelopeMBS
+				
+				res = conn.ConsumeMessage(envelope, <span style="color:#006532">0.01</span>)
+				
+				<span style="color:#0000FF;font-weight: bold">If</span> res.Type = res.ResponseTypeNormal <span style="color:#0000FF;font-weight: bold">Then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">got</span> <span style="color:#7F0000;text-style:italic">data</span>
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;&quot;</span>)
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.ConsumeMessage</span> <span style="color:#6500FE">-&gt;</span> <span style="color:#6500FE">got</span> <span style="color:#6500FE">data&quot;</span>)
+					
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.DeliveryTag:</span> <span style="color:#6500FE">&quot;</span>+Str(envelope.DeliveryTag))
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.Exchange:</span> <span style="color:#6500FE">&quot;</span>+envelope.Exchange)
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.Routingkey:</span> <span style="color:#6500FE">&quot;</span>+envelope.Routingkey)
+					
+					<span style="color:#0000FF;font-weight: bold">Dim</span> properties <span style="color:#0000FF;font-weight: bold">As</span> RabbitMQBasicPropertiesMBS = envelope.message.properties
+					
+					<span style="color:#7F0000;text-style:italic">&#39;Dim</span> <span style="color:#7F0000;text-style:italic">Flags</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Integer</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">properties.flags</span>
+					<span style="color:#7F0000;text-style:italic">&#39;If</span> <span style="color:#7F0000;text-style:italic">BitwiseAnd(Flags,</span> <span style="color:#7F0000;text-style:italic">RabbitMQBasicPropertiesMBS.kFlagContentType)</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">RabbitMQBasicPropertiesMBS.kFlagContentType</span> <span style="color:#7F0000;text-style:italic">Then</span>
+					
+					
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.Message.Properties.AppId:</span> <span style="color:#6500FE">&quot;</span> + properties.AppId)
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.Message.Properties.ContentType:</span> <span style="color:#6500FE">&quot;</span> + properties.ContentType)
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.Message.Properties.ContentEncoding:</span> <span style="color:#6500FE">&quot;</span> + properties.ContentEncoding)
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.Message.Properties.Expiration:</span> <span style="color:#6500FE">&quot;</span> + properties.Expiration)
+					
+					<span style="color:#0000FF;font-weight: bold">Dim</span> BodyString <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = envelope.Message.Body
+					<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;Envelope.Message.Body:</span> <span style="color:#6500FE">&quot;</span> + BodyString)
+					
+					<span style="color:#0000FF;font-weight: bold">exit</span> <span style="color:#7F0000;text-style:italic">&#39;Loop</span>
+					
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					
+					<span style="color:#0000FF;font-weight: bold">If</span> res.ResponseTypeLibraryException = res.Type <span style="color:#0000FF;font-weight: bold">And</span> conn.kStatusUnexpectedState = res.LibraryError <span style="color:#0000FF;font-weight: bold">Then</span>
+						
+						<span style="color:#0000FF;font-weight: bold">Dim</span> ir <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = conn.SimpleWaitFrame(frame)
+						
+						<span style="color:#0000FF;font-weight: bold">If</span> conn.kStatusOk &lt;&gt; ir <span style="color:#0000FF;font-weight: bold">Then</span>
+							<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;conn.kStatusOk</span> <span style="color:#6500FE">&lt;&gt;</span> <span style="color:#6500FE">ir&quot;</span>)
+							<span style="color:#0000FF;font-weight: bold">Return</span>
+						<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+						
+						<span style="color:#0000FF;font-weight: bold">If</span> frame.kFrameMethod = frame.FrameType <span style="color:#0000FF;font-weight: bold">Then</span>
+							<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">Case</span> frame.MethodID
+							<span style="color:#0000FF;font-weight: bold">Case</span> frame.kBasicAckMethod
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">If</span> <span style="color:#7F0000;text-style:italic">we&#39;ve</span> <span style="color:#7F0000;text-style:italic">turned</span> <span style="color:#7F0000;text-style:italic">publisher</span> <span style="color:#7F0000;text-style:italic">confirms</span> <span style="color:#7F0000;text-style:italic">on,</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">we&#39;ve</span> <span style="color:#7F0000;text-style:italic">published</span> <span style="color:#7F0000;text-style:italic">a</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">here</span> <span style="color:#7F0000;text-style:italic">Is</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">being</span> <span style="color:#7F0000;text-style:italic">confirmed.</span>
+								<span style="color:#7F0000;text-style:italic">//*/</span>
+								
+							<span style="color:#0000FF;font-weight: bold">Case</span> frame.kBasicReturnMethod
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">If</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">published</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">couldn&#39;t</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">routed</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mandatory</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">flag</span> <span style="color:#7F0000;text-style:italic">was</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">Is</span> <span style="color:#7F0000;text-style:italic">what</span> <span style="color:#7F0000;text-style:italic">would</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">returned.</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">message</span> <span style="color:#7F0000;text-style:italic">Then</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">needs</span> <span style="color:#7F0000;text-style:italic">To</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">read.</span>
+								<span style="color:#7F0000;text-style:italic">//*/</span>
+								
+								<span style="color:#0000FF;font-weight: bold">Dim</span> message <span style="color:#0000FF;font-weight: bold">As</span> RabbitMQMessageMBS
+								
+								res = conn.ReadMessage(frame.channel, message)
+								<span style="color:#0000FF;font-weight: bold">If</span> res.ResponseTypeNormal &lt;&gt; res.type <span style="color:#0000FF;font-weight: bold">Then</span>
+									<span style="color:#0000FF;font-weight: bold">Return</span>
+								<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+								
+							<span style="color:#0000FF;font-weight: bold">Case</span> frame.kChannelCloseMethod
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">channel.close</span> <span style="color:#7F0000;text-style:italic">method</span> <span style="color:#7F0000;text-style:italic">happens</span> <span style="color:#7F0000;text-style:italic">when</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">channel</span> <span style="color:#7F0000;text-style:italic">Exception</span> <span style="color:#7F0000;text-style:italic">occurs,</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">happen</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">publishing</span> <span style="color:#7F0000;text-style:italic">To</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">exchange</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">doesn&#39;t</span> <span style="color:#7F0000;text-style:italic">exist</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">For</span> <span style="color:#7F0000;text-style:italic">example.</span>
+								<span style="color:#7F0000;text-style:italic">//*</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">In</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">Case</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">would</span> <span style="color:#7F0000;text-style:italic">need</span> <span style="color:#7F0000;text-style:italic">To</span> <span style="color:#7F0000;text-style:italic">open</span> <span style="color:#7F0000;text-style:italic">another</span> <span style="color:#7F0000;text-style:italic">channel</span> <span style="color:#7F0000;text-style:italic">redeclare</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">any</span> <span style="color:#7F0000;text-style:italic">queues</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">were</span> <span style="color:#7F0000;text-style:italic">declared</span> <span style="color:#7F0000;text-style:italic">Auto-delete,</span> <span style="color:#7F0000;text-style:italic">And</span> <span style="color:#7F0000;text-style:italic">restart</span> <span style="color:#7F0000;text-style:italic">any</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">consumers</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">were</span> <span style="color:#7F0000;text-style:italic">attached</span> <span style="color:#7F0000;text-style:italic">To</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">previous</span> <span style="color:#7F0000;text-style:italic">channel.</span>
+								<span style="color:#7F0000;text-style:italic">//*/</span>
+								<span style="color:#0000FF;font-weight: bold">return</span>
+								
+							<span style="color:#0000FF;font-weight: bold">Case</span> frame.kConnectionCloseMethod
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">connection.close</span> <span style="color:#7F0000;text-style:italic">method</span> <span style="color:#7F0000;text-style:italic">happens</span> <span style="color:#7F0000;text-style:italic">when</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">connection</span> <span style="color:#7F0000;text-style:italic">Exception</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">occurs,</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">happen</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">trying</span> <span style="color:#7F0000;text-style:italic">To</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">channel</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">isn&#39;t</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">open</span> <span style="color:#7F0000;text-style:italic">For</span> <span style="color:#7F0000;text-style:italic">example.</span>
+								<span style="color:#7F0000;text-style:italic">//*</span>
+								<span style="color:#7F0000;text-style:italic">//*</span> <span style="color:#7F0000;text-style:italic">In</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">Case</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">whole</span> <span style="color:#7F0000;text-style:italic">connection</span> <span style="color:#7F0000;text-style:italic">must</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">restarted.</span>
+								<span style="color:#7F0000;text-style:italic">//*/</span>
+								<span style="color:#0000FF;font-weight: bold">return</span>
+								
+							<span style="color:#0000FF;font-weight: bold">Else</span>
+								
+								<span style="color:#0000FF;font-weight: bold">me</span>.Output <span style="color:#6500FE">&quot;An</span> <span style="color:#6500FE">unexpected</span> <span style="color:#6500FE">method</span> <span style="color:#6500FE">was</span> <span style="color:#6500FE">received:</span> <span style="color:#6500FE">&quot;</span>+str(frame.MethodID)
+								
+								<span style="color:#0000FF;font-weight: bold">Return</span>
+							<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+						<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+					<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				app.DoEvents(<span style="color:#326598">100</span>)
+			<span style="color:#0000FF;font-weight: bold">wend</span>
+			
+			
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.ChannelClose&quot;</span>)
+			r = conn.ChannelClose(constChannel, RabbitMQRPCReplyMBS.kReplySuccess)
+			<span style="color:#0000FF;font-weight: bold">If</span> Failed(r) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Output(<span style="color:#6500FE">&quot;-</span> <span style="color:#6500FE">conn.ConnectionClose&quot;</span>)
+			r = conn.ConnectionClose(RabbitMQRPCReplyMBS.kReplySuccess)
+			<span style="color:#0000FF;font-weight: bold">If</span> Failed(r) <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Function</span> WaitKeyInput(psOutput <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = <span style="color:#6500FE">&quot;Weiter</span> <span style="color:#6500FE">mit</span> <span style="color:#6500FE">Return&quot;</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> (psOutput &lt;&gt; <span style="color:#6500FE">&quot;&quot;</span>) <span style="color:#0000FF;font-weight: bold">then</span>
+				StdOut.Write(psOutput)
+				stdout.Flush()
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> sResult <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> m <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = Microseconds + <span style="color:#326598">100000</span> <span style="color:#7F0000;text-style:italic">&#39;discard</span> <span style="color:#7F0000;text-style:italic">any</span> <span style="color:#7F0000;text-style:italic">&quot;wait-to-be-read</span> <span style="color:#7F0000;text-style:italic">input&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">while</span> (Microseconds &lt; m)
+				sResult = StdIn.Read(<span style="color:#326598">1</span>)
+			<span style="color:#0000FF;font-weight: bold">wend</span>
+			
+			<span style="color:#0000FF;font-weight: bold">return</span> sResult
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Note">		Note <span style="color:#6500FE">&quot;About&quot;</span>
+<div class="RB_Comment">			RabbitMQ Tutorial project provided by J√ºrg Otter</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> AppRandom <span style="color:#0000FF;font-weight: bold">As</span> Random</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> eiGuidNr <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsrabbitmqplugin.html">MBS RabbitMQ Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-rabbitmq-rabbitmqtutorial-rabbitmqtutorial">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

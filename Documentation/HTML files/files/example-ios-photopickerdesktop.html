@@ -1,0 +1,229 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /iOS/Photo Picker Desktop</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /iOS/Photo Picker Desktop</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/iOS/Photo Picker Desktop</A></b><br>
+<B>Function:</B> 
+<br>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /iOS/Photo Picker Desktop<BR>
+This example is the version from Sat, 24th Mar 2023.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Photo</span> <span style="color:#6500FE">Picker</span> <span style="color:#6500FE">Desktop.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MainWindow <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PickButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PickButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">Dim</span> configuration <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> PHPickerConfigurationMBS
+				
+				configuration.Filter = PHPickerFilterMBS.imagesFilter
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">zero</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">unlimited</span>
+				configuration.SelectionLimit = <span style="color:#326598">1</span>
+				
+				configuration.Selection = configuration.SelectionDefault
+				configuration.PreferredAssetRepresentationMode = configuration.AssetRepresentationModeCompatible
+				
+				picker = <span style="color:#0000FF;font-weight: bold">New</span> PHPickerViewController(configuration)
+				picker.ParentWindow = <span style="color:#0000FF;font-weight: bold">Self</span>
+				picker.Present
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Canvas1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Canvas</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Canvas1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Canvas</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Paint(g <span style="color:#0000FF;font-weight: bold">As</span> Graphics, areas() <span style="color:#0000FF;font-weight: bold">As</span> REALbasic.Rect)
+				<span style="color:#0000FF;font-weight: bold">If</span> pic &lt;&gt; <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+					
+					<span style="color:#0000FF;font-weight: bold">Dim</span> faktor <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = Min( g.Height / Pic.Height, g.Width / Pic.Width)
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Calculate</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">size</span>
+					<span style="color:#0000FF;font-weight: bold">Dim</span> w <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = Pic.Width * faktor
+					<span style="color:#0000FF;font-weight: bold">Dim</span> h <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = Pic.Height * faktor
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">draw</span> <span style="color:#7F0000;text-style:italic">picture</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">size</span>
+					g.DrawPicture Pic, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, w, h, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, Pic.Width, Pic.Height
+					
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> LoadFileRepresentationCompleted(File <span style="color:#0000FF;font-weight: bold">as</span> FolderItem, error <span style="color:#0000FF;font-weight: bold">as</span> NSErrorMBS, result <span style="color:#0000FF;font-weight: bold">as</span> PHPickerResultMBS)
+			System.DebugLog CurrentMethodName
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> error &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				MessageBox error.LocalizedDescription
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> file &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				System.DebugLog file.NativePath
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">normal</span> <span style="color:#7F0000;text-style:italic">opening</span>
+				<span style="color:#0000FF">#if</span> MBS.HasMacCIPlugin = <span style="color:#0000FF;font-weight: bold">false</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">load</span> <span style="color:#7F0000;text-style:italic">directly.</span> <span style="color:#7F0000;text-style:italic">Picture</span> <span style="color:#7F0000;text-style:italic">may</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">rotated</span>
+					pic = Picture.Open(file)
+					Canvas1.Refresh
+					
+				<span style="color:#0000FF">#else</span>
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">CIImage</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">rotate</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">always</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">top</span> <span style="color:#7F0000;text-style:italic">left</span> <span style="color:#7F0000;text-style:italic">orientation</span>
+					<span style="color:#0000FF;font-weight: bold">Dim</span> ciImage <span style="color:#0000FF;font-weight: bold">As</span> CIImageMBS = <span style="color:#0000FF;font-weight: bold">New</span> CIImageMBS(file)
+					<span style="color:#0000FF;font-weight: bold">Dim</span> properties <span style="color:#0000FF;font-weight: bold">As</span> Dictionary = ciImage.properties
+					<span style="color:#0000FF;font-weight: bold">If</span> properties.HasKey(<span style="color:#6500FE">&quot;Orientation&quot;</span>) <span style="color:#0000FF;font-weight: bold">Then</span>
+						<span style="color:#0000FF;font-weight: bold">Dim</span> orientation <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = ciImage.properties.Value(<span style="color:#6500FE">&quot;Orientation&quot;</span>)
+						ciImage = ciImage.imageByApplyingOrientation(orientation)
+					<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+					
+					<span style="color:#0000FF;font-weight: bold">Dim</span> cgPic <span style="color:#0000FF;font-weight: bold">As</span> CGImageMBS = ciImage.CreateCGImage
+					pic = cgPic.Picture
+					Canvas1.Refresh
+					
+				<span style="color:#0000FF">#endif</span>
+				
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> PickerFinished(results() <span style="color:#0000FF;font-weight: bold">as</span> PHPickerResultMBS)
+			System.DebugLog CurrentMethodName
+			
+			<span style="color:#0000FF;font-weight: bold">self</span>.Results = results
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> results.Count = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> result <span style="color:#0000FF;font-weight: bold">as</span> PHPickerResultMBS = results(<span style="color:#326598">0</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> registeredTypeIdentifiers() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = result.TypeIdentifiers
+			
+			System.DebugLog <span style="color:#6500FE">&quot;Types:</span> <span style="color:#6500FE">&quot;</span>+<span style="color:#0000FF;font-weight: bold">String</span>.FromArray(registeredTypeIdentifiers, EndOfLine)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">HEIC</span> <span style="color:#7F0000;text-style:italic">available?</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> registeredTypeIdentifiers.IndexOf(<span style="color:#6500FE">&quot;public.heic&quot;</span>) &gt;= <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				result.loadFileRepresentationForTypeIdentifier(<span style="color:#6500FE">&quot;public.heic&quot;</span>, WeakAddressOf LoadFileRepresentationCompleted)
+			<span style="color:#0000FF;font-weight: bold">elseif</span> registeredTypeIdentifiers.IndexOf(<span style="color:#6500FE">&quot;public.png&quot;</span>) &gt;= <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">try</span> <span style="color:#7F0000;text-style:italic">png</span>
+				<span style="color:#0000FF;font-weight: bold">const</span> identifier = <span style="color:#6500FE">&quot;public.png&quot;</span>
+				result.loadFileRepresentationForTypeIdentifier(identifier, WeakAddressOf LoadFileRepresentationCompleted)
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">try</span> <span style="color:#7F0000;text-style:italic">jpeg</span>
+				<span style="color:#0000FF;font-weight: bold">const</span> identifier = <span style="color:#6500FE">&quot;public.jpeg&quot;</span>
+				result.loadFileRepresentationForTypeIdentifier(identifier, WeakAddressOf LoadFileRepresentationCompleted)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Picker <span style="color:#0000FF;font-weight: bold">As</span> PHPickerViewController</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Results() <span style="color:#0000FF;font-weight: bold">As</span> PHPickerResultMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> pic <span style="color:#0000FF;font-weight: bold">As</span> Picture</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MainMenuBar</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator2 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">		MenuItem HelpMenu = <span style="color:#6500FE">&quot;&amp;Help&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> PHPickerViewController <span style="color:#0000FF;font-weight: bold">Inherits</span> PHPickerViewControllerMBS</div>
+<div class="RB_Code">		ComputedProperty ParentWindow <span style="color:#0000FF;font-weight: bold">As</span> MainWindow</div>
+<div class="RB_Code">			<span style="color:#0000FF;font-weight: bold">Sub</span> <span style="color:#0000FF;font-weight: bold">Set</span>()
+				<span style="color:#0000FF;font-weight: bold">if</span> value = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					mParentWindow = <span style="color:#0000FF;font-weight: bold">Nil</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					mParentWindow = <span style="color:#0000FF;font-weight: bold">new</span> WeakRef(value)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Set</span></div>
+<div class="RB_Code">			<span style="color:#0000FF;font-weight: bold">Sub</span> <span style="color:#0000FF;font-weight: bold">Get</span>()
+				<span style="color:#0000FF;font-weight: bold">If</span> mParentWindow &lt;&gt; <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+					<span style="color:#0000FF;font-weight: bold">Dim</span> v <span style="color:#0000FF;font-weight: bold">As</span> Variant = mParentWindow.Value
+					<span style="color:#0000FF;font-weight: bold">return</span> v
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Get</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> ComputedProperty</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> didFinishPicking(Result() <span style="color:#0000FF;font-weight: bold">as</span> PHPickerResultMBS)
+			ParentWindow.PickerFinished result
+			
+			<span style="color:#0000FF;font-weight: bold">self</span>.Dismiss
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> mParentWindow <span style="color:#0000FF;font-weight: bold">As</span> weakRef</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-ios-photopickerios.html">/iOS/Photo Picker iOS</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsiosplugin.html">MBS iOS Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-ios-photopickerdesktop">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

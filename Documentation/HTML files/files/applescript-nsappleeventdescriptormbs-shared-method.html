@@ -1,0 +1,1042 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - NSAppleEventDescriptorMBS shared methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="NSAppleEventDescriptorMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">NSAppleEventDescriptorMBS shared methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a> class.  </p>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="1">appleEventWithEventClass(eventClass as string, eventID as string, targetDescriptor as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A>, returnID as Int16, transactionID as UInt32) as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a descriptor that represents an Apple event, initialized according to the specified information.<BR>
+<B>Notes:</B> 
+<BR>
+eventClass: The event class to be set in the returned descriptor.<BR>
+eventID: The event ID to be set in the returned descriptor.<BR>
+addressDescriptor: A pointer to a descriptor that identifies the target application for the Apple event. Passing nil results in an Apple event descriptor that has no keyAddressAttr attribute (it is valid for an Apple event to have no target address attribute).<BR>
+returnID: The return ID to be set in the returned descriptor. If you pass a value of kAutoGenerateReturnID, the Apple Event Manager assigns the created Apple event a return ID that is unique to the current session. If you pass any other value, the Apple Event Manager assigns that value for the ID.<BR>
+transactionID: The transaction ID to be set in the returned descriptor. A transaction is a sequence of Apple events that are sent back and forth between client and server applications, beginning with the client&#39;s initial request for a service. All Apple events that are part of a transaction must have the same transaction ID. You can specify kAnyTransactionID if the Apple event is not one of a series of interdependent Apple events.<BR>
+<BR>
+Returns a descriptor for an Apple event, initialized according to the specified parameter values, or nil if an error occurs.<BR>
+<BR>
+Constants such as kAutoGenerateReturnID and kAnyTransactionID are defined in AE.framework, a subframework of ApplicationServices.framework.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="2">currentProcessDescriptor as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion162.shtml" class=version>16.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Create and return an application address descriptor using the current process.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A> = <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A>.currentProcessDescriptor<br />MsgBox <span style="color: #6600FE;">&quot;Process ID: &quot;</span>+str(d.processIDValue)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+The result is suitable for use as the &quot;targetDescriptor&quot; parameter of appleEventWithEventClass.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="3">descriptorWithAlias(item as folderitem) as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a descriptor initialized with type typeAlias that stores the specified folderitem reference.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #800000;">// pick a folderitem</span><br /><span style="color: #0000FF;">dim</span> folder <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Desktop<br /><br /><span style="color: #800000;">// create value with file reference</span><br /><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A> = <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A>.descriptorWithAlias(folder)<br /><br /><span style="color: #800000;">// convert back to FolderItem</span><br /><span style="color: #0000FF;">dim</span> file <span style="color: #0000FF;">as</span> FolderItem = d.FSRefValue<br /><br /><span style="color: #800000;">// show path</span><br />MsgBox file.NativePath</span>
+</pre>
+</div>
+<B>Notes:</B> 
+This type can be converted internally to FSRef descriptor.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="4">descriptorWithApplicationURL(fileURL as string) as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion162.shtml" class=version>16.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Create and return an application address descriptor using the file URL for an application.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Applications.Child(<span style="color: #6600FE;">&quot;Stickies.app&quot;</span>)<br /><span style="color: #0000FF;">dim</span> u <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = f.URLPath<br /><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A> = <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A>.descriptorWithApplicationURL(u)<br />MsgBox d.applicationURLValue</span>
+</pre>
+</div>
+<B>Notes:</B> 
+The result is suitable for use as the &quot;targetDescriptor&quot; parameter of appleEventWithEventClass.<BR>
+<p>See also:<ul>
+<li><A href="applescript-nsappleeventdescriptormbs-shared-method.html#5">descriptorWithApplicationURL(item as folderitem) as NSAppleEventDescriptorMBS</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="5">descriptorWithApplicationURL(item as folderitem) as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion162.shtml" class=version>16.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Create and return an application address descriptor using the folderitem for an application.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Applications.Child(<span style="color: #6600FE;">&quot;Stickies.app&quot;</span>)<br /><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A> = <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A>.descriptorWithApplicationURL(f)<br />MsgBox d.applicationURLValue</span>
+</pre>
+</div>
+<B>Notes:</B> 
+The result is suitable for use as the &quot;targetDescriptor&quot; parameter of appleEventWithEventClass.<BR>
+<p>See also:<ul>
+<li><A href="applescript-nsappleeventdescriptormbs-shared-method.html#4">descriptorWithApplicationURL(fileURL as string) as NSAppleEventDescriptorMBS</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="6">descriptorWithBoolean(value as Boolean) as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a descriptor initialized with type typeBoolean that stores the specified Boolean value.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> a <span style="color: #0000FF;">as</span> <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A><br />a = <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A>.descriptorWithBoolean(<span style="color: #0000FF;">true</span>)<br />MsgBox a.stringValue <span style="color: #800000;">// shows true</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+Returns a descriptor with the specified Boolean value, or nil if an error occurs.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="7">descriptorWithBundleIdentifier(BundleID as String) as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion162.shtml" class=version>16.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Create and return an application address descriptor using the bundle identifier.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A> = <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A>.descriptorWithBundleIdentifier(<span style="color: #6600FE;">&quot;com.apple.iCal&quot;</span>)<br />MsgBox d.bundleIDValue</span>
+</pre>
+</div>
+<B>Notes:</B> 
+The result is suitable for use as the &quot;targetDescriptor&quot; parameter of appleEventWithEventClass.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-maccocoa-applescript-determinepermissiontoautomatetarget.html">/MacCocoa/AppleScript/DeterminePermissionToAutomateTarget</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="8">descriptorWithCurrentProcessSerialNumber as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion160.shtml" class=version>16.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates descriptor with current process serial number.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> n <span style="color: #0000FF;">as</span> <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A> = <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A>.descriptorWithCurrentProcessSerialNumber<br />MsgBox n.stringValue <span style="color: #800000;">// shows app name</span></span>
+</pre>
+</div>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="9">descriptorWithDate(value as date) as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a descriptor with a date value.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> date<br /><span style="color: #0000FF;">dim</span> n <span style="color: #0000FF;">as</span> <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A> = <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A>.descriptorWithDate(d)<br /><br /><span style="color: #0000FF;">dim</span> x <span style="color: #0000FF;">as</span> date = n.dateValue<br />MsgBox x.LongDate+<span style="color: #6600FE;">&quot; &quot;</span>+x.LongTime <span style="color: #800000;">// shows today</span></span>
+</pre>
+</div>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="10">descriptorWithDateTime(value as dateTime) as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion205.shtml" class=version>20.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a descriptor with a date value.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="11">descriptorWithDescriptorType(descriptorType as string, data as memoryblock) as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a descriptor initialized with the specified event type that stores the specified data.<BR>
+<B>Notes:</B> 
+<BR>
+descriptorType: The descriptor type to be set in the returned descriptor.<BR>
+data: The data, as a memoryblock, to be set in the returned descriptor.<BR>
+<BR>
+Returns a descriptor with the specified type and data, or nil if an error occurs.<BR>
+<BR>
+You can use this method to create a descriptor that you can build into a complete Apple event by calling methods such as setAttributeDescriptor, setDescriptor, and setParamDescriptor.<BR>
+<p>See also:<ul>
+<li><A href="applescript-nsappleeventdescriptormbs-shared-method.html#12">descriptorWithDescriptorType(descriptorType as string, data as memoryblock, offset as UInt32, length as UInt32) as NSAppleEventDescriptorMBS</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="12">descriptorWithDescriptorType(descriptorType as string, data as memoryblock, offset as UInt32, length as UInt32) as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a descriptor initialized with the specified event type that stores the specified data (from a series of bytes).<BR>
+<B>Notes:</B> 
+<BR>
+descriptorType: The descriptor type to be set in the returned descriptor.<BR>
+bytes: The data, as a sequence of bytes, to be set in the returned descriptor.<BR>
+offset: offset in memoryblock.<BR>
+length: The length, in bytes, of the data to be set in the returned descriptor.<BR>
+<BR>
+Returns a descriptor with the specified type and data, or nil if an error occurs.<BR>
+<p>See also:<ul>
+<li><A href="applescript-nsappleeventdescriptormbs-shared-method.html#11">descriptorWithDescriptorType(descriptorType as string, data as memoryblock) as NSAppleEventDescriptorMBS</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="13">descriptorWithDouble(value as Double) as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a descriptor with a double value.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> a <span style="color: #0000FF;">as</span> <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A><br />a = <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A>.descriptorWithDouble(<span style="color: #336698;">5</span>)<br />MsgBox a.stringValue <span style="color: #800000;">// shows 5</span></span>
+</pre>
+</div>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="14">descriptorWithEnumCode(enumerator as string) as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a descriptor initialized with type typeEnumerated that stores the specified enumerator data type value.<BR>
+<B>Notes:</B> 
+<BR>
+enumerator: A type code that identifies the type of enumerated data to be stored in the returned descriptor.<BR>
+<BR>
+Returns a descriptor with the specified enumerator data type value, or nil if an error occurs.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="15">descriptorWithFileURL(fileURL as string) as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion162.shtml" class=version>16.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a descriptor for a file URL.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Applications.Child(<span style="color: #6600FE;">&quot;Stickies.app&quot;</span>)<br /><span style="color: #0000FF;">dim</span> u <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = f.URLPath<br /><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A> = <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A>.descriptorWithFileURL(u)<br />MsgBox d.fileURLValue</span>
+</pre>
+</div>
+<p>See also:<ul>
+<li><A href="applescript-nsappleeventdescriptormbs-shared-method.html#16">descriptorWithFileURL(item as folderitem) as NSAppleEventDescriptorMBS</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-maccontrols-listboxandtableviewdemos-nsoutlineview-diskbrowser.html">/MacControls/Listbox and TableView Demos/NSOutlineView/Disk Browser</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="16">descriptorWithFileURL(item as folderitem) as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion162.shtml" class=version>16.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a descriptor for a file URL based on the folderitem.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Applications.Child(<span style="color: #6600FE;">&quot;Stickies.app&quot;</span>)<br /><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A> = <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A>.descriptorWithFileURL(f)<br />MsgBox d.fileURLValue</span>
+</pre>
+</div>
+<p>See also:<ul>
+<li><A href="applescript-nsappleeventdescriptormbs-shared-method.html#15">descriptorWithFileURL(fileURL as string) as NSAppleEventDescriptorMBS</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="17">descriptorWithInt16(value as Int16) as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a descriptor initialized with Apple event type typeSInt16 that stores the specified integer value.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> a <span style="color: #0000FF;">as</span> <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A><br /><br />a = <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A>.descriptorWithInt16(<span style="color: #336698;">5</span>)<br /><br />MsgBox a.stringValue <span style="color: #800000;">// shows 5</span></span>
+</pre>
+</div>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="18">descriptorWithInt32(value as Int32) as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a descriptor initialized with Apple event type typeSInt32 that stores the specified integer value.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> a <span style="color: #0000FF;">as</span> <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A><br />a = <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A>.descriptorWithInt32(<span style="color: #336698;">5</span>)<br /><br />MsgBox a.stringValue <span style="color: #800000;">// shows 5</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+Returns a descriptor containing the specified integer value, or nil if an error occurs.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="19">descriptorWithProcessIdentifier(PID as Integer) as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion162.shtml" class=version>16.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Create and return an application address descriptor using the process identifier.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #800000;">// get my PID</span><br /><span style="color: #0000FF;">dim</span> p <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-processmbs.html">ProcessMBS</A><br />p.GetCurrentProcess<br /><span style="color: #0000FF;">dim</span> pid <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = p.ProcessID<br /><br /><span style="color: #800000;">// make process ID descriptor</span><br /><span style="color: #0000FF;">dim</span> n <span style="color: #0000FF;">as</span> <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A> = <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A>.descriptorWithProcessIdentifier(pid)<br /><br /><span style="color: #800000;">// show it</span><br />MsgBox <span style="color: #6600FE;">&quot;ProcessID: &quot;</span>+str(n.processIDValue) + EndOfLine + n.stringValue</span>
+</pre>
+</div>
+<B>Notes:</B> 
+The result is suitable for use as the &quot;targetDescriptor&quot; parameter of appleEventWithEventClass.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="20">descriptorWithSingle(value as single) as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a descriptor with a single value.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> a <span style="color: #0000FF;">as</span> <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A><br />a = <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A>.descriptorWithSingle(<span style="color: #336698;">5</span>)<br />MsgBox a.stringValue <span style="color: #800000;">// shows 5</span></span>
+</pre>
+</div>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="21">descriptorWithString(text as string) as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a descriptor initialized with type typeUnicodeText that stores the text from the specified string.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> a <span style="color: #0000FF;">as</span> <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A><br />a = <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A>.descriptorWithString(<span style="color: #6600FE;">&quot;Hello World&quot;</span>)<br /><br />MsgBox a.stringValue</span>
+</pre>
+</div>
+<B>Notes:</B> 
+Returns a descriptor that contains the text from the specified string, or nil if an error occurs.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-maccocoa-applescript-nsapplescriptmbswithproperties.html">/MacCocoa/AppleScript/NSAppleScriptMBS with properties</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="22">descriptorWithTypeCode(typeCode as string) as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a descriptor initialized with type typeType that stores the specified type value.<BR>
+<B>Notes:</B> 
+<BR>
+typeCode: The type value to be set in the returned descriptor.<BR>
+<BR>
+Returns a descriptor with the specified type, or nil if an error occurs.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="23">descriptorWithUInt32(value as UInt32) as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a descriptor with an unsigned integer value.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> a <span style="color: #0000FF;">as</span> <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A><br />a = <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A>.descriptorWithUInt32(<span style="color: #336698;">5</span>)<br />MsgBox a.stringValue <span style="color: #800000;">// shows 5</span></span>
+</pre>
+</div>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="24">listDescriptor as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates and initializes an empty list descriptor.<BR>
+<B>Notes:</B> 
+<BR>
+Returns an empty list descriptor, or nil if an error occurs.<BR>
+<BR>
+A list descriptor is a descriptor whose data consists of one or more descriptors. You can add items to the list by calling insertDescriptor or remove them with removeDescriptorAtIndex.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-maccontrols-listboxandtableviewdemos-nsoutlineview-diskbrowser.html">/MacControls/Listbox and TableView Demos/NSOutlineView/Disk Browser</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="25">nullDescriptor as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates and initializes a descriptor with no parameter or attribute values set.<BR>
+<B>Notes:</B> 
+<BR>
+Returns a descriptor with no parameter or attribute values set, or nil if an error occurs.<BR>
+<BR>
+You don&#39;t typically call this method, as most NSAppleEventDescriptor instance methods can&#39;t be safely called on the returned empty descriptor.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</a>.<A name="26">recordDescriptor as <A href="class-nsappleeventdescriptormbs.html">NSAppleEventDescriptorMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-applescript.html" translate="no">Apple Script</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates and initializes a descriptor for an Apple event record whose data has yet to be set.<BR>
+<B>Notes:</B> 
+<BR>
+Returns an Apple event descriptor whose data has yet to be set, or nil if an error occurs.<BR>
+<BR>
+An Apple event record is a descriptor whose data is a set of descriptors keyed by four-character codes. You can add information to the descriptor with methods such as setAttributeDescriptor, setDescriptor, and setParamDescriptor.<BR>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=applescript-nsappleeventdescriptormbs-shared-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

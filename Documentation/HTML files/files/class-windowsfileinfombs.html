@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - WindowsFileInfoMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="WindowsFileInfoMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">WindowsFileInfoMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>WindowsFileInfoMBS class</H3>
+<div class="W">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-windows.html" translate="no">Windows</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion101.shtml" class=version>10.1</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+The window file information class.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> FolderItem = SelectFolder<br /><br /><span style="color: #0000FF;">if</span> f&lt;&gt;Nil <span style="color: #0000FF;">then</span><br />  <span style="color: #0000FF;">dim</span> w <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> WindowsFileInfoMBS(f)<br />  MsgBox str(w.FileIndex)<br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+The identifier that is stored in the FileIndex members is called the file ID. Support for file IDs is file system-specific. File IDs are not guaranteed to be unique over time, because file systems are free to reuse them. In some cases, the file ID for a file can change over time.<BR>
+<BR>
+In the FAT file system, the file ID is generated from the first cluster of the containing directory and the byte offset within the directory of the entry for the file. Some defragmentation products change this byte offset. (Windows in-box defragmentation does not.) Thus, a FAT file ID can change over time. Renaming a file in the FAT file system can also change the file ID, but only if the new file name is longer than the old one.<BR>
+<BR>
+In the NTFS file system, a file keeps the same file ID until it is deleted. You can replace one file with another file without changing the file ID by using the ReplaceFile function. However, the file ID of the replacement file, not the replaced file, is retained as the file ID of the resulting file.<BR>
+<BR>
+Not all file systems can record creation and last access time, and not all file systems record them in the same manner. For example, on a Windows FAT file system, create time has a resolution of 10 milliseconds, write time has a resolution of 2 seconds, and access time has a resolution of 1 day (the access date). On the NTFS file system, access time has a resolution of 1 hour. For more information, see File Times.<BR>
+</div>
+<ul>
+<LI>12 properties<UL>
+<li class="W">property <A href="windows-windowsfileinfombs-property.html">CreationDate</A> as Date</li>
+<li class="W">property <A href="windows-windowsfileinfombs-property.html#2">CreationTime</A> as UInt64</li>
+<li class="W">property <A href="windows-windowsfileinfombs-property.html#3">FileAttributes</A> as Integer</li>
+<li class="W">property <A href="windows-windowsfileinfombs-property.html#4">FileIndex</A> as UInt64</li>
+<li class="W">property <A href="windows-windowsfileinfombs-property.html#5">FileSize</A> as UInt64</li>
+<li class="W">property <A href="windows-windowsfileinfombs-property.html#6">LastAccessDate</A> as Date</li>
+<li class="W">property <A href="windows-windowsfileinfombs-property.html#7">LastAccessTime</A> as UInt64</li>
+<li class="W">property <A href="windows-windowsfileinfombs-property.html#8">LastWriteDate</A> as Date</li>
+<li class="W">property <A href="windows-windowsfileinfombs-property.html#9">LastWriteTime</A> as UInt64</li>
+<li class="W">property <A href="windows-windowsfileinfombs-property.html#10">NumberOfLinks</A> as Integer</li>
+<li class="W">property <A href="windows-windowsfileinfombs-property.html#11">Valid</A> as Boolean</li>
+<li class="W">property <A href="windows-windowsfileinfombs-property.html#12">VolumeSerialNumber</A> as Integer</li>
+</UL></LI>
+<LI>4 methods<UL>
+<li class="W">method <A href="windows-windowsfileinfombs-method.html">Constructor</A>(file as folderitem)</li>
+<li class="W">method <A href="windows-windowsfileinfombs-method.html#2">Constructor</A>(handle as Integer)</li>
+<li class="W">method <A href="windows-windowsfileinfombs-method.html#3">Constructor</A>(path as string)</li>
+<li class="W">method <A href="windows-windowsfileinfombs-method.html#4">Constructor</A>(stream as BinaryStream)</li>
+</UL></LI>
+<LI>15 constants<UL>
+<li class="W">const <A href="windows-windowsfileinfombs-const.html">kFileAttributeArchive</A> = 32</li>
+<li class="W">const <A href="windows-windowsfileinfombs-const.html#2">kFileAttributeCompressed</A> = 2048</li>
+<li class="W">const <A href="windows-windowsfileinfombs-const.html#3">kFileAttributeDevice</A> = 64</li>
+<li class="W">const <A href="windows-windowsfileinfombs-const.html#4">kFileAttributeDirectory</A> = 16</li>
+<li class="W">const <A href="windows-windowsfileinfombs-const.html#5">kFileAttributeEncrypted</A> = 16384</li>
+<li class="W">const <A href="windows-windowsfileinfombs-const.html#6">kFileAttributeHidden</A> = 2</li>
+<li class="W">const <A href="windows-windowsfileinfombs-const.html#7">kFileAttributeNormal</A> = 128</li>
+<li class="W">const <A href="windows-windowsfileinfombs-const.html#8">kFileAttributeNotContentIndexed</A> = 8192</li>
+<li class="W">const <A href="windows-windowsfileinfombs-const.html#9">kFileAttributeOffline</A> = 4096</li>
+<li class="W">const <A href="windows-windowsfileinfombs-const.html#10">kFileAttributeReadonly</A> = 1</li>
+<li class="W">const <A href="windows-windowsfileinfombs-const.html#11">kFileAttributeReparsePoint</A> = 1024</li>
+<li class="W">const <A href="windows-windowsfileinfombs-const.html#12">kFileAttributeSparseFile</A> = 512</li>
+<li class="W">const <A href="windows-windowsfileinfombs-const.html#13">kFileAttributeSystem</A> = 4</li>
+<li class="W">const <A href="windows-windowsfileinfombs-const.html#14">kFileAttributeTemporary</A> = 256</li>
+<li class="W">const <A href="windows-windowsfileinfombs-const.html#15">kFileAttributeVirtual</A> = 65536</li>
+</UL></LI>
+</ul>
+<p>This class has no sub classes.</p>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-win-displayfileinformation.html">/Win/Display File Information</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2018-11-27/MonkeyBread_Software_Releases_/monkeybreadsoftware_blog_xojo">MonkeyBread Software Releases the MBS Xojo Plugins in version 18.5</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2018-11-22/MBS_Xojo_Plugins_version_185pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 18.5pr8</a></li>
+</ul>
+<h4>Xojo Developer Magazine</h4>
+<ul>
+<li><a href="http://www.xdevmag.com/browse/17.5/">17.5, page 43: What&#39;s New in the MBS Plugins, With the Plugins growing every year, here are new capabilities you may have missed by Stefanie Juchmes</a></li>
+</ul>
+<h4>Videos</h4>
+<ul>
+<li><a href="https://www.monkeybreadsoftware.de/xojo/video/MBSPluginsMiami.shtml">Presentation from Xojo Developer Conference 2019 in Miami.</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbswinplugin.html">MBS Win Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-windowsfiledescriptormbs.html">WindowsFileDescriptorMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-windowsfilestreammbs.html">WindowsFileStreamMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-windowsfileinfombs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

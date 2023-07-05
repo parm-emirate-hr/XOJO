@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Images/LargePicture/CMYK/PictureMBS with CMYK</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Images/LargePicture/CMYK/PictureMBS with CMYK</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Images/LargePicture/CMYK/<A href="class-picturembs.html">PictureMBS</A> with CMYK</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS Images Plugin, MBS Util Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Images/LargePicture/CMYK/<A href="class-picturembs.html">PictureMBS</A> with CMYK<BR>
+This example is the version from Thu, 6th Apr 2016.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;PictureMBS</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">CMYK.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;L&ouml;schen&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;Beenden&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			RunTIFF
+			RunJPEG
+			
+			quit
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> FindFile(name <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>) <span style="color:#0000FF;font-weight: bold">As</span> FolderItem
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Look</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">file</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">parent</span> <span style="color:#7F0000;text-style:italic">folders</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">executable</span> <span style="color:#7F0000;text-style:italic">on</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> parent <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = app.ExecutableFile.Parent
+			
+			<span style="color:#0000FF;font-weight: bold">while</span> parent&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> file <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = parent.Child(name)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> file&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">and</span> file.Exists <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> file
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				parent = parent.Parent
+			<span style="color:#0000FF;font-weight: bold">wend</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> RunJPEG()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">load</span> <span style="color:#7F0000;text-style:italic">cmyk</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = FindFile(<span style="color:#6500FE">&quot;MBSLogo_cmyk.jpg&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> ji <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> JPEGImporterMBS
+			
+			ji.file = F
+			ji.mode = ji.ModeCMYK
+			ji.ImportCMYK
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> width <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = ji.Width
+			<span style="color:#0000FF;font-weight: bold">dim</span> height <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = ji.Height
+			<span style="color:#0000FF;font-weight: bold">dim</span> rowBytes <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = ji.Width * <span style="color:#326598">4</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> data <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock = ji.PictureData
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Make</span> <span style="color:#7F0000;text-style:italic">PictureMBS</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">rotate</span> <span style="color:#7F0000;text-style:italic">it</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> pic <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> PictureMBS(data, width, height, PictureMBS.ImageFormatCMYK, rowBytes)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> output <span style="color:#0000FF;font-weight: bold">as</span> PictureMBS = pic.Rotate90
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">save</span> <span style="color:#7F0000;text-style:italic">jpeg</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> je <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> JPEGExporterMBS
+			
+			je.File = SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;output.jpg&quot;</span>)
+			je.ExportCMYK(output.Memory, output.Width, output.Height, output.RowSize)
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">done</span>
+			je.file.Launch
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> RunTIFF()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">load</span> <span style="color:#7F0000;text-style:italic">cmyk</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = FindFile(<span style="color:#6500FE">&quot;MBSLogo_cmyk.tif&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> ji <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> TiffPictureMBS
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> ji.Open(f)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> width <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = ji.Width
+			<span style="color:#0000FF;font-weight: bold">dim</span> height <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = ji.Height
+			<span style="color:#0000FF;font-weight: bold">dim</span> rowBytes <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = ji.BytesPerRow
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> data <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MemoryBlock(rowBytes*height)
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> height-<span style="color:#326598">1</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock = data.AddressPtrMBS(i*rowBytes)
+				<span style="color:#0000FF;font-weight: bold">call</span> ji.Scanline(m, i)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Make</span> <span style="color:#7F0000;text-style:italic">PictureMBS</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">rotate</span> <span style="color:#7F0000;text-style:italic">it</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> pic <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> PictureMBS(data, width, height, PictureMBS.ImageFormatCMYK, rowBytes)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> output <span style="color:#0000FF;font-weight: bold">as</span> PictureMBS = pic.Rotate90
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">save</span> <span style="color:#7F0000;text-style:italic">jpeg</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> TiffPictureMBS
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> o <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;output.tif&quot;</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> t.Create(o, <span style="color:#326598">0</span>) <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				t.Height = output.Height
+				t.Width = output.Width
+				
+				t.RowsPerStrip = <span style="color:#326598">1</span>
+				t.PlanarConfig = t.kPlanarConfigContig
+				t.Photometric = t.kPhotometricSeparated
+				t.BitsPerSample = <span style="color:#326598">8</span>
+				t.SamplesPerPixel = <span style="color:#326598">4</span>
+				t.FillOrder = t.kFillOrderMSB2LSB
+				t.Orientation = t.kOrientationTopLeft
+				t.ResolutionUnit = t.kResUnitInch
+				t.VerticalResolution = <span style="color:#006532">72.0</span>
+				t.HorizontalResolution = <span style="color:#006532">72.0</span>
+				t.Compression = t.kCompressionNone
+				t.RowsPerStrip = <span style="color:#326598">32</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">copy</span> <span style="color:#7F0000;text-style:italic">lines</span>
+				<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> output.Height - <span style="color:#326598">1</span>
+					t.Scanline(i) = output.RowInFormat(i, PictureMBS.ImageFormatCMYK)
+				<span style="color:#0000FF;font-weight: bold">next</span>
+				t.close
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">done</span>
+			o.Launch
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;Ablage&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Bearbeiten&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;R&uuml;ckg&auml;ngig&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;&amp;Ausschneiden&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Kopieren&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Einf&uuml;gen&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;&amp;Alles</span> <span style="color:#6500FE">ausw&auml;hlen&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-images-largepicture-cmyk-picturembswithcmyk">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,319 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - TessEngineMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="TessEngineMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">TessEngineMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>TessEngineMBS class</H3>
+<div class="WLMI">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-ocr.html" translate="no">OCR</A></td>
+<td class=grau><a href="plugins-mbsocrplugin.html">MBS OCR Plugin</a></td>
+<td class=grau><a href="newinversion213.shtml" class=version>21.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The class for OCR recognition using tesseract library.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">Dim</span> OCR <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">new</span> TessEngineMBS <span style="color: #800000;">// your instance of tesseract</span><br /><br /><span style="color: #0000FF;">If</span> <span style="color: #0000FF;">Not</span> ocr.Initialize(<span style="color: #6600FE;">&quot;C:\Program Files\Tesseract-OCR\tessdata&quot;</span>, <span style="color: #6600FE;">&quot;eng&quot;</span>) <span style="color: #0000FF;">Then</span><br />  MsgBox <span style="color: #6600FE;">&quot;failed to initialize&quot;</span><br />  Quit<br /><span style="color: #0000FF;">End</span> <span style="color: #0000FF;">If</span><br /><br /><span style="color: #0000FF;">Dim</span> f <span style="color: #0000FF;">As</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test.jpg&quot;</span>)<br /><span style="color: #0000FF;">Dim</span> p <span style="color: #0000FF;">As</span> Picture = f.OpenAsPicture<br />OCR.SetImage(p)<br /><br /><span style="color: #800000;">// get the text</span><br /><span style="color: #0000FF;">Dim</span> OCRText <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">String</span> = OCR.GetText</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+This replaces the older <A href="class-tesseractmbs.html">TesseractMBS</A> class.<BR>
+<BR>
+The new class is for Tesseract 4.x and 5.x versions.<BR>
+</div>
+<ul>
+<LI>2 events<UL>
+<li class="WLMI">event <A href="ocr-tessenginembs-event.html">Cancel</A>(words as integer) as boolean</li>
+<li class="WLMI">event <A href="ocr-tessenginembs-event.html#2">Progress</A>(Left as integer, Right as Integer, Top as Integer, Bottom as Integer, Progress as Integer) as boolean</li>
+</UL></LI>
+<LI>9 properties<UL>
+<li class="WLMI">property <A href="ocr-tessenginembs-property.html">DeadlineMSecs</A> as Integer</li>
+<li class="WLMI">property <A href="ocr-tessenginembs-property.html#2">Handle</A> as Integer</li>
+<li class="WLMI">property <A href="ocr-tessenginembs-property.html#3">InitLanguagesAsString</A> as String</li>
+<li class="WLMI">property <A href="ocr-tessenginembs-property.html#4">InputImage</A> as Picture</li>
+<li class="WLMI">property <A href="ocr-tessenginembs-property.html#5">InputName</A> as String</li>
+<li class="WLMI">property <A href="ocr-tessenginembs-property.html#6">MeanTextConf</A> as Integer</li>
+<li class="WLMI">property <A href="ocr-tessenginembs-property.html#7">PageSegMode</A> as Integer</li>
+<li class="WLMI">property <A href="ocr-tessenginembs-property.html#8">Resolution</A> as Integer</li>
+<li class="WLMI">property <A href="ocr-tessenginembs-property.html#9">ThresholdedImage</A> as Picture</li>
+</UL></LI>
+<li class="WLMI">shared property <A href="ocr-tessenginembs-shared-property.html">Version</A> as String</li>
+<LI>31 methods<UL>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html">AllWordConfidences</A> as Integer()</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#2">AnalyseLayout</A> as <A href="class-tesspageiteratormbs.html">TessPageIteratorMBS</A></li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#3">Clear</A></li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#4">Constructor</A></li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#5">GetAltoText</A>(PageNumber as Integer) as String</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#6">GetAvailableLanguages</A> as String()</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#7">GetBoolVariable</A>(Name as String, byref value as boolean) as Boolean</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#8">GetBoxText</A>(PageNumber as Integer) as String</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#9">GetDoubleVariable</A>(Name as String, byref value as Double) as Boolean</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#10">GetHOCRText</A>(PageNumber as Integer) as String</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#11">GetIntVariable</A>(Name as String, byref value as Integer) as Boolean</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#12">GetLoadedLanguages</A> as String()</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#13">GetLSTMBoxText</A>(PageNumber as Integer) as String</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#14">GetStringVariable</A>(Name as String) as String</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#15">GetText</A> as String</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#16">GetTsvText</A>(PageNumber as Integer) as String</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#17">GetUNLVText</A> as String</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#18">GetWordStrBoxText</A>(PageNumber as Integer) as String</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#19">Initialize</A>(dataPath as String, language as String, Mode as Integer = 3, configs() as String = nil) as Boolean</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#20">IsValidWord</A>(Word as String) as Boolean</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#21">PrintVariablesToFile</A>(File as FolderItem) as Boolean</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#22">PrintVariablesToPath</A>(Path as String) as Boolean</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#23">Recognize</A> as Boolean</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#24">ResultIterator</A> as <A href="class-tessresultiteratormbs.html">TessResultIteratorMBS</A></li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#25">SetImage</A>(pic as picture)</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#26">SetImageData</A>(Data as MemoryBlock)</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#27">SetImageData</A>(Data as String)</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#28">SetImageFile</A>(File as FolderItem)</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method.html#29">SetImageFile</A>(Path as String)</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method1.html">SetRectangle</A>(Left as Integer, Top as Integer, Width as Integer, Height as Integer)</li>
+<li class="WLMI">method <A href="ocr-tessenginembs-method1.html#2">SetVariable</A>(Name as String, Value as String)</li>
+</UL></LI>
+<LI>7 shared methods<UL>
+<li class="WLMI">shared method <A href="ocr-tessenginembs-shared-method.html">LibraryLoaded</A> as Boolean</li>
+<li class="WLMI">shared method <A href="ocr-tessenginembs-shared-method.html#2">LibraryLoadError</A> as Integer</li>
+<li class="WLMI">shared method <A href="ocr-tessenginembs-shared-method.html#3">LibraryLoadErrorMessage</A> as String</li>
+<li class="WLMI">shared method <A href="ocr-tessenginembs-shared-method.html#4">LoadLibrary</A>(file as folderitem) as boolean</li>
+<li class="WLMI">shared method <A href="ocr-tessenginembs-shared-method.html#5">LoadLibrary</A>(path as string) as boolean</li>
+<li class="WLMI">shared method <A href="ocr-tessenginembs-shared-method.html#6">SetCurrentWorkingDirectory</A>(path as folderitem) as boolean</li>
+<li class="WLMI">shared method <A href="ocr-tessenginembs-shared-method.html#7">SetCurrentWorkingDirectory</A>(path as String) as boolean</li>
+</UL></LI>
+<LI>18 constants<UL>
+</UL></LI>
+</ul>
+<h3 lang="en">OCR Engine Running Modes</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="ocr-tessenginembs-const.html">kOcrEngineModeDefault </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+Specify this mode when calling init_*(), to indicate that any of the above modes should be automatically inferred from the variables in the language-specific config, command-line configs, or if not specified in any of the above should be set to the default kOcrEngineModeTesseractOnly.<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="ocr-tessenginembs-const.html#2">kOcrEngineModeLstmOnly </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+Run just the LSTM line recognizer.<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="ocr-tessenginembs-const.html#3">kOcrEngineModeTesseractLstmCombined </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+Run the LSTM recognizer, but allow fallback to Tesseract when things get difficult. deprecated<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="ocr-tessenginembs-const.html#4">kOcrEngineModeTesseractOnly </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 0</td>
+<td bgcolor="#DDDDDD" valign=top>
+Run Tesseract only - fastest; deprecated<BR>
+</td>
+</tr>
+</table>
+<h3 lang="en">Page Layout</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="ocr-tessenginembs-const.html#5">kPageSegModeAuto </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+Fully automatic page segmentation, but no OSD.<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="ocr-tessenginembs-const.html#6">kPageSegModeAutoOnly </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+Automatic page segmentation, but no OSD, or OCR.<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="ocr-tessenginembs-const.html#7">kPageSegModeAutoOsd </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+Automatic page segmentation with orientation and script detection. (OSD)<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="ocr-tessenginembs-const.html#8">kPageSegModeCircleWord </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 9</td>
+<td bgcolor="#DDDDDD" valign=top>
+Treat the image as a single word in a circle.<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="ocr-tessenginembs-const.html#9">kPageSegModeOsdOnly </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 0</td>
+<td bgcolor="#DDDDDD" valign=top>
+Orientation and script detection only.<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="ocr-tessenginembs-const.html#10">kPageSegModeRawLine </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 13</td>
+<td bgcolor="#DDDDDD" valign=top>
+Treat the image as a single text line, bypassing hacks that are Tesseract-specific.<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="ocr-tessenginembs-const.html#11">kPageSegModeSingleBlock </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 6</td>
+<td bgcolor="#DDDDDD" valign=top>
+Assume a single uniform block of text. (Default.)<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="ocr-tessenginembs-const.html#12">kPageSegModeSingleBlockVertText </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 5</td>
+<td bgcolor="#DDDDDD" valign=top>
+Assume a single uniform block of vertically aligned text.<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="ocr-tessenginembs-const.html#13">kPageSegModeSingleChar </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 10</td>
+<td bgcolor="#DDDDDD" valign=top>
+Treat the image as a single character.<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="ocr-tessenginembs-const.html#14">kPageSegModeSingleColumn </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 4</td>
+<td bgcolor="#DDDDDD" valign=top>
+Assume a single column of text of variable sizes.<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="ocr-tessenginembs-const.html#15">kPageSegModeSingleLine </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 7</td>
+<td bgcolor="#DDDDDD" valign=top>
+Treat the image as a single text line.<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="ocr-tessenginembs-const.html#16">kPageSegModeSingleWord </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 8</td>
+<td bgcolor="#DDDDDD" valign=top>
+Treat the image as a single word.<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="ocr-tessenginembs-const.html#17">kPageSegModeSparseText </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 11</td>
+<td bgcolor="#DDDDDD" valign=top>
+Find as much text as possible in no particular order.<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="ocr-tessenginembs-const.html#18">kPageSegModeSparseTextOsd </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 12</td>
+<td bgcolor="#DDDDDD" valign=top>
+Sparse text with orientation and script det.<BR>
+</td>
+</tr>
+</table>
+<p>This class has no sub classes.</p>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-ocr-tesseract4-tesseract4.html">/OCR/Tesseract4/Tesseract4</A></li>
+<li class=""><A href="example-ocr-tesseract5-tesseract5.html">/OCR/tesseract5/Tesseract5</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2022-07-12/MBS_Xojo_Plugins_in_version_22/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins in version 22.3</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2021-07-29/News_from_the_MBS_Xojo_Plugins/monkeybreadsoftware_blog_xojo">News from the MBS Xojo Plugins Version 21.3</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2021-07-12/MonkeyBread_Software_Releases_/monkeybreadsoftware_blog_xojo">MonkeyBread Software Releases the MBS Xojo Plugins in version 21.3</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2021-06-30/Introducing_Tesseract_4_to_Xoj/monkeybreadsoftware_blog_xojo">Introducing Tesseract 4 to Xojo</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsocrplugin.html">MBS OCR Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-tesschoiceiteratormbs.html">TessChoiceIteratorMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-tesseractchoiceiteratormbs.html">TesseractChoiceIteratorMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-tessenginembs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

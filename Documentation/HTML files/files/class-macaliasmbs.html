@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - MacAliasMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="MacAliasMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">MacAliasMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>MacAliasMBS class &nbsp; <b style="color: #8B0000"> Deprecated </b></H3>
+<div class="M">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-alias.html" translate="no">Alias</A></td>
+<td class=grau><a href="plugins-mbsmacclassicplugin.html">MBS MacClassic Plugin</a></td>
+<td class=grau><a href="newinversion.shtml" class=version></a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Gives access to Aliases on Mac.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #800000;">// Store the reference to a FolderItem in a Binary File</span><br /><br /><span style="color: #0000FF;">Dim</span> alias <span style="color: #0000FF;">as</span> MacAliasMBS<br /><span style="color: #0000FF;">dim</span> t,f <span style="color: #0000FF;">as</span> FolderItem<br /><span style="color: #0000FF;">Dim</span> bf <span style="color: #0000FF;">as</span> BinaryStream, s <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">String</span><br />t=SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test&quot;</span>)<br />bf = t.CreateBinaryFile(<span style="color: #6600FE;">&quot;&quot;</span>) <span style="color: #800000;">// open your binary file here</span><br />f = SpecialFolder.Desktop <span style="color: #800000;">// the FolderItem you want to save</span><br />alias = <span style="color: #0000FF;">new</span> MacAliasMBS<br /><span style="color: #0000FF;">if</span> alias.Create(<span style="color: #0000FF;">nil</span>, f) = <span style="color: #336698;">0</span> <span style="color: #0000FF;">then</span><br />  s = alias.GetRecord<br />  bf.WriteLong LenB(s) <span style="color: #800000;">// this saves the length of the record</span><br />  bf.Write s <span style="color: #800000;">// this saves the record itself</span><br /><span style="color: #0000FF;">end</span><br />bf.Close<br /><br /><span style="color: #800000;">// Retrieve the reference to a FolderItem from a Binary File</span><br /><br /><span style="color: #0000FF;">dim</span> l <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span><br /><br />t=SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test&quot;</span>)<br />bf = t.OpenAsBinaryFile(<span style="color: #0000FF;">false</span>) <span style="color: #800000;">// open your binary file here</span><br />alias = <span style="color: #0000FF;">new</span> MacAliasMBS<br />l = bf.ReadLong<br />alias.SetRecord bf.Read(l)<br />f = alias.Resolve(<span style="color: #0000FF;">nil</span>, alias.attemptMount)<br /><span style="color: #0000FF;">if</span> alias.needsUpdate <span style="color: #0000FF;">then</span><br />  <span style="color: #0000FF;">if</span> alias.Update(<span style="color: #0000FF;">nil</span>, f) = <span style="color: #336698;">1</span> <span style="color: #0000FF;">then</span><br />    <span style="color: #800000;">// ... you might want to save the updated alias in your file here</span><br />  <span style="color: #0000FF;">end</span><br /><span style="color: #0000FF;">end</span><br /><span style="color: #800000;">// f now describes the FolderItem again.</span><br /><span style="color: #800000;">// It may not be existing any more, however, so here&apos;s a check for that:</span><br /><span style="color: #0000FF;">if</span> <span style="color: #0000FF;">not</span> f.exists <span style="color: #0000FF;">then</span><br />  msgBox <span style="color: #6600FE;">&quot;oops! the file is not available any more. Select a new one, please&quot;</span><br />  <span style="color: #800000;">//... let the user locate the file</span><br /><span style="color: #0000FF;">end</span></span>
+</pre>
+</div>
+<DIV style="width: 300px; float: right; margin: 3pt; padding: 3pt; background-color: #FEE; border-width: 3pt;">
+This item is deprecated and should no longer be used. 
+You can use <A href="module-cfbookmarkmbs.html">CFBookmarkMBS</A> module instead.
+</DIV>
+<B>Notes:</B> 
+<BR>
+This Plugin implements a new Class for handling Mac OS Alias Records.<BR>
+<BR>
+AliasRecords are like FolderItems, but can be made persistent: You can convert a FolderItem into a AliasRecord and store that AliasRecord in a file (like your Preferences file). Later you can retrieve that information again and convert it back into a FolderItem.<BR>
+<BR>
+AliasRecords also appear inside Alias Files, that are usually created by the Finder. The enclosed sample application (Alias Mgr Plugin Demo.&pi;) shows how to create and resolve such Alias Files.<BR>
+<BR>
+Additional Background Information<BR>
+The purpose of the class is to store paths to files and/or folders between runs of a RB application.<BR>
+To store a path to a file/folder in an RB app, currently your only option is to get the abolute path as a string, and store that string in a file, usually your preferences file.<BR>
+However, there is problem with using this technique: If, between runs of your app, the user changes the path of the file by moving it, or by renaming the file or any of its parent folders (including the volume name), your app will fail to locate the file next time<BR>
+it is looking for it.<BR>
+Fortunately, at least in Mac OS, there is a solution to this, which helps you to track your files in such a case. This is done by using Alias Records: they are the basic data structure that is also used in Alias Files as created and used in the Finder.<BR>
+This class attempts to give the flexibility of Alias Records to your RB apps.<BR>
+<BR>
+The meaning of the Relative path<BR>
+When no relative path is specified, then the file is only located by its folder hierarchy down to the root of the volume. However, if a relative path is given, then the file is optionally located relative to that point.<BR>
+So, if you locate files relatively to some folder, like the folder your application is in, you should specify your app&#39;s folder as the relative path so that the target is even found easily when the user moved the whole folder including your app and its related files. This is even more important when using this Alias class under Windows than under Mac OS (if files are moved in Mac OS, they often still can be found even without the help of the original folder hierarchy, while this is not possible under Windows 9x).<BR>
+<BR>
+For Mac OS X 10.6 or newer, please also check <A href="module-cfbookmarkmbs.html">CFBookmarkMBS</A> module.<BR>
+</div>
+<ul>
+<li class="M">property <A href="alias-macaliasmbs-property.html">needsUpdate</A> as boolean</li>
+<LI>14 methods<UL>
+<li class="M">method <A href="alias-macaliasmbs-method.html">AliasInfo</A> as <A href="class-aliasinfombs.html">AliasInfoMBS</A></li>
+<li class="M">method <A href="alias-macaliasmbs-method.html#2">close</A></li>
+<li class="M">method <A href="alias-macaliasmbs-method.html#3">Create</A>(relPath as FolderItem, target as FolderItem, isDirectory as boolean = false) as Integer</li>
+<li class="M">method <A href="alias-macaliasmbs-method.html#4">CreateAliasFromPath</A>(targetPath as string, fromFilePath as String = "", isDirectory as boolean = false) as Integer</li>
+<li class="M">method <A href="alias-macaliasmbs-method.html#5">CreateFSRef</A>(relPath as memoryblock, target as memoryblock) as Integer</li>
+<li class="M">method <A href="alias-macaliasmbs-method.html#6">CreateMinimal</A>(target as FolderItem, isDirectory as boolean = false) as Integer</li>
+<li class="M">method <A href="alias-macaliasmbs-method.html#7">CreateMinimalFSRef</A>(target as memoryblock) as Integer</li>
+<li class="M">method <A href="alias-macaliasmbs-method.html#8">GetRecord</A> as String</li>
+<li class="M">method <A href="alias-macaliasmbs-method.html#9">PathString</A> as String</li>
+<li class="M">method <A href="alias-macaliasmbs-method.html#10">Resolve</A>(relPath as FolderItem, mode as Integer) as FolderItem</li>
+<li class="M">method <A href="alias-macaliasmbs-method.html#11">SetRecord</A>(record as String)</li>
+<li class="M">method <A href="alias-macaliasmbs-method.html#12">TargetName</A> as String</li>
+<li class="M">method <A href="alias-macaliasmbs-method.html#13">Update</A>(relPath as FolderItem, target as FolderItem) as Integer</li>
+<li class="M">method <A href="alias-macaliasmbs-method.html#14">VolumeName</A> as String</li>
+</UL></LI>
+<LI>12 constants<UL>
+<li class="M">const <A href="alias-macaliasmbs-const.html">allVols</A>=8</li>
+<li class="M">const <A href="alias-macaliasmbs-const.html#2">attemptMount</A>=1</li>
+<li class="M">const <A href="alias-macaliasmbs-const.html#3">exhaustive</A>=&h200</li>
+<li class="M">const <A href="alias-macaliasmbs-const.html#4">kARMMountVol</A>=1</li>
+<li class="M">const <A href="alias-macaliasmbs-const.html#5">kARMMultVols</A>=8</li>
+<li class="M">const <A href="alias-macaliasmbs-const.html#6">kARMNoUI</A>=2</li>
+<li class="M">const <A href="alias-macaliasmbs-const.html#7">kARMSearch</A>=&h100</li>
+<li class="M">const <A href="alias-macaliasmbs-const.html#8">kARMSearchMore</A>=&h200</li>
+<li class="M">const <A href="alias-macaliasmbs-const.html#9">kARMSearchRelFirst</A>=&h400</li>
+<li class="M">const <A href="alias-macaliasmbs-const.html#10">kARMTryFileIDFirst</A>=&h800</li>
+<li class="M">const <A href="alias-macaliasmbs-const.html#11">noDialogs</A>=2</li>
+<li class="M">const <A href="alias-macaliasmbs-const.html#12">relFirst</A>=&h400</li>
+</UL></LI>
+</ul>
+<p>This class has no sub classes.</p>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-macclassic-usingmacosaliasfiles.html">/MacClassic/Using Mac OS Alias files</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2020-12-21/MBS_Xojo_Plugins_version_206pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 20.6pr3</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2019-10-09/MBS_Plugins_updated_for_Xojo_2/monkeybreadsoftware_blog_xojo">MBS Plugins updated for Xojo 2019r2</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2016-01-20/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 16.0pr7</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2013-05-08/MonkeyBread_Software_Releases_/monkeybreadsoftware_blog_xojo">MonkeyBread Software Releases the MBS Real Studio plug-ins in version 13.1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2013-04-07/MBS_Real_Studio_Plugins_versio/monkeybreadsoftware_blog_xojo">MBS Real Studio Plugins, version 13.1pr12</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmacclassicplugin.html">MBS MacClassic Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-maattachedwindowmbs.html">MAAttachedWindowMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-macfileoperationmbs.html">MacFileOperationMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-macaliasmbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,623 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /MacCocoa/NSSavePanel</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /MacCocoa/NSSavePanel</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/MacCocoa/NSSavePanel</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS MacControls Plugin, MBS MacBase Plugin, MBS MacCocoa Plugin, MBS MacOSX Plugin, MBS Main Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /MacCocoa/NSSavePanel<BR>
+This example is the version from Wed, 26th Feb 2019.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;NSSavePanel.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	FileTypes</div>
+<div class="RB_Code">		Filetype text</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> FileTypes</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Window1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control GroupBox1 <span style="color:#0000FF;font-weight: bold">Inherits</span> GroupBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance GroupBox1 <span style="color:#0000FF;font-weight: bold">Inherits</span> GroupBox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CheckallowsOtherFileTypes <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CheckallowsOtherFileTypes <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CheckcanCreateDirectories <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CheckcanCreateDirectories <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CheckcanSelectHiddenExtension <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CheckcanSelectHiddenExtension <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CheckBox1 <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CheckBox1 <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control iNameFieldLabel <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance iNameFieldLabel <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText2 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText2 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control iPrompt <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance iPrompt <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText3 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText3 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control iTitle <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance iTitle <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control ChecktreatsFilePackagesAsDirectories <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance ChecktreatsFilePackagesAsDirectories <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CheckallowsMultipleSelection <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CheckallowsMultipleSelection <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CheckcanChooseDirectories <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CheckcanChooseDirectories <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CheckcanChooseFiles <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CheckcanChooseFiles <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText4 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText4 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control iMessage <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance iMessage <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CheckresolvesAliases <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CheckresolvesAliases <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CheckCustomControl <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CheckCustomControl <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> p <span style="color:#0000FF;font-weight: bold">as</span> MyNSOpenPanelMBS
+				<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+				<span style="color:#0000FF;font-weight: bold">dim</span> types(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> i,c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+				
+				ListBox1.DeleteAllRows
+				
+				p=<span style="color:#0000FF;font-weight: bold">new</span> MyNSOpenPanelMBS
+				panel=p
+				
+				p.allowsMultipleSelection=CheckallowsMultipleSelection.Value
+				p.allowsOtherFileTypes=CheckallowsOtherFileTypes.Value
+				p.canChooseDirectories=CheckcanChooseDirectories.Value
+				p.canChooseFiles=checkcanChooseFiles.Value
+				p.canCreateDirectories=checkcanCreateDirectories.Value
+				p.canSelectHiddenExtension=CheckcanSelectHiddenExtension.Value
+				p.NameFieldLabel=iNameFieldLabel.text
+				p.Prompt=iPrompt.text
+				p.Title=iTitle.text
+				p.Message=iMessage.text
+				p.treatsFilePackagesAsDirectories=ChecktreatsFilePackagesAsDirectories.Value
+				p.resolvesAliases=checkresolvesAliases.value
+				
+				types.Append <span style="color:#6500FE">&quot;txt&quot;</span>
+				types.Append <span style="color:#6500FE">&quot;rtf&quot;</span>
+				types.Append <span style="color:#6500FE">&quot;jpg&quot;</span>
+				
+				p.setAllowedFileTypes types
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> CheckCustomControl.value <span style="color:#0000FF;font-weight: bold">then</span>
+					p.accessoryView=customview
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = p.runModalForDirectory(SpecialFolder.Desktop, <span style="color:#6500FE">&quot;test.mov&quot;</span>, <span style="color:#6500FE">&quot;mov&quot;</span>)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> n=p.NSOKButton <span style="color:#0000FF;font-weight: bold">then</span>
+					ListBox1.AddRow <span style="color:#6500FE">&quot;Result:</span> <span style="color:#6500FE">OK&quot;</span>
+					
+					f=p.File
+					<span style="color:#0000FF;font-weight: bold">if</span> f&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						ListBox1.AddRow <span style="color:#6500FE">&quot;File:</span> <span style="color:#6500FE">&quot;</span>+f.UnixpathMBS
+					<span style="color:#0000FF;font-weight: bold">else</span>
+						ListBox1.AddRow <span style="color:#6500FE">&quot;File:</span> <span style="color:#6500FE">?&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					f=p.Directory
+					<span style="color:#0000FF;font-weight: bold">if</span> f&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						ListBox1.AddRow <span style="color:#6500FE">&quot;Directory:</span> <span style="color:#6500FE">&quot;</span>+f.UnixpathMBS
+					<span style="color:#0000FF;font-weight: bold">else</span>
+						ListBox1.AddRow <span style="color:#6500FE">&quot;Directory:</span> <span style="color:#6500FE">?&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					
+					c=p.FilesCount
+					window1.ListBox1.AddRow <span style="color:#6500FE">&quot;File</span> <span style="color:#6500FE">count:</span> <span style="color:#6500FE">&quot;</span>+str(c)
+					
+					c=c-<span style="color:#326598">1</span>
+					<span style="color:#0000FF;font-weight: bold">for</span> i=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> c
+						f=p.Files(i)
+						<span style="color:#0000FF;font-weight: bold">if</span> f&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+							window1.ListBox1.AddRow <span style="color:#6500FE">&quot;File(&quot;</span>+str(i)+<span style="color:#6500FE">&quot;):</span> <span style="color:#6500FE">&quot;</span>+f.UnixpathMBS
+						<span style="color:#0000FF;font-weight: bold">else</span>
+							window1.ListBox1.AddRow <span style="color:#6500FE">&quot;File(&quot;</span>+str(i)+<span style="color:#6500FE">&quot;):</span> <span style="color:#6500FE">?&quot;</span>
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					<span style="color:#0000FF;font-weight: bold">next</span>
+					
+				<span style="color:#0000FF;font-weight: bold">elseif</span> n=p.NSCancelButton <span style="color:#0000FF;font-weight: bold">then</span>
+					ListBox1.AddRow <span style="color:#6500FE">&quot;Result:</span> <span style="color:#6500FE">Cancel&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					ListBox1.AddRow <span style="color:#6500FE">&quot;Result:</span> <span style="color:#6500FE">&quot;</span>+str(n)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control ListBox1 <span style="color:#0000FF;font-weight: bold">Inherits</span> ListBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance ListBox1 <span style="color:#0000FF;font-weight: bold">Inherits</span> ListBox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton2 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton2 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> p <span style="color:#0000FF;font-weight: bold">as</span> MyNSSavePanelMBS
+				<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+				<span style="color:#0000FF;font-weight: bold">dim</span> types(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+				
+				ListBox1.DeleteAllRows
+				
+				p=<span style="color:#0000FF;font-weight: bold">new</span> MyNSSavePanelMBS
+				panel=p
+				
+				p.allowsOtherFileTypes=CheckallowsOtherFileTypes.Value
+				p.canCreateDirectories=checkcanCreateDirectories.Value
+				p.canSelectHiddenExtension=CheckcanSelectHiddenExtension.Value
+				p.NameFieldLabel=iNameFieldLabel.text
+				p.Prompt=iPrompt.text
+				p.Title=iTitle.text
+				p.Message=iMessage.text
+				p.treatsFilePackagesAsDirectories=ChecktreatsFilePackagesAsDirectories.Value
+				
+				types.Append <span style="color:#6500FE">&quot;txt&quot;</span>
+				types.Append <span style="color:#6500FE">&quot;rtf&quot;</span>
+				types.Append <span style="color:#6500FE">&quot;jpg&quot;</span>
+				
+				p.setAllowedFileTypes types
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> CheckCustomControl.value <span style="color:#0000FF;font-weight: bold">then</span>
+					p.accessoryView=customview
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = p.runModalForDirectory(SpecialFolder.Desktop, <span style="color:#6500FE">&quot;test.mov&quot;</span>)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> n=p.NSOKButton <span style="color:#0000FF;font-weight: bold">then</span>
+					ListBox1.AddRow <span style="color:#6500FE">&quot;Result:</span> <span style="color:#6500FE">OK&quot;</span>
+					
+					f=p.File
+					<span style="color:#0000FF;font-weight: bold">if</span> f&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						ListBox1.AddRow <span style="color:#6500FE">&quot;File:</span> <span style="color:#6500FE">&quot;</span>+f.UnixpathMBS
+					<span style="color:#0000FF;font-weight: bold">else</span>
+						ListBox1.AddRow <span style="color:#6500FE">&quot;File:</span> <span style="color:#6500FE">?&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					f=p.Directory
+					<span style="color:#0000FF;font-weight: bold">if</span> f&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						ListBox1.AddRow <span style="color:#6500FE">&quot;Directory:</span> <span style="color:#6500FE">&quot;</span>+f.UnixpathMBS
+					<span style="color:#0000FF;font-weight: bold">else</span>
+						ListBox1.AddRow <span style="color:#6500FE">&quot;Directory:</span> <span style="color:#6500FE">?&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+				<span style="color:#0000FF;font-weight: bold">elseif</span> n=p.NSCancelButton <span style="color:#0000FF;font-weight: bold">then</span>
+					ListBox1.AddRow <span style="color:#6500FE">&quot;Result:</span> <span style="color:#6500FE">Cancel&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					ListBox1.AddRow <span style="color:#6500FE">&quot;Result:</span> <span style="color:#6500FE">&quot;</span>+str(n)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton3 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton3 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> p <span style="color:#0000FF;font-weight: bold">as</span> MyNSSavePanelMBS
+				<span style="color:#0000FF;font-weight: bold">dim</span> types(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+				
+				ListBox1.DeleteAllRows
+				
+				p=<span style="color:#0000FF;font-weight: bold">new</span> MyNSSavePanelMBS
+				panel=p
+				
+				p.allowsOtherFileTypes=CheckallowsOtherFileTypes.Value
+				p.canCreateDirectories=checkcanCreateDirectories.Value
+				p.canSelectHiddenExtension=CheckcanSelectHiddenExtension.Value
+				p.NameFieldLabel=iNameFieldLabel.text
+				p.Prompt=iPrompt.text
+				p.Title=iTitle.text
+				p.Message=iMessage.text
+				p.treatsFilePackagesAsDirectories=ChecktreatsFilePackagesAsDirectories.Value
+				
+				types.Append <span style="color:#6500FE">&quot;txt&quot;</span>
+				types.Append <span style="color:#6500FE">&quot;rtf&quot;</span>
+				types.Append <span style="color:#6500FE">&quot;jpg&quot;</span>
+				
+				p.setAllowedFileTypes types
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> CheckCustomControl.value <span style="color:#0000FF;font-weight: bold">then</span>
+					p.accessoryView=customview
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				p.beginSheetForDirectory(SpecialFolder.Desktop, <span style="color:#6500FE">&quot;test.mov&quot;</span>,<span style="color:#0000FF;font-weight: bold">self</span>)
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton4 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton4 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> types(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+				
+				ListBox1.DeleteAllRows
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> p <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MyNSOpenPanelMBS
+				panel = p
+				
+				p.allowsMultipleSelection=CheckallowsMultipleSelection.Value
+				p.allowsOtherFileTypes=CheckallowsOtherFileTypes.Value
+				p.canChooseDirectories=CheckcanChooseDirectories.Value
+				p.canChooseFiles=checkcanChooseFiles.Value
+				p.canCreateDirectories=checkcanCreateDirectories.Value
+				p.canSelectHiddenExtension=CheckcanSelectHiddenExtension.Value
+				p.NameFieldLabel=iNameFieldLabel.text
+				p.Prompt=iPrompt.text
+				p.Title=iTitle.text
+				p.Message=iMessage.text
+				p.treatsFilePackagesAsDirectories=ChecktreatsFilePackagesAsDirectories.Value
+				p.resolvesAliases=checkresolvesAliases.value
+				
+				types.Append <span style="color:#6500FE">&quot;txt&quot;</span>
+				types.Append <span style="color:#6500FE">&quot;rtf&quot;</span>
+				types.Append <span style="color:#6500FE">&quot;jpg&quot;</span>
+				
+				p.setAllowedFileTypes types
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> CheckCustomControl.value <span style="color:#0000FF;font-weight: bold">then</span>
+					p.accessoryView=customview
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				p.beginSheetForDirectory(SpecialFolder.Desktop, <span style="color:#6500FE">&quot;test.mov&quot;</span>, types, <span style="color:#0000FF;font-weight: bold">self</span>)
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			mycustomview=<span style="color:#0000FF;font-weight: bold">new</span> MyNSView(<span style="color:#326598">10</span>,<span style="color:#326598">10</span>,<span style="color:#326598">100</span>,<span style="color:#326598">20</span>)
+			
+			textview=<span style="color:#0000FF;font-weight: bold">new</span> NSTextViewMBS(<span style="color:#326598">10</span>,<span style="color:#326598">40</span>,<span style="color:#326598">100</span>,<span style="color:#326598">20</span>)
+			textview.isSelectable=<span style="color:#0000FF;font-weight: bold">true</span>
+			textview.isEditable=<span style="color:#0000FF;font-weight: bold">true</span>
+			textview.text=<span style="color:#6500FE">&quot;Hello</span> <span style="color:#6500FE">World&quot;</span>
+			
+			checkboxview=<span style="color:#0000FF;font-weight: bold">new</span> MyNSButton(<span style="color:#326598">120</span>,<span style="color:#326598">10</span>,<span style="color:#326598">70</span>,<span style="color:#326598">20</span>)
+			checkboxview.setButtonType nsbuttonmbs.NSSwitchButton
+			checkboxview.intValue=<span style="color:#326598">1</span>
+			
+			buttonview=<span style="color:#0000FF;font-weight: bold">new</span> MyNSButton(<span style="color:#326598">120</span>,<span style="color:#326598">40</span>,<span style="color:#326598">70</span>,<span style="color:#326598">20</span>)
+			buttonview.setButtonType nsbuttonmbs.NSToggleButton
+			buttonview.bezelStyle=nsbuttonmbs.NSRoundedBezelStyle
+			
+			customview=<span style="color:#0000FF;font-weight: bold">new</span> NSViewMBS(<span style="color:#326598">0</span>,<span style="color:#326598">0</span>,<span style="color:#326598">200</span>,<span style="color:#326598">70</span>)
+			customview.addSubview mycustomview
+			customview.addSubview textview
+			customview.addSubview buttonview
+			customview.addSubview checkboxview
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> buttonview <span style="color:#0000FF;font-weight: bold">As</span> nsbuttonMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> checkboxview <span style="color:#0000FF;font-weight: bold">As</span> nsbuttonMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> customview <span style="color:#0000FF;font-weight: bold">As</span> NSViewMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> mycustomview <span style="color:#0000FF;font-weight: bold">As</span> mynsview</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> panel <span style="color:#0000FF;font-weight: bold">As</span> nssavePanelMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> textview <span style="color:#0000FF;font-weight: bold">As</span> nstextviewMBS</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;Quit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;Clear&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyNSSavePanelMBS <span style="color:#0000FF;font-weight: bold">Inherits</span> NSSavePanelMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> directoryDidChange(path <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, folder <span style="color:#0000FF;font-weight: bold">as</span> folderitem)
+			window1.ListBox1.AddRow <span style="color:#6500FE">&quot;Changed</span> <span style="color:#6500FE">directory:</span> <span style="color:#6500FE">&quot;</span>+folder.UnixpathMBS
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> isValidFilename(path <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, item <span style="color:#0000FF;font-weight: bold">as</span> folderitem) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">boolean</span>
+			Window1.ListBox1.AddRow <span style="color:#6500FE">&quot;is</span> <span style="color:#6500FE">valid:</span> <span style="color:#6500FE">&quot;</span>+item.Name
+			<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> panelSelectionDidChange()
+			window1.ListBox1.AddRow <span style="color:#6500FE">&quot;Selection</span> <span style="color:#6500FE">changed&quot;</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> savePanelDidEnd(ReturnCode <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+			
+			window1.ListBox1.AddRow <span style="color:#6500FE">&quot;Save</span> <span style="color:#6500FE">panel</span> <span style="color:#6500FE">did</span> <span style="color:#6500FE">end:</span> <span style="color:#6500FE">&quot;</span>+str(ReturnCode)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> ReturnCode=NSOKButton <span style="color:#0000FF;font-weight: bold">then</span>
+				window1.ListBox1.AddRow <span style="color:#6500FE">&quot;Result:</span> <span style="color:#6500FE">OK&quot;</span>
+				
+				f=File
+				<span style="color:#0000FF;font-weight: bold">if</span> f&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					window1.ListBox1.AddRow <span style="color:#6500FE">&quot;File:</span> <span style="color:#6500FE">&quot;</span>+f.UnixpathMBS
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					window1.ListBox1.AddRow <span style="color:#6500FE">&quot;File:</span> <span style="color:#6500FE">?&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				f=Directory
+				<span style="color:#0000FF;font-weight: bold">if</span> f&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					window1.ListBox1.AddRow <span style="color:#6500FE">&quot;Directory:</span> <span style="color:#6500FE">&quot;</span>+f.UnixpathMBS
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					window1.ListBox1.AddRow <span style="color:#6500FE">&quot;Directory:</span> <span style="color:#6500FE">?&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+			<span style="color:#0000FF;font-weight: bold">elseif</span> ReturnCode=NSCancelButton <span style="color:#0000FF;font-weight: bold">then</span>
+				window1.ListBox1.AddRow <span style="color:#6500FE">&quot;Result:</span> <span style="color:#6500FE">Cancel&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				window1.ListBox1.AddRow <span style="color:#6500FE">&quot;Result:</span> <span style="color:#6500FE">&quot;</span>+str(ReturnCode)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> shouldShowFilename(path <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, item <span style="color:#0000FF;font-weight: bold">as</span> folderitem) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">boolean</span>
+			Window1.ListBox1.AddRow <span style="color:#6500FE">&quot;Should</span> <span style="color:#6500FE">Show</span> <span style="color:#6500FE">Filename:</span> <span style="color:#6500FE">&quot;</span>+item.Name
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> willExpand(expanding <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">boolean</span>)
+			<span style="color:#0000FF;font-weight: bold">if</span> expanding <span style="color:#0000FF;font-weight: bold">then</span>
+				window1.ListBox1.AddRow <span style="color:#6500FE">&quot;Will</span> <span style="color:#6500FE">expand&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				window1.ListBox1.AddRow <span style="color:#6500FE">&quot;Will</span> <span style="color:#6500FE">collapse&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyNSOpenPanelMBS <span style="color:#0000FF;font-weight: bold">Inherits</span> NSOpenPanelMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> directoryDidChange(path <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, folder <span style="color:#0000FF;font-weight: bold">as</span> folderitem)
+			window1.ListBox1.AddRow <span style="color:#6500FE">&quot;Changed</span> <span style="color:#6500FE">directory:</span> <span style="color:#6500FE">&quot;</span>+folder.UnixpathMBS
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> isValidFilename(path <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, item <span style="color:#0000FF;font-weight: bold">as</span> folderitem) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">boolean</span>
+			Window1.ListBox1.AddRow <span style="color:#6500FE">&quot;is</span> <span style="color:#6500FE">valid:</span> <span style="color:#6500FE">&quot;</span>+item.Name
+			<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> panelSelectionDidChange()
+			window1.ListBox1.AddRow <span style="color:#6500FE">&quot;Selection</span> <span style="color:#6500FE">changed&quot;</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> savePanelDidEnd(ReturnCode <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+			<span style="color:#0000FF;font-weight: bold">dim</span> i,c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			
+			window1.ListBox1.AddRow <span style="color:#6500FE">&quot;Open</span> <span style="color:#6500FE">panel</span> <span style="color:#6500FE">did</span> <span style="color:#6500FE">end:</span> <span style="color:#6500FE">&quot;</span>+str(ReturnCode)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> ReturnCode=NSOKButton <span style="color:#0000FF;font-weight: bold">then</span>
+				window1.ListBox1.AddRow <span style="color:#6500FE">&quot;Result:</span> <span style="color:#6500FE">OK&quot;</span>
+				
+				f=File
+				<span style="color:#0000FF;font-weight: bold">if</span> f&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					window1.ListBox1.AddRow <span style="color:#6500FE">&quot;File:</span> <span style="color:#6500FE">&quot;</span>+f.UnixpathMBS
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					window1.ListBox1.AddRow <span style="color:#6500FE">&quot;File:</span> <span style="color:#6500FE">?&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				f=Directory
+				<span style="color:#0000FF;font-weight: bold">if</span> f&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					window1.ListBox1.AddRow <span style="color:#6500FE">&quot;Directory:</span> <span style="color:#6500FE">&quot;</span>+f.UnixpathMBS
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					window1.ListBox1.AddRow <span style="color:#6500FE">&quot;Directory:</span> <span style="color:#6500FE">?&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				c=FilesCount
+				window1.ListBox1.AddRow <span style="color:#6500FE">&quot;File</span> <span style="color:#6500FE">count:</span> <span style="color:#6500FE">&quot;</span>+str(c)
+				
+				c=c-<span style="color:#326598">1</span>
+				<span style="color:#0000FF;font-weight: bold">for</span> i=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> c
+					f=Files(i)
+					<span style="color:#0000FF;font-weight: bold">if</span> f&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						window1.ListBox1.AddRow <span style="color:#6500FE">&quot;File(&quot;</span>+str(i)+<span style="color:#6500FE">&quot;):</span> <span style="color:#6500FE">&quot;</span>+f.UnixpathMBS
+					<span style="color:#0000FF;font-weight: bold">else</span>
+						window1.ListBox1.AddRow <span style="color:#6500FE">&quot;File(&quot;</span>+str(i)+<span style="color:#6500FE">&quot;):</span> <span style="color:#6500FE">?&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">next</span>
+				
+			<span style="color:#0000FF;font-weight: bold">elseif</span> ReturnCode=NSCancelButton <span style="color:#0000FF;font-weight: bold">then</span>
+				window1.ListBox1.AddRow <span style="color:#6500FE">&quot;Result:</span> <span style="color:#6500FE">Cancel&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				window1.ListBox1.AddRow <span style="color:#6500FE">&quot;Result:</span> <span style="color:#6500FE">&quot;</span>+str(ReturnCode)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> shouldShowFilename(path <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, item <span style="color:#0000FF;font-weight: bold">as</span> folderitem) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">boolean</span>
+			Window1.ListBox1.AddRow <span style="color:#6500FE">&quot;Should</span> <span style="color:#6500FE">Show</span> <span style="color:#6500FE">Filename:</span> <span style="color:#6500FE">&quot;</span>+item.name
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> willExpand(expanding <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">boolean</span>)
+			<span style="color:#0000FF;font-weight: bold">if</span> expanding <span style="color:#0000FF;font-weight: bold">then</span>
+				window1.ListBox1.AddRow <span style="color:#6500FE">&quot;Will</span> <span style="color:#6500FE">expand&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				window1.ListBox1.AddRow <span style="color:#6500FE">&quot;Will</span> <span style="color:#6500FE">collapse&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyNSView <span style="color:#0000FF;font-weight: bold">Inherits</span> CustomNSViewMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> DrawRect(g <span style="color:#0000FF;font-weight: bold">as</span> NSGraphicsMBS, left <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>, top <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>, width <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>, height <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>)
+			g.SetColorRGB <span style="color:#006532">0.5</span>,<span style="color:#326598">0</span>,<span style="color:#326598">0</span>
+			
+			g.fillRect left,top,width,height
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> mouseDown(e <span style="color:#0000FF;font-weight: bold">as</span> NSEventMBS, x <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>, y <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">boolean</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> window1.panel&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				window1.panel.Cancel
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyNSButton <span style="color:#0000FF;font-weight: bold">Inherits</span> NSButtonMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+			MsgBox <span style="color:#6500FE">&quot;Button</span> <span style="color:#6500FE">pressed&quot;</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-maccocoa-nssavepanel">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

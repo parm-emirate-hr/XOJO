@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - ImageCaptureMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="ImageCaptureMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">ImageCaptureMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>ImageCaptureMBS class &nbsp; <b style="color: #8B0000"> Deprecated </b></H3>
+<div class="M">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-imagecapture.html" translate="no">Image Capture</A></td>
+<td class=grau><a href="plugins-mbsmacosxplugin.html">MBS MacOSX Plugin</a></td>
+<td class=grau><a href="newinversion101.shtml" class=version>10.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+The base class to start with image capture.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> m <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> ImageCaptureMBS<br /><span style="color: #0000FF;">dim</span> list <span style="color: #0000FF;">as</span> <A href="class-imagecaptureobjectmbs.html">ImageCaptureObjectMBS</A> = m.DeviceList<br /><br /><span style="color: #0000FF;">if</span> List&lt;&gt;Nil <span style="color: #0000FF;">then</span><br />  <span style="color: #800000;">// look into properties</span><br />  <span style="color: #0000FF;">dim</span> dic <span style="color: #0000FF;">as</span> Dictionary = list.PropertyDictionary<br />  <br />  <span style="color: #800000;">// take the devices array there</span><br />  <span style="color: #0000FF;">if</span> dic&lt;&gt;Nil <span style="color: #0000FF;">and</span> dic.HasKey(<A href="class-imagecaptureobjectmbs.html">ImageCaptureObjectMBS</A>.kICADevicesArrayKey) <span style="color: #0000FF;">then</span><br />    <span style="color: #0000FF;">dim</span> a(-<span style="color: #336698;">1</span>) <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Variant</span> = dic.Value(<A href="class-imagecaptureobjectmbs.html">ImageCaptureObjectMBS</A>.kICADevicesArrayKey)<br />    <br />    <span style="color: #800000;">// display device name</span><br />    <span style="color: #0000FF;">for</span> <span style="color: #0000FF;">each</span> properties <span style="color: #0000FF;">as</span> Dictionary <span style="color: #0000FF;">in</span> a<br />      MsgBox Properties.Value(<span style="color: #6600FE;">&quot;ifil&quot;</span>)<br />    <span style="color: #0000FF;">next</span><br />  <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<DIV style="width: 300px; float: right; margin: 3pt; padding: 3pt; background-color: #FEE; border-width: 3pt;">
+This item is deprecated and should no longer be used. 
+You can use <A href="class-icdevicembs.html">ICDeviceMBS</A> instead.
+</DIV>
+<B>Notes:</B> 
+<BR>
+Deprecated. Please stop using this class soon.<BR>
+On Mac OS X 10.8 some functions stop working as Apple does no longer provide 32 bit libraries.<BR>
+</div>
+<ul>
+<li class="M">event <A href="imagecapture-imagecapturembs-event.html">Notification</A>(notificationType as string, notificationDictionary as dictionary)</li>
+<li class="M">property <A href="imagecapture-imagecapturembs-property.html">Lasterror</A> as Integer</li>
+<LI>9 methods<UL>
+<li class="M">method <A href="imagecapture-imagecapturembs-method.html">DeviceList</A> as <A href="class-imagecaptureobjectmbs.html">ImageCaptureObjectMBS</A></li>
+<li class="M">method <A href="imagecapture-imagecapturembs-method.html#2">ImportImage</A>(flags as Integer) as string()</li>
+<li class="M">method <A href="imagecapture-imagecapturembs-method.html#3">ImportImage</A>(flags as Integer, filetypes() as string) as string()</li>
+<li class="M">method <A href="imagecapture-imagecapturembs-method.html#4">LoadDeviceModule</A>(params as dictionary)</li>
+<li class="M">method <A href="imagecapture-imagecapturembs-method.html#5">RegisterForEventNotification</A>(objectOfInterest as <A href="class-imagecaptureobjectmbs.html">ImageCaptureObjectMBS</A>, eventsOfInterest() as string, options as dictionary)</li>
+<li class="M">method <A href="imagecapture-imagecapturembs-method.html#6">SendNotification</A>(notificationDictionary as dictionary) as Integer</li>
+<li class="M">method <A href="imagecapture-imagecapturembs-method.html#7">SendNotificationAndWaitForReply</A>(notificationDictionary as dictionary) as Integer</li>
+<li class="M">method <A href="imagecapture-imagecapturembs-method.html#8">ShowDeviceBrowser</A></li>
+<li class="M">method <A href="imagecapture-imagecapturembs-method.html#9">UnloadDeviceModule</A>(deviceObject as <A href="class-imagecaptureobjectmbs.html">ImageCaptureObjectMBS</A>)</li>
+</UL></LI>
+<LI>79 shared methods<UL>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html">kICABluetoothAddressKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#2">kICABluetoothTransportType</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#3">kICADeviceBrowserDeviceRefKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#4">kICADeviceIconPathKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#5">kICADeviceModulePathKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#6">kICAErrorKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#7">kICAFireWireGUIDKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#8">kICAFireWireTransportType</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#9">kICAIOServicePathKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#10">kICAIPAddressKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#11">kICAIPGUIDKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#12">kICAIPNameKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#13">kICANotificationClassKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#14">kICANotificationClassProprietary</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#15">kICANotificationClassPTPStandard</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#16">kICANotificationClassPTPVendor</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#17">kICANotificationDataCookieKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#18">kICANotificationDataKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#19">kICANotificationDataSizeKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#20">kICANotificationDeviceICAObjectKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#21">kICANotificationDeviceListICAObjectKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#22">kICANotificationICAObjectKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#23">kICANotificationImageBytesPerRowKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#24">kICANotificationImageDataKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#25">kICANotificationImageDataSizeKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#26">kICANotificationImageHeightKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#27">kICANotificationImageKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#28">kICANotificationImageNumberOfRowsKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method.html#29">kICANotificationImageStartRowKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html">kICANotificationImageWidthKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#2">kICANotificationNumerOfImagesRemainingKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#3">kICANotificationPercentDownloadedKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#4">kICANotificationRawEventKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#5">kICANotificationScannerButtonTypeKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#6">kICANotificationScannerDocumentNameKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#7">kICANotificationSubTypeDocumentLoaded</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#8">kICANotificationSubTypeDocumentNotLoaded</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#9">kICANotificationSubTypeKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#10">kICANotificationSubTypePerformOverviewScan</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#11">kICANotificationSubTypeWarmUpDone</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#12">kICANotificationSubTypeWarmUpStarted</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#13">kICANotificationTypeCaptureComplete</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#14">kICANotificationTypeDeviceAdded</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#15">kICANotificationTypeDeviceConnectionProgress</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#16">kICANotificationTypeDeviceInfoChanged</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#17">kICANotificationTypeDevicePropertyChanged</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#18">kICANotificationTypeDeviceRemoved</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#19">kICANotificationTypeDeviceStatusError</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#20">kICANotificationTypeDeviceStatusInfo</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#21">kICANotificationTypeDeviceWasReset</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#22">kICANotificationTypeDownloadProgressStatus</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#23">kICANotificationTypeKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#24">kICANotificationTypeObjectAdded</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#25">kICANotificationTypeObjectInfoChanged</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#26">kICANotificationTypeObjectRemoved</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#27">kICANotificationTypeProprietary</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#28">kICANotificationTypeRequestObjectTransfer</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#29">kICANotificationTypeScannerButtonPressed</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method1.html#30">kICANotificationTypeScannerOverviewOverlayAvailable</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method2.html">kICANotificationTypeScannerPageDone</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method2.html#2">kICANotificationTypeScannerScanDone</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method2.html#3">kICANotificationTypeScannerSessionClosed</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method2.html#4">kICANotificationTypeScanProgressStatus</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method2.html#5">kICANotificationTypeStoreAdded</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method2.html#6">kICANotificationTypeStoreFull</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method2.html#7">kICANotificationTypeStoreInfoChanged</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method2.html#8">kICANotificationTypeStoreRemoved</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method2.html#9">kICANotificationTypeTransactionCanceled</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method2.html#10">kICANotificationTypeUnreportedStatus</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method2.html#11">kICANotificationVendorErrorCodeKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method2.html#12">kICARefconKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method2.html#13">kICASCSITransportType</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method2.html#14">kICATCPIPTransportType</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method2.html#15">kICATransportTypeKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method2.html#16">kICATWAINDSPathKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method2.html#17">kICATWAINTransportType</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method2.html#18">kICAUSBLocationIDKey</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method2.html#19">kICAUSBTransportType</A> as string</li>
+<li class="M">shared method <A href="imagecapture-imagecapturembs-shared-method2.html#20">kICAUserAssignedDeviceNameKey</A> as string</li>
+</UL></LI>
+</ul>
+<p>This class has no sub classes.</p>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-macosx-imagecapture.html">/MacOSX/Image Capture</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2019-06-12/MBS_Xojo_Plugins_version_193pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 19.3pr2</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2015-11-10/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 15.4pr5</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmacosxplugin.html">MBS MacOSX Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-imagecaptureeventsmbs.html">ImageCaptureEventsMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-imagecaptureobjectmbs.html">ImageCaptureObjectMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-imagecapturembs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

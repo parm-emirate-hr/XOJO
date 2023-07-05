@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - FAQ</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="FAQ: Has anyone played round with using CoreImage to do things like add dissolve transitions say when changing from one tab to another within a window?">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">FAQ</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="M">
+<b>FAQ.<A name="1">Has anyone played round with using CoreImage to do things like add dissolve transitions say when changing from one tab to another within a window?</A></b><br>
+<B>Answer:</B> 
+This code implements animations for a tabpanel change:<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #800000;">// in a tabpanel.change event:</span><br /><br /><span style="color: #0000FF;">dim</span> r <span style="color: #0000FF;">as</span> <A href="class-cgstransitionrequestmbs.html">CGSTransitionRequestMBS</A><br /><span style="color: #0000FF;">dim</span> co <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-cgsconnectionmbs.html">CGSConnectionMBS</A><br /><span style="color: #0000FF;">dim</span> cw <span style="color: #0000FF;">as</span> <A href="class-cgswindowmbs.html">CGSWindowMBS</A><br /><span style="color: #0000FF;">dim</span> ct <span style="color: #0000FF;">as</span> <A href="class-cgstransitionmbs.html">CGSTransitionMBS</A><br /><span style="color: #0000FF;">static</span> OldTab <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span><br /><br />cw=co.CGSWindow(window1)<br /><span style="color: #0000FF;">If</span> cw = <span style="color: #0000FF;">Nil</span> <span style="color: #0000FF;">Then</span><br />  <span style="color: #0000FF;">return</span> <span style="color: #800000;">// 10.3...</span><br /><span style="color: #0000FF;">End</span> <span style="color: #0000FF;">If</span><br />r=new <A href="class-cgstransitionrequestmbs.html">CGSTransitionRequestMBS</A><br />r.TransitionType=r.CGSFlip<br />r.HasBackGround=false<br />r.HasBackColor=false<br />r.Win=cw<br /><span style="color: #800000;">// watch the value of the clicked tab versus the last tab</span><br /><span style="color: #0000FF;">if</span> tabpanel1.Value=0 <span style="color: #0000FF;">or</span> tabpanel1.Value &lt; OldTab <span style="color: #0000FF;">then</span><br />  r.TransitionOption=r.CGSLeft<br />  ct=co.NewTransition(r)<br />  <span style="color: #0000FF;">if</span> ct&lt;&gt;Nil <span style="color: #0000FF;">then</span><br />    Refresh<br />    ct.Invoke(<span style="color: #336698;">1</span>)<br />    ct.Wait(<span style="color: #336698;">1</span>)<br />    ct.Release<br />  <span style="color: #0000FF;">else</span><br />    MsgBox <span style="color: #6600FE;">&quot;Error creating the transition.&quot;</span><br />  <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br /><span style="color: #0000FF;">else</span><br />  r.TransitionOption=r.CGSRight<br />  ct=co.NewTransition(r)<br />  <span style="color: #0000FF;">if</span> ct&lt;&gt;Nil <span style="color: #0000FF;">then</span><br />    Refresh<br />    ct.Invoke(<span style="color: #336698;">1</span>)<br />    ct.Wait(<span style="color: #336698;">1</span>)<br />    ct.Release<br />  <span style="color: #0000FF;">else</span><br />    MsgBox <span style="color: #6600FE;">&quot;Error creating the transition.&quot;</span><br />  <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br /><span style="color: #800000;">// Keep track of the last tab clicked</span><br />OldTab = tabpanel1.Value</span>
+</pre>
+</div>
+<B>Notes:</B> 
+See CGS* classes for more details.<BR>
+</div>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=faq-hasanyoneplayedroundwithusingcoreimagetodothingslikeadddissolvetransitionssaywhenchangingfromon">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

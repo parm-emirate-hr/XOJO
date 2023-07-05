@@ -1,0 +1,277 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Win/Drag and Drop/File Drag Multi</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Win/Drag and Drop/File Drag Multi</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Win/Drag and Drop/File Drag Multi</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS Main Plugin, MBS Picture Plugin, MBS Win Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Win/Drag and Drop/File Drag Multi<BR>
+This example is the version from Sun, 17th Mar 2012.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;File</span> <span style="color:#6500FE">Drag</span> <span style="color:#6500FE">Multi.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;L&ouml;schen&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;Beenden&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#0000FF;font-weight: bold">dim</span> file100 <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = createtestfile(<span style="color:#326598">100</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> file200 <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = createtestfile(<span style="color:#326598">200</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> file500 <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = createtestfile(<span style="color:#326598">500</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> filetext <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = CreateTextFile(<span style="color:#6500FE">&quot;test.txt&quot;</span>, <span style="color:#6500FE">&quot;Hello</span> <span style="color:#6500FE">World&quot;</span>+EndOfLine+<span style="color:#6500FE">&quot;Just</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">test</span> <span style="color:#6500FE">file.&quot;</span>)
+			
+			files.Append file100
+			files.Append file200
+			files.Append file500
+			files.Append filetext
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> CreateTestFile(n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> FolderItem
+			<span style="color:#0000FF;font-weight: bold">dim</span> logo <span style="color:#0000FF;font-weight: bold">as</span> Picture = logoMBS(n)
+			<span style="color:#0000FF;font-weight: bold">dim</span> file <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = SpecialFolder.Temporary.Child(<span style="color:#6500FE">&quot;test&quot;</span>+str(n)+<span style="color:#6500FE">&quot;.jpg&quot;</span>)
+			
+			file.SaveAsJPEG logo
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> file
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> CreateTextFile(filename <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, content <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>) <span style="color:#0000FF;font-weight: bold">As</span> FolderItem
+			<span style="color:#0000FF;font-weight: bold">dim</span> file <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = SpecialFolder.Temporary.Child(filename)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> TextOutputStream = file.CreateTextFile
+			<span style="color:#0000FF;font-weight: bold">if</span> t&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				t.Write content
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> file
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> files() <span style="color:#0000FF;font-weight: bold">As</span> FolderItem</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;Ablage&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Bearbeiten&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;R&uuml;ckg&auml;ngig&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;&amp;Ausschneiden&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Kopieren&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Einf&uuml;gen&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;&amp;Alles</span> <span style="color:#6500FE">ausw&auml;hlen&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> FileDragWindow <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Canvas1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Canvas</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Canvas1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Canvas</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> MouseDown(X <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, Y <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+				DragStarted = <span style="color:#0000FF;font-weight: bold">false</span>
+				
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> MouseDrag(X <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, Y <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+				<span style="color:#0000FF;font-weight: bold">if</span> UBound(app.files)&gt;=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">and</span> DragStarted = <span style="color:#0000FF;font-weight: bold">false</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					DragStarted = <span style="color:#0000FF;font-weight: bold">true</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">avoid</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">drag</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">user</span> <span style="color:#7F0000;text-style:italic">pressed</span> <span style="color:#7F0000;text-style:italic">Escape</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">still</span> <span style="color:#7F0000;text-style:italic">dragging</span>
+					
+					dropsource = <span style="color:#0000FF;font-weight: bold">new</span> FileDragSource
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> data <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> WinDataObjectMBS(app.files)
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> DragImage <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> Picture(<span style="color:#0000FF;font-weight: bold">me</span>.Width, <span style="color:#0000FF;font-weight: bold">me</span>.Height, <span style="color:#326598">32</span>)
+					
+					drawicons DragImage.Graphics, &amp;c<span style="color:#FF0000">00</span><span style="color:#00FF00">00</span><span style="color:#0000FF">01</span>
+					
+					data.AddDragImage DragImage, DragImage.Width, DragImage.Height, x, y, &amp;c<span style="color:#FF0000">00</span><span style="color:#00FF00">00</span><span style="color:#0000FF">01</span>
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> okeffect <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = dropsource.DROPEFFECT_COPY <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">allow</span> <span style="color:#7F0000;text-style:italic">only</span> <span style="color:#7F0000;text-style:italic">copy</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> effect <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> result <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = dropsource.DoDragDrop(data, okeffect, effect)
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">debugging</span> <span style="color:#7F0000;text-style:italic">so</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">look</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">results</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">DebugView:</span>
+					
+					System.DebugLog <span style="color:#6500FE">&quot;Result:</span> <span style="color:#6500FE">&quot;</span>+str(Result)
+					System.DebugLog <span style="color:#6500FE">&quot;Effect:</span> <span style="color:#6500FE">&quot;</span>+str(effect)
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> result = dropsource.DRAGDROP_S_DROP <span style="color:#0000FF;font-weight: bold">then</span>
+						System.DebugLog <span style="color:#6500FE">&quot;Dropped&quot;</span>
+						
+						
+						<span style="color:#0000FF;font-weight: bold">if</span> BitwiseAnd(Effect, dropsource.DROPEFFECT_COPY) = dropsource.DROPEFFECT_COPY <span style="color:#0000FF;font-weight: bold">then</span>
+							System.DebugLog <span style="color:#6500FE">&quot;Copied&quot;</span>
+							
+						<span style="color:#0000FF;font-weight: bold">elseif</span> BitwiseAnd(Effect, dropsource.DROPEFFECT_MOVE) = dropsource.DROPEFFECT_MOVE <span style="color:#0000FF;font-weight: bold">then</span>
+							System.DebugLog <span style="color:#6500FE">&quot;Moved&quot;</span>
+						<span style="color:#0000FF;font-weight: bold">elseif</span> BitwiseAnd(Effect, dropsource.DROPEFFECT_LINK) = dropsource.DROPEFFECT_LINK <span style="color:#0000FF;font-weight: bold">then</span>
+							System.DebugLog <span style="color:#6500FE">&quot;Linked&quot;</span>
+						<span style="color:#0000FF;font-weight: bold">else</span>
+							System.DebugLog <span style="color:#6500FE">&quot;Unknown</span> <span style="color:#6500FE">effect.&quot;</span>
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+						
+					<span style="color:#0000FF;font-weight: bold">elseif</span> result = dropsource.DRAGDROP_S_CANCEL <span style="color:#0000FF;font-weight: bold">then</span>
+						System.DebugLog <span style="color:#6500FE">&quot;Cancel&quot;</span>
+						
+					<span style="color:#0000FF;font-weight: bold">else</span>
+						System.DebugLog <span style="color:#6500FE">&quot;Other</span> <span style="color:#6500FE">result.&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Paint(g <span style="color:#0000FF;font-weight: bold">As</span> Graphics)
+				drawicons g, &amp;c<span style="color:#FF0000">FF</span><span style="color:#00FF00">FF</span><span style="color:#0000FF">FF</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">We</span> <span style="color:#7F0000;text-style:italic">make</span> <span style="color:#7F0000;text-style:italic">our</span> <span style="color:#7F0000;text-style:italic">window</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">drop</span> <span style="color:#7F0000;text-style:italic">target</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">have</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">drag</span> <span style="color:#7F0000;text-style:italic">image</span> <span style="color:#7F0000;text-style:italic">visible</span> <span style="color:#7F0000;text-style:italic">within</span> <span style="color:#7F0000;text-style:italic">our</span> <span style="color:#7F0000;text-style:italic">application</span>
+			
+			w = <span style="color:#0000FF;font-weight: bold">new</span> FileDropTarget
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> e <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = w.AttachToWindow(<span style="color:#0000FF;font-weight: bold">Self</span>)
+			
+			System.DebugLog <span style="color:#6500FE">&quot;AttachToWindow:</span> <span style="color:#6500FE">&quot;</span>+str(e)
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> drawicons(g <span style="color:#0000FF;font-weight: bold">as</span> Graphics, bgcolor <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">color</span>)
+			g.ForeColor = bgcolor
+			g.FillRect <span style="color:#326598">0</span>,<span style="color:#326598">0</span>,g.Width,g.Height
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> u <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = UBound(app.files)
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> u
+				<span style="color:#0000FF;font-weight: bold">dim</span> x <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = i <span style="color:#0000FF;font-weight: bold">mod</span> <span style="color:#326598">2</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> y <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = i \ <span style="color:#326598">2</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> icon <span style="color:#0000FF;font-weight: bold">as</span> Picture = app.files(i).IconMBS(<span style="color:#326598">32</span>)
+				
+				g.DrawPicture icon, x*<span style="color:#326598">50</span>+<span style="color:#326598">50</span>, y*<span style="color:#326598">50</span>+<span style="color:#326598">50</span>
+				
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> DragStarted <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> dropsource <span style="color:#0000FF;font-weight: bold">As</span> FileDragSource</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> w <span style="color:#0000FF;font-weight: bold">As</span> FileDropTarget</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> FileDragSource <span style="color:#0000FF;font-weight: bold">Inherits</span> WindowsDragSourceMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> GiveFeedback(Effect <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">Return</span> DRAGDROP_S_USEDEFAULTCURSORS
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> QueryContinueDrag(EscapePressed <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">boolean</span>, KeyState <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			System.DebugLog CurrentMethodName+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">EscapePressed:</span> <span style="color:#6500FE">&quot;</span>+str(EscapePressed)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">KeyState:</span> <span style="color:#6500FE">&quot;</span>+str(KeyState)
+			
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> EscapePressed <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> DRAGDROP_S_CANCEL
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> Bitwise.BitAnd(KeyState, MK_LBUTTON)=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">return</span> DRAGDROP_S_DROP
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> S_OK
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> FileDropTarget <span style="color:#0000FF;font-weight: bold">Inherits</span> WindowsDropTargetMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> DragEnter(dataObject <span style="color:#0000FF;font-weight: bold">as</span> WinDataObjectMBS, keystate <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, x <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, y <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, <span style="color:#0000FF;font-weight: bold">byref</span> effect <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">deny</span> <span style="color:#7F0000;text-style:italic">drop</span>
+			effect = DROPEFFECT_NONE
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> S_OK
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> DragLeave() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">return</span> S_OK
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> DragOver(keystate <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, x <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, y <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, <span style="color:#0000FF;font-weight: bold">byref</span> effect <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">deny</span> <span style="color:#7F0000;text-style:italic">drop</span>
+			effect = DROPEFFECT_NONE
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> S_OK
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> Drop(dataObject <span style="color:#0000FF;font-weight: bold">as</span> WinDataObjectMBS, keystate <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, x <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, y <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, <span style="color:#0000FF;font-weight: bold">byref</span> effect <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">deny</span> <span style="color:#7F0000;text-style:italic">drop</span>
+			effect = DROPEFFECT_NONE
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> S_OK
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-win-draganddrop-attachmentdropfromoutlook.html">/Win/Drag and Drop/Attachment Drop from Outlook</A></li>
+<li><A href="example-win-draganddrop-filedrag.html">/Win/Drag and Drop/File Drag</A></li>
+<li><A href="example-win-draganddrop-filedrop.html">/Win/Drag and Drop/File Drop</A></li>
+<li><A href="example-win-draganddrop-folderdrag.html">/Win/Drag and Drop/Folder Drag</A></li>
+<li><A href="example-win-draganddrop-picturedrag.html">/Win/Drag and Drop/Picture Drag</A></li>
+<li><A href="example-win-draganddrop-picturedragwithmask.html">/Win/Drag and Drop/Picture Drag with Mask</A></li>
+<li><A href="example-win-draganddrop-picturedrop.html">/Win/Drag and Drop/Picture Drop</A></li>
+<li><A href="example-win-draganddrop-picturedroponcontrol.html">/Win/Drag and Drop/Picture Drop on control</A></li>
+<li><A href="example-win-draganddrop-textdrag.html">/Win/Drag and Drop/Text Drag</A></li>
+<li><A href="example-win-draganddrop-textdrop.html">/Win/Drag and Drop/Text Drop</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbswinplugin.html">MBS Win Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-win-draganddrop-filedragmulti">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

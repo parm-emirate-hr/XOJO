@@ -1,0 +1,622 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /CURL/Receive Email/CURLS email client</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /CURL/Receive Email/CURLS email client</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/CURL/Receive Email/CURLS email client</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS CURL Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /CURL/Receive Email/CURLS email client<BR>
+This example is the version from Wed, 3rd Jan 2023.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;CURLS</span> <span style="color:#6500FE">email</span> <span style="color:#6500FE">client.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	FileTypes</div>
+<div class="RB_Code">		Filetype text</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> FileTypes</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Window1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Server <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Server <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Username <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Username <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Passwort <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Passwort <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control ResultText <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance ResultText <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Change()
+				<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">me</span>.ListIndex &gt;= <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> e <span style="color:#0000FF;font-weight: bold">as</span> MimeEmailMBS = <span style="color:#0000FF;font-weight: bold">me</span>.RowTag(<span style="color:#0000FF;font-weight: bold">me</span>.ListIndex)
+					
+					ShowEmail e
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					ClearEmail
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control DebugText <span style="color:#0000FF;font-weight: bold">Inherits</span> TextArea</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance DebugText <span style="color:#0000FF;font-weight: bold">Inherits</span> TextArea</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control RadioPOP3 <span style="color:#0000FF;font-weight: bold">Inherits</span> RadioButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance RadioPOP3 <span style="color:#0000FF;font-weight: bold">Inherits</span> RadioButton</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control RadioIMAP <span style="color:#0000FF;font-weight: bold">Inherits</span> RadioButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance RadioIMAP <span style="color:#0000FF;font-weight: bold">Inherits</span> RadioButton</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control HeaderList <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance HeaderList <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control RecipientsList <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance RecipientsList <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PopupAttachment <span style="color:#0000FF;font-weight: bold">Inherits</span> PopupMenu</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PopupAttachment <span style="color:#0000FF;font-weight: bold">Inherits</span> PopupMenu</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Change()
+				SaveButton.Enabled = <span style="color:#0000FF;font-weight: bold">me</span>.ListIndex &gt;= <span style="color:#326598">0</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PlainText <span style="color:#0000FF;font-weight: bold">Inherits</span> TextArea</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PlainText <span style="color:#0000FF;font-weight: bold">Inherits</span> TextArea</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control HTMLText <span style="color:#0000FF;font-weight: bold">Inherits</span> HTMLViewer</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance HTMLText <span style="color:#0000FF;font-weight: bold">Inherits</span> HTMLViewer</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control SaveButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance SaveButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">if</span> PopupAttachment.ListIndex = -<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> a <span style="color:#0000FF;font-weight: bold">as</span> MimeAttachmentMBS = PopupAttachment.RowTag(PopupAttachment.ListIndex)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> a = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = GetSaveFolderItem(<span style="color:#6500FE">&quot;&quot;</span>, a.Filename)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> f = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BinaryStream = BinaryStream.Create(f, <span style="color:#0000FF;font-weight: bold">true</span>)
+				
+				b.Write a.data
+				b.Close
+				
+				<span style="color:#0000FF;font-weight: bold">Exception</span> io <span style="color:#0000FF;font-weight: bold">as</span> IOException
+				MsgBox <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">write</span> <span style="color:#6500FE">file.&quot;</span>+EndOfLine+EndOfLine+io.message
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Subject <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Subject <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control MailButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance MailButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">if</span> server.Text.len = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					MsgBox <span style="color:#6500FE">&quot;please</span> <span style="color:#6500FE">enter</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">server!&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				QueryList
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Timer1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Timer1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				CurlMulti.Perform
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			CurlMulti = <span style="color:#0000FF;font-weight: bold">new</span> MyCURLSMulti
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Add(label <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, list <span style="color:#0000FF;font-weight: bold">as</span> MimeAddressListMBS)
+			<span style="color:#0000FF;font-weight: bold">if</span> list = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> a <span style="color:#0000FF;font-weight: bold">as</span> MimeAddressMBS <span style="color:#0000FF;font-weight: bold">in</span> list.Addresses
+				<span style="color:#0000FF;font-weight: bold">if</span> a.isGroup <span style="color:#0000FF;font-weight: bold">then</span>
+					Add label, a.Group
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					Add label, a.Mailbox
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Add(label <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, g <span style="color:#0000FF;font-weight: bold">as</span> MimeGroupMBS)
+			<span style="color:#0000FF;font-weight: bold">if</span> g = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> emails() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> m <span style="color:#0000FF;font-weight: bold">as</span> MimeMailboxMBS <span style="color:#0000FF;font-weight: bold">in</span> g.Mailboxes
+				emails.Append m.Email
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			RecipientsList.AddRow <span style="color:#6500FE">&quot;to&quot;</span>, g.NameDecoded, Join(emails, <span style="color:#6500FE">&quot;,</span> <span style="color:#6500FE">&quot;</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Add(label <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, list <span style="color:#0000FF;font-weight: bold">as</span> MimeMailboxListMBS)
+			<span style="color:#0000FF;font-weight: bold">if</span> list = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> m <span style="color:#0000FF;font-weight: bold">as</span> MimeMailboxMBS <span style="color:#0000FF;font-weight: bold">in</span> list.Mailboxes
+				Add label, m
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Add(label <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, m <span style="color:#0000FF;font-weight: bold">as</span> MimeMailboxMBS)
+			<span style="color:#0000FF;font-weight: bold">if</span> m = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			RecipientsList.AddRow label, m.LabelDecoded, m.Email
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> ClearEmail()
+			HeaderList.DeleteAllRows
+			RecipientsList.DeleteAllRows
+			PlainText.Text = <span style="color:#6500FE">&quot;&quot;</span>
+			Subject.Text = <span style="color:#6500FE">&quot;&quot;</span>
+			PopupAttachment.DeleteAllRows
+			PopupAttachment.Enabled = <span style="color:#0000FF;font-weight: bold">False</span>
+			SaveButton.Enabled = <span style="color:#0000FF;font-weight: bold">False</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> QueryList()
+			MailButton.Enabled = <span style="color:#0000FF;font-weight: bold">False</span>
+			List.DeleteAllRows
+			ClearEmail
+			<span style="color:#0000FF;font-weight: bold">redim</span> EmailsToQuery(-<span style="color:#326598">1</span>)
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">imap</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> curl <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MyCURL
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ask</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">TLSv1.2</span>
+			curl.OptionSSLVersion = curl.kSSLVersionTLSv12
+			curl.OptionUseSSL = curl.kUseSSLall
+			
+			
+			<span style="color:#0000FF;font-weight: bold">If</span> RadioIMAP.Value <span style="color:#0000FF;font-weight: bold">Then</span>
+				curl.imap = <span style="color:#0000FF;font-weight: bold">True</span>
+				curl.OptionURL = <span style="color:#6500FE">&quot;imap://&quot;</span>+Server.Text+<span style="color:#6500FE">&quot;/INBOX&quot;</span>
+				curl.OptionCustomRequest = <span style="color:#6500FE">&quot;FETCH</span> <span style="color:#6500FE">1:*</span> <span style="color:#6500FE">FLAGS&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">Elseif</span> RadioPOP3.Value <span style="color:#0000FF;font-weight: bold">Then</span>
+				curl.pop3 = <span style="color:#0000FF;font-weight: bold">true</span>
+				curl.OptionURL = <span style="color:#6500FE">&quot;pop3://&quot;</span>+Server.Text+<span style="color:#6500FE">&quot;/&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				Break
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			curl.OptionUsername = Username.Text
+			curl.OptionPassword = Passwort.Text
+			<span style="color:#0000FF;font-weight: bold">AddHandler</span> curl.Finished, WeakAddressOf QueryListFinished
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> CurlMulti.AddCURL curl
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> QueryListFinished(c <span style="color:#0000FF;font-weight: bold">as</span> MyCURL, Result <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">show</span> <span style="color:#7F0000;text-style:italic">debug</span> <span style="color:#7F0000;text-style:italic">info</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = c.DebugMessages
+			<span style="color:#0000FF;font-weight: bold">if</span> s.Encoding = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				s = DefineEncoding(s, encodings.ISOLatin1)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			s = ReplaceLineEndings(s, EndOfLine)
+			DebugText.Text = s
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">problem?</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> result &lt;&gt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				MailButton.Enabled = <span style="color:#0000FF;font-weight: bold">true</span>
+				MsgBox <span style="color:#6500FE">&quot;CURL</span> <span style="color:#6500FE">Error</span> <span style="color:#6500FE">code:</span> <span style="color:#6500FE">&quot;</span>+str(result)
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">parse</span> <span style="color:#7F0000;text-style:italic">list</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> content <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = c.OutputData
+			<span style="color:#0000FF;font-weight: bold">if</span> content.Encoding = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				content = DefineEncoding(content, encodings.ISOLatin1)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			content = ReplaceLineEndings(content, EndOfLine)
+			
+			
+			EmailsToQuery = Split(content, EndOfLine)
+			
+			QueryNextEmail
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> QueryNextEmail()
+			<span style="color:#0000FF;font-weight: bold">if</span> EmailsToQuery.Ubound = -<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">done</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> EmailID <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = EmailsToQuery.pop
+			
+			EmailID = trim(EmailID)
+			<span style="color:#0000FF;font-weight: bold">if</span> EmailID = <span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				QueryNextEmail
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> curl <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MyCURL
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ask</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">TLSv1.2</span>
+			curl.OptionSSLVersion = curl.kSSLVersionTLSv12
+			curl.OptionUseSSL = curl.kUseSSLall
+			
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> RadioIMAP.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">*</span> <span style="color:#7F0000;text-style:italic">6</span> <span style="color:#7F0000;text-style:italic">FETCH</span> <span style="color:#7F0000;text-style:italic">(FLAGS</span> <span style="color:#7F0000;text-style:italic">(\Seen))</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> left(EmailID,<span style="color:#326598">2</span>) = <span style="color:#6500FE">&quot;*</span> <span style="color:#6500FE">&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ok</span>
+					
+					EmailID = NthField(EmailID, <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>, <span style="color:#326598">2</span>)
+					
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					break <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">unexpected?</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">imap</span>
+				curl.OptionURL = <span style="color:#6500FE">&quot;imap://&quot;</span>+Server.Text+<span style="color:#6500FE">&quot;/INBOX;UID=&quot;</span>+EmailID
+			<span style="color:#0000FF;font-weight: bold">elseif</span> RadioPOP3.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				EmailID = NthField(EmailID, <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>, <span style="color:#326598">1</span>)
+				curl.OptionURL = <span style="color:#6500FE">&quot;pop3://&quot;</span>+Server.Text+<span style="color:#6500FE">&quot;/&quot;</span>+EmailID
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				Break
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			curl.OptionUsername = Username.Text
+			curl.OptionPassword = Passwort.Text
+			<span style="color:#0000FF;font-weight: bold">AddHandler</span> curl.Finished, WeakAddressOf QueryNextEmailFinished
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> CurlMulti.AddCURL curl
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> QueryNextEmailFinished(c <span style="color:#0000FF;font-weight: bold">as</span> MyCURL, Result <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">show</span> <span style="color:#7F0000;text-style:italic">debug</span> <span style="color:#7F0000;text-style:italic">info</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = c.DebugMessages
+			<span style="color:#0000FF;font-weight: bold">if</span> s.Encoding = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				s = DefineEncoding(s, encodings.ISOLatin1)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			s = ReplaceLineEndings(s, EndOfLine)
+			DebugText.Text = s
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">problem?</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> result &lt;&gt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				MailButton.Enabled = <span style="color:#0000FF;font-weight: bold">true</span>
+				MsgBox <span style="color:#6500FE">&quot;CURL</span> <span style="color:#6500FE">Error</span> <span style="color:#6500FE">code:</span> <span style="color:#6500FE">&quot;</span>+str(result)
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			
+			QueryNextEmail
+			
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> content <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = c.OutputData
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">parse</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> e <span style="color:#0000FF;font-weight: bold">as</span> MimeEmailMBS
+			
+			<span style="color:#0000FF;font-weight: bold">try</span>
+				e = <span style="color:#0000FF;font-weight: bold">new</span> MimeEmailMBS(content)
+				
+				List.AddRow e.FromLabel, e.ToLabel, e.Subject
+				List.RowTag(List.LastIndex) = e
+				
+			<span style="color:#0000FF;font-weight: bold">catch</span> ex <span style="color:#0000FF;font-weight: bold">as</span> runtimeException
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">few</span> <span style="color:#7F0000;text-style:italic">things</span> <span style="color:#7F0000;text-style:italic">could</span> <span style="color:#7F0000;text-style:italic">go</span> <span style="color:#7F0000;text-style:italic">wrong</span>
+				MsgBox Introspection.GetType(ex).fullname+EndOfLine+EndOfLine+ex.message
+				<span style="color:#0000FF;font-weight: bold">return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">try</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> ShowEmail(e <span style="color:#0000FF;font-weight: bold">as</span> MimeEmailMBS)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">clear</span>
+			ClearEmail
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> e = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			Subject.Text = e.Subject
+			PlainText.Text = e.PlainText
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> h <span style="color:#0000FF;font-weight: bold">as</span> MimeHeaderMBS = e.Header
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> ff <span style="color:#0000FF;font-weight: bold">as</span> MimeFieldMBS <span style="color:#0000FF;font-weight: bold">in</span> h.Fields
+				HeaderList.AddRow ff.Name, ff.Value
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			Add <span style="color:#6500FE">&quot;from&quot;</span>, h.from
+			Add <span style="color:#6500FE">&quot;to&quot;</span>, h.too
+			Add <span style="color:#6500FE">&quot;cc&quot;</span>, h.cc
+			Add <span style="color:#6500FE">&quot;bcc&quot;</span>, h.bcc
+			Add <span style="color:#6500FE">&quot;replyto&quot;</span>, h.replyto
+			Add <span style="color:#6500FE">&quot;sender&quot;</span>, h.sender
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> Attachments() <span style="color:#0000FF;font-weight: bold">as</span> MimeAttachmentMBS = e.Attachments
+			<span style="color:#0000FF;font-weight: bold">dim</span> Inlines()     <span style="color:#0000FF;font-weight: bold">as</span> MimeAttachmentMBS = e.Inlines
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> a <span style="color:#0000FF;font-weight: bold">as</span> MimeAttachmentMBS <span style="color:#0000FF;font-weight: bold">in</span> Attachments
+				PopupAttachment.AddRow a.Filename
+				PopupAttachment.RowTag(PopupAttachment.ListCount-<span style="color:#326598">1</span>) = a
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> TargetMacOS <span style="color:#0000FF;font-weight: bold">and</span> Inlines.ubound &gt;= <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">and</span> Attachments.ubound &gt;= <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				PopupAttachment.AddSeparator
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> a <span style="color:#0000FF;font-weight: bold">as</span> MimeAttachmentMBS <span style="color:#0000FF;font-weight: bold">in</span> Inlines
+				PopupAttachment.AddRow a.Filename
+				PopupAttachment.RowTag(PopupAttachment.ListCount-<span style="color:#326598">1</span>) = a
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			ShowHTML e
+			PopupAttachment.Enabled = <span style="color:#0000FF;font-weight: bold">True</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> ShowHTML(e <span style="color:#0000FF;font-weight: bold">as</span> MimeEmailMBS)
+			<span style="color:#0000FF;font-weight: bold">dim</span> HTML <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = e.HTMLText
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">html</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">charset</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">UTF-8</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">needed</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> html.Encoding = encodings.UTF8 <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> p <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = instr(HTML, <span style="color:#6500FE">&quot;&lt;head&gt;&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">if</span> p &gt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					HTML = ReplaceAll(HTML, <span style="color:#6500FE">&quot;&lt;head&gt;&quot;</span>, <span style="color:#6500FE">&quot;&lt;head&gt;&lt;meta</span> <span style="color:#6500FE">charset=&quot;</span><span style="color:#6500FE">&quot;utf-8&quot;</span><span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">/&gt;&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">best</span> <span style="color:#7F0000;text-style:italic">way</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">but</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">write</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">temp</span> <span style="color:#7F0000;text-style:italic">folder</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">inlines</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">referencing</span> <span style="color:#7F0000;text-style:italic">them</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">html</span> <span style="color:#7F0000;text-style:italic">works</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> tmpfolder <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = SpecialFolder.Temporary.Child(<span style="color:#6500FE">&quot;temp</span> <span style="color:#6500FE">email</span> <span style="color:#6500FE">viewer</span> <span style="color:#6500FE">&quot;</span>+str(rnd*<span style="color:#326598">1000000</span>,<span style="color:#6500FE">&quot;000000&quot;</span>))
+			tmpfolder.CreateAsFolder
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> a <span style="color:#0000FF;font-weight: bold">as</span> MimeAttachmentMBS <span style="color:#0000FF;font-weight: bold">in</span> e.Inlines
+				<span style="color:#0000FF;font-weight: bold">dim</span> Filename <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = a.Filename
+				Filename = ConvertEncoding(Filename, encodings.ASCII)
+				
+				Filename = ReplaceAll(Filename, <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>, <span style="color:#6500FE">&quot;_&quot;</span>)
+				Filename = ReplaceAll(Filename, <span style="color:#6500FE">&quot;?&quot;</span>, <span style="color:#6500FE">&quot;_&quot;</span>)
+				Filename = ReplaceAll(Filename, <span style="color:#6500FE">&quot;:&quot;</span>, <span style="color:#6500FE">&quot;_&quot;</span>)
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = tmpfolder.Child(Filename)
+				<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BinaryStream = BinaryStream.Create(f, <span style="color:#0000FF;font-weight: bold">true</span>)
+				b.Write a.Data
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> ID <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = a.contentId
+				<span style="color:#0000FF;font-weight: bold">if</span> id.Left(<span style="color:#326598">1</span>) = <span style="color:#6500FE">&quot;&lt;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					id = mid(id,<span style="color:#326598">2</span>)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> id.Right(<span style="color:#326598">1</span>) = <span style="color:#6500FE">&quot;&gt;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					id = left(id, len(id)-<span style="color:#326598">1</span>)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				html = Replace(html, <span style="color:#6500FE">&quot;cid:&quot;</span>+id, Filename)
+				
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">now</span> <span style="color:#7F0000;text-style:italic">write</span> <span style="color:#7F0000;text-style:italic">html</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">load</span> <span style="color:#7F0000;text-style:italic">it</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = tmpfolder.Child(<span style="color:#6500FE">&quot;email.html&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BinaryStream = BinaryStream.Create(F, <span style="color:#0000FF;font-weight: bold">true</span>)
+			b.Write HTML
+			
+			HTMLText.LoadPage f
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> CurlMulti <span style="color:#0000FF;font-weight: bold">As</span> MyCURLSMulti</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> EmailsToQuery() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;Quit&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu5 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;Clear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu4 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu3 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem UntitledMenu2 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyCURLSMulti <span style="color:#0000FF;font-weight: bold">Inherits</span> CURLSMultiMBS</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyCURL <span style="color:#0000FF;font-weight: bold">Inherits</span> CURLSMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor()
+			<span style="color:#0000FF;font-weight: bold">me</span>.YieldTime = <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">me</span>.OptionVerbose = <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">me</span>.CollectDebugMessages = <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">me</span>.CollectOutputData = <span style="color:#0000FF;font-weight: bold">true</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> EmailID <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> imap <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> pop3 <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Module</span> UtilityModule</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> FromLabel(<span style="color:#0000FF;font-weight: bold">extends</span> e <span style="color:#0000FF;font-weight: bold">as</span> MimeEmailMBS) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> h <span style="color:#0000FF;font-weight: bold">as</span> MimeHeaderMBS = e.Header
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> MimeMailboxListMBS = h.from
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> f &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> Mailboxes() <span style="color:#0000FF;font-weight: bold">as</span> MimeMailboxMBS = f.Mailboxes
+				
+				<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> m <span style="color:#0000FF;font-weight: bold">as</span> MimeMailboxMBS <span style="color:#0000FF;font-weight: bold">in</span> Mailboxes
+					<span style="color:#0000FF;font-weight: bold">dim</span> l <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = m.LabelDecoded
+					<span style="color:#0000FF;font-weight: bold">if</span> l = <span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						l = m.Email
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					<span style="color:#0000FF;font-weight: bold">return</span> l
+				<span style="color:#0000FF;font-weight: bold">next</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> ToLabel(<span style="color:#0000FF;font-weight: bold">extends</span> e <span style="color:#0000FF;font-weight: bold">as</span> MimeEmailMBS) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> h <span style="color:#0000FF;font-weight: bold">as</span> MimeHeaderMBS = e.Header
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> MimeAddressListMBS = h.too
+			<span style="color:#0000FF;font-weight: bold">dim</span> parts() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> f &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> Addresses() <span style="color:#0000FF;font-weight: bold">as</span> MimeAddressMBS = f.Addresses
+				
+				<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> a <span style="color:#0000FF;font-weight: bold">as</span> MimeAddressMBS <span style="color:#0000FF;font-weight: bold">in</span> Addresses
+					<span style="color:#0000FF;font-weight: bold">dim</span> g <span style="color:#0000FF;font-weight: bold">as</span> MimeGroupMBS = a.Group
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> g &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						parts.Append g.NameDecoded
+					<span style="color:#0000FF;font-weight: bold">else</span>
+						<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> MimeMailboxMBS = a.Mailbox
+						<span style="color:#0000FF;font-weight: bold">if</span> m &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+							<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = m.LabelDecoded
+							<span style="color:#0000FF;font-weight: bold">if</span> s = <span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+								s = m.Email
+							<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+							
+							parts.Append s
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">next</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> Join(parts, <span style="color:#6500FE">&quot;,</span> <span style="color:#6500FE">&quot;</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Module</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-curl-receiveemail-curlsimap.html">/CURL/Receive Email/CURLS imap</A></li>
+<li><A href="example-curl-receiveemail-curlspop3emaildownload.html">/CURL/Receive Email/CURLS pop3 email download</A></li>
+<li><A href="example-curl-receiveemail-emailviewer.html">/CURL/Receive Email/Email Viewer</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-curl-receiveemail-curlsemailclient">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

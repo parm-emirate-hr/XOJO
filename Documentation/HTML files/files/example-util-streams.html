@@ -1,0 +1,1186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Util/Streams</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Util/Streams</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Util/Streams</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS MacOSX Plugin, MBS Util Plugin, MBS MacCF Plugin, MBS MacClassic Plugin, MBS Encryption Plugin, MBS Compression Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Util/Streams<BR>
+This example is the version from Sun, 5th Nov 2022.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Streams.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	FileTypes</div>
+<div class="RB_Code">		Filetype text</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> FileTypes</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Window1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				app.CreateFiles
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton2 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton2 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				app.TestWrite
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton3 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton3 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				app.TestRead
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton4 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton4 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				app.TestArchive
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton5 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton5 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				app.TestUnarchive
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton6 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton6 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				app.TestArchiveFolder
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton7 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton7 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				app.TestUnarchiveFolder
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;Quit&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu5 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;Clear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu4 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu3 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem UntitledMenu2 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> CreateFiles()
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> TextOutputStream
+			<span style="color:#0000FF;font-weight: bold">dim</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> folder <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+			
+			f=SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">Inputfile.txt&quot;</span>)
+			t=f.CreateTextFile
+			t.WriteLine Window1.StaticText1.text
+			t.Close
+			
+			folder=SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;Testinputfolder&quot;</span>)
+			folder.CreateAsFolder
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> i=<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">10</span>
+				f=folder.Child(<span style="color:#6500FE">&quot;test</span> <span style="color:#6500FE">&quot;</span>+str(i))
+				t=f.CreateTextFile
+				t.WriteLine Window1.StaticText1.text
+				t.Close
+				
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> TestArchive()
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> LargeBinaryStreamMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+			<span style="color:#0000FF;font-weight: bold">dim</span> bs <span style="color:#0000FF;font-weight: bold">as</span> MBSStream
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Creates</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">archive</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">one</span> <span style="color:#7F0000;text-style:italic">file.</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">needs</span> <span style="color:#7F0000;text-style:italic">&quot;Vancouver_Night_Panorama.tif&quot;</span> <span style="color:#7F0000;text-style:italic">file</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">desktop</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">creates</span> <span style="color:#7F0000;text-style:italic">&quot;test.pack&quot;</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">desktop</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Create</span>
+			f=SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;test.pack&quot;</span>)
+			b=f.CreateLargeBinaryStreamMBS(<span style="color:#6500FE">&quot;TEXT&quot;</span>,<span style="color:#6500FE">&quot;????&quot;</span>)
+			
+			bs=<span style="color:#0000FF;font-weight: bold">new</span> MBSLargeBinaryStream(b)
+			bs.ArchiveFile SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">Inputfile.txt&quot;</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> TestArchiveFolder()
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> LargeBinaryStreamMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+			<span style="color:#0000FF;font-weight: bold">dim</span> OutBinary, OutZip, OutAES, OutXOR <span style="color:#0000FF;font-weight: bold">as</span> MBSStream
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Creates</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">archive</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">files.</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">needs</span> <span style="color:#7F0000;text-style:italic">&quot;picts&quot;</span> <span style="color:#7F0000;text-style:italic">folder</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">desktop</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">creates</span> <span style="color:#7F0000;text-style:italic">&quot;testfolder.pack&quot;</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">desktop</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Create</span>
+			f=SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;testfolder.pack&quot;</span>)
+			b=f.CreateLargeBinaryStreamMBS(<span style="color:#6500FE">&quot;TEXT&quot;</span>,<span style="color:#6500FE">&quot;????&quot;</span>)
+			
+			OutBinary=<span style="color:#0000FF;font-weight: bold">new</span> MBSLargeBinaryStream(b)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">xor</span> <span style="color:#7F0000;text-style:italic">before</span> <span style="color:#7F0000;text-style:italic">writing</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">file</span>
+			OutXOR=<span style="color:#0000FF;font-weight: bold">new</span> MBSXORStream(OutBinary,<span style="color:#6500FE">&quot;Hello</span> <span style="color:#6500FE">World&quot;</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">xor,</span> <span style="color:#7F0000;text-style:italic">so</span> <span style="color:#7F0000;text-style:italic">nobody</span> <span style="color:#7F0000;text-style:italic">sees</span> <span style="color:#7F0000;text-style:italic">header</span> <span style="color:#7F0000;text-style:italic">data</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">AES</span> <span style="color:#7F0000;text-style:italic">before</span>
+			OutAES=<span style="color:#0000FF;font-weight: bold">new</span> MBSAESstream(OutXOR,<span style="color:#6500FE">&quot;1234567890123456&quot;</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">Zip</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">before!</span>
+			OutZip=<span style="color:#0000FF;font-weight: bold">new</span> MBSBufferedZipStream(OutAES)
+			
+			OutZip.ArchiveFolder SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;Testinputfolder&quot;</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> TestRead()
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BinaryStream
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+			<span style="color:#0000FF;font-weight: bold">dim</span> OutBinary, InBinary, InXOR, InAES, InZip <span style="color:#0000FF;font-weight: bold">as</span> MBSStream
+			
+			f=SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">Processfile.txt&quot;</span>)
+			b=f.OpenAsBinaryFile(<span style="color:#0000FF;font-weight: bold">False</span>)
+			<span style="color:#0000FF;font-weight: bold">if</span> b=<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			InBinary=<span style="color:#0000FF;font-weight: bold">new</span> MBSBinaryStream(b)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">xor</span> <span style="color:#7F0000;text-style:italic">it</span>
+			InXOR=<span style="color:#0000FF;font-weight: bold">new</span> MBSXORStream(InBinary,<span style="color:#6500FE">&quot;Hello</span> <span style="color:#6500FE">World&quot;</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">xor,</span> <span style="color:#7F0000;text-style:italic">so</span> <span style="color:#7F0000;text-style:italic">nobody</span> <span style="color:#7F0000;text-style:italic">sees</span> <span style="color:#7F0000;text-style:italic">header</span> <span style="color:#7F0000;text-style:italic">data</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">decrypt</span> <span style="color:#7F0000;text-style:italic">it</span>
+			InAES=<span style="color:#0000FF;font-weight: bold">new</span> MBSAESstream(InXOR,<span style="color:#6500FE">&quot;1234567890123456&quot;</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Unzip</span> <span style="color:#7F0000;text-style:italic">it</span>
+			InZip=<span style="color:#0000FF;font-weight: bold">new</span> MBSZipStream(InAES)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">find</span> <span style="color:#7F0000;text-style:italic">dest</span> <span style="color:#7F0000;text-style:italic">file</span>
+			f=SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">Outputfile.txt&quot;</span>)
+			b=f.CreateBinaryFile(<span style="color:#6500FE">&quot;text&quot;</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Write</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">binary</span> <span style="color:#7F0000;text-style:italic">stream</span>
+			OutBinary=<span style="color:#0000FF;font-weight: bold">new</span> MBSBinaryStream(b)
+			
+			InZip.CopyStreamTo OutBinary,<span style="color:#326598">10000</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> TestUnarchive()
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> LargeBinaryStreamMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+			<span style="color:#0000FF;font-weight: bold">Dim</span> bs <span style="color:#0000FF;font-weight: bold">As</span> MBSStream
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Opens</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">archive</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">one</span> <span style="color:#7F0000;text-style:italic">file.</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">needs</span> <span style="color:#7F0000;text-style:italic">&quot;test.pack&quot;</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">desktop</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">creates</span> <span style="color:#7F0000;text-style:italic">&quot;output&quot;</span> <span style="color:#7F0000;text-style:italic">folder</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">desktop</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Create</span>
+			f=SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;test.pack&quot;</span>)
+			b=f.OpenAsLargeBinaryStreamMBS(<span style="color:#0000FF;font-weight: bold">false</span>)
+			
+			f=SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;output&quot;</span>)
+			f.CreateAsFolder
+			
+			bs=<span style="color:#0000FF;font-weight: bold">new</span> MBSLargeBinaryStream(b)
+			bs.UnarchiveFile f
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> TestUnarchiveFolder()
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> LargeBinaryStreamMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+			<span style="color:#0000FF;font-weight: bold">dim</span> InZip, InBinary, InXOR, InAES <span style="color:#0000FF;font-weight: bold">as</span> MBSStream
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Opens</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">archive</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">files.</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">needs</span> <span style="color:#7F0000;text-style:italic">&quot;testfolder.pack&quot;</span> <span style="color:#7F0000;text-style:italic">file</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">desktop</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">creates</span> <span style="color:#7F0000;text-style:italic">&quot;outputfolder&quot;</span> <span style="color:#7F0000;text-style:italic">folder</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">desktop</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Create</span>
+			f=SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;testfolder.pack&quot;</span>)
+			b=f.OpenAsLargeBinaryStreamMBS(<span style="color:#0000FF;font-weight: bold">false</span>)
+			
+			f=SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;Testoutputfolder&quot;</span>)
+			f.CreateAsFolder
+			
+			InBinary=<span style="color:#0000FF;font-weight: bold">new</span> MBSLargeBinaryStream(b)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">xor</span> <span style="color:#7F0000;text-style:italic">it</span>
+			InXOR=<span style="color:#0000FF;font-weight: bold">new</span> MBSXORStream(InBinary,<span style="color:#6500FE">&quot;Hello</span> <span style="color:#6500FE">World&quot;</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">xor,</span> <span style="color:#7F0000;text-style:italic">so</span> <span style="color:#7F0000;text-style:italic">nobody</span> <span style="color:#7F0000;text-style:italic">sees</span> <span style="color:#7F0000;text-style:italic">header</span> <span style="color:#7F0000;text-style:italic">data</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">decrypt</span> <span style="color:#7F0000;text-style:italic">it</span>
+			InAES=<span style="color:#0000FF;font-weight: bold">new</span> MBSAESstream(InXOR,<span style="color:#6500FE">&quot;1234567890123456&quot;</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Unzip</span> <span style="color:#7F0000;text-style:italic">it</span>
+			InZip=<span style="color:#0000FF;font-weight: bold">new</span> MBSZipStream(InAES)
+			
+			InZip.UnarchiveFolder f
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> TestWrite()
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BinaryStream
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+			<span style="color:#0000FF;font-weight: bold">dim</span> InBinary, OutBinary, OutXOR, OutAES, OutZip <span style="color:#0000FF;font-weight: bold">as</span> MBSStream
+			
+			f=SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">Inputfile.txt&quot;</span>)
+			b=f.OpenAsBinaryFile(<span style="color:#0000FF;font-weight: bold">False</span>)
+			<span style="color:#0000FF;font-weight: bold">if</span> b=<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Read</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">BinaryStream</span>
+			InBinary=<span style="color:#0000FF;font-weight: bold">new</span> MBSBinaryStream(b)
+			
+			f=SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">Processfile.txt&quot;</span>)
+			b=f.CreateBinaryFile(<span style="color:#6500FE">&quot;text&quot;</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">send</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">binary</span> <span style="color:#7F0000;text-style:italic">stream</span>
+			OutBinary=<span style="color:#0000FF;font-weight: bold">new</span> MBSBinaryStream(b)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">xor</span> <span style="color:#7F0000;text-style:italic">before</span>
+			OutXOR=<span style="color:#0000FF;font-weight: bold">new</span> MBSXORStream(OutBinary,<span style="color:#6500FE">&quot;Hello</span> <span style="color:#6500FE">World&quot;</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">xor,</span> <span style="color:#7F0000;text-style:italic">so</span> <span style="color:#7F0000;text-style:italic">nobody</span> <span style="color:#7F0000;text-style:italic">sees</span> <span style="color:#7F0000;text-style:italic">header</span> <span style="color:#7F0000;text-style:italic">data</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">AES</span> <span style="color:#7F0000;text-style:italic">before</span>
+			OutAES=<span style="color:#0000FF;font-weight: bold">new</span> MBSAESstream(OutXOR,<span style="color:#6500FE">&quot;1234567890123456&quot;</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">Zip</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">before!</span>
+			OutZip=<span style="color:#0000FF;font-weight: bold">new</span> MBSBufferedZipStream(OutAES)
+			
+			InBinary.CopyStreamTo OutZip,<span style="color:#326598">100000</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MBSBinaryStream</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(dest <span style="color:#0000FF;font-weight: bold">as</span> BinaryStream)
+			theDestination=Dest
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> Read(n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">Return</span> theDestination.Read(n)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Write(data <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			theDestination.Write data
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Note">		Note <span style="color:#6500FE">&quot;About&quot;</span>
+<div class="RB_Comment">			Streams to and from a Realbasic Binary Stream</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> theDestination <span style="color:#0000FF;font-weight: bold">As</span> binaryStream</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Interface</span> MBSStream</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> Read(n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Write(data <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Interface</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MBSZipStream</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(d <span style="color:#0000FF;font-weight: bold">as</span> MBSStream, Level <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>=<span style="color:#326598">9</span>)
+			theDestination=d
+			theLevel=Level
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> Read(n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			<span style="color:#0000FF;font-weight: bold">dim</span> OrigLen, BlockLen <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			
+			<span style="color:#0000FF;font-weight: bold">do</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> n=lenb(ReadBuf) <span style="color:#0000FF;font-weight: bold">then</span>
+					s=ReadBuf
+					ReadBuf=<span style="color:#6500FE">&quot;&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> s
+				<span style="color:#0000FF;font-weight: bold">elseif</span> n&lt;lenb(ReadBuf) <span style="color:#0000FF;font-weight: bold">then</span>
+					s=leftb(ReadBuf,n)
+					ReadBuf=mid(ReadBuf,n+<span style="color:#326598">1</span>)
+					
+					<span style="color:#0000FF;font-weight: bold">Return</span> s
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				s=theDestination.Read(<span style="color:#326598">8</span>)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> s=<span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					s=readbuf <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">no</span> <span style="color:#7F0000;text-style:italic">more</span> <span style="color:#7F0000;text-style:italic">data,</span> <span style="color:#7F0000;text-style:italic">return</span> <span style="color:#7F0000;text-style:italic">what</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">have</span>
+					readbuf=<span style="color:#6500FE">&quot;&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> s
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				m=s
+				m.LittleEndian=<span style="color:#0000FF;font-weight: bold">false</span>
+				OrigLen=m.Long(<span style="color:#326598">0</span>)
+				BlockLen=m.Long(<span style="color:#326598">4</span>)
+				
+				s=theDestination.Read(BlockLen)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> s=<span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					s=readbuf <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">no</span> <span style="color:#7F0000;text-style:italic">more</span> <span style="color:#7F0000;text-style:italic">data,</span> <span style="color:#7F0000;text-style:italic">return</span> <span style="color:#7F0000;text-style:italic">what</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">have</span>
+					readbuf=<span style="color:#6500FE">&quot;&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> s
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				ReadBuf=ReadBuf+DecompressZLibMBS(s,OrigLen)
+				
+			<span style="color:#0000FF;font-weight: bold">loop</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">Exception</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Write(data <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> data&lt;&gt;<span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				s=CompressZLibMBS(data,theLevel) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">needs</span> <span style="color:#7F0000;text-style:italic">Compression</span> <span style="color:#7F0000;text-style:italic">Plugin</span>
+				
+				m=NewMemoryBlock(<span style="color:#326598">8</span>)
+				m.LittleEndian=<span style="color:#0000FF;font-weight: bold">false</span>
+				m.long(<span style="color:#326598">0</span>)=lenb(data)
+				m.long(<span style="color:#326598">4</span>)=lenb(s)
+				
+				theDestination.Write m
+				theDestination.Write s
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Note">		Note <span style="color:#6500FE">&quot;About&quot;</span>
+<div class="RB_Comment">			A stream which compresses all stuff going through
+			Please do not use with small blocks as it'll be inefficient
+			Better e.g. 100KB blocks
+			
+			Use MBSBufferStream for better results</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> ReadBuf <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> theDestination <span style="color:#0000FF;font-weight: bold">As</span> MBSStream</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> theLevel <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MBSXORStream</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(dest <span style="color:#0000FF;font-weight: bold">as</span> MBSStream, xcode <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			d=Dest
+			code=xcode
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> Read(n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			
+			s=d.Read(n)
+			
+			<span style="color:#0000FF;font-weight: bold">return</span> StringXORMBS(s,code)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Write(data <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			
+			s=StringXORMBS(data,code)
+			
+			d.Write s
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Note">		Note <span style="color:#6500FE">&quot;About&quot;</span>
+<div class="RB_Comment">			XORs every byte in the stream written or read.
+			Doesn't care for buffer size</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> code <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> d <span style="color:#0000FF;font-weight: bold">As</span> MBSStream</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MBSAESstream</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(dest <span style="color:#0000FF;font-weight: bold">as</span> MBSStream, key <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			
+			d=Dest
+			aes=<span style="color:#0000FF;font-weight: bold">new</span> AESMBS
+			
+			m=key
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> aes.SetKey(m,<span style="color:#326598">128</span>) <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">Raise</span> <span style="color:#0000FF;font-weight: bold">new</span> RuntimeException
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> Read(n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> i,c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			<span style="color:#0000FF;font-weight: bold">dim</span> ms <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			<span style="color:#0000FF;font-weight: bold">dim</span> offset <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> OrigLen <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> BlockLen <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			
+			<span style="color:#0000FF;font-weight: bold">do</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> n=lenb(ReadBuf) <span style="color:#0000FF;font-weight: bold">then</span>
+					s=ReadBuf
+					ReadBuf=<span style="color:#6500FE">&quot;&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> s
+				<span style="color:#0000FF;font-weight: bold">elseif</span> n&lt;lenb(ReadBuf) <span style="color:#0000FF;font-weight: bold">then</span>
+					s=leftb(ReadBuf,n)
+					ReadBuf=mid(ReadBuf,n+<span style="color:#326598">1</span>)
+					
+					<span style="color:#0000FF;font-weight: bold">Return</span> s
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				s=d.Read(<span style="color:#326598">8</span>)
+				<span style="color:#0000FF;font-weight: bold">if</span> s=<span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					s=readbuf <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">no</span> <span style="color:#7F0000;text-style:italic">more</span> <span style="color:#7F0000;text-style:italic">data,</span> <span style="color:#7F0000;text-style:italic">return</span> <span style="color:#7F0000;text-style:italic">what</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">have</span>
+					readbuf=<span style="color:#6500FE">&quot;&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> s
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				m=s
+				m.LittleEndian=<span style="color:#0000FF;font-weight: bold">false</span>
+				OrigLen=m.Long(<span style="color:#326598">0</span>)
+				BlockLen=m.Long(<span style="color:#326598">4</span>)
+				s=d.Read(BlockLen)
+				<span style="color:#0000FF;font-weight: bold">if</span> s=<span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				c=BlockLen\<span style="color:#326598">16</span>
+				offset=<span style="color:#326598">0</span>
+				ms=s
+				
+				<span style="color:#0000FF;font-weight: bold">for</span> i=<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> c
+					
+					m=ms.StringValue(offset,<span style="color:#326598">16</span>)
+					
+					aes.Decrypt m
+					
+					ms.StringValue(offset,<span style="color:#326598">16</span>)=m.StringValue(<span style="color:#326598">0</span>,<span style="color:#326598">16</span>)
+					
+					offset=offset+<span style="color:#326598">16</span>
+				<span style="color:#0000FF;font-weight: bold">next</span>
+				
+				ReadBuf=ReadBuf+ms.StringValue(<span style="color:#326598">0</span>,OrigLen)
+			<span style="color:#0000FF;font-weight: bold">loop</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Exception</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Write(data <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> i,c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			<span style="color:#0000FF;font-weight: bold">dim</span> ms <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			<span style="color:#0000FF;font-weight: bold">dim</span> offset <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			
+			s=data+<span style="color:#6500FE">&quot;</span>                  <span style="color:#6500FE">&quot;</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">pad</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">16</span> <span style="color:#7F0000;text-style:italic">byte</span> <span style="color:#7F0000;text-style:italic">len</span>
+			
+			c=lenb(s)\<span style="color:#326598">16</span>
+			offset=<span style="color:#326598">0</span>
+			ms=s
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> i=<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> c
+				
+				m=ms.StringValue(offset,<span style="color:#326598">16</span>)
+				
+				aes.Encrypt m
+				
+				ms.StringValue(offset,<span style="color:#326598">16</span>)=m.StringValue(<span style="color:#326598">0</span>,<span style="color:#326598">16</span>)
+				
+				offset=offset+<span style="color:#326598">16</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			m=NewMemoryBlock(<span style="color:#326598">8</span>)
+			m.LittleEndian=<span style="color:#0000FF;font-weight: bold">false</span>
+			m.long(<span style="color:#326598">0</span>)=lenb(data)
+			m.long(<span style="color:#326598">4</span>)=c*<span style="color:#326598">16</span>
+			
+			d.Write m
+			d.Write ms.StringValue(<span style="color:#326598">0</span>,c*<span style="color:#326598">16</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> ReadBuf <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> aes <span style="color:#0000FF;font-weight: bold">As</span> AESMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> d <span style="color:#0000FF;font-weight: bold">As</span> MBSStream</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MBSDummyStream</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> DummyStream(dest <span style="color:#0000FF;font-weight: bold">as</span> MBSStream)
+			theDestination=Dest
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> Read(n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">return</span> theDestination.read(n)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Write(data <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			theDestination.write data
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> theDestination <span style="color:#0000FF;font-weight: bold">As</span> MBSStream</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Module</span> GlobalStreamFunctions</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> ArchiveFile(<span style="color:#0000FF;font-weight: bold">extends</span> destStream <span style="color:#0000FF;font-weight: bold">as</span> MBSStream, file <span style="color:#0000FF;font-weight: bold">as</span> folderitem)
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> MBSBufferStream
+			<span style="color:#0000FF;font-weight: bold">Dim</span> rs <span style="color:#0000FF;font-weight: bold">As</span> ResStreamMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> ls <span style="color:#0000FF;font-weight: bold">as</span> LargeBinaryStreamMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> mrs <span style="color:#0000FF;font-weight: bold">as</span> MBSResStream
+			<span style="color:#0000FF;font-weight: bold">dim</span> mls <span style="color:#0000FF;font-weight: bold">as</span> MBSLargeBinaryStream
+			<span style="color:#0000FF;font-weight: bold">dim</span> l <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> DatLen,ResLen <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Buffer</span> <span style="color:#7F0000;text-style:italic">output</span>
+			b=<span style="color:#0000FF;font-weight: bold">new</span> MBSBufferStream(destStream, <span style="color:#326598">100000</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Write</span> <span style="color:#7F0000;text-style:italic">Name</span>
+			b.Write <span style="color:#6500FE">&quot;NAME&quot;</span>
+			b.WriteString file.Name
+			
+			DatLen=file.LogicalFileDataLengthMBS
+			ResLen=file.LogicalFileResLengthMBS
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Write</span> <span style="color:#7F0000;text-style:italic">Resourcefork</span> <span style="color:#7F0000;text-style:italic">size</span>
+			b.Write <span style="color:#6500FE">&quot;RSIZ&quot;</span>
+			b.WriteDouble ResLen
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Write</span> <span style="color:#7F0000;text-style:italic">Datafork</span> <span style="color:#7F0000;text-style:italic">size</span>
+			b.Write <span style="color:#6500FE">&quot;DSIZ&quot;</span>
+			b.WriteDouble DatLen
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Write</span> <span style="color:#7F0000;text-style:italic">Resourcefork</span>
+			b.Write <span style="color:#6500FE">&quot;RDAT&quot;</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> ResLen&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				rs=file.OpenAsResStreamMBS(<span style="color:#0000FF;font-weight: bold">False</span>)
+				<span style="color:#0000FF;font-weight: bold">if</span> rs&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					mrs=<span style="color:#0000FF;font-weight: bold">new</span> MBSResStream(rs)
+					mrs.CopyStreamTo b,<span style="color:#326598">100000</span>
+					mrs=<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">close</span> <span style="color:#7F0000;text-style:italic">it</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Write</span> <span style="color:#7F0000;text-style:italic">Datafork</span>
+			b.Write <span style="color:#6500FE">&quot;DATA&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> DatLen&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				ls=file.OpenAsLargeBinaryStreamMBS(<span style="color:#0000FF;font-weight: bold">false</span>)
+				<span style="color:#0000FF;font-weight: bold">if</span> ls&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					mls=<span style="color:#0000FF;font-weight: bold">new</span> MBSLargeBinaryStream(ls)
+					mls.CopyStreamTo b,<span style="color:#326598">100000</span>
+					mls=<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">close</span> <span style="color:#7F0000;text-style:italic">it</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Write</span> <span style="color:#7F0000;text-style:italic">Comment</span>
+			b.Write <span style="color:#6500FE">&quot;COMM&quot;</span>
+			b.WriteString file.CommentMBS
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Write</span> <span style="color:#7F0000;text-style:italic">modification</span> <span style="color:#7F0000;text-style:italic">date</span>
+			b.Write <span style="color:#6500FE">&quot;MDAT&quot;</span>
+			b.WriteDouble file.ModificationDate.TotalSeconds
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Write</span> <span style="color:#7F0000;text-style:italic">modification</span> <span style="color:#7F0000;text-style:italic">date</span>
+			b.Write <span style="color:#6500FE">&quot;CDAT&quot;</span>
+			b.WriteDouble file.CreationDate.TotalSeconds
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Write</span> <span style="color:#7F0000;text-style:italic">Finder</span> <span style="color:#7F0000;text-style:italic">flags</span>
+			b.Write <span style="color:#6500FE">&quot;FLAG&quot;</span>
+			l=file.GetFileFlagsMBS
+			<span style="color:#0000FF;font-weight: bold">if</span> l&lt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">error</span>
+				l=<span style="color:#326598">0</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			b.WriteInteger l
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Write</span> <span style="color:#7F0000;text-style:italic">MacType</span>
+			<span style="color:#0000FF">#If</span> RBVersion &lt; <span style="color:#326598">2019</span>
+				b.Write <span style="color:#6500FE">&quot;MTYP&quot;</span>
+				b.WriteString file.MacType
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Write</span> <span style="color:#7F0000;text-style:italic">MacCreator</span>
+				b.Write <span style="color:#6500FE">&quot;MCRE&quot;</span>
+				b.WriteString file.MacCreator
+			<span style="color:#0000FF">#EndIf</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Write</span> <span style="color:#7F0000;text-style:italic">access</span> <span style="color:#7F0000;text-style:italic">rights</span>
+			b.Write <span style="color:#6500FE">&quot;PERM&quot;</span>
+			b.WriteInteger GetFilePermission(file)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> ArchiveFolder(<span style="color:#0000FF;font-weight: bold">extends</span> destStream <span style="color:#0000FF;font-weight: bold">as</span> MBSStream, folder <span style="color:#0000FF;font-weight: bold">as</span> folderitem)
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> MBSBufferStream
+			<span style="color:#0000FF;font-weight: bold">Dim</span> l <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> i,c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+			
+			c=folder.Count
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Buffer</span> <span style="color:#7F0000;text-style:italic">output</span>
+			b=<span style="color:#0000FF;font-weight: bold">new</span> MBSBufferStream(destStream, <span style="color:#326598">100000</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Write</span> <span style="color:#7F0000;text-style:italic">Name</span>
+			b.Write <span style="color:#6500FE">&quot;NAME&quot;</span>
+			b.WriteString folder.Name
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Write</span> <span style="color:#7F0000;text-style:italic">Datafork</span> <span style="color:#7F0000;text-style:italic">size</span>
+			b.Write <span style="color:#6500FE">&quot;COUN&quot;</span>
+			b.WriteInteger c
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Write</span> <span style="color:#7F0000;text-style:italic">Comment</span>
+			b.Write <span style="color:#6500FE">&quot;COMM&quot;</span>
+			b.WriteString folder.CommentMBS
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Write</span> <span style="color:#7F0000;text-style:italic">modification</span> <span style="color:#7F0000;text-style:italic">date</span>
+			b.Write <span style="color:#6500FE">&quot;MDAT&quot;</span>
+			b.WriteDouble folder.ModificationDate.TotalSeconds
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Write</span> <span style="color:#7F0000;text-style:italic">modification</span> <span style="color:#7F0000;text-style:italic">date</span>
+			b.Write <span style="color:#6500FE">&quot;CDAT&quot;</span>
+			b.WriteDouble folder.CreationDate.TotalSeconds
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Write</span> <span style="color:#7F0000;text-style:italic">Finder</span> <span style="color:#7F0000;text-style:italic">flags</span>
+			b.Write <span style="color:#6500FE">&quot;FLAG&quot;</span>
+			l=folder.GetFolderFlagsMBS
+			<span style="color:#0000FF;font-weight: bold">if</span> l&lt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">error</span>
+				l=<span style="color:#326598">0</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			b.WriteInteger l
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Write</span> <span style="color:#7F0000;text-style:italic">MacType</span>
+			<span style="color:#0000FF">#If</span> RBVersion &lt; <span style="color:#326598">2019</span>
+				b.Write <span style="color:#6500FE">&quot;MTYP&quot;</span>
+				b.WriteString folder.MacType
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Write</span> <span style="color:#7F0000;text-style:italic">MacCreator</span>
+				b.Write <span style="color:#6500FE">&quot;MCRE&quot;</span>
+				b.WriteString folder.MacCreator
+			<span style="color:#0000FF">#EndIf</span>
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> i=<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> c
+				f=folder.TrueItem(i)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> f&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">if</span> f.Directory <span style="color:#0000FF;font-weight: bold">then</span>
+						b.Write <span style="color:#6500FE">&quot;FOLD&quot;</span>
+						b.ArchiveFolder f
+					<span style="color:#0000FF;font-weight: bold">else</span>
+						b.Write <span style="color:#6500FE">&quot;FILE&quot;</span>
+						b.ArchiveFile f
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			b.Write <span style="color:#6500FE">&quot;FEND&quot;</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Write</span> <span style="color:#7F0000;text-style:italic">access</span> <span style="color:#7F0000;text-style:italic">rights</span>
+			b.Write <span style="color:#6500FE">&quot;PERM&quot;</span>
+			b.WriteInteger GetFilePermission(folder)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> CopyBytesTo(<span style="color:#0000FF;font-weight: bold">extends</span> source <span style="color:#0000FF;font-weight: bold">As</span> MBSStream, dest <span style="color:#0000FF;font-weight: bold">as</span> MBSStream, bufsize <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, bytes <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">bytes</span> <span style="color:#7F0000;text-style:italic">left</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Bytes</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">copy</span> <span style="color:#7F0000;text-style:italic">now</span>
+			
+			c=bytes
+			
+			n=c
+			<span style="color:#0000FF;font-weight: bold">if</span> n&gt;bufsize <span style="color:#0000FF;font-weight: bold">then</span>
+				n=bufsize
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			s=source.read(n)
+			<span style="color:#0000FF;font-weight: bold">while</span> s&lt;&gt;<span style="color:#6500FE">&quot;&quot;</span>
+				dest.Write s
+				c=c-lenb(s)
+				
+				n=c
+				<span style="color:#0000FF;font-weight: bold">if</span> n&gt;bufsize <span style="color:#0000FF;font-weight: bold">then</span>
+					n=bufsize
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				s=source.read(n)
+			<span style="color:#0000FF;font-weight: bold">wend</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> CopyStreamTo(<span style="color:#0000FF;font-weight: bold">extends</span> source <span style="color:#0000FF;font-weight: bold">As</span> MBSStream, dest <span style="color:#0000FF;font-weight: bold">as</span> MBSStream, bufsize <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			
+			s=source.read(bufsize)
+			<span style="color:#0000FF;font-weight: bold">while</span> s&lt;&gt;<span style="color:#6500FE">&quot;&quot;</span>
+				dest.Write s
+				
+				s=source.read(bufsize)
+			<span style="color:#0000FF;font-weight: bold">wend</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Function</span> FindRandomName(dest <span style="color:#0000FF;font-weight: bold">as</span> folderitem, name <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>) <span style="color:#0000FF;font-weight: bold">As</span> folderitem
+			<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+			<span style="color:#0000FF;font-weight: bold">dim</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			
+			i=<span style="color:#326598">1</span>
+			s=left(name,<span style="color:#326598">20</span>)+<span style="color:#6500FE">&quot;.&quot;</span>+str(i)
+			f=Dest.TrueChild(s)
+			<span style="color:#0000FF;font-weight: bold">while</span> f.exists
+				
+				i=i+<span style="color:#326598">1</span>
+				s=left(name,<span style="color:#326598">20</span>)+<span style="color:#6500FE">&quot;.&quot;</span>+str(i)
+				f=Dest.TrueChild(s)
+			<span style="color:#0000FF;font-weight: bold">wend</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> f
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Function</span> GetFilePermission(file <span style="color:#0000FF;font-weight: bold">as</span> folderitem) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> DarwinChmodMBS
+			
+			d=<span style="color:#0000FF;font-weight: bold">new</span> DarwinChmodMBS
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> d.stat(file.UnixpathMBS)=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> d.mode
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> -<span style="color:#326598">1</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">error</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> ReadDouble(<span style="color:#0000FF;font-weight: bold">extends</span> b <span style="color:#0000FF;font-weight: bold">as</span> mbsStream) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">double</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			
+			m=b.Read(<span style="color:#326598">8</span>)
+			m.LittleEndian=<span style="color:#0000FF;font-weight: bold">false</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> m.DoubleValue(<span style="color:#326598">0</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> ReadInteger(<span style="color:#0000FF;font-weight: bold">extends</span> b <span style="color:#0000FF;font-weight: bold">as</span> MBSStream) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			
+			m=b.Read(<span style="color:#326598">4</span>)
+			m.LittleEndian=<span style="color:#0000FF;font-weight: bold">false</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> m.Long(<span style="color:#326598">0</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> ReadString(<span style="color:#0000FF;font-weight: bold">extends</span> s <span style="color:#0000FF;font-weight: bold">as</span> MBSStream) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			<span style="color:#0000FF;font-weight: bold">dim</span> e,l <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			
+			m=s.Read(<span style="color:#326598">8</span>)
+			m.LittleEndian=<span style="color:#0000FF;font-weight: bold">false</span>
+			l=m.Long(<span style="color:#326598">0</span>)
+			e=m.Long(<span style="color:#326598">4</span>)
+			t=s.Read(l)
+			
+			SetEncodingOfStringMBS t,e
+			<span style="color:#0000FF;font-weight: bold">Return</span> t
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> SetFilePermission(file <span style="color:#0000FF;font-weight: bold">as</span> folderitem, p <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> DarwinChmodMBS
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> p&gt;=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">no</span> <span style="color:#7F0000;text-style:italic">error</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">GetFilePermission</span>
+				d=<span style="color:#0000FF;font-weight: bold">new</span> DarwinChmodMBS
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> d.chmod(file.UnixpathMBS, p)=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> d.stat(file.UnixpathMBS)=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						
+						<span style="color:#0000FF;font-weight: bold">if</span> p=d.mode <span style="color:#0000FF;font-weight: bold">then</span>
+							<span style="color:#7F0000;text-style:italic">&#39;ok</span>
+						<span style="color:#0000FF;font-weight: bold">else</span>
+							MsgBox <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">set</span> <span style="color:#6500FE">permissions</span> <span style="color:#6500FE">for</span> <span style="color:#6500FE">&quot;</span>+file.UnixpathMBS+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">&quot;</span>+oct(p)
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> UnarchiveFile(<span style="color:#0000FF;font-weight: bold">extends</span> st <span style="color:#0000FF;font-weight: bold">as</span> MBSStream, folder <span style="color:#0000FF;font-weight: bold">as</span> folderitem)
+			<span style="color:#0000FF;font-weight: bold">dim</span> tag <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> Comment,Name <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> rsize, dsize <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> file <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+			<span style="color:#0000FF;font-weight: bold">dim</span> rs <span style="color:#0000FF;font-weight: bold">as</span> ResStreamMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> ls <span style="color:#0000FF;font-weight: bold">as</span> LargeBinaryStreamMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> mrs <span style="color:#0000FF;font-weight: bold">as</span> MBSResStream
+			<span style="color:#0000FF;font-weight: bold">dim</span> mls <span style="color:#0000FF;font-weight: bold">as</span> MBSLargeBinaryStream
+			<span style="color:#0000FF;font-weight: bold">dim</span> e <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> date
+			
+			tag=st.Read(<span style="color:#326598">4</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">NAME</span>
+			name=st.ReadString
+			
+			tag=st.Read(<span style="color:#326598">4</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">RSIZ</span>
+			RSIZE=st.ReadDouble
+			
+			tag=st.Read(<span style="color:#326598">4</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">DSIZ</span>
+			DSIZE=st.ReadDouble
+			
+			file=FindRandomName(folder,name)
+			
+			tag=st.Read(<span style="color:#326598">4</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">RDAT</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> rsize&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				rs=file.CreateResStreamMBS(<span style="color:#6500FE">&quot;????&quot;</span>,<span style="color:#6500FE">&quot;????&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">if</span> rs&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					mrs=<span style="color:#0000FF;font-weight: bold">new</span> MBSResStream(rs)
+					st.CopyBytesTo mrs,<span style="color:#326598">100000</span>,rsize
+					mrs=<span style="color:#0000FF;font-weight: bold">nil</span>
+					rs=<span style="color:#0000FF;font-weight: bold">nil</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					MsgBox <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">create</span> <span style="color:#6500FE">ResStream</span> <span style="color:#6500FE">on</span> <span style="color:#6500FE">&quot;</span>+file.name
+					<span style="color:#0000FF;font-weight: bold">Return</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			tag=st.Read(<span style="color:#326598">4</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">DATA</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> dsize&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> file.Exists <span style="color:#0000FF;font-weight: bold">then</span>
+					ls=file.OpenAsLargeBinaryStreamMBS(<span style="color:#0000FF;font-weight: bold">true</span>)
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					ls=file.CreateLargeBinaryStreamMBS(<span style="color:#6500FE">&quot;????&quot;</span>,<span style="color:#6500FE">&quot;????&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> ls&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					mls=<span style="color:#0000FF;font-weight: bold">new</span> MBSLargeBinaryStream(ls)
+					st.CopyBytesTo mls,<span style="color:#326598">100000</span>,dsize
+					mls=<span style="color:#0000FF;font-weight: bold">nil</span>
+					ls=<span style="color:#0000FF;font-weight: bold">nil</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					MsgBox <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">create</span> <span style="color:#6500FE">LargeBinaryStream</span> <span style="color:#6500FE">on</span> <span style="color:#6500FE">&quot;</span>+file.name
+					<span style="color:#0000FF;font-weight: bold">Return</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			tag=st.Read(<span style="color:#326598">4</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">COMM</span>
+			Comment=st.ReadString
+			file.CommentMBS=Comment
+			
+			tag=st.Read(<span style="color:#326598">4</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MDAT</span>
+			d=<span style="color:#0000FF;font-weight: bold">new</span> date
+			d.totalseconds=st.ReadDouble
+			file.ModificationDate=d
+			
+			tag=st.Read(<span style="color:#326598">4</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">CDAT</span>
+			d=<span style="color:#0000FF;font-weight: bold">new</span> date
+			d.totalseconds=st.ReadDouble
+			<span style="color:#0000FF">#if</span> <span style="color:#0000FF;font-weight: bold">not</span> TargetLinux <span style="color:#0000FF;font-weight: bold">then</span>
+				file.CreationDate=d
+			<span style="color:#0000FF">#endif</span>
+			
+			tag=st.Read(<span style="color:#326598">4</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MTYP</span>
+			<span style="color:#0000FF;font-weight: bold">If</span> tag = <span style="color:#6500FE">&quot;MTYP&quot;</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF">#If</span> RBVersion &lt; <span style="color:#326598">2019</span>
+					file.MacType=st.ReadString
+				<span style="color:#0000FF">#EndIf</span>
+				tag=st.Read(<span style="color:#326598">4</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MCRE</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			<span style="color:#0000FF;font-weight: bold">If</span> tag = <span style="color:#6500FE">&quot;MCRE&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF">#If</span> RBVersion &lt; <span style="color:#326598">2019</span>
+					file.MacCreator=st.ReadString
+				<span style="color:#0000FF">#endif</span>
+				tag=st.Read(<span style="color:#326598">4</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">PERM</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			SetFilePermission file,st.ReadInteger
+			
+			file.Name=name <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">rename</span> <span style="color:#7F0000;text-style:italic">later</span> <span style="color:#7F0000;text-style:italic">so</span> <span style="color:#7F0000;text-style:italic">Finder</span> <span style="color:#7F0000;text-style:italic">will</span> <span style="color:#7F0000;text-style:italic">recognize</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">file</span> <span style="color:#7F0000;text-style:italic">changes</span>
+			
+			tag=st.Read(<span style="color:#326598">4</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">FLAG</span>
+			e=file.SetFileFlagsMBS(st.ReadInteger)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> UnarchiveFolder(<span style="color:#0000FF;font-weight: bold">extends</span> st <span style="color:#0000FF;font-weight: bold">as</span> MBSStream, destfolder <span style="color:#0000FF;font-weight: bold">as</span> folderitem)
+			<span style="color:#0000FF;font-weight: bold">dim</span> tag <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> Comment,Name <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> folder <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+			<span style="color:#0000FF;font-weight: bold">dim</span> e,count <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> date
+			
+			tag=st.Read(<span style="color:#326598">4</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">NAME</span>
+			name=st.ReadString
+			
+			tag=st.Read(<span style="color:#326598">4</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">COUN</span>
+			Count=st.ReadInteger
+			
+			folder=FindRandomName(destfolder,name)
+			folder.CreateAsFolder
+			
+			tag=st.Read(<span style="color:#326598">4</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">COMM</span>
+			Comment=st.ReadString
+			folder.CommentMBS=Comment
+			
+			tag=st.Read(<span style="color:#326598">4</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MDAT</span>
+			d=<span style="color:#0000FF;font-weight: bold">new</span> date
+			d.totalseconds=st.ReadDouble
+			folder.ModificationDate=d
+			
+			tag=st.Read(<span style="color:#326598">4</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">CDAT</span>
+			d=<span style="color:#0000FF;font-weight: bold">new</span> date
+			d.totalseconds=st.ReadDouble
+			<span style="color:#0000FF">#if</span> <span style="color:#0000FF;font-weight: bold">not</span> TargetLinux <span style="color:#0000FF;font-weight: bold">then</span>
+				folder.CreationDate=d
+			<span style="color:#0000FF">#endif</span>
+			
+			tag=st.Read(<span style="color:#326598">4</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">FLAG</span>
+			e=folder.SetFolderFlagsMBS(st.ReadInteger)
+			
+			tag=st.Read(<span style="color:#326598">4</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MTYP</span>
+			<span style="color:#0000FF;font-weight: bold">If</span> tag = <span style="color:#6500FE">&quot;MTYP&quot;</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF">#If</span> RBVersion &lt; <span style="color:#326598">2019</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+					folder.MacType=st.ReadString
+				<span style="color:#0000FF">#EndIf</span>
+				
+				tag=st.Read(<span style="color:#326598">4</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MCRE</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			<span style="color:#0000FF;font-weight: bold">If</span> tag = <span style="color:#6500FE">&quot;MCRE&quot;</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF">#if</span> RBVersion &lt; <span style="color:#326598">2020</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					folder.MacCreator=st.ReadString
+				<span style="color:#0000FF">#EndIf</span>
+				
+				tag=st.Read(<span style="color:#326598">4</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">MCRE</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			<span style="color:#0000FF;font-weight: bold">while</span> tag&lt;&gt;<span style="color:#6500FE">&quot;FEND&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> tag=<span style="color:#6500FE">&quot;FILE&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					st.UnarchiveFile folder
+				<span style="color:#0000FF;font-weight: bold">elseif</span> tag=<span style="color:#6500FE">&quot;FOLD&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					st.UnarchiveFolder folder
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				tag=st.Read(<span style="color:#326598">4</span>)
+			<span style="color:#0000FF;font-weight: bold">wend</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">End,</span> <span style="color:#7F0000;text-style:italic">tag</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">FEND</span>
+			
+			folder.Name=name
+			
+			tag=st.Read(<span style="color:#326598">4</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">PERM</span>
+			SetFilePermission folder,st.ReadInteger
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> WriteDouble(<span style="color:#0000FF;font-weight: bold">extends</span> b <span style="color:#0000FF;font-weight: bold">as</span> mbsstream, value <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			
+			m=NewMemoryBlock(<span style="color:#326598">8</span>)
+			m.LittleEndian=<span style="color:#0000FF;font-weight: bold">false</span>
+			m.DoubleValue(<span style="color:#326598">0</span>)=value
+			
+			b.Write m
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> WriteInteger(<span style="color:#0000FF;font-weight: bold">extends</span> b <span style="color:#0000FF;font-weight: bold">as</span> MBSStream, value <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			
+			m=NewMemoryBlock(<span style="color:#326598">4</span>)
+			m.LittleEndian=<span style="color:#0000FF;font-weight: bold">false</span>
+			m.Long(<span style="color:#326598">0</span>)=value
+			
+			b.Write m
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> WriteString(<span style="color:#0000FF;font-weight: bold">extends</span> s <span style="color:#0000FF;font-weight: bold">as</span> MBSStream, data <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			<span style="color:#0000FF;font-weight: bold">dim</span> l <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			
+			l=lenb(data)
+			m=NewMemoryBlock(l+<span style="color:#326598">8</span>)
+			m.LittleEndian=<span style="color:#0000FF;font-weight: bold">false</span>
+			m.Long(<span style="color:#326598">0</span>)=l
+			m.Long(<span style="color:#326598">4</span>)=GetEncodingOfStringMBS(data)
+			m.StringValue(<span style="color:#326598">8</span>,l)=data
+			
+			s.Write m
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Module</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MBSBufferStream</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(dest <span style="color:#0000FF;font-weight: bold">as</span> MBSStream, BufferSize <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			theDestination=dest
+			theBufferSize=BufferSize
+			theBuffer=NewMemoryBlock(BufferSize)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Destructor()
+			<span style="color:#0000FF;font-weight: bold">if</span> thePosition&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">write</span> <span style="color:#7F0000;text-style:italic">buffer</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">output</span>
+				theDestination.Write theBuffer.StringValue(<span style="color:#326598">0</span>,thePosition)
+				thePosition=<span style="color:#326598">0</span>
+				theBuffer=<span style="color:#0000FF;font-weight: bold">nil</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> Read(count <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">Return</span> theDestination.Read(count) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">do</span> <span style="color:#7F0000;text-style:italic">nothing</span> <span style="color:#7F0000;text-style:italic">like</span> <span style="color:#7F0000;text-style:italic">dummy</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Write(buffer <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> l,c,w <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> p <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			
+			l=lenb(buffer) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">bytes</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">write</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> l&gt;theBufferSize <span style="color:#0000FF;font-weight: bold">and</span> thePosition=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">nothing</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">buffer</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">big</span> <span style="color:#7F0000;text-style:italic">block,</span> <span style="color:#7F0000;text-style:italic">just</span> <span style="color:#7F0000;text-style:italic">send</span> <span style="color:#7F0000;text-style:italic">through</span>
+				
+				theDestination.Write buffer
+				
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				
+				p=<span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">position</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">source</span> <span style="color:#7F0000;text-style:italic">buffer</span>
+				
+				<span style="color:#0000FF;font-weight: bold">while</span> l&gt;<span style="color:#326598">0</span>
+					c=theBufferSize-thePosition <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">c=free</span> <span style="color:#7F0000;text-style:italic">space</span>
+					w=l <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">bytes</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">write</span>
+					<span style="color:#0000FF;font-weight: bold">if</span> w&gt;c <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">limit</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">free</span> <span style="color:#7F0000;text-style:italic">space</span>
+						w=c
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					theBuffer.StringValue(thePosition,w)=midb(buffer,p+<span style="color:#326598">1</span>,w)
+					p=p+w
+					l=l-w
+					thePosition=thePosition+w
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> thePosition=theBufferSize <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">flush</span> <span style="color:#7F0000;text-style:italic">buffer</span>
+						theDestination.Write theBuffer.StringValue(<span style="color:#326598">0</span>,thePosition)
+						thePosition=<span style="color:#326598">0</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+				<span style="color:#0000FF;font-weight: bold">wend</span>
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> theBuffer <span style="color:#0000FF;font-weight: bold">As</span> memoryBlock</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> theBufferSize <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> theDestination <span style="color:#0000FF;font-weight: bold">As</span> MBSStream</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> thePosition <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MBSBufferedZipStream</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(dest <span style="color:#0000FF;font-weight: bold">as</span> MBSStream, Level <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>=<span style="color:#326598">9</span>, BufferSize <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>=<span style="color:#326598">100000</span>)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">first</span> <span style="color:#7F0000;text-style:italic">collect</span> <span style="color:#7F0000;text-style:italic">stuff</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">buffer</span> <span style="color:#7F0000;text-style:italic">stream,</span> <span style="color:#7F0000;text-style:italic">than</span> <span style="color:#7F0000;text-style:italic">zip</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">collect</span> <span style="color:#7F0000;text-style:italic">results</span>
+			
+			ob=<span style="color:#0000FF;font-weight: bold">new</span> MBSBufferStream(dest,BufferSize)
+			z=<span style="color:#0000FF;font-weight: bold">new</span> MBSZipStream(ob,Level)
+			ib=<span style="color:#0000FF;font-weight: bold">new</span> MBSBufferStream(z,BufferSize)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> Read(n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">Return</span> ib.Read(n)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Write(data <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			ib.Write data
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Note">		Note <span style="color:#6500FE">&quot;About&quot;</span>
+<div class="RB_Comment">			Zip Compression stream with Buffering</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> ib <span style="color:#0000FF;font-weight: bold">As</span> MBSBufferStream</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> ob <span style="color:#0000FF;font-weight: bold">As</span> MBSBufferStream</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> theDestination <span style="color:#0000FF;font-weight: bold">As</span> MBSStream</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> z <span style="color:#0000FF;font-weight: bold">As</span> MBSZipStream</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MBSLargeBinaryStream</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(dest <span style="color:#0000FF;font-weight: bold">as</span> LargeBinaryStreamMBS)
+			theDestination=dest
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> Read(n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">Return</span> theDestination.Read(n)
+			<span style="color:#0000FF;font-weight: bold">Exception</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Write(data <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			theDestination.Write data
+			<span style="color:#0000FF;font-weight: bold">Exception</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Note">		Note <span style="color:#6500FE">&quot;About&quot;</span>
+<div class="RB_Comment">			For streams above 2 GB of content</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> theDestination <span style="color:#0000FF;font-weight: bold">As</span> LargeBinaryStreamMBS</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MBSResStream</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(dest <span style="color:#0000FF;font-weight: bold">as</span> ResstreamMBS)
+			theDestination=Dest
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> Read(n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> theDestination&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> theDestination.Read(n)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Exception</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Write(data <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			<span style="color:#0000FF;font-weight: bold">if</span> theDestination&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				theDestination.Write data
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Exception</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> theDestination <span style="color:#0000FF;font-weight: bold">As</span> ResstreamMBS</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsutilplugin.html">MBS Util Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-util-streams">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

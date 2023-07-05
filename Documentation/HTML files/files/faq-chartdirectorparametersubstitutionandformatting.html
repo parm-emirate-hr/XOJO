@@ -1,0 +1,317 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - FAQ</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="FAQ: ChartDirector: Parameter Substitution and Formatting">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">FAQ</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="WLM">
+<b>FAQ.<A name="1">ChartDirector: Parameter Substitution and Formatting</A></b><br>
+<B>Answer:</B> 
+ChartDirector: Parameter Substitution and Formatting<BR>
+<B>Notes:</B> 
+<BR>
+ChartDirector charts often contain a lot of text strings. For example, sector labels in pie charts, axis labels for x and y axes, data labels for the data points, HTML image maps, etc, are all text strings.<BR>
+<BR>
+ChartDirector uses parameter substitution to allow you to configure precisely the information contained in the text and their format.<BR>
+Format Strings<BR>
+In parameter substitution, format strings are used to specify the entities to be include into labels and how to format numbers and dates.<BR>
+<BR>
+For example, when drawing a pie chart with side label layout, the default sector label format string is:<BR>
+<BR>
+&quot;{label} ({percent}%)&quot;<BR>
+<BR>
+When the sector label is actually drawn, ChartDirector will replace &quot;{label}&quot; with the sector name, and &quot;{percent}&quot; with the sector percentage. So the above label format will result is a sector label similar to &quot;ABC (34.56%)&quot;.<BR>
+<BR>
+You may change the sector label format by changing the format string. For example, you may change it to:<BR>
+<BR>
+&quot;{label}: US${value|2}K ({percent}%)&quot;<BR>
+<BR>
+The sector label will then become something like &quot;ABC: US$123.00 (34.56%)&quot;.<BR>
+<BR>
+In general, in ChartDirector parameter substitution, parameters enclosed by curly brackets will be substituted with their actual values when creating the texts.<BR>
+<BR>
+For parameters that are numbers or dates/times, ChartDirector supports a special syntax in parameter substitution to allow formatting for these values. Please refer to the Number Formatting and Date/Time Formatting sections below for details.<BR>
+Parameter Expressions<BR>
+ChartDirector supports numeric expressions in format strings. They are denoted by enclosing the expression with curly brackets and using &quot;=&quot; as the first character. For example:<BR>
+<BR>
+&quot;USD {value} (Euro {={value}*0.9})&quot;<BR>
+<BR>
+In the above, &quot;{value}&quot; will be substituted with the actual value of the sector. The expression &quot;{={value}*0.9}&quot; will be substituted with the actual value of the sector multiplied by 0.9.<BR>
+<BR>
+ChartDirector parameter expressions support operators &quot;+&quot;, &quot;-&quot;, &quot;*&quot;, &quot;/&quot;, &quot;%&quot; (modulo) and &quot;^&quot; (exponentiation). Operators &quot;*&quot;, &quot;/&quot;, &quot;%&quot;, &quot;^&quot; is computed first, followed by &quot;+&quot; and &quot;-&quot;. Operators of the same precedence are computed from left to right). Parenthesis &quot;(&quot; and &quot;)&quot; can be used to change the computation order.<BR>
+Parameters for Pie Charts<BR>
+The following table describes the parameters available for pie charts.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">sector</TD><TD valign="top">The sector number. The first sector is 0, while the nth sector is (n-1).</TD></TR>
+<TR><TD valign="top">dataSet</TD><TD valign="top">Same as {sector}. See above.</TD></TR>
+<TR><TD valign="top">label</TD><TD valign="top">The text label of the sector.</TD></TR>
+<TR><TD valign="top">dataSetName</TD><TD valign="top">Same as {label}. See above.</TD></TR>
+<TR><TD valign="top">value</TD><TD valign="top">The data value of the sector.</TD></TR>
+<TR><TD valign="top">percent</TD><TD valign="top">The percentage value of the sector.</TD></TR>
+<TR><TD valign="top">fieldN</TD><TD valign="top">The (N + 1)th extra field. For example, {field0} means the first extra field. An extra field is an array of custom elements added using BaseChart.addExtraField or BaseChart.addExtraField2.</TD></TR>
+</TABLE>
+<BR>
+Parameters for All XY Chart Layers<BR>
+The followings are parameters that are apply to all XY Chart layers in general. Some layer types may have additional parameters (see below).<BR>
+<BR>
+Note that certain parameters are inapplicable in some context. For example, when specifying the aggregate label of a stacked bar chart, the {dataSetName} parameter is inapplicable. It is because a stacked bar is composed of multiple data sets. It does not belong to any particular data set and hence does not have a data set name.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">x</TD><TD valign="top">The x value of the data point. For an enumerated x-axis (see Axis.setLabels on what is an enumerated axis), the first data point is 0, and the nth data point is (n-1).</TD></TR>
+<TR><TD valign="top">xLabel</TD><TD valign="top">The bottom x-axis label of the data point.</TD></TR>
+<TR><TD valign="top">x2Label</TD><TD valign="top">The top x-axis label of the data point.</TD></TR>
+<TR><TD valign="top">value</TD><TD valign="top">The value of the data point.</TD></TR>
+<TR><TD valign="top">accValue</TD><TD valign="top">The sum of values of all data points that are in the same x position and same data group as the current data point, and with data set number less than or equal to the current data point. This is useful for stacked charts, such as stacked bar chart and stacked area chart.</TD></TR>
+<TR><TD valign="top">totalValue</TD><TD valign="top">The sum of values of all data points that are in the same x position and same data group as the current data point. This is useful for stacked charts, such as stacked bar chart and stacked area chart.</TD></TR>
+<TR><TD valign="top">percent</TD><TD valign="top">The percentage of the data point based on the total value of all data points that are in the same x position and same data group as the current data point. This is useful for stacked charts, such as stacked bar chart and stacked area chart.</TD></TR>
+<TR><TD valign="top">accPercent</TD><TD valign="top">The accumulated percentage of the data point based on the total value of all data points that are in the same x position and same data group as the current data point. This is useful for stacked charts, such as stacked bar chart and stacked area chart.</TD></TR>
+<TR><TD valign="top">gpercent</TD><TD valign="top">The percentage of the data point based on the total value of all data points in a layer.</TD></TR>
+<TR><TD valign="top">dataSet</TD><TD valign="top">The data set number to which the data point belongs. The first data set is 0. The nth data set is (n-1).</TD></TR>
+<TR><TD valign="top">dataSetName</TD><TD valign="top">The name of the data set to which the data point belongs.</TD></TR>
+<TR><TD valign="top">dataItem</TD><TD valign="top">The data point number within the data set. The first data point is 0. The nth data point is (n-1).</TD></TR>
+<TR><TD valign="top">dataGroup</TD><TD valign="top">The data group number to which the data point belongs. The first data group is 0. The nth data group is (n-1).</TD></TR>
+<TR><TD valign="top">dataGroupName</TD><TD valign="top">The name of the data group to which the data point belongs.</TD></TR>
+<TR><TD valign="top">layerId</TD><TD valign="top">The layer number to which the data point belongs. The first layer is 0. The nth layer is (n-1).</TD></TR>
+<TR><TD valign="top">fieldN</TD><TD valign="top">The (N + 1)th extra field. For example, {field0} means the first extra field. An extra field is an array of custom elements added using Layer.addExtraField, Layer.addExtraField2, BaseChart.addExtraField or BaseChart.addExtraField2.</TD></TR>
+</TABLE>
+<BR>
+{fieldN} means the extra field is indexed by the data point number. The Pth data point corresponds to the Pth element of the extra field.<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">diFieldN</TD><TD valign="top">Same as fieldN. See above.</TD></TR>
+<TR><TD valign="top">dsFieldN</TD><TD valign="top">Similar to fieldN, except that dsFieldN means the extra field is indexed by data set number. The Pth data set corresponds to the Pth element of the extra field.</TD></TR>
+<TR><TD valign="top">dsdiFieldN</TD><TD valign="top">Similar to fieldN, except that dsdiFieldN means the extra fields are indexed by both the data set number and data point number. The Pth data item of the Qth data set corresponds to the Pth element of the (N + Q)th extra field.</TD></TR>
+</TABLE>
+<BR>
+Additional Parameters for Line Layers<BR>
+The followings are parameters that are in additional to the parameters for all XY Chart layers.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">zx</TD><TD valign="top">The symbol scale in the x dimension. Applicable for layers with symbol scales set by LineLayer.setSymbolScale.</TD></TR>
+<TR><TD valign="top">zy</TD><TD valign="top">The symbol scale in the y dimension. Applicable for layers with symbol scales set by LineLayer.setSymbolScale.</TD></TR>
+<TR><TD valign="top">z</TD><TD valign="top">The symbol scale without distinguishing the dimension to use. Applicable for layers with symbol scales set by LineLayer.setSymbolScale.</TD></TR>
+</TABLE>
+<BR>
+Additional Parameters for Trend Layers<BR>
+The followings are parameters that are in additional to the parameters for all XY Chart layers.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">slope</TD><TD valign="top">The slope of the trend line.</TD></TR>
+<TR><TD valign="top">intercept</TD><TD valign="top">The y-intercept of the trend line.</TD></TR>
+<TR><TD valign="top">corr</TD><TD valign="top">The correlation coefficient in linear regression analysis.</TD></TR>
+<TR><TD valign="top">stderr</TD><TD valign="top">The standard error in linear regression analysis.</TD></TR>
+</TABLE>
+<BR>
+Additional Parameters for Box-Whisker Layers<BR>
+The followings are parameters that are in additional to the parameters for all XY Chart layers.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">top</TD><TD valign="top">The value of the top edge of the box-whisker symbol.</TD></TR>
+<TR><TD valign="top">bottom</TD><TD valign="top">The value of the bottom edge of the box-whisker symbol.</TD></TR>
+<TR><TD valign="top">max</TD><TD valign="top">The value of the maximum mark of the box-whisker symbol.</TD></TR>
+<TR><TD valign="top">min</TD><TD valign="top">The value of the minimum mark of the box-whisker symbol.</TD></TR>
+<TR><TD valign="top">med</TD><TD valign="top">The value of the median mark of the box-whisker symbol.</TD></TR>
+</TABLE>
+<BR>
+Additional Parameters for HLOC and CandleStick Layers<BR>
+The followings are parameters that are in additional to the parameters for all XY Chart layers.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">high</TD><TD valign="top">The high value.</TD></TR>
+<TR><TD valign="top">low</TD><TD valign="top">The low value.</TD></TR>
+<TR><TD valign="top">open</TD><TD valign="top">The open value.</TD></TR>
+<TR><TD valign="top">close</TD><TD valign="top">The close value.</TD></TR>
+</TABLE>
+<BR>
+Additional Parameters for Vector Layers<BR>
+The followings are parameters that are in additional to the parameters for all XY Chart layers.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">dir</TD><TD valign="top">The direction of the vector.</TD></TR>
+<TR><TD valign="top">len</TD><TD valign="top">The length of the vector.</TD></TR>
+</TABLE>
+<BR>
+Parameters for All Polar Layers<BR>
+The followings are parameters that are apply to all Polar Chart layers in general. Some layer types may have additional parameters (see below).<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">radius</TD><TD valign="top">The radial value of the data point.</TD></TR>
+<TR><TD valign="top">value</TD><TD valign="top">Same as {radius}. See above.</TD></TR>
+<TR><TD valign="top">angle</TD><TD valign="top">The angular value of the data point.</TD></TR>
+<TR><TD valign="top">x</TD><TD valign="top">Same as {angle}. See above.</TD></TR>
+<TR><TD valign="top">label</TD><TD valign="top">The angular label of the data point.</TD></TR>
+<TR><TD valign="top">xLabel</TD><TD valign="top">Same as {label}. See above.</TD></TR>
+<TR><TD valign="top">name</TD><TD valign="top">The name of the layer to which the data point belongs.</TD></TR>
+<TR><TD valign="top">dataSetName</TD><TD valign="top">Same as {name}. See above.</TD></TR>
+<TR><TD valign="top">i</TD><TD valign="top">The data point number. The first data point is 0. The nth data point is (n-1).</TD></TR>
+<TR><TD valign="top">dataItem</TD><TD valign="top">Same as {i}. See above.</TD></TR>
+<TR><TD valign="top">z</TD><TD valign="top">The symbol scale. Applicable for layers with symbol scales set by PolarLayer.setSymbolScale.</TD></TR>
+<TR><TD valign="top">fieldN</TD><TD valign="top">The (N + 1)th extra field. For example, {field0} means the first extra field. An extra field is an array of custom elements added using Layer.addExtraField, Layer.addExtraField2, BaseChart.addExtraField or BaseChart.addExtraField2.</TD></TR>
+</TABLE>
+<BR>
+{fieldN} means the extra field is indexed by the data point number. The Pth data point corresponds to the Pth element of the extra field.<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">diFieldN</TD><TD valign="top">Same as fieldN. See above.</TD></TR>
+<TR><TD valign="top">dsFieldN</TD><TD valign="top">Similar to fieldN, except that dsFieldN means the extra field is indexed by layer index. The Pth layer corresponds to the Pth element of the extra field.</TD></TR>
+<TR><TD valign="top">dsdiFieldN</TD><TD valign="top">Similar to fieldN, except that dsdiFieldN means the extra fields are indexed by both the data set number and data point number. The Pth data item of the Qth layer corresponds to the Pth element of the (N + Q)th extra field.</TD></TR>
+</TABLE>
+<BR>
+Additional Parameters for PolarVector Layers<BR>
+The followings are parameters that are in additional to the parameters for all Polar Chart layers.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">dir</TD><TD valign="top">The direction of the vector.</TD></TR>
+<TR><TD valign="top">len</TD><TD valign="top">The length of the vector.</TD></TR>
+</TABLE>
+<BR>
+Parameters for Axis<BR>
+The following table describes the parameters available for pie charts.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">value</TD><TD valign="top">The axis value at the tick position.</TD></TR>
+<TR><TD valign="top">label</TD><TD valign="top">The axis label at the tick position.</TD></TR>
+</TABLE>
+<BR>
+Number Formatting<BR>
+For parameters that are numbers, ChartDirector supports a number of formatting options in parameter substitution.<BR>
+<BR>
+For example, if you want a numeric field {value} to have a precision of two digits to the right of the decimal point, use &#39;,&#39; (comma) as the thousand separator, and use &#39;.&#39; (dot) as the decimal point, and you may use {value|2,.}. The number 123456.789 will then be displayed as 123,456.79.<BR>
+<BR>
+For numbers, the formatting options are specified using the following syntax:<BR>
+<BR>
+{[param]|[a][b][c][d]}<BR>
+<BR>
+where:<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">[param]</TD><TD valign="top">The name of the parameter</TD></TR>
+<TR><TD valign="top">[a]</TD><TD valign="top">If this field a number, it specifies the number of decimal places (digits to the right of the decimal point).</TD></TR>
+</TABLE>
+<BR>
+If this field starts with &quot;E&quot; or &quot;e&quot;, followed by a number, it means formatting the value using scientific notation with the specified number of decimal places. If the &quot;E&quot; or &quot;e&quot; is not followed by a number, 3 is assumed.<BR>
+<BR>
+For example, {value|E4} will format the value 10.3 to 1.0300E+1, and {value|e4} will format the same value to 1.0300e+1.<BR>
+<BR>
+If this field starts with &quot;G&quot; or &quot;g&quot;, followed by a number, it means formatting the value using the scientific notation only if the value is large and requires more than the specified number of digits, or the value is less than 0.001. If scientific notation is used, the number following &quot;G&quot; or &quot;g&quot; also specifies the number of significant digits to use. If the &quot;G&quot; or &quot;g&quot; is not followed by a number, 4 is assumed.<BR>
+<BR>
+For example, consider the format string {value|G4}. The value 10 will be formatted to 10. The value 100000 will be formatted to 1.000E+5. Similarly, for {value|g4}, the value 10 will be formatted to 10, while the value 100000 will be formatted to 1.000e+5.<BR>
+<BR>
+If you skip this argument, ChartDirector will display the exact value using at most 6 decimal places.<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">[b]</TD><TD valign="top">The thousand separator. Should be a non-alphanumeric character (not 0-9, A-Z, a-z). Use &#39;~&#39; for no thousand separator. The default is &#39;~&#39;, which can be modified using BaseChart.setNumberFormat.</TD></TR>
+<TR><TD valign="top">[c]</TD><TD valign="top">The decimal point character. The default is &#39;.&#39;, which can be modified using BaseChart.setNumberFormat.</TD></TR>
+<TR><TD valign="top">[d]</TD><TD valign="top">The negative sign character. Use &#39;~&#39; for no negative sign character. The default is &#39;-&#39;, which can be modified using BaseChart.setNumberFormat.</TD></TR>
+</TABLE>
+<BR>
+You may skip [b][c][d]. In this case, the default will be used.<BR>
+<BR>
+Date/Time Formatting<BR>
+For parameters that are dates/times, the formatting options can be specified using the following syntax:<BR>
+<BR>
+{[param]|[datetime_format_string]}<BR>
+<BR>
+where [datetime_format_string] must start with an english character (A-Z or a-z) that is not &quot;G&quot;, &quot;g&quot;, &quot;E&quot; or &quot;e&quot;, and may contain any characters except &#39;}&#39;. (If it starts with &quot;G&quot;, &quot;g&quot;, &quot;E&quot; or &quot;e&quot;, it will be considered as a number format string.)<BR>
+<BR>
+Certain characters are substituted according to the following table. Characters that are not substituted will be copied to the output.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">yyyy</TD><TD valign="top">The year in 4 digits (e.g. 2002)</TD></TR>
+<TR><TD valign="top">yyy</TD><TD valign="top">The year showing only the least significant 3 digits (e.g. 002 for the year 2002)</TD></TR>
+<TR><TD valign="top">yy</TD><TD valign="top">The year showing only the least significant 2 digits (e.g. 02 for the year 2002)</TD></TR>
+<TR><TD valign="top">y</TD><TD valign="top">The year showing only the least significant 1 digits (e.g. 2 for the year 2002)</TD></TR>
+<TR><TD valign="top">mmm</TD><TD valign="top">The month formatted as its name. The default is to use the first 3 characters of the english month name (Jan, Feb, Mar ...). The names can be configured using BaseChart.setMonthNames.</TD></TR>
+<TR><TD valign="top">mm</TD><TD valign="top">The month formatted as 2 digits from 01 - 12, adding leading zero if necessary.</TD></TR>
+<TR><TD valign="top">m</TD><TD valign="top">The month formatted using the minimum number of digits from 1 - 12.</TD></TR>
+<TR><TD valign="top">MMM</TD><TD valign="top">The first 3 characters of the month name converted to upper case. The names can be configured using BaseChart.setMonthNames.</TD></TR>
+<TR><TD valign="top">MM</TD><TD valign="top">The first 2 characters of the month name converted to upper case. The names can be configured using BaseChart.setMonthNames.</TD></TR>
+<TR><TD valign="top">M</TD><TD valign="top">The first character of the month name converted to upper case. The names can be configured using BaseChart.setMonthNames.</TD></TR>
+<TR><TD valign="top">dd</TD><TD valign="top">The day of month formatted as 2 digits from 01 - 31, adding leading zero if necessary.</TD></TR>
+<TR><TD valign="top">d</TD><TD valign="top">The day of month formatted using the minimum number of digits from 1 - 31.</TD></TR>
+<TR><TD valign="top">w</TD><TD valign="top">The name of the day of week. The default is to use the first 3 characters of the english day of week name (Sun, Mon, Tue ...). The names can be configured using BaseChart.setWeekDayNames.</TD></TR>
+<TR><TD valign="top">hh</TD><TD valign="top">The hour of day formatted as 2 digits, adding leading zero if necessary. The 2 digits will be 00 - 23 if the &#39;a&#39; option (see below) is not specified, otherwise it will be 01 - 12.</TD></TR>
+<TR><TD valign="top">h</TD><TD valign="top">The hour of day formatted using the minimum number of digits. The digits will be 0 - 23 if the &#39;a&#39; option (see below) is not specified, otherwise it will be 01 - 12.</TD></TR>
+<TR><TD valign="top">nn</TD><TD valign="top">The minute formatted as 2 digits from 00 - 59, adding leading zero if necessary.</TD></TR>
+<TR><TD valign="top">n</TD><TD valign="top">The minute formatted using the minimum number of digits from 00 - 59.</TD></TR>
+<TR><TD valign="top">ss</TD><TD valign="top">The second formatted as 2 digits from 00 - 59, adding leading zero if necessary.</TD></TR>
+<TR><TD valign="top">s</TD><TD valign="top">The second formatted using the minimum number of digits from 00 - 59.</TD></TR>
+<TR><TD valign="top">a</TD><TD valign="top">Display either &#39;am&#39; or &#39;pm&#39;, depending on whether the time is in the morning or afternoon. The text &#39;am&#39; and &#39;pm&#39; can be modified using BaseChart.setAMPM.</TD></TR>
+</TABLE>
+<BR>
+For example, a parameter substitution format of {value|mm-dd-yyyy} will display a date as something similar to 09-15-2002. A format of {value|dd/mm/yy hh:nn:ss a} will display a date as something similar to 15/09/02 03:04:05 pm.<BR>
+<BR>
+If you want to include characters in the format string without substitution, you may enclose the characters in single or double quotes.<BR>
+<BR>
+For example, the format {value|mmm &#39;&lt;*color=dd0000*&gt;&#39;yyyy} will display a date as something like Jan &lt;*color=dd0000*&gt;2005 (the &lt;*color=dd0000*&gt; is a CDML tag to specify red text color). Note that the &lt;*color=dd0000*&gt; tag is copied directly without substitution, even it contains &quot;dd&quot; which normally will be substituted with the day of month.<BR>
+Escaping URL/HTML/CDML characters<BR>
+Parameter substitution is often used to create HTML image maps. In HTML, some characters has special meanings and cannot be used reliably. For example, the &#39;&gt;&#39; is used to represent the end of an HTML tag.<BR>
+<BR>
+Furthermore, if the field happens to be used as an URL, characters such as &#39;?&#39;, &#39;&amp;&#39; and &#39;+&#39; also have special meanings.<BR>
+<BR>
+By default, ChartDirector will escape template fields used in URL and query parameters when generating image maps. It will modify URL special characters to the URL escape format &quot;%XX&quot; (eg. &quot;?&quot; will become &quot;%3F&quot;). After that, it will modify HTML special characters to the HTML escape format &quot;&amp;amps;#nn;&quot; (eg. &quot;&gt;&quot; will become &quot;&amp;amps;#62;&quot;.). Similarly, it will escape other attributes in the image map using HTML escape format (but not URL escape format).<BR>
+<BR>
+In addition to escaping HTML and URL special characters, ChartDirector will also remove CDML fields in creating image maps. It is because CDML is only interpreted in ChartDirector, should not be useful outside of ChartDirector (such as in browser tool tips).<BR>
+<BR>
+In some cases, you may not want ChartDirector to escape the special characters. For example, if the parameters have already been escaped before passing to ChartDirector, you may want to disable ChartDirector from escaping them again.<BR>
+<BR>
+ChartDirector supports the following special fields to control the escape methods - &quot;{escape_url}&quot;, &quot;{noescape_url}&quot;, &quot;{escape_html}&quot;, &quot;{noescape_html}&quot;, &quot;{escape_cdml}&quot; and {noescape_cdml}&quot;. These fields enable/disable the escape methods used in the template fields that follow them.<BR>
+</div>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=faq-chartdirectorparametersubstitutionandformatting">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

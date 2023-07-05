@@ -1,0 +1,470 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /AVFoundation/AVAudioEngine/Player with AudioUnit for Level Meter</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /AVFoundation/AVAudioEngine/Player with AudioUnit for Level Meter</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/AVFoundation/AVAudioEngine/Player with AudioUnit for Level Meter</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS MacBase Plugin, MBS Main Plugin, MBS AVFoundation Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /AVFoundation/AVAudioEngine/Player with AudioUnit for Level Meter<BR>
+This example is the version from Mon, 20th Sep 2015.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Player</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">AudioUnit</span> <span style="color:#6500FE">for</span> <span style="color:#6500FE">Level</span> <span style="color:#6500FE">Meter.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Window1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control LoadButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance LoadButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = GetOpenFolderItem(<span style="color:#6500FE">&quot;&quot;</span>)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> f = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+				
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> error <span style="color:#0000FF;font-weight: bold">as</span> NSErrorMBS
+				<span style="color:#0000FF;font-weight: bold">dim</span> a <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> AVAudioFileMBS(f, error)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> error &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					MsgBox error.LocalizedDescription
+					<span style="color:#0000FF;font-weight: bold">return</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				NoEvents = <span style="color:#0000FF;font-weight: bold">true</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> ff <span style="color:#0000FF;font-weight: bold">as</span> AVAudioFormatMBS = a.fileFormat
+				<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span> = a.Length/a.fileFormat.sampleRate
+				
+				FileInfo.Text = f.DisplayName+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+str(ff.sampleRate)+<span style="color:#6500FE">&quot;Hz,</span> <span style="color:#6500FE">&quot;</span>+str(ff.channelCount)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">channels,</span> <span style="color:#6500FE">&quot;</span>+str(d, <span style="color:#6500FE">&quot;0.00&quot;</span>)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">seconds&quot;</span>
+				
+				
+				<span style="color:#0000FF;font-weight: bold">self</span>.fileFormat = ff
+				<span style="color:#0000FF;font-weight: bold">self</span>.AudioFile = a
+				<span style="color:#0000FF;font-weight: bold">self</span>.File = f
+				
+				PositionSlider.Value = <span style="color:#326598">0</span>
+				
+				engine.reset
+				engine.connect(player, audioUnit, <span style="color:#0000FF;font-weight: bold">nil</span>)
+				engine.connect(audioUnit, engine.mainMixerNode, <span style="color:#0000FF;font-weight: bold">nil</span>)
+				
+				player.scheduleFile(a, <span style="color:#0000FF;font-weight: bold">nil</span>)
+				
+				StartEngine
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> player.Playing <span style="color:#0000FF;font-weight: bold">then</span>
+					player.play
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				
+				
+				<span style="color:#0000FF;font-weight: bold">Finally</span>
+				NoEvents = <span style="color:#0000FF;font-weight: bold">false</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control FileInfo <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance FileInfo <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PlayButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PlayButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">if</span> player.Playing <span style="color:#0000FF;font-weight: bold">then</span>
+					player.pause
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					player.play
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PlayStatus <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PlayStatus <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Timer1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Timer1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				NoEvents = <span style="color:#0000FF;font-weight: bold">true</span>
+				
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> lines() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> player.Playing <span style="color:#0000FF;font-weight: bold">then</span>
+					lines.Append <span style="color:#6500FE">&quot;playing&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					lines.Append <span style="color:#6500FE">&quot;paused&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> audiofile &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">and</span> fileFormat &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					lines.Append str(audiofile.FramePosition / fileFormat.sampleRate)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">seconds&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				PlayStatus.Text = Join(lines, <span style="color:#6500FE">&quot;,</span> <span style="color:#6500FE">&quot;</span>)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> audiofile &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> nodetime   <span style="color:#0000FF;font-weight: bold">as</span> AVAudioTimeMBS = <span style="color:#0000FF;font-weight: bold">self</span>.player.lastRenderTime
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> nodetime &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#0000FF;font-weight: bold">dim</span> playerTime <span style="color:#0000FF;font-weight: bold">as</span> AVAudioTimeMBS = <span style="color:#0000FF;font-weight: bold">self</span>.player.playerTimeForNodeTime(nodetime)
+						
+						<span style="color:#0000FF;font-weight: bold">if</span> playerTime &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+							PositionSlider.Value = <span style="color:#006532">1000.0</span> * (StartPos + playerTime.sampleTime) / audiofile.Length
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				LabelVolume.Text = str(player.volume, <span style="color:#6500FE">&quot;-0.0%&quot;</span>)
+				
+				
+				
+				<span style="color:#0000FF;font-weight: bold">Finally</span>
+				NoEvents = <span style="color:#0000FF;font-weight: bold">False</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control VolumeSlider <span style="color:#0000FF;font-weight: bold">Inherits</span> Slider</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance VolumeSlider <span style="color:#0000FF;font-weight: bold">Inherits</span> Slider</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> ValueChanged()
+				<span style="color:#0000FF;font-weight: bold">if</span> NoEvents <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+				
+				player.volume = <span style="color:#0000FF;font-weight: bold">me</span>.Value / <span style="color:#006532">100.0</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PositionSlider <span style="color:#0000FF;font-weight: bold">Inherits</span> Slider</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PositionSlider <span style="color:#0000FF;font-weight: bold">Inherits</span> Slider</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> ValueChanged()
+				<span style="color:#0000FF;font-weight: bold">if</span> NoEvents <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">restart</span> <span style="color:#7F0000;text-style:italic">at</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">position</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> playing <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Boolean</span> = player.Playing
+				
+				player.stop
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> l <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Int64</span> = audiofile.Length
+				<span style="color:#0000FF;font-weight: bold">dim</span> x <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Int64</span> = (<span style="color:#0000FF;font-weight: bold">me</span>.Value * l) / <span style="color:#006532">1000.0</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> r <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">int64</span> = audiofile.Length - x
+				
+				player.scheduleSegment(audiofile, <span style="color:#0000FF;font-weight: bold">nil</span>, x, r)
+				StartPos = x
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> Playing <span style="color:#0000FF;font-weight: bold">then</span>
+					player.play
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control LabelVolume <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance LabelVolume <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control LevelChannel0 <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressBar</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance LevelChannel0 <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressBar</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control LevelChannel1 <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressBar</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance LevelChannel1 <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressBar</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control LabelPan <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance LabelPan <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Close()
+			player.removeTapOnBus <span style="color:#326598">0</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			NoEvents = <span style="color:#0000FF;font-weight: bold">true</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Needs</span> <span style="color:#7F0000;text-style:italic">OS</span> <span style="color:#7F0000;text-style:italic">X</span> <span style="color:#7F0000;text-style:italic">10.10</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">newer</span>
+			Engine = <span style="color:#0000FF;font-weight: bold">new</span> AVAudioEngineMBS
+			player = <span style="color:#0000FF;font-weight: bold">new</span> myAVAudioPlayerNodeMBS
+			audioUnit = <span style="color:#0000FF;font-weight: bold">new</span> AVAudioUnitTimePitchMBS
+			
+			Engine.attachNode player
+			engine.attachNode audioUnit
+			
+			<span style="color:#0000FF;font-weight: bold">AddHandler</span> audioUnit.LevelMonitor, WeakAddressOf LevelMonitorHandler
+			
+			audioUnit.installLevelMonitor <span style="color:#326598">20</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">const</span> kTimePitchParam_Pitch = <span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> kAudioUnitScope_Global = <span style="color:#326598">0</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> kAudioUnitProperty_SampleRate = <span style="color:#326598">2</span>
+			
+			<span style="color:#0000FF">#if</span> <span style="color:#0000FF;font-weight: bold">false</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">try</span> <span style="color:#7F0000;text-style:italic">parameter</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> pitchValue <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">single</span> = audioUnit.GetParameter(kTimePitchParam_Pitch, kAudioUnitScope_Global, <span style="color:#326598">0</span>)
+				
+				audioUnit.SetParameter(kTimePitchParam_Pitch, kAudioUnitScope_Global, <span style="color:#326598">0</span>, <span style="color:#326598">100</span>)
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> pitchValue2 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">single</span> = audioUnit.GetParameter(kTimePitchParam_Pitch, kAudioUnitScope_Global, <span style="color:#326598">0</span>)
+			<span style="color:#0000FF">#endif</span>
+			
+			<span style="color:#0000FF">#if</span> <span style="color:#0000FF;font-weight: bold">false</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">try</span> <span style="color:#7F0000;text-style:italic">property</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">8</span> <span style="color:#7F0000;text-style:italic">bytes</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">Writeable</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> WriteAble <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> Size <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = audioUnit.GetPropertyInfo(kAudioUnitProperty_SampleRate, kAudioUnitScope_Global, <span style="color:#326598">0</span>, WriteAble)
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">query</span> <span style="color:#7F0000;text-style:italic">it</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock = audioUnit.GetProperty(kAudioUnitProperty_SampleRate, kAudioUnitScope_Global, <span style="color:#326598">0</span>)
+				<span style="color:#0000FF;font-weight: bold">dim</span> SampleRate <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span> = m.DoubleValue(<span style="color:#326598">0</span>)
+				
+			<span style="color:#0000FF">#endif</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Finally</span>
+			NoEvents = <span style="color:#0000FF;font-weight: bold">false</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> LevelMonitorHandler(v <span style="color:#0000FF;font-weight: bold">as</span> AVAudioUnitTimeEffectMBS , Level0 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>, Level1 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>, Level2 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>, Level3 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>, Level4 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>, Level5 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>, Level6 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>, Level7 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>, tag <span style="color:#0000FF;font-weight: bold">as</span> Variant)
+			LevelChannel0.Value = level0 * <span style="color:#006532">100.0</span>
+			LevelChannel1.Value = level1 * <span style="color:#006532">100.0</span>
+			
+			System.DebugLog str(level0, <span style="color:#6500FE">&quot;0.00&quot;</span>)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+str(Microseconds, <span style="color:#6500FE">&quot;0&quot;</span>)
+			
+			
+			
+			<span style="color:#0000FF">#pragma</span> Unused v
+			<span style="color:#0000FF">#pragma</span> Unused Level2
+			<span style="color:#0000FF">#pragma</span> Unused Level3
+			<span style="color:#0000FF">#pragma</span> Unused Level4
+			<span style="color:#0000FF">#pragma</span> Unused Level5
+			<span style="color:#0000FF">#pragma</span> Unused Level6
+			<span style="color:#0000FF">#pragma</span> Unused Level7
+			<span style="color:#0000FF">#pragma</span> Unused tag
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> OutputLevel(m <span style="color:#0000FF;font-weight: bold">as</span> AVAudioNodeMBS, bus <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, frameLength <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, Level0 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>, Level1 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>, Level2 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>, Level3 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>, Level4 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>, Level5 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>, Level6 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>, Level7 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>, tag <span style="color:#0000FF;font-weight: bold">as</span> variant)
+			LevelChannel0.Value = level0 * <span style="color:#006532">100.0</span>
+			LevelChannel1.Value = level1 * <span style="color:#006532">100.0</span>
+			
+			
+			
+			
+			<span style="color:#0000FF">#pragma</span> Unused m
+			<span style="color:#0000FF">#pragma</span> Unused bus
+			<span style="color:#0000FF">#pragma</span> Unused frameLength
+			<span style="color:#0000FF">#pragma</span> Unused Level2
+			<span style="color:#0000FF">#pragma</span> Unused Level3
+			<span style="color:#0000FF">#pragma</span> Unused Level4
+			<span style="color:#0000FF">#pragma</span> Unused Level5
+			<span style="color:#0000FF">#pragma</span> Unused Level6
+			<span style="color:#0000FF">#pragma</span> Unused Level7
+			<span style="color:#0000FF">#pragma</span> Unused tag
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> StartEngine()
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> engine.running <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> e <span style="color:#0000FF;font-weight: bold">as</span> NSErrorMBS
+				<span style="color:#0000FF;font-weight: bold">if</span> engine.startAndReturnError(e) <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ok</span>
+					
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					MsgBox <span style="color:#6500FE">&quot;Failed:</span> <span style="color:#6500FE">&quot;</span>+e.localizedDescription
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> StereoFormat() <span style="color:#0000FF;font-weight: bold">As</span> AVAudioFormatMBS
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">stereo</span> <span style="color:#7F0000;text-style:italic">format</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">standard</span> <span style="color:#7F0000;text-style:italic">layout</span> <span style="color:#7F0000;text-style:italic">tag</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> layout <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> AVAudioChannelLayoutMBS(QTAudioChannelLayoutMBS.kAudioChannelLayoutTag_Stereo)
+			<span style="color:#0000FF;font-weight: bold">dim</span> pf <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> AVAudioFormatMBS(<span style="color:#326598">44100</span>, layout)
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> pf
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> StereoLeftFormat() <span style="color:#0000FF;font-weight: bold">As</span> AVAudioFormatMBS
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">stereo</span> <span style="color:#7F0000;text-style:italic">format,</span> <span style="color:#7F0000;text-style:italic">left</span> <span style="color:#7F0000;text-style:italic">channel</span> <span style="color:#7F0000;text-style:italic">only</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> qlayout <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> QTAudioChannelLayoutMBS
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> d1 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> QTAudioChannelDescriptionMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> d2 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> QTAudioChannelDescriptionMBS
+			
+			d1.ChannelFlags = QTAudioChannelDescriptionMBS.kAudioChannelFlags_AllOff
+			d1.ChannelLabel = QTAudioChannelDescriptionMBS.kAudioChannelLabel_Discrete_3
+			
+			d2.ChannelFlags = QTAudioChannelDescriptionMBS.kAudioChannelFlags_AllOff
+			d2.ChannelLabel = QTAudioChannelDescriptionMBS.kAudioChannelLabel_Unused
+			
+			qlayout.ChannelLayoutTag = QTAudioChannelLayoutMBS.kAudioChannelLayoutTag_UseChannelDescriptions
+			
+			qlayout.NumberChannelDescriptions=<span style="color:#326598">2</span>
+			qlayout.ChannelDescriptions(<span style="color:#326598">0</span>)=d1
+			qlayout.ChannelDescriptions(<span style="color:#326598">1</span>)=d2
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> layout <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> AVAudioChannelLayoutMBS(qlayout)
+			<span style="color:#0000FF;font-weight: bold">dim</span> pf <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> AVAudioFormatMBS(<span style="color:#326598">44100</span>, layout)
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> pf
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> StereoRightFormat() <span style="color:#0000FF;font-weight: bold">As</span> AVAudioFormatMBS
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">stereo</span> <span style="color:#7F0000;text-style:italic">format,</span> <span style="color:#7F0000;text-style:italic">left</span> <span style="color:#7F0000;text-style:italic">channel</span> <span style="color:#7F0000;text-style:italic">only</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> qlayout <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> QTAudioChannelLayoutMBS
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> d1 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> QTAudioChannelDescriptionMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> d2 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> QTAudioChannelDescriptionMBS
+			
+			d1.ChannelFlags = QTAudioChannelDescriptionMBS.kAudioChannelFlags_AllOff
+			d1.ChannelLabel = QTAudioChannelDescriptionMBS.kAudioChannelLabel_Unused
+			
+			d2.ChannelFlags = QTAudioChannelDescriptionMBS.kAudioChannelFlags_AllOff
+			d2.ChannelLabel = QTAudioChannelDescriptionMBS.kAudioChannelLabel_Right
+			
+			qlayout.ChannelLayoutTag = QTAudioChannelLayoutMBS.kAudioChannelLayoutTag_UseChannelDescriptions
+			
+			qlayout.NumberChannelDescriptions=<span style="color:#326598">2</span>
+			qlayout.ChannelDescriptions(<span style="color:#326598">0</span>)=d1
+			qlayout.ChannelDescriptions(<span style="color:#326598">1</span>)=d2
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> layout <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> AVAudioChannelLayoutMBS(qlayout)
+			<span style="color:#0000FF;font-weight: bold">dim</span> pf <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> AVAudioFormatMBS(<span style="color:#326598">44100</span>, layout)
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> pf
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Engine <span style="color:#0000FF;font-weight: bold">As</span> AVAudioEngineMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> NoEvents <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> StartPos <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">int64</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> audioUnit <span style="color:#0000FF;font-weight: bold">As</span> AVAudioUnitTimePitchMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> audiofile <span style="color:#0000FF;font-weight: bold">As</span> AVAudioFileMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> file <span style="color:#0000FF;font-weight: bold">As</span> FolderItem</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> fileFormat <span style="color:#0000FF;font-weight: bold">As</span> AVAudioFormatMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> player <span style="color:#0000FF;font-weight: bold">As</span> AVAudioPlayerNodeMBS</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MainMenuBar</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator2 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyAVAudioPlayerNodeMBS <span style="color:#0000FF;font-weight: bold">Inherits</span> AVAudioPlayerNodeMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> scheduleFileCompleted(file <span style="color:#0000FF;font-weight: bold">as</span> AVAudioFileMBS, time <span style="color:#0000FF;font-weight: bold">as</span> AVAudioTimeMBS, tag <span style="color:#0000FF;font-weight: bold">as</span> Variant)
+			MsgBox <span style="color:#6500FE">&quot;Playing</span> <span style="color:#6500FE">finished.&quot;</span>
+			
+			
+			
+			
+			<span style="color:#0000FF">#pragma</span> Unused file
+			<span style="color:#0000FF">#pragma</span> Unused time
+			<span style="color:#0000FF">#pragma</span> Unused tag
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-avfoundation-avaudioengine-player.html">/AVFoundation/AVAudioEngine/Player</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsavfoundationplugin.html">MBS AVFoundation Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-avfoundation-avaudioengine-playerwithaudiounitforlevelmeter">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

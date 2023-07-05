@@ -1,0 +1,1267 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - CIImageMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="CIImageMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">CIImageMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-ciimagembs.html">CIImageMBS</a> class.  </p>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="1">AsNSImageMBS as Variant</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion130.shtml" class=version>13.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a <A href="class-nsimagembs.html">NSImageMBS</A> which references the given CIImage.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #800000;">// make a dummy CIImage</span><br /><span style="color: #0000FF;">dim</span> Logo <span style="color: #0000FF;">as</span> Picture = <A href="global-logombs.html">LogoMBS</A>(<span style="color: #336698;">500</span>)<br /><span style="color: #0000FF;">dim</span> jpeg <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = <A href="global-picturetojpegstringmbs.html">PictureToJPEGStringMBS</A>(logo, <span style="color: #336698;">80</span>)<br /><span style="color: #0000FF;">dim</span> ci <span style="color: #0000FF;">as</span> <A href="class-ciimagembs.html">CIImageMBS</A> = <A href="class-ciimagembs.html">CIImageMBS</A>.imageWithData(jpeg)<br /><br /><span style="color: #800000;">// convert to NSImage</span><br /><span style="color: #0000FF;">dim</span> ni <span style="color: #0000FF;">as</span> <A href="class-nsimagembs.html">NSImageMBS</A> = ci.AsNSImageMBS<br /><br /><span style="color: #800000;">// and display</span><br />Backdrop = ni.CopyPictureWithMask</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Returns nil on error.<BR>
+Result declared as Variant to avoid plugin dependencies.<BR>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="2">autoAdjustmentFilters as <A href="class-cifiltermbs.html">CIFilterMBS</A>()</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion131.shtml" class=version>13.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns all filters that perform auto adjustment.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test.jpg&quot;</span>)<br /><span style="color: #0000FF;">dim</span> image <span style="color: #0000FF;">as</span> <A href="class-ciimagembs.html">CIImageMBS</A> = <A href="class-ciimagembs.html">CIImageMBS</A>.imageWithContentsOfFile(f)<br /><br /><span style="color: #0000FF;">dim</span> filters() <span style="color: #0000FF;">as</span> <A href="class-cifiltermbs.html">CIFilterMBS</A> = image.autoAdjustmentFilters<br /><br /><span style="color: #0000FF;">dim</span> beginImage <span style="color: #0000FF;">as</span> <A href="class-ciimagembs.html">CIImageMBS</A> = image<br /><span style="color: #0000FF;">for</span> <span style="color: #0000FF;">each</span> filter <span style="color: #0000FF;">as</span> <A href="class-cifiltermbs.html">CIFilterMBS</A> <span style="color: #0000FF;">in</span> filters<br />  filter.ValueAsCIImage(<span style="color: #6600FE;">&quot;inputImage&quot;</span>) = beginImage<br />  beginImage = filter.ValueAsCIImage(<span style="color: #6600FE;">&quot;outputImage&quot;</span>)<br /><span style="color: #0000FF;">next</span><br /><br />Backdrop = beginImage.RenderPicture</span>
+</pre>
+</div>
+<B>Notes:</B> 
+An array of auto adjustment filters to apply to the image. The filters are preset with values for correcting deficiencies in the supplied image.<BR>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="3">autoAdjustmentFiltersWithOptions(options as dictionary) as <A href="class-cifiltermbs.html">CIFilterMBS</A>()</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion131.shtml" class=version>13.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns a subset of the filters that perform auto adjustment.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test.jpg&quot;</span>)<br /><span style="color: #0000FF;">dim</span> image <span style="color: #0000FF;">as</span> <A href="class-ciimagembs.html">CIImageMBS</A> = <A href="class-ciimagembs.html">CIImageMBS</A>.imageWithContentsOfFile(f)<br /><br /><span style="color: #0000FF;">dim</span> options <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> Dictionary<br />options.Value(<A href="class-ciimagembs.html">CIImageMBS</A>.kCIImageAutoAdjustEnhance) = <span style="color: #0000FF;">true</span><br />options.Value(<A href="class-ciimagembs.html">CIImageMBS</A>.kCIImageAutoAdjustRedEye) = <span style="color: #0000FF;">true</span><br /><br /><span style="color: #0000FF;">dim</span> filters() <span style="color: #0000FF;">as</span> <A href="class-cifiltermbs.html">CIFilterMBS</A> = image.autoAdjustmentFiltersWithOptions(options)<br /><br /><span style="color: #0000FF;">dim</span> beginImage <span style="color: #0000FF;">as</span> <A href="class-ciimagembs.html">CIImageMBS</A> = image<br /><span style="color: #0000FF;">for</span> <span style="color: #0000FF;">each</span> filter <span style="color: #0000FF;">as</span> <A href="class-cifiltermbs.html">CIFilterMBS</A> <span style="color: #0000FF;">in</span> filters<br />  filter.ValueAsCIImage(<span style="color: #6600FE;">&quot;inputImage&quot;</span>) = beginImage<br />  beginImage = filter.ValueAsCIImage(<span style="color: #6600FE;">&quot;outputImage&quot;</span>)<br /><span style="color: #0000FF;">next</span><br /><br />Backdrop = beginImage.RenderPicture</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+options: You can control which filters are returned by supplying one or more of the keys described in &quot;Auto Adjustment Keys.&quot;<BR>
+The options dictionary can also contain a CIDetectorImageOrientation key. This key is a number with the same value as defined by the TIFF and EXIF specifications; values can range from 1 through 8. The value specifies where the origin (0,0) of the image is located. If not present, the default value is 1, which means the origin of the image is top, left. For details on the image origin specified by each value, see kCGImagePropertyOrientation.<BR>
+<BR>
+Returns an array of auto adjustment filters, filtered by the supplied options, to apply to the image. The filters are preset with values for correcting deficiencies in the supplied image.<BR>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="4">Constructor(cgimage as <A href="class-cgimagembs.html">CGImageMBS</A>, cgcolorspace as <A href="class-cgcolorspacembs.html">CGColorSpaceMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion73.shtml" class=version>7.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a CIImage based on a CGImage.<BR>
+<B>Notes:</B> 
+<BR>
+cgcolorspace: Use this colorspace when opening the image.<BR>
+On success, the handle is not zero.<BR>
+<p>See also:<ul>
+<li><A href="coreimage-ciimagembs-method.html#5">Constructor(cgimage as CGImageMBS, options as Dictionary = nil)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#6">Constructor(CGLayer as CGLayerMBS, options as Dictionary = nil)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#7">Constructor(data as memoryblock)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#8">Constructor(data as memoryblock, BytesPerRow as Integer, width as Integer, height as Integer, format as Integer, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#9">Constructor(data as memoryblock, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#10">Constructor(data as Memoryblock, Length as Integer, BytesPerRow as Integer, width as Integer, height as Integer, format as Integer, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#11">Constructor(file as FolderItem)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#12">Constructor(file as FolderItem, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#13">Constructor(Handle as Integer)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="5">Constructor(cgimage as <A href="class-cgimagembs.html">CGImageMBS</A>, options as Dictionary = nil)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion73.shtml" class=version>7.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a CIImage based on a CGImage.<BR>
+<B>Notes:</B> 
+On success, the handle is not zero.<BR>
+<p>See also:<ul>
+<li><A href="coreimage-ciimagembs-method.html#4">Constructor(cgimage as CGImageMBS, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#6">Constructor(CGLayer as CGLayerMBS, options as Dictionary = nil)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#7">Constructor(data as memoryblock)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#8">Constructor(data as memoryblock, BytesPerRow as Integer, width as Integer, height as Integer, format as Integer, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#9">Constructor(data as memoryblock, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#10">Constructor(data as Memoryblock, Length as Integer, BytesPerRow as Integer, width as Integer, height as Integer, format as Integer, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#11">Constructor(file as FolderItem)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#12">Constructor(file as FolderItem, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#13">Constructor(Handle as Integer)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="6">Constructor(CGLayer as <A href="class-cglayermbs.html">CGLayerMBS</A>, options as Dictionary = nil)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion141.shtml" class=version>14.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates and returns an image object from the contents supplied by a CGLayer object, using the specified options.<BR>
+<B>Notes:</B> 
+<BR>
+layer: A CGLayer object. For more information see Quartz 2D Programming Guide and CGLayer Reference.<BR>
+options: A dictionary specifying image options.<BR>
+<BR>
+Returns an image object initialized with the contents of the layer object and set up with the specified options.<BR>
+<p>See also:<ul>
+<li><A href="coreimage-ciimagembs-method.html#4">Constructor(cgimage as CGImageMBS, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#5">Constructor(cgimage as CGImageMBS, options as Dictionary = nil)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#7">Constructor(data as memoryblock)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#8">Constructor(data as memoryblock, BytesPerRow as Integer, width as Integer, height as Integer, format as Integer, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#9">Constructor(data as memoryblock, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#10">Constructor(data as Memoryblock, Length as Integer, BytesPerRow as Integer, width as Integer, height as Integer, format as Integer, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#11">Constructor(file as FolderItem)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#12">Constructor(file as FolderItem, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#13">Constructor(Handle as Integer)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="7">Constructor(data as memoryblock)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion73.shtml" class=version>7.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a CIImage based on the image file content stored inside the data string.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> p <span style="color: #0000FF;">as</span> Picture = <A href="global-logombs.html">LogoMBS</A>(<span style="color: #336698;">500</span>)<br /><span style="color: #0000FF;">dim</span> data <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = <A href="global-picturetopngstringmbs.html#4">PictureToPNGStringMBS</A>(p,<span style="color: #336698;">80</span>)<br /><span style="color: #0000FF;">dim</span> i <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-ciimagembs.html">CIImageMBS</A>(data)<br /><br /><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-cifiltercircularwrapmbs.html">CIFilterCircularWrapMBS</A><br />c.inputImage = i<br /><br /><span style="color: #0000FF;">dim</span> o <span style="color: #0000FF;">as</span> <A href="class-ciimagembs.html">CIImageMBS</A> = c.outputImage<br />Backdrop = o.RenderPicture</span>
+</pre>
+</div>
+<B>Notes:</B> 
+On success, the handle is not zero.<BR>
+<p>See also:<ul>
+<li><A href="coreimage-ciimagembs-method.html#4">Constructor(cgimage as CGImageMBS, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#5">Constructor(cgimage as CGImageMBS, options as Dictionary = nil)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#6">Constructor(CGLayer as CGLayerMBS, options as Dictionary = nil)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#8">Constructor(data as memoryblock, BytesPerRow as Integer, width as Integer, height as Integer, format as Integer, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#9">Constructor(data as memoryblock, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#10">Constructor(data as Memoryblock, Length as Integer, BytesPerRow as Integer, width as Integer, height as Integer, format as Integer, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#11">Constructor(file as FolderItem)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#12">Constructor(file as FolderItem, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#13">Constructor(Handle as Integer)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="8">Constructor(data as memoryblock, BytesPerRow as Integer, width as Integer, height as Integer, format as Integer, cgcolorspace as <A href="class-cgcolorspacembs.html">CGColorSpaceMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion73.shtml" class=version>7.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a CIImage from a RAW memory buffer.<BR>
+<B>Notes:</B> 
+<BR>
+Format must be one of this constants: kCIFormatRGBAf, kCIFormatRGBA16 and kCIFormatARGB8.<BR>
+<BR>
+On success, the handle is not zero.<BR>
+<p>See also:<ul>
+<li><A href="coreimage-ciimagembs-method.html#4">Constructor(cgimage as CGImageMBS, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#5">Constructor(cgimage as CGImageMBS, options as Dictionary = nil)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#6">Constructor(CGLayer as CGLayerMBS, options as Dictionary = nil)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#7">Constructor(data as memoryblock)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#9">Constructor(data as memoryblock, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#10">Constructor(data as Memoryblock, Length as Integer, BytesPerRow as Integer, width as Integer, height as Integer, format as Integer, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#11">Constructor(file as FolderItem)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#12">Constructor(file as FolderItem, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#13">Constructor(Handle as Integer)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="9">Constructor(data as memoryblock, cgcolorspace as <A href="class-cgcolorspacembs.html">CGColorSpaceMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion73.shtml" class=version>7.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a CIImage based on the image file content stored inside the data string.<BR>
+<B>Notes:</B> 
+<BR>
+cgcolorspace: Use this colorspace when opening the image.<BR>
+<BR>
+On success, the handle is not zero.<BR>
+<p>See also:<ul>
+<li><A href="coreimage-ciimagembs-method.html#4">Constructor(cgimage as CGImageMBS, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#5">Constructor(cgimage as CGImageMBS, options as Dictionary = nil)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#6">Constructor(CGLayer as CGLayerMBS, options as Dictionary = nil)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#7">Constructor(data as memoryblock)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#8">Constructor(data as memoryblock, BytesPerRow as Integer, width as Integer, height as Integer, format as Integer, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#10">Constructor(data as Memoryblock, Length as Integer, BytesPerRow as Integer, width as Integer, height as Integer, format as Integer, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#11">Constructor(file as FolderItem)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#12">Constructor(file as FolderItem, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#13">Constructor(Handle as Integer)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="10">Constructor(data as Memoryblock, Length as Integer, BytesPerRow as Integer, width as Integer, height as Integer, format as Integer, cgcolorspace as <A href="class-cgcolorspacembs.html">CGColorSpaceMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion73.shtml" class=version>7.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a CIImage from a RAW memory buffer.<BR>
+<B>Notes:</B> 
+<BR>
+Data points directly to the row data.<BR>
+Length is the size of the memoryblock in bytes.<BR>
+BytesPerRow is the size of a row in bytes.<BR>
+Width and height are the dimensions of the image.<BR>
+Format must be one of this constants: kCIFormatRGBAf, kCIFormatRGBA16 and kCIFormatARGB8.<BR>
+Colorspace is the CoreGraphics Colorspace object to be used.<BR>
+<BR>
+On success, the handle is not zero.<BR>
+<p>See also:<ul>
+<li><A href="coreimage-ciimagembs-method.html#4">Constructor(cgimage as CGImageMBS, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#5">Constructor(cgimage as CGImageMBS, options as Dictionary = nil)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#6">Constructor(CGLayer as CGLayerMBS, options as Dictionary = nil)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#7">Constructor(data as memoryblock)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#8">Constructor(data as memoryblock, BytesPerRow as Integer, width as Integer, height as Integer, format as Integer, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#9">Constructor(data as memoryblock, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#11">Constructor(file as FolderItem)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#12">Constructor(file as FolderItem, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#13">Constructor(Handle as Integer)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="11">Constructor(file as FolderItem)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion73.shtml" class=version>7.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a CIImage based on a the content of the file.<BR>
+<B>Notes:</B> 
+On success, the handle is not zero.<BR>
+<p>See also:<ul>
+<li><A href="coreimage-ciimagembs-method.html#4">Constructor(cgimage as CGImageMBS, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#5">Constructor(cgimage as CGImageMBS, options as Dictionary = nil)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#6">Constructor(CGLayer as CGLayerMBS, options as Dictionary = nil)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#7">Constructor(data as memoryblock)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#8">Constructor(data as memoryblock, BytesPerRow as Integer, width as Integer, height as Integer, format as Integer, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#9">Constructor(data as memoryblock, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#10">Constructor(data as Memoryblock, Length as Integer, BytesPerRow as Integer, width as Integer, height as Integer, format as Integer, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#12">Constructor(file as FolderItem, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#13">Constructor(Handle as Integer)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="12">Constructor(file as FolderItem, cgcolorspace as <A href="class-cgcolorspacembs.html">CGColorSpaceMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion73.shtml" class=version>7.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a CIImage based on a the content of the file.<BR>
+<B>Notes:</B> 
+<BR>
+cgcolorspace: Use this colorspace when opening the image.<BR>
+<BR>
+On success, the handle is not zero.<BR>
+<p>See also:<ul>
+<li><A href="coreimage-ciimagembs-method.html#4">Constructor(cgimage as CGImageMBS, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#5">Constructor(cgimage as CGImageMBS, options as Dictionary = nil)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#6">Constructor(CGLayer as CGLayerMBS, options as Dictionary = nil)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#7">Constructor(data as memoryblock)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#8">Constructor(data as memoryblock, BytesPerRow as Integer, width as Integer, height as Integer, format as Integer, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#9">Constructor(data as memoryblock, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#10">Constructor(data as Memoryblock, Length as Integer, BytesPerRow as Integer, width as Integer, height as Integer, format as Integer, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#11">Constructor(file as FolderItem)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#13">Constructor(Handle as Integer)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="13">Constructor(Handle as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion121.shtml" class=version>12.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Initializes object with given object reference.<BR>
+<B>Notes:</B> 
+<BR>
+ref should be a CIImage* and the object is retained.<BR>
+Raises UnsupportedOperationException if object is not a CIImage.<BR>
+<p>See also:<ul>
+<li><A href="coreimage-ciimagembs-method.html#4">Constructor(cgimage as CGImageMBS, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#5">Constructor(cgimage as CGImageMBS, options as Dictionary = nil)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#6">Constructor(CGLayer as CGLayerMBS, options as Dictionary = nil)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#7">Constructor(data as memoryblock)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#8">Constructor(data as memoryblock, BytesPerRow as Integer, width as Integer, height as Integer, format as Integer, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#9">Constructor(data as memoryblock, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#10">Constructor(data as Memoryblock, Length as Integer, BytesPerRow as Integer, width as Integer, height as Integer, format as Integer, cgcolorspace as CGColorSpaceMBS)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#11">Constructor(file as FolderItem)</A></li>
+<li><A href="coreimage-ciimagembs-method.html#12">Constructor(file as FolderItem, cgcolorspace as CGColorSpaceMBS)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="14">copy as <A href="class-ciimagembs.html">CIImageMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion174.shtml" class=version>17.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a copy of the image.<BR>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="15">CreateCGImage(r as <A href="class-cgrectmbs.html">CGRectMBS</A> = nil) as <A href="class-cgimagembs.html">CGImageMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion131.shtml" class=version>13.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a new image with the content of the CIImage.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> logo <span style="color: #0000FF;">as</span> Picture = <A href="global-logombs.html">LogoMBS</A>(<span style="color: #336698;">500</span>)<br /><span style="color: #0000FF;">dim</span> ci <span style="color: #0000FF;">as</span> <A href="class-ciimagembs.html">CIImageMBS</A> = <A href="class-ciimagembs.html">CIImageMBS</A>.imageWithPicture(logo)<br /><span style="color: #0000FF;">dim</span> cg <span style="color: #0000FF;">as</span> <A href="class-cgimagembs.html">CGImageMBS</A> = ci.CreateCGImage<br />Backdrop = cg.Picture</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Render the region &#39;r&#39; of image &#39;im&#39; into a temporary buffer using the context, then create and return a new CoreGraphics image with the results.<BR>
+If r is nil, the whole image extent is used.<BR>
+<p>See also:<ul>
+<li><A href="coreimage-ciimagembs-method.html#16">CreateCGImage(r as CGRectMBS, ColorSpace as CGColorSpaceMBS) as CGImageMBS</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="16">CreateCGImage(r as <A href="class-cgrectmbs.html">CGRectMBS</A>, ColorSpace as <A href="class-cgcolorspacembs.html">CGColorSpaceMBS</A>) as <A href="class-cgimagembs.html">CGImageMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion131.shtml" class=version>13.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a new image with the content of the CIImage.<BR>
+<B>Notes:</B> 
+<BR>
+Render the region &#39;r&#39; of image &#39;im&#39; into a temporary buffer using the context, then create and return a new CoreGraphics image with the results.<BR>
+If r is nil, the whole image extent is used.<BR>
+<p>See also:<ul>
+<li><A href="coreimage-ciimagembs-method.html#15">CreateCGImage(r as CGRectMBS = nil) as CGImageMBS</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="17">imageByApplyingOrientation(orientation as Integer) as <A href="class-ciimagembs.html">CIImageMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion150.shtml" class=version>15.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns a new image representing the original image with a transform appied to it based on an orientation value.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+
+<span style="color: #000000;"><span style="color: #800000;">// use CIImage to rotate to always be top left orientation</span><br /><span style="color: #0000FF;">Dim</span> ciImage <span style="color: #0000FF;">As</span> <A href="class-ciimagembs.html">CIImageMBS</A> = <span style="color: #0000FF;">New</span> <A href="class-ciimagembs.html">CIImageMBS</A>(file)<br /><br /><span style="color: #0000FF;">Dim</span> orientation <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">Integer</span> = ciImage.properties.Lookup(<span style="color: #6600FE;">&quot;Orientation&quot;</span>, <span style="color: #336698;">0</span>)<br /><span style="color: #0000FF;">if</span> orientation &lt;&gt; <span style="color: #336698;">0</span> <span style="color: #0000FF;">then</span><br />  ciImage = ciImage.imageByApplyingOrientation(orientation)<br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br /><br /><span style="color: #0000FF;">Dim</span> cgPic <span style="color: #0000FF;">As</span> <A href="class-cgimagembs.html">CGImageMBS</A> = ciImage.CreateCGImage<br /><span style="color: #0000FF;">Dim</span> pic <span style="color: #0000FF;">As</span> Picture = cgPic.Picture<br />ImageViewer1.Image = pic</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Orientation values from 1 to 8 as defined in the TIFF spec are supported.<BR>
+Returns original image if the image is of infinite extent.<BR>
+<BR>
+Possible orientation values:<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Value</TD><TD valign="top">orientation</TD><TD valign="top">details</TD></TR>
+<TR><TD valign="top">1</TD><TD valign="top">top left</TD><TD valign="top">row 0 top, col 0 lhs</TD></TR>
+<TR><TD valign="top">2</TD><TD valign="top">top right</TD><TD valign="top">row 0 top, col 0 rhs</TD></TR>
+<TR><TD valign="top">3</TD><TD valign="top">bottom right</TD><TD valign="top">row 0 bottom, col 0 rhs</TD></TR>
+<TR><TD valign="top">4</TD><TD valign="top">bottom left</TD><TD valign="top">row 0 bottom, col 0 lhs</TD></TR>
+<TR><TD valign="top">5</TD><TD valign="top">left top</TD><TD valign="top">row 0 lhs, col 0 top</TD></TR>
+<TR><TD valign="top">6</TD><TD valign="top">right top</TD><TD valign="top">row 0 rhs, col 0 top</TD></TR>
+<TR><TD valign="top">7</TD><TD valign="top">right bottom</TD><TD valign="top">row 0 rhs, col 0 bottom</TD></TR>
+<TR><TD valign="top">8</TD><TD valign="top">left bottom</TD><TD valign="top">row 0 lhs, col 0 bottom</TD></TR>
+</TABLE>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-ios-photopickerdesktop.html">/iOS/Photo Picker Desktop</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="18">ImageByApplyingTransform(transform as <A href="class-nsaffinetransformmbs.html">NSAffineTransformMBS</A>) as <A href="class-ciimagembs.html">CIImageMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion73.shtml" class=version>7.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns a new image representing the original image with the transform &#39;matrix&#39; appended to it.<BR>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="19">imageByClampingToExtent as <A href="class-ciimagembs.html">CIImageMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion150.shtml" class=version>15.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return a new infinte image by replicating the pixels of the receiver image&#39;s extent.<BR>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="20">imageByCompositingOverImage(dest as <A href="class-ciimagembs.html">CIImageMBS</A>) as <A href="class-ciimagembs.html">CIImageMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion160.shtml" class=version>16.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns a new image created by compositing the original image over the specified destination image.<BR>
+<B>Notes:</B> 
+<BR>
+dest: An image to serve as the destination of the compositing operation.<BR>
+<BR>
+Returns an image object representing the result of the compositing operation.<BR>
+<BR>
+Calling this method is equivalent to using the CISourceOverCompositing filter. To use other compositing operations and blending modes, create a CIFilter object using one of the built-in filters from the CICategoryCompositeOperation category. For details, see Core Image Filter Reference.<BR>
+<BR>
+Available in OS X v10.4 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="21">imageByCroppingToRect(r as <A href="class-cgrectmbs.html">CGRectMBS</A>) as <A href="class-ciimagembs.html">CIImageMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion130.shtml" class=version>13.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns a new image that represents the original image after cropping to a rectangle.<BR>
+<B>Notes:</B> 
+Available in OS X v10.5 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="22">properties as Dictionary</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion130.shtml" class=version>13.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns the metadata properties of an image. <BR>
+<B>Notes:</B> 
+If the image is the output of one or more CIFilters, then the metadata of the root inputImage will be returned. <BR>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="23">releaseHandle</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion142.shtml" class=version>14.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Decrements the retain count of a CIImage reference.<BR>
+<B>Notes:</B> 
+<BR>
+Each retain must have a release. Too many releases and your app will crash, too many retains and it will leak memory.<BR>
+Use only if you really know what you are doing.<BR>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="24">RenderNSImage(UseSoftwareRenderer as boolean = false) as Variant</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion73.shtml" class=version>7.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a picture based of the CIImage content.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> <A href="class-cifilteredgesmbs.html">CIFilterEdgesMBS</A><br /><br />f=new <A href="class-cifilteredgesmbs.html">CIFilterEdgesMBS</A><br />f.inputImage=<A href="global-newciimagewithfilembs.html#2">NewCIImagewithFileMBS</A>(SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;Paris.jpg&quot;</span>))<br />f.inputIntensity=5<br /><br /><span style="color: #0000FF;">dim</span> n <span style="color: #0000FF;">as</span> <A href="class-nsimagembs.html">NSImageMBS</A><br />n=f.outputImage.RenderNSImage(<span style="color: #0000FF;">false</span>)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Creates a new NSImage, creates a CGContext for it, draws the image into the buffer and returns it as a Xojo object.<BR>
+<BR>
+Returns nil on failure.<BR>
+Rendering the image will cause the calculations to be done so this call is quite expensive.<BR>
+<BR>
+If UseSoftwareRenderer is true, the hardware acceleration is not used.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-images-jpeg-quicklygeneratepreviewsforjpegandtiff.html">/Images/JPEG/Quickly generate previews for JPEG and Tiff</A></li>
+<li><A href="example-images-tiff-quicklygeneratepreviewsforjpegandtiff.html">/Images/Tiff/Quickly generate previews for JPEG and Tiff</A></li>
+<li><A href="example-maccg-coreimage-quicklygeneratepreviewsforjpegandtiff.html">/MacCG/CoreImage/Quickly generate previews for JPEG and Tiff</A></li>
+<li><A href="example-maccg-coreimage-simplefilterchain.html">/MacCG/CoreImage/Simple Filter Chain</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="25">RenderPicture(Width as Integer = 0, Height as Integer = 0, UseSoftwareRenderer as boolean = false) as Picture</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion73.shtml" class=version>7.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a picture based of the CIImage content.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> <A href="class-cifilteredgesmbs.html">CIFilterEdgesMBS</A><br /><br />f=new <A href="class-cifilteredgesmbs.html">CIFilterEdgesMBS</A><br />f.inputImage=<A href="global-newciimagewithfilembs.html#2">NewCIImagewithFileMBS</A>(SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;Paris.jpg&quot;</span>))<br />f.inputIntensity=5<br />Backdrop=f.outputImage.RenderPicture</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Creates a new image buffer, creates a CGContext for it, draws the image into the buffer and returns it as a picture with mask. If you need picture with alpha channel, please use RenderPictureWithAlpha function.<BR>
+<BR>
+Returns nil on failure.<BR>
+Rendering the image will cause the calculations to be done so this call is quite expensive.<BR>
+<BR>
+If UseSoftwareRenderer is true, the hardware acceleration is not used.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-avfoundation-cvpixelbuffertest.html">/AVFoundation/CVPixelBuffer test</A></li>
+<li><A href="example-mac64bit-coreml-coremltest.html">/Mac64bit/CoreML/CoreML Test</A></li>
+<li><A href="example-maccg-coregraphicsdirectdisplay-cgdisplaystreameventtest.html">/MacCG/CoreGraphics DirectDisplay/CGDisplayStreamEvent test</A></li>
+<li><A href="example-maccg-coreimage-barcodegenerator.html">/MacCG/CoreImage/Barcode Generator</A></li>
+<li><A href="example-maccg-coreimage-simplefilterchain.html">/MacCG/CoreImage/Simple Filter Chain</A></li>
+<li><A href="example-maccg-coreimage-simplefilterwithpicture.html">/MacCG/CoreImage/Simple Filter with Picture</A></li>
+<li><A href="example-maccg-openimageusingcoreimage.html">/MacCG/Open Image using CoreImage</A></li>
+<li><A href="example-macframeworks-visionobjectdetection-saliencyimagerequests.html">/MacFrameworks/Vision Object Detection/Saliency Image Requests</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="26">RenderPictureWithAlpha(Width as Integer = 0, Height as Integer = 0, UseSoftwareRenderer as boolean = false) as Picture</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion150.shtml" class=version>15.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a picture based of the CIImage content.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> <A href="class-cifilteredgesmbs.html">CIFilterEdgesMBS</A><br /><br />f=new <A href="class-cifilteredgesmbs.html">CIFilterEdgesMBS</A><br />f.inputImage=<A href="global-newciimagewithfilembs.html#2">NewCIImagewithFileMBS</A>(SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;Paris.jpg&quot;</span>))<br />f.inputIntensity=5<br />Backdrop= f.outputImage.RenderPictureWithAlphaMT</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Creates a new image buffer, creates a CGContext for it, draws the image into the buffer and returns it as a Xojo picture with alpha channel.<BR>
+<BR>
+Returns nil on failure.<BR>
+Rendering the image will cause the calculations to be done so this call is quite expensive.<BR>
+<BR>
+If UseSoftwareRenderer is true, the hardware acceleration is not used.<BR>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="27">RenderPictureWithAlphaMT(Width as Integer = 0, Height as Integer = 0, UseSoftwareRenderer as boolean = false) as Picture</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion151.shtml" class=version>15.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a picture based of the CIImage content.<BR>
+<B>Notes:</B> 
+<BR>
+Same as the other RenderPictureWithAlpha function, but threaded.<BR>
+<BR>
+Creates a new image buffer, creates a CGContext for it, draws the image into the buffer and returns it as a Xojo picture with alpha channel.<BR>
+<BR>
+Returns nil on failure.<BR>
+Rendering the image will cause the calculations to be done so this call is quite expensive.<BR>
+<BR>
+If UseSoftwareRenderer is true, the hardware acceleration is not used.<BR>
+<BR>
+The work is performed on a preemptive thread, so this function does not block the application and can yield time to other Xojo threads. Must be called in a Xojo thread to enjoy benefits. If called in main thread will block, but keep other background threads running.<BR>
+If you run several threads calling MT methods, you can get all CPU cores busy while main thread shows GUI with progress window.<BR>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="28">retainHandle</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion142.shtml" class=version>14.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Increments the retain count of a CIImage reference.<BR>
+<B>Notes:</B> 
+<BR>
+Each retain must have a release. Too many releases and your app will crash, too many retains and it will leak memory.<BR>
+Use only if you really know what you are doing.<BR>
+</div>
+<div class="M">
+<b><a href="class-ciimagembs.html">CIImageMBS</a>.<A name="29">scaleTo(width as Integer, height as Integer) as <A href="class-ciimagembs.html">CIImageMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coreimage.html" translate="no">CoreImage</A></td>
+<td class=grau><a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a></td>
+<td class=grau><a href="newinversion212.shtml" class=version>21.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Scales picture to target size.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">Dim</span> pic <span style="color: #0000FF;">As</span> Picture = <A href="global-logombs.html">LogoMBS</A>(<span style="color: #336698;">500</span>)<br /><span style="color: #0000FF;">Dim</span> image <span style="color: #0000FF;">As</span> <A href="class-ciimagembs.html">CIImageMBS</A> = <A href="class-ciimagembs.html">CIImageMBS</A>.imageWithPicture(pic)<br /><br /><span style="color: #0000FF;">Const</span> targetWidth = <span style="color: #006633;">600.0</span><br /><span style="color: #0000FF;">Const</span> targetHeight = <span style="color: #006633;">400.0</span><br /><br /><span style="color: #0000FF;">#If</span> mbs.VersionNumber &lt; <span style="color: #006633;">21.2</span> <span style="color: #0000FF;">Then</span><br />  <br />  <span style="color: #0000FF;">Dim</span> filter <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">New</span> <A href="class-cifilterlanczosscaletransformmbs.html">CIFilterLanczosScaleTransformMBS</A><br />  <br />  <span style="color: #0000FF;">Dim</span> scale <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">Double</span> = targetHeight / image.Extent.Height<br />  <span style="color: #0000FF;">Dim</span> aspect <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">Double</span> = targetWidth / (image.Extent.Width * scale)<br />  <br />  filter.inputImage = image<br />  filter.inputScale = scale<br />  filter.inputAspectRatio = aspect<br />  <br />  <span style="color: #0000FF;">Dim</span> outputImage <span style="color: #0000FF;">As</span> <A href="class-ciimagembs.html">CIImageMBS</A> = filter.outputImage<br />  <br /><span style="color: #0000FF;">#Else</span><br />  <br />  <span style="color: #0000FF;">Dim</span> outputImage <span style="color: #0000FF;">As</span> <A href="class-ciimagembs.html">CIImageMBS</A> = image.scaleTo(targetWidth, targetHeight)<br />  <br /><span style="color: #0000FF;">#EndIf</span><br /><br /><span style="color: #0000FF;">Dim</span> result <span style="color: #0000FF;">As</span> Picture = outputImage.RenderPicture<br />Backdrop = result</span>
+</pre>
+</div>
+<B>Notes:</B> 
+We use CILanczosScaleTransform filter internally like in the example code for older plugin versions.<BR>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmacciplugin.html">MBS MacCI Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=coreimage-ciimagembs-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

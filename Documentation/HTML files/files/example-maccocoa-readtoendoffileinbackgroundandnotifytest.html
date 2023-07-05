@@ -1,0 +1,301 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /MacCocoa/readToEndOfFileInBackgroundAndNotify Test</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /MacCocoa/readToEndOfFileInBackgroundAndNotify Test</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/MacCocoa/readToEndOfFileInBackgroundAndNotify Test</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS MacOSX Plugin, MBS MacCocoa Plugin, MBS Main Plugin, MBS MacBase Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /MacCocoa/readToEndOfFileInBackgroundAndNotify Test<BR>
+This example is the version from Fri, 10th Oct 2013.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;readToEndOfFileInBackgroundAndNotify</span> <span style="color:#6500FE">Test.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Window1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				xThread = <span style="color:#0000FF;font-weight: bold">New</span> ThreadTest
+				xThread.Run()
+				
+				tmrCheck.Mode = Timer.ModeMultiple
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control TextArea1 <span style="color:#0000FF;font-weight: bold">Inherits</span> TextArea</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance TextArea1 <span style="color:#0000FF;font-weight: bold">Inherits</span> TextArea</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control tmrCheck <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance tmrCheck <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">If</span> xThread.State = Thread.NotRunning <span style="color:#0000FF;font-weight: bold">Then</span>
+					<span style="color:#0000FF;font-weight: bold">Dim</span> sTest <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span> = xThread.FinalResult <span style="color:#7F0000;text-style:italic">//Should</span> <span style="color:#7F0000;text-style:italic">have</span> <span style="color:#7F0000;text-style:italic">lots</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">stuff!</span>
+					TextArea1.Text = sTest
+					<span style="color:#7F0000;text-style:italic">&#39;BREAK</span>
+					<span style="color:#0000FF;font-weight: bold">me</span>.Mode = Timer.ModeOff
+					xThread = <span style="color:#0000FF;font-weight: bold">Nil</span>
+				<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> xThread <span style="color:#0000FF;font-weight: bold">As</span> ThreadTest</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> ThreadTest <span style="color:#0000FF;font-weight: bold">Inherits</span> Thread</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Run()
+			<span style="color:#0000FF;font-weight: bold">Dim</span> xTask <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> TaskKSW
+			xTask.Run(<span style="color:#6500FE">&quot;/usr/bin/find&quot;</span>,<span style="color:#0000FF;font-weight: bold">Array</span>(<span style="color:#6500FE">&quot;/Applications/Utilities&quot;</span>))
+			<span style="color:#0000FF;font-weight: bold">me</span>.FinalResult = xTask.Result
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> FinalResult <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyNSNotificationObserverMBS <span style="color:#0000FF;font-weight: bold">Inherits</span> NSNotificationObserverMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> GotNotification(notification <span style="color:#0000FF;font-weight: bold">as</span> NSNotificationMBS)
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">Case</span> Notification.Name
+			<span style="color:#0000FF;font-weight: bold">Case</span> NSFileHandleMBS.NSFileHandleReadToEndOfFileCompletionNotification
+				<span style="color:#0000FF;font-weight: bold">Dim</span> xUserInfo <span style="color:#0000FF;font-weight: bold">as</span> Dictionary = Notification.UserInfo
+				<span style="color:#0000FF;font-weight: bold">Dim</span> xData <span style="color:#0000FF;font-weight: bold">As</span> NSFileHandleMBS = notification.objectVariant
+				<span style="color:#0000FF;font-weight: bold">Dim</span> sData <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = xUserInfo.Value(NSFileHandleMBS.NSFileHandleNotificationDataItem)
+				
+				<span style="color:#0000FF;font-weight: bold">If</span> <span style="color:#0000FF;font-weight: bold">me</span>.DataForHandle.HasKey(xData.Handle) <span style="color:#0000FF;font-weight: bold">Then</span>
+					<span style="color:#7F0000;text-style:italic">&#39;Dim</span> <span style="color:#7F0000;text-style:italic">sExisting</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">String</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">me.DataForHandle.Value(xData.Handle)</span>
+					<span style="color:#7F0000;text-style:italic">&#39;Break</span>
+				<span style="color:#0000FF;font-weight: bold">Else</span>
+					<span style="color:#0000FF;font-weight: bold">me</span>.DataForHandle.Value(xData.Handle) = sData
+				<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Calling</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">overridden</span> <span style="color:#7F0000;text-style:italic">superclass</span> <span style="color:#7F0000;text-style:italic">constructor.</span>
+			<span style="color:#0000FF;font-weight: bold">Super</span>.Constructor
+			<span style="color:#0000FF;font-weight: bold">me</span>.DataForHandle = <span style="color:#0000FF;font-weight: bold">New</span> Dictionary
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> DataForHandle <span style="color:#0000FF;font-weight: bold">As</span> Dictionary</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> TaskKSW</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> ReadInTimer(tt <span style="color:#0000FF;font-weight: bold">as</span> timer)
+			xPipe = <span style="color:#0000FF;font-weight: bold">New</span> NSPipeMBS
+			xPipeError = <span style="color:#0000FF;font-weight: bold">New</span> NSPipeMBS
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Result = <span style="color:#6500FE">&quot;&quot;</span>
+			
+			FTool = PathToFolderItemMBS(toolpath)
+			<span style="color:#0000FF;font-weight: bold">If</span> FTool = <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">or</span> <span style="color:#0000FF;font-weight: bold">Not</span> FTool.Exists <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Result = <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">execute</span> <span style="color:#6500FE">the</span> <span style="color:#6500FE">command</span> <span style="color:#6500FE">was</span> <span style="color:#6500FE">the</span> <span style="color:#6500FE">tool</span> <span style="color:#6500FE">was</span> <span style="color:#6500FE">not</span> <span style="color:#6500FE">found:</span> <span style="color:#6500FE">&quot;</span> + toolpath
+				HadError = <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			xFileHandleStandard = xPipe.fileHandleForReading
+			xFileHandleError = xPipeError.fileHandleForReading
+			
+			xTask.LaunchPath = toolpath
+			xTask.setArguments(toolargs)
+			xTask.setStandardOutput(xPipe)
+			xTask.setStandardError(xPipeError)
+			<span style="color:#0000FF;font-weight: bold">Try</span>
+				xTask.Launch()
+			<span style="color:#0000FF;font-weight: bold">Catch</span> xError <span style="color:#0000FF;font-weight: bold">As</span> NSExceptionMBS
+				<span style="color:#0000FF;font-weight: bold">me</span>.Result = xError.Reason +EndOfLine + EndOfLine + _
+						xError.Name
+				HadError = <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Try</span>
+			
+			xFileHandleStandard.readToEndOfFileInBackgroundAndNotify()
+			xFileHandleError.readToEndOfFileInBackgroundAndNotify()
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Run(_toolpath <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>, _toolargs() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>, ChangeEncoding <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span> = <span style="color:#0000FF;font-weight: bold">True</span>)
+			<span style="color:#0000FF;font-weight: bold">me</span>.ToolPath = _toolpath
+			<span style="color:#0000FF;font-weight: bold">me</span>.ToolArgs = _toolargs
+			
+			HadError = <span style="color:#0000FF;font-weight: bold">False</span>
+			<span style="color:#0000FF;font-weight: bold">me</span>.SetupObservers()
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> xRunLoop <span style="color:#0000FF;font-weight: bold">as</span> NSRunLoopMBS = NSRunLoopMBS.currentRunLoop
+			xRunLoop.AddDummyPort <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">required</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">keep</span> <span style="color:#7F0000;text-style:italic">xRunLoop</span> <span style="color:#7F0000;text-style:italic">looping</span>
+			xRunLoop.Run(<span style="color:#006532">0.01</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.SetupObservers()
+			
+			xTask = <span style="color:#0000FF;font-weight: bold">New</span> NSTaskMBS
+			xTheTimer = <span style="color:#0000FF;font-weight: bold">New</span> Timer
+			xTheTimer.Period = <span style="color:#326598">0</span>
+			xTheTimer.Mode = Timer.ModeSingle
+			<span style="color:#0000FF;font-weight: bold">AddHandler</span> xTheTimer.Action, <span style="color:#0000FF;font-weight: bold">AddressOf</span> ReadInTimer
+			
+			<span style="color:#0000FF;font-weight: bold">Do</span> <span style="color:#0000FF;font-weight: bold">Until</span> <span style="color:#0000FF;font-weight: bold">Not</span> xTask.isRunning
+				<span style="color:#0000FF;font-weight: bold">If</span> HadError <span style="color:#0000FF;font-weight: bold">Then</span>
+					<span style="color:#0000FF;font-weight: bold">me</span>.ErrorCode = -<span style="color:#326598">1</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span>
+				<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+				<span style="color:#0000FF;font-weight: bold">Call</span> xRunLoop.runMode(NSRunLoopMBS.NSDefaultRunLoopMode, <span style="color:#006532">0.01</span>)
+			<span style="color:#0000FF;font-weight: bold">Loop</span>
+			
+			<span style="color:#7F0000;text-style:italic">//Obtain</span> <span style="color:#7F0000;text-style:italic">Result</span>
+			<span style="color:#0000FF;font-weight: bold">Do</span> <span style="color:#0000FF;font-weight: bold">Until</span> xFileHandleStandard&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">and</span> Observer.DataForHandle.HasKey(xFileHandleStandard.Handle)
+				<span style="color:#0000FF;font-weight: bold">Call</span> xRunLoop.runMode NSRunLoopMBS.NSDefaultRunLoopMode, <span style="color:#006532">0.01</span>
+			<span style="color:#0000FF;font-weight: bold">Loop</span>
+			<span style="color:#0000FF;font-weight: bold">me</span>.Result = Observer.DataForHandle.Value(xFileHandleStandard.Handle)
+			<span style="color:#0000FF;font-weight: bold">If</span> ChangeEncoding <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Result = DefineEncoding(<span style="color:#0000FF;font-weight: bold">me</span>.Result,Encodings.UTF8)
+				<span style="color:#0000FF;font-weight: bold">me</span>.Result = ReplaceLineEndings(<span style="color:#0000FF;font-weight: bold">me</span>.Result,EndOfLine)
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			<span style="color:#7F0000;text-style:italic">//Obtain</span> <span style="color:#7F0000;text-style:italic">Error</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> sError <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			<span style="color:#0000FF;font-weight: bold">Do</span> <span style="color:#0000FF;font-weight: bold">Until</span> Observer.DataForHandle.HasKey(xFileHandleError.Handle)
+				<span style="color:#0000FF;font-weight: bold">Call</span> xRunLoop.runMode(NSRunLoopMBS.NSDefaultRunLoopMode, <span style="color:#006532">0.01</span>)
+			<span style="color:#0000FF;font-weight: bold">Loop</span>
+			sError = Observer.DataForHandle.Value(xFileHandleError.Handle)
+			<span style="color:#0000FF;font-weight: bold">If</span> ChangeEncoding <span style="color:#0000FF;font-weight: bold">Then</span>
+				sError = DefineEncoding(sError,Encodings.UTF8)
+				sError = ReplaceLineEndings(sError,EndOfLine)
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> iReason <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = xTask.terminationReason
+			<span style="color:#0000FF;font-weight: bold">me</span>.ErrorCode = xTask.terminationStatus
+			
+			<span style="color:#0000FF;font-weight: bold">If</span> <span style="color:#0000FF;font-weight: bold">me</span>.ErrorCode &lt;&gt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">and</span> Len(<span style="color:#0000FF;font-weight: bold">me</span>.Result) = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">me</span>.Result = sError
+			<span style="color:#0000FF;font-weight: bold">Exception</span> xError <span style="color:#0000FF;font-weight: bold">As</span> NSExceptionMBS
+			<span style="color:#0000FF;font-weight: bold">me</span>.Result = xError.Reason +EndOfLine + EndOfLine + _
+					xError.Name
+			<span style="color:#0000FF;font-weight: bold">me</span>.HadError = <span style="color:#0000FF;font-weight: bold">True</span>
+			<span style="color:#0000FF;font-weight: bold">me</span>.ErrorCode = -<span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Finally</span>
+			xTask = <span style="color:#0000FF;font-weight: bold">Nil</span>
+			xFileHandleError = <span style="color:#0000FF;font-weight: bold">nil</span>
+			xFileHandleStandard = <span style="color:#0000FF;font-weight: bold">nil</span>
+			xPipe = <span style="color:#0000FF;font-weight: bold">Nil</span>
+			xPipeError = <span style="color:#0000FF;font-weight: bold">nil</span>
+			xTheTimer = <span style="color:#0000FF;font-weight: bold">nil</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> SetupObservers()
+			<span style="color:#0000FF;font-weight: bold">if</span> Center &lt;&gt; <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			Center = NSNotificationCenterMBS.defaultCenter
+			Observer = <span style="color:#0000FF;font-weight: bold">New</span> MyNSNotificationObserverMBS
+			
+			Center.addObserver(Observer, NSFileHandleMBS.NSFileHandleReadToEndOfFileCompletionNotification,xFileHandleStandard)
+			Center.addObserver(Observer, NSFileHandleMBS.NSFileHandleReadToEndOfFileCompletionNotification,xFileHandleError)
+			
+			<span style="color:#7F0000;text-style:italic">&#39;Center.addObserver(Observer,</span> <span style="color:#7F0000;text-style:italic">NSFileHandleMBS.NSFileHandleReadCompletionNotification,xFileHandleStandard)</span>
+			<span style="color:#7F0000;text-style:italic">&#39;Center.addObserver(Observer,</span> <span style="color:#7F0000;text-style:italic">NSFileHandleMBS.NSFileHandleReadCompletionNotification,xFileHandleError)</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> Center <span style="color:#0000FF;font-weight: bold">As</span> NSNotificationCenterMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> ErrorCode <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> FTool <span style="color:#0000FF;font-weight: bold">As</span> FolderItem</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> HadError <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Observer <span style="color:#0000FF;font-weight: bold">As</span> MyNSNotificationObserverMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Result <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> ToolArgs() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> ToolPath <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> xFileHandleError <span style="color:#0000FF;font-weight: bold">As</span> NSFileHandleMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> xFileHandleStandard <span style="color:#0000FF;font-weight: bold">As</span> NSFileHandleMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> xPipe <span style="color:#0000FF;font-weight: bold">As</span> NSPipeMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> xPipeError <span style="color:#0000FF;font-weight: bold">As</span> NSPipeMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> xTask <span style="color:#0000FF;font-weight: bold">As</span> NSTaskMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> xTheTimer <span style="color:#0000FF;font-weight: bold">As</span> Timer</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-maccocoa-readtoendoffileinbackgroundandnotifytest">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

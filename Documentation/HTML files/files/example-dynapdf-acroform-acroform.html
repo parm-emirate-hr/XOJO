@@ -1,0 +1,378 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /DynaPDF/acroform/acroform</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /DynaPDF/acroform/acroform</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/DynaPDF/acroform/acroform</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS DynaPDF Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /DynaPDF/acroform/acroform<BR>
+This example is the version from Wed, 14th Sep 2021.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;acroform.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	FileTypes</div>
+<div class="RB_Code">		Filetype text</div>
+<div class="RB_Code">		Filetype icc</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> FileTypes</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;Quit&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu5 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;Clear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu4 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu3 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem UntitledMenu2 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#0000FF;font-weight: bold">dim</span> pdf <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MyDynapdfMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> date
+			<span style="color:#0000FF;font-weight: bold">dim</span> f, act, keyStrokeAct, keyStrokeAct2, formatAct, formatAct2 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> outFile <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;acroform.pdf&quot;</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> alertScript <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = <span style="color:#6500FE">&quot;if</span> <span style="color:#6500FE">(app.viewerVersion</span> <span style="color:#6500FE">&gt;=</span> <span style="color:#6500FE">7.0</span> <span style="color:#6500FE">&amp;&amp;</span> <span style="color:#6500FE">app.viewerVersion</span> <span style="color:#6500FE">&lt;</span> <span style="color:#6500FE">8.0)&quot;</span>+EndOfLine.UNIX+_
+					<span style="color:#6500FE">&quot;{&quot;</span>+EndOfLine.UNIX+_
+					<span style="color:#6500FE">&quot;app.alert(&quot;</span><span style="color:#6500FE">&quot;Due</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">bugs</span> <span style="color:#6500FE">in</span> <span style="color:#6500FE">Acrobat</span> <span style="color:#6500FE">7.0</span> <span style="color:#6500FE">character</span> <span style="color:#6500FE">spacing</span> <span style="color:#6500FE">does</span> <span style="color:#6500FE">not</span> <span style="color:#6500FE">work&quot;</span>+_
+					<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">in</span> <span style="color:#6500FE">text</span> <span style="color:#6500FE">fields.</span> <span style="color:#6500FE">We</span> <span style="color:#6500FE">use</span> <span style="color:#6500FE">the</span> <span style="color:#6500FE">flag</span> <span style="color:#6500FE">pdf.kffComb</span> <span style="color:#6500FE">instead</span> <span style="color:#6500FE">which</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">supported</span> <span style="color:#6500FE">since&quot;</span>+_
+					<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">Acrobat</span> <span style="color:#6500FE">6.0.</span> <span style="color:#6500FE">However,</span> <span style="color:#6500FE">if</span> <span style="color:#6500FE">the</span> <span style="color:#6500FE">field&#39;s</span> <span style="color:#6500FE">format</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">controled</span> <span style="color:#6500FE">by</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">JavaScript&quot;</span>+_
+					<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">Action,</span> <span style="color:#6500FE">we</span> <span style="color:#6500FE">cannot</span> <span style="color:#6500FE">set</span> <span style="color:#6500FE">the</span> <span style="color:#6500FE">flag</span> <span style="color:#6500FE">because</span> <span style="color:#6500FE">Acrobat</span> <span style="color:#6500FE">6.0</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">then</span> <span style="color:#6500FE">unable&quot;</span>+_
+					<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">display</span> <span style="color:#6500FE">the</span> <span style="color:#6500FE">field&#39;s</span> <span style="color:#6500FE">text.</span> <span style="color:#6500FE">Acrobat</span> <span style="color:#6500FE">7.0</span> <span style="color:#6500FE">has</span> <span style="color:#6500FE">problems</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">place</span> <span style="color:#6500FE">the&quot;</span>+_
+					<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">the</span> <span style="color:#6500FE">cursor</span> <span style="color:#6500FE">in</span> <span style="color:#6500FE">such</span> <span style="color:#6500FE">fields</span> <span style="color:#6500FE">but</span> <span style="color:#6500FE">the</span> <span style="color:#6500FE">final</span> <span style="color:#6500FE">format</span> <span style="color:#6500FE">will</span> <span style="color:#6500FE">be</span> <span style="color:#6500FE">correctly</span> <span style="color:#6500FE">applied.&quot;</span>+_
+					<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">The</span> <span style="color:#6500FE">problem</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">that</span> <span style="color:#6500FE">if</span> <span style="color:#6500FE">the</span> <span style="color:#6500FE">form</span> <span style="color:#6500FE">should</span> <span style="color:#6500FE">work</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">Acrobat</span> <span style="color:#6500FE">6.0</span> <span style="color:#6500FE">we</span> <span style="color:#6500FE">cannot</span> <span style="color:#6500FE">set&quot;</span>+_
+					<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">the</span> <span style="color:#6500FE">flag</span> <span style="color:#6500FE">pdf.kffComb</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">the</span> <span style="color:#6500FE">date</span> <span style="color:#6500FE">fields.</span> <span style="color:#6500FE">It</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">also</span> <span style="color:#6500FE">impossible</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">get</span> <span style="color:#6500FE">the</span> <span style="color:#6500FE">same&quot;</span>+_
+					<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">result</span> <span style="color:#6500FE">as</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">character</span> <span style="color:#6500FE">spacing</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">the</span> <span style="color:#6500FE">flag</span> <span style="color:#6500FE">pdf.kffComb.</span> <span style="color:#6500FE">So,</span> <span style="color:#6500FE">what</span> <span style="color:#6500FE">can</span> <span style="color:#6500FE">we</span> <span style="color:#6500FE">do</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">make</span> <span style="color:#6500FE">the&quot;</span>+_
+					<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">form</span> <span style="color:#6500FE">compatible</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">all</span> <span style="color:#6500FE">Acrobat</span> <span style="color:#6500FE">versions?</span> <span style="color:#6500FE">I</span> <span style="color:#6500FE">really</span> <span style="color:#6500FE">don&#39;t</span> <span style="color:#6500FE">know!</span> <span style="color:#6500FE">The</span> <span style="color:#6500FE">easiest</span> <span style="color:#6500FE">way&quot;</span>+_
+					<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">would</span> <span style="color:#6500FE">be</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">avoid</span> <span style="color:#6500FE">the</span> <span style="color:#6500FE">usage</span> <span style="color:#6500FE">of</span> <span style="color:#6500FE">such</span> <span style="color:#6500FE">date</span> <span style="color:#6500FE">formats.&quot;</span><span style="color:#6500FE">&quot;);&quot;</span>+EndOfLine.UNIX+_
+					<span style="color:#6500FE">&quot;}&quot;</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Error</span> <span style="color:#7F0000;text-style:italic">messages</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">warnings</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">passed</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">callback</span> <span style="color:#7F0000;text-style:italic">function.</span>
+			
+			pdf.SetLicenseKey <span style="color:#6500FE">&quot;Lite&quot;</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">For</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">example</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">Lite,</span> <span style="color:#7F0000;text-style:italic">Pro</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">Enterprise</span> <span style="color:#7F0000;text-style:italic">License</span>
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CreateNewPDF(<span style="color:#0000FF;font-weight: bold">nil</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetDocInfo pdf.kdiCreator, <span style="color:#6500FE">&quot;REALbasic</span> <span style="color:#6500FE">Example</span> <span style="color:#6500FE">Project&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetDocInfo pdf.kdiTitle, <span style="color:#6500FE">&quot;How</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">create</span> <span style="color:#6500FE">an</span> <span style="color:#6500FE">Interactive</span> <span style="color:#6500FE">Form?&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetDocInfo pdf.kdiAuthor, <span style="color:#6500FE">&quot;Jens</span> <span style="color:#6500FE">Boschulte&quot;</span>
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetViewerPreferences(pdf.kvpDisplayDocTitle, pdf.kavNone)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Conversion</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">pages</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">templates</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">normally</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">required.</span> <span style="color:#7F0000;text-style:italic">Templates</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">required</span> <span style="color:#7F0000;text-style:italic">if</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">page</span> <span style="color:#7F0000;text-style:italic">should</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">scaled</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">used</span> <span style="color:#7F0000;text-style:italic">multiple</span> <span style="color:#7F0000;text-style:italic">times</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">document,</span> <span style="color:#7F0000;text-style:italic">e.g.</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">page</span> <span style="color:#7F0000;text-style:italic">background.</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">See</span> <span style="color:#7F0000;text-style:italic">help</span> <span style="color:#7F0000;text-style:italic">file</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">further</span> <span style="color:#7F0000;text-style:italic">information.</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetImportFlags(BitwiseOr(pdf.kifImportAll, pdf.kifImportAsPage))
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> filePath <span style="color:#0000FF;font-weight: bold">as</span> FolderItem=FindFile(<span style="color:#6500FE">&quot;taxform.pdf&quot;</span>)
+			
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> (pdf.OpenImportFile(filePath, pdf.kptOpen, <span style="color:#6500FE">&quot;&quot;</span>) &lt; <span style="color:#326598">0</span>) <span style="color:#0000FF;font-weight: bold">then</span>
+				MsgBox <span style="color:#6500FE">&quot;Input</span> <span style="color:#6500FE">file</span> <span style="color:#6500FE">&quot;</span><span style="color:#6500FE">&quot;&quot;</span>+filePath.name+<span style="color:#6500FE">&quot;&quot;</span><span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">not</span> <span style="color:#6500FE">found!&quot;</span>
+				quit
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.ImportPDFFile( <span style="color:#326598">1</span>, <span style="color:#006532">1.0</span>, <span style="color:#006532">1.0</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.EditPage(<span style="color:#326598">1</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetCheckBoxChar(pdf.kccCross4)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetLineWidth(<span style="color:#006532">0.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFieldBorderColor(pdf.kNO_COLOR)
+			
+			f = pdf.CreateRadioButton(<span style="color:#6500FE">&quot;AntragsArt&quot;</span>, <span style="color:#6500FE">&quot;EinkommensSteuerErkl&auml;rung&quot;</span>, <span style="color:#0000FF;font-weight: bold">false</span>, -<span style="color:#326598">1</span>, <span style="color:#326598">70</span>, <span style="color:#006532">746.5</span>, <span style="color:#006532">13.0</span>, <span style="color:#006532">13.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CreateCheckBox(<span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#6500FE">&quot;Sparzulage&quot;</span>, <span style="color:#0000FF;font-weight: bold">false</span>, f, <span style="color:#326598">70</span>, <span style="color:#006532">722.5</span>, <span style="color:#006532">13.0</span>, <span style="color:#006532">13.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CreateCheckBox(<span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#6500FE">&quot;VerlustErkl&auml;rung&quot;</span>, <span style="color:#0000FF;font-weight: bold">false</span>, f, <span style="color:#006532">249.5</span>, <span style="color:#006532">722.5</span>, <span style="color:#006532">13.0</span>, <span style="color:#006532">13.0</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFont(<span style="color:#6500FE">&quot;Courier&quot;</span>, pdf.kfsNone, <span style="color:#006532">12.0</span>, <span style="color:#0000FF;font-weight: bold">true</span>, pdf.kcpUnicode)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CreateTextField(<span style="color:#6500FE">&quot;Finanzamt&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">0</span>, <span style="color:#006532">70.0</span>, <span style="color:#006532">698.0</span>, <span style="color:#006532">358.0</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CreateTextField(<span style="color:#6500FE">&quot;Steuernummer&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">14</span>, <span style="color:#006532">70.0</span>, <span style="color:#006532">673.5</span>, <span style="color:#006532">150.0</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CreateTextField(<span style="color:#6500FE">&quot;Finanzamt_alt&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">0</span>, <span style="color:#006532">272.0</span>, <span style="color:#006532">673.5</span>, <span style="color:#006532">156.0</span>, <span style="color:#006532">14.0</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CreateCheckBox(<span style="color:#6500FE">&quot;R&uuml;ckerstattung&quot;</span>, <span style="color:#6500FE">&quot;Ja&quot;</span>, <span style="color:#0000FF;font-weight: bold">true</span>, -<span style="color:#326598">1</span>, <span style="color:#326598">429</span>, <span style="color:#006532">675.0</span>, <span style="color:#006532">13.0</span>, <span style="color:#006532">13.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CreateTextField(<span style="color:#6500FE">&quot;Telefon&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">0</span>, <span style="color:#006532">285.5</span>, <span style="color:#006532">650.0</span>, <span style="color:#006532">142.5</span>, <span style="color:#006532">14.0</span>)
+			
+			<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">Acrobat</span> <span style="color:#7F0000;text-style:italic">7.0</span> <span style="color:#7F0000;text-style:italic">ignores</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">character</span> <span style="color:#7F0000;text-style:italic">spacing,</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">only</span> <span style="color:#7F0000;text-style:italic">way</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">same</span> <span style="color:#7F0000;text-style:italic">result</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Comb</span> <span style="color:#7F0000;text-style:italic">flag.</span>
+			<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">See</span> <span style="color:#7F0000;text-style:italic">help</span> <span style="color:#7F0000;text-style:italic">file</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">further</span> <span style="color:#7F0000;text-style:italic">information.</span>
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetCharacterSpacing(<span style="color:#006532">7.2</span>)
+			f = pdf.CreateTextField(<span style="color:#6500FE">&quot;Name&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">25</span>, <span style="color:#006532">70.0</span>, <span style="color:#006532">626.0</span>, <span style="color:#006532">358.0</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFieldFlags(f, pdf.kffComb, <span style="color:#0000FF;font-weight: bold">false</span>)
+			f = pdf.CreateTextField(<span style="color:#6500FE">&quot;Vorname&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">25</span>, <span style="color:#006532">70.0</span>, <span style="color:#006532">602.0</span>, <span style="color:#006532">358.0</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFieldFlags(f, pdf.kffComb, <span style="color:#0000FF;font-weight: bold">false</span>)
+			f = pdf.CreateTextField(<span style="color:#6500FE">&quot;Geburtsdatum&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">10</span>, <span style="color:#006532">70.0</span>, <span style="color:#006532">578.0</span>, <span style="color:#006532">113.0</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Create</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">custom</span> <span style="color:#7F0000;text-style:italic">date</span> <span style="color:#7F0000;text-style:italic">format</span> <span style="color:#7F0000;text-style:italic">action</span> <span style="color:#7F0000;text-style:italic">-&gt;</span> <span style="color:#7F0000;text-style:italic">input</span> <span style="color:#7F0000;text-style:italic">example:</span> <span style="color:#7F0000;text-style:italic">13.05.1971</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">13-05-1971</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">13/05/1971</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Two</span> <span style="color:#7F0000;text-style:italic">actions</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">required,</span> <span style="color:#7F0000;text-style:italic">one</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">event</span> <span style="color:#7F0000;text-style:italic">onKeyStroke</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">one</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">event</span> <span style="color:#7F0000;text-style:italic">onFormat.</span>
+			keyStrokeAct = pdf.CreateJSAction(<span style="color:#6500FE">&quot;AFDate_KeystrokeEx(&quot;</span><span style="color:#6500FE">&quot;ddmmyyyy&quot;</span><span style="color:#6500FE">&quot;)&quot;</span>)
+			formatAct = pdf.CreateJSAction(<span style="color:#6500FE">&quot;AFDate_FormatEx(&quot;</span><span style="color:#6500FE">&quot;ddmmyyyy&quot;</span><span style="color:#6500FE">&quot;)&quot;</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">both</span> <span style="color:#7F0000;text-style:italic">actions</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">field</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.AddActionToObj(pdf.kotField, pdf.koeOnKeyStroke, keyStrokeAct, f)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.AddActionToObj(pdf.kotField, pdf.koeOnFormat, formatAct, f)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetCharacterSpacing(<span style="color:#006532">0.0</span>)
+			f = pdf.CreateComboBox(<span style="color:#6500FE">&quot;Religion&quot;</span>, <span style="color:#0000FF;font-weight: bold">false</span>, -<span style="color:#326598">1</span>, <span style="color:#006532">185.0</span>, <span style="color:#006532">578.0</span>, <span style="color:#006532">71.0</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.AddValToChoiceField(f, <span style="color:#6500FE">&quot;keine&quot;</span>, <span style="color:#6500FE">&quot;keine&quot;</span>, <span style="color:#0000FF;font-weight: bold">true</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.AddValToChoiceField(f, <span style="color:#6500FE">&quot;Evang&quot;</span>, <span style="color:#6500FE">&quot;Evang.&quot;</span>, <span style="color:#0000FF;font-weight: bold">false</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.AddValToChoiceField(f, <span style="color:#6500FE">&quot;Kath&quot;</span>, <span style="color:#6500FE">&quot;Kath.&quot;</span>, <span style="color:#0000FF;font-weight: bold">false</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.AddValToChoiceField(f, <span style="color:#6500FE">&quot;andere&quot;</span>, <span style="color:#6500FE">&quot;andere&quot;</span>, <span style="color:#0000FF;font-weight: bold">false</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CreateTextField(<span style="color:#6500FE">&quot;Beruf&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">0</span>, <span style="color:#006532">257.0</span>, <span style="color:#006532">578.0</span>, <span style="color:#006532">171.0</span>, <span style="color:#006532">14.0</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetCharacterSpacing(<span style="color:#006532">7.2</span>)
+			f = pdf.CreateTextField(<span style="color:#6500FE">&quot;Strasse&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">25</span>, <span style="color:#006532">70.0</span>, <span style="color:#006532">554.0</span>, <span style="color:#006532">358.0</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFieldFlags(f, pdf.kffComb, <span style="color:#0000FF;font-weight: bold">false</span>)
+			f = pdf.CreateTextField(<span style="color:#6500FE">&quot;PLZ&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">5</span>, <span style="color:#006532">70.0</span>, <span style="color:#006532">530.0</span>, <span style="color:#006532">70.5</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFieldFlags(f, pdf.kffComb, <span style="color:#0000FF;font-weight: bold">false</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetNumberFormat(f, pdf.kdsNoneDot, <span style="color:#326598">0</span>, pdf.knsRed, <span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#0000FF;font-weight: bold">false</span>)
+			
+			f = pdf.CreateTextField(<span style="color:#6500FE">&quot;Wohnort&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">20</span>, <span style="color:#006532">142.5</span>, <span style="color:#006532">530.0</span>, <span style="color:#006532">285.5</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFieldFlags(f, pdf.kffComb, <span style="color:#0000FF;font-weight: bold">false</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetCharacterSpacing(<span style="color:#006532">0.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFont(<span style="color:#6500FE">&quot;Courier&quot;</span>, pdf.kfsNone, <span style="color:#006532">11.0</span>, <span style="color:#0000FF;font-weight: bold">true</span>, pdf.kcpUnicode)
+			
+			f = pdf.CreateTextField(<span style="color:#6500FE">&quot;VerheiratetSeit&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">10</span>, <span style="color:#006532">70.0</span>, <span style="color:#006532">506.0</span>, <span style="color:#006532">70.5</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">We</span> <span style="color:#7F0000;text-style:italic">need</span> <span style="color:#7F0000;text-style:italic">another</span> <span style="color:#7F0000;text-style:italic">date</span> <span style="color:#7F0000;text-style:italic">format</span> <span style="color:#7F0000;text-style:italic">here.</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">date</span> <span style="color:#7F0000;text-style:italic">should</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">delimited</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">dot.</span>
+			keyStrokeAct2 = pdf.CreateJSAction(<span style="color:#6500FE">&quot;AFDate_KeystrokeEx(&quot;</span><span style="color:#6500FE">&quot;dd.mm.yyyy&quot;</span><span style="color:#6500FE">&quot;)&quot;</span>)
+			formatAct2 = pdf.CreateJSAction(<span style="color:#6500FE">&quot;AFDate_FormatEx(&quot;</span><span style="color:#6500FE">&quot;dd.mm.yyyy&quot;</span><span style="color:#6500FE">&quot;)&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.AddActionToObj(pdf.kotField, pdf.koeOnKeyStroke, keyStrokeAct2, f)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.AddActionToObj(pdf.kotField, pdf.koeOnFormat, formatAct2, f)
+			
+			f = pdf.CreateTextField(<span style="color:#6500FE">&quot;VerwitwetSeit&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">10</span>, <span style="color:#006532">142.0</span>, <span style="color:#006532">506.0</span>, <span style="color:#006532">71.0</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.AddActionToObj(pdf.kotField, pdf.koeOnKeyStroke, keyStrokeAct2, f)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.AddActionToObj(pdf.kotField, pdf.koeOnFormat, formatAct2, f)
+			
+			f = pdf.CreateTextField(<span style="color:#6500FE">&quot;GeschiedenSeit&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">10</span>, <span style="color:#006532">214.0</span>, <span style="color:#006532">506.0</span>, <span style="color:#006532">71.0</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.AddActionToObj(pdf.kotField, pdf.koeOnKeyStroke, keyStrokeAct2, f)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.AddActionToObj(pdf.kotField, pdf.koeOnFormat, formatAct2, f)
+			
+			f = pdf.CreateTextField(<span style="color:#6500FE">&quot;GetrenntSeit&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">10</span>, <span style="color:#006532">286.0</span>, <span style="color:#006532">506.0</span>, <span style="color:#006532">142.0</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.AddActionToObj(pdf.kotField, pdf.koeOnKeyStroke, keyStrokeAct2, f)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.AddActionToObj(pdf.kotField, pdf.koeOnFormat, formatAct2, f)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetCharacterSpacing(<span style="color:#006532">7.2</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFont(<span style="color:#6500FE">&quot;Courier&quot;</span>, pdf.kfsNone, <span style="color:#006532">12.0</span>, <span style="color:#0000FF;font-weight: bold">true</span>, pdf.kcpUnicode)
+			f = pdf.CreateTextField(<span style="color:#6500FE">&quot;EhefrauVorname&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">25</span>, <span style="color:#006532">70.0</span>, <span style="color:#006532">458.0</span>, <span style="color:#006532">358.0</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFieldFlags(f, pdf.kffComb, <span style="color:#0000FF;font-weight: bold">false</span>)
+			f = pdf.CreateTextField(<span style="color:#6500FE">&quot;EhefrauName&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">25</span>, <span style="color:#006532">70.0</span>, <span style="color:#006532">434.0</span>, <span style="color:#006532">358.0</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFieldFlags(f, pdf.kffComb, <span style="color:#0000FF;font-weight: bold">false</span>)
+			
+			f = pdf.CreateTextField(<span style="color:#6500FE">&quot;EhefrauGeburtdatum&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">10</span>, <span style="color:#006532">70.0</span>, <span style="color:#006532">410.0</span>, <span style="color:#006532">114.0</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">both</span> <span style="color:#7F0000;text-style:italic">actions</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">field</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.AddActionToObj(pdf.kotField, pdf.koeOnKeyStroke, keyStrokeAct, f)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.AddActionToObj(pdf.kotField, pdf.koeOnFormat, formatAct, f)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetCharacterSpacing(<span style="color:#006532">0.0</span>)
+			f = pdf.CreateComboBox(<span style="color:#6500FE">&quot;EhefrauReligion&quot;</span>, <span style="color:#0000FF;font-weight: bold">false</span>, -<span style="color:#326598">1</span>, <span style="color:#006532">185.0</span>, <span style="color:#006532">410.0</span>, <span style="color:#006532">71.0</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.AddValToChoiceField(f, <span style="color:#6500FE">&quot;keine&quot;</span>, <span style="color:#6500FE">&quot;keine&quot;</span>, <span style="color:#0000FF;font-weight: bold">true</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.AddValToChoiceField(f, <span style="color:#6500FE">&quot;Evang&quot;</span>, <span style="color:#6500FE">&quot;Evang.&quot;</span>, <span style="color:#0000FF;font-weight: bold">false</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.AddValToChoiceField(f, <span style="color:#6500FE">&quot;Kath&quot;</span>, <span style="color:#6500FE">&quot;Kath.&quot;</span>, <span style="color:#0000FF;font-weight: bold">false</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.AddValToChoiceField(f, <span style="color:#6500FE">&quot;andere&quot;</span>, <span style="color:#6500FE">&quot;andere&quot;</span>, <span style="color:#0000FF;font-weight: bold">false</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CreateTextField(<span style="color:#6500FE">&quot;EhefrauBeruf&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">0</span>, <span style="color:#006532">257.0</span>, <span style="color:#006532">410.0</span>, <span style="color:#006532">171.0</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CreateTextField(<span style="color:#6500FE">&quot;EhefrauStrasse&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">49</span>, <span style="color:#006532">70.0</span>, <span style="color:#006532">386.0</span>, <span style="color:#006532">358.0</span>, <span style="color:#006532">14.0</span>)
+			
+			f = pdf.CreateRadioButton(<span style="color:#6500FE">&quot;Veranlagung&quot;</span>, <span style="color:#6500FE">&quot;Zusammen&quot;</span>, <span style="color:#0000FF;font-weight: bold">false</span>, -<span style="color:#326598">1</span>, <span style="color:#006532">70.0</span>, <span style="color:#006532">363.0</span>, <span style="color:#006532">13.0</span>, <span style="color:#006532">13.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CreateCheckBox(<span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#6500FE">&quot;Getrennt&quot;</span>, <span style="color:#0000FF;font-weight: bold">false</span>, f, <span style="color:#006532">141.5</span>, <span style="color:#006532">363.0</span>, <span style="color:#006532">13.0</span>, <span style="color:#006532">13.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CreateCheckBox(<span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#6500FE">&quot;Eheschliessung&quot;</span>, <span style="color:#0000FF;font-weight: bold">false</span>, f, <span style="color:#006532">213.5</span>, <span style="color:#006532">363.0</span>, <span style="color:#006532">13.0</span>, <span style="color:#006532">13.0</span>)
+			
+			f = pdf.CreateRadioButton(<span style="color:#6500FE">&quot;Guetergemeinschaft&quot;</span>, <span style="color:#6500FE">&quot;Ja&quot;</span>, <span style="color:#0000FF;font-weight: bold">false</span>, -<span style="color:#326598">1</span>, <span style="color:#006532">357.0</span>, <span style="color:#006532">363.0</span>, <span style="color:#006532">13.0</span>, <span style="color:#006532">13.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CreateCheckBox(<span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#6500FE">&quot;Nein&quot;</span>, <span style="color:#0000FF;font-weight: bold">false</span>, f, <span style="color:#006532">393.0</span>, <span style="color:#006532">363.0</span>, <span style="color:#006532">13.0</span>, <span style="color:#006532">13.0</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetCharacterSpacing(<span style="color:#006532">7.2</span>)
+			f = pdf.CreateTextField(<span style="color:#6500FE">&quot;Konto&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">10</span>, <span style="color:#006532">70.0</span>, <span style="color:#006532">314.0</span>, <span style="color:#006532">142.0</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFieldFlags(f, pdf.kffComb, <span style="color:#0000FF;font-weight: bold">false</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetNumberFormat(f, pdf.kdsNoneDot, <span style="color:#326598">0</span>, pdf.knsRed, <span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#0000FF;font-weight: bold">false</span>)
+			f = pdf.CreateTextField(<span style="color:#6500FE">&quot;BLZ&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">8</span>, <span style="color:#006532">286.0</span>, <span style="color:#006532">314.0</span>, <span style="color:#006532">113.0</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFieldFlags(f, pdf.kffComb, <span style="color:#0000FF;font-weight: bold">false</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetNumberFormat(f, pdf.kdsNoneDot, <span style="color:#326598">0</span>, pdf.knsRed, <span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#0000FF;font-weight: bold">false</span>)
+			
+			f = pdf.CreateTextField(<span style="color:#6500FE">&quot;Bank&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">25</span>, <span style="color:#006532">70.0</span>, <span style="color:#006532">290.0</span>, <span style="color:#006532">358.0</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFieldFlags(f, pdf.kffComb, <span style="color:#0000FF;font-weight: bold">false</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CreateCheckBox(<span style="color:#6500FE">&quot;AbwInhaber&quot;</span>, <span style="color:#6500FE">&quot;Ja&quot;</span>, <span style="color:#0000FF;font-weight: bold">false</span>, -<span style="color:#326598">1</span>, <span style="color:#006532">70.0</span>, <span style="color:#006532">267.0</span>, <span style="color:#006532">13.0</span>, <span style="color:#006532">13.0</span>)
+			f = pdf.CreateTextField(<span style="color:#6500FE">&quot;AbwKontoInhaber&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">21</span>, <span style="color:#006532">128.0</span>, <span style="color:#006532">266.5</span>, <span style="color:#006532">300.0</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFieldFlags(f, pdf.kffComb, <span style="color:#0000FF;font-weight: bold">false</span>)
+			
+			f = pdf.CreateTextField(<span style="color:#6500FE">&quot;AbwEmpfName&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">25</span>, <span style="color:#006532">70.0</span>, <span style="color:#006532">218.0</span>, <span style="color:#006532">358.0</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFieldFlags(f, pdf.kffComb, <span style="color:#0000FF;font-weight: bold">false</span>)
+			f = pdf.CreateTextField(<span style="color:#6500FE">&quot;AbwEmpfVorname&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">25</span>, <span style="color:#006532">70.0</span>, <span style="color:#006532">194.0</span>, <span style="color:#006532">358.0</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFieldFlags(f, pdf.kffComb, <span style="color:#0000FF;font-weight: bold">false</span>)
+			f = pdf.CreateTextField(<span style="color:#6500FE">&quot;AbwEmpfStrasse&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">25</span>, <span style="color:#006532">70.0</span>, <span style="color:#006532">170.0</span>, <span style="color:#006532">358.0</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFieldFlags(f, pdf.kffComb, <span style="color:#0000FF;font-weight: bold">false</span>)
+			f = pdf.CreateTextField(<span style="color:#6500FE">&quot;AbwEmpfPLZ&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">5</span>, <span style="color:#006532">70.0</span>, <span style="color:#006532">146.5</span>, <span style="color:#006532">70.5</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFieldFlags(f, pdf.kffComb, <span style="color:#0000FF;font-weight: bold">false</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetNumberFormat(f, pdf.kdsNoneDot, <span style="color:#326598">0</span>, pdf.knsRed, <span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#0000FF;font-weight: bold">false</span>)
+			
+			f = pdf.CreateTextField(<span style="color:#6500FE">&quot;AbwEmpfWohnort&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#326598">20</span>, <span style="color:#006532">142.5</span>, <span style="color:#006532">146.5</span>, <span style="color:#006532">285.5</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFieldFlags(f, pdf.kffComb, <span style="color:#0000FF;font-weight: bold">false</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">reset</span> <span style="color:#7F0000;text-style:italic">button</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">form</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFieldBorderColor(pdf.kPDF_BLACK)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFieldBackColor(pdf.kPDF_MOGREEN)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetLineWidth(<span style="color:#006532">1.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFont(<span style="color:#6500FE">&quot;Helvetica&quot;</span>, pdf.kfsBold, <span style="color:#006532">12.0</span>, <span style="color:#0000FF;font-weight: bold">true</span>, pdf.kcpUnicode)
+			f = pdf.CreateButton(<span style="color:#6500FE">&quot;Reset&quot;</span>, <span style="color:#6500FE">&quot;Zur&uuml;cksetzen&quot;</span>, -<span style="color:#326598">1</span>, <span style="color:#006532">440.0</span>, <span style="color:#006532">730.0</span>, <span style="color:#006532">120.0</span>, <span style="color:#006532">25.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFieldBorderStyle(f, pdf.kbsBevelled)
+			act = pdf.CreateResetAction
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.AddActionToObj(pdf.kotField, pdf.koeOnMouseUp, act, f)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetCharacterSpacing(<span style="color:#006532">0.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFont(<span style="color:#6500FE">&quot;Courier&quot;</span>, pdf.kfsNone, <span style="color:#006532">12.0</span>, <span style="color:#0000FF;font-weight: bold">true</span>, pdf.kcpUnicode)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.WriteText(<span style="color:#006532">53.0</span>, <span style="color:#006532">48.0</span>, d.LongDate)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFillColor(pdf.RGB(<span style="color:#326598">&amp;hFF</span>, <span style="color:#326598">&amp;h66</span>, <span style="color:#326598">&amp;h66</span>))
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFont(<span style="color:#6500FE">&quot;Helvetica&quot;</span>, pdf.kfsBold, <span style="color:#006532">22.0</span>, <span style="color:#0000FF;font-weight: bold">false</span>, pdf.kcpUnicode)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.WriteText(<span style="color:#006532">340.0</span>, <span style="color:#006532">70.0</span>, <span style="color:#6500FE">&quot;www.dynaforms.de&quot;</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetLineWidth(<span style="color:#006532">0.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetLinkHighlightMode(pdf.khmPush)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetAnnotFlags(pdf.kafReadOnly)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.WebLink(<span style="color:#006532">340.0</span>, <span style="color:#006532">64.0</span>, <span style="color:#006532">204.0</span>, <span style="color:#006532">22.0</span>, <span style="color:#6500FE">&quot;http://www.dynaforms.de&quot;</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.AddJavaScript(<span style="color:#6500FE">&quot;VersionCheck&quot;</span>, alertScript)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.EndPage
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">No</span> <span style="color:#7F0000;text-style:italic">fatal</span> <span style="color:#7F0000;text-style:italic">error</span> <span style="color:#7F0000;text-style:italic">occurred?</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> pdf.HaveOpenDoc <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">OK,</span> <span style="color:#7F0000;text-style:italic">now</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">open</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">output</span> <span style="color:#7F0000;text-style:italic">file.</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> (<span style="color:#0000FF;font-weight: bold">not</span> pdf.OpenOutputFile(outFile)) <span style="color:#0000FF;font-weight: bold">then</span>
+					MsgBox <span style="color:#6500FE">&quot;Make</span> <span style="color:#6500FE">sure</span> <span style="color:#6500FE">that</span> <span style="color:#6500FE">you</span> <span style="color:#6500FE">have</span> <span style="color:#6500FE">write</span> <span style="color:#6500FE">access</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">the</span> <span style="color:#6500FE">project</span> <span style="color:#6500FE">folder!&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> pdf.CloseFile <span style="color:#0000FF;font-weight: bold">then</span>
+				outFile.Launch
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			quit
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> FindFile(name <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>) <span style="color:#0000FF;font-weight: bold">As</span> FolderItem
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Look</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">file</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">parent</span> <span style="color:#7F0000;text-style:italic">folders</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">executable</span> <span style="color:#7F0000;text-style:italic">on</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> parent <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = app.ExecutableFile.Parent
+			
+			<span style="color:#0000FF;font-weight: bold">while</span> parent&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> file <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = parent.Child(name)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> file&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">and</span> file.Exists <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> file
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				parent = parent.Parent
+			<span style="color:#0000FF;font-weight: bold">wend</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyDynaPDFMBS <span style="color:#0000FF;font-weight: bold">Inherits</span> DynaPDFMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> Error(ErrorCode <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, ErrorMessage <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, ErrorType <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">output</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">messages</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">console:</span>
+			System.DebugLog str(ErrorCode)+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+ErrorMessage
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">dialog:</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">New</span> MessageDialog <span style="color:#7F0000;text-style:italic">//declare</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">MessageDialog</span> <span style="color:#7F0000;text-style:italic">object</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> MessageDialogButton <span style="color:#7F0000;text-style:italic">//for</span> <span style="color:#7F0000;text-style:italic">handling</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">result</span>
+			
+			d.icon=MessageDialog.GraphicCaution <span style="color:#7F0000;text-style:italic">//display</span> <span style="color:#7F0000;text-style:italic">warning</span> <span style="color:#7F0000;text-style:italic">icon</span>
+			d.ActionButton.Caption=<span style="color:#6500FE">&quot;Continue&quot;</span>
+			d.CancelButton.Visible=<span style="color:#0000FF;font-weight: bold">True</span>    <span style="color:#7F0000;text-style:italic">//show</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Cancel</span> <span style="color:#7F0000;text-style:italic">button</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">warning</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">error?</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> BitAnd(ErrorType, <span style="color:#0000FF;font-weight: bold">me</span>.kE_WARNING) = <span style="color:#0000FF;font-weight: bold">me</span>.kE_WARNING <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">user</span> <span style="color:#7F0000;text-style:italic">decided</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">ignore,</span> <span style="color:#7F0000;text-style:italic">we&#39;ll</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> IgnoreWarnings <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span>
+				
+				d.Message=<span style="color:#6500FE">&quot;A</span> <span style="color:#6500FE">warning</span> <span style="color:#6500FE">occurred</span> <span style="color:#6500FE">while</span> <span style="color:#6500FE">processing</span> <span style="color:#6500FE">your</span> <span style="color:#6500FE">PDF</span> <span style="color:#6500FE">code.&quot;</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">third</span> <span style="color:#7F0000;text-style:italic">button</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">warnings</span>
+				d.AlternateActionButton.Caption = <span style="color:#6500FE">&quot;Ignore</span> <span style="color:#6500FE">warnings&quot;</span>
+				d.AlternateActionButton.Visible = <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				d.Message=<span style="color:#6500FE">&quot;An</span> <span style="color:#6500FE">error</span> <span style="color:#6500FE">occurred</span> <span style="color:#6500FE">while</span> <span style="color:#6500FE">processing</span> <span style="color:#6500FE">your</span> <span style="color:#6500FE">PDF</span> <span style="color:#6500FE">code.&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			d.Explanation = str(ErrorCode)+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+ErrorMessage
+			
+			b=d.ShowModal <span style="color:#7F0000;text-style:italic">//display</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">dialog</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">Case</span> b <span style="color:#7F0000;text-style:italic">//determine</span> <span style="color:#7F0000;text-style:italic">which</span> <span style="color:#7F0000;text-style:italic">button</span> <span style="color:#7F0000;text-style:italic">was</span> <span style="color:#7F0000;text-style:italic">pressed.</span>
+			<span style="color:#0000FF;font-weight: bold">Case</span> d.ActionButton
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+			<span style="color:#0000FF;font-weight: bold">Case</span> d.AlternateActionButton
+				IgnoreWarnings = <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+			<span style="color:#0000FF;font-weight: bold">Case</span> d.CancelButton
+				<span style="color:#0000FF;font-weight: bold">Return</span> -<span style="color:#326598">1</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">stop</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">select</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> IgnoreWarnings <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-dynapdf-acroform-acroform">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

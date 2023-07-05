@@ -1,0 +1,1110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Win/Printing/Windows Printer List</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Win/Printing/Windows Printer List</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Win/Printing/Windows Printer List</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS Win Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Win/Printing/Windows Printer List<BR>
+This example is the version from Sun, 17th Mar 2012.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Windows</span> <span style="color:#6500FE">Printer</span> <span style="color:#6500FE">List.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MainWindow <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Which <span style="color:#0000FF;font-weight: bold">Inherits</span> Slider</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Which <span style="color:#0000FF;font-weight: bold">Inherits</span> Slider</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> ValueChanged()
+				update
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText2 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText2 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText3 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText3 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText4 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText4 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText5 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText5 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText6 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText6 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText7 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText7 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText8 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText8 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText9 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText9 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText10 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText10 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText11 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText11 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText12 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText12 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control servername <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance servername <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PrinterName <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PrinterName <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control ShareName <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance ShareName <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PortName <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PortName <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control DriverName <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance DriverName <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Comment <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Comment <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Location <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Location <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control SepFile <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance SepFile <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PrintProcessor <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PrintProcessor <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Datatype <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Datatype <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Parameters <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Parameters <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control index <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance index <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText13 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText13 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control defaultprinter <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance defaultprinter <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control SetButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance SetButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				msgbox str(WindowsPrinterMBS.SetDefaultPrinter(Current.PrinterName))
+				
+				defaultprinter.text=WindowsPrinterMBS.GetDefaultPrinter
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton2 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton2 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> name <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = current.PrinterName
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> printer <span style="color:#0000FF;font-weight: bold">as</span> WindowsPrinterMBS = current.OpenPrinter
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> printer.CanPrinterPassThroughPostScript <span style="color:#0000FF;font-weight: bold">then</span>
+					MsgBox <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">printer</span> <span style="color:#6500FE">can</span> <span style="color:#6500FE">pass</span> <span style="color:#6500FE">postscript.&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					MsgBox <span style="color:#6500FE">&quot;No&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton3 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton3 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> name <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = current.PrinterName
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> printer <span style="color:#0000FF;font-weight: bold">as</span> WindowsPrinterMBS = current.OpenPrinter
+				MsgBox printer.GetPrinterTechnology
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton4 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton4 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> printer <span style="color:#0000FF;font-weight: bold">as</span> WindowsPrinterMBS = current.OpenPrinter
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> c <span style="color:#0000FF;font-weight: bold">as</span> WindowsDeviceModeMBS <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">current</span> <span style="color:#7F0000;text-style:italic">settings</span>
+				
+				c = printer.GetPrinterSettings(<span style="color:#326598">9</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">user</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> c = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					c = printer.GetPrinterSettings(<span style="color:#326598">2</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">printer</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> WindowsDeviceModeMBS
+				
+				d.Fields = d.DM_ORIENTATION <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">here</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">define</span> <span style="color:#7F0000;text-style:italic">which</span> <span style="color:#7F0000;text-style:italic">values</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">want</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">change</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">values</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> c.Orientation = d.DMORIENT_LANDSCAPE <span style="color:#0000FF;font-weight: bold">then</span>
+					d.Orientation = d.DMORIENT_PORTRAIT
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					d.Orientation = d.DMORIENT_LANDSCAPE
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">apply</span> <span style="color:#7F0000;text-style:italic">changes.</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> printer.ChangePrinterSettings(d, <span style="color:#326598">2</span>) <span style="color:#0000FF;font-weight: bold">then</span>
+					MsgBox <span style="color:#6500FE">&quot;OK&quot;</span>
+					update
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					MsgBox <span style="color:#6500FE">&quot;Failed:</span> <span style="color:#6500FE">&quot;</span>+printer.LasterrorMessage
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Liste <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Liste <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> TargetWin32 <span style="color:#0000FF;font-weight: bold">then</span>
+				MsgBox <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">example</span> <span style="color:#6500FE">must</span> <span style="color:#6500FE">be</span> <span style="color:#6500FE">run</span> <span style="color:#6500FE">on</span> <span style="color:#6500FE">Windows.&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			
+			printers = WindowsPrinterInfoMBS.LocalPrinters
+			
+			defaultprinter.text = WindowsPrinterMBS.GetDefaultPrinter
+			
+			c=UBound(printers)
+			<span style="color:#0000FF;font-weight: bold">if</span> c = -<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				current = printers(<span style="color:#326598">0</span>)
+				which.Maximum=c
+				which.Enabled=<span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			update
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> GetCollateString(n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">case</span> n
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMCOLLATE_FALSE
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;false&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMCOLLATE_TRUE
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;true&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> GetColorString(n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">case</span> n
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMCOLOR_MONOCHROME
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;monochrome&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMCOLOR_COLOR
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;color&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> GetDefaultSourceString(n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">case</span> n
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMBIN_UPPER
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;upper&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMBIN_ONLYONE
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;only</span> <span style="color:#6500FE">one&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMBIN_LOWER
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;lower&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMBIN_MIDDLE
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;middle&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMBIN_MANUAL
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;manual&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMBIN_ENVELOPE
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;envelope&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMBIN_ENVMANUAL
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;envmanual&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMBIN_AUTO
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;auto&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMBIN_TRACTOR
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;tractor&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMBIN_SMALLFMT
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;small</span> <span style="color:#6500FE">format&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMBIN_LARGEFMT
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;large</span> <span style="color:#6500FE">format&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMBIN_LARGECAPACITY
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;Large</span> <span style="color:#6500FE">Capacity&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMBIN_CASSETTE
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;Cassette&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMBIN_FORMSOURCE
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;FormSource&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMBIN_USER
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;User&quot;</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">device</span> <span style="color:#7F0000;text-style:italic">specific</span> <span style="color:#7F0000;text-style:italic">bins</span> <span style="color:#7F0000;text-style:italic">start</span> <span style="color:#7F0000;text-style:italic">here</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> GetDuplexString(n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">case</span> n
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMDUP_SIMPLEX
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;simplex&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMDUP_VERTICAL
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;duplex</span> <span style="color:#6500FE">vertical&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMDUP_HORIZONTAL
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;duplex</span> <span style="color:#6500FE">horizontal&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> GetPrintQualityString(n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">case</span> n
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMRES_DRAFT
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;draft&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMRES_LOW
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;low&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMRES_MEDIUM
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;medium&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMRES_HIGH
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;high&quot;</span>
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> GetTrueTypeString(n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">case</span> n
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMTT_BITMAP
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;bitmap&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMTT_DOWNLOAD
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;download&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMTT_SUBDEV
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;subdev&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMTT_DOWNLOAD_OUTLINE
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;download</span> <span style="color:#6500FE">outline&quot;</span>
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> getOrientationString(n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">case</span> n
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMORIENT_PORTRAIT
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;Portrait&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMORIENT_LANDSCAPE
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#6500FE">&quot;Landscape&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> getPaperSizeString(n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">case</span> n
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_LETTER
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Letter</span> <span style="color:#6500FE">8</span> <span style="color:#6500FE">1/2</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">11</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_LETTERSMALL
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Letter</span> <span style="color:#6500FE">Small</span> <span style="color:#6500FE">8</span> <span style="color:#6500FE">1/2</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">11</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_TABLOID
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Tabloid</span> <span style="color:#6500FE">11</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">17</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_LEDGER
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Ledger</span> <span style="color:#6500FE">17</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">11</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_LEGAL
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Legal</span> <span style="color:#6500FE">8</span> <span style="color:#6500FE">1/2</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">14</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_STATEMENT
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Statement</span> <span style="color:#6500FE">5</span> <span style="color:#6500FE">1/2</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">8</span> <span style="color:#6500FE">1/2</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_EXECUTIVE
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Executive</span> <span style="color:#6500FE">7</span> <span style="color:#6500FE">1/4</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">10</span> <span style="color:#6500FE">1/2</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_A3
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;A3</span> <span style="color:#6500FE">297</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">420</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_A4
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;A4</span> <span style="color:#6500FE">210</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">297</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_A4_SMALL
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;A4</span> <span style="color:#6500FE">Small</span> <span style="color:#6500FE">210</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">297</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_A5
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;A5</span> <span style="color:#6500FE">148</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">210</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_B4
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;B4</span> <span style="color:#6500FE">(JIS)</span> <span style="color:#6500FE">250</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">354&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_B5
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;B5</span> <span style="color:#6500FE">(JIS)</span> <span style="color:#6500FE">182</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">257</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_FOLIO
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Folio</span> <span style="color:#6500FE">8</span> <span style="color:#6500FE">1/2</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">13</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_QUARTO
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Quarto</span> <span style="color:#6500FE">215</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">275</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_10x14
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;10x14</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_11X17
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;11x17</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_NOTE
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Note</span> <span style="color:#6500FE">8</span> <span style="color:#6500FE">1/2</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">11</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_ENV_9
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Envelope</span> <span style="color:#6500FE">#9</span> <span style="color:#6500FE">3</span> <span style="color:#6500FE">7/8</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">8</span> <span style="color:#6500FE">7/8&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_ENV_10
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Envelope</span> <span style="color:#6500FE">#10</span> <span style="color:#6500FE">4</span> <span style="color:#6500FE">1/8</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">9</span> <span style="color:#6500FE">1/2&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_ENV_11
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Envelope</span> <span style="color:#6500FE">#11</span> <span style="color:#6500FE">4</span> <span style="color:#6500FE">1/2</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">10</span> <span style="color:#6500FE">3/8&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_ENV_12
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Envelope</span> <span style="color:#6500FE">#12</span> <span style="color:#6500FE">4</span> <span style="color:#6500FE">\276</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">11&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_ENV_14
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Envelope</span> <span style="color:#6500FE">#14</span> <span style="color:#6500FE">5</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">11</span> <span style="color:#6500FE">1/2&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_CSHEET
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;C</span> <span style="color:#6500FE">size</span> <span style="color:#6500FE">sheet&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_DSHEET
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;D</span> <span style="color:#6500FE">size</span> <span style="color:#6500FE">sheet&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_ESHEET
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;E</span> <span style="color:#6500FE">size</span> <span style="color:#6500FE">sheet&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_ENV_DL
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Envelope</span> <span style="color:#6500FE">DL</span> <span style="color:#6500FE">110</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">220mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_ENV_C5
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Envelope</span> <span style="color:#6500FE">C5</span> <span style="color:#6500FE">162</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">229</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_ENV_C3
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Envelope</span> <span style="color:#6500FE">C3</span>  <span style="color:#6500FE">324</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">458</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_ENV_C4
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Envelope</span> <span style="color:#6500FE">C4</span>  <span style="color:#6500FE">229</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">324</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_ENV_C6
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Envelope</span> <span style="color:#6500FE">C6</span>  <span style="color:#6500FE">114</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">162</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_ENV_C65
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Envelope</span> <span style="color:#6500FE">C65</span> <span style="color:#6500FE">114</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">229</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_ENV_B4
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Envelope</span> <span style="color:#6500FE">B4</span>  <span style="color:#6500FE">250</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">353</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_ENV_B5
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Envelope</span> <span style="color:#6500FE">B5</span>  <span style="color:#6500FE">176</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">250</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_ENV_B6
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Envelope</span> <span style="color:#6500FE">B6</span>  <span style="color:#6500FE">176</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">125</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_ENV_ITALY
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Envelope</span> <span style="color:#6500FE">110</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">230</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_ENV_MONARCH
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Envelope</span> <span style="color:#6500FE">Monarch</span> <span style="color:#6500FE">3.875</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">7.5</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_ENV_PERSONAL
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;6</span> <span style="color:#6500FE">3/4</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">3</span> <span style="color:#6500FE">5/8</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">6</span> <span style="color:#6500FE">1/2</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_FANFOLD_US
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;US</span> <span style="color:#6500FE">Std</span> <span style="color:#6500FE">Fanfold</span> <span style="color:#6500FE">14</span> <span style="color:#6500FE">7/8</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">11</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_FANFOLD_STD_GERMAN
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;German</span> <span style="color:#6500FE">Std</span> <span style="color:#6500FE">Fanfold</span> <span style="color:#6500FE">8</span> <span style="color:#6500FE">1/2</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">12</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_FANFOLD_LGL_GERMAN
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;German</span> <span style="color:#6500FE">Legal</span> <span style="color:#6500FE">Fanfold</span> <span style="color:#6500FE">8</span> <span style="color:#6500FE">1/2</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">13</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_ISO_B4
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;B4</span> <span style="color:#6500FE">(ISO)</span> <span style="color:#6500FE">250</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">353</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_JAPANESE_POSTCARD
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Japanese</span> <span style="color:#6500FE">Postcard</span> <span style="color:#6500FE">100</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">148</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_9X11
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;9</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">11</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_10x11
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;10</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">11</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_15X11
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;15</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">11</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_ENV_INVITE
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Envelope</span> <span style="color:#6500FE">Invite</span> <span style="color:#6500FE">220</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">220</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_RESERVED_48
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;RESERVED--DO</span> <span style="color:#6500FE">NOT</span> <span style="color:#6500FE">USE&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_RESERVED_49
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;RESERVED--DO</span> <span style="color:#6500FE">NOT</span> <span style="color:#6500FE">USE&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_LETTER_EXTRA
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Letter</span> <span style="color:#6500FE">Extra</span> <span style="color:#6500FE">9</span> <span style="color:#6500FE">\275</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">12</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_LEGAL_EXTRA
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Legal</span> <span style="color:#6500FE">Extra</span> <span style="color:#6500FE">9</span> <span style="color:#6500FE">\275</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">15</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_TABLOID_EXTRA
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Tabloid</span> <span style="color:#6500FE">Extra</span> <span style="color:#6500FE">11.69</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">18</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_A4_EXTRA
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;A4</span> <span style="color:#6500FE">Extra</span> <span style="color:#6500FE">9.27</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">12.69</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_LETTER_TRANSVERSE
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Letter</span> <span style="color:#6500FE">Transverse</span> <span style="color:#6500FE">8</span> <span style="color:#6500FE">\275</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">11</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_A4_TRANSVERSE
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;A4</span> <span style="color:#6500FE">Transverse</span> <span style="color:#6500FE">210</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">297</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_LETTER_EXTRA_TRANSVERSE
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Letter</span> <span style="color:#6500FE">Extra</span> <span style="color:#6500FE">Transverse</span> <span style="color:#6500FE">9\275</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">12</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_A_PLUS
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;SuperA/SuperA/A4</span> <span style="color:#6500FE">227</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">356</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_B_PLUS
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;SuperB/SuperB/A3</span> <span style="color:#6500FE">305</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">487</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_LETTER_PLUS
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Letter</span> <span style="color:#6500FE">Plus</span> <span style="color:#6500FE">8.5</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">12.69</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_A4_PLUS
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;A4</span> <span style="color:#6500FE">Plus</span> <span style="color:#6500FE">210</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">330</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_A5_TRANSVERSE
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;A5</span> <span style="color:#6500FE">Transverse</span> <span style="color:#6500FE">148</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">210</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_B5_TRANSVERSE
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;B5</span> <span style="color:#6500FE">(JIS)</span> <span style="color:#6500FE">Transverse</span> <span style="color:#6500FE">182</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">257</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_A3_EXTRA
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;A3</span> <span style="color:#6500FE">Extra</span> <span style="color:#6500FE">322</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">445</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_A5_EXTRA
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;A5</span> <span style="color:#6500FE">Extra</span> <span style="color:#6500FE">174</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">235</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_B5_EXTRA
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;B5</span> <span style="color:#6500FE">(ISO)</span> <span style="color:#6500FE">Extra</span> <span style="color:#6500FE">201</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">276</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_A2
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;A2</span> <span style="color:#6500FE">420</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">594</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_A3_TRANSVERSE
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;A3</span> <span style="color:#6500FE">Transverse</span> <span style="color:#6500FE">297</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">420</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_A3_EXTRA_TRANSVERSE
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;A3</span> <span style="color:#6500FE">Extra</span> <span style="color:#6500FE">Transverse</span> <span style="color:#6500FE">322</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">445</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_DBL_JAPANESE_POSTCARD
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Japanese</span> <span style="color:#6500FE">Double</span> <span style="color:#6500FE">Postcard</span> <span style="color:#6500FE">200</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">148</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_A6
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;A6</span> <span style="color:#6500FE">105</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">148</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_JENV_KAKU2
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Japanese</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">Kaku</span> <span style="color:#6500FE">#2&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_JENV_KAKU3
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Japanese</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">Kaku</span> <span style="color:#6500FE">#3&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_JENV_CHOU3
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Japanese</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">Chou</span> <span style="color:#6500FE">#3&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_JENV_CHOU4
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Japanese</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">Chou</span> <span style="color:#6500FE">#4&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_LETTER_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Letter</span> <span style="color:#6500FE">Rotated</span> <span style="color:#6500FE">11</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">8</span> <span style="color:#6500FE">1/2</span> <span style="color:#6500FE">11</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_A3_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;A3</span> <span style="color:#6500FE">Rotated</span> <span style="color:#6500FE">420</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">297</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_A4_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;A4</span> <span style="color:#6500FE">Rotated</span> <span style="color:#6500FE">297</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">210</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_A5_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;A5</span> <span style="color:#6500FE">Rotated</span> <span style="color:#6500FE">210</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">148</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_B4_JIS_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;B4</span> <span style="color:#6500FE">(JIS)</span> <span style="color:#6500FE">Rotated</span> <span style="color:#6500FE">364</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">257</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_B5_JIS_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;B5</span> <span style="color:#6500FE">(JIS)</span> <span style="color:#6500FE">Rotated</span> <span style="color:#6500FE">257</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">182</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_JAPANESE_POSTCARD_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Japanese</span> <span style="color:#6500FE">Postcard</span> <span style="color:#6500FE">Rotated</span> <span style="color:#6500FE">148</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">100</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_DBL_JAPANESE_POSTCARD_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Double</span> <span style="color:#6500FE">Japanese</span> <span style="color:#6500FE">Postcard</span> <span style="color:#6500FE">Rotated</span> <span style="color:#6500FE">148</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">200</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_A6_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;A6</span> <span style="color:#6500FE">Rotated</span> <span style="color:#6500FE">148</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">105</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_JENV_KAKU2_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Japanese</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">Kaku</span> <span style="color:#6500FE">#2</span> <span style="color:#6500FE">Rotated&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_JENV_KAKU3_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Japanese</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">Kaku</span> <span style="color:#6500FE">#3</span> <span style="color:#6500FE">Rotated&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_JENV_CHOU3_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Japanese</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">Chou</span> <span style="color:#6500FE">#3</span> <span style="color:#6500FE">Rotated&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_JENV_CHOU4_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Japanese</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">Chou</span> <span style="color:#6500FE">#4</span> <span style="color:#6500FE">Rotated&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_B6_JIS
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;B6</span> <span style="color:#6500FE">(JIS)</span> <span style="color:#6500FE">128</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">182</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_B6_JIS_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;B6</span> <span style="color:#6500FE">(JIS)</span> <span style="color:#6500FE">Rotated</span> <span style="color:#6500FE">182</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">128</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_12X11
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;12</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">11</span> <span style="color:#6500FE">in&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_JENV_YOU4
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Japanese</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">You</span> <span style="color:#6500FE">#4&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_JENV_YOU4_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;Japanese</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">You</span> <span style="color:#6500FE">#4</span> <span style="color:#6500FE">Rotated&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_P16K
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">16K</span> <span style="color:#6500FE">146</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">215</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_P32K
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">32K</span> <span style="color:#6500FE">97</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">151</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_P32KBIG
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">32K(Big)</span> <span style="color:#6500FE">97</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">151</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_PENV_1
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">#1</span> <span style="color:#6500FE">102</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">165</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_PENV_2
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">#2</span> <span style="color:#6500FE">102</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">176</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_PENV_3
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">#3</span> <span style="color:#6500FE">125</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">176</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_PENV_4
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">#4</span> <span style="color:#6500FE">110</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">208</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_PENV_5
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">#5</span> <span style="color:#6500FE">110</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">220</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_PENV_6
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">#6</span> <span style="color:#6500FE">120</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">230</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_PENV_7
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">#7</span> <span style="color:#6500FE">160</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">230</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_PENV_8
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">#8</span> <span style="color:#6500FE">120</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">309</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_PENV_9
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">#9</span> <span style="color:#6500FE">229</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">324</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_PENV_10
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">#10</span> <span style="color:#6500FE">324</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">458</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_P16K_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">16K</span> <span style="color:#6500FE">Rotated&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_P32K_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">32K</span> <span style="color:#6500FE">Rotated&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_P32KBIG_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">32K(Big)</span> <span style="color:#6500FE">Rotated&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_PENV_1_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">#1</span> <span style="color:#6500FE">Rotated</span> <span style="color:#6500FE">165</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">102</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_PENV_2_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">#2</span> <span style="color:#6500FE">Rotated</span> <span style="color:#6500FE">176</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">102</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_PENV_3_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">#3</span> <span style="color:#6500FE">Rotated</span> <span style="color:#6500FE">176</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">125</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_PENV_4_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">#4</span> <span style="color:#6500FE">Rotated</span> <span style="color:#6500FE">208</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">110</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_PENV_5_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">#5</span> <span style="color:#6500FE">Rotated</span> <span style="color:#6500FE">220</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">110</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_PENV_6_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">#6</span> <span style="color:#6500FE">Rotated</span> <span style="color:#6500FE">230</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">120</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_PENV_7_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">#7</span> <span style="color:#6500FE">Rotated</span> <span style="color:#6500FE">230</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">160</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_PENV_8_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">#8</span> <span style="color:#6500FE">Rotated</span> <span style="color:#6500FE">309</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">120</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_PENV_9_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">#9</span> <span style="color:#6500FE">Rotated</span> <span style="color:#6500FE">324</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">229</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDeviceModeMBS.DMPAPER_PENV_10_ROTATED
+				<span style="color:#0000FF;font-weight: bold">return</span><span style="color:#6500FE">&quot;PRC</span> <span style="color:#6500FE">Envelope</span> <span style="color:#6500FE">#10</span> <span style="color:#6500FE">Rotated</span> <span style="color:#6500FE">458</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">324</span> <span style="color:#6500FE">mm&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> update()
+			List.DeleteAllRows
+			Liste.DeleteAllRows
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = which.Value
+			Current=Printers(i)
+			index.text=str(i)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> current&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				servername.text = current.ServerName
+				PrinterName.text = current.PrinterName
+				ShareName.text = current.ShareName
+				PortName.text = current.PortName
+				DriverName.text = current.DriverName
+				Comment.text = current.Comment
+				Location.text = current.Location
+				SepFile.text = current.SeparatorPageFile
+				PrintProcessor.text = current.PrintProcessor
+				Datatype.text = current.Datatype
+				Parameters.text = current.Parameters
+				
+				SetButton.Enabled=<span style="color:#0000FF;font-weight: bold">true</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Update</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">printer</span> <span style="color:#7F0000;text-style:italic">settings</span> <span style="color:#7F0000;text-style:italic">listbox:</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> pd <span style="color:#0000FF;font-weight: bold">as</span> WindowsDeviceModeMBS = current.DevMode
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> printer <span style="color:#0000FF;font-weight: bold">as</span> WindowsPrinterMBS = current.OpenPrinter
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> pg <span style="color:#0000FF;font-weight: bold">as</span> WindowsDeviceModeMBS = printer.GetPrinterSettings(<span style="color:#326598">8</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">8</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">global</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> pu <span style="color:#0000FF;font-weight: bold">as</span> WindowsDeviceModeMBS = printer.GetPrinterSettings(<span style="color:#326598">9</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">9</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">user</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> fields <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> pd&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					fields = pd.Fields
+				<span style="color:#0000FF;font-weight: bold">elseif</span> pg&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					fields = pg.Fields
+				<span style="color:#0000FF;font-weight: bold">elseif</span> pu&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					fields = pu.Fields
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				List.AddRow <span style="color:#6500FE">&quot;DeviceName&quot;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pd&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">2</span>)=pd.DeviceName
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pg&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">3</span>)=pg.DeviceName
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pu&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">4</span>)=pu.DeviceName
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				List.AddRow <span style="color:#6500FE">&quot;FormName&quot;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pd&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">2</span>)=pd.FormName
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pg&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">3</span>)=pg.FormName
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pu&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">4</span>)=pu.FormName
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				List.AddRow <span style="color:#6500FE">&quot;Orientation&quot;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> BitwiseAnd(fields, WindowsDeviceModeMBS.DM_ORIENTATION)&lt;&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;yes&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;no&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pd&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">2</span>)=str(pd.Orientation)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+getOrientationString(pd.Orientation)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pg&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">3</span>)=str(pg.Orientation)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+getOrientationString(pg.Orientation)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pu&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">4</span>)=str(pu.Orientation)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+getOrientationString(pu.Orientation)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				List.AddRow <span style="color:#6500FE">&quot;PaperSize&quot;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> BitwiseAnd(fields, WindowsDeviceModeMBS.DM_PAPERSIZE)&lt;&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;yes&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;no&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pd&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">2</span>)=str(pd.PaperSize)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+getPaperSizeString(pd.PaperSize)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pg&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">3</span>)=str(pg.PaperSize)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+getPaperSizeString(pg.PaperSize)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pu&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">4</span>)=str(pu.PaperSize)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+getPaperSizeString(pu.PaperSize)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				List.AddRow <span style="color:#6500FE">&quot;PaperLength&quot;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> BitwiseAnd(fields, WindowsDeviceModeMBS.DM_PAPERLENGTH)&lt;&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;yes&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;no&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pd&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">2</span>)=str(pd.PaperLength)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pg&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">3</span>)=str(pg.PaperLength)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pu&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">4</span>)=str(pu.PaperLength)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				List.AddRow <span style="color:#6500FE">&quot;PaperWidth&quot;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> BitwiseAnd(fields, WindowsDeviceModeMBS.DM_PAPERWIDTH)&lt;&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;yes&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;no&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pd&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">2</span>)=str(pd.PaperWidth)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pg&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">3</span>)=str(pg.PaperWidth)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pu&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">4</span>)=str(pu.PaperWidth)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				List.AddRow <span style="color:#6500FE">&quot;Scale&quot;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> BitwiseAnd(fields, WindowsDeviceModeMBS.DM_SCALE)&lt;&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;yes&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;no&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pd&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">2</span>)=str(pd.Scale)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pg&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">3</span>)=str(pg.Scale)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pu&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">4</span>)=str(pu.Scale)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				List.AddRow <span style="color:#6500FE">&quot;Copies&quot;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> BitwiseAnd(fields, WindowsDeviceModeMBS.DM_COPIES)&lt;&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;yes&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;no&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pd&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">2</span>)=str(pd.Copies)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pg&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">3</span>)=str(pg.Copies)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pu&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">4</span>)=str(pu.Copies)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				List.AddRow <span style="color:#6500FE">&quot;DefaultSource&quot;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> BitwiseAnd(fields, WindowsDeviceModeMBS.DM_DEFAULTSOURCE)&lt;&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;yes&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;no&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pd&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">2</span>)=str(pd.DefaultSource)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+GetDefaultSourceString(pd.DefaultSource)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pg&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">3</span>)=str(pg.DefaultSource)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+GetDefaultSourceString(pg.DefaultSource)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pu&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">4</span>)=str(pu.DefaultSource)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+GetDefaultSourceString(pu.DefaultSource)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				List.AddRow <span style="color:#6500FE">&quot;PrintQuality&quot;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> BitwiseAnd(fields, WindowsDeviceModeMBS.DM_PRINTQUALITY)&lt;&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;yes&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;no&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pd&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">2</span>)=str(pd.PrintQuality)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+GetPrintQualityString(pd.PrintQuality)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pg&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">3</span>)=str(pg.PrintQuality)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+GetPrintQualityString(pg.PrintQuality)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pu&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">4</span>)=str(pu.PrintQuality)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+GetPrintQualityString(pu.PrintQuality)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				List.AddRow <span style="color:#6500FE">&quot;Color&quot;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> BitwiseAnd(fields, WindowsDeviceModeMBS.DM_COLOR)&lt;&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;yes&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;no&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pd&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">2</span>)=str(pd.<span style="color:#0000FF;font-weight: bold">Color</span>)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+GetColorString(pd.<span style="color:#0000FF;font-weight: bold">Color</span>)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pg&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">3</span>)=str(pg.<span style="color:#0000FF;font-weight: bold">Color</span>)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+GetColorString(pg.<span style="color:#0000FF;font-weight: bold">Color</span>)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pu&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">4</span>)=str(pu.<span style="color:#0000FF;font-weight: bold">Color</span>)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+GetColorString(pu.<span style="color:#0000FF;font-weight: bold">Color</span>)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				List.AddRow <span style="color:#6500FE">&quot;Duplex&quot;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> BitwiseAnd(fields, WindowsDeviceModeMBS.DM_DUPLEX)&lt;&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;yes&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;no&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pd&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">2</span>)=str(pd.Duplex)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+GetDuplexString(pd.Duplex)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pg&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">3</span>)=str(pg.Duplex)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+GetDuplexString(pg.Duplex)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pu&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">4</span>)=str(pu.Duplex)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+GetDuplexString(pu.Duplex)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				List.AddRow <span style="color:#6500FE">&quot;YResolution&quot;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> BitwiseAnd(fields, WindowsDeviceModeMBS.DM_YRESOLUTION)&lt;&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;yes&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;no&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pd&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">2</span>)=str(pd.YResolution)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pg&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">3</span>)=str(pg.YResolution)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pu&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">4</span>)=str(pu.YResolution)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				List.AddRow <span style="color:#6500FE">&quot;TTOption&quot;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> BitwiseAnd(fields, WindowsDeviceModeMBS.DM_TTOPTION)&lt;&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;yes&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;no&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pd&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">2</span>)=str(pd.TTOption)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+GetTrueTypeString(pd.TTOption)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pg&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">3</span>)=str(pg.TTOption)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+GetTrueTypeString(pg.TTOption)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pu&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">4</span>)=str(pu.TTOption)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+GetTrueTypeString(pu.TTOption)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				List.AddRow <span style="color:#6500FE">&quot;Collate&quot;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> BitwiseAnd(fields, WindowsDeviceModeMBS.DM_COLLATE)&lt;&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;yes&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;no&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pd&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">2</span>)=str(pd.Collate)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+GetCollateString(pd.Collate)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pg&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">3</span>)=str(pg.Collate)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+GetCollateString(pg.Collate)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pu&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">4</span>)=str(pu.Collate)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+GetCollateString(pu.Collate)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				List.AddRow <span style="color:#6500FE">&quot;LogPixels&quot;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> BitwiseAnd(fields, WindowsDeviceModeMBS.DM_LOGPIXELS)&lt;&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;yes&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					List.cell(List.LastIndex,<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;no&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pd&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">2</span>)=str(pd.LogPixels)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pg&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">3</span>)=str(pg.LogPixels)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pu&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					List.cell(List.LastIndex,<span style="color:#326598">4</span>)=str(pu.LogPixels)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Update</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">page</span> <span style="color:#7F0000;text-style:italic">format</span> <span style="color:#7F0000;text-style:italic">listbox:</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> formats(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> WindowsPageFormatMBS = printer.GetPrinterFormats
+				
+				<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> f <span style="color:#0000FF;font-weight: bold">as</span> WindowsPageFormatMBS <span style="color:#0000FF;font-weight: bold">in</span> Formats
+					Liste.AddRow f.Name
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+					<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">case</span> f.Flags
+					<span style="color:#0000FF;font-weight: bold">case</span> f.FORM_USER
+						s = <span style="color:#6500FE">&quot;user&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">case</span> f.FORM_PRINTER
+						s = <span style="color:#6500FE">&quot;printer&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">case</span> f.FORM_BUILTIN
+						s = <span style="color:#6500FE">&quot;built-in&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+					
+					liste.Cell(liste.LastIndex,<span style="color:#326598">1</span>)=s
+					liste.Cell(liste.LastIndex,<span style="color:#326598">2</span>)=Format(f.SizeWidth/<span style="color:#326598">1000</span>,<span style="color:#6500FE">&quot;0.00&quot;</span>)+<span style="color:#6500FE">&quot;mm</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">&quot;</span>+Format(f.SizeHeight/<span style="color:#326598">1000</span>,<span style="color:#6500FE">&quot;0.00&quot;</span>)+<span style="color:#6500FE">&quot;mm&quot;</span>
+					
+				<span style="color:#0000FF;font-weight: bold">next</span>
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> Current <span style="color:#0000FF;font-weight: bold">As</span> WindowsPrinterInfoMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> Printers() <span style="color:#0000FF;font-weight: bold">As</span> WindowsPrinterInfoMBS</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar Menu</div>
+<div class="RB_Code">		MenuItem UntitledMenu3 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem UntitledMenu2 = <span style="color:#6500FE">&quot;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;Quit&quot;</span></div>
+<div class="RB_Code">		MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cut&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;Clear&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-win-printing-windowsprintdialogs.html">/Win/Printing/Windows Print Dialogs</A></li>
+<li><A href="example-win-printing-windowsprinter.html">/Win/Printing/Windows Printer</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbswinplugin.html">MBS Win Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-win-printing-windowsprinterlist">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

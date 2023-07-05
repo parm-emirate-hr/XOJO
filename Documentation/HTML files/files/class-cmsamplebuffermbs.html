@@ -1,0 +1,273 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - CMSampleBufferMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="CMSampleBufferMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">CMSampleBufferMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>CMSampleBufferMBS class</H3>
+<div class="M">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-avfoundation.html" translate="no">AVFoundation</A></td>
+<td class=grau><a href="plugins-mbsavfoundationplugin.html">MBS AVFoundation Plugin</a></td>
+<td class=grau><a href="newinversion132.shtml" class=version>13.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+CMSampleBuffers are CF objects containing zero or more compressed (or uncompressed) samples of a particular media type (audio, video, muxed, etc), that are used to move media sample data through the media system.<BR>
+<B>Notes:</B> 
+<BR>
+A CMSampleBuffer can contain a CMBlockBuffer of one or more media samples or a CVImageBuffer, a reference to the format description for the stream of CMSampleBuffers, size and timing information for each of the contained media samples, and both buffer-level and sample-level attachments.  The buffer-level attachments of a CMSampleBuffer are distinct from the attachments of its contained CMBlockBuffer. An example of a sample-level attachment is an annotation about video frame dependencies (eg. &quot;droppable&quot;, &quot;other frames depend on me&quot;, &quot;I depend on other frames&quot;, etc). Each sample (video frame) in the CMSampleBuffer would need its own attachment in this case. Another sample-level attachment example is SMPTE timecode acquired during capture. To get and set a CMSampleBuffer&#39;s buffer-level attachments, use the APIs in in CMAttachmentBearer.h (CMGetAttachment et al).<BR>
+It is possible for a CMSampleBuffer to describe samples it does not yet contain. For example,  some media services may have access to sample size, timing and format information before the data is read. Such services may create CMSampleBuffers with that information and insert them into queues early, and attach (or fill) the CMBlockBuffers of media data later, when the data becomes ready.  To this end, CMSampleBuffers have the concept of data-readiness, which can be tested, set, forced to become ready &quot;now&quot;, etc.  It is also possible for a CMSampleBuffer to contain nothing but a special buffer-level attachment that describes a media stream event (eg. &quot;discontinuity: drain and reset decoder before processing the next CMSampleBuffer&quot;).  Such a special attachment can also be attached to regular CMSampleBuffers (ie. that contain media sample data), and if so, the event it describes is defined to occur after the samples in that CMSampleBuffer.<BR>
+<BR>
+The MBS Plugin implements a subset of what&#39;s available. If you need more, please do not hesitate to contact us.<BR>
+This is an abstract class. You can&#39;t create an instance, but you can get one from various plugin functions.<BR>
+</div>
+<ul>
+<LI>15 properties<UL>
+<li class="M">property <A href="avfoundation-cmsamplebuffermbs-property.html">DataIsReady</A> as boolean</li>
+<li class="M">property <A href="avfoundation-cmsamplebuffermbs-property.html#2">DecodeTimeStamp</A> as <A href="class-cmtimembs.html">CMTimeMBS</A></li>
+<li class="M">property <A href="avfoundation-cmsamplebuffermbs-property.html#3">Duration</A> as <A href="class-cmtimembs.html">CMTimeMBS</A></li>
+<li class="M">property <A href="avfoundation-cmsamplebuffermbs-property.html#4">FormatDescription</A> as <A href="class-cmformatdescriptionmbs.html">CMFormatDescriptionMBS</A></li>
+<li class="M">property <A href="avfoundation-cmsamplebuffermbs-property.html#5">Handle</A> as Integer</li>
+<li class="M">property <A href="avfoundation-cmsamplebuffermbs-property.html#6">ImageBuffer</A> as <A href="class-cvimagebuffermbs.html">CVImageBufferMBS</A></li>
+<li class="M">property <A href="avfoundation-cmsamplebuffermbs-property.html#7">IsValid</A> as boolean</li>
+<li class="M">property <A href="avfoundation-cmsamplebuffermbs-property.html#8">Lasterror</A> as Integer</li>
+<li class="M">property <A href="avfoundation-cmsamplebuffermbs-property.html#9">NumberOfSamples</A> as Integer</li>
+<li class="M">property <A href="avfoundation-cmsamplebuffermbs-property.html#10">OutputDecodeTimeStamp</A> as <A href="class-cmtimembs.html">CMTimeMBS</A></li>
+<li class="M">property <A href="avfoundation-cmsamplebuffermbs-property.html#11">OutputDuration</A> as <A href="class-cmtimembs.html">CMTimeMBS</A></li>
+<li class="M">property <A href="avfoundation-cmsamplebuffermbs-property.html#12">OutputPresentationTimeStamp</A> as <A href="class-cmtimembs.html">CMTimeMBS</A></li>
+<li class="M">property <A href="avfoundation-cmsamplebuffermbs-property.html#13">PresentationTimeStamp</A> as <A href="class-cmtimembs.html">CMTimeMBS</A></li>
+<li class="M">property <A href="avfoundation-cmsamplebuffermbs-property.html#14">Text</A> as String</li>
+<li class="M">property <A href="avfoundation-cmsamplebuffermbs-property.html#15">TotalSampleSize</A> as UInt64</li>
+</UL></LI>
+<LI>7 methods<UL>
+<li class="M">method <A href="avfoundation-cmsamplebuffermbs-method.html">Constructor</A> &nbsp; <b style="color: #8B0000"> Private </b></li>
+<li class="M">method <A href="avfoundation-cmsamplebuffermbs-method.html#2">Copy</A> as CMSampleBufferMBS</li>
+<li class="M">method <A href="avfoundation-cmsamplebuffermbs-method.html#3">CopySampleBufferForRange</A>(pos as Integer, len as Integer) as CMSampleBufferMBS</li>
+<li class="M">method <A href="avfoundation-cmsamplebuffermbs-method.html#4">Invalidate</A></li>
+<li class="M">method <A href="avfoundation-cmsamplebuffermbs-method.html#5">MakeDataReady</A></li>
+<li class="M">method <A href="avfoundation-cmsamplebuffermbs-method.html#6">SampleSize</A>(index as Integer) as UInt64</li>
+<li class="M">method <A href="avfoundation-cmsamplebuffermbs-method.html#7">SetDataReady</A></li>
+</UL></LI>
+<LI>15 constants<UL>
+</UL></LI>
+</ul>
+<h3 lang="en">Error Codes</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmsamplebuffermbs-const.html">kAllocationFailed </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> -12730</td>
+<td bgcolor="#DDDDDD" valign=top>
+An allocation failed.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmsamplebuffermbs-const.html#2">kAlreadyHasDataBuffer </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> -12732</td>
+<td bgcolor="#DDDDDD" valign=top>
+Attempt was made to set a dataBuffer on a CMSampleBuffer that already has one.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmsamplebuffermbs-const.html#3">kArrayTooSmall </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> -12737</td>
+<td bgcolor="#DDDDDD" valign=top>
+Output array was not large enough for the array being requested.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmsamplebuffermbs-const.html#4">kBufferHasNoSampleSizes </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> -12735</td>
+<td bgcolor="#DDDDDD" valign=top>
+Attempt to get sample size information when there was none.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmsamplebuffermbs-const.html#5">kBufferHasNoSampleTimingInfo </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> -12736</td>
+<td bgcolor="#DDDDDD" valign=top>
+Attempt to get sample timing information when there was none.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmsamplebuffermbs-const.html#6">kBufferNotReady </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> -12733</td>
+<td bgcolor="#DDDDDD" valign=top>
+Buffer could not be made ready.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmsamplebuffermbs-const.html#7">kCannotSubdivide </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> -12739</td>
+<td bgcolor="#DDDDDD" valign=top>
+Sample buffer does not contain sample sizes.  This can happen when the samples in the buffer are non-contiguous (eg. non-interleaved audio, where the channel values for a single sample are scattered through the buffer).<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmsamplebuffermbs-const.html#8">kInvalidated </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> -12744</td>
+<td bgcolor="#DDDDDD" valign=top>
+the sample buffer was invalidated.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmsamplebuffermbs-const.html#9">kInvalidEntryCount </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> -12738</td>
+<td bgcolor="#DDDDDD" valign=top>
+Timing info or size array entry count was not 0, 1, or numSamples.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmsamplebuffermbs-const.html#10">kInvalidMediaFormat </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> -12743</td>
+<td bgcolor="#DDDDDD" valign=top>
+The format of the given media does not match the given format description (eg. a format description paired with a CVImageBuffer that fails CMVideoFormatDescriptionMatchesImageBuffer).<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmsamplebuffermbs-const.html#11">kInvalidMediaTypeForOperation </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> -12741</td>
+<td bgcolor="#DDDDDD" valign=top>
+The media type specified by a format description is not valid for the given operation (eg. a CMSampleBuffer with a non-audio format description passed to GetAudioStreamPacketDescriptions).<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmsamplebuffermbs-const.html#12">kInvalidSampleData </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> -12742</td>
+<td bgcolor="#DDDDDD" valign=top>
+Buffer contains bad data. Only returned by CMSampleBuffer functions that inspect its sample data.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmsamplebuffermbs-const.html#13">kRequiredParameterMissing </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> -12731</td>
+<td bgcolor="#DDDDDD" valign=top>
+Nil or 0 was passed for a required parameter.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmsamplebuffermbs-const.html#14">kSampleIndexOutOfRange </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> -12734</td>
+<td bgcolor="#DDDDDD" valign=top>
+Sample index was not between 0 and numSamples-1, inclusive.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-cmsamplebuffermbs-const.html#15">kSampleTimingInfoInvalid </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> -12740</td>
+<td bgcolor="#DDDDDD" valign=top>
+Buffer unexpectedly contains a non-numeric sample timing info.<BR>
+</td>
+</tr>
+</table>
+<p>This class has no sub classes.</p>
+<h4>Some methods using this class:</h4><ul>
+<li class="M"><A href="avfoundation-avassetreaderoutputmbs-method.html#2" translate="no">AVAssetReaderOutputMBS.NextSampleBuffer</A> as CMSampleBufferMBS</li>
+<li class="M"><A href="avfoundation-avassetwriterinputmbs-method.html#2" translate="no">AVAssetWriterInputMBS.appendSampleBuffer</A>(sampleBuffer as CMSampleBufferMBS) as boolean</li>
+<li class="M"><A href="avfoundation-avcapturestillimageoutputmbs-shared-method.html" translate="no">AVCaptureStillImageOutputMBS.jpegStillImageNSDataRepresentation</A>(jpegSampleBuffer as CMSampleBufferMBS) as memoryblock</li>
+<li class="M"><A href="avfoundation-avsamplebufferdisplaylayermbs-method.html#2" translate="no">AVSampleBufferDisplayLayerMBS.enqueueSampleBuffer</A>(sampleBuffer as CMSampleBufferMBS)</li>
+</ul>
+<h4>Some events using this class:</h4><ul>
+<li class="M"><A href="avfoundation-avfoundationmbs-event.html#12">AVFoundationMBS.captureOutputDidDropSampleBuffer</A>(captureOutput as <A href="class-avcaptureoutputmbs.html">AVCaptureOutputMBS</A>, OutputSampleBuffer as CMSampleBufferMBS, connection as <A href="class-avcaptureconnectionmbs.html">AVCaptureConnectionMBS</A>)</li>
+<li class="M"><A href="avfoundation-avfoundationmbs-event.html#15">AVFoundationMBS.captureOutputDidOutputSampleBuffer</A>(captureOutput as <A href="class-avcaptureoutputmbs.html">AVCaptureOutputMBS</A>, OutputSampleBuffer as CMSampleBufferMBS, connection as <A href="class-avcaptureconnectionmbs.html">AVCaptureConnectionMBS</A>, features as variant)</li>
+<li class="M"><A href="avfoundation-avfoundationmbs-event.html#23">AVFoundationMBS.captureStillImageAsynchronouslyCompleted</A>(CaptureStillImageOutput as <A href="class-avcapturestillimageoutputmbs.html">AVCaptureStillImageOutputMBS</A>, prepareJpegStillImage as boolean, tag as Variant, error as <A href="class-nserrormbs.html">NSErrorMBS</A>, imageDataSampleBuffer as CMSampleBufferMBS, JpegStillImage as memoryblock)</li>
+<li class="M"><A href="avfoundation-avfoundationmbs-event.html#29">AVFoundationMBS.legibleOutputDidOutputAttributedStrings</A>(output as <A href="class-avplayeritemlegibleoutputmbs.html">AVPlayerItemLegibleOutputMBS</A>, strings() as Variant, nativeSamples() as CMSampleBufferMBS, itemTime as <A href="class-cmtimembs.html">CMTimeMBS</A>)</li>
+<li class="M"><A href="avfoundation-avfoundationmbs-event1.html#20">AVFoundationMBS.requestMediaDataWhenReadyOnQueueProgress</A>(assetWriterInput as <A href="class-avassetwriterinputmbs.html">AVAssetWriterInputMBS</A>, assetReaderOutput as <A href="class-avassetreaderoutputmbs.html">AVAssetReaderOutputMBS</A>, convertedByteCount as Int64, LastBuffer as CMSampleBufferMBS, tag as Variant)</li>
+</ul>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-avfoundation-extractvideoframes.html">/AVFoundation/Extract video frames</A></li>
+<li class=""><A href="example-avfoundation-livebarcodedetection.html">/AVFoundation/Live Barcode Detection</A></li>
+<li class=""><A href="example-avfoundation-livebarcodedetectionios-livebarcodedetectionios.html">/AVFoundation/Live Barcode Detection iOS/Live Barcode Detection iOS</A></li>
+<li class=""><A href="example-avfoundation-livebarcodedetectionwithvision-livebarcodedetectionwithvision.html">/AVFoundation/Live Barcode Detection with Vision/Live Barcode Detection with Vision</A></li>
+<li class=""><A href="example-avfoundation-livepictureprocessing.html">/AVFoundation/Live picture processing</A></li>
+<li class=""><A href="example-avfoundation-screeninput.html">/AVFoundation/Screen Input</A></li>
+<li class=""><A href="example-avfoundation-stillphotos.html">/AVFoundation/Still Photos</A></li>
+<li class=""><A href="example-avfoundation-transcode.html">/AVFoundation/Transcode</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2018-08-16/MBS_Xojo_Plugins_version_184pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 18.4pr3</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2018-08-14/AVCaptureVideoDataOutput_impro/monkeybreadsoftware_blog_xojo">AVCaptureVideoDataOutput improvements</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2015-10-15/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 15.4pr2</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2014-12-01/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 14.5pr2</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsavfoundationplugin.html">MBS AVFoundation Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-cmformatdescriptionmbs.html">CMFormatDescriptionMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-cmtimemappingmbs.html">CMTimeMappingMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-cmsamplebuffermbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

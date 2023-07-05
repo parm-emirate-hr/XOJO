@@ -1,0 +1,782 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - MacUSBMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="MacUSBMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">MacUSBMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-macusbmbs.html">MacUSBMBS</a> class.  </p>
+<div class="M">
+<b><a href="class-macusbmbs.html">MacUSBMBS</a>.<A name="1">AbortPipe(PipeRef as Integer) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion125.shtml" class=version>12.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Aborts any outstanding transactions on the pipe with status kIOReturnAborted.<BR>
+<B>Notes:</B> 
+<BR>
+If there are outstanding asynchronous transactions on the pipe, the callbacks will happen. <BR>
+Note that this command will also clear the halted bit on the endpoint in the controller, but will NOT clear the data toggle bit.  If you want to clear the data toggle bit as well, see ClearPipeStall or ClearPipeStallBothEnds for more information.  The interface must be open for the pipe to exist.<BR>
+pipeRef: Index for the desired pipe (1 - GetNumEndpoints).<BR>
+Lasterror is set to kIOReturnSuccess if successful, kIOReturnNoDevice if there is no connection to an IOService, or kIOReturnNotOpen if the interface is not open for exclusive access.<BR>
+</div>
+<div class="M">
+<b><a href="class-macusbmbs.html">MacUSBMBS</a>.<A name="2">ClearPipeStall(PipeRef as Integer) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion135.shtml" class=version>13.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Clears the halted bit and the data toggle bit on the pipe&#39;s endpoint in the controller.<BR>
+<B>Notes:</B> 
+<BR>
+This function also returns any outstanding transactions on the pipe with status kIOUSBTransactionReturned.<BR>
+If there are outstanding asynchronous transactions on the pipe, the callbacks will happen. The data toggle may need to be resynchronized. The driver may handle this by sending a ClearFeature(ENDPOINT_HALT) to the default control pipe, specifying the device&#39;s endpoint for this pipe. <BR>
+<BR>
+pipeRef: Index for the desired pipe (1 - NumEndpoints).<BR>
+Lasterror is set to kIOReturnSuccess if successful, kIOReturnNoDevice if there is no connection to an IOService, or kIOReturnNotOpen if the interface is not open for exclusive access.<BR>
+</div>
+<div class="M">
+<b><a href="class-macusbmbs.html">MacUSBMBS</a>.<A name="3">Close</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion125.shtml" class=version>12.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Closes connection to the device.<BR>
+</div>
+<div class="M">
+<b><a href="class-macusbmbs.html">MacUSBMBS</a>.<A name="4">ConfigurationValue as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion125.shtml" class=version>12.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns the current configuration value set in the device (the interface will be part of that configuration.)<BR>
+<B>Notes:</B> 
+<BR>
+The interface does not have to be open to use this function.<BR>
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-macusbmbs.html">MacUSBMBS</a>.<A name="5">Connect as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion125.shtml" class=version>12.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Connects to the first device matching product and vendor IDs.<BR>
+<B>Notes:</B> 
+Returns true on success.<BR>
+</div>
+<div class="M">
+<b><a href="class-macusbmbs.html">MacUSBMBS</a>.<A name="6">DeviceProduct as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion125.shtml" class=version>12.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns the USB Product ID (idProduct) of the device.<BR>
+<B>Notes:</B> 
+<BR>
+The device does not have to be open to use this function.<BR>
+Lasterror is set. Returns the actual product ID of the device.<BR>
+</div>
+<div class="M">
+<b><a href="class-macusbmbs.html">MacUSBMBS</a>.<A name="7">DeviceReleaseNumber as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion125.shtml" class=version>12.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns the Device Release Number (bcdDevice) of the device.<BR>
+<B>Notes:</B> 
+<BR>
+The device does not have to be open to use this function.<BR>
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-macusbmbs.html">MacUSBMBS</a>.<A name="8">DeviceVendor as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion125.shtml" class=version>12.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns the USB Vendor ID (idVendor) of the device.<BR>
+<B>Notes:</B> 
+<BR>
+The device does not have to be open to use this function.<BR>
+Lasterror is set. Returns the actual vendor ID of the device.<BR>
+</div>
+<div class="M">
+<b><a href="class-macusbmbs.html">MacUSBMBS</a>.<A name="9">InterfaceClass as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion125.shtml" class=version>12.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns the USB Class of the interface.<BR>
+<B>Notes:</B> 
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-macusbmbs.html">MacUSBMBS</a>.<A name="10">InterfaceNumber as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion125.shtml" class=version>12.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns the interface number (zero-based index) of this interface within the current configuration of the device.<BR>
+<B>Notes:</B> 
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-macusbmbs.html">MacUSBMBS</a>.<A name="11">InterfaceProtocol as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion125.shtml" class=version>12.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns the USB Protocol of the interface.<BR>
+<B>Notes:</B> 
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-macusbmbs.html">MacUSBMBS</a>.<A name="12">InterfaceSubClass as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion125.shtml" class=version>12.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns the USB Subclass of the interface.<BR>
+<B>Notes:</B> 
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-macusbmbs.html">MacUSBMBS</a>.<A name="13">LocationID as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion125.shtml" class=version>12.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns the location ID.<BR>
+<B>Notes:</B> 
+<BR>
+The location ID is a 32 bit number which is unique among all USB devices in the system, and which will not change on a system reboot unless the topology of the bus itself changes.  The interface does not have to be open to use this function.<BR>
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-macusbmbs.html">MacUSBMBS</a>.<A name="14">NumEndpoints as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion125.shtml" class=version>12.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns the number of endpoints in this interface.<BR>
+<B>Notes:</B> 
+<BR>
+The interface does not have to be open to use this function.<BR>
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-macusbmbs.html">MacUSBMBS</a>.<A name="15">ReadPacket(PipeRef as Integer, MaxSize as Integer = 1024) as Memoryblock</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion125.shtml" class=version>12.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Reads data packet.<BR>
+<B>Notes:</B> 
+We developed this function for a client, so it&#39;s probably useless for everyone else.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-usb-macandwinusbexample.html">/USB/Mac and Win USB Example</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-macusbmbs.html">MacUSBMBS</a>.<A name="16">ReadRaw(PipeRef as Integer, MaxSize as Integer = 1024) as Memoryblock</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion125.shtml" class=version>12.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Reads data on a BULK IN or an INTERRUPT pipe.<BR>
+<B>Notes:</B> 
+Reads up to MaxSize bytes from the given pipe. Pipe is in range 1 to GetNumEndpoints.<BR>
+</div>
+<div class="M">
+<b><a href="class-macusbmbs.html">MacUSBMBS</a>.<A name="17">ResetPipe(PipeRef as Integer) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion125.shtml" class=version>12.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Equivalent to ClearPipeStall.<BR>
+<B>Notes:</B> 
+<BR>
+The interface must be open for the pipe to exist.<BR>
+pipeRef: Index for the desired pipe (1 - GetNumEndpoints).<BR>
+Lasterror is set to kIOReturnSuccess if successful, kIOReturnNoDevice if there is no connection to an IOService, or kIOReturnNotOpen if the interface is not open for exclusive access.<BR>
+</div>
+<div class="M">
+<b><a href="class-macusbmbs.html">MacUSBMBS</a>.<A name="18">WritePacket(PipeRef as Integer, Data as Memoryblock) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion125.shtml" class=version>12.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Sends data packet.<BR>
+<B>Notes:</B> 
+<BR>
+We developed this function for a client, so it&#39;s probably useless for everyone else.<BR>
+Lasterror is set.<BR>
+<p>See also:<ul>
+<li><A href="usb-macusbmbs-method.html#19">WritePacket(PipeRef as Integer, Data as string) as boolean</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-usb-macandwinusbexample.html">/USB/Mac and Win USB Example</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-macusbmbs.html">MacUSBMBS</a>.<A name="19">WritePacket(PipeRef as Integer, Data as string) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion125.shtml" class=version>12.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Sends data packet.<BR>
+<B>Notes:</B> 
+<BR>
+We developed this function for a client, so it&#39;s probably useless for everyone else.<BR>
+Lasterror is set.<BR>
+<p>See also:<ul>
+<li><A href="usb-macusbmbs-method.html#18">WritePacket(PipeRef as Integer, Data as Memoryblock) as boolean</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-macusbmbs.html">MacUSBMBS</a>.<A name="20">WriteRaw(PipeRef as Integer, Data as Memoryblock) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion125.shtml" class=version>12.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Writes data on a BULK OUT or INTERRUPT OUT pipe.<BR>
+<B>Notes:</B> 
+<BR>
+The interface must be open for the pipe to exist.<BR>
+PipeRef: Index for the desired pipe (1 - GetNumEndpoints).<BR>
+Data: the buffer of data to send.<BR>
+Lasterror is set.<BR>
+<p>See also:<ul>
+<li><A href="usb-macusbmbs-method.html#21">WriteRaw(PipeRef as Integer, Data as string) as boolean</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-macusbmbs.html">MacUSBMBS</a>.<A name="21">WriteRaw(PipeRef as Integer, Data as string) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-usb.html" translate="no">USB</A></td>
+<td class=grau><a href="plugins-mbsusbplugin.html">MBS USB Plugin</a></td>
+<td class=grau><a href="newinversion125.shtml" class=version>12.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Writes data on a BULK OUT or INTERRUPT OUT pipe.<BR>
+<B>Notes:</B> 
+<BR>
+The interface must be open for the pipe to exist.<BR>
+PipeRef: Index for the desired pipe (1 - GetNumEndpoints).<BR>
+Data: the buffer of data to send.<BR>
+Lasterror is set.<BR>
+<p>See also:<ul>
+<li><A href="usb-macusbmbs-method.html#20">WriteRaw(PipeRef as Integer, Data as Memoryblock) as boolean</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsusbplugin.html">MBS USB Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=usb-macusbmbs-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /MacExtras/Attached Window</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /MacExtras/Attached Window</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/MacExtras/Attached Window</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS MacBase Plugin, MBS MacExtras Plugin, MBS MacCocoa Plugin, MBS Main Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /MacExtras/Attached Window<BR>
+This example is the version from Mon, 26th May 2013.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Attached</span> <span style="color:#6500FE">Window.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	FileTypes</div>
+<div class="RB_Code">		Filetype text</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> FileTypes</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;Quit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;Clear&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			window1.Show
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Window1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CheckBox1 <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CheckBox1 <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> MouseEnter()
+				<span style="color:#0000FF;font-weight: bold">dim</span> HelpText <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span> = <span style="color:#6500FE">&quot;Use</span> <span style="color:#6500FE">this</span> <span style="color:#6500FE">option</span> <span style="color:#6500FE">if</span> <span style="color:#6500FE">your</span> <span style="color:#6500FE">mail</span> <span style="color:#6500FE">dates</span> <span style="color:#6500FE">come</span> <span style="color:#6500FE">out</span> <span style="color:#6500FE">incorrect.&quot;</span>
+				myAttachedWindow = <span style="color:#0000FF;font-weight: bold">new</span> AttachedWindow(<span style="color:#0000FF;font-weight: bold">self</span>, <span style="color:#0000FF;font-weight: bold">me</span>, HelpText)
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> MouseExit()
+				myAttachedWindow.Hide
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> myAttachedWindow <span style="color:#0000FF;font-weight: bold">As</span> AttachedWindow</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> AttachedWindow</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> WindowWidth = <span style="color:#326598">300</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(hasParentWindow <span style="color:#0000FF;font-weight: bold">as</span> Window, theControl <span style="color:#0000FF;font-weight: bold">as</span> RectControl, theText <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span>)
+			theParentWindow = hasParentWindow
+			
+			<span style="color:#7F0000;text-style:italic">&#39;calculate</span> <span style="color:#7F0000;text-style:italic">string</span> <span style="color:#7F0000;text-style:italic">width</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> tempPic <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> Picture(<span style="color:#326598">1</span>, <span style="color:#326598">1</span>, <span style="color:#326598">32</span>)
+			tempPic.Graphics.DrawString(theText, <span style="color:#326598">0</span>, tempPic.Graphics.TextHeight + tempPic.Graphics.TextAscent, WindowWidth)
+			<span style="color:#0000FF;font-weight: bold">dim</span> StringHeight <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = tempPic.Graphics.StringHeight(theText, WindowWidth)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> theNSWindow <span style="color:#0000FF;font-weight: bold">as</span> NSWindowMBS = theParentWindow.NSWindowMBS
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> InternalAttachedWindow &lt;&gt; <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				theNSWindow.removeChildWindow InternalAttachedWindow
+				InternalAttachedWindow.hide
+				InternalAttachedWindow = <span style="color:#0000FF;font-weight: bold">nil</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> side <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = MAAttachedWindowMBS.MAPositionAutomatic
+			<span style="color:#0000FF;font-weight: bold">dim</span> WindowPoint <span style="color:#0000FF;font-weight: bold">as</span> NSPointMBS
+			WindowPoint = <span style="color:#0000FF;font-weight: bold">new</span> NSPointMBS(theControl.TrueBoundary.left + theControl.Width/<span style="color:#326598">2</span>, hasParentWindow.Height - (theControl.TrueBoundary.Top + theControl.Height))
+			
+			
+			<span style="color:#7F0000;text-style:italic">&#39;create</span> <span style="color:#7F0000;text-style:italic">text</span> <span style="color:#7F0000;text-style:italic">field</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">style</span> <span style="color:#7F0000;text-style:italic">it</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> Border = <span style="color:#326598">10</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> theTextField <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> NSTextFieldMBS(Border, Border, WindowWidth, StringHeight + Border)
+			theTextField.StringValue = theText
+			theTextField.Editable = <span style="color:#0000FF;font-weight: bold">false</span>
+			theTextField.textColor = NSColorMBS.whiteColor
+			theTextField.backgroundColor = NSColorMBS.blackColor
+			theTextField.Bordered = <span style="color:#0000FF;font-weight: bold">true</span>
+			
+			<span style="color:#7F0000;text-style:italic">&#39;add</span> <span style="color:#7F0000;text-style:italic">text</span> <span style="color:#7F0000;text-style:italic">field</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">window</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> TextFieldView <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> NSViewMBS(<span style="color:#326598">0</span>, <span style="color:#326598">0</span>, WindowWidth + <span style="color:#326598">20</span>, StringHeight + <span style="color:#326598">30</span>)
+			TextFieldView.addSubview theTextField
+			
+			<span style="color:#7F0000;text-style:italic">&#39;style</span> <span style="color:#7F0000;text-style:italic">window</span>
+			InternalAttachedWindow = MAAttachedWindowMBS.attachedWindow(TextFieldView, WindowPoint, theNSWindow, side, Border)
+			InternalAttachedWindow.borderColor = NSColorMBS.whiteColor
+			InternalAttachedWindow.backgroundColor = NSColorMBS.blackColor
+			InternalAttachedWindow.viewMargin = <span style="color:#326598">4</span>
+			InternalAttachedWindow.borderWidth = <span style="color:#326598">3</span>
+			InternalAttachedWindow.cornerRadius = <span style="color:#326598">8</span>
+			InternalAttachedWindow.drawsRoundCornerBesideArrow = <span style="color:#0000FF;font-weight: bold">true</span>
+			InternalAttachedWindow.arrowBaseWidth = <span style="color:#326598">20</span>
+			InternalAttachedWindow.arrowHeight = <span style="color:#326598">15</span>
+			InternalAttachedWindow.hasArrow = <span style="color:#0000FF;font-weight: bold">true</span>
+			InternalAttachedWindow.alphaValue = <span style="color:#006532">0.9</span>
+			
+			<span style="color:#7F0000;text-style:italic">&#39;create</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">show</span> <span style="color:#7F0000;text-style:italic">attached</span> <span style="color:#7F0000;text-style:italic">window</span>
+			theNSWindow.addChildWindow InternalAttachedWindow, NSWindowMBS.NSWindowAbove
+			InternalAttachedWindow.show
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Hide()
+			<span style="color:#0000FF;font-weight: bold">dim</span> theNSWindow <span style="color:#0000FF;font-weight: bold">as</span> NSWindowMBS = theParentWindow.NSWindowMBS
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> InternalAttachedWindow &lt;&gt; <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				theNSWindow.removeChildWindow InternalAttachedWindow
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> theAnimator <span style="color:#0000FF;font-weight: bold">as</span> NSWindowMBS = InternalAttachedWindow.animator
+				<span style="color:#0000FF;font-weight: bold">if</span> theAnimator = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					InternalAttachedWindow.hide <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">hide</span> <span style="color:#7F0000;text-style:italic">normal</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					theAnimator.alphaValue = <span style="color:#006532">0.0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">hide</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">CoreAnimation</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				InternalAttachedWindow = <span style="color:#0000FF;font-weight: bold">nil</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> InternalAttachedWindow <span style="color:#0000FF;font-weight: bold">As</span> MAAttachedWindowMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> theParentWindow <span style="color:#0000FF;font-weight: bold">As</span> Window</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Module</span> GUIUtilities</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> TrueBoundary(<span style="color:#0000FF;font-weight: bold">extends</span> theContainerControl <span style="color:#0000FF;font-weight: bold">As</span> ContainerControl) <span style="color:#0000FF;font-weight: bold">As</span> BoundaryRect
+			<span style="color:#7F0000;text-style:italic">&#39;gets</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">boundary</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">container</span> <span style="color:#7F0000;text-style:italic">control</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">relation</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">screen</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">parent</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> theBoundary <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> BoundaryRect
+			theBoundary.height = theContainerControl.height
+			theBoundary.width = theContainerControl.width
+			theBoundary.top = theContainerControl.top
+			theBoundary.left = theContainerControl.left
+			
+			<span style="color:#7F0000;text-style:italic">&#39;loop</span> <span style="color:#7F0000;text-style:italic">up</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">containing</span> <span style="color:#7F0000;text-style:italic">chain</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> theWindow <span style="color:#0000FF;font-weight: bold">as</span> ContainerControl = theContainerControl
+			<span style="color:#0000FF;font-weight: bold">while</span> theWindow <span style="color:#0000FF;font-weight: bold">isa</span> containercontrol
+				theBoundary.top = theBoundary.top + theWindow.top
+				theBoundary.left = theBoundary.left + theWindow.left
+				theWindow = containercontrol(theWindow.window)
+			<span style="color:#0000FF;font-weight: bold">wend</span>
+			
+			<span style="color:#7F0000;text-style:italic">&#39;add</span> <span style="color:#7F0000;text-style:italic">values</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">window</span>
+			<span style="color:#7F0000;text-style:italic">&#39;theBoundary.top</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">theBoundary.top</span> <span style="color:#7F0000;text-style:italic">+</span> <span style="color:#7F0000;text-style:italic">theWindow.top</span>
+			<span style="color:#7F0000;text-style:italic">&#39;theBoundary.left</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">theBoundary.left</span> <span style="color:#7F0000;text-style:italic">+</span> <span style="color:#7F0000;text-style:italic">theWindow.left</span>
+			
+			<span style="color:#0000FF;font-weight: bold">return</span> theBoundary
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> TrueBoundary(<span style="color:#0000FF;font-weight: bold">Extends</span> theRectControl <span style="color:#0000FF;font-weight: bold">As</span> RectControl) <span style="color:#0000FF;font-weight: bold">As</span> BoundaryRect
+			<span style="color:#7F0000;text-style:italic">&#39;gets</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">boundary</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">rect</span> <span style="color:#7F0000;text-style:italic">control</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">relation</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">screen</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">parent</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> theBoundary <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> BoundaryRect
+			theBoundary.height = theRectControl.height
+			theBoundary.width = theRectControl.width
+			theBoundary.top = theRectControl.top
+			theBoundary.left = theRectControl.left
+			
+			<span style="color:#7F0000;text-style:italic">&#39;loop</span> <span style="color:#7F0000;text-style:italic">up</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">containing</span> <span style="color:#7F0000;text-style:italic">chain</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> theWindow <span style="color:#0000FF;font-weight: bold">as</span> window = theRectControl.window
+			<span style="color:#0000FF;font-weight: bold">while</span> theWindow <span style="color:#0000FF;font-weight: bold">isa</span> containercontrol
+				theBoundary.top = theBoundary.top + theWindow.top
+				theBoundary.left = theBoundary.left + theWindow.left
+				theWindow = containercontrol(theWindow).window
+			<span style="color:#0000FF;font-weight: bold">wend</span>
+			
+			<span style="color:#7F0000;text-style:italic">&#39;add</span> <span style="color:#7F0000;text-style:italic">values</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">window</span>
+			<span style="color:#7F0000;text-style:italic">&#39;theBoundary.top</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">theBoundary.top</span> <span style="color:#7F0000;text-style:italic">+</span> <span style="color:#7F0000;text-style:italic">theWindow.top</span>
+			<span style="color:#7F0000;text-style:italic">&#39;theBoundary.left</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">theBoundary.left</span> <span style="color:#7F0000;text-style:italic">+</span> <span style="color:#7F0000;text-style:italic">theWindow.left</span>
+			
+			<span style="color:#0000FF;font-weight: bold">return</span> theBoundary
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> TrueWindow(<span style="color:#0000FF;font-weight: bold">Extends</span> theRectControl <span style="color:#0000FF;font-weight: bold">As</span> RectControl) <span style="color:#0000FF;font-weight: bold">As</span> Window
+			<span style="color:#7F0000;text-style:italic">&#39;return</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">uppermost</span> <span style="color:#7F0000;text-style:italic">window</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">container</span> <span style="color:#7F0000;text-style:italic">control</span>
+			<span style="color:#0000FF;font-weight: bold">return</span> theRectControl.window.truewindow
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> TrueWindow(<span style="color:#0000FF;font-weight: bold">Extends</span> theWindow <span style="color:#0000FF;font-weight: bold">As</span> Window) <span style="color:#0000FF;font-weight: bold">As</span> Window
+			<span style="color:#7F0000;text-style:italic">&#39;return</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">uppermost</span> <span style="color:#7F0000;text-style:italic">window</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">container</span> <span style="color:#7F0000;text-style:italic">control</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> theWindow <span style="color:#0000FF;font-weight: bold">isa</span> containercontrol <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">return</span> containercontrol(theWindow).window.truewindow
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				<span style="color:#0000FF;font-weight: bold">return</span> theWindow
+			<span style="color:#0000FF;font-weight: bold">end</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Module</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> BoundaryRect</div>
+<div class="RB_Note">		Note <span style="color:#6500FE">&quot;About&quot;</span>
+<div class="RB_Comment">			Help class for getting the true boundary of a control in a container</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Height <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Left <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Top <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Width <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmacextrasplugin.html">MBS MacExtras Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-macextras-attachedwindow">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

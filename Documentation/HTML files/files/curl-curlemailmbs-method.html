@@ -1,0 +1,872 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - CURLEmailMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="CURLEmailMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">CURLEmailMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-curlemailmbs.html">CURLEmailMBS</a> class.  </p>
+<div class="WLM">
+<b><a href="class-curlemailmbs.html">CURLEmailMBS</a>.<A name="1">AddAttachment(data as MemoryBlock, name as string, type as string = &quot;&quot;, InlineID as string = &quot;&quot;, ContentTypeMethod as String = &quot;&quot;)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion143.shtml" class=version>14.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Adds an attachment to the email.<BR>
+<B>Notes:</B> 
+<BR>
+name: The name for the attachment.<BR>
+type: Optional, the mime type to use. e.g. &quot;application/pdf&quot; for PDF files. If missing, we use &quot;application/octet-stream&quot;.<BR>
+data: The data to include.<BR>
+<BR>
+For best results use attachment sizes below 50 MB.<BR>
+The plugin will encode your data as Base64. If you want to attach a picture, you can use <A href="global-picturetopngstringmbs.html#4">PictureToPNGStringMBS</A> (mime type &quot;image/png&quot;) or <A href="global-picturetojpegstringmbs.html">PictureToJPEGStringMBS</A> (mime type &quot;image/jpeg&quot;) to encode a picture.<BR>
+<BR>
+Version 15.0 of MBS Plugin can encode file name for preserving non AScII characters. Still for compatibility it is recommended to use simply AScII names.<BR>
+<BR>
+If InlineID is set, we include the attachment for inlining. Please pass content ID (cID).<BR>
+Empty text or no parameter gives regular attachment.<BR>
+You can use AddAttachment several times to add several attachments.<BR>
+<BR>
+The optional ContentTypeMethod parameter allows to specify the method value for the content-type header.<BR>
+Currently only for sending calendar invitiations.<BR>
+<p>See also:<ul>
+<li><A href="curl-curlemailmbs-method.html#2">AddAttachment(data as string, name as string, type as string = "", InlineID as string = "", ContentTypeMethod as String = "")</A></li>
+<li><A href="curl-curlemailmbs-method.html#3">AddAttachment(file as FolderItem, name as string = "", type as string = "", InlineID as string = "", ContentTypeMethod as String = "")</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-curlemailmbs.html">CURLEmailMBS</a>.<A name="2">AddAttachment(data as string, name as string, type as string = &quot;&quot;, InlineID as string = &quot;&quot;, ContentTypeMethod as String = &quot;&quot;)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion143.shtml" class=version>14.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Adds an attachment to the email.<BR>
+<B>Notes:</B> 
+<BR>
+name: The name for the attachment.<BR>
+type: Optional, the mime type to use. e.g. &quot;application/pdf&quot; for PDF files. If missing, we use &quot;application/octet-stream&quot;.<BR>
+data: The data to include.<BR>
+<BR>
+For best results use attachment sizes below 50 MB.<BR>
+The plugin will encode your data as Base64. If you want to attach a picture, you can use <A href="global-picturetopngstringmbs.html#4">PictureToPNGStringMBS</A> (mime type &quot;image/png&quot;) or <A href="global-picturetojpegstringmbs.html">PictureToJPEGStringMBS</A> (mime type &quot;image/jpeg&quot;) to encode a picture.<BR>
+<BR>
+Version 15.0 of MBS Plugin can encode file name for preserving non AScII characters. Still for compatibility it is recommended to use simply AScII names.<BR>
+<BR>
+If InlineID is set, we include the attachment for inlining. Please pass content ID (cID).<BR>
+Empty text or no parameter gives regular attachment.<BR>
+You can use AddAttachment several times to add several attachments.<BR>
+<BR>
+The optional ContentTypeMethod parameter allows to specify the method value for the content-type header.<BR>
+Currently only for sending calendar invitiations.<BR>
+<p>See also:<ul>
+<li><A href="curl-curlemailmbs-method.html">AddAttachment(data as MemoryBlock, name as string, type as string = "", InlineID as string = "", ContentTypeMethod as String = "")</A></li>
+<li><A href="curl-curlemailmbs-method.html#3">AddAttachment(file as FolderItem, name as string = "", type as string = "", InlineID as string = "", ContentTypeMethod as String = "")</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-curlemailmbs.html">CURLEmailMBS</a>.<A name="3">AddAttachment(file as FolderItem, name as string = &quot;&quot;, type as string = &quot;&quot;, InlineID as string = &quot;&quot;, ContentTypeMethod as String = &quot;&quot;)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion161.shtml" class=version>16.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Adds an attachment to the email.<BR>
+<B>Notes:</B> 
+<BR>
+name: The name for the attachment. If empty, version 16.2 uses file name from folderitem.<BR>
+type: Optional, the mime type to use. e.g. &quot;application/pdf&quot; for PDF files. If missing, we use &quot;application/octet-stream&quot;.<BR>
+file: The file to use. This file is read and content used for attachment.<BR>
+<BR>
+For best results use attachment sizes below 50 MB.<BR>
+The plugin will encode your data as Base64. If you want to attach a picture, you can use <A href="global-picturetopngstringmbs.html#4">PictureToPNGStringMBS</A> (mime type &quot;image/png&quot;) or <A href="global-picturetojpegstringmbs.html">PictureToJPEGStringMBS</A> (mime type &quot;image/jpeg&quot;) to encode a picture.<BR>
+<BR>
+Version 15.0 of MBS Plugin can encode file name for preserving non AScII characters. Still for compatibility it is recommended to use simply AScII names.<BR>
+<BR>
+If InlineID is set, we include the attachment for inlining. Please pass content ID (cID).<BR>
+Empty text or no parameter gives regular attachment.<BR>
+You can use AddAttachment several times to add several attachments.<BR>
+<BR>
+The optional ContentTypeMethod parameter allows to specify the method value for the content-type header.<BR>
+Currently only for sending calendar invitiations.<BR>
+<p>See also:<ul>
+<li><A href="curl-curlemailmbs-method.html">AddAttachment(data as MemoryBlock, name as string, type as string = "", InlineID as string = "", ContentTypeMethod as String = "")</A></li>
+<li><A href="curl-curlemailmbs-method.html#2">AddAttachment(data as string, name as string, type as string = "", InlineID as string = "", ContentTypeMethod as String = "")</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-curlemailmbs.html">CURLEmailMBS</a>.<A name="4">AddBcc(email as string, name as string)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion143.shtml" class=version>14.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Adds a blind copy recipient.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-curlemailmbs.html">CURLEmailMBS</A><br /><br />e.AddBcc <span style="color: #6600FE;">&quot;test@monkeybreadsoftware.test&quot;</span>, <span style="color: #6600FE;">&quot;Test M&uuml;ller&quot;</span><br /><br /><span style="color: #0000FF;">dim</span> Bccs() <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = e.Bccs<br />MsgBox Bccs(<span style="color: #336698;">0</span>)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Please pass email and optionally name of recipient.<BR>
+If this name contains special characters, it will be automatically encoded with UTF-8.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-curl-sendemail-massemailer.html">/CURL/Send Email/MassEmailer</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-curlemailmbs.html">CURLEmailMBS</a>.<A name="5">Addcc(email as string, name as string)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion143.shtml" class=version>14.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Adds a copy recipient.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-curlemailmbs.html">CURLEmailMBS</A><br /><br />e.Addcc <span style="color: #6600FE;">&quot;test@monkeybreadsoftware.test&quot;</span>, <span style="color: #6600FE;">&quot;Test M&uuml;ller&quot;</span><br /><br /><span style="color: #0000FF;">dim</span> ccs() <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = e.ccs<br />MsgBox ccs(<span style="color: #336698;">0</span>)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Please pass email and optionally name of recipient.<BR>
+If this name contains special characters, it will be automatically encoded with UTF-8.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-curlemailmbs.html">CURLEmailMBS</a>.<A name="6">AddHeader(header as string)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion143.shtml" class=version>14.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Adds a header entry.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-curlemailmbs.html">CURLEmailMBS</A><br /><br />e.AddHeader <span style="color: #6600FE;">&quot;X-company: My company, Inc.&quot;</span><br /><br /><span style="color: #0000FF;">dim</span> Headers() <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = e.Headers<br />MsgBox Headers(<span style="color: #336698;">0</span>)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+This header is passed as is and not preprocessed.<BR>
+You can use this function to pass custom headers for &quot;X-Universally-Unique-Identifier:&quot;, &quot;Date:&quot;, &quot;X-Mailer:&quot;, &quot;Message-Id:&quot; and &quot;Mime-Version:&quot;.<BR>
+If you pass header without text following &quot;:&quot;, the header is not included.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-curl-sendemail-massemailer.html">/CURL/Send Email/MassEmailer</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-curlemailmbs.html">CURLEmailMBS</a>.<A name="7">AddReplyTo(email as string, name as string)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion143.shtml" class=version>14.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Adds a recipient for a reply.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-curlemailmbs.html">CURLEmailMBS</A><br /><br />e.AddReplyTo <span style="color: #6600FE;">&quot;test@monkeybreadsoftware.test&quot;</span>, <span style="color: #6600FE;">&quot;Test M&uuml;ller&quot;</span><br /><br /><span style="color: #0000FF;">dim</span> ReplyTos() <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = e.ReplyTOs<br />MsgBox ReplyTos(<span style="color: #336698;">0</span>)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Please pass email and optionally name of recipient.<BR>
+If this name contains special characters, it will be automatically encoded with UTF-8.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-curlemailmbs.html">CURLEmailMBS</a>.<A name="8">AddTo(email as string, name as string)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion143.shtml" class=version>14.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Adds a recipient.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-curlemailmbs.html">CURLEmailMBS</A><br /><br />e.AddTo <span style="color: #6600FE;">&quot;test@monkeybreadsoftware.test&quot;</span>, <span style="color: #6600FE;">&quot;Test M&uuml;ller&quot;</span><br /><br /><span style="color: #0000FF;">dim</span> TOs() <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = e.TOs<br />MsgBox TOs(<span style="color: #336698;">0</span>)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Please pass email and optionally name of recipient.<BR>
+If this name contains special characters, it will be automatically encoded with UTF-8.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-curlemailmbs.html">CURLEmailMBS</a>.<A name="9">Bccs as String()</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion143.shtml" class=version>14.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Queries list of Bcc recipients.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-curlemailmbs.html">CURLEmailMBS</A><br /><br />e.AddBcc <span style="color: #6600FE;">&quot;test@monkeybreadsoftware.test&quot;</span>, <span style="color: #6600FE;">&quot;Test M&uuml;ller&quot;</span><br /><br /><span style="color: #0000FF;">dim</span> Bccs() <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = e.Bccs<br />MsgBox Bccs(<span style="color: #336698;">0</span>)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+Entries may be encoded if necessary.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-curlemailmbs.html">CURLEmailMBS</a>.<A name="10">ccs as String()</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion143.shtml" class=version>14.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Queries list of cc recipients.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-curlemailmbs.html">CURLEmailMBS</A><br /><br />e.Addcc <span style="color: #6600FE;">&quot;test@monkeybreadsoftware.test&quot;</span>, <span style="color: #6600FE;">&quot;Test M&uuml;ller&quot;</span><br /><br /><span style="color: #0000FF;">dim</span> ccs() <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = e.ccs<br />MsgBox ccs(<span style="color: #336698;">0</span>)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+Entries may be encoded if necessary.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-curlemailmbs.html">CURLEmailMBS</a>.<A name="11">clearAttachments</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion143.shtml" class=version>14.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Clears all attachments from this email.<BR>
+<B>Notes:</B> 
+Useful in case you want to send same email with different attachments to another recipient.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-curlemailmbs.html">CURLEmailMBS</a>.<A name="12">ClearHeaders</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion161.shtml" class=version>16.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Clears all headers from this email.<BR>
+<B>Notes:</B> 
+Useful in case you want to send same email with different headers to another recipient.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-curlemailmbs.html">CURLEmailMBS</a>.<A name="13">clearRecipients</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion143.shtml" class=version>14.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+clears all recipients.<BR>
+<B>Notes:</B> 
+<BR>
+Removes all TO, cc, Bcc and ReplyTO entries.<BR>
+Useful in case you want to send same email to another recipient.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-curlemailmbs.html">CURLEmailMBS</a>.<A name="14">constructor(Encoding as string = &quot;UTF-8&quot;)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion144.shtml" class=version>14.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The constructor.<BR>
+<B>Notes:</B> 
+<BR>
+Normally, ignore parameter and use UTF-8.<BR>
+But alternative you can pass: UTF-8, AScII, MacRoman, Latin1 or Windows.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-curlemailmbs.html">CURLEmailMBS</a>.<A name="15">EmailSource as string</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion143.shtml" class=version>14.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Queries the source code for the email.<BR>
+<B>Notes:</B> 
+<BR>
+This is more for debugging, than for real use.<BR>
+You can write this into a EML file.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-curl-sendemail-imapupload.html">/CURL/Send Email/IMAP Upload</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-curlemailmbs.html">CURLEmailMBS</a>.<A name="16">Headers as String()</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion143.shtml" class=version>14.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Queries list of extra header entries.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-curlemailmbs.html">CURLEmailMBS</A><br /><br />e.AddHeader <span style="color: #6600FE;">&quot;X-company: My company, Inc.&quot;</span><br /><br /><span style="color: #0000FF;">dim</span> Headers() <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = e.Headers<br />MsgBox Headers(<span style="color: #336698;">0</span>)</span>
+</pre>
+</div>
+</div>
+<div class="WLM">
+<b><a href="class-curlemailmbs.html">CURLEmailMBS</a>.<A name="17">ReplyTOs as String()</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion143.shtml" class=version>14.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Queries list of ReplyTo recipients.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-curlemailmbs.html">CURLEmailMBS</A><br /><br />e.AddReplyTo <span style="color: #6600FE;">&quot;test@monkeybreadsoftware.test&quot;</span>, <span style="color: #6600FE;">&quot;Test M&uuml;ller&quot;</span><br /><br /><span style="color: #0000FF;">dim</span> ReplyTos() <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = e.ReplyTOs<br />MsgBox ReplyTos(<span style="color: #336698;">0</span>)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+Entries may be encoded if necessary.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-curlemailmbs.html">CURLEmailMBS</a>.<A name="18">SetFrom(email as string, name as string)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion143.shtml" class=version>14.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Sets the email from address.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-curlemailmbs.html">CURLEmailMBS</A><br /><br />e.SetFrom <span style="color: #6600FE;">&quot;test@test.test&quot;</span>, <span style="color: #6600FE;">&quot;christian M&uuml;ller&quot;</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+Please pass email and name of the recipient. If this name contains special characters, it will be automatically encoded with UTF-8.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-curl-googlemail-sendemailforgooglemail.html">/CURL/Google Mail/Send email for google mail</A></li>
+<li><A href="example-curl-sendemail-imapupload.html">/CURL/Send Email/IMAP Upload</A></li>
+<li><A href="example-curl-sendemail-massemailer.html">/CURL/Send Email/MassEmailer</A></li>
+<li><A href="example-curl-sendemail-sendemail.html">/CURL/Send Email/Send email</A></li>
+<li><A href="example-curl-sendemail-sendemailinbackgroundasync.html">/CURL/Send Email/Send Email in Background async</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-curlemailmbs.html">CURLEmailMBS</a>.<A name="19">SetServer(server as string, UseSSL as boolean = false)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion143.shtml" class=version>14.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Sets the server to use.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-curlemailmbs.html">CURLEmailMBS</A><br /><br />e.SMTPPassword = <span style="color: #6600FE;">&quot;rGc3_mdyjR%k&quot;</span><br />e.SMTPUsername = <span style="color: #6600FE;">&quot;sammler@monkeybreadsoftware.de&quot;</span><br />e.SetServer <span style="color: #6600FE;">&quot;smtprelaypool.ispgateway.de&quot;</span>, <span style="color: #0000FF;">true</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Sets which SMTP server to use.<BR>
+There are a few combinations possible.<BR>
+First you can use SetServer with SSL and pass true for UseURL parameter.<BR>
+<BR>
+Or you pass false for no SSL. Still you can use CURL&#39;s OptionFTPSSL set to 3 to allow TLS for an upgrade of the unencrypted connection to SSL later. <BR>
+<BR>
+Some servers don&#39;t support unencrypted, SSL or TLS, so only one may work.<BR>
+<BR>
+And ports can be difficult, too. You can use CURL OptionPort to set a port explicit or include it in the server with double colon on the end. common ports are 25, 587 or 465.<BR>
+<BR>
+Port 465 usually Requires UseSSL=true, but other ports need UseSSL=false.<BR>
+Sets UseSSL property.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-curlemailmbs.html">CURLEmailMBS</a>.<A name="20">TOs as String()</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion143.shtml" class=version>14.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Queries list of TO recipients.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-curlemailmbs.html">CURLEmailMBS</A><br /><br />e.AddTo <span style="color: #6600FE;">&quot;test@monkeybreadsoftware.test&quot;</span>, <span style="color: #6600FE;">&quot;Test M&uuml;ller&quot;</span><br /><br /><span style="color: #0000FF;">dim</span> TOs() <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = e.TOs<br />MsgBox TOs(<span style="color: #336698;">0</span>)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+Entries may be encoded if necessary.<BR>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=curl-curlemailmbs-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

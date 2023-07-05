@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /MacCG/CoreGraphics PDF/PDF with paths and gradient</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /MacCG/CoreGraphics PDF/PDF with paths and gradient</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/MacCG/CoreGraphics PDF/PDF with paths and gradient</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS MacCG Plugin, MBS MacCF Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /MacCG/CoreGraphics PDF/PDF with paths and gradient<BR>
+This example is the version from Sun, 23th Sep 2017.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;PDF</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">paths</span> <span style="color:#6500FE">and</span> <span style="color:#6500FE">gradient.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar Menu</div>
+<div class="RB_Code">		MenuItem UntitledMenu3 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem UntitledMenu2 = <span style="color:#6500FE">&quot;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;Quit&quot;</span></div>
+<div class="RB_Code">		MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cut&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;Clear&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Window1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Original</span> <span style="color:#7F0000;text-style:italic">example</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">found</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">Apple&#39;s</span> <span style="color:#7F0000;text-style:italic">Website.</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Translation</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">C</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">quite</span> <span style="color:#7F0000;text-style:italic">easy</span> <span style="color:#7F0000;text-style:italic">;-)</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> c <span style="color:#0000FF;font-weight: bold">as</span> CGContextMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+			<span style="color:#0000FF;font-weight: bold">dim</span> r <span style="color:#0000FF;font-weight: bold">as</span> CGRectMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> kSize, kHalfSize, kTenthSize <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Single</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> location(<span style="color:#326598">5</span>) <span style="color:#0000FF;font-weight: bold">as</span> CGPointMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> rgbBlue(<span style="color:#326598">2</span>)  <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">single</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> rgbwhite(<span style="color:#326598">2</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">single</span>
+			
+			rgbBlue(<span style="color:#326598">0</span>)=<span style="color:#006532">0.4</span>
+			rgbBlue(<span style="color:#326598">1</span>)=<span style="color:#006532">0.7</span>
+			rgbBlue(<span style="color:#326598">2</span>)=<span style="color:#006532">1.0</span>
+			
+			rgbwhite(<span style="color:#326598">0</span>)=<span style="color:#006532">1.0</span>
+			rgbwhite(<span style="color:#326598">1</span>)=<span style="color:#006532">1.0</span>
+			rgbwhite(<span style="color:#326598">2</span>)=<span style="color:#006532">1.0</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">const</span> kMediaHeight=<span style="color:#006532">100.0</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> kMediaWidth=<span style="color:#006532">100.0</span>
+			
+			f=SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;RB</span> <span style="color:#6500FE">Path</span> <span style="color:#6500FE">Demo2.pdf&quot;</span>)
+			
+			r=CGMakeRectMBS(<span style="color:#326598">0</span>,<span style="color:#326598">0</span>,kMediaWidth,kMediaHeight)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Create</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">context</span>
+			c=CGNewPDFDocumentMBS(f,r,<span style="color:#6500FE">&quot;PDF</span> <span style="color:#6500FE">from</span> <span style="color:#6500FE">Xojo&quot;</span>,<span style="color:#6500FE">&quot;Christian</span> <span style="color:#6500FE">Schmitz&quot;</span>,<span style="color:#6500FE">&quot;MBS</span> <span style="color:#6500FE">Plugin</span> <span style="color:#6500FE">2.7&quot;</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> c&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				kSize=kMediaHeight*<span style="color:#006532">0.9</span>
+				kHalfSize=kSize*<span style="color:#006532">0.5</span>
+				kTenthSize=kSize*<span style="color:#006532">0.1</span>
+				
+				location(<span style="color:#326598">0</span>)=CGMakePointMBS(kTenthSize,<span style="color:#326598">0</span>)
+				location(<span style="color:#326598">1</span>)=CGMakePointMBS(kHalfSize,kSize-kTenthSize)
+				location(<span style="color:#326598">2</span>)=CGMakePointMBS(kSize-kTenthSize,<span style="color:#326598">0</span>)
+				location(<span style="color:#326598">3</span>)=CGMakePointMBS(<span style="color:#326598">0</span>,kHalfSize)
+				location(<span style="color:#326598">4</span>)=CGMakePointMBS(kSize,kHalfSize)
+				location(<span style="color:#326598">5</span>)=CGMakePointMBS(kTenthSize,<span style="color:#326598">0</span>)
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">We</span> <span style="color:#7F0000;text-style:italic">must</span> <span style="color:#7F0000;text-style:italic">begin</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">page</span> <span style="color:#7F0000;text-style:italic">before</span> <span style="color:#7F0000;text-style:italic">drawing</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">PDF</span> <span style="color:#7F0000;text-style:italic">context</span>
+				c.BeginPage(r)
+				<span style="color:#7F0000;text-style:italic">//</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Just</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">fun,</span> <span style="color:#7F0000;text-style:italic">skew</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">star</span> <span style="color:#7F0000;text-style:italic">slightly</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">rotating</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">CTM</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">little</span> <span style="color:#7F0000;text-style:italic">bit.</span>
+				<span style="color:#7F0000;text-style:italic">//</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Since</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">rotation</span> <span style="color:#7F0000;text-style:italic">will</span> <span style="color:#7F0000;text-style:italic">otherwise</span> <span style="color:#7F0000;text-style:italic">cause</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">tip</span> <span style="color:#7F0000;text-style:italic">of</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">one</span> <span style="color:#7F0000;text-style:italic">edge</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">star</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">clipped,</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">translate</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">CTM</span> <span style="color:#7F0000;text-style:italic">ten</span> <span style="color:#7F0000;text-style:italic">units</span> <span style="color:#7F0000;text-style:italic">horizontally</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">make</span> <span style="color:#7F0000;text-style:italic">sure</span> <span style="color:#7F0000;text-style:italic">the</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">entire</span> <span style="color:#7F0000;text-style:italic">star</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">visible</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">resulting</span> <span style="color:#7F0000;text-style:italic">image.</span>
+				<span style="color:#7F0000;text-style:italic">//</span>
+				c.TranslateCTM(<span style="color:#326598">10</span>,<span style="color:#326598">0</span>)
+				c.RotateCTM(<span style="color:#006532">0.1</span>)
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Clip</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">star&#39;s</span> <span style="color:#7F0000;text-style:italic">interior.</span>
+				<span style="color:#7F0000;text-style:italic">//</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Normally,</span> <span style="color:#7F0000;text-style:italic">we&#39;d</span> <span style="color:#7F0000;text-style:italic">save</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">graphics</span> <span style="color:#7F0000;text-style:italic">state</span> <span style="color:#7F0000;text-style:italic">before</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">clipping,</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">restore</span> <span style="color:#7F0000;text-style:italic">after</span> <span style="color:#7F0000;text-style:italic">drawing,</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">preserve</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">current</span> <span style="color:#7F0000;text-style:italic">clipping</span> <span style="color:#7F0000;text-style:italic">path.</span> <span style="color:#7F0000;text-style:italic">In</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">case,</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">leave</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">clipped</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">interior</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">star.</span> <span style="color:#7F0000;text-style:italic">When</span> <span style="color:#7F0000;text-style:italic">we</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">stroke</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">outline</span> <span style="color:#7F0000;text-style:italic">below,</span> <span style="color:#7F0000;text-style:italic">only</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">interior</span> <span style="color:#7F0000;text-style:italic">of</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">stroke</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">painted,</span> <span style="color:#7F0000;text-style:italic">making</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">star</span> <span style="color:#7F0000;text-style:italic">appear</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">less</span> <span style="color:#7F0000;text-style:italic">substantial.</span>
+				c.AddLines location
+				c.EOClip
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Fill</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">clipped</span> <span style="color:#7F0000;text-style:italic">area</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">restore</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">clipping</span> <span style="color:#7F0000;text-style:italic">path</span>
+				PaintCircularGradient c,kMediaWidth*<span style="color:#006532">0.5</span>, kMediaWidth*<span style="color:#006532">0.5</span>, kMediaWidth, rgbwhite, rgbBlue, <span style="color:#326598">2</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">FillPath</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">EOFillPath</span> <span style="color:#7F0000;text-style:italic">always</span> <span style="color:#7F0000;text-style:italic">clear</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">path,</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">so</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">need</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">add</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">lines</span> <span style="color:#7F0000;text-style:italic">again</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">draw</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">star</span> <span style="color:#7F0000;text-style:italic">outline</span>
+				c.AddLines location
+				c.StrokePath
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">We&#39;ve</span> <span style="color:#7F0000;text-style:italic">finished</span> <span style="color:#7F0000;text-style:italic">rendering</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">page</span>
+				c.EndPage
+				c.Flush
+				
+				c=<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">force</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">file</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">written</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">want</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">launch</span> <span style="color:#7F0000;text-style:italic">it</span>
+				f.Launch
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				MsgBox <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">creator</span> <span style="color:#6500FE">file!&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			quit
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> PaintCircularGradient(c <span style="color:#0000FF;font-weight: bold">as</span> cgcontextMBS, x <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">single</span>, y <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">single</span>, size <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">single</span>, fromcolor() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">single</span>, tocolor() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">single</span>, steper <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">single</span>)
+			<span style="color:#7F0000;text-style:italic">//</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">PaintCircularGradient</span>
+			<span style="color:#7F0000;text-style:italic">//</span>
+			<span style="color:#7F0000;text-style:italic">//</span>  <span style="color:#7F0000;text-style:italic">Fill</span> <span style="color:#7F0000;text-style:italic">(with</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">gradient)</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">circle</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">size</span> <span style="color:#7F0000;text-style:italic">&quot;size&quot;</span> <span style="color:#7F0000;text-style:italic">extending</span> <span style="color:#7F0000;text-style:italic">outward</span> <span style="color:#7F0000;text-style:italic">in</span>
+			<span style="color:#7F0000;text-style:italic">//</span>  <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">directions</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">center</span> <span style="color:#7F0000;text-style:italic">point</span> <span style="color:#7F0000;text-style:italic">&quot;x,y&quot;.</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">gradient</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">circular,</span>
+			<span style="color:#7F0000;text-style:italic">//</span>  <span style="color:#7F0000;text-style:italic">extending</span> <span style="color:#7F0000;text-style:italic">outward</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">center</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">circle</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">edge</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span>
+			<span style="color:#7F0000;text-style:italic">//</span>  <span style="color:#7F0000;text-style:italic">circle.</span>
+			<span style="color:#7F0000;text-style:italic">//</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> diffcolor(<span style="color:#326598">2</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Single</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> index <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> r,g,b <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Single</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> kFullCircleAngle <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Single</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Precalculate</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">difference</span> <span style="color:#7F0000;text-style:italic">between</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">two</span> <span style="color:#7F0000;text-style:italic">colors.</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Subtractions</span> <span style="color:#7F0000;text-style:italic">tend</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">cheap</span> <span style="color:#7F0000;text-style:italic">compared</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">multiplies,</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">but</span> <span style="color:#7F0000;text-style:italic">it&#39;s</span> <span style="color:#7F0000;text-style:italic">generally</span> <span style="color:#7F0000;text-style:italic">good</span> <span style="color:#7F0000;text-style:italic">practice</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">move</span> <span style="color:#7F0000;text-style:italic">unchanging</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">values</span> <span style="color:#7F0000;text-style:italic">out</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">inner</span> <span style="color:#7F0000;text-style:italic">loops.</span> <span style="color:#7F0000;text-style:italic">(In</span> <span style="color:#7F0000;text-style:italic">theory,</span> <span style="color:#7F0000;text-style:italic">compilers</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">should</span> <span style="color:#7F0000;text-style:italic">do</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">you.</span> <span style="color:#7F0000;text-style:italic">In</span> <span style="color:#7F0000;text-style:italic">practice,</span> <span style="color:#7F0000;text-style:italic">most</span> <span style="color:#7F0000;text-style:italic">compilers</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">do</span> <span style="color:#7F0000;text-style:italic">not.)</span>
+			<span style="color:#7F0000;text-style:italic">//</span>
+			diffcolor(<span style="color:#326598">0</span>)=tocolor(<span style="color:#326598">0</span>)-fromcolor(<span style="color:#326598">0</span>)
+			diffcolor(<span style="color:#326598">1</span>)=tocolor(<span style="color:#326598">1</span>)-fromcolor(<span style="color:#326598">1</span>)
+			diffcolor(<span style="color:#326598">2</span>)=tocolor(<span style="color:#326598">2</span>)-fromcolor(<span style="color:#326598">2</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">2</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">full</span> <span style="color:#7F0000;text-style:italic">circle</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">radians</span>
+			kFullCircleAngle = <span style="color:#326598">2</span> * <span style="color:#006532">3.14159265358979323846</span>
+			
+			index=size
+			<span style="color:#0000FF;font-weight: bold">while</span> index&gt;<span style="color:#326598">0</span>
+				r=fromcolor(<span style="color:#326598">0</span>)+(diffcolor(<span style="color:#326598">0</span>)*index/size)
+				g=fromcolor(<span style="color:#326598">1</span>)+(diffcolor(<span style="color:#326598">1</span>)*index/size)
+				b=fromcolor(<span style="color:#326598">2</span>)+(diffcolor(<span style="color:#326598">2</span>)*index/size)
+				
+				<span style="color:#7F0000;text-style:italic">//</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">To</span> <span style="color:#7F0000;text-style:italic">calculate</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">blend</span> <span style="color:#7F0000;text-style:italic">between</span> <span style="color:#7F0000;text-style:italic">two</span> <span style="color:#7F0000;text-style:italic">colors,</span> <span style="color:#7F0000;text-style:italic">imagine</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">with</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">fixed</span> <span style="color:#7F0000;text-style:italic">endpoints.</span> <span style="color:#7F0000;text-style:italic">At</span> <span style="color:#7F0000;text-style:italic">either</span> <span style="color:#7F0000;text-style:italic">end</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">one</span> <span style="color:#7F0000;text-style:italic">solid</span> <span style="color:#7F0000;text-style:italic">color,</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">between</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">range</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">blended</span> <span style="color:#7F0000;text-style:italic">colors</span> <span style="color:#7F0000;text-style:italic">between</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">two</span> <span style="color:#7F0000;text-style:italic">solid</span> <span style="color:#7F0000;text-style:italic">colors.</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">To</span> <span style="color:#7F0000;text-style:italic">calculate</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">blend,</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">multiply</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">difference</span> <span style="color:#7F0000;text-style:italic">between</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">two</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">values</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">desired</span> <span style="color:#7F0000;text-style:italic">point</span> <span style="color:#7F0000;text-style:italic">along</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">line</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">(represented</span> <span style="color:#7F0000;text-style:italic">here</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">&quot;index&quot;),</span> <span style="color:#7F0000;text-style:italic">divide</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">size</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">to</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">keep</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">value</span> <span style="color:#7F0000;text-style:italic">within</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">range,</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">add</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">result</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">starting</span> <span style="color:#7F0000;text-style:italic">end</span> <span style="color:#7F0000;text-style:italic">point.</span>
+				<span style="color:#7F0000;text-style:italic">//</span>
+				c.SetRGBFillColor r,g,b,<span style="color:#006532">1.0</span>
+				
+				c.AddArc x, y, index, kFullCircleAngle, <span style="color:#006532">0.0</span>, <span style="color:#0000FF;font-weight: bold">true</span>
+				c.FillPath
+				
+				indeX=index-steper
+			<span style="color:#0000FF;font-weight: bold">wend</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-maccg-coregraphicsbitmap.html">/MacCG/CoreGraphics Bitmap</A></li>
+<li><A href="example-maccg-coregraphicsdirectdisplay-capturescreenwithcgcontextmbs.html">/MacCG/CoreGraphics DirectDisplay/Capture Screen with CGContextMBS</A></li>
+<li><A href="example-maccg-coregraphicsdirectdisplay-cgdisplaystreameventtest.html">/MacCG/CoreGraphics DirectDisplay/CGDisplayStreamEvent test</A></li>
+<li><A href="example-maccg-coregraphicsdirectdisplay-cgscreenrefresheventtest.html">/MacCG/CoreGraphics DirectDisplay/CGScreenRefreshEvent Test</A></li>
+<li><A href="example-maccg-coregraphicspdf-createpdfwithpicture.html">/MacCG/CoreGraphics PDF/Create PDF with Picture</A></li>
+<li><A href="example-maccg-coregraphicspdf-getpicturepdf.html">/MacCG/CoreGraphics PDF/Getpicture PDF</A></li>
+<li><A href="example-maccg-coregraphicspdf-pdffontlist.html">/MacCG/CoreGraphics PDF/PDF Font list</A></li>
+<li><A href="example-maccg-coregraphicspdf-pdfusingsaveandrestore.html">/MacCG/CoreGraphics PDF/PDF using Save and Restore</A></li>
+<li><A href="example-maccg-coregraphicspdf-pdfviewerwhiteonblack.html">/MacCG/CoreGraphics PDF/PDF Viewer White on Black</A></li>
+<li><A href="example-maccg-coregraphicspdf-simplemakepdf.html">/MacCG/CoreGraphics PDF/Simple Make PDF</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-maccg-coregraphicspdf-pdfwithpathsandgradient">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

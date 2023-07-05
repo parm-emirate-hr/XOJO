@@ -1,0 +1,678 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - PortAudioMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="PortAudioMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">PortAudioMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-portaudiombs.html">PortAudioMBS</a> class.  </p>
+<div class="WLM">
+<b><a href="class-portaudiombs.html">PortAudioMBS</a>.<A name="1">CountDevices as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-audio.html" translate="no">Audio</A></td>
+<td class=grau><a href="plugins-mbsaudioplugin.html">MBS Audio Plugin</a></td>
+<td class=grau><a href="newinversion60.shtml" class=version>6.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Retrieve the number of available devices.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> pa <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-portaudiombs.html">PortAudioMBS</A><br /><br /><span style="color: #0000FF;">Dim</span> c <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = pa.CountDevices<br />msgbox str(c)+<span style="color: #6600FE;">&quot; devices found&quot;</span><br /><br /><span style="color: #0000FF;">for</span> i <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = <span style="color: #336698;">0</span> <span style="color: #0000FF;">to</span> c-<span style="color: #336698;">1</span><br />  MsgBox pa.DeviceInfo(i).Name<br /><span style="color: #0000FF;">next</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+The number of available devices may be zero.<BR>
+<BR>
+Returns a non-negative value indicating the number of available devices or, a PaErrorCode (which are always negative) if PortAudio is not initialized or an error is encountered.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-portaudiombs.html">PortAudioMBS</a>.<A name="2">DefaultHostApiIndexd as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-audio.html" translate="no">Audio</A></td>
+<td class=grau><a href="plugins-mbsaudioplugin.html">MBS Audio Plugin</a></td>
+<td class=grau><a href="newinversion70.shtml" class=version>7.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Retrieve the index of the default host API. <BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> pa <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-portaudiombs.html">PortAudioMBS</A><br /><br /><span style="color: #0000FF;">dim</span> DefaultHostApiIndexd <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = pa.DefaultHostApiIndexd<br /><br /><span style="color: #0000FF;">if</span> DefaultHostApiIndexd&gt;=0 <span style="color: #0000FF;">then</span><br />  <span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <A href="class-portaudiohostapiinfombs.html">PortAudioHostApiInfoMBS</A> = pa.HostApiInfo(DefaultHostApiIndexd)<br />  MsgBox <span style="color: #6600FE;">&quot;Default host API is: &quot;</span>+d.Name<br /><span style="color: #0000FF;">else</span><br />  MsgBox <span style="color: #6600FE;">&quot;No default host API.&quot;</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+The default host API will be the lowest common denominator host API on the current platform and is unlikely to provide the best performance.<BR>
+<BR>
+Returns a non-negative value ranging from 0 to (HostApiCount-1)indicating the default host API index or, a PaErrorCode (which are always negative) if PortAudio is not initialized or an error is encountered.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-audio-portaudio.html">/Audio/PortAudio</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-portaudiombs.html">PortAudioMBS</a>.<A name="3">DefaultInputDeviceID as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-audio.html" translate="no">Audio</A></td>
+<td class=grau><a href="plugins-mbsaudioplugin.html">MBS Audio Plugin</a></td>
+<td class=grau><a href="newinversion60.shtml" class=version>6.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Retrieve the index of the default input device.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> pa <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-portaudiombs.html">PortAudioMBS</A><br /><br /><span style="color: #0000FF;">dim</span> DefaultInputDeviceID <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = pa.DefaultInputDeviceID<br /><br /><span style="color: #0000FF;">if</span> DefaultInputDeviceID&gt;=0 <span style="color: #0000FF;">then</span><br />  <span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <A href="class-portaudiodeviceinfombs.html">PortAudioDeviceInfoMBS</A> = pa.DeviceInfo(DefaultInputDeviceID)<br />  MsgBox <span style="color: #6600FE;">&quot;Default input device is: &quot;</span>+d.Name<br /><span style="color: #0000FF;">else</span><br />  MsgBox <span style="color: #6600FE;">&quot;No default input device.&quot;</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+The result can be used in the inputDevice parameter to OpenStream().<BR>
+<BR>
+Returns the default input device index for the default host API, or paNoDevice (-1) if no default input device is available or an error was encountered.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-portaudiombs.html">PortAudioMBS</a>.<A name="4">DefaultOutputDeviceID as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-audio.html" translate="no">Audio</A></td>
+<td class=grau><a href="plugins-mbsaudioplugin.html">MBS Audio Plugin</a></td>
+<td class=grau><a href="newinversion60.shtml" class=version>6.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Retrieve the index of the default output device.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> pa <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-portaudiombs.html">PortAudioMBS</A><br /><br /><span style="color: #0000FF;">dim</span> DefaultOutputDeviceID <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = pa.DefaultOutputDeviceID<br /><br /><span style="color: #0000FF;">if</span> DefaultOutputDeviceID&gt;=0 <span style="color: #0000FF;">then</span><br />  <span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <A href="class-portaudiodeviceinfombs.html">PortAudioDeviceInfoMBS</A> = pa.DeviceInfo(DefaultOutputDeviceID)<br />  MsgBox <span style="color: #6600FE;">&quot;Default output device is: &quot;</span>+d.Name<br /><span style="color: #0000FF;">else</span><br />  MsgBox <span style="color: #6600FE;">&quot;No default output device.&quot;</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+The result can be used in the outputDevice parameter to OpenStream().<BR>
+<BR>
+Returns the default output device index for the defualt host API, or paNoDevice (-1) if no default output device is available or an error was encountered.<BR>
+<BR>
+On the PC, the user can specify a default device by setting an environment variable. For example, to use device #1.<BR>
+set PA_RECOMMENDED_OUTPUT_DEVICE=1<BR>
+The user should first determine the available device ids by using the supplied application &quot;pa_devs&quot;.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-portaudiombs.html">PortAudioMBS</a>.<A name="5">DeviceInfo(DeviceIndex as Integer) as <A href="class-portaudiodeviceinfombs.html">PortAudioDeviceInfoMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-audio.html" translate="no">Audio</A></td>
+<td class=grau><a href="plugins-mbsaudioplugin.html">MBS Audio Plugin</a></td>
+<td class=grau><a href="newinversion60.shtml" class=version>6.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Retrieve an object containing information about the specified device.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> pa <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-portaudiombs.html">PortAudioMBS</A><br /><br /><span style="color: #0000FF;">Dim</span> u <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = pa.CountDevices-<span style="color: #336698;">1</span><br /><span style="color: #0000FF;">for</span> i <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = <span style="color: #336698;">0</span> <span style="color: #0000FF;">to</span> u<br />  <span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <A href="class-portaudiodeviceinfombs.html">PortAudioDeviceInfoMBS</A> = pa.DeviceInfo(i)<br />  MsgBox d.Name+<span style="color: #6600FE;">&quot; with default &quot;</span>+str(D.DefaultSampleRate)+<span style="color: #6600FE;">&quot; Hz&quot;</span><br /><span style="color: #0000FF;">next</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Returns an object of class <A href="class-portaudiodeviceinfombs.html">PortAudioDeviceInfoMBS</A> with the requested information. If the device parameter is out of range the function returns nil.<BR>
+<BR>
+DeviceIndex: A valid device index in the range 0 to (<A href="class-portaudiombs.html">PortAudioMBS</A>.CountDevices-1)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-portaudiombs.html">PortAudioMBS</a>.<A name="6">ErrorText(ErrorNumber as Integer) as string</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-audio.html" translate="no">Audio</A></td>
+<td class=grau><a href="plugins-mbsaudioplugin.html">MBS Audio Plugin</a></td>
+<td class=grau><a href="newinversion60.shtml" class=version>6.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Translate the error number into a human readable message.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-portaudiombs.html">PortAudioMBS</a>.<A name="7">GetSampleSize(Format as Integer) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-audio.html" translate="no">Audio</A></td>
+<td class=grau><a href="plugins-mbsaudioplugin.html">MBS Audio Plugin</a></td>
+<td class=grau><a href="newinversion70.shtml" class=version>7.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns the sample size in bytes of the given format.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> pa <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-portaudiombs.html">PortAudioMBS</A><br /><br /><span style="color: #0000FF;">const</span> paFloat32    = <span style="color: #336698;">1</span><br /><br />MsgBox str(pa.GetSampleSize(paFloat32))+<span style="color: #6600FE;">&quot; bytes per sample&quot;</span></span>
+</pre>
+</div>
+</div>
+<div class="WLM">
+<b><a href="class-portaudiombs.html">PortAudioMBS</a>.<A name="8">HostApiCount as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-audio.html" translate="no">Audio</A></td>
+<td class=grau><a href="plugins-mbsaudioplugin.html">MBS Audio Plugin</a></td>
+<td class=grau><a href="newinversion70.shtml" class=version>7.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Retrieve the number of available host APIs. <BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> pa <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-portaudiombs.html">PortAudioMBS</A><br /><br /><span style="color: #0000FF;">Dim</span> c <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = pa.HostApiCount<br />msgbox str(c)+<span style="color: #6600FE;">&quot; host APIs found&quot;</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Even if a host API is available it may have no devices available.<BR>
+<BR>
+Returns a non-negative value indicating the number of available host APIs or, a PaErrorCode (which are always negative) if PortAudio is not initialized or an error is encountered.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-audio-portaudio.html">/Audio/PortAudio</A></li>
+<li><A href="example-tools-ltc-ltctest.html">/Tools/LTC/LTC Test</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-portaudiombs.html">PortAudioMBS</a>.<A name="9">HostApiDeviceIndexToDeviceIndex(hostApiIndex as Integer, hostApiDeviceIndex as Integer) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-audio.html" translate="no">Audio</A></td>
+<td class=grau><a href="plugins-mbsaudioplugin.html">MBS Audio Plugin</a></td>
+<td class=grau><a href="newinversion70.shtml" class=version>7.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Convert a host-API-specific device index to standard PortAudio device index.<BR>
+<B>Notes:</B> 
+<BR>
+This function may be used in conjunction with the deviceCount field of PaHostApiInfo to enumerate all devices for the specified host API.<BR>
+<BR>
+hostApiIndex: A valid host API index ranging from 0 to (HostApiCount-1)<BR>
+hostApiDeviceIndex: A valid per-host device index in the range 0 to (HostApiInfo(hostApi).deviceCount-1)<BR>
+<BR>
+Returns a non-negative device index ranging from 0 to (DeviceCount-1) or, an error code (which are always negative) if PortAudio is not initialized or an error is encountered.<BR>
+<BR>
+A paInvalidHostApi (-9978) error code indicates that the host API index specified by the hostApi parameter is out of range.<BR>
+<BR>
+A paInvalidDevice (-9996) error code indicates that the hostApiDeviceIndex parameter is out of range.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-audio-portaudio.html">/Audio/PortAudio</A></li>
+<li><A href="example-tools-ltc-ltctest.html">/Tools/LTC/LTC Test</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-portaudiombs.html">PortAudioMBS</a>.<A name="10">HostApiInfo(hostApiIndex as Integer) as <A href="class-portaudiohostapiinfombs.html">PortAudioHostApiInfoMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-audio.html" translate="no">Audio</A></td>
+<td class=grau><a href="plugins-mbsaudioplugin.html">MBS Audio Plugin</a></td>
+<td class=grau><a href="newinversion70.shtml" class=version>7.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Retrieve an <A href="class-portaudiohostapiinfombs.html">PortAudioHostApiInfoMBS</A> object containing information about a specific host Api.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> pa <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-portaudiombs.html">PortAudioMBS</A><br /><span style="color: #0000FF;">Dim</span> u <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = pa.HostApiCount - <span style="color: #336698;">1</span><br /><br /><span style="color: #0000FF;">for</span> i <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = <span style="color: #336698;">0</span> <span style="color: #0000FF;">to</span> u<br />  <span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <A href="class-portaudiohostapiinfombs.html">PortAudioHostApiInfoMBS</A> = pa.HostApiInfo(i)<br />  MsgBox d.name<br /><span style="color: #0000FF;">next</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+hostApiIndex: A valid host API index ranging from 0 to (HostApiCount-1)<BR>
+<BR>
+Returns the information object. If the hostApi parameter is out of range or an error is encountered, the function returns nil.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-audio-portaudio.html">/Audio/PortAudio</A></li>
+<li><A href="example-tools-ltc-ltctest.html">/Tools/LTC/LTC Test</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-portaudiombs.html">PortAudioMBS</a>.<A name="11">HostApiTypeIdToHostApiIndex(type as Integer) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-audio.html" translate="no">Audio</A></td>
+<td class=grau><a href="plugins-mbsaudioplugin.html">MBS Audio Plugin</a></td>
+<td class=grau><a href="newinversion70.shtml" class=version>7.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Convert a static host API unique identifier, into a runtime host API index.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> IndexDirectSound <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span><br /><span style="color: #0000FF;">dim</span> p <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-portaudiombs.html">PortAudioMBS</A><br /><span style="color: #0000FF;">const</span> paDirectSound=1<br />IndexDirectSound=p.HostApiTypeIdToHostApiIndex(paDirectSound)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+type: A unique host API identifier. See <A href="class-portaudiohostapiinfombs.html">PortAudioHostApiInfoMBS</A>.Type for the list of constants.<BR>
+<BR>
+Returns a valid PaHostApiIndex ranging from 0 to (HostApiCount-1) or, a PaErrorCode (which are always negative) if PortAudio is not initialized or an error is encountered.<BR>
+<BR>
+The paHostApiNotFound (-9979) error code indicates that the host API specified by the type parameter is not available.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-portaudiombs.html">PortAudioMBS</a>.<A name="12">HostError as <A href="class-portaudiohosterrorinfombs.html">PortAudioHostErrorInfoMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-audio.html" translate="no">Audio</A></td>
+<td class=grau><a href="plugins-mbsaudioplugin.html">MBS Audio Plugin</a></td>
+<td class=grau><a href="newinversion70.shtml" class=version>7.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return information about the last host error encountered.<BR>
+<B>Notes:</B> 
+<BR>
+This function is provided as a last resort, primarily to enhance debugging by providing clients with access to all available error information.<BR>
+<BR>
+Returns an object constaining information about the host error. The values in this structure will only be valid if a PortAudio function has previously returned the paUnanticipatedHostError.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-portaudiombs.html">PortAudioMBS</a>.<A name="13">IsFormatSupported(input as <A href="class-portaudiostreamparametersmbs.html">PortAudioStreamParametersMBS</A>, output as <A href="class-portaudiostreamparametersmbs.html">PortAudioStreamParametersMBS</A>, sampleRate as Double) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-audio.html" translate="no">Audio</A></td>
+<td class=grau><a href="plugins-mbsaudioplugin.html">MBS Audio Plugin</a></td>
+<td class=grau><a href="newinversion70.shtml" class=version>7.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Determine whether it would be possible to open a stream with the specified parameters.<BR>
+<B>Notes:</B> 
+<BR>
+input: An object that describes the input parameters used to open a stream. The suggestedLatency field is ignored. inputParameters must be nil for output-only streams.<BR>
+<BR>
+output: An object that describes the output parameters used to open a stream. The suggestedLatency field is ignored. outputParameters must be nil for input-only streams.<BR>
+<BR>
+sampleRate: The required sampleRate. For full-duplex streams it is the sample rate for both input and output<BR>
+<BR>
+Returns 0 if the format is supported, and an error code indicating why the format is not supported otherwise. The constant paFormatIsSupported (0) is provided to compare with the return value for success.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-portaudiombs.html">PortAudioMBS</a>.<A name="14">SampleSize(theFormat as Integer) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-audio.html" translate="no">Audio</A></td>
+<td class=grau><a href="plugins-mbsaudioplugin.html">MBS Audio Plugin</a></td>
+<td class=grau><a href="newinversion60.shtml" class=version>6.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return size in bytes of a single sample in a given sample format or paSampleFormatNotSupported (-9994).<BR>
+<B>Notes:</B> 
+<BR>
+Returns 0 on any error.<BR>
+<BR>
+Constants for sample format:<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">const paFloat32</TD><TD valign="top">= 1</TD></TR>
+<TR><TD valign="top">const paInt32</TD><TD valign="top">= 2</TD></TR>
+<TR><TD valign="top">const paInt24</TD><TD valign="top">= 4</TD></TR>
+<TR><TD valign="top">const paInt16</TD><TD valign="top">= 8</TD></TR>
+<TR><TD valign="top">const paInt8</TD><TD valign="top">= 16</TD></TR>
+<TR><TD valign="top">const paUInt8</TD><TD valign="top">= 32</TD></TR>
+<TR><TD valign="top">const paCustomFormat</TD><TD valign="top">= 65536</TD></TR>
+<TR><TD valign="top">const paNonInterleaved</TD><TD valign="top">= negative sign</TD></TR>
+</TABLE>
+<BR>
+The standard formats paFloat32, paInt16, paInt32, paInt24, paInt8 and aUInt8 are usually implemented by all implementations.<BR>
+<BR>
+The floating point representation (paFloat32) uses +1.0 and -1.0 as the maximum and minimum respectively.<BR>
+<BR>
+paUInt8 is an unsigned 8 bit format where 128 is considered &quot;ground&quot;<BR>
+<BR>
+The paNonInterleaved flag indicates that a multichannel buffer is passed as a set of non-interleaved pointers.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-portaudiombs.html">PortAudioMBS</a>.<A name="15">Sleep(msec as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-audio.html" translate="no">Audio</A></td>
+<td class=grau><a href="plugins-mbsaudioplugin.html">MBS Audio Plugin</a></td>
+<td class=grau><a href="newinversion70.shtml" class=version>7.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Put the caller to sleep for at least &#39;msec&#39; milliseconds.<BR>
+<B>Notes:</B> 
+<BR>
+This function is provided only as a convenience for authors of portable code (such as the tests and examples in the PortAudio distribution.)<BR>
+The function may sleep longer than requested so don&#39;t rely on this for accurate musical timing.<BR>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsaudioplugin.html">MBS Audio Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=audio-portaudiombs-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

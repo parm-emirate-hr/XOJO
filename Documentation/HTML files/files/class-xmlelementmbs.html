@@ -1,0 +1,356 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - XMLElementMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="XMLElementMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">XMLElementMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>XMLElementMBS class</H3>
+<P>Super class: <A href="class-xmlnodembs.html">XMLNodeMBS</A></p>
+<div class="WLMI">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-xml.html" translate="no">XML</A></td>
+<td class=grau><a href="plugins-mbsxmlplugin.html">MBS XML Plugin</a></td>
+<td class=grau><a href="newinversion224.shtml" class=version>22.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The class for a XML element.<BR>
+<B>Notes:</B> 
+<BR>
+By far the vast majority of objects (apart from text) that authors encounter when traversing a document are XMLElementMBS nodes.<BR>
+<BR>
+Assume the following XML document:<BR>
+<BR>
+&lt;elementExample id=&quot;demo&quot;&gt;<BR>
+&lt;subelement1/&gt;<BR>
+&lt;subelement2&gt;&lt;subsubelement/&gt;&lt;/subelement2&gt;<BR>
+&lt;/elementExample&gt; <BR>
+<BR>
+When represented using DOM, the top node is an XMLElementMBS node for &quot;elementExample&quot;, which contains two child XMLElementMBS nodes, one for &quot;subelement1&quot; and one for &quot;subelement2&quot;. &quot;subelement1&quot; contains no child nodes. <BR>
+<BR>
+Elements may have attributes associated with them; since the XMLElementMBS interface inherits from <A href="class-xmlnodembs.html">XMLNodeMBS</A>, the generic  <A href="class-xmlnodembs.html">XMLNodeMBS</A> interface method getAttributes may be used to retrieve the set of all attributes for an element.  There are methods on  the XMLElementMBS interface to retrieve either an <A href="class-xmlattributembs.html">XMLAttributeMBS</A>  object by name or an attribute value by name. In XML, where an attribute value may contain entity references, an <A href="class-xmlattributembs.html">XMLAttributeMBS</A> object should be retrieved to examine the possibly fairly complex sub-tree representing the attribute value. On the other hand, in HTML, where all attributes have simple string values, methods to directly access an attribute value can safely be used as a convenience.<BR>
+Subclass of the <A href="class-xmlnodembs.html">XMLNodeMBS</A> class.<BR>
+This is an abstract class. You can&#39;t create an instance, but you can get one from various plugin functions.<BR>
+</div>
+<ul>
+<LI>9 properties<UL>
+<li class="WLMI">property <A href="xml-xmlelementmbs-property.html">ChildElementCount</A> as Integer</li>
+<li class="WLMI">property <A href="xml-xmlelementmbs-property.html#2">FirstElementChild</A> as XMLElementMBS</li>
+<li class="WLMI">property <A href="xml-xmlelementmbs-property.html#3">LastElementChild</A> as XMLElementMBS</li>
+<li class="WLMI">property <A href="xml-xmlelementmbs-property.html#4">NextElementSibling</A> as XMLElementMBS</li>
+<li class="WLMI">property <A href="xml-xmlelementmbs-property.html#5">PreviousElementSibling</A> as XMLElementMBS</li>
+<li class="WLMI">property <A href="xml-xmlelementmbs-property.html#6">SchemaTypeInfo</A> as <A href="class-xmltypeinfombs.html">XMLTypeInfoMBS</A></li>
+<li class="WLMI">property <A href="xml-xmlelementmbs-property.html#7">TagName</A> as String</li>
+<li class="WLMI">property <A href="xml-xmlelementmbs-method.html#3">AttributeValue</A>(Name as String) as String</li>
+<li class="WLMI">property <A href="xml-xmlelementmbs-method.html#4">AttributeValueNS</A>(namespaceURI as string, localName as string) as string</li>
+</UL></LI>
+<LI>19 methods<UL>
+<li class="WLMI">method <A href="xml-xmlelementmbs-method.html">AttributeNode</A>(Name as String) as <A href="class-xmlattributembs.html">XMLAttributeMBS</A></li>
+<li class="WLMI">method <A href="xml-xmlelementmbs-method.html#2">AttributeNodeNS</A>(namespaceURI as string, localName as String) as <A href="class-xmlattributembs.html">XMLAttributeMBS</A></li>
+<li class="WLMI">method <A href="xml-xmlelementmbs-method.html#5">Constructor</A> &nbsp; <b style="color: #8B0000"> Private </b></li>
+<li class="WLMI">method <A href="xml-xmlelementmbs-method.html#6">Element</A>(Index as Integer) as XMLElementMBS</li>
+<li class="WLMI">method <A href="xml-xmlelementmbs-method.html#7">ElementsByTagName</A>(TagName as String) as XMLElementMBS()</li>
+<li class="WLMI">method <A href="xml-xmlelementmbs-method.html#8">ElementsByTagNameNS</A>(namespaceURI as string, localName as String) as XMLElementMBS()</li>
+<li class="WLMI">method <A href="xml-xmlelementmbs-method.html#9">HasAttribute</A>(Name as String) as Boolean</li>
+<li class="WLMI">method <A href="xml-xmlelementmbs-method.html#10">HasAttributeNS</A>(namespaceURI as string, localName as String) as Boolean</li>
+<li class="WLMI">method <A href="xml-xmlelementmbs-method.html#11">IterateElements</A> as <A href="class-xmliterateelementsmbs.html">XMLIterateElementsMBS</A></li>
+<li class="WLMI">method <A href="xml-xmlelementmbs-method.html#12">IterateElementsByTagName</A>(TagName as String) as <A href="class-xmliterateelementsmbs.html">XMLIterateElementsMBS</A></li>
+<li class="WLMI">method <A href="xml-xmlelementmbs-method.html#13">IterateElementsByTagNameNS</A>(namespaceURI as string, localName as String) as <A href="class-xmliterateelementsmbs.html">XMLIterateElementsMBS</A></li>
+<li class="WLMI">method <A href="xml-xmlelementmbs-method.html#14">RemoveAttribute</A>(Name as String)</li>
+<li class="WLMI">method <A href="xml-xmlelementmbs-method.html#15">RemoveAttributeNode</A>(Node as <A href="class-xmlattributembs.html">XMLAttributeMBS</A>)</li>
+<li class="WLMI">method <A href="xml-xmlelementmbs-method.html#16">RemoveAttributeNS</A>(namespaceURI as string, localName as string)</li>
+<li class="WLMI">method <A href="xml-xmlelementmbs-method.html#17">SetAttributeNode</A>(AttributeNode as <A href="class-xmlattributembs.html">XMLAttributeMBS</A>)</li>
+<li class="WLMI">method <A href="xml-xmlelementmbs-method.html#18">SetAttributeNodeNS</A>(AttributeNode as <A href="class-xmlattributembs.html">XMLAttributeMBS</A>)</li>
+<li class="WLMI">method <A href="xml-xmlelementmbs-method.html#19">SetIdAttribute</A>(name as string, isID as boolean)</li>
+<li class="WLMI">method <A href="xml-xmlelementmbs-method.html#20">SetIdAttributeNode</A>(idAttr as <A href="class-xmlattributembs.html">XMLAttributeMBS</A>, isID as boolean)</li>
+<li class="WLMI">method <A href="xml-xmlelementmbs-method.html#21">SetIdAttributeNS</A>(namespaceURI as string, localName as string, isID as boolean)</li>
+</UL></LI>
+</ul>
+<h4>Super class <A href="class-xmlnodembs.html">XMLNodeMBS</A></h4>
+<ul>
+<LI>20 properties<UL>
+<li class="WLMI">property <A href="xml-xmlnodembs-property.html">AttributeCount</A> as Integer</li>
+<li class="WLMI">property <A href="xml-xmlnodembs-property.html#2">BaseURI</A> as String</li>
+<li class="WLMI">property <A href="xml-xmlnodembs-property.html#3">ChildCount</A> as Integer</li>
+<li class="WLMI">property <A href="xml-xmlnodembs-property.html#4">FirstChild</A> as <A href="class-xmlnodembs.html">XMLNodeMBS</A></li>
+<li class="WLMI">property <A href="xml-xmlnodembs-property.html#5">Handle</A> as Integer</li>
+<li class="WLMI">property <A href="xml-xmlnodembs-property.html#6">hasAttributes</A> as Boolean</li>
+<li class="WLMI">property <A href="xml-xmlnodembs-property.html#7">hasChildren</A> as Boolean</li>
+<li class="WLMI">property <A href="xml-xmlnodembs-property.html#8">LastChild</A> as <A href="class-xmlnodembs.html">XMLNodeMBS</A></li>
+<li class="WLMI">property <A href="xml-xmlnodembs-property.html#9">LocalName</A> as String</li>
+<li class="WLMI">property <A href="xml-xmlnodembs-property.html#10">NamespaceURI</A> as String</li>
+<li class="WLMI">property <A href="xml-xmlnodembs-property.html#11">NextSibling</A> as <A href="class-xmlnodembs.html">XMLNodeMBS</A></li>
+<li class="WLMI">property <A href="xml-xmlnodembs-property.html#12">NodeName</A> as String</li>
+<li class="WLMI">property <A href="xml-xmlnodembs-property.html#13">NodeType</A> as Integer</li>
+<li class="WLMI">property <A href="xml-xmlnodembs-property.html#14">NodeValue</A> as String</li>
+<li class="WLMI">property <A href="xml-xmlnodembs-property.html#15">OwnerDocument</A> as <A href="class-xmldocumentmbs.html">XMLDocumentMBS</A></li>
+<li class="WLMI">property <A href="xml-xmlnodembs-property.html#16">ParentNode</A> as <A href="class-xmlnodembs.html">XMLNodeMBS</A></li>
+<li class="WLMI">property <A href="xml-xmlnodembs-property.html#17">Prefix</A> as String</li>
+<li class="WLMI">property <A href="xml-xmlnodembs-property.html#18">PreviousSibling</A> as <A href="class-xmlnodembs.html">XMLNodeMBS</A></li>
+<li class="WLMI">property <A href="xml-xmlnodembs-property.html#19">ReferenceCount</A> as Integer</li>
+<li class="WLMI">property <A href="xml-xmlnodembs-property.html#20">toString</A> as String</li>
+</UL></LI>
+<LI>19 methods<UL>
+<li class="WLMI">method <A href="xml-xmlnodembs-method.html">appendChild</A>(newChild as <A href="class-xmlnodembs.html">XMLNodeMBS</A>) as <A href="class-xmlnodembs.html">XMLNodeMBS</A></li>
+<li class="WLMI">method <A href="xml-xmlnodembs-method.html#2">AttributeNode</A>(Index as Integer) as <A href="class-xmlattributembs.html">XMLAttributeMBS</A></li>
+<li class="WLMI">method <A href="xml-xmlnodembs-method.html#3">AttributeNodes</A> as <A href="class-xmlattributembs.html">XMLAttributeMBS</A>()</li>
+<li class="WLMI">method <A href="xml-xmlnodembs-method.html#4">Child</A>(Index as Integer) as <A href="class-xmlnodembs.html">XMLNodeMBS</A></li>
+<li class="WLMI">method <A href="xml-xmlnodembs-method.html#5">ChildNodes</A> as <A href="class-xmlnodembs.html">XMLNodeMBS</A>()</li>
+<li class="WLMI">method <A href="xml-xmlnodembs-method.html#6">Clone</A>(deep as Boolean) as <A href="class-xmlnodembs.html">XMLNodeMBS</A></li>
+<li class="WLMI">method <A href="xml-xmlnodembs-method.html#7">compareDocumentPosition</A>(other as <A href="class-xmlnodembs.html">XMLNodeMBS</A>) as Integer</li>
+<li class="WLMI">method <A href="xml-xmlnodembs-method.html#8">Constructor</A> &nbsp; <b style="color: #8B0000"> Private </b></li>
+<li class="WLMI">method <A href="xml-xmlnodembs-method.html#9">insertBefore</A>(newChild as <A href="class-xmlnodembs.html">XMLNodeMBS</A>, refChild as <A href="class-xmlnodembs.html">XMLNodeMBS</A>) as <A href="class-xmlnodembs.html">XMLNodeMBS</A></li>
+<li class="WLMI">method <A href="xml-xmlnodembs-method.html#10">isDefaultNamespace</A>(namespaceURI as String) as Boolean</li>
+<li class="WLMI">method <A href="xml-xmlnodembs-method.html#11">isEqualNode</A>(other as <A href="class-xmlnodembs.html">XMLNodeMBS</A>) as Boolean</li>
+<li class="WLMI">method <A href="xml-xmlnodembs-method.html#12">isSameNode</A>(other as <A href="class-xmlnodembs.html">XMLNodeMBS</A>) as Boolean</li>
+<li class="WLMI">method <A href="xml-xmlnodembs-method.html#13">IterateAttributeNodes</A> as <A href="class-xmliterateattributenodesmbs.html">XMLIterateAttributeNodesMBS</A></li>
+<li class="WLMI">method <A href="xml-xmlnodembs-method.html#14">IterateChildNodes</A> as <A href="class-xmliteratechildnodesmbs.html">XMLIterateChildNodesMBS</A></li>
+<li class="WLMI">method <A href="xml-xmlnodembs-method.html#15">lookupNamespaceURI</A>(prefix as String) as String</li>
+<li class="WLMI">method <A href="xml-xmlnodembs-method.html#16">lookupPrefix</A>(namespaceURI as String) as String</li>
+<li class="WLMI">method <A href="xml-xmlnodembs-method.html#17">Normalize</A></li>
+<li class="WLMI">method <A href="xml-xmlnodembs-method.html#18">removeChild</A>(Node as <A href="class-xmlnodembs.html">XMLNodeMBS</A>)</li>
+<li class="WLMI">method <A href="xml-xmlnodembs-method.html#19">replaceChild</A>(newChild as <A href="class-xmlnodembs.html">XMLNodeMBS</A>, oldChild as <A href="class-xmlnodembs.html">XMLNodeMBS</A>) as <A href="class-xmlnodembs.html">XMLNodeMBS</A></li>
+</UL></LI>
+<LI>18 constants<UL>
+</UL></LI>
+</ul>
+<h3 lang="en">Document Positions</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="xml-xmlnodembs-const.html">DocumentPositionContainedBy </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 16</td>
+<td bgcolor="#DDDDDD" valign=top>
+The node is contained by the reference node. A node which is contained is always following, too. <BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="xml-xmlnodembs-const.html#2">DocumentPositionContains </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 8</td>
+<td bgcolor="#DDDDDD" valign=top>
+The node contains the reference node. A node which contains is always preceding, too. <BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="xml-xmlnodembs-const.html#3">DocumentPositionDisconnected </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+The two nodes are disconnected. Order between disconnected nodes is always implementation-specific. <BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="xml-xmlnodembs-const.html#4">DocumentPositionFollowing </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 4</td>
+<td bgcolor="#DDDDDD" valign=top>
+The node follows the reference node. <BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="xml-xmlnodembs-const.html#5">DocumentPositionImplementationSpecific </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 32</td>
+<td bgcolor="#DDDDDD" valign=top>
+The determination of preceding versus following is implementation-specific. <BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="xml-xmlnodembs-const.html#6">DocumentPositionPreceding </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+The second node precedes the reference node.<BR>
+</td>
+</tr>
+</table>
+<h3 lang="en">Types</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="xml-xmlnodembs-const.html#7">TypeAttribute </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+Attribute Node<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="xml-xmlnodembs-const.html#8">TypeCDataSection </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 4</td>
+<td bgcolor="#DDDDDD" valign=top>
+CDataSection Node<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="xml-xmlnodembs-const.html#9">TypeComment </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 8</td>
+<td bgcolor="#DDDDDD" valign=top>
+Comment Node<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="xml-xmlnodembs-const.html#10">TypeDocument </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 9</td>
+<td bgcolor="#DDDDDD" valign=top>
+Document Node<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="xml-xmlnodembs-const.html#11">TypeDocumentFragment </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 11</td>
+<td bgcolor="#DDDDDD" valign=top>
+Document Fragment<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="xml-xmlnodembs-const.html#12">TypeDocumentType </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 10</td>
+<td bgcolor="#DDDDDD" valign=top>
+Document Type Node<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="xml-xmlnodembs-const.html#13">TypeElement </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+Element Node<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="xml-xmlnodembs-const.html#14">TypeEntity </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 6</td>
+<td bgcolor="#DDDDDD" valign=top>
+Entity Node<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="xml-xmlnodembs-const.html#15">TypeEntityReferenceNode </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 5</td>
+<td bgcolor="#DDDDDD" valign=top>
+Entity Reference Node<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="xml-xmlnodembs-const.html#16">TypeNotation </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 12</td>
+<td bgcolor="#DDDDDD" valign=top>
+Notation Node<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="xml-xmlnodembs-const.html#17">TypeProcessingInstruction </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 7</td>
+<td bgcolor="#DDDDDD" valign=top>
+Processing Instruction Node<BR>
+</td>
+</tr>
+<tr class="WLMI">
+<td bgcolor="#DDDDDD" valign=top><a href="xml-xmlnodembs-const.html#18">TypeText </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+Text Node<BR>
+</td>
+</tr>
+</table>
+<p>This class has no sub classes.</p>
+<h4>Some methods using this class:</h4><ul>
+<li class="WLMI"><A href="xml-xmldocumentmbs-method.html#14" translate="no">XMLDocumentMBS.createElement</A>(Name as String) as XMLElementMBS</li>
+<li class="WLMI"><A href="xml-xmldocumentmbs-method.html#15" translate="no">XMLDocumentMBS.createElementNS</A>(namespaceURI as String, qualifiedName as String) as XMLElementMBS</li>
+<li class="WLMI"><A href="xml-xmldocumentmbs-method.html#23" translate="no">XMLDocumentMBS.ElementsByTagName</A>(TagName as String) as XMLElementMBS()</li>
+<li class="WLMI"><A href="xml-xmldocumentmbs-method.html#24" translate="no">XMLDocumentMBS.ElementsByTagNameNS</A>(namespaceURI as string, localName as String) as XMLElementMBS()</li>
+<li class="WLMI"><A href="xml-xmldocumentmbs-method.html#25" translate="no">XMLDocumentMBS.getElementById</A>(elementId as String) as XMLElementMBS</li>
+</ul>
+<h4>Some properties using for this class:</h4><ul>
+<li class="WLMI"><A href="xml-xmlattributembs-property.html#3" translate="no">XMLAttributeMBS.OwnerElement</A> as XMLElementMBS</li>
+<li class="WLMI"><A href="xml-xmldocumentmbs-property.html#2" translate="no">XMLDocumentMBS.DocumentElement</A> as XMLElementMBS</li>
+<li class="WLMI"><A href="xml-xmlelementmbs-property.html#2" translate="no">XMLElementMBS.FirstElementChild</A> as XMLElementMBS</li>
+<li class="WLMI"><A href="xml-xmlelementmbs-property.html#3" translate="no">XMLElementMBS.LastElementChild</A> as XMLElementMBS</li>
+<li class="WLMI"><A href="xml-xmlelementmbs-property.html#4" translate="no">XMLElementMBS.NextElementSibling</A> as XMLElementMBS</li>
+<li class="WLMI"><A href="xml-xmlelementmbs-property.html#5" translate="no">XMLElementMBS.PreviousElementSibling</A> as XMLElementMBS</li>
+</ul>
+<h4>Some events using this class:</h4><ul>
+<li class="WLMI"><A href="xml-xmlparserfiltermbs-event.html#3">XMLParserFilterMBS.startElement</A>(node as XMLElementMBS) as Integer</li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2022-08-30/MBS_Xojo_Plugins_version_224pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 22.4pr4</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2022-08-29/Iterate_over_XML_nodes/monkeybreadsoftware_blog_xojo">Iterate over XML nodes</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsxmlplugin.html">MBS XML Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-xmldomparsermbs.html">XMLDOMParserMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-xmlentitymbs.html">XMLEntityMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-xmlelementmbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

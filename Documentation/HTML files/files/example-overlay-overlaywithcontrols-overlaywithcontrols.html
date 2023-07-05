@@ -1,0 +1,599 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Overlay/Overlay with controls/Overlay with controls</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Overlay/Overlay with controls/Overlay with controls</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Overlay/Overlay with controls/Overlay with controls</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS Overlay Plugin, MBS Images Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Overlay/Overlay with controls/Overlay with controls<BR>
+This example is the version from Sun, 10th Dec 2016.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Overlay</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">controls.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Window1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				create
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> KeyDown(Key <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">case</span> asc(key)
+			<span style="color:#0000FF;font-weight: bold">case</span> <span style="color:#326598">28</span> <span style="color:#7F0000;text-style:italic">&#39;left</span>
+				move -<span style="color:#326598">10</span>,<span style="color:#326598">0</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> <span style="color:#326598">29</span> <span style="color:#7F0000;text-style:italic">&#39;right</span>
+				move <span style="color:#326598">10</span>,<span style="color:#326598">0</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> <span style="color:#326598">30</span> <span style="color:#7F0000;text-style:italic">&#39;top</span>
+				move <span style="color:#326598">0</span>,-<span style="color:#326598">10</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> <span style="color:#326598">31</span> <span style="color:#7F0000;text-style:italic">&#39;down</span>
+				move <span style="color:#326598">0</span>,<span style="color:#326598">10</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Create()
+			o=<span style="color:#0000FF;font-weight: bold">new</span> MyOverlay(<span style="color:#326598">500</span>,<span style="color:#326598">100</span>,<span style="color:#326598">300</span>,<span style="color:#326598">440</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> oRectangle
+			
+			b.x=<span style="color:#326598">0</span>
+			b.y=<span style="color:#326598">0</span>
+			b.width=o.Width
+			b.height=o.Height
+			b.fillColor=&amp;c<span style="color:#FF0000">77</span><span style="color:#00FF00">77</span><span style="color:#0000FF">77</span>
+			
+			o.root.AddChild b
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = FindFile(<span style="color:#6500FE">&quot;cubes.png&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> p <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> oPicture(f)
+			p.x = <span style="color:#326598">0</span>
+			p.y = <span style="color:#326598">200</span>
+			b.AddChild p
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> r <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> oRectangle
+			
+			r.x=<span style="color:#326598">30</span>
+			r.y=<span style="color:#326598">30</span>
+			r.width=<span style="color:#326598">100</span>
+			r.height=<span style="color:#326598">50</span>
+			r.fillColor=&amp;c<span style="color:#FF0000">FF</span><span style="color:#00FF00">00</span><span style="color:#0000FF">00</span>
+			
+			b.AddChild r
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> oOval
+			
+			c.x=<span style="color:#326598">60</span>
+			c.y=<span style="color:#326598">60</span>
+			c.width=<span style="color:#326598">100</span>
+			c.height=<span style="color:#326598">100</span>
+			
+			b.AddChild c
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> u <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> oButton
+			
+			u.x=<span style="color:#326598">180</span>
+			u.y=<span style="color:#326598">150</span>
+			u.width=<span style="color:#326598">100</span>
+			u.height=<span style="color:#326598">30</span>
+			u.NormalPicture=xNormal
+			u.DownPicture=xDown
+			
+			b.AddChild u
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> oScrollCanvas
+			
+			s.x=<span style="color:#326598">10</span>
+			s.y=<span style="color:#326598">140</span>
+			s.width=<span style="color:#326598">100</span>
+			s.height=<span style="color:#326598">50</span>
+			
+			b.AddChild s
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> otext
+			t.text=<span style="color:#6500FE">&quot;Click</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">scroll&quot;</span>
+			t.x=<span style="color:#326598">10</span>
+			t.y=<span style="color:#326598">190</span>
+			t.width=<span style="color:#326598">100</span>
+			t.height=<span style="color:#326598">10</span>
+			t.textsize=<span style="color:#326598">9</span>
+			t.textFont=<span style="color:#6500FE">&quot;Courier&quot;</span>
+			
+			b.AddChild t
+			
+			
+			
+			o.redraw
+			
+			o.UpdateShow
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> FindFile(name <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>) <span style="color:#0000FF;font-weight: bold">As</span> FolderItem
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Look</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">file</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">parent</span> <span style="color:#7F0000;text-style:italic">folders</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">executable</span> <span style="color:#7F0000;text-style:italic">on</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> parent <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = app.ExecutableFile.Parent
+			
+			<span style="color:#0000FF;font-weight: bold">while</span> parent&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> file <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = parent.Child(name)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> file&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">and</span> file.Exists <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> file
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				parent = parent.Parent
+			<span style="color:#0000FF;font-weight: bold">wend</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> move(x <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, y <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			o.Move o.Left+x,o.top+y
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> counter <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> m <span style="color:#0000FF;font-weight: bold">As</span> picture</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> o <span style="color:#0000FF;font-weight: bold">As</span> MyOverlay</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> p <span style="color:#0000FF;font-weight: bold">As</span> picture</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyOverlay <span style="color:#0000FF;font-weight: bold">Inherits</span> OverlayMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> MouseDown(x <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, y <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, modifiers <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">boolean</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Boolean</span> = root.MouseDown(x,y)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> root.NeedRedraw <span style="color:#0000FF;font-weight: bold">then</span>
+				redraw
+				Update
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> b
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> MouseUp(x <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, y <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, modifiers <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">boolean</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Boolean</span> = root.MouseUp(x,y)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> root.NeedRedraw <span style="color:#0000FF;font-weight: bold">then</span>
+				redraw
+				Update
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> b
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> WindowBoundsChanged()
+			log <span style="color:#6500FE">&quot;windowboundschanged&quot;</span>
+			redraw
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> WindowClosed()
+			log <span style="color:#6500FE">&quot;windowclosed&quot;</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> WindowHidden()
+			log <span style="color:#6500FE">&quot;windowhidden&quot;</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> WindowShown()
+			log <span style="color:#6500FE">&quot;windowShown&quot;</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(left <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>, top <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>, width <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>, height <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			<span style="color:#0000FF;font-weight: bold">Super</span>.Constructor(left, top, width, height)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> p,m <span style="color:#0000FF;font-weight: bold">as</span> Picture
+			
+			p = <span style="color:#0000FF;font-weight: bold">new</span> Picture(width,height,<span style="color:#326598">32</span>)
+			m = <span style="color:#0000FF;font-weight: bold">new</span> Picture(width,height,<span style="color:#326598">32</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Pict=p
+			<span style="color:#0000FF;font-weight: bold">me</span>.Mask=m
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> r <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> oControl
+			
+			r.x=<span style="color:#326598">0</span>
+			r.y=<span style="color:#326598">0</span>
+			r.width=width
+			r.height=height
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.root=r
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Function</span> Window1open() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> i,c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			
+			c=WindowCount-<span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">for</span> i=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> c
+				<span style="color:#0000FF;font-weight: bold">if</span> window(i) <span style="color:#0000FF;font-weight: bold">isa</span> window1 <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> log(s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			System.DebugLog s
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> redraw()
+			<span style="color:#0000FF;font-weight: bold">dim</span> g <span style="color:#0000FF;font-weight: bold">as</span> Graphics
+			
+			g=<span style="color:#0000FF;font-weight: bold">me</span>.pict.Graphics
+			g.ForeColor=&amp;c<span style="color:#FF0000">FF</span><span style="color:#00FF00">FF</span><span style="color:#0000FF">FF</span>
+			g.FillRect <span style="color:#326598">0</span>,<span style="color:#326598">0</span>,g.Width,g.Height
+			
+			root.draw g,<span style="color:#326598">0</span>,<span style="color:#326598">0</span>
+			
+			g=<span style="color:#0000FF;font-weight: bold">me</span>.Mask.Graphics
+			g.ForeColor=&amp;c<span style="color:#FF0000">FF</span><span style="color:#00FF00">FF</span><span style="color:#0000FF">FF</span>
+			g.FillRect <span style="color:#326598">0</span>,<span style="color:#326598">0</span>,g.Width,g.Height
+			
+			root.drawmask g,<span style="color:#326598">0</span>,<span style="color:#326598">0</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> root <span style="color:#0000FF;font-weight: bold">As</span> oControl</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> oControl</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> AddChild(o <span style="color:#0000FF;font-weight: bold">as</span> oControl)
+			Children.Append o
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> MouseDown(mx <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, my <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> c <span style="color:#0000FF;font-weight: bold">as</span> oControl <span style="color:#0000FF;font-weight: bold">in</span> Children
+				<span style="color:#0000FF;font-weight: bold">dim</span> xx <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = mx-c.x
+				<span style="color:#0000FF;font-weight: bold">dim</span> yy <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = my-c.y
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> c.inside(xx,yy) <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Boolean</span> = c.MouseDown(xx,yy)
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> c.NeedRedraw <span style="color:#0000FF;font-weight: bold">then</span>
+						NeedRedraw=<span style="color:#0000FF;font-weight: bold">true</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> b <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">false</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> MouseUp(mx <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, my <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> c <span style="color:#0000FF;font-weight: bold">as</span> oControl <span style="color:#0000FF;font-weight: bold">in</span> Children
+				<span style="color:#0000FF;font-weight: bold">dim</span> xx <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = mx-c.x
+				<span style="color:#0000FF;font-weight: bold">dim</span> yy <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = my-c.y
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> c.inside(xx,yy) <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Boolean</span> = c.MouseUp(xx,yy)
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> c.NeedRedraw <span style="color:#0000FF;font-weight: bold">then</span>
+						NeedRedraw=<span style="color:#0000FF;font-weight: bold">true</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> b <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">false</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> draw(g <span style="color:#0000FF;font-weight: bold">as</span> Graphics, px <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, py <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> c <span style="color:#0000FF;font-weight: bold">as</span> oControl <span style="color:#0000FF;font-weight: bold">in</span> Children
+				c.draw g,px+x,py+y
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> drawmask(g <span style="color:#0000FF;font-weight: bold">as</span> Graphics, px <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, py <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> c <span style="color:#0000FF;font-weight: bold">as</span> oControl <span style="color:#0000FF;font-weight: bold">in</span> Children
+				c.drawmask g,px+x,py+y
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> inside(mx <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, my <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> mx&lt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">false</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> my&lt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">false</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> mx&gt;=width <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">false</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> my&gt;=height <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">false</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Children() <span style="color:#0000FF;font-weight: bold">As</span> oControl</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> NeedRedraw <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> height <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> root <span style="color:#0000FF;font-weight: bold">As</span> oControl</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> width <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> x <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> y <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> oRectangle <span style="color:#0000FF;font-weight: bold">Inherits</span> oControl</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> draw(g <span style="color:#0000FF;font-weight: bold">as</span> Graphics, px <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, py <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			g.ForeColor=fillColor
+			g.FillRect x+px,y+py,width,height
+			
+			<span style="color:#0000FF;font-weight: bold">super</span>.draw(g,px,py)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> drawMask(g <span style="color:#0000FF;font-weight: bold">as</span> Graphics, px <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, py <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			g.ForeColor=&amp;c<span style="color:#FF0000">00</span><span style="color:#00FF00">00</span><span style="color:#0000FF">00</span>
+			g.FillRect x+px,y+py,width,height
+			
+			<span style="color:#0000FF;font-weight: bold">super</span>.drawMask(g,px,py)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> fillColor <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">color</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> oOval <span style="color:#0000FF;font-weight: bold">Inherits</span> oControl</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> draw(g <span style="color:#0000FF;font-weight: bold">as</span> Graphics, px <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, py <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			g.ForeColor=fillColor
+			g.FillOval x+px,y+py,width,height
+			
+			<span style="color:#0000FF;font-weight: bold">super</span>.draw(g,px,py)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> drawMask(g <span style="color:#0000FF;font-weight: bold">as</span> Graphics, px <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, py <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			g.ForeColor=&amp;c<span style="color:#FF0000">00</span><span style="color:#00FF00">00</span><span style="color:#0000FF">00</span>
+			g.FillOval x+px,y+py,width,height
+			
+			<span style="color:#0000FF;font-weight: bold">super</span>.drawmask(g,px,py)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> fillColor <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">color</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> oButton <span style="color:#0000FF;font-weight: bold">Inherits</span> oControl</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> MouseDown(mx <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, my <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			down=<span style="color:#0000FF;font-weight: bold">True</span>
+			NeedRedraw=<span style="color:#0000FF;font-weight: bold">True</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">super</span>.MouseDown(mx,my)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> MouseUp(mx <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, my <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			down=<span style="color:#0000FF;font-weight: bold">false</span>
+			NeedRedraw=<span style="color:#0000FF;font-weight: bold">True</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">super</span>.MouseDown(mx,my)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> draw(g <span style="color:#0000FF;font-weight: bold">as</span> Graphics, px <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, py <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			<span style="color:#0000FF;font-weight: bold">if</span> down <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				g.DrawPicture DownPicture, px+x, py+y
+				
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				
+				g.DrawPicture NormalPicture, px+x, py+y
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">super</span>.draw(g,px,py)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> drawMask(g <span style="color:#0000FF;font-weight: bold">as</span> Graphics, px <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, py <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			g.ForeColor=&amp;c<span style="color:#FF0000">00</span><span style="color:#00FF00">00</span><span style="color:#0000FF">00</span>
+			g.FillRect x+px,y+py,width,height
+			
+			<span style="color:#0000FF;font-weight: bold">super</span>.drawMask(g,px,py)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Down <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> DownPicture <span style="color:#0000FF;font-weight: bold">As</span> Picture</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> NormalPicture <span style="color:#0000FF;font-weight: bold">As</span> Picture</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	ExternalFile xDown</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> ExternalFile</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	ExternalFile xNormal</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> ExternalFile</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> oScrollCanvas <span style="color:#0000FF;font-weight: bold">Inherits</span> oControl</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor()
+			pic = <span style="color:#0000FF;font-weight: bold">new</span> Picture(<span style="color:#326598">300</span>,<span style="color:#326598">50</span>,<span style="color:#326598">32</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> g <span style="color:#0000FF;font-weight: bold">as</span> Graphics = pic.Graphics
+			
+			g.ForeColor=&amp;c<span style="color:#FF0000">FF</span><span style="color:#00FF00">FF</span><span style="color:#0000FF">FF</span>
+			g.FillRect <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, g.Width, g.Height
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">color</span> = &amp;c<span style="color:#FF0000">FF</span><span style="color:#00FF00">00</span><span style="color:#0000FF">00</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> y <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span> = <span style="color:#006532">25.0</span>
+			
+			g.ForeColor=&amp;c<span style="color:#FF0000">77</span><span style="color:#00FF00">77</span><span style="color:#0000FF">77</span>
+			g.DrawLine <span style="color:#326598">0</span>, <span style="color:#326598">25</span>, <span style="color:#326598">299</span>, <span style="color:#326598">25</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> ly <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> x=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">299</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> x <span style="color:#0000FF;font-weight: bold">mod</span> <span style="color:#326598">10</span>=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					g.ForeColor=&amp;c<span style="color:#FF0000">77</span><span style="color:#00FF00">77</span><span style="color:#0000FF">77</span>
+					g.DrawLine x,<span style="color:#326598">20</span>,x,<span style="color:#326598">30</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				y=y+rnd*<span style="color:#006532">4.0</span>-<span style="color:#006532">2.0</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> y&lt;=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					y=<span style="color:#326598">0</span>
+				<span style="color:#0000FF;font-weight: bold">elseif</span> y&gt;=<span style="color:#326598">50</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					y=<span style="color:#326598">49</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				g.ForeColor=&amp;c<span style="color:#FF0000">FF</span><span style="color:#00FF00">00</span><span style="color:#0000FF">00</span>
+				g.DrawLine x-<span style="color:#326598">1</span>, ly, x, y
+				ly=Y
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> MouseDown(mx <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, my <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			NeedRedraw=<span style="color:#0000FF;font-weight: bold">True</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> MouseUp(mx <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, my <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> mx*<span style="color:#326598">2</span>&lt;width <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> offset&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					offset=offset-<span style="color:#326598">5</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> offset&lt;pic.Width-width <span style="color:#0000FF;font-weight: bold">then</span>
+					offset=offset+<span style="color:#326598">5</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			NeedRedraw=<span style="color:#0000FF;font-weight: bold">True</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> draw(g <span style="color:#0000FF;font-weight: bold">as</span> Graphics, px <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, py <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			g.DrawPicture pic, x+px, y+py, width, height, offset, <span style="color:#326598">0</span>, width, height
+			
+			<span style="color:#0000FF;font-weight: bold">super</span>.draw(g,px,py)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> drawMask(g <span style="color:#0000FF;font-weight: bold">as</span> Graphics, px <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, py <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			g.ForeColor=&amp;c<span style="color:#FF0000">00</span><span style="color:#00FF00">00</span><span style="color:#0000FF">00</span>
+			g.FillRect x+px,y+py,width,height
+			
+			<span style="color:#0000FF;font-weight: bold">super</span>.drawMask(g,px,py)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> offset <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> pic <span style="color:#0000FF;font-weight: bold">As</span> Picture</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> oText <span style="color:#0000FF;font-weight: bold">Inherits</span> oControl</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> draw(g <span style="color:#0000FF;font-weight: bold">as</span> Graphics, px <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, py <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			g.ForeColor=textColor
+			g.TextFont=textFont
+			g.TextSize=textsize
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> textwidth <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = g.StringWidth(text)
+			<span style="color:#0000FF;font-weight: bold">dim</span> textheight <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = g.StringHeight(text,width)
+			
+			g.DrawString text, px+x+(<span style="color:#0000FF;font-weight: bold">me</span>.width-textwidth)/<span style="color:#326598">2</span>, py+y+(<span style="color:#0000FF;font-weight: bold">me</span>.height-textheight)/<span style="color:#326598">2</span>+textsize
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> text <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> textColor <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">color</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> textFont <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> textsize <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> oPicture <span style="color:#0000FF;font-weight: bold">Inherits</span> oControl</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor()
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem)
+			Constructor f.OpenAsPNGMBS(<span style="color:#326598">0</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(p <span style="color:#0000FF;font-weight: bold">as</span> PNGPictureMBS)
+			pic = p.Pict
+			mask = p.Mask
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(pic <span style="color:#0000FF;font-weight: bold">as</span> Picture, mask <span style="color:#0000FF;font-weight: bold">as</span> Picture)
+			<span style="color:#0000FF;font-weight: bold">self</span>.pic = pic
+			<span style="color:#0000FF;font-weight: bold">self</span>.mask = mask
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> draw(g <span style="color:#0000FF;font-weight: bold">as</span> Graphics, px <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, py <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			g.DrawPicture pic, px+x, py+y
+			
+			<span style="color:#0000FF;font-weight: bold">super</span>.draw(g,px,py)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> drawMask(g <span style="color:#0000FF;font-weight: bold">as</span> Graphics, px <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, py <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			g.DrawPicture mask, px+x, py+y
+			
+			<span style="color:#0000FF;font-weight: bold">super</span>.drawMask(g,px,py)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> mask <span style="color:#0000FF;font-weight: bold">As</span> Picture</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> pic <span style="color:#0000FF;font-weight: bold">As</span> Picture</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-overlay-overlayandwindowlevel.html">/Overlay/Overlay and window level</A></li>
+<li><A href="example-overlay-overlaydrawings.html">/Overlay/Overlay Drawings</A></li>
+<li><A href="example-overlay-overlaytest.html">/Overlay/Overlay Test</A></li>
+<li><A href="example-overlay-overlaytestv2.html">/Overlay/Overlay Test v2</A></li>
+<li><A href="example-overlay-overlaytestwithtext.html">/Overlay/Overlay Test with Text</A></li>
+<li><A href="example-overlay-overlaytestwithtexthidpi.html">/Overlay/Overlay Test with Text HiDPI</A></li>
+<li><A href="example-overlay-overlaywithdrawevent.html">/Overlay/Overlay with Draw Event</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsoverlayplugin.html">MBS Overlay Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-overlay-overlaywithcontrols-overlaywithcontrols">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

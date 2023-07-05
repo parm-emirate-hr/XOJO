@@ -1,0 +1,498 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Mac64bit/SceneKit/Triangle Demo</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Mac64bit/SceneKit/Triangle Demo</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Mac64bit/SceneKit/Triangle Demo</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS Mac64bit Plugin, MBS MacBase Plugin, MBS MacCG Plugin, MBS Main Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Mac64bit/SceneKit/Triangle Demo<BR>
+This example is the version from Mon, 10th May 2020.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Triangle</span> <span style="color:#6500FE">Demo.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Window1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control MyControl <span style="color:#0000FF;font-weight: bold">Inherits</span> SCNControlMBS</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance MyControl <span style="color:#0000FF;font-weight: bold">Inherits</span> SCNControlMBS</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+				MyView = <span style="color:#0000FF;font-weight: bold">Me</span>.View
+				MyScene = <span style="color:#0000FF;font-weight: bold">New</span> SCNSceneMBS
+				MyView.scene = MyScene
+				
+				<span style="color:#7F0000;text-style:italic">&#39;MyScene.fogStartDistance=500</span>
+				<span style="color:#7F0000;text-style:italic">&#39;MyScene.fogEndDistance=1000</span>
+				<span style="color:#7F0000;text-style:italic">&#39;MyScene.fogColor</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">NSColorMBS.blackColor</span>
+				
+				
+				myView.backgroundColor = NSColorMBS.blackColor
+				MyView.autoenablesDefaultLighting = <span style="color:#0000FF;font-weight: bold">True</span>
+				
+				BuildDefaultCamera
+				
+				RenderScene
+				buildATriangle
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control x <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance x(<span style="color:#326598">0</span>) <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance x(<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance x(<span style="color:#326598">2</span>) <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> TextChange(index <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+				buildATriangle
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control y <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance y(<span style="color:#326598">0</span>) <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance y(<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance y(<span style="color:#326598">2</span>) <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> TextChange(index <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+				buildATriangle
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control z <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance z(<span style="color:#326598">0</span>) <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance z(<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance z(<span style="color:#326598">2</span>) <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> TextChange(index <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+				buildATriangle
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				buildATriangle
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Blended <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Blended <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				buildATriangle
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+				<span style="color:#0000FF;font-weight: bold">me</span>.Value = <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label2 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label2 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label3 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label3 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label4 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label4 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label5 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label5 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label6 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label6 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> BuildDefaultCamera()
+			Var MyCamera <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> SCNCameraMBS
+			CameraNode = <span style="color:#0000FF;font-weight: bold">New</span> SCNNodeMBS
+			CameraNode.Camera = MyCamera
+			CameraNode.Position = <span style="color:#0000FF;font-weight: bold">New</span> SCNVector3MBS(<span style="color:#326598">0</span>, <span style="color:#326598">100</span>, <span style="color:#326598">200</span>)
+			
+			MyCamera.zNear = <span style="color:#326598">10</span>
+			MyCamera.zFar = <span style="color:#326598">12000</span>
+			
+			myview.pointOfView = CameraNode
+			Myview.allowsCameraControl = <span style="color:#0000FF;font-weight: bold">True</span>
+			myscene.rootNode.addChildNode CameraNode
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> RenderScene()
+			Var geometry <span style="color:#0000FF;font-weight: bold">As</span> SCNGeometryMBS
+			Var node <span style="color:#0000FF;font-weight: bold">As</span>  SCNNodeMBS
+			
+			Var col <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Color</span>
+			Var <span style="color:#0000FF;font-weight: bold">Color</span> <span style="color:#0000FF;font-weight: bold">As</span> NSColorMBS
+			
+			
+			
+			AxisNode = <span style="color:#0000FF;font-weight: bold">New</span> SCNNodeMBS
+			MyScene.rootNode.addChildNode AxisNode
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">background</span> <span style="color:#7F0000;text-style:italic">light</span>
+			var ambientLight <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> SCNLightMBS
+			ambientLight.type = SCNLightMBS.SCNLightTypeAmbient
+			ambientLight.<span style="color:#0000FF;font-weight: bold">Color</span> = NSColorMBS.colorWithRGB( <span style="color:#006532">.60</span>, <span style="color:#006532">0.6</span>, <span style="color:#006532">0.6</span>, <span style="color:#326598">1</span>)
+			Var ambientnode <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> SCNNodeMBS
+			ambientnode.Light = ambientLight
+			
+			MyScene.rootNode.addChildNode ambientnode
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">spot</span> <span style="color:#7F0000;text-style:italic">light</span>
+			var light <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> SCNLightMBS
+			light.type = SCNLightMBS.SCNLightTypeSpot
+			light.spotInnerAngle = <span style="color:#326598">30</span>
+			light.spotOuterAngle = <span style="color:#326598">70</span>
+			light.castsShadow = <span style="color:#0000FF;font-weight: bold">True</span>
+			light.zFar = <span style="color:#326598">400</span>
+			var lightNode <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> SCNNodeMBS
+			
+			lightNode.light = light
+			lightNode.position = SCNVector3MBS.Vector(<span style="color:#326598">0</span>, <span style="color:#326598">380</span>, <span style="color:#326598">0</span>)
+			
+			
+			MyScene.rootNode.addChildNode lightNode
+			
+			
+			Var axis <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> SCNTubeMBS(<span style="color:#006532">0.25</span>,<span style="color:#006532">0.5</span>,<span style="color:#326598">256</span>)
+			geometry = axis
+			geometry.firstMaterial.diffuse.contents =  NSColorMBS.colorWithCalibratedRGB(<span style="color:#006532">0.5</span>,<span style="color:#006532">0.5</span>,<span style="color:#006532">0.5</span>,<span style="color:#006532">0.8</span>)
+			node = <span style="color:#0000FF;font-weight: bold">New</span> SCNNodeMBS(geometry)
+			node.Position = SCNVector3MBS.Vector( <span style="color:#326598">0</span>,<span style="color:#326598">0</span>,<span style="color:#326598">0</span>)
+			AxisNode.addChildNode( node)
+			
+			
+			axis = <span style="color:#0000FF;font-weight: bold">New</span> SCNTubeMBS(<span style="color:#006532">0.25</span>,<span style="color:#006532">0.5</span>,<span style="color:#326598">256</span>)
+			geometry = axis
+			geometry.firstMaterial.diffuse.contents =  NSColorMBS.colorWithCalibratedRGB(<span style="color:#006532">0.5</span>,<span style="color:#006532">0.5</span>,<span style="color:#006532">0.5</span>,<span style="color:#006532">0.8</span>)
+			node = <span style="color:#0000FF;font-weight: bold">New</span> SCNNodeMBS(geometry)
+			node.Position = SCNVector3MBS.Vector( <span style="color:#326598">0</span>,<span style="color:#326598">0</span>,<span style="color:#326598">0</span>)
+			node.rotateBy <span style="color:#0000FF;font-weight: bold">New</span> SCNVector4MBS(<span style="color:#326598">0</span>,  <span style="color:#326598">0</span>, <span style="color:#006532">0.7071</span>,  <span style="color:#006532">0.7071</span>), node.Position
+			AxisNode.addChildNode( node)
+			
+			
+			
+			axis = <span style="color:#0000FF;font-weight: bold">New</span> SCNTubeMBS(<span style="color:#006532">0.25</span>,<span style="color:#006532">0.5</span>,<span style="color:#326598">128</span>)
+			geometry = axis
+			geometry.firstMaterial.diffuse.contents =  NSColorMBS.colorWithCalibratedRGB(<span style="color:#006532">0.5</span>,<span style="color:#006532">0.5</span>,<span style="color:#006532">0.5</span>,<span style="color:#006532">0.8</span>)
+			node = <span style="color:#0000FF;font-weight: bold">New</span> SCNNodeMBS(geometry)
+			node.Position = SCNVector3MBS.Vector( <span style="color:#326598">0</span>,<span style="color:#326598">0</span>,<span style="color:#326598">0</span>)
+			node.rotateBy <span style="color:#0000FF;font-weight: bold">New</span> SCNVector4MBS( <span style="color:#006532">0.7071</span>, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>,  <span style="color:#006532">0.7071</span>), node.Position
+			AxisNode.addChildNode( node)
+			
+			
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">limit</span> <span style="color:#7F0000;text-style:italic">moving</span>
+			var constraint <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> SCNLookAtConstraintMBS(AxisNode)
+			constraint.gimbalLockEnabled = <span style="color:#0000FF;font-weight: bold">True</span>
+			cameraNode.setConstraints <span style="color:#0000FF;font-weight: bold">Array</span>(constraint)
+			lightNode.setConstraints <span style="color:#0000FF;font-weight: bold">Array</span>(constraint)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> buildATriangle()
+			<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">rid</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">last</span> <span style="color:#7F0000;text-style:italic">triangle</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">keep</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">clean.</span>
+			<span style="color:#0000FF;font-weight: bold">If</span> triangle &lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">Then</span> triangle.removeFromParentNode
+			
+			
+			Var p() <span style="color:#0000FF;font-weight: bold">As</span> VectorC
+			
+			<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">add</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">three</span> <span style="color:#7F0000;text-style:italic">vertex</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">counter</span> <span style="color:#7F0000;text-style:italic">clockwise</span> <span style="color:#7F0000;text-style:italic">order</span>
+			<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">informs</span> <span style="color:#7F0000;text-style:italic">SceneKit</span> <span style="color:#7F0000;text-style:italic">which</span> <span style="color:#7F0000;text-style:italic">way</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">triangle</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">facing</span>
+			
+			<span style="color:#0000FF;font-weight: bold">For</span> i <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">2</span> <span style="color:#0000FF;font-weight: bold">DownTo</span> <span style="color:#326598">0</span>
+				Var xx, yy, zz <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span>
+				xx = Val(x(i).Text)
+				yy = Val(y(i).Text)
+				zz =Val(z(i).Text)
+				
+				<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">random</span> <span style="color:#7F0000;text-style:italic">values</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">show</span> <span style="color:#7F0000;text-style:italic">here.</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">replace</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">approriate</span> <span style="color:#7F0000;text-style:italic">colors</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">each</span> <span style="color:#7F0000;text-style:italic">vertex</span>
+				Var c <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Color</span> = RGB(Rnd*<span style="color:#326598">255</span>, Rnd*<span style="color:#326598">255</span>, Rnd*<span style="color:#326598">255</span>)
+				
+				p.AddRow <span style="color:#0000FF;font-weight: bold">New</span> VectorC( xx, yy, zz, c)
+			<span style="color:#0000FF;font-weight: bold">Next</span>
+			
+			
+			
+			
+			<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">checking</span> <span style="color:#7F0000;text-style:italic">blended</span> <span style="color:#7F0000;text-style:italic">makes</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">triangle</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">colour</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">blend</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">each</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">three</span> <span style="color:#7F0000;text-style:italic">vertex</span>
+			<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">turning</span> <span style="color:#7F0000;text-style:italic">off</span> <span style="color:#7F0000;text-style:italic">blending</span> <span style="color:#7F0000;text-style:italic">averages</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">three</span> <span style="color:#7F0000;text-style:italic">vertex</span> <span style="color:#7F0000;text-style:italic">colours</span>
+			Var t <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> Triangle3D( p, blended.value)
+			
+			triangle = t.node
+			MyScene.rootNode.addChildNode t.node
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> AxisNode <span style="color:#0000FF;font-weight: bold">As</span> SCNNodeMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> CameraNode <span style="color:#0000FF;font-weight: bold">As</span> SCNNodeMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> MyScene <span style="color:#0000FF;font-weight: bold">As</span> SCNSceneMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> MyView <span style="color:#0000FF;font-weight: bold">As</span> SCNViewMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> triangle <span style="color:#0000FF;font-weight: bold">As</span> SCNNodeMBS</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MainMenuBar</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator2 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Triangle3D</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(pts() <span style="color:#0000FF;font-weight: bold">as</span> vectorC, MultiColour <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">boolean</span>)
+			node = <span style="color:#0000FF;font-weight: bold">New</span> SCNNodeMBS
+			Var positions(<span style="color:#326598">2</span>) <span style="color:#0000FF;font-weight: bold">As</span> SCNVector3MBS
+			
+			<span style="color:#0000FF;font-weight: bold">For</span> i <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">To</span> <span style="color:#326598">2</span>
+				positions(i) = pts(i).VectorValue
+			<span style="color:#0000FF;font-weight: bold">Next</span>
+			
+			<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">describe</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">triangle</span>
+			var indices() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#0000FF;font-weight: bold">Array</span>(<span style="color:#326598">0</span>,<span style="color:#326598">1</span>,<span style="color:#326598">2</span>)
+			
+			
+			<span style="color:#7F0000;text-style:italic">&#39;for</span> <span style="color:#7F0000;text-style:italic">setting</span> <span style="color:#7F0000;text-style:italic">up</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">vertex</span> <span style="color:#7F0000;text-style:italic">specific</span> <span style="color:#7F0000;text-style:italic">colour</span>
+			<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">modify</span> <span style="color:#7F0000;text-style:italic">these</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">set</span>
+			Var channelSize <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">4</span> <span style="color:#7F0000;text-style:italic">&#39;</span>
+			Var Channels <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">3</span> <span style="color:#7F0000;text-style:italic">&#39;</span>
+			Var coloursize <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = channelSize*channels
+			
+			
+			Var memColour <span style="color:#0000FF;font-weight: bold">As</span> MemoryBlock
+			
+			<span style="color:#0000FF;font-weight: bold">If</span> MultiColour <span style="color:#0000FF;font-weight: bold">Then</span> memColour = <span style="color:#0000FF;font-weight: bold">New</span> memoryBlock(ColourSize*indices.Count)
+			
+			
+			var mem <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> MemoryBlock(<span style="color:#326598">4</span>*indices.count)  <span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">referencing</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">vertex</span>
+			var offset <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+			<span style="color:#0000FF;font-weight: bold">For</span> row <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">To</span> <span style="color:#326598">2</span>
+				
+				<span style="color:#0000FF;font-weight: bold">If</span> MultiColour <span style="color:#0000FF;font-weight: bold">Then</span>
+					<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">****</span> <span style="color:#7F0000;text-style:italic">i</span> <span style="color:#7F0000;text-style:italic">have</span> <span style="color:#7F0000;text-style:italic">tried</span> <span style="color:#7F0000;text-style:italic">setting</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">single</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">double</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">alpha.</span>
+					memColour.SingleValue( row*coloursize )= pts(row).red
+					memColour.SingleValue( row*coloursize+channelsize )= pts(row).Green
+					memColour.SingleValue( row*coloursize+channelsize*<span style="color:#326598">2</span> )= pts(row).blue
+				<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+				
+				mem.Int32Value(offset) = indices(row)
+				offset = offset + <span style="color:#326598">4</span>
+			<span style="color:#0000FF;font-weight: bold">Next</span>
+			
+			Var normals(<span style="color:#326598">0</span>) <span style="color:#0000FF;font-weight: bold">As</span> SCNVector3MBS
+			normals(<span style="color:#326598">0</span>)=GetSurfaceNormal( positions(<span style="color:#326598">0</span>), positions(<span style="color:#326598">1</span>), positions(<span style="color:#326598">2</span>))
+			
+			<span style="color:#7F0000;text-style:italic">//Construction</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">geometry</span> <span style="color:#7F0000;text-style:italic">source</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">corner</span> <span style="color:#7F0000;text-style:italic">coodinates</span>
+			var vertexSource <span style="color:#0000FF;font-weight: bold">As</span> SCNGeometrySourceMBS = SCNGeometrySourceMBS.geometrySourceWithVertices(positions)
+			
+			<span style="color:#7F0000;text-style:italic">//Construction</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">geometry</span> <span style="color:#7F0000;text-style:italic">source</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">normal</span> <span style="color:#7F0000;text-style:italic">vectors</span>
+			var normalSource <span style="color:#0000FF;font-weight: bold">As</span> SCNGeometrySourceMBS = SCNGeometrySourceMBS.geometrySourceWithNormals(normals)
+			
+			<span style="color:#0000FF;font-weight: bold">Const</span> SCNGeometryPrimitiveTypeTriangles = <span style="color:#326598">0</span>
+			
+			<span style="color:#7F0000;text-style:italic">//Construction</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">geometry</span> <span style="color:#7F0000;text-style:italic">element</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">:</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">memory</span> <span style="color:#7F0000;text-style:italic">block</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">coordinates</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">each</span> <span style="color:#7F0000;text-style:italic">triangle,</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">indication</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">geometry</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">triangular,</span> <span style="color:#7F0000;text-style:italic">Specify</span> <span style="color:#7F0000;text-style:italic">how</span> <span style="color:#7F0000;text-style:italic">many</span> <span style="color:#7F0000;text-style:italic">triangles</span> <span style="color:#7F0000;text-style:italic">there</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">size</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">blocks</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">information</span>
+			var element <span style="color:#0000FF;font-weight: bold">As</span> SCNGeometryElementMBS = SCNGeometryElementMBS.geometryElementWithData(mem, SCNGeometryPrimitiveTypeTriangles, <span style="color:#326598">12</span>, <span style="color:#326598">4</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//The</span> <span style="color:#7F0000;text-style:italic">actual</span> <span style="color:#7F0000;text-style:italic">geometry</span> <span style="color:#7F0000;text-style:italic">then</span> <span style="color:#7F0000;text-style:italic">consists</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">two</span> <span style="color:#7F0000;text-style:italic">geometry</span> <span style="color:#7F0000;text-style:italic">sources</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">vertices</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">normal</span> <span style="color:#7F0000;text-style:italic">vectors,</span>
+			<span style="color:#7F0000;text-style:italic">//as</span> <span style="color:#7F0000;text-style:italic">well</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">geometry</span> <span style="color:#7F0000;text-style:italic">element</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">triangles</span>
+			var geometry <span style="color:#0000FF;font-weight: bold">As</span> SCNGeometryMBS
+			<span style="color:#0000FF;font-weight: bold">If</span> MultiColour <span style="color:#0000FF;font-weight: bold">Then</span>
+				Var colourSource <span style="color:#0000FF;font-weight: bold">As</span> SCNGeometrySourceMBS =SCNGeometrySourceMBS.geometrySourceWithData( memColour, SCNGeometrySourceMBS.SCNGeometrySourceSemanticColor,<span style="color:#326598">3</span>, <span style="color:#0000FF;font-weight: bold">True</span>, channels,channelsize,<span style="color:#326598">0</span>,coloursize)
+				
+				geometry = SCNGeometryMBS.geometryWithSources(<span style="color:#0000FF;font-weight: bold">Array</span>(vertexSource, normalSource, colourSource), <span style="color:#0000FF;font-weight: bold">Array</span>(element))
+				
+			<span style="color:#0000FF;font-weight: bold">Else</span>
+				Geometry = SCNGeometryMBS.geometryWithSources(<span style="color:#0000FF;font-weight: bold">Array</span>(vertexSource, normalSource), <span style="color:#0000FF;font-weight: bold">Array</span>(element))
+				
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			
+			
+			<span style="color:#0000FF;font-weight: bold">If</span> MultiColour=<span style="color:#0000FF;font-weight: bold">False</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">render</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">triangle</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">average</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">it&#39;s</span> <span style="color:#7F0000;text-style:italic">three</span> <span style="color:#7F0000;text-style:italic">associated</span> <span style="color:#7F0000;text-style:italic">colours</span>
+				Var rr, gg, bb <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span>
+				
+				
+				rr = (pts(<span style="color:#326598">0</span>).red+pts(<span style="color:#326598">1</span>).red+pts(<span style="color:#326598">2</span>).red)/<span style="color:#326598">3</span>
+				gg = (pts(<span style="color:#326598">0</span>).green+pts(<span style="color:#326598">1</span>).Green+pts(<span style="color:#326598">2</span>).green)/<span style="color:#326598">3</span>
+				bb = (pts(<span style="color:#326598">0</span>).blue+pts(<span style="color:#326598">1</span>).blue+pts(<span style="color:#326598">2</span>).blue)/<span style="color:#326598">3</span>
+				
+				var theMaterial <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> SCNMaterialMBS
+				theMaterial.diffuse.contents = NSColorMBS.colorWithRGB(rr,gg,bb,<span style="color:#326598">1</span>)
+				
+				geometry.setMaterials <span style="color:#0000FF;font-weight: bold">Array</span>(theMaterial)
+				<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">option,</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">material</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">double</span> <span style="color:#7F0000;text-style:italic">sided</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">want</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">visible</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">both</span> <span style="color:#7F0000;text-style:italic">sides.</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			var TriangleNode <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> SCNNodeMBS(geometry)
+			
+			
+			node.addChildNode TriangleNode
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Function</span> CrossProduct(V1 <span style="color:#0000FF;font-weight: bold">as</span> SCNVector3MBS, V2 <span style="color:#0000FF;font-weight: bold">as</span> SCNVector3MBS) <span style="color:#0000FF;font-weight: bold">As</span> SCNVector3MBS
+			Var cross <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> SCNVector3MBS
+			cross.x=v1.y*v2.z-v1.z*v2.y
+			cross.y = v1.z*v2.x-v1.x*v2.z
+			cross.z = v1.x*v2.y-v1.y*v2.x
+			<span style="color:#0000FF;font-weight: bold">return</span> cross
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Function</span> GetSurfaceNormal(v1 <span style="color:#0000FF;font-weight: bold">as</span> SCNVector3MBS, v2 <span style="color:#0000FF;font-weight: bold">as</span> SCNVector3MBS, v3 <span style="color:#0000FF;font-weight: bold">as</span> SCNVector3MBS) <span style="color:#0000FF;font-weight: bold">As</span> SCNVector3MBS
+			Var p1 <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> SCNVector3MBS( v2.x-v1.x, v2.y-v1.y, v2.z-v1.z)
+			Var p2 <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> SCNVector3MBS( v3.x-v1.x, v3.y-v1.y ,v3.z-v1.z)
+			
+			Var cross <span style="color:#0000FF;font-weight: bold">As</span> SCNVector3MBS= CrossProduct(p1, p2)
+			normalize(cross)
+			<span style="color:#0000FF;font-weight: bold">return</span> cross
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> Normalize(v <span style="color:#0000FF;font-weight: bold">as</span> SCNVector3MBS)
+			Var l <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = Sqrt((v.x*v.x)+(v.y*v.y)+(v.z*v.z))
+			v.x=v.x/l
+			v.y=v.y/l
+			v.z=v.z/l
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> node <span style="color:#0000FF;font-weight: bold">As</span> SCNNodeMBS</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> VectorC</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> Blue() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">double</span>
+			<span style="color:#0000FF;font-weight: bold">return</span> Simulation.blue/<span style="color:#326598">255</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(xx <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>, yy <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>, zz <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>, col <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">color</span>)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Calling</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">overridden</span> <span style="color:#7F0000;text-style:italic">superclass</span> <span style="color:#7F0000;text-style:italic">constructor.</span>
+			x=xx
+			y=yy
+			z= zz
+			Simulation=col
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> Green() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">double</span>
+			<span style="color:#0000FF;font-weight: bold">return</span> Simulation.Green/<span style="color:#326598">255</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> Red() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">double</span>
+			<span style="color:#0000FF;font-weight: bold">return</span> Simulation.red/<span style="color:#326598">255</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> VectorValue() <span style="color:#0000FF;font-weight: bold">As</span> SCNVector3MBS
+			<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#0000FF;font-weight: bold">new</span> SCNVector3MBS( x, y, z)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Simulation <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Color</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> x <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> y <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">double</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> z <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">double</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmac64bitplugin.html">MBS Mac64bit Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-mac64bit-scenekit-triangledemo">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

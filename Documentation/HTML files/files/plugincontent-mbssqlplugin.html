@@ -1,0 +1,696 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - The plugin part MBS SQL Plugin</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">The plugin part MBS SQL Plugin</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>The plugin MBS SQL Plugin:</H3>
+<ul translate="no">
+<li><A href="class-database.html"><B>class Database</B></a><ul>
+<li><A href="sql-database-method.html#3">method Close</A></li>
+<li><A href="sql-database-method.html#17">method SQLSelect(SelectString as string) as RecordSet</A></li>
+<li><A href="sql-database-method.html#16">method SQLExecute(ExecuteString as string)</A></li>
+<li><A href="sql-database-method.html#7">method Connect as boolean</A></li>
+<li><A href="sql-database-method.html#4">method Commit</A></li>
+<li><A href="sql-database-method.html#12">method Rollback</A></li>
+<li><A href="sql-database-method.html#11">method Prepare(statement as String) as PreparedSQLStatement</A></li>
+<li><A href="sql-database-method.html#10">method InsertRecord(TableName as String, Data as DatabaseRecord)</A></li>
+<li><A href="sql-database-method.html">method AddRow(TableName as String, row as DatabaseRow)</A></li>
+<li><A href="sql-database-method.html#2">method BeginTransaction</A></li>
+<li><A href="sql-database-method.html#5">method CommitTransaction</A></li>
+<li><A href="sql-database-method.html#6">method Connect</A></li>
+<li><A href="sql-database-method.html#13">method RollbackTransaction</A></li>
+<li><A href="sql-database-method.html#8">method ExecuteSQL(sql As String, ParamArray values As Variant)</A></li>
+<li><A href="sql-database-method.html#9">method ExecuteSQL(sql As String, values() As Variant)</A></li>
+<li><A href="sql-database-method.html#14">method SelectSQL(sql As String, ParamArray values As Variant) as RowSet</A></li>
+<li><A href="sql-database-method.html#15">method SelectSQL(sql As String, values() As Variant) as RowSet</A></li>
+<li><A href="sql-database-property.html">property DatabaseName as String</A></li>
+<li><A href="sql-database-property.html#4">property ErrorMessage as String</A></li>
+<li><A href="sql-database-property.html#7">property UserName as String</A></li>
+<li><A href="sql-database-property.html#5">property Host as String</A></li>
+<li><A href="sql-database-property.html#6">property Password as String</A></li>
+<li><A href="sql-database-property.html#3">property ErrorCode as Integer</A></li>
+<li><A href="sql-database-property.html#2">property Error as Boolean</A></li>
+</ul></li>
+<li><A href="class-db2mbs.html"><B>class DB2MBS</B></a><ul>
+<li><A href="sql-db2mbs-method.html#2">method SQLRowCount(cmd as SQLCommandMBS) as Int64</A></li>
+<li><A href="sql-db2mbs-method.html">method SQLExecDirect(cmd as SQLCommandMBS, text as string)</A></li>
+<li><A href="sql-db2mbs-property.html">property Lasterror as Integer</A></li>
+</ul></li>
+<li><A href="class-informixmbs.html"><B>class InformixMBS</B></a><ul>
+<li><A href="sql-informixmbs-method.html">method Error(cmd as SQLCommandMBS, byref SQLState as string, byref NativeError as integer, byref ErrorMsg as string) as integer</A></li>
+<li><A href="sql-informixmbs-method.html#2">method GetCursorName(cmd as SQLCommandMBS) as string</A></li>
+<li><A href="sql-informixmbs-method.html#6">method SetCursorName(cmd as SQLCommandMBS, name as string) as boolean</A></li>
+<li><A href="sql-informixmbs-method.html#5">method HSTMT(cmd as SQLCommandMBS) as integer</A></li>
+<li><A href="sql-informixmbs-method.html#4">method HENV as integer</A></li>
+<li><A href="sql-informixmbs-method.html#3">method HDBC as integer</A></li>
+</ul></li>
+<li><A href="class-mysqlmbs.html"><B>class MySQLMBS</B></a><ul>
+<li><A href="sql-mysqlmbs-method.html#8">method SetSSL(keyPath as string, CertificatePath as string, AuthorityPath as string, authorityFolderPath as string, Cipher as string)</A></li>
+<li><A href="sql-mysqlmbs-method.html#6">method InsertID as Int64</A></li>
+<li><A href="sql-mysqlmbs-method.html#4">method FieldCount as UInt32</A></li>
+<li><A href="sql-mysqlmbs-method.html">method AffectedRows as UInt64</A></li>
+<li><A href="sql-mysqlmbs-method.html#5">method Info as string</A></li>
+<li><A href="sql-mysqlmbs-method.html#2">method Error as string</A></li>
+<li><A href="sql-mysqlmbs-method.html#3">method ErrorNumber as UInt32</A></li>
+<li><A href="sql-mysqlmbs-method.html#7">method NumberOfRows(cmd as SQLCommandMBS) as UInt64</A></li>
+</ul></li>
+<li><A href="class-postgresqlapimbs.html"><B>class PostgreSQLAPIMBS</B></a><ul>
+<li><A href="sql-postgresqlapimbs-method.html">method DB as string</A></li>
+<li><A href="sql-postgresqlapimbs-method.html#12">method User as string</A></li>
+<li><A href="sql-postgresqlapimbs-method.html#8">method Password as string</A></li>
+<li><A href="sql-postgresqlapimbs-method.html#6">method Host as string</A></li>
+<li><A href="sql-postgresqlapimbs-method.html#9">method Port as string</A></li>
+<li><A href="sql-postgresqlapimbs-method.html#11">method TTY as string</A></li>
+<li><A href="sql-postgresqlapimbs-method.html#7">method Options as string</A></li>
+<li><A href="sql-postgresqlapimbs-method.html#2">method ErrorMessage as string</A></li>
+<li><A href="sql-postgresqlapimbs-method.html#10">method RecordCount(cmd as SQLCommandMBS) as integer</A></li>
+<li><A href="sql-postgresqlapimbs-method.html#5">method FieldCount(cmd as SQLCommandMBS) as integer</A></li>
+<li><A href="sql-postgresqlapimbs-method.html#3">method Field(cmd as SQLCommandMBS, RecordIndex as integer, FieldIndex as integer) as string</A></li>
+<li><A href="sql-postgresqlapimbs-method.html#4">method Field(cmd as SQLCommandMBS, RecordIndex as integer, FieldName as string) as string</A></li>
+</ul></li>
+<li><A href="class-recordset.html"><B>class RecordSet</B></a><ul>
+<li><A href="recordset-clonembs.html">method CloneMBS as RecordSet</A></li>
+</ul></li>
+<li><A href="class-sqlapimbs.html"><B>class SQLAPIMBS</B></a><ul>
+<li><A href="sql-sqlapimbs-property.html#2">property Connection as Variant</A></li>
+<li><A href="sql-sqlapimbs-property.html">property ClassName as String</A></li>
+</ul></li>
+<li><A href="class-sqlblobmbs.html"><B>class SQLBLobMBS</B></a><ul>
+<li><A href="sql-sqlblobmbs-method.html#2">method Constructor(Data as MemoryBlock)</A></li>
+<li><A href="sql-sqlblobmbs-method.html#4">method Constructor(Data as string, isText as boolean = true)</A></li>
+<li><A href="sql-sqlblobmbs-method.html">method Constructor</A></li>
+<li><A href="sql-sqlblobmbs-method.html#3">method Constructor(data as SQLStringMBS)</A></li>
+<li><A href="sql-sqlblobmbs-method.html#5">method Constructor(dataProvider as SQLDataProviderMBS, BlockSize as UInt32)</A></li>
+</ul></li>
+<li><A href="class-sqlbytesmbs.html"><B>class SQLBytesMBS</B></a><ul>
+<li><A href="sql-sqlbytesmbs-method.html#2">method Constructor(Data as MemoryBlock)</A></li>
+<li><A href="sql-sqlbytesmbs-method.html#4">method Constructor(Data as string, isText as boolean = true)</A></li>
+<li><A href="sql-sqlbytesmbs-method.html">method Constructor</A></li>
+<li><A href="sql-sqlbytesmbs-method.html#3">method Constructor(data as SQLStringMBS)</A></li>
+</ul></li>
+<li><A href="class-sqlclobmbs.html"><B>class SQLCLobMBS</B></a><ul>
+<li><A href="sql-sqlclobmbs-method.html#3">method Constructor(Data as string, isText as boolean=true)</A></li>
+<li><A href="sql-sqlclobmbs-method.html">method Constructor</A></li>
+<li><A href="sql-sqlclobmbs-method.html#2">method Constructor(data as SQLStringMBS)</A></li>
+<li><A href="sql-sqlclobmbs-method.html#4">method Constructor(dataProvider as SQLDataProviderMBS, BlockSize as UInt32)</A></li>
+</ul></li>
+<li><A href="class-sqlcommandmbs.html"><B>class SQLCommandMBS</B></a><ul>
+<li><A href="sql-sqlcommandmbs-method1.html#5">method PostgreSQLRowCount as Integer</A></li>
+<li><A href="sql-sqlcommandmbs-method1.html#4">method PostgreSQLFieldCount as Integer</A></li>
+<li><A href="sql-sqlcommandmbs-method1.html#2">method PostgreSQLField(RecordIndex as integer, FieldIndex as integer) as string</A></li>
+<li><A href="sql-sqlcommandmbs-method1.html#3">method PostgreSQLField(RecordIndex as integer, FieldName as string) as string</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#11">method DB2SQLRowCount as Int64</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#10">method DB2SQLExecDirect(sql as string)</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#25">method FieldNames as String()</A></li>
+<li><A href="sql-sqlcommandmbs-method.html">method AsRecordSet as RecordSet</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#9">method CreateParam(name as string, ParamType as integer, NativeType as integer, ParamSize as integer, ParamPrecision as integer, ParamScale as integer, DirType as integer=0) as SQLParamMBS</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#8">method CreateParam(name as string, ParamType as integer, DirType as integer=0) as SQLParamMBS</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#24">method FieldExists(name as string) as Boolean</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#23">method Field(name as string) as SQLFieldMBS</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#22">method Field(index as integer) as SQLFieldMBS</A></li>
+<li><A href="sql-sqlcommandmbs-method1.html#10">method Value(name as string) as SQLValueReadMBS</A></li>
+<li><A href="sql-sqlcommandmbs-method1.html#9">method Value(index as integer) as SQLValueReadMBS</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#29">method Param(name as string) as SQLParamMBS</A></li>
+<li><A href="sql-sqlcommandmbs-method1.html">method ParamByIndex(index as integer) as SQLParamMBS</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#28">method Param(ID as integer) as SQLParamMBS</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#6">method Constructor</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#7">method Constructor(connection as SQLConnectionMBS, SQLCommand as String, CommandType as integer = 0)</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#12">method DestroyParams</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#4">method Cancel</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#26">method Open</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#5">method Close</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#13">method Execute</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#14">method ExecuteCommand(SQLCommand as string, CommandType as integer=0)</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#16">method ExecuteMT</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#15">method ExecuteCommandMT(SQLCommand as string, CommandType as integer=0)</A></li>
+<li><A href="sql-sqlcommandmbs-method1.html#8">method SetParameters(Params as dictionary)</A></li>
+<li><A href="sql-sqlcommandmbs-method1.html#6">method Prepare</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#3">method Cache</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#19">method FetchNext as boolean</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#21">method FetchPrior as boolean</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#17">method FetchFirst as boolean</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#20">method FetchPos(offset as Integer, relative as boolean = false) as boolean</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#18">method FetchLast as boolean</A></li>
+<li><A href="sql-sqlcommandmbs-method1.html#7">method setCommandText(SQLCommand as string, CommandType as integer = 0)</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#2">method AsRowSet as RowSet</A></li>
+<li><A href="sql-sqlcommandmbs-method.html#27">property Option(name as string) as string</A></li>
+<li><A href="sql-sqlcommandmbs-property.html#2">property CommandType as Integer</A></li>
+<li><A href="sql-sqlcommandmbs-property.html#14">property RowsAffected as Integer</A></li>
+<li><A href="sql-sqlcommandmbs-property.html#4">property FieldCount as Integer</A></li>
+<li><A href="sql-sqlcommandmbs-property.html#12">property ParamCount as Integer</A></li>
+<li><A href="sql-sqlcommandmbs-property.html">property CommandText as String</A></li>
+<li><A href="sql-sqlcommandmbs-property.html#9">property isOpened as Boolean</A></li>
+<li><A href="sql-sqlcommandmbs-property.html#10">property isResultSet as Boolean</A></li>
+<li><A href="sql-sqlcommandmbs-property.html#7">property isExecuted as Boolean</A></li>
+<li><A href="sql-sqlcommandmbs-property.html#8">property isExecuting as Boolean</A></li>
+<li><A href="sql-sqlcommandmbs-property.html#6">property hasCache as Boolean</A></li>
+<li><A href="sql-sqlcommandmbs-property.html#3">property Connection as SQLConnectionMBS</A></li>
+<li><A href="sql-sqlcommandmbs-property.html#15">property Tag as Variant</A></li>
+<li><A href="sql-sqlcommandmbs-property.html#5">property Fields as Dictionary</A></li>
+<li><A href="sql-sqlcommandmbs-property.html#13">property Parameters as Dictionary</A></li>
+<li><A href="sql-sqlcommandmbs-property.html#11">property Options as Dictionary</A></li>
+<li><A href="sql-sqlcommandmbs-shared-property.html">shared property CommandCount as Integer</A></li>
+<li><A href="sql-sqlcommandmbs-event.html#2">event Working</A></li>
+<li><A href="sql-sqlcommandmbs-event.html">event Trace(traceInfo as integer, SQL as string)</A></li>
+</ul></li>
+<li><A href="class-sqlconnectionmbs.html"><B>class SQLConnectionMBS</B></a><ul>
+<li><A href="sql-sqlconnectionmbs-method.html#26">method SQLiteConnectionHandle as Ptr</A></li>
+<li><A href="sql-sqlconnectionmbs-method1.html#3">method SQLiteMemoryHighwater(reset as boolean = false) as Int64</A></li>
+<li><A href="sql-sqlconnectionmbs-method1.html#7">method SQLiteSetBusyTimeout(TimeOutMS as Integer = 20)</A></li>
+<li><A href="sql-sqlconnectionmbs-method1.html#6">method SQLiteSetBusyHandler(MaxAttempts as Integer = 5)</A></li>
+<li><A href="sql-sqlconnectionmbs-method1.html#10">method SQLiteThreadsafe as integer</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#27">method SQLiteEnableLoadExtension(OnOff as boolean)</A></li>
+<li><A href="sql-sqlconnectionmbs-method1.html#5">method SQLiteReKey(Key as String) as Integer</A></li>
+<li><A href="sql-sqlconnectionmbs-method1.html#8">method SQLiteSetKey(Key as String) as Integer</A></li>
+<li><A href="sql-sqlconnectionmbs-method1.html#2">method SQLiteLoadExtension(path as String, ByRef ErrorMessage as String) as Integer</A></li>
+<li><A href="sql-sqlconnectionmbs-method1.html">method SQLiteLoadExtension(file as FolderItem, ByRef ErrorMessage as String) as Integer</A></li>
+<li><A href="sql-sqlconnectionmbs-method1.html#9">method SQLiteTableColumnMetaData(DBName as string, TableName as string, ColumnName as string, byref DataType as string, byref CollationSequence as string, byref NotNull as boolean, byref PrimaryKey as boolean, byref AutoIncrement as Boolean) as integer</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#23">method SQLiteBackupPageCount(Backup as SQLite3BackupMBS) as integer</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#24">method SQLiteBackupRemaining(Backup as SQLite3BackupMBS) as integer</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#21">method SQLiteBackupFinish(Backup as SQLite3BackupMBS) as integer</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#25">method SQLiteBackupStep(Backup as SQLite3BackupMBS, Pages as Integer) as integer</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#22">method SQLiteBackupInit(Dest as Variant, DestName as String, Source as Variant, SourceName as String) as SQLite3BackupMBS</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#28">method SQLiteLastInsertRowID as Int64</A></li>
+<li><A href="sql-sqlconnectionmbs-method1.html#4">method SQLiteMemoryUsed as Int64</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#29">method SQLiteLibVersion as String</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#15">method MySQLInsertID as Int64</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#10">method CubeSQLSendData(data as String)</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#9">method CubeSQLSendData(data as MemoryBlock)</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#11">method CubeSQLSendEndData</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#8">method CubeSQLReceiveData(byref data as String, byref IsEndChunk as Boolean) as Boolean</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#7">method CubeSQLLastInsertID as Int64</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#2">method CancelAllCommands</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#3">method Commands as SQLCommandMBS()</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#14">method Listen</A></li>
+<li><A href="sql-sqlconnectionmbs-method1.html#12">method SQLSelectAsRecordSet(command as string, CommandType as integer = 0) as RecordSet</A></li>
+<li><A href="sql-sqlconnectionmbs-method1.html#13">method SQLSelectAsRecordSetMT(command as string, CommandType as integer = 0) as RecordSet</A></li>
+<li><A href="sql-sqlconnectionmbs-method1.html#11">method SQLSelect(command as string, CommandType as integer = 0) as string</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#19">method SQLExecute(command as string, CommandType as integer = 0)</A></li>
+<li><A href="sql-sqlconnectionmbs-method1.html#16">method SQLSelectMT(command as string, CommandType as integer = 0) as string</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#20">method SQLExecuteMT(command as string, CommandType as integer = 0)</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#18">method SetFileOption(name as string, file as folderitem)</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#12">method Disconnect</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#4">method Commit</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#17">method Rollback</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#5">method Connect(DBString as string, UserID as string, Password as string, client as integer = 0)</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#6">method ConnectMT(DBString as string, UserID as string, Password as string, client as integer = 0)</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#13">method InsertRecord(TableName as String, Record as Dictionary)</A></li>
+<li><A href="sql-sqlconnectionmbs-method1.html#17">method UpdateRecord(TableName as String, Record as Dictionary, Keys as Dictionary)</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html">method BeginTransaction</A></li>
+<li><A href="sql-sqlconnectionmbs-method1.html#14">method SQLSelectAsRowSet(command as string, CommandType as integer = 0) as RowSet</A></li>
+<li><A href="sql-sqlconnectionmbs-method1.html#15">method SQLSelectAsRowSetMT(command as string, CommandType as integer = 0) as RowSet</A></li>
+<li><A href="sql-sqlconnectionmbs-method.html#16">property Option(name as string) as string</A></li>
+<li><A href="sql-sqlconnectionmbs-property.html#18">property Tag as Variant</A></li>
+<li><A href="sql-sqlconnectionmbs-property.html#4">property Error as Boolean</A></li>
+<li><A href="sql-sqlconnectionmbs-property.html#5">property ErrorCode as Integer</A></li>
+<li><A href="sql-sqlconnectionmbs-property.html#6">property ErrorMessage as String</A></li>
+<li><A href="sql-sqlconnectionmbs-property.html#8">property isConnected as Boolean</A></li>
+<li><A href="sql-sqlconnectionmbs-property.html#7">property isAlive as Boolean</A></li>
+<li><A href="sql-sqlconnectionmbs-property.html#15">property ServerVersion as Integer</A></li>
+<li><A href="sql-sqlconnectionmbs-property.html#3">property ClientVersion as Integer</A></li>
+<li><A href="sql-sqlconnectionmbs-property.html#9">property IsolationLevel as Integer</A></li>
+<li><A href="sql-sqlconnectionmbs-property.html#2">property Client as Integer</A></li>
+<li><A href="sql-sqlconnectionmbs-property.html">property AutoCommit as Integer</A></li>
+<li><A href="sql-sqlconnectionmbs-property.html#16">property ServerVersionString as String</A></li>
+<li><A href="sql-sqlconnectionmbs-property.html#11">property NativeAPI as Variant</A></li>
+<li><A href="sql-sqlconnectionmbs-property.html#13">property RaiseExceptions as Boolean</A></li>
+<li><A href="sql-sqlconnectionmbs-property.html#14">property Scrollable as Boolean</A></li>
+<li><A href="sql-sqlconnectionmbs-property.html#10">property LastStatement as String</A></li>
+<li><A href="sql-sqlconnectionmbs-property.html#17">property SQLiteEncryptionKey as String</A></li>
+<li><A href="sql-sqlconnectionmbs-property.html#12">property Options as Dictionary</A></li>
+<li><A href="sql-sqlconnectionmbs-shared-property.html">shared property ConnectionCount as Integer</A></li>
+<li><A href="sql-sqlconnectionmbs-shared-property.html#2">shared property VariantsKeepSQLObjects as Boolean</A></li>
+<li><A href="sql-sqlconnectionmbs-event.html#5">event Working</A></li>
+<li><A href="sql-sqlconnectionmbs-event.html#3">event Trace(traceInfo as integer, SQL as string, Command as SQLCommandMBS)</A></li>
+<li><A href="sql-sqlconnectionmbs-event.html#4">event WillConnect</A></li>
+<li><A href="sql-sqlconnectionmbs-event.html">event DidConnect</A></li>
+<li><A href="sql-sqlconnectionmbs-event.html#2">event PostgresNotification(NotificationName as string, PID as Integer, Extras as String)</A></li>
+</ul></li>
+<li><A href="class-sqldatabasembs.html"><B>class SQLDatabaseMBS</B></a><ul>
+<li><A href="sql-sqldatabasembs-method.html#25">method SQLiteConnectionHandle as Ptr</A></li>
+<li><A href="sql-sqldatabasembs-method.html#28">method SQLiteLibVersion as String</A></li>
+<li><A href="sql-sqldatabasembs-method1.html#2">method SQLiteMemoryHighwater(reset as boolean = false) as Int64</A></li>
+<li><A href="sql-sqldatabasembs-method1.html#6">method SQLiteSetBusyTimeout(TimeOutMS as Integer = 20)</A></li>
+<li><A href="sql-sqldatabasembs-method1.html#5">method SQLiteSetBusyHandler(MaxAttempts as Integer = 5)</A></li>
+<li><A href="sql-sqldatabasembs-method1.html#9">method SQLiteThreadsafe as integer</A></li>
+<li><A href="sql-sqldatabasembs-method.html#26">method SQLiteEnableLoadExtension(OnOff as boolean)</A></li>
+<li><A href="sql-sqldatabasembs-method1.html#4">method SQLiteReKey(Key as String) as Integer</A></li>
+<li><A href="sql-sqldatabasembs-method1.html#7">method SQLiteSetKey(Key as String) as Integer</A></li>
+<li><A href="sql-sqldatabasembs-method1.html">method SQLiteLoadExtension(path as String, ByRef ErrorMessage as String) as Integer</A></li>
+<li><A href="sql-sqldatabasembs-method.html#29">method SQLiteLoadExtension(file as FolderItem, ByRef ErrorMessage as String) as Integer</A></li>
+<li><A href="sql-sqldatabasembs-method1.html#8">method SQLiteTableColumnMetaData(DBName as string, TableName as string, ColumnName as string, byref DataType as string, byref CollationSequence as string, byref NotNull as boolean, byref PrimaryKey as boolean, byref AutoIncrement as Boolean) as integer</A></li>
+<li><A href="sql-sqldatabasembs-method.html#22">method SQLiteBackupPageCount(Backup as SQLite3BackupMBS) as integer</A></li>
+<li><A href="sql-sqldatabasembs-method.html#23">method SQLiteBackupRemaining(Backup as SQLite3BackupMBS) as integer</A></li>
+<li><A href="sql-sqldatabasembs-method.html#20">method SQLiteBackupFinish(Backup as SQLite3BackupMBS) as integer</A></li>
+<li><A href="sql-sqldatabasembs-method.html#24">method SQLiteBackupStep(Backup as SQLite3BackupMBS, Pages as Integer) as integer</A></li>
+<li><A href="sql-sqldatabasembs-method.html#21">method SQLiteBackupInit(Dest as Variant, DestName as String, Source as Variant, SourceName as String) as SQLite3BackupMBS</A></li>
+<li><A href="sql-sqldatabasembs-method.html#27">method SQLiteLastInsertRowID as Int64</A></li>
+<li><A href="sql-sqldatabasembs-method1.html#3">method SQLiteMemoryUsed as Int64</A></li>
+<li><A href="sql-sqldatabasembs-method.html#14">method MySQLInsertID as Int64</A></li>
+<li><A href="sql-sqldatabasembs-method.html#10">method CubeSQLSendData(data as String)</A></li>
+<li><A href="sql-sqldatabasembs-method.html#9">method CubeSQLSendData(data as MemoryBlock)</A></li>
+<li><A href="sql-sqldatabasembs-method.html#11">method CubeSQLSendEndData</A></li>
+<li><A href="sql-sqldatabasembs-method.html#8">method CubeSQLReceiveData(byref data as String, byref IsEndChunk as Boolean) as Boolean</A></li>
+<li><A href="sql-sqldatabasembs-method.html#7">method CubeSQLLastInsertID as Int64</A></li>
+<li><A href="sql-sqldatabasembs-method.html#2">method CancelAllCommands</A></li>
+<li><A href="sql-sqldatabasembs-method.html#3">method Commands as SQLCommandMBS()</A></li>
+<li><A href="sql-sqldatabasembs-method1.html#12">method UpdateRecord(TableName as String, Record as Dictionary, Keys as Dictionary)</A></li>
+<li><A href="sql-sqldatabasembs-method.html#12">method InsertRecord(TableName as String, Record as Dictionary)</A></li>
+<li><A href="sql-sqldatabasembs-method.html#13">method Listen</A></li>
+<li><A href="sql-sqldatabasembs-method.html">method BeginTransaction</A></li>
+<li><A href="sql-sqldatabasembs-method.html#6">method Constructor(globals as SQLGlobalsMBS = nil)</A></li>
+<li><A href="sql-sqldatabasembs-method1.html#11">method SQLSelectMT(SelectString as string, CommandType as integer = 0) as RecordSet</A></li>
+<li><A href="sql-sqldatabasembs-method.html#19">method SQLExecuteMT(ExecuteString as string, CommandType as integer = 0)</A></li>
+<li><A href="sql-sqldatabasembs-method1.html#10">method SQLSelect(SelectString as string, CommandType as integer) as RecordSet</A></li>
+<li><A href="sql-sqldatabasembs-method.html#18">method SQLExecute(ExecuteString as string, CommandType as integer)</A></li>
+<li><A href="sql-sqldatabasembs-method.html#17">method SetFileOption(name as string, file as folderitem)</A></li>
+<li><A href="sql-sqldatabasembs-method.html#5">method ConnectMT as Boolean</A></li>
+<li><A href="sql-sqldatabasembs-method.html#4">method Connect as boolean</A></li>
+<li><A href="sql-sqldatabasembs-method.html#16">method Prepare(statement as string) as SQLPreparedStatementMBS</A></li>
+<li><A href="sql-sqldatabasembs-method.html#15">property Option(name as string) as string</A></li>
+<li><A href="sql-sqldatabasembs-property.html#16">property Tag as Variant</A></li>
+<li><A href="sql-sqldatabasembs-property.html#14">property ServerVersionString as String</A></li>
+<li><A href="sql-sqldatabasembs-property.html#6">property isConnected as Boolean</A></li>
+<li><A href="sql-sqldatabasembs-property.html#5">property isAlive as Boolean</A></li>
+<li><A href="sql-sqldatabasembs-property.html#13">property ServerVersion as Integer</A></li>
+<li><A href="sql-sqldatabasembs-property.html#3">property ClientVersion as Integer</A></li>
+<li><A href="sql-sqldatabasembs-property.html">property AutoCommit as Integer</A></li>
+<li><A href="sql-sqldatabasembs-property.html#7">property IsolationLevel as Integer</A></li>
+<li><A href="sql-sqldatabasembs-property.html#4">property Connection as SQLConnectionMBS</A></li>
+<li><A href="sql-sqldatabasembs-property.html#11">property RaiseExceptions as Boolean</A></li>
+<li><A href="sql-sqldatabasembs-property.html#2">property Client as Integer</A></li>
+<li><A href="sql-sqldatabasembs-property.html#12">property Scrollable as Boolean</A></li>
+<li><A href="sql-sqldatabasembs-property.html#8">property LastStatement as String</A></li>
+<li><A href="sql-sqldatabasembs-property.html#15">property SQLiteEncryptionKey as String</A></li>
+<li><A href="sql-sqldatabasembs-property.html#9">property NativeAPI as Variant</A></li>
+<li><A href="sql-sqldatabasembs-property.html#10">property Options as Dictionary</A></li>
+<li><A href="sql-sqldatabasembs-event.html#3">event Trace(traceInfo as integer, SQL as string, Command as SQLCommandMBS)</A></li>
+<li><A href="sql-sqldatabasembs-event.html#4">event WillConnect</A></li>
+<li><A href="sql-sqldatabasembs-event.html">event DidConnect</A></li>
+<li><A href="sql-sqldatabasembs-event.html#2">event PostgresNotification(NotificationName as string, PID as Integer, Extras as String)</A></li>
+</ul></li>
+<li><A href="class-sqldataconsumermbs.html"><B>class SQLDataConsumerMBS</B></a><ul>
+<li><A href="sql-sqldataconsumermbs-event.html">event Write(PieceType as integer, data as string, Length as UInt32, BlobSize as UInt32)</A></li>
+</ul></li>
+<li><A href="class-sqldataprovidermbs.html"><B>class SQLDataProviderMBS</B></a><ul>
+<li><A href="sql-sqldataprovidermbs-event.html">event Read(byref PieceType as integer, Length as UInt32) as string</A></li>
+</ul></li>
+<li><A href="class-sqldatetimembs.html"><B>class SQLDateTimeMBS</B></a><ul>
+<li><A href="sql-sqldatetimembs-method.html#4">method Constructor(other as SQLDateTimeMBS)</A></li>
+<li><A href="sql-sqldatetimembs-method.html#6">method Constructor(value as double)</A></li>
+<li><A href="sql-sqldatetimembs-method.html#7">method Constructor(Year as integer, Month as integer, Day as integer, Hour as integer, Minute as integer, Second as integer = 0, Fraction as Integer = 0, TimeZone as String = "")</A></li>
+<li><A href="sql-sqldatetimembs-method.html#8">method Constructor(Year as integer, Month as integer, Day as integer, Hour as integer, Minute as integer, Second as integer, TimeZone as String)</A></li>
+<li><A href="sql-sqldatetimembs-method.html#3">method Constructor(Hour as integer, Minute as integer, Second as integer = 0, Fraction as Integer = 0)</A></li>
+<li><A href="sql-sqldatetimembs-method.html#2">method Constructor(DateValue as Date)</A></li>
+<li><A href="sql-sqldatetimembs-method.html#10">method Set(value as Date)</A></li>
+<li><A href="sql-sqldatetimembs-method.html#5">method Constructor(StringValue as String)</A></li>
+<li><A href="sql-sqldatetimembs-method.html">method Constructor(DateTimeValue as DateTime)</A></li>
+<li><A href="sql-sqldatetimembs-method.html#9">method Set(DateTimeValue as DateTime)</A></li>
+<li><A href="sql-sqldatetimembs-property.html#14">property StringValue as String</A></li>
+<li><A href="sql-sqldatetimembs-property.html#15">property TimeZone as String</A></li>
+<li><A href="sql-sqldatetimembs-property.html#6">property DoubleValue as Double</A></li>
+<li><A href="sql-sqldatetimembs-property.html#16">property Year as Integer</A></li>
+<li><A href="sql-sqldatetimembs-property.html#12">property Month as Integer</A></li>
+<li><A href="sql-sqldatetimembs-property.html#10">property Hour as Integer</A></li>
+<li><A href="sql-sqldatetimembs-property.html#11">property Minute as Integer</A></li>
+<li><A href="sql-sqldatetimembs-property.html#13">property Second as Integer</A></li>
+<li><A href="sql-sqldatetimembs-property.html#3">property Day as Integer</A></li>
+<li><A href="sql-sqldatetimembs-property.html#4">property DayOfWeek as Integer</A></li>
+<li><A href="sql-sqldatetimembs-property.html#5">property DayOfYear as Integer</A></li>
+<li><A href="sql-sqldatetimembs-property.html#7">property Fraction as Integer</A></li>
+<li><A href="sql-sqldatetimembs-property.html#2">property DateValue as Date</A></li>
+<li><A href="sql-sqldatetimembs-property.html#8">property hasDate as Boolean</A></li>
+<li><A href="sql-sqldatetimembs-property.html#9">property hasTime as Boolean</A></li>
+<li><A href="sql-sqldatetimembs-property.html">property DateTimeValue as DateTime</A></li>
+</ul></li>
+<li><A href="class-sqlerrorexceptionmbs.html"><B>class SQLErrorExceptionMBS</B></a><ul>
+<li><A href="sql-sqlerrorexceptionmbs-property.html">property ErrorClass as Integer</A></li>
+<li><A href="sql-sqlerrorexceptionmbs-property.html#4">property NativeError as Integer</A></li>
+<li><A href="sql-sqlerrorexceptionmbs-property.html#3">property ErrorPosition as Integer</A></li>
+<li><A href="sql-sqlerrorexceptionmbs-property.html#2">property ErrorMessage as String</A></li>
+<li><A href="sql-sqlerrorexceptionmbs-property.html#5">property SQL as String</A></li>
+</ul></li>
+<li><A href="class-sqlfieldmbs.html"><B>class SQLFieldMBS</B></a><ul>
+<li><A href="sql-sqlfieldmbs-method.html#2">method ReadLongOrLob(toConsumer as SQLDataConsumerMBS, BlockSize as integer)</A></li>
+<li><A href="sql-sqlfieldmbs-method.html#3">method ReadLongOrLob(toFile as FolderItem)</A></li>
+<li><A href="sql-sqlfieldmbs-method.html#4">method ReadLongOrLob(toStream as Writeable)</A></li>
+<li><A href="sql-sqlfieldmbs-method.html">property Option(name as string) as string</A></li>
+<li><A href="sql-sqlfieldmbs-property.html#7">property Name as String</A></li>
+<li><A href="sql-sqlfieldmbs-property.html#10">property Pos as Integer</A></li>
+<li><A href="sql-sqlfieldmbs-property.html#13">property Size as Integer</A></li>
+<li><A href="sql-sqlfieldmbs-property.html#14">property Type as Integer</A></li>
+<li><A href="sql-sqlfieldmbs-property.html#8">property NativeType as Integer</A></li>
+<li><A href="sql-sqlfieldmbs-property.html#12">property Scale as Integer</A></li>
+<li><A href="sql-sqlfieldmbs-property.html#11">property Precision as Integer</A></li>
+<li><A href="sql-sqlfieldmbs-property.html#6">property isFieldRequired as Boolean</A></li>
+<li><A href="sql-sqlfieldmbs-property.html#4">property FieldSize as Integer</A></li>
+<li><A href="sql-sqlfieldmbs-property.html#5">property FieldType as Integer</A></li>
+<li><A href="sql-sqlfieldmbs-property.html">property FieldNativeType as Integer</A></li>
+<li><A href="sql-sqlfieldmbs-property.html#3">property FieldScale as Integer</A></li>
+<li><A href="sql-sqlfieldmbs-property.html#2">property FieldPrecision as Integer</A></li>
+<li><A href="sql-sqlfieldmbs-property.html#9">property Options as Dictionary</A></li>
+</ul></li>
+<li><A href="class-sqlglobalsmbs.html"><B>class SQLGlobalsMBS</B></a><ul>
+<li><A href="sql-sqlglobalsmbs-shared-method.html#15">shared method UnInitialize</A></li>
+<li><A href="sql-sqlglobalsmbs-shared-method.html">shared method FindTableName(SQL as String) as String</A></li>
+<li><A href="sql-sqlglobalsmbs-shared-method.html#10">shared method SetCurrentWorkingDirectory(path as folderitem) as boolean</A></li>
+<li><A href="sql-sqlglobalsmbs-shared-method.html#11">shared method SetCurrentWorkingDirectory(path as String) as boolean</A></li>
+<li><A href="sql-sqlglobalsmbs-shared-method.html#8">shared method RaiseException(message as string)</A></li>
+<li><A href="sql-sqlglobalsmbs-shared-method.html#9">shared method RaiseSQLErrorException(UserCode as integer, message as string)</A></li>
+<li><A href="sql-sqlglobalsmbs-shared-method.html#16">shared method UnSetEnv(name as string) as boolean</A></li>
+<li><A href="sql-sqlglobalsmbs-shared-method.html#7">shared method PutEnv(line as string) as boolean</A></li>
+<li><A href="sql-sqlglobalsmbs-shared-method.html#12">shared method SetEnv(name as string, value as string) as boolean</A></li>
+<li><A href="sql-sqlglobalsmbs-shared-method.html#2">shared method GetEnv(name as string) as string</A></li>
+<li><A href="sql-sqlglobalsmbs-shared-method.html#13">shared method SetLicenseCode(n as string, enddate as integer, v1 as integer, v2 as integer)</A></li>
+<li><A href="sql-sqlglobalsmbs-shared-method.html#5">shared method GetVersionMajor as integer</A></li>
+<li><A href="sql-sqlglobalsmbs-shared-method.html#6">shared method GetVersionMinor as integer</A></li>
+<li><A href="sql-sqlglobalsmbs-shared-method.html#4">shared method GetVersionBuild as integer</A></li>
+<li><A href="sql-sqlglobalsmbs-shared-method.html#3">shared method GetVersion as String</A></li>
+<li><A href="sql-sqlglobalsmbs-shared-method.html#14">shared method Setlocale(category as integer, locale as string)</A></li>
+<li><A href="sql-sqlglobalsmbs-event.html">event Trace(traceInfo as integer, SQL as string, Connection as SQLConnectionMBS, Command as SQLCommandMBS)</A></li>
+</ul></li>
+<li><A href="class-sqlintervalmbs.html"><B>class SQLIntervalMBS</B></a><ul>
+<li><A href="sql-sqlintervalmbs-method.html">method Constructor</A></li>
+<li><A href="sql-sqlintervalmbs-method.html#3">method Constructor(value as double)</A></li>
+<li><A href="sql-sqlintervalmbs-method.html#2">method Constructor(days as integer, hours as integer, minutes as integer, seconds as integer = 0, NanoSeconds as Integer = 0)</A></li>
+<li><A href="sql-sqlintervalmbs-method.html#4">method Dec(interval as SQLIntervalMBS)</A></li>
+<li><A href="sql-sqlintervalmbs-method.html#5">method Inc(interval as SQLIntervalMBS)</A></li>
+<li><A href="sql-sqlintervalmbs-method.html#6">method SetInterval(days as integer, hours as integer, minutes as integer, seconds as integer = 0, NanoSeconds as Integer = 0)</A></li>
+<li><A href="sql-sqlintervalmbs-property.html#7">property StringValue as String</A></li>
+<li><A href="sql-sqlintervalmbs-property.html#2">property DoubleValue as Double</A></li>
+<li><A href="sql-sqlintervalmbs-property.html#8">property TotalDays as Double</A></li>
+<li><A href="sql-sqlintervalmbs-property.html#9">property TotalHours as Double</A></li>
+<li><A href="sql-sqlintervalmbs-property.html#10">property TotalMinutes as Double</A></li>
+<li><A href="sql-sqlintervalmbs-property.html#11">property TotalSeconds as Double</A></li>
+<li><A href="sql-sqlintervalmbs-property.html">property Days as Integer</A></li>
+<li><A href="sql-sqlintervalmbs-property.html#4">property Hours as Integer</A></li>
+<li><A href="sql-sqlintervalmbs-property.html#5">property Minutes as Integer</A></li>
+<li><A href="sql-sqlintervalmbs-property.html#6">property Seconds as Integer</A></li>
+<li><A href="sql-sqlintervalmbs-property.html#3">property Fraction as Integer</A></li>
+</ul></li>
+<li><A href="class-sqlite3backupmbs.html"><B>class SQLite3BackupMBS</B></a><ul>
+<li><A href="sql-sqlite3backupmbs-method.html">method Constructor</A></li>
+<li><A href="sql-sqlite3backupmbs-property.html">property Handle as Integer</A></li>
+</ul></li>
+<li><A href="class-sqlite3mbs.html"><B>class SQLite3MBS</B></a><ul>
+<li><A href="sql-sqlite3mbs-method.html#12">method MemoryHighwater(reset as boolean) as Int64</A></li>
+<li><A href="sql-sqlite3mbs-method.html#15">method SetBusyTimeout(TimeOutMS as Integer = 20)</A></li>
+<li><A href="sql-sqlite3mbs-method.html#14">method SetBusyHandler(MaxAttempts as Integer = 5)</A></li>
+<li><A href="sql-sqlite3mbs-method.html#13">method ReKey(Key as String) as Integer</A></li>
+<li><A href="sql-sqlite3mbs-method.html#16">method SetKey(Key as String) as Integer</A></li>
+<li><A href="sql-sqlite3mbs-method.html#11">method LoadExtension(path as String, ByRef ErrorMessage as String) as Integer</A></li>
+<li><A href="sql-sqlite3mbs-method.html#10">method LoadExtension(file as FolderItem, ByRef ErrorMessage as String) as Integer</A></li>
+<li><A href="sql-sqlite3mbs-method.html#6">method EnableLoadExtension(OnOff as boolean)</A></li>
+<li><A href="sql-sqlite3mbs-method.html#18">method Threadsafe as integer</A></li>
+<li><A href="sql-sqlite3mbs-method.html#17">method TableColumnMetaData(DBName as string, TableName as string, ColumnName as string, byref DataType as string, byref CollationSequence as string, byref NotNull as boolean, byref PrimaryKey as boolean, byref AutoIncrement as Boolean) as integer</A></li>
+<li><A href="sql-sqlite3mbs-method.html#3">method BackupPageCount(Backup as SQLite3BackupMBS) as integer</A></li>
+<li><A href="sql-sqlite3mbs-method.html#4">method BackupRemaining(Backup as SQLite3BackupMBS) as integer</A></li>
+<li><A href="sql-sqlite3mbs-method.html">method BackupFinish(Backup as SQLite3BackupMBS) as integer</A></li>
+<li><A href="sql-sqlite3mbs-method.html#5">method BackupStep(Backup as SQLite3BackupMBS, Pages as Integer) as integer</A></li>
+<li><A href="sql-sqlite3mbs-method.html#2">method BackupInit(Dest as Variant, DestName as String, Source as Variant, SourceName as String) as SQLite3BackupMBS</A></li>
+<li><A href="sql-sqlite3mbs-method.html#7">method ErrCode as integer</A></li>
+<li><A href="sql-sqlite3mbs-method.html#8">method ErrMessage as string</A></li>
+<li><A href="sql-sqlite3mbs-method.html#9">method LastInsertRowID as Int64</A></li>
+<li><A href="sql-sqlite3mbs-property.html#4">property Version as String</A></li>
+<li><A href="sql-sqlite3mbs-property.html#5">property VersionNumber as Integer</A></li>
+<li><A href="sql-sqlite3mbs-property.html#3">property MemoryUsed as Int64</A></li>
+<li><A href="sql-sqlite3mbs-property.html#2">property MemoryHighwater as Int64</A></li>
+<li><A href="sql-sqlite3mbs-property.html">property ConnectionHandle as Ptr</A></li>
+</ul></li>
+<li><A href="class-sqllongbinarymbs.html"><B>class SQLLongBinaryMBS</B></a><ul>
+<li><A href="sql-sqllongbinarymbs-method.html#2">method Constructor(Data as MemoryBlock)</A></li>
+<li><A href="sql-sqllongbinarymbs-method.html#4">method Constructor(Data as string, isText as boolean = true)</A></li>
+<li><A href="sql-sqllongbinarymbs-method.html">method Constructor</A></li>
+<li><A href="sql-sqllongbinarymbs-method.html#3">method Constructor(data as SQLStringMBS)</A></li>
+<li><A href="sql-sqllongbinarymbs-method.html#5">method Constructor(dataProvider as SQLDataProviderMBS, BlockSize as UInt32)</A></li>
+</ul></li>
+<li><A href="class-sqllongcharmbs.html"><B>class SQLLongCharMBS</B></a><ul>
+<li><A href="sql-sqllongcharmbs-method.html#3">method Constructor(Data as string, isText as boolean=true)</A></li>
+<li><A href="sql-sqllongcharmbs-method.html">method Constructor</A></li>
+<li><A href="sql-sqllongcharmbs-method.html#2">method Constructor(data as SQLStringMBS)</A></li>
+<li><A href="sql-sqllongcharmbs-method.html#4">method Constructor(dataProvider as SQLDataProviderMBS, BlockSize as UInt32)</A></li>
+</ul></li>
+<li><A href="class-sqllongorlobmbs.html"><B>class SQLLongOrLobMBS</B></a><ul>
+</ul></li>
+<li><A href="class-sqlnotinitializedexceptionmbs.html"><B>class SQLNotInitializedExceptionMBS</B></a><ul>
+</ul></li>
+<li><A href="class-sqlnullmbs.html"><B>class SQLNullMBS</B></a><ul>
+</ul></li>
+<li><A href="class-sqlnumericmbs.html"><B>class SQLNumericMBS</B></a><ul>
+<li><A href="sql-sqlnumericmbs-method.html">method Constructor</A></li>
+<li><A href="sql-sqlnumericmbs-method.html#2">method Constructor(value as double)</A></li>
+<li><A href="sql-sqlnumericmbs-method.html#3">method Constructor(value as string)</A></li>
+<li><A href="sql-sqlnumericmbs-property.html">property CurrencyValue as Currency</A></li>
+<li><A href="sql-sqlnumericmbs-property.html#2">property DoubleValue as Double</A></li>
+<li><A href="sql-sqlnumericmbs-property.html#3">property Int64Value as Int64</A></li>
+<li><A href="sql-sqlnumericmbs-property.html#8">property UInt64Value as UInt64</A></li>
+<li><A href="sql-sqlnumericmbs-property.html#7">property StringValue as String</A></li>
+<li><A href="sql-sqlnumericmbs-property.html#4">property Precision as Integer</A></li>
+<li><A href="sql-sqlnumericmbs-property.html#5">property Scale as Integer</A></li>
+<li><A href="sql-sqlnumericmbs-property.html#6">property Sign as Integer</A></li>
+<li><A href="sql-sqlnumericmbs-shared-method.html">shared method NumericWithCurrency(value as Currency) as SQLNumericMBS</A></li>
+<li><A href="sql-sqlnumericmbs-shared-method.html#2">shared method NumericWithDouble(value as double) as SQLNumericMBS</A></li>
+<li><A href="sql-sqlnumericmbs-shared-method.html#4">shared method NumericWithString(value as string) as SQLNumericMBS</A></li>
+<li><A href="sql-sqlnumericmbs-shared-method.html#3">shared method NumericWithInt64(value as Int64) as SQLNumericMBS</A></li>
+<li><A href="sql-sqlnumericmbs-shared-method.html#5">shared method NumericWithUInt64(value as UInt64) as SQLNumericMBS</A></li>
+</ul></li>
+<li><A href="class-sqlparammbs.html"><B>class SQLParamMBS</B></a><ul>
+<li><A href="sql-sqlparammbs-method.html#2">method ReadLongOrLob(toConsumer as SQLDataConsumerMBS, BlockSize as integer)</A></li>
+<li><A href="sql-sqlparammbs-method.html#3">method ReadLongOrLob(toFile as FolderItem)</A></li>
+<li><A href="sql-sqlparammbs-method.html#4">method ReadLongOrLob(toStream as Writeable)</A></li>
+<li><A href="sql-sqlparammbs-method.html">property Option(name as string) as string</A></li>
+<li><A href="sql-sqlparammbs-property.html#4">property Name as String</A></li>
+<li><A href="sql-sqlparammbs-property.html#7">property Precision as Integer</A></li>
+<li><A href="sql-sqlparammbs-property.html#8">property Scale as Integer</A></li>
+<li><A href="sql-sqlparammbs-property.html">property DirType as Integer</A></li>
+<li><A href="sql-sqlparammbs-property.html#9">property Size as Integer</A></li>
+<li><A href="sql-sqlparammbs-property.html#5">property NativeType as Integer</A></li>
+<li><A href="sql-sqlparammbs-property.html#10">property Type as Integer</A></li>
+<li><A href="sql-sqlparammbs-property.html#6">property Options as Dictionary</A></li>
+<li><A href="sql-sqlparammbs-property.html#2">property IsInput as Boolean</A></li>
+<li><A href="sql-sqlparammbs-property.html#3">property IsOutput as Boolean</A></li>
+</ul></li>
+<li><A href="class-sqlpositionmbs.html"><B>class SQLPositionMBS</B></a><ul>
+<li><A href="sql-sqlpositionmbs-method.html">method Constructor(withID as integer)</A></li>
+<li><A href="sql-sqlpositionmbs-method.html#2">method Constructor(withName as string)</A></li>
+</ul></li>
+<li><A href="class-sqlpreparedstatementmbs.html"><B>class SQLPreparedStatementMBS</B></a><ul>
+<li><A href="sql-sqlpreparedstatementmbs-method.html#3">method Bind(Values as Dictionary)</A></li>
+<li><A href="sql-sqlpreparedstatementmbs-method.html#19">method SQLSelectMT(ParamArray bindItems As Variant) As RecordSet</A></li>
+<li><A href="sql-sqlpreparedstatementmbs-method.html#17">method SQLExecuteMT(ParamArray bindItems As Variant)</A></li>
+<li><A href="sql-sqlpreparedstatementmbs-method.html#2">method Bind(name As String, value As Variant, type as integer)</A></li>
+<li><A href="sql-sqlpreparedstatementmbs-method.html">method Bind(name As String, value As Variant)</A></li>
+<li><A href="sql-sqlpreparedstatementmbs-method.html#7">method BindType(name As String, type As Integer)</A></li>
+<li><A href="sql-sqlpreparedstatementmbs-method.html#6">method Bind(zeroBasedIndex As Integer, value As Variant, type as integer)</A></li>
+<li><A href="sql-sqlpreparedstatementmbs-method.html#5">method Bind(zeroBasedIndex As Integer, value As Variant)</A></li>
+<li><A href="sql-sqlpreparedstatementmbs-method.html#4">method Bind(values() As Variant)</A></li>
+<li><A href="sql-sqlpreparedstatementmbs-method.html#9">method BindType(zeroBasedIndex As Integer, type As Integer)</A></li>
+<li><A href="sql-sqlpreparedstatementmbs-method.html#8">method BindType(types() As Integer)</A></li>
+<li><A href="sql-sqlpreparedstatementmbs-method.html#18">method SQLSelect(ParamArray bindItems As Variant) As RecordSet</A></li>
+<li><A href="sql-sqlpreparedstatementmbs-method.html#16">method SQLExecute(ParamArray bindItems As Variant)</A></li>
+<li><A href="sql-sqlpreparedstatementmbs-method.html#11">method Constructor</A></li>
+<li><A href="sql-sqlpreparedstatementmbs-method.html#10">method Clear</A></li>
+<li><A href="sql-sqlpreparedstatementmbs-method.html#12">method ExecuteSQL(ParamArray bindItems As Variant)</A></li>
+<li><A href="sql-sqlpreparedstatementmbs-method.html#14">method SelectSQL(ParamArray bindItems As Variant) As Rowset</A></li>
+<li><A href="sql-sqlpreparedstatementmbs-method.html#13">method ExecuteSQLMT(ParamArray bindItems As Variant)</A></li>
+<li><A href="sql-sqlpreparedstatementmbs-method.html#15">method SelectSQLMT(ParamArray bindItems As Variant) As Rowset</A></li>
+<li><A href="sql-sqlpreparedstatementmbs-property.html#4">property SQL as String</A></li>
+<li><A href="sql-sqlpreparedstatementmbs-property.html#3">property Scrollable as Boolean</A></li>
+<li><A href="sql-sqlpreparedstatementmbs-property.html">property BoundTypes as Dictionary</A></li>
+<li><A href="sql-sqlpreparedstatementmbs-property.html#2">property BoundValues as Dictionary</A></li>
+</ul></li>
+<li><A href="class-sqlstringmbs.html"><B>class SQLStringMBS</B></a><ul>
+<li><A href="sql-sqlstringmbs-method.html#6">method Constructor(Data as MemoryBlock)</A></li>
+<li><A href="sql-sqlstringmbs-method.html#5">method Constructor</A></li>
+<li><A href="sql-sqlstringmbs-method.html#8">method Constructor(other as SQLStringMBS)</A></li>
+<li><A href="sql-sqlstringmbs-method.html#7">method Constructor(Data as string, isText as Boolean = true)</A></li>
+<li><A href="sql-sqlstringmbs-method.html#20">method Operator_Convert(Text as string)</A></li>
+<li><A href="sql-sqlstringmbs-method.html#19">method Operator_Convert as string</A></li>
+<li><A href="sql-sqlstringmbs-method.html#10">method CopyText as string</A></li>
+<li><A href="sql-sqlstringmbs-method.html#9">method CopyBinaryData as string</A></li>
+<li><A href="sql-sqlstringmbs-method.html#12">method GetBinaryLength as UInt32</A></li>
+<li><A href="sql-sqlstringmbs-method.html#13">method GetLength as UInt32</A></li>
+<li><A href="sql-sqlstringmbs-method.html#11">method Empty</A></li>
+<li><A href="sql-sqlstringmbs-method.html#16">method MakeUpper</A></li>
+<li><A href="sql-sqlstringmbs-method.html#15">method MakeLower</A></li>
+<li><A href="sql-sqlstringmbs-method.html#23">method TrimRight</A></li>
+<li><A href="sql-sqlstringmbs-method.html#22">method TrimLeft</A></li>
+<li><A href="sql-sqlstringmbs-method.html">method Compare(text as SQLStringMBS) as integer</A></li>
+<li><A href="sql-sqlstringmbs-method.html#2">method Compare(text as string) as integer</A></li>
+<li><A href="sql-sqlstringmbs-method.html#3">method CompareNoCase(text as SQLStringMBS) as integer</A></li>
+<li><A href="sql-sqlstringmbs-method.html#4">method CompareNoCase(text as string) as integer</A></li>
+<li><A href="sql-sqlstringmbs-method.html#17">method Mid(first as integer) as SQLStringMBS</A></li>
+<li><A href="sql-sqlstringmbs-method.html#18">method Mid(first as integer, Count as integer) as SQLStringMBS</A></li>
+<li><A href="sql-sqlstringmbs-method.html#14">method Left(count as integer) as SQLStringMBS</A></li>
+<li><A href="sql-sqlstringmbs-method.html#21">method Right(count as integer) as SQLStringMBS</A></li>
+<li><A href="sql-sqlstringmbs-property.html#3">property IsEmpty as Boolean</A></li>
+<li><A href="sql-sqlstringmbs-property.html">property BinaryLength as UInt32</A></li>
+<li><A href="sql-sqlstringmbs-property.html#4">property Length as UInt32</A></li>
+<li><A href="sql-sqlstringmbs-property.html#2">property DebugText as String</A></li>
+</ul></li>
+<li><A href="class-sqlunsupportedexceptionmbs.html"><B>class SQLUnsupportedExceptionMBS</B></a><ul>
+</ul></li>
+<li><A href="class-sqlvaluembs.html"><B>class SQLValueMBS</B></a><ul>
+<li><A href="sql-sqlvaluembs-method.html">method Constructor(DataType as integer)</A></li>
+<li><A href="sql-sqlvaluembs-method1.html#12">method setAsNull</A></li>
+<li><A href="sql-sqlvaluembs-method.html#22">method setAsDefault</A></li>
+<li><A href="sql-sqlvaluembs-method1.html#20">method setAsUnknown</A></li>
+<li><A href="sql-sqlvaluembs-method.html#8">method setAsBool(value as boolean)</A></li>
+<li><A href="sql-sqlvaluembs-method1.html#14">method setAsShort(value as Int16)</A></li>
+<li><A href="sql-sqlvaluembs-method1.html#21">method setAsUShort(value as UInt16)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#28">method setAsLong(value as Int32)</A></li>
+<li><A href="sql-sqlvaluembs-method1.html#19">method setAsULong(value as UInt32)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#23">method setAsDouble(value as double)</A></li>
+<li><A href="sql-sqlvaluembs-method1.html#13">method setAsNumeric(value as SQLNumericMBS)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#21">method setAsDateTime(value as SQLDateTimeMBS)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#19">method setAsDate(value as date)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#27">method setAsInterval(value as SQLIntervalMBS)</A></li>
+<li><A href="sql-sqlvaluembs-method1.html#22">method setAsValueRead(value as SQLValueReadMBS)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#24">method setAsInt32(value as Int32)</A></li>
+<li><A href="sql-sqlvaluembs-method1.html#18">method setAsUInt32(value as UInt32)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#25">method setAsInt64(value as Int64)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#26">method setAsInteger(value as Integer)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#11">method setAsBytes(value as SQLBytesMBS)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#12">method setAsBytes(value as SQLStringMBS)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#10">method setAsBytes(data as string)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#9">method setAsBytes(data as MemoryBlock)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#4">method setAsBlob(data as SQLStringMBS)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#5">method setAsBlob(data as string)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#2">method setAsBlob(data as MemoryBlock)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#3">method setAsBlob(data as SQLDataProviderMBS, BlockSize as UInt32)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#6">method setAsBlob(file as folderItem)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#7">method setAsBlob(stream as Readable)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#17">method setAsClob(text as SQLStringMBS)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#18">method setAsClob(text as string)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#14">method setAsClob(data as SQLDataProviderMBS, BlockSize as UInt32)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#13">method setAsClob(data as MemoryBlock)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#15">method setAsClob(file as folderItem)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#16">method setAsClob(stream as Readable)</A></li>
+<li><A href="sql-sqlvaluembs-method1.html#2">method setAsLongBinary(data as SQLStringMBS)</A></li>
+<li><A href="sql-sqlvaluembs-method1.html#3">method setAsLongBinary(data as string)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#29">method setAsLongBinary(data as MemoryBlock)</A></li>
+<li><A href="sql-sqlvaluembs-method1.html">method setAsLongBinary(data as SQLDataProviderMBS, BlockSize as UInt32)</A></li>
+<li><A href="sql-sqlvaluembs-method1.html#4">method setAsLongBinary(file as folderItem)</A></li>
+<li><A href="sql-sqlvaluembs-method1.html#5">method setAsLongBinary(stream as Readable)</A></li>
+<li><A href="sql-sqlvaluembs-method1.html#10">method setAsLongChar(text as SQLStringMBS)</A></li>
+<li><A href="sql-sqlvaluembs-method1.html#11">method setAsLongChar(text as string)</A></li>
+<li><A href="sql-sqlvaluembs-method1.html#7">method setAsLongChar(data as SQLDataProviderMBS, BlockSize as UInt32)</A></li>
+<li><A href="sql-sqlvaluembs-method1.html#6">method setAsLongChar(data as MemoryBlock)</A></li>
+<li><A href="sql-sqlvaluembs-method1.html#8">method setAsLongChar(file as folderItem)</A></li>
+<li><A href="sql-sqlvaluembs-method1.html#9">method setAsLongChar(stream as Readable)</A></li>
+<li><A href="sql-sqlvaluembs-method1.html#16">method setAsString(value as SQLStringMBS)</A></li>
+<li><A href="sql-sqlvaluembs-method1.html#17">method setAsString(value as string)</A></li>
+<li><A href="sql-sqlvaluembs-method1.html#15">method setAsString(data as MemoryBlock)</A></li>
+<li><A href="sql-sqlvaluembs-method1.html#23">method setVariant(value as variant)</A></li>
+<li><A href="sql-sqlvaluembs-method.html#20">method setAsDateTime(value as dateTime)</A></li>
+<li><A href="sql-sqlvaluembs-property.html">property isDefault as Boolean</A></li>
+</ul></li>
+<li><A href="class-sqlvaluereadmbs.html"><B>class SQLValueReadMBS</B></a><ul>
+<li><A href="sql-sqlvaluereadmbs-method.html#14">method Constructor(DataType as integer)</A></li>
+<li><A href="sql-sqlvaluereadmbs-method.html#15">method Constructor(value as SQLValueReadMBS)</A></li>
+<li><A href="sql-sqlvaluereadmbs-method.html#12">method asNumeric as SQLNumericMBS</A></li>
+<li><A href="sql-sqlvaluereadmbs-method.html#7">method asDateTime as SQLDateTimeMBS</A></li>
+<li><A href="sql-sqlvaluereadmbs-method.html#6">method asDate as Date</A></li>
+<li><A href="sql-sqlvaluereadmbs-method.html#9">method asInterval as SQLIntervalMBS</A></li>
+<li><A href="sql-sqlvaluereadmbs-method.html#13">method asString as SQLStringMBS</A></li>
+<li><A href="sql-sqlvaluereadmbs-method.html#4">method asBytes as SQLStringMBS</A></li>
+<li><A href="sql-sqlvaluereadmbs-method.html#10">method asLongBinary as SQLStringMBS</A></li>
+<li><A href="sql-sqlvaluereadmbs-method.html#11">method asLongChar as SQLStringMBS</A></li>
+<li><A href="sql-sqlvaluereadmbs-method.html">method asBLob as SQLStringMBS</A></li>
+<li><A href="sql-sqlvaluereadmbs-method.html#5">method asCLob as SQLStringMBS</A></li>
+<li><A href="sql-sqlvaluereadmbs-method.html#3">method asBLobString as String</A></li>
+<li><A href="sql-sqlvaluereadmbs-method.html#2">method asBLobMemory as MemoryBlock</A></li>
+<li><A href="sql-sqlvaluereadmbs-method.html#8">method asDateTimeValue as DateTime</A></li>
+<li><A href="sql-sqlvaluereadmbs-property.html#13">property DataType as Integer</A></li>
+<li><A href="sql-sqlvaluereadmbs-property.html#14">property isNull as Boolean</A></li>
+<li><A href="sql-sqlvaluereadmbs-property.html#12">property asVariant as variant</A></li>
+<li><A href="sql-sqlvaluereadmbs-property.html#8">property asStringValue as String</A></li>
+<li><A href="sql-sqlvaluereadmbs-property.html">property asBool as Boolean</A></li>
+<li><A href="sql-sqlvaluereadmbs-property.html#7">property asShort as Int16</A></li>
+<li><A href="sql-sqlvaluereadmbs-property.html#11">property asUShort as UInt16</A></li>
+<li><A href="sql-sqlvaluereadmbs-property.html#6">property asLong as Int32</A></li>
+<li><A href="sql-sqlvaluereadmbs-property.html#10">property asULong as UInt32</A></li>
+<li><A href="sql-sqlvaluereadmbs-property.html#2">property asDouble as double</A></li>
+<li><A href="sql-sqlvaluereadmbs-property.html#15">property LongOrLobReaderMode as Integer</A></li>
+<li><A href="sql-sqlvaluereadmbs-property.html#5">property asInteger as Integer</A></li>
+<li><A href="sql-sqlvaluereadmbs-property.html#3">property asInt32 as Int32</A></li>
+<li><A href="sql-sqlvaluereadmbs-property.html#4">property asInt64 as Int64</A></li>
+<li><A href="sql-sqlvaluereadmbs-property.html#9">property asUInt32 as UInt32</A></li>
+</ul></li>
+<li><A href="module-internalcubesqllibrarymbs.html"><B>module InternalCubeSQLLibraryMBS</B></A></li><ul>
+<li><A href="sql-internalcubesqllibrarymbs-method.html#2">method Use as boolean</A></li>
+<li><A href="sql-internalcubesqllibrarymbs-method.html#3">method Version as String</A></li>
+<li><A href="sql-internalcubesqllibrarymbs-method.html">method SSLVersion as String</A></li>
+</ul></li>
+<li><A href="module-internalpostgresqllibrarymbs.html"><B>module InternalPostgreSQLLibraryMBS</B></A></li><ul>
+<li><A href="sql-internalpostgresqllibrarymbs-method.html#2">method Use as boolean</A></li>
+<li><A href="sql-internalpostgresqllibrarymbs-method.html#3">method Version as Integer</A></li>
+<li><A href="sql-internalpostgresqllibrarymbs-method.html">method OpenSSLVersion as String</A></li>
+</ul></li>
+<li><A href="module-internalsqlitelibrarymbs.html"><B>module InternalSQLiteLibraryMBS</B></A></li><ul>
+<li><A href="sql-internalsqlitelibrarymbs-method.html#7">method LoadICU as Boolean</A></li>
+<li><A href="sql-internalsqlitelibrarymbs-method.html#5">method isKeyword(name as string) as boolean</A></li>
+<li><A href="sql-internalsqlitelibrarymbs-method.html#6">method Keywords as String()</A></li>
+<li><A href="sql-internalsqlitelibrarymbs-method.html#9">method Use as boolean</A></li>
+<li><A href="sql-internalsqlitelibrarymbs-method.html#10">method Version as String</A></li>
+<li><A href="sql-internalsqlitelibrarymbs-method.html#8">method SourceID as String</A></li>
+<li><A href="sql-internalsqlitelibrarymbs-method.html#11">method VersionNumber as Integer</A></li>
+<li><A href="sql-internalsqlitelibrarymbs-method.html">method CompileOption(index as Integer) as String</A></li>
+<li><A href="sql-internalsqlitelibrarymbs-method.html#2">method CompileOptionUsed(optionName as String) as Boolean</A></li>
+<li><A href="sql-internalsqlitelibrarymbs-method.html#3">method DumpToFile(SqliteDBConectionHandle as Ptr, File as FolderItem, TableName as string = "", PreserveRowid as Boolean = false, Newlines as Boolean = false, DumpDataOnly as Boolean = false, DumpNoSys as Boolean = false)</A></li>
+<li><A href="sql-internalsqlitelibrarymbs-method.html#4">method DumpToString(SqliteDBConectionHandle as Ptr, byref Data as String, MaximumSize as Integer = 10000000, TableName as string = "", PreserveRowid as Boolean = false, Newlines as Boolean = false, DumpDataOnly as Boolean = false, DumpNoSys as Boolean = false)</A></li>
+</ul></li>
+<li><B>Globals:</B><ul>
+<li><A href="global-buildrecordsetmbs.html">BuildRecordSetMBS(fieldNames() as string, values() as string) as RecordSet</A></li>
+<li><A href="global-buildrowsetmbs.html">BuildRowSetMBS(fieldNames() as string, values() as string) as RowSet</A></li>
+<li><A href="global-clonerecordsetmbs.html">CloneRecordSetMBS(rec as RecordSet) as RecordSet</A></li>
+</ul></li>
+</ul>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=plugincontent-mbssqlplugin">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

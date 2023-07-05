@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Images/JPEG/Recompress JPEGs</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Images/JPEG/Recompress JPEGs</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Images/JPEG/Recompress JPEGs</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS Images Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Images/JPEG/Recompress JPEGs<BR>
+This example is the version from Sun, 17th Mar 2012.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Recompress</span> <span style="color:#6500FE">JPEGs.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#0000FF;font-weight: bold">dim</span> ji <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">New</span> JPEGImporterMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> je <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">New</span> JPEGExporterMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock
+			<span style="color:#0000FF;font-weight: bold">dim</span> f,f1 <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> dlg <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> OpenDialog
+			
+			dlg.PromptText=<span style="color:#6500FE">&quot;Choose</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">JPEG</span> <span style="color:#6500FE">image</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">compress</span> <span style="color:#6500FE">it:&quot;</span>
+			dlg.Filter=FileTypes.ImageJpeg
+			f=dlg.ShowModal()
+			<span style="color:#0000FF;font-weight: bold">if</span> f=<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">return</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> origSize <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">int64</span> = f.length
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">import</span> <span style="color:#7F0000;text-style:italic">it</span>
+			ji.File=f
+			ji.AllowDamaged=<span style="color:#0000FF;font-weight: bold">true</span>
+			ji.mode=ji.ModePicture <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">cmyk,</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mode</span> <span style="color:#7F0000;text-style:italic">will</span> <span style="color:#7F0000;text-style:italic">change</span>
+			ji.Import
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> sdlg <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> SaveAsDialog
+			
+			sdlg.PromptText=<span style="color:#6500FE">&quot;Where</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">save</span> <span style="color:#6500FE">the</span> <span style="color:#6500FE">new</span> <span style="color:#6500FE">JPEG?&quot;</span>
+			sdlg.Filter=FileTypes.ImageJpeg
+			sdlg.SuggestedFileName = <span style="color:#6500FE">&quot;image.jpg&quot;</span>
+			f=sdlg.ShowModal()
+			<span style="color:#0000FF;font-weight: bold">if</span> f=<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">return</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">export</span> <span style="color:#7F0000;text-style:italic">it</span>
+			je.File=f
+			je.Quality=<span style="color:#326598">70</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> ji.Mode = ji.ModeCMYK <span style="color:#0000FF;font-weight: bold">then</span>
+				m=ji.PictureData
+				je.ExportCMYK m, ji.Width, ji.Height, ji.Width*<span style="color:#326598">4</span>
+			<span style="color:#0000FF;font-weight: bold">else</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">RGB</span>
+				je.Picture=ji.Picture
+				je.Export
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> comprSize <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">int64</span> = f.length
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> origSize&gt;comprSize <span style="color:#0000FF;font-weight: bold">then</span>
+				MsgBox <span style="color:#6500FE">&quot;Saved</span> <span style="color:#6500FE">&quot;</span>+str(origSize-comprSize)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">bytes.&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				MsgBox <span style="color:#6500FE">&quot;New</span> <span style="color:#6500FE">picture</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">&quot;</span>+str(origSize-comprSize)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">bytes</span> <span style="color:#6500FE">bigger.</span> <span style="color:#6500FE">Maybe</span> <span style="color:#6500FE">you</span> <span style="color:#6500FE">change</span> <span style="color:#6500FE">the</span> <span style="color:#6500FE">quality</span> <span style="color:#6500FE">setting</span> <span style="color:#6500FE">in</span> <span style="color:#6500FE">code?&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	FileTypes</div>
+<div class="RB_Code">		Filetype image/jpeg</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> FileTypes</div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-images-jpeg-recompressjpegs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

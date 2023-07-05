@@ -1,0 +1,374 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /VLC/Play audio</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /VLC/Play audio</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/VLC/Play audio</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS VLC Plugin, MBS Util Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /VLC/Play audio<BR>
+This example is the version from Sun, 4th Jul 2020.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Play</span> <span style="color:#6500FE">audio.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;L&ouml;schen&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;Beenden&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			DebugCopyLibs
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> DebugCopyLibs()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">copy</span> <span style="color:#7F0000;text-style:italic">vlc</span> <span style="color:#7F0000;text-style:italic">libs</span> <span style="color:#7F0000;text-style:italic">into</span> <span style="color:#7F0000;text-style:italic">app</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">need</span> <span style="color:#7F0000;text-style:italic">32</span> <span style="color:#7F0000;text-style:italic">bit</span> <span style="color:#7F0000;text-style:italic">version</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">VLC</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">have</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">work</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">32bit</span> <span style="color:#7F0000;text-style:italic">app!</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">64-bit</span> <span style="color:#7F0000;text-style:italic">libs</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">64-bit</span> <span style="color:#7F0000;text-style:italic">app</span>
+			
+			<span style="color:#0000FF">#if</span> TargetMacOS <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				<span style="color:#0000FF">#if</span> Target32Bit <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">keep</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">old</span> <span style="color:#7F0000;text-style:italic">copy</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">version</span> <span style="color:#7F0000;text-style:italic">2.0.9</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">32-bit</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> apppath <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = SpecialFolder.Applications.Child(<span style="color:#6500FE">&quot;VLC</span> <span style="color:#6500FE">alt.app&quot;</span>)
+				<span style="color:#0000FF">#else</span>
+					<span style="color:#0000FF;font-weight: bold">Dim</span> apppath <span style="color:#0000FF;font-weight: bold">As</span> FolderItem = GetFolderItem(<span style="color:#6500FE">&quot;/Applications/VLC.app&quot;</span>, folderitem.PathTypeNative)
+				<span style="color:#0000FF">#endif</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> apppath&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">and</span> apppath.Visible <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> ContentsFolder <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = apppath.Child(<span style="color:#6500FE">&quot;Contents&quot;</span>)
+					<span style="color:#0000FF;font-weight: bold">if</span> ContentsFolder&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">and</span> ContentsFolder.Visible <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#0000FF;font-weight: bold">dim</span> MacOSFolder <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = ContentsFolder.Child(<span style="color:#6500FE">&quot;MacOS&quot;</span>)
+						<span style="color:#0000FF;font-weight: bold">if</span> MacOSFolder&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">and</span> MacOSFolder.Visible <span style="color:#0000FF;font-weight: bold">then</span>
+							
+							<span style="color:#0000FF;font-weight: bold">dim</span> TargetFolder <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = app.ExecutableFile.parent
+							
+							<span style="color:#0000FF;font-weight: bold">dim</span> LibFolder <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = MacOSFolder.Child(<span style="color:#6500FE">&quot;lib&quot;</span>)
+							LibFolder.CopyFileTo TargetFolder
+							
+							<span style="color:#0000FF;font-weight: bold">dim</span> pluginsFolder <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = MacOSFolder.Child(<span style="color:#6500FE">&quot;plugins&quot;</span>)
+							pluginsFolder.CopyFileTo TargetFolder
+							
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF">#endif</span>
+			
+			<span style="color:#0000FF">#if</span> TargetWin32 <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> VideoLANFolder <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = SpecialFolder.Applications.Child(<span style="color:#6500FE">&quot;VideoLAN&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">if</span> VideoLANFolder&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">and</span> VideoLANFolder.Visible <span style="color:#0000FF;font-weight: bold">then</span>
+					System.DebugLog VideoLANFolder.NativePath
+					<span style="color:#0000FF;font-weight: bold">dim</span> VLCFolder <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = VideoLANFolder.Child(<span style="color:#6500FE">&quot;VLC&quot;</span>)
+					<span style="color:#0000FF;font-weight: bold">if</span> VLCFolder&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">and</span> VLCFolder.Exists <span style="color:#0000FF;font-weight: bold">then</span>
+						
+						
+						<span style="color:#0000FF;font-weight: bold">dim</span> ExecutableFolder <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = app.ExecutableFile.parent
+						
+						<span style="color:#0000FF;font-weight: bold">dim</span> libvlc <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = VLCFolder.Child(<span style="color:#6500FE">&quot;libvlc.dll&quot;</span>)
+						libvlc.CopyFileTo ExecutableFolder
+						
+						<span style="color:#0000FF;font-weight: bold">dim</span> libvlccore <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = VLCFolder.Child(<span style="color:#6500FE">&quot;libvlccore.dll&quot;</span>)
+						libvlccore.CopyFileTo ExecutableFolder
+						
+						<span style="color:#0000FF;font-weight: bold">dim</span> pluginsFolder <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = VLCFolder.Child(<span style="color:#6500FE">&quot;plugins&quot;</span>)
+						<span style="color:#0000FF;font-weight: bold">dim</span> destPluginsFolder <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = ExecutableFolder.Child(<span style="color:#6500FE">&quot;plugins&quot;</span>)
+						
+						<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">copy</span> <span style="color:#7F0000;text-style:italic">whole</span> <span style="color:#7F0000;text-style:italic">folder</span>
+						<span style="color:#0000FF;font-weight: bold">dim</span> w <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> WindowsFileCopyMBS
+						<span style="color:#0000FF;font-weight: bold">call</span> w.FileOperationCopy(pluginsFolder, destPluginsFolder, w.FileOperationNoErrorUI+w.FileOperationNoConfirmation)
+						
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF">#endif</span>
+			
+			<span style="color:#0000FF">#if</span> TargetLinux
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">please</span> <span style="color:#7F0000;text-style:italic">copy</span> <span style="color:#7F0000;text-style:italic">libs</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">put</span> <span style="color:#7F0000;text-style:italic">symlinks</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">folder</span> <span style="color:#7F0000;text-style:italic">now</span>
+				Break
+			<span style="color:#0000FF">#endif</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> PlaybackWindow <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kLibrary = <span style="color:#6500FE">&quot;libvlc&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PlayButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PlayButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">call</span> mp.play
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PauseButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PauseButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				mp.Pause
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control VolumeSlider <span style="color:#0000FF;font-weight: bold">Inherits</span> Slider</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance VolumeSlider <span style="color:#0000FF;font-weight: bold">Inherits</span> Slider</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> ValueChanged()
+				mp.Volume = <span style="color:#0000FF;font-weight: bold">me</span>.Value
+				
+				LabelVolume.Text = str(<span style="color:#0000FF;font-weight: bold">me</span>.Value)
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control LabelVolume <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance LabelVolume <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PositionSlider <span style="color:#0000FF;font-weight: bold">Inherits</span> Slider</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PositionSlider <span style="color:#0000FF;font-weight: bold">Inherits</span> Slider</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> ValueChanged()
+				<span style="color:#0000FF;font-weight: bold">if</span> NoEvents <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+				
+				mp.Position = <span style="color:#0000FF;font-weight: bold">me</span>.Value / <span style="color:#006532">1000.0</span>
+				Labelposition.Text = str(<span style="color:#0000FF;font-weight: bold">me</span>.Value * mp.Length / <span style="color:#006532">1000000.0</span>, <span style="color:#6500FE">&quot;0.0&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label2 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label2 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Labelposition <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Labelposition <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StatusTimer <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StatusTimer <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				NoEvents = <span style="color:#0000FF;font-weight: bold">true</span>
+				
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> mp &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					PositionSlider.Value = mp.Position * <span style="color:#006532">1000.0</span>
+					Labelposition.Text = str(mp.Position * mp.Length / <span style="color:#006532">1000.0</span>, <span style="color:#6500FE">&quot;0.0&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				
+				<span style="color:#0000FF;font-weight: bold">Finally</span>
+				NoEvents = <span style="color:#0000FF;font-weight: bold">false</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> CancelClose(appQuitting <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> mp&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				mp.stop
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#0000FF;font-weight: bold">dim</span> moviefile <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;test.mp3&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">if</span> moviefile.Exists = <span style="color:#0000FF;font-weight: bold">false</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				MsgBox <span style="color:#6500FE">&quot;Please</span> <span style="color:#6500FE">put</span> <span style="color:#6500FE">test.mp3</span> <span style="color:#6500FE">on</span> <span style="color:#6500FE">your</span> <span style="color:#6500FE">desktop</span> <span style="color:#6500FE">or</span> <span style="color:#6500FE">change</span> <span style="color:#6500FE">path</span> <span style="color:#6500FE">in</span> <span style="color:#6500FE">code.&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> LibName <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = kLibrary
+			<span style="color:#0000FF;font-weight: bold">dim</span> ExecutableFolder <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = app.ExecutableFile.parent
+			
+			
+			<span style="color:#0000FF">#if</span> TargetMacOS <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">preload</span> <span style="color:#7F0000;text-style:italic">library,</span> <span style="color:#7F0000;text-style:italic">so</span> <span style="color:#7F0000;text-style:italic">it&#39;s</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">complaining</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">file</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">found</span> <span style="color:#7F0000;text-style:italic">later.</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> LibFolder <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = ExecutableFolder.Child(<span style="color:#6500FE">&quot;lib&quot;</span>)
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> libvlccore9 <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = LibFolder.Child(<span style="color:#6500FE">&quot;libvlccore.9.dylib&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">if</span> libvlccore9 &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">and</span> libvlccore9.Exists <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> SoftDeclareMBS
+					<span style="color:#0000FF;font-weight: bold">if</span> s.LoadDylib(libvlccore9.NativePath) <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#7F0000;text-style:italic">&#39;MsgBox</span> <span style="color:#7F0000;text-style:italic">&quot;OK&quot;</span>
+						System.DebugLog libvlccore9.name+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">loaded.&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">else</span>
+						MsgBox s.Liberror
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> libvlccore8 <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = LibFolder.Child(<span style="color:#6500FE">&quot;libvlccore.8.dylib&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">if</span> libvlccore8 &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">and</span> libvlccore8.Exists <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> SoftDeclareMBS
+					<span style="color:#0000FF;font-weight: bold">if</span> s.LoadDylib(libvlccore8.NativePath) <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#7F0000;text-style:italic">&#39;MsgBox</span> <span style="color:#7F0000;text-style:italic">&quot;OK&quot;</span>
+						System.DebugLog libvlccore8.name+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">loaded.&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">else</span>
+						MsgBox s.Liberror
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> libvlc5 <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = LibFolder.Child(<span style="color:#6500FE">&quot;libvlc.5.dylib&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">if</span> libvlc5 &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">and</span> libvlc5.Exists <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> SoftDeclareMBS
+					<span style="color:#0000FF;font-weight: bold">if</span> s.LoadDylib(libvlc5.NativePath) <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#7F0000;text-style:italic">&#39;MsgBox</span> <span style="color:#7F0000;text-style:italic">&quot;OK&quot;</span>
+						LibName = libvlc5.NativePath
+						System.DebugLog libvlc5.name+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">loaded.&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">else</span>
+						MsgBox s.Liberror
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">need</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">put</span> <span style="color:#7F0000;text-style:italic">path</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">plugins</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">environment</span> <span style="color:#7F0000;text-style:italic">variable</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">make</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">work</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> Plugins <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = ExecutableFolder.Child(<span style="color:#6500FE">&quot;plugins&quot;</span>)
+				System.EnvironmentVariable(<span style="color:#6500FE">&quot;VLC_PLUGIN_PATH&quot;</span>) = Plugins.NativePath
+				
+			<span style="color:#0000FF">#endif</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">load</span> <span style="color:#7F0000;text-style:italic">library</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> VLCInstanceMBS.LoadLibrary(LibName) <span style="color:#0000FF;font-weight: bold">then</span>
+				System.DebugLog <span style="color:#6500FE">&quot;Library</span> <span style="color:#6500FE">Loaded.&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				msgbox <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">load</span> <span style="color:#6500FE">library&quot;</span>+EndOfLine+EndOfLine+VLCInstanceMBS.GetLoadError
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">startup</span> <span style="color:#7F0000;text-style:italic">vlc</span> <span style="color:#7F0000;text-style:italic">engine</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> margs(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			
+			margs.append <span style="color:#6500FE">&quot;--no-video-title-show&quot;</span>            <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">nor</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">filename</span> <span style="color:#7F0000;text-style:italic">displayed</span> <span style="color:#7F0000;text-style:italic">*/</span>
+			margs.append <span style="color:#6500FE">&quot;--verbose=0&quot;</span>                      <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">show</span> <span style="color:#7F0000;text-style:italic">only</span> <span style="color:#7F0000;text-style:italic">errors</span> <span style="color:#7F0000;text-style:italic">*/</span>
+			margs.append <span style="color:#6500FE">&quot;--no-media-library&quot;</span>               <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">don&#39;t</span> <span style="color:#7F0000;text-style:italic">want</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">*/</span>
+			margs.append <span style="color:#6500FE">&quot;--no-sub-autodetect&quot;</span>              <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">don&#39;t</span> <span style="color:#7F0000;text-style:italic">want</span> <span style="color:#7F0000;text-style:italic">subtitles</span> <span style="color:#7F0000;text-style:italic">*/</span>
+			margs.append <span style="color:#6500FE">&quot;--ignore-config&quot;</span>
+			
+			<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">margs.Append</span> <span style="color:#7F0000;text-style:italic">&quot;--no-plugins-cache&quot;</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">maybe</span> <span style="color:#7F0000;text-style:italic">no</span> <span style="color:#7F0000;text-style:italic">cache?</span>
+			
+			System.DebugLog <span style="color:#6500FE">&quot;Init...&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> v <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> VLCInstanceMBS(margs)
+			System.DebugLog <span style="color:#6500FE">&quot;Inited.&quot;</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> v.Handle=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				msgbox <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">initialise.&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">simply</span> <span style="color:#7F0000;text-style:italic">play</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">movie.</span> <span style="color:#7F0000;text-style:italic">Video</span> <span style="color:#7F0000;text-style:italic">goes</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">our</span> <span style="color:#7F0000;text-style:italic">buffer,</span> <span style="color:#7F0000;text-style:italic">so</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">timer</span>
+			m = VLCMediaMBS.MediaWithFile(v, Moviefile)
+			<span style="color:#0000FF;font-weight: bold">if</span> m = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				MsgBox <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">get</span> <span style="color:#6500FE">media.&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			System.DebugLog <span style="color:#6500FE">&quot;Init</span> <span style="color:#6500FE">MediaPlayer...&quot;</span>
+			mp = <span style="color:#0000FF;font-weight: bold">new</span> VLCMediaPlayerMBS(m)
+			<span style="color:#0000FF;font-weight: bold">if</span> mp.Handle=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				msgbox <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">init</span> <span style="color:#6500FE">media</span> <span style="color:#6500FE">player.&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">figure</span> <span style="color:#7F0000;text-style:italic">out</span> <span style="color:#7F0000;text-style:italic">size</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">video</span>
+			System.DebugLog <span style="color:#6500FE">&quot;Parse...&quot;</span>
+			m.Parse
+			
+			mp.Volume = <span style="color:#326598">50</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> mp.Play
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Counter <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> NoEvents <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> m <span style="color:#0000FF;font-weight: bold">As</span> VLCMediaMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> mp <span style="color:#0000FF;font-weight: bold">As</span> VLCMediaPlayerMBS</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;Ablage&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Bearbeiten&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;R&uuml;ckg&auml;ngig&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;&amp;Ausschneiden&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Kopieren&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Einf&uuml;gen&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;&amp;Alles</span> <span style="color:#6500FE">ausw&auml;hlen&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsvlcplugin.html">MBS VLC Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-vlc-playaudio">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

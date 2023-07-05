@@ -1,0 +1,663 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /ChartDirector/Place PDF Chart with DynaPDF</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /ChartDirector/Place PDF Chart with DynaPDF</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/ChartDirector/Place PDF Chart with DynaPDF</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS DynaPDF Plugin, MBS ChartDirector Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /ChartDirector/Place PDF Chart with DynaPDF<BR>
+This example is the version from Mon, 3rd Feb 2019.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Place</span> <span style="color:#6500FE">PDF</span> <span style="color:#6500FE">Chart</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">DynaPDF.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;L&ouml;schen&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;Beenden&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			GenerateSampleData
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">4</span> <span style="color:#7F0000;text-style:italic">PDFs</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> c1 <span style="color:#0000FF;font-weight: bold">as</span> CDBaseChartMBS = RenderLineChart
+			<span style="color:#0000FF;font-weight: bold">dim</span> p1 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = c1.makeChart(c1.kPDF)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> c2 <span style="color:#0000FF;font-weight: bold">as</span> CDBaseChartMBS = RenderPieChart
+			<span style="color:#0000FF;font-weight: bold">dim</span> p2 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = c2.makeChart(c2.kPDF)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> c3 <span style="color:#0000FF;font-weight: bold">as</span> CDBaseChartMBS = RenderPolarChart
+			<span style="color:#0000FF;font-weight: bold">dim</span> p3 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = c3.makeChart(c3.kPDF)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> c4 <span style="color:#0000FF;font-weight: bold">as</span> CDBaseChartMBS = RenderPyramidChart
+			c4.setOutputOptions(<span style="color:#6500FE">&quot;bitmap=1&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> p4 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = c4.makeChart(c4.kPDF)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">write</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">desktop</span>
+			WritePDF p1, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">Line</span> <span style="color:#6500FE">Chart.pdf&quot;</span>
+			WritePDF p2, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">Pie</span> <span style="color:#6500FE">Chart.pdf&quot;</span>
+			WritePDF p3, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">Polar</span> <span style="color:#6500FE">Chart.pdf&quot;</span>
+			WritePDF p4, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">Pyramid</span> <span style="color:#6500FE">Chart.pdf&quot;</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">now</span> <span style="color:#7F0000;text-style:italic">merge</span> <span style="color:#7F0000;text-style:italic">them</span>
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">needs</span> <span style="color:#7F0000;text-style:italic">DynaPDF</span> <span style="color:#7F0000;text-style:italic">Plugin</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> pdf <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MyDynapdfMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem=SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;Place</span> <span style="color:#6500FE">PDF</span> <span style="color:#6500FE">Chart</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">DynaPDF.pdf&quot;</span>)
+			
+			pdf.SetLicenseKey <span style="color:#6500FE">&quot;Pro&quot;</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">For</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">example</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">Pro</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">Enterprise</span> <span style="color:#7F0000;text-style:italic">License</span>
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CreateNewPDF f
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Import</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">fist</span> <span style="color:#7F0000;text-style:italic">page</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">template</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.OpenImportBuffer(p1)
+			<span style="color:#0000FF;font-weight: bold">dim</span> template1 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = pdf.ImportPage(<span style="color:#326598">1</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> height1 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = pdf.GetTemplHeight(template1)
+			<span style="color:#0000FF;font-weight: bold">dim</span> width1  <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = pdf.GetTemplWidth(template1)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.OpenImportBuffer(p2)
+			<span style="color:#0000FF;font-weight: bold">dim</span> template2 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = pdf.ImportPage(<span style="color:#326598">1</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> height2 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = pdf.GetTemplHeight(template2)
+			<span style="color:#0000FF;font-weight: bold">dim</span> width2  <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = pdf.GetTemplWidth(template2)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.OpenImportBuffer(p3)
+			<span style="color:#0000FF;font-weight: bold">dim</span> template3 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = pdf.ImportPage(<span style="color:#326598">1</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> height3 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = pdf.GetTemplHeight(template3)
+			<span style="color:#0000FF;font-weight: bold">dim</span> width3  <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = pdf.GetTemplWidth(template3)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.OpenImportBuffer(p4)
+			<span style="color:#0000FF;font-weight: bold">dim</span> template4 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = pdf.ImportPage(<span style="color:#326598">1</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> height4 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = pdf.GetTemplHeight(template4)
+			<span style="color:#0000FF;font-weight: bold">dim</span> width4  <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = pdf.GetTemplWidth(template4)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">PlaceCentered()</span> <span style="color:#7F0000;text-style:italic">requires</span> <span style="color:#7F0000;text-style:italic">Bottom-Up</span> <span style="color:#7F0000;text-style:italic">coordinates.</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetPageCoords(pdf.kpcBottomUp)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">We</span> <span style="color:#7F0000;text-style:italic">place</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">template</span> <span style="color:#7F0000;text-style:italic">4</span> <span style="color:#7F0000;text-style:italic">times</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">page...</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.Append
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetOrientationEx(<span style="color:#326598">90</span>)
+			
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.PlaceTemplateEx(template1, <span style="color:#326598">50</span>+     <span style="color:#326598">0</span>, <span style="color:#326598">30</span>+      <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.PlaceTemplateEx(template3, <span style="color:#326598">50</span>+width1, <span style="color:#326598">30</span>+      <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.PlaceTemplateEx(template2, <span style="color:#326598">50</span>+     <span style="color:#326598">0</span>, <span style="color:#326598">30</span>+height1, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.PlaceTemplateEx(template4, <span style="color:#326598">50</span>+width1, <span style="color:#326598">30</span>+height1, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.EndPage
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CloseFile
+			
+			f.Launch
+			
+			quit
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> GenerateSampleData()
+			<span style="color:#0000FF;font-weight: bold">Dim</span> x0 <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = <span style="color:#326598">70</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> x1 <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = <span style="color:#326598">50</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> x2 <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = <span style="color:#326598">30</span>
+			
+			Data0.Append(x0)
+			Data1.Append(x1)
+			Data2.Append(x2)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Create</span> <span style="color:#7F0000;text-style:italic">randomized</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">points</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">chart</span> <span style="color:#7F0000;text-style:italic">demo</span>
+			<span style="color:#0000FF;font-weight: bold">For</span> I <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">To</span> <span style="color:#326598">100</span>
+				
+				x0 = x0 + Rnd() * <span style="color:#006532">5.0</span> - <span style="color:#006532">2.5</span>
+				x1 = x1 + Rnd() * <span style="color:#006532">5.0</span> - <span style="color:#006532">2.5</span>
+				x2 = x2 + Rnd() * <span style="color:#006532">5.0</span> - <span style="color:#006532">2.5</span>
+				
+				Data0.Append(x0)
+				Data1.Append(x1)
+				Data2.Append(x2)
+				
+			<span style="color:#0000FF;font-weight: bold">Next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> RenderLineChart() <span style="color:#0000FF;font-weight: bold">As</span> CDBaseChartMBS
+			<span style="color:#0000FF;font-weight: bold">const</span> factor = <span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> width  = <span style="color:#326598">600</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> height = <span style="color:#326598">375</span>
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">chart</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Create</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">XYChart</span> <span style="color:#7F0000;text-style:italic">object</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">size</span> <span style="color:#7F0000;text-style:italic">600</span> <span style="color:#7F0000;text-style:italic">x</span> <span style="color:#7F0000;text-style:italic">375</span> <span style="color:#7F0000;text-style:italic">pixels</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> CDXYChartMBS(width*factor, height*factor)
+			
+			
+			
+			
+			<span style="color:#7F0000;text-style:italic">&#39;C.setBackground(C.kTransparent)</span>
+			C.setTransparentColor(-<span style="color:#326598">1</span>)
+			
+			C.setClipping(<span style="color:#326598">0</span>)
+			C.setAntiAlias(<span style="color:#0000FF;font-weight: bold">True</span>, C.kAntiAlias)
+			
+			
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">title</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">chart</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">18</span> <span style="color:#7F0000;text-style:italic">pts</span> <span style="color:#7F0000;text-style:italic">Times</span> <span style="color:#7F0000;text-style:italic">Bold</span> <span style="color:#7F0000;text-style:italic">Italic</span> <span style="color:#7F0000;text-style:italic">font</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> c.addTitle(<span style="color:#6500FE">&quot;Product</span> <span style="color:#6500FE">Line</span> <span style="color:#6500FE">Global</span> <span style="color:#6500FE">Revenue&quot;</span>, <span style="color:#6500FE">&quot;timesbi.ttf&quot;</span>, <span style="color:#326598">18</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">plotarea</span> <span style="color:#7F0000;text-style:italic">at</span> <span style="color:#7F0000;text-style:italic">(50,</span> <span style="color:#7F0000;text-style:italic">55)</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">500</span> <span style="color:#7F0000;text-style:italic">x</span> <span style="color:#7F0000;text-style:italic">280</span> <span style="color:#7F0000;text-style:italic">pixels</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">size.</span> <span style="color:#7F0000;text-style:italic">Use</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">vertical</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">gradient</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">light</span> <span style="color:#7F0000;text-style:italic">blue</span> <span style="color:#7F0000;text-style:italic">(f9f9ff)</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">sky</span> <span style="color:#7F0000;text-style:italic">blue</span> <span style="color:#7F0000;text-style:italic">(aaccff)</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">background.</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">border</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">transparent</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">grid</span> <span style="color:#7F0000;text-style:italic">lines</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">white</span> <span style="color:#7F0000;text-style:italic">(ffffff).</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> c.setPlotArea(<span style="color:#326598">50</span>*factor, <span style="color:#326598">55</span>*factor, (width-<span style="color:#326598">100</span>)*factor, (height-<span style="color:#326598">100</span>)*factor, c.linearGradientColor(<span style="color:#326598">0</span>, <span style="color:#326598">55</span>, <span style="color:#326598">0</span>, <span style="color:#326598">335</span>, <span style="color:#326598">&amp;hf9fcff</span>, <span style="color:#326598">&amp;haaccff</span>), -<span style="color:#326598">1</span>, c.kTransparent, <span style="color:#326598">&amp;hffffff</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> c.setClipping
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">legend</span> <span style="color:#7F0000;text-style:italic">box</span> <span style="color:#7F0000;text-style:italic">at</span> <span style="color:#7F0000;text-style:italic">(50,</span> <span style="color:#7F0000;text-style:italic">28)</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">horizontal</span> <span style="color:#7F0000;text-style:italic">layout.</span> <span style="color:#7F0000;text-style:italic">Use</span> <span style="color:#7F0000;text-style:italic">10pts</span> <span style="color:#7F0000;text-style:italic">Arial</span> <span style="color:#7F0000;text-style:italic">Bold</span> <span style="color:#7F0000;text-style:italic">as</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">font,</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">transparent</span> <span style="color:#7F0000;text-style:italic">background.</span>
+			c.addLegend(<span style="color:#326598">50</span>*factor, <span style="color:#326598">28</span>*factor, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#6500FE">&quot;arialbd.ttf&quot;</span>, <span style="color:#326598">10</span>*factor).setBackground(c.kTransparent)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">x</span> <span style="color:#7F0000;text-style:italic">axis</span> <span style="color:#7F0000;text-style:italic">labels</span>
+			<span style="color:#7F0000;text-style:italic">&#39;call</span> <span style="color:#7F0000;text-style:italic">c.xAxis.setLabels(labels)</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">y-axis</span> <span style="color:#7F0000;text-style:italic">tick</span> <span style="color:#7F0000;text-style:italic">density</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">30</span> <span style="color:#7F0000;text-style:italic">pixels.</span> <span style="color:#7F0000;text-style:italic">ChartDirector</span> <span style="color:#7F0000;text-style:italic">auto-scaling</span> <span style="color:#7F0000;text-style:italic">will</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">this</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">guideline</span> <span style="color:#7F0000;text-style:italic">when</span> <span style="color:#7F0000;text-style:italic">putting</span> <span style="color:#7F0000;text-style:italic">ticks</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">y-axis.</span>
+			c.yAxis.setTickDensity(<span style="color:#326598">30</span>*factor)
+			c.yAxis2.setTickDensity(<span style="color:#326598">30</span>*factor)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">axis</span> <span style="color:#7F0000;text-style:italic">label</span> <span style="color:#7F0000;text-style:italic">style</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">8pts</span> <span style="color:#7F0000;text-style:italic">Arial</span> <span style="color:#7F0000;text-style:italic">Bold</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> c.xAxis.setLabelStyle(<span style="color:#6500FE">&quot;arialbd.ttf&quot;</span>, <span style="color:#326598">8</span>*factor)
+			<span style="color:#0000FF;font-weight: bold">call</span> c.yAxis.setLabelStyle(<span style="color:#6500FE">&quot;arialbd.ttf&quot;</span>, <span style="color:#326598">8</span>*factor)
+			<span style="color:#0000FF;font-weight: bold">call</span> c.yAxis2.setLabelStyle(<span style="color:#6500FE">&quot;arialbd.ttf&quot;</span>, <span style="color:#326598">8</span>*factor)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">axis</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">width</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">2</span> <span style="color:#7F0000;text-style:italic">pixels</span>
+			c.xAxis.setWidth(<span style="color:#326598">2</span>*factor)
+			c.yAxis.setWidth(<span style="color:#326598">2</span>*factor)
+			c.yAxis2.setWidth(<span style="color:#326598">2</span>*factor)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">axis</span> <span style="color:#7F0000;text-style:italic">title</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">10pts</span> <span style="color:#7F0000;text-style:italic">Arial</span> <span style="color:#7F0000;text-style:italic">Bold</span> <span style="color:#7F0000;text-style:italic">Italic</span> <span style="color:#7F0000;text-style:italic">font</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> c.yAxis.setTitle(<span style="color:#6500FE">&quot;Revenue</span> <span style="color:#6500FE">in</span> <span style="color:#6500FE">US</span> <span style="color:#6500FE">millions&quot;</span>, <span style="color:#6500FE">&quot;arialbi.ttf&quot;</span>, <span style="color:#326598">10</span>*factor)
+			<span style="color:#0000FF;font-weight: bold">call</span> c.yAxis2.setTitle(<span style="color:#6500FE">&quot;Revenue</span> <span style="color:#6500FE">in</span> <span style="color:#6500FE">US</span> <span style="color:#6500FE">millions&quot;</span>, <span style="color:#6500FE">&quot;arialbi.ttf&quot;</span>, <span style="color:#326598">10</span>*factor)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">scroll</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> axisLowerLimit <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> axisUpperLimit <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>
+			
+			axisLowerLimit = <span style="color:#006532">100.0</span> <span style="color:#7F0000;text-style:italic">&#39;-100.0</span> <span style="color:#7F0000;text-style:italic">*(viewport.getViewPortLeft</span> <span style="color:#7F0000;text-style:italic">+</span> <span style="color:#7F0000;text-style:italic">viewport.getViewPortWidth)</span>
+			axisUpperLimit = <span style="color:#006532">100.0</span> <span style="color:#7F0000;text-style:italic">&#39;-100.0</span> <span style="color:#7F0000;text-style:italic">*</span> <span style="color:#7F0000;text-style:italic">viewport.getViewPortLeft</span>
+			
+			<span style="color:#7F0000;text-style:italic">&#39;c.xAxis.setLinearScale(axisLowerLimit,axisUpperLimit)</span>
+			c.xAxis.setRounding(<span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#0000FF;font-weight: bold">false</span>)
+			
+			axisLowerLimit =  <span style="color:#006532">100.0</span> <span style="color:#7F0000;text-style:italic">&#39;-100.0</span> <span style="color:#7F0000;text-style:italic">*(viewport.getViewPortTop</span> <span style="color:#7F0000;text-style:italic">+</span> <span style="color:#7F0000;text-style:italic">viewport.getViewPortHeight)</span>
+			axisUpperLimit =  <span style="color:#006532">100.0</span> <span style="color:#7F0000;text-style:italic">&#39;-100.0</span> <span style="color:#7F0000;text-style:italic">*</span> <span style="color:#7F0000;text-style:italic">viewport.getViewPortTop</span>
+			
+			<span style="color:#7F0000;text-style:italic">&#39;c.yAxis.setLinearScale(axisLowerLimit,axisUpperLimit)</span>
+			c.yAxis.setRounding(<span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#0000FF;font-weight: bold">false</span>)
+			<span style="color:#7F0000;text-style:italic">&#39;c.yAxis2.setLinearScale(axisLowerLimit,axisUpperLimit)</span>
+			c.yAxis2.setRounding(<span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#0000FF;font-weight: bold">false</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">layer</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">chart</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> layer <span style="color:#0000FF;font-weight: bold">as</span> CDLineLayerMBS
+			layer = c.addLineLayer
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">width</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">3</span> <span style="color:#7F0000;text-style:italic">pixels</span>
+			layer.setLineWidth(<span style="color:#326598">3</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">three</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">sets</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">layer,</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">circles,</span> <span style="color:#7F0000;text-style:italic">diamands</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">X</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">shapes</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">symbols</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">lines</span> <span style="color:#7F0000;text-style:italic">only</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> CDDataSetMBS
+			d=layer.addDataSet(data0, <span style="color:#326598">&amp;hff0000</span>, <span style="color:#6500FE">&quot;Quantum</span> <span style="color:#6500FE">Computer&quot;</span>)
+			<span style="color:#7F0000;text-style:italic">&#39;d.setDataSymbol(c.kCircleSymbol,</span> <span style="color:#7F0000;text-style:italic">9*factor)</span>
+			d.setLineWidth(factor)
+			d=layer.addDataSet(data1, <span style="color:#326598">&amp;h00ff00</span>, <span style="color:#6500FE">&quot;Atom</span> <span style="color:#6500FE">Synthesizer&quot;</span>)
+			<span style="color:#7F0000;text-style:italic">&#39;d.setDataSymbol(c.kDiamondSymbol,</span> <span style="color:#7F0000;text-style:italic">11*factor)</span>
+			d.setLineWidth(factor)
+			d=layer.addDataSet(data2, <span style="color:#326598">&amp;hff6600</span>, <span style="color:#6500FE">&quot;Proton</span> <span style="color:#6500FE">Cannon&quot;</span>)
+			d.setLineWidth(factor)
+			<span style="color:#7F0000;text-style:italic">&#39;d.setDataSymbol(c.Cross2Shape,</span> <span style="color:#7F0000;text-style:italic">11*factor)</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">first</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">values</span>
+			d=layer.addDataSet(data0, <span style="color:#326598">&amp;hff0000</span>)
+			d.setDataSymbol(c.kCircleSymbol, <span style="color:#326598">9</span>*factor)
+			d.setLineWidth(<span style="color:#326598">0</span>)
+			d=layer.addDataSet(data1, <span style="color:#326598">&amp;h00ff00</span>)
+			d.setDataSymbol(c.kDiamondSymbol, <span style="color:#326598">11</span>*factor)
+			d.setLineWidth(<span style="color:#326598">0</span>)
+			d=layer.addDataSet(data2, <span style="color:#326598">&amp;hff6600</span>)
+			d.setLineWidth(<span style="color:#326598">0</span>)
+			d.setDataSymbol(c.Cross2Shape, <span style="color:#326598">11</span>*factor)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">second</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">values</span>
+			d=layer.addDataSet(data0, <span style="color:#326598">&amp;h00ff00</span>)
+			d.setDataSymbol(c.kCircleSymbol, <span style="color:#326598">9</span>*factor)
+			d.setLineWidth(<span style="color:#326598">0</span>)
+			d=layer.addDataSet(data1, <span style="color:#326598">&amp;hff0000</span>)
+			d.setDataSymbol(c.kDiamondSymbol, <span style="color:#326598">11</span>*factor)
+			d.setLineWidth(<span style="color:#326598">0</span>)
+			d=layer.addDataSet(data2, <span style="color:#326598">&amp;h0000ff</span>)
+			d.setLineWidth(<span style="color:#326598">0</span>)
+			d.setDataSymbol(c.Cross2Shape, <span style="color:#326598">11</span>*factor)
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> c
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> RenderPieChart() <span style="color:#0000FF;font-weight: bold">As</span> CDBaseChartMBS
+			<span style="color:#0000FF;font-weight: bold">const</span> factor = <span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> width  = <span style="color:#326598">600</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> height = <span style="color:#326598">375</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = factor <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">scale</span> <span style="color:#7F0000;text-style:italic">factor,</span> <span style="color:#7F0000;text-style:italic">1</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">screen</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">4</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">more</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">printing</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">pie</span> <span style="color:#7F0000;text-style:italic">chart</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> data(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = <span style="color:#0000FF;font-weight: bold">array</span>(<span style="color:#006532">21.0</span>, <span style="color:#326598">18</span>, <span style="color:#326598">15</span>, <span style="color:#326598">12</span>, <span style="color:#326598">8</span>, <span style="color:#326598">24</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">labels</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">pie</span> <span style="color:#7F0000;text-style:italic">chart</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> labels(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = <span style="color:#0000FF;font-weight: bold">array</span>(<span style="color:#6500FE">&quot;Labor&quot;</span>, <span style="color:#6500FE">&quot;Licenses&quot;</span>, <span style="color:#6500FE">&quot;Taxes&quot;</span>, <span style="color:#6500FE">&quot;Legal&quot;</span>, <span style="color:#6500FE">&quot;Facilities&quot;</span>, <span style="color:#6500FE">&quot;Production&quot;</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">colors</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">sectors</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> colors(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			
+			colors.Append <span style="color:#326598">&amp;h66aaee</span>
+			colors.Append <span style="color:#326598">&amp;heebb22</span>
+			colors.Append <span style="color:#326598">&amp;hbbbbbb</span>
+			colors.Append <span style="color:#326598">&amp;h8844ff</span>
+			colors.Append <span style="color:#326598">&amp;hdd2222</span>
+			colors.Append <span style="color:#326598">&amp;h009900</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Create</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">PieChart</span> <span style="color:#7F0000;text-style:italic">object</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">size</span> <span style="color:#7F0000;text-style:italic">600</span> <span style="color:#7F0000;text-style:italic">x</span> <span style="color:#7F0000;text-style:italic">320</span> <span style="color:#7F0000;text-style:italic">pixels.</span> <span style="color:#7F0000;text-style:italic">Use</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">vertical</span> <span style="color:#7F0000;text-style:italic">gradient</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">light</span> <span style="color:#7F0000;text-style:italic">blue</span> <span style="color:#7F0000;text-style:italic">(99ccff)</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">white</span> <span style="color:#7F0000;text-style:italic">(ffffff)</span> <span style="color:#7F0000;text-style:italic">spanning</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">top</span> <span style="color:#7F0000;text-style:italic">100</span> <span style="color:#7F0000;text-style:italic">pixels</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">background.</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">border</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">grey</span> <span style="color:#7F0000;text-style:italic">(888888).</span> <span style="color:#7F0000;text-style:italic">Use</span> <span style="color:#7F0000;text-style:italic">rounded</span> <span style="color:#7F0000;text-style:italic">corners.</span> <span style="color:#7F0000;text-style:italic">Enable</span> <span style="color:#7F0000;text-style:italic">soft</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">drop</span> <span style="color:#7F0000;text-style:italic">shadow.</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> CDPieChartMBS(f*width, f*height)
+			c.setBackground(c.linearGradientColor(<span style="color:#326598">0</span>, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, <span style="color:#326598">100</span>, <span style="color:#326598">&amp;h99ccff</span>, <span style="color:#326598">&amp;hffffff</span>),<span style="color:#326598">&amp;h888888</span>)
+			c.setRoundedFrame(<span style="color:#326598">&amp;hFFFFFF</span>,<span style="color:#326598">10</span>*f)
+			<span style="color:#7F0000;text-style:italic">&#39;c.setDropShadow</span>
+			
+			<span style="color:#7F0000;text-style:italic">&#39;if</span> <span style="color:#7F0000;text-style:italic">HighLightSector&gt;=0</span> <span style="color:#7F0000;text-style:italic">then</span>
+			<span style="color:#7F0000;text-style:italic">&#39;c.setExplode(HighLightSector)</span>
+			<span style="color:#7F0000;text-style:italic">&#39;end</span> <span style="color:#7F0000;text-style:italic">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">title</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">18</span> <span style="color:#7F0000;text-style:italic">pts</span> <span style="color:#7F0000;text-style:italic">Times</span> <span style="color:#7F0000;text-style:italic">New</span> <span style="color:#7F0000;text-style:italic">Roman</span> <span style="color:#7F0000;text-style:italic">Bold</span> <span style="color:#7F0000;text-style:italic">Italic</span> <span style="color:#7F0000;text-style:italic">font.</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">16</span> <span style="color:#7F0000;text-style:italic">pixels</span> <span style="color:#7F0000;text-style:italic">top</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">margin</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">title.</span>
+			c.addTitle(<span style="color:#6500FE">&quot;Pie</span> <span style="color:#6500FE">Chart</span> <span style="color:#6500FE">With</span> <span style="color:#6500FE">Legend</span> <span style="color:#6500FE">Demonstration&quot;</span>, <span style="color:#6500FE">&quot;timesbi.ttf&quot;</span>, f*<span style="color:#326598">18</span>).setMargin(<span style="color:#326598">0</span>, <span style="color:#326598">0</span>, f*<span style="color:#326598">16</span>, <span style="color:#326598">0</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">center</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">pie</span> <span style="color:#7F0000;text-style:italic">at</span> <span style="color:#7F0000;text-style:italic">(160,</span> <span style="color:#7F0000;text-style:italic">165)</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">radius</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">110</span> <span style="color:#7F0000;text-style:italic">pixels</span>
+			c.setPieSize(f*width/<span style="color:#326598">4</span>, f*height/<span style="color:#326598">2</span>, f*<span style="color:#326598">110</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Draw</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">pie</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">3D</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">pie</span> <span style="color:#7F0000;text-style:italic">thickness</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">25</span> <span style="color:#7F0000;text-style:italic">pixels</span>
+			c.set3D(f*<span style="color:#326598">25</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">pie</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">pie</span> <span style="color:#7F0000;text-style:italic">labels</span>
+			c.setData(data, labels)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> x <span style="color:#0000FF;font-weight: bold">as</span> CDTextBoxMBS=c.setLabelStyle
+			<span style="color:#0000FF">#pragma</span> Unused x
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">sector</span> <span style="color:#7F0000;text-style:italic">colors</span>
+			c.setColors(CDPieChartMBS.kDataColor, colors)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Use</span> <span style="color:#7F0000;text-style:italic">local</span> <span style="color:#7F0000;text-style:italic">gradient</span> <span style="color:#7F0000;text-style:italic">shading</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">sectors</span>
+			<span style="color:#7F0000;text-style:italic">&#39;c.setSectorStyle(CDPieChartMBS.kLocalGradientShading)</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Use</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">side</span> <span style="color:#7F0000;text-style:italic">label</span> <span style="color:#7F0000;text-style:italic">layout</span> <span style="color:#7F0000;text-style:italic">method,</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">labels</span> <span style="color:#7F0000;text-style:italic">positioned</span> <span style="color:#7F0000;text-style:italic">16</span> <span style="color:#7F0000;text-style:italic">pixels</span> <span style="color:#7F0000;text-style:italic">from</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">pie</span> <span style="color:#7F0000;text-style:italic">bounding</span> <span style="color:#7F0000;text-style:italic">box</span>
+			c.setLabelLayout(CDPieChartMBS.kSideLayout, <span style="color:#326598">16</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Show</span> <span style="color:#7F0000;text-style:italic">only</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">sector</span> <span style="color:#7F0000;text-style:italic">number</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">sector</span> <span style="color:#7F0000;text-style:italic">label</span>
+			c.setLabelFormat(<span style="color:#6500FE">&quot;{={sector}+1}&quot;</span>)
+			
+			c.setJoinLine <span style="color:#326598">0</span>,f
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">sector</span> <span style="color:#7F0000;text-style:italic">label</span> <span style="color:#7F0000;text-style:italic">style</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">Arial</span> <span style="color:#7F0000;text-style:italic">Bold</span> <span style="color:#7F0000;text-style:italic">10pt,</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">dark</span> <span style="color:#7F0000;text-style:italic">grey</span> <span style="color:#7F0000;text-style:italic">(444444)</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">border</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> CDTextBoxMBS=c.setLabelStyle(<span style="color:#6500FE">&quot;arialbd.ttf&quot;</span>, f*<span style="color:#326598">10</span>)
+			t.setBackground(CDPieChartMBS.kTransparent, <span style="color:#326598">&amp;h444444</span>)
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">legend</span> <span style="color:#7F0000;text-style:italic">box,</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">center</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">left</span> <span style="color:#7F0000;text-style:italic">side</span> <span style="color:#7F0000;text-style:italic">anchored</span> <span style="color:#7F0000;text-style:italic">at</span> <span style="color:#7F0000;text-style:italic">(330,</span> <span style="color:#7F0000;text-style:italic">175),</span> <span style="color:#7F0000;text-style:italic">and</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">10</span> <span style="color:#7F0000;text-style:italic">pts</span> <span style="color:#7F0000;text-style:italic">Arial</span> <span style="color:#7F0000;text-style:italic">Bold</span> <span style="color:#7F0000;text-style:italic">Italic</span> <span style="color:#7F0000;text-style:italic">font</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> CDLegendBoxMBS = c.addLegend(f*width/<span style="color:#326598">2</span>, f*height/<span style="color:#326598">2</span>, <span style="color:#0000FF;font-weight: bold">true</span>, <span style="color:#6500FE">&quot;arialbi.ttf&quot;</span>, f*<span style="color:#326598">10</span>)
+			b.setAlignment(CDPieChartMBS.kLeft)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">legend</span> <span style="color:#7F0000;text-style:italic">box</span> <span style="color:#7F0000;text-style:italic">border</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">dark</span> <span style="color:#7F0000;text-style:italic">grey</span> <span style="color:#7F0000;text-style:italic">(444444),</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">rounded</span> <span style="color:#7F0000;text-style:italic">conerns</span>
+			b.setBackground(CDPieChartMBS.kTransparent, <span style="color:#326598">&amp;h444444</span>)
+			b.setRoundedCorners(f*<span style="color:#326598">10</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">legend</span> <span style="color:#7F0000;text-style:italic">box</span> <span style="color:#7F0000;text-style:italic">margin</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">16</span> <span style="color:#7F0000;text-style:italic">pixels,</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">extra</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">spacing</span> <span style="color:#7F0000;text-style:italic">between</span> <span style="color:#7F0000;text-style:italic">the</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">legend</span> <span style="color:#7F0000;text-style:italic">entries</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">5</span> <span style="color:#7F0000;text-style:italic">pixels</span>
+			b.setMargin(f*<span style="color:#326598">16</span>)
+			b.setKeySpacing(<span style="color:#326598">0</span>, <span style="color:#326598">5</span>*f)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">legend</span> <span style="color:#7F0000;text-style:italic">box</span> <span style="color:#7F0000;text-style:italic">icon</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">have</span> <span style="color:#7F0000;text-style:italic">no</span> <span style="color:#7F0000;text-style:italic">border</span> <span style="color:#7F0000;text-style:italic">(border</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">same</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">fill</span> <span style="color:#7F0000;text-style:italic">color)</span>
+			b.setKeyBorder(CDPieChartMBS.kSameAsMainColor)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">legend</span> <span style="color:#7F0000;text-style:italic">text</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">show</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">sector</span> <span style="color:#7F0000;text-style:italic">number,</span> <span style="color:#7F0000;text-style:italic">followed</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">120</span> <span style="color:#7F0000;text-style:italic">pixels</span> <span style="color:#7F0000;text-style:italic">wide</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">block</span> <span style="color:#7F0000;text-style:italic">showing</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">sector</span> <span style="color:#7F0000;text-style:italic">label,</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">40</span> <span style="color:#7F0000;text-style:italic">pixels</span> <span style="color:#7F0000;text-style:italic">wide</span> <span style="color:#7F0000;text-style:italic">block</span> <span style="color:#7F0000;text-style:italic">showing</span> <span style="color:#7F0000;text-style:italic">the</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">percentage</span>
+			b.setText(<span style="color:#6500FE">&quot;&lt;*block,valign=top*&gt;{={sector}+1}.&lt;*advanceTo=&quot;</span>+str(f*<span style="color:#326598">22</span>)+<span style="color:#6500FE">&quot;*&gt;&lt;*block,width=&quot;</span>+str(f*<span style="color:#326598">120</span>)+<span style="color:#6500FE">&quot;*&gt;{label}&lt;*/*&gt;&lt;*block,width=&quot;</span>+str(f*<span style="color:#326598">40</span>)+<span style="color:#6500FE">&quot;,halign=right*&gt;{percent}&lt;*/*&gt;%&quot;</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Output</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">chart</span>
+			
+			<span style="color:#0000FF;font-weight: bold">return</span> c
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> RenderPolarChart() <span style="color:#0000FF;font-weight: bold">As</span> CDBaseChartMBS
+			<span style="color:#0000FF;font-weight: bold">const</span> factor = <span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> width  = <span style="color:#326598">375</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> height = <span style="color:#326598">375</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = factor <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">scale</span> <span style="color:#7F0000;text-style:italic">factor,</span> <span style="color:#7F0000;text-style:italic">1</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">screen</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">4</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">more</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">printing</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> data0(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = <span style="color:#0000FF;font-weight: bold">array</span>(<span style="color:#326598">6</span>, <span style="color:#006532">12.5</span>, <span style="color:#006532">18.2</span>, <span style="color:#006532">15.0</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> angles0(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = <span style="color:#0000FF;font-weight: bold">array</span>(<span style="color:#326598">45</span>, <span style="color:#326598">96</span>, <span style="color:#326598">169</span>, <span style="color:#006532">258.0</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> size0(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = <span style="color:#0000FF;font-weight: bold">array</span>(f*<span style="color:#326598">41</span>, f*<span style="color:#326598">105</span>, f*<span style="color:#326598">12</span>, f*<span style="color:#006532">20.0</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> data1(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = <span style="color:#0000FF;font-weight: bold">array</span>(<span style="color:#326598">18</span>, <span style="color:#326598">16</span>, <span style="color:#326598">11</span>, <span style="color:#006532">14.0</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> angles1(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = <span style="color:#0000FF;font-weight: bold">array</span>(<span style="color:#326598">30</span>, <span style="color:#326598">210</span>, <span style="color:#326598">240</span>, <span style="color:#006532">310.0</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> size1(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = <span style="color:#0000FF;font-weight: bold">array</span>(f*<span style="color:#326598">30</span>, f*<span style="color:#326598">45</span>, f*<span style="color:#326598">12</span>, f*<span style="color:#006532">90.0</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Create</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">PolarChart</span> <span style="color:#7F0000;text-style:italic">object</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">size</span> <span style="color:#7F0000;text-style:italic">460</span> <span style="color:#7F0000;text-style:italic">x</span> <span style="color:#7F0000;text-style:italic">460</span> <span style="color:#7F0000;text-style:italic">pixels</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> CDPolarChartMBS(f*width, f*height)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">title</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">chart</span> <span style="color:#7F0000;text-style:italic">at</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">top</span> <span style="color:#7F0000;text-style:italic">left</span> <span style="color:#7F0000;text-style:italic">corner</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">15pts</span> <span style="color:#7F0000;text-style:italic">Arial</span> <span style="color:#7F0000;text-style:italic">Bold</span> <span style="color:#7F0000;text-style:italic">Italic</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">font</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> c.addTitle(CDPolarChartMBS.kTopLeft, <span style="color:#6500FE">&quot;&lt;*underline=2*&gt;EM</span> <span style="color:#6500FE">Field</span> <span style="color:#6500FE">Strength&quot;</span>, <span style="color:#6500FE">&quot;arialbi.ttf&quot;</span>, f*<span style="color:#326598">15</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">center</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">plot</span> <span style="color:#7F0000;text-style:italic">area</span> <span style="color:#7F0000;text-style:italic">at</span> <span style="color:#7F0000;text-style:italic">(230,</span> <span style="color:#7F0000;text-style:italic">240)</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">radius</span> <span style="color:#7F0000;text-style:italic">180</span> <span style="color:#7F0000;text-style:italic">pixels</span>
+			c.setPlotArea(f*width/<span style="color:#326598">2</span>, f*height/<span style="color:#326598">2</span>, f*min(width,height)*<span style="color:#006532">0.35</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Use</span> <span style="color:#7F0000;text-style:italic">alternative</span> <span style="color:#7F0000;text-style:italic">light</span> <span style="color:#7F0000;text-style:italic">grey/dark</span> <span style="color:#7F0000;text-style:italic">grey</span> <span style="color:#7F0000;text-style:italic">circular</span> <span style="color:#7F0000;text-style:italic">background</span> <span style="color:#7F0000;text-style:italic">color</span>
+			c.setPlotAreaBg(<span style="color:#326598">&amp;hdddddd</span>, <span style="color:#326598">&amp;heeeeee</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">grid</span> <span style="color:#7F0000;text-style:italic">style</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">circular</span> <span style="color:#7F0000;text-style:italic">grid</span>
+			c.setGridStyle(<span style="color:#0000FF;font-weight: bold">false</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">legend</span> <span style="color:#7F0000;text-style:italic">box</span> <span style="color:#7F0000;text-style:italic">at</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">top</span> <span style="color:#7F0000;text-style:italic">right</span> <span style="color:#7F0000;text-style:italic">corner</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">chart</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">9</span> <span style="color:#7F0000;text-style:italic">pts</span> <span style="color:#7F0000;text-style:italic">Arial</span> <span style="color:#7F0000;text-style:italic">Bold</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">font</span>
+			c.addLegend(f*width-f*<span style="color:#326598">2</span>, f*<span style="color:#326598">0</span>, <span style="color:#0000FF;font-weight: bold">true</span>, <span style="color:#6500FE">&quot;arialbd.ttf&quot;</span>, f*<span style="color:#326598">9</span>).setAlignment(CDPolarChartMBS.kTopRight)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">angular</span> <span style="color:#7F0000;text-style:italic">axis</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">0</span> <span style="color:#7F0000;text-style:italic">-</span> <span style="color:#7F0000;text-style:italic">360,</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">spoke</span> <span style="color:#7F0000;text-style:italic">every</span> <span style="color:#7F0000;text-style:italic">30</span> <span style="color:#7F0000;text-style:italic">units</span>
+			c.angularAxis.setLinearScale(<span style="color:#326598">0</span>, <span style="color:#326598">360</span>, <span style="color:#326598">30</span>)
+			
+			c.radialAxis.setLinearScale <span style="color:#326598">0</span>, <span style="color:#326598">20</span>,<span style="color:#326598">5</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">radial</span> <span style="color:#7F0000;text-style:italic">axis</span> <span style="color:#7F0000;text-style:italic">label</span> <span style="color:#7F0000;text-style:italic">format</span>
+			c.radialAxis.setLabelFormat(<span style="color:#6500FE">&quot;{value}</span> <span style="color:#6500FE">km&quot;</span>)
+			
+			c.angularAxis.setLabelGap f*<span style="color:#326598">8</span>
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> c.angularAxis.setLabelStyle <span style="color:#6500FE">&quot;&quot;</span>,<span style="color:#326598">8</span>*f
+			<span style="color:#0000FF;font-weight: bold">call</span> c.radialAxis.setLabelStyle <span style="color:#6500FE">&quot;&quot;</span>,<span style="color:#326598">8</span>*f
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">blue</span> <span style="color:#7F0000;text-style:italic">(&amp;h9999ff)</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">layer</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">chart</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">(data0,</span> <span style="color:#7F0000;text-style:italic">angle0)</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> layer0 <span style="color:#0000FF;font-weight: bold">as</span> CDPolarLineLayerMBS
+			layer0 = c.addLineLayer(data0, <span style="color:#326598">&amp;h9999ff</span>, <span style="color:#6500FE">&quot;Cold</span> <span style="color:#6500FE">Spot&quot;</span>)
+			layer0.setAngles(angles0)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Disable</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">setting</span> <span style="color:#7F0000;text-style:italic">its</span> <span style="color:#7F0000;text-style:italic">width</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">0,</span> <span style="color:#7F0000;text-style:italic">so</span> <span style="color:#7F0000;text-style:italic">only</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">symbols</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">visible</span>
+			layer0.setLineWidth(<span style="color:#326598">0</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Use</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">circular</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">point</span> <span style="color:#7F0000;text-style:italic">symbol</span>
+			layer0.setDataSymbol(CDPolarChartMBS.kCircleSymbol, f*<span style="color:#326598">11</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Modulate</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">symbol</span> <span style="color:#7F0000;text-style:italic">size</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">size0</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">produce</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">bubble</span> <span style="color:#7F0000;text-style:italic">chart</span> <span style="color:#7F0000;text-style:italic">effect</span>
+			layer0.setSymbolScale(size0)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">red</span> <span style="color:#7F0000;text-style:italic">(&amp;hff9999)</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">layer</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">chart</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">(data1,</span> <span style="color:#7F0000;text-style:italic">angle1)</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> layer1 <span style="color:#0000FF;font-weight: bold">as</span> CDPolarLineLayerMBS
+			layer1 = c.addLineLayer(data1,<span style="color:#326598">&amp;hff9999</span>, <span style="color:#6500FE">&quot;Hot</span> <span style="color:#6500FE">Spot&quot;</span>)
+			layer1.setAngles(angles1)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Disable</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">setting</span> <span style="color:#7F0000;text-style:italic">its</span> <span style="color:#7F0000;text-style:italic">width</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">0,</span> <span style="color:#7F0000;text-style:italic">so</span> <span style="color:#7F0000;text-style:italic">only</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">symbols</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">visible</span>
+			layer1.setLineWidth(<span style="color:#326598">0</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Use</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">circular</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">point</span> <span style="color:#7F0000;text-style:italic">symbol</span>
+			layer1.setDataSymbol(CDPolarChartMBS.kCircleSymbol, f*<span style="color:#326598">11</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Modulate</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">symbol</span> <span style="color:#7F0000;text-style:italic">size</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">size1</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">produce</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">bubble</span> <span style="color:#7F0000;text-style:italic">chart</span> <span style="color:#7F0000;text-style:italic">effect</span>
+			layer1.setSymbolScale(size1)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Output</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">chart</span>
+			<span style="color:#0000FF;font-weight: bold">Return</span> c
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> RenderPyramidChart() <span style="color:#0000FF;font-weight: bold">As</span> CDBaseChartMBS
+			<span style="color:#0000FF;font-weight: bold">const</span> factor = <span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> width  = <span style="color:#326598">375</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> height = <span style="color:#326598">375</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = factor <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">scale</span> <span style="color:#7F0000;text-style:italic">factor,</span> <span style="color:#7F0000;text-style:italic">1</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">screen</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">4</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">more</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">printing</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">pyramid</span> <span style="color:#7F0000;text-style:italic">chart</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> data(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = <span style="color:#0000FF;font-weight: bold">array</span>(<span style="color:#006532">156.0</span>, <span style="color:#326598">123</span>, <span style="color:#326598">211</span>, <span style="color:#326598">179</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">labels</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">pyramid</span> <span style="color:#7F0000;text-style:italic">chart</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> labels(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = <span style="color:#0000FF;font-weight: bold">array</span>(<span style="color:#6500FE">&quot;Funds&quot;</span>, <span style="color:#6500FE">&quot;Bonds&quot;</span>, <span style="color:#6500FE">&quot;Stocks&quot;</span>, <span style="color:#6500FE">&quot;Cash&quot;</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">semi-transparent</span> <span style="color:#7F0000;text-style:italic">colors</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">pyramid</span> <span style="color:#7F0000;text-style:italic">layers</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> colors(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			colors.Append <span style="color:#326598">&amp;h60000088</span>
+			colors.Append <span style="color:#326598">&amp;h6066aaee</span>
+			colors.Append <span style="color:#326598">&amp;h60ffbb00</span>
+			colors.Append <span style="color:#326598">&amp;h60ee6622</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Create</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">PyramidChart</span> <span style="color:#7F0000;text-style:italic">object</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">size</span> <span style="color:#7F0000;text-style:italic">480</span> <span style="color:#7F0000;text-style:italic">x</span> <span style="color:#7F0000;text-style:italic">400</span> <span style="color:#7F0000;text-style:italic">pixels</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> CDPyramidChartMBS(f*width, f*height)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">cone</span> <span style="color:#7F0000;text-style:italic">center</span> <span style="color:#7F0000;text-style:italic">at</span> <span style="color:#7F0000;text-style:italic">(280,</span> <span style="color:#7F0000;text-style:italic">180),</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">width</span> <span style="color:#7F0000;text-style:italic">x</span> <span style="color:#7F0000;text-style:italic">height</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">150</span> <span style="color:#7F0000;text-style:italic">x</span> <span style="color:#7F0000;text-style:italic">300</span> <span style="color:#7F0000;text-style:italic">pixels</span>
+			c.setConeSize(f*width/<span style="color:#326598">2</span>, f*height/<span style="color:#326598">2</span>, f*min(height,width)*<span style="color:#006532">0.333</span>, f*height*<span style="color:#006532">0.75</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">elevation</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">15</span> <span style="color:#7F0000;text-style:italic">degrees</span>
+			c.setViewAngle(<span style="color:#326598">15</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">pyramid</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">labels</span>
+			c.setData(data, labels)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">layer</span> <span style="color:#7F0000;text-style:italic">colors</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">given</span> <span style="color:#7F0000;text-style:italic">colors</span>
+			c.setColors(c.kDataColor, colors)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Leave</span> <span style="color:#7F0000;text-style:italic">1%</span> <span style="color:#7F0000;text-style:italic">gaps</span> <span style="color:#7F0000;text-style:italic">between</span> <span style="color:#7F0000;text-style:italic">layers</span>
+			c.setLayerGap(<span style="color:#006532">0.01</span>)
+			
+			c.setJoinLine(<span style="color:#326598">&amp;h000000</span>, f)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">labels</span> <span style="color:#7F0000;text-style:italic">at</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">left</span> <span style="color:#7F0000;text-style:italic">side</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">pyramid</span> <span style="color:#7F0000;text-style:italic">layers</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">Arial</span> <span style="color:#7F0000;text-style:italic">Bold</span> <span style="color:#7F0000;text-style:italic">font.</span> <span style="color:#7F0000;text-style:italic">The</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">labels</span> <span style="color:#7F0000;text-style:italic">will</span> <span style="color:#7F0000;text-style:italic">have</span> <span style="color:#7F0000;text-style:italic">3</span> <span style="color:#7F0000;text-style:italic">lines</span> <span style="color:#7F0000;text-style:italic">showing</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">layer</span> <span style="color:#7F0000;text-style:italic">name,</span> <span style="color:#7F0000;text-style:italic">value</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">percentage.</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> c.setLeftLabel(<span style="color:#6500FE">&quot;{label}&quot;</span>+EndOfLine.unix+<span style="color:#6500FE">&quot;US</span> <span style="color:#6500FE">${value}K&quot;</span>+EndOfLine.unix+<span style="color:#6500FE">&quot;({percent}%)&quot;</span>, <span style="color:#6500FE">&quot;arialbd.ttf&quot;</span>,<span style="color:#326598">8</span>*f)
+			
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> c
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> WritePDF(PDFData <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, name <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			<span style="color:#0000FF;font-weight: bold">if</span> PDFData.lenb &gt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> PDFFile <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = SpecialFolder.Desktop.Child(name)
+				<span style="color:#0000FF;font-weight: bold">dim</span> PDFStream <span style="color:#0000FF;font-weight: bold">as</span> BinaryStream = BinaryStream.Create(PDFFile, <span style="color:#0000FF;font-weight: bold">true</span>)
+				<span style="color:#0000FF;font-weight: bold">if</span> PDFStream &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					PDFStream.Write PDFData
+					PDFStream.Close
+					
+					pdffile.Launch(<span style="color:#0000FF;font-weight: bold">true</span>)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Data0() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Data1() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Data2() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;Ablage&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Bearbeiten&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;R&uuml;ckg&auml;ngig&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;&amp;Ausschneiden&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Kopieren&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Einf&uuml;gen&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;&amp;Alles</span> <span style="color:#6500FE">ausw&auml;hlen&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyDynapdfMBS <span style="color:#0000FF;font-weight: bold">Inherits</span> DynapdfMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> Error(ErrorCode <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, ErrorMessage <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, ErrorType <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">output</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">messages</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">console:</span>
+			System.DebugLog str(ErrorCode)+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+ErrorMessage
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">dialog:</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">New</span> MessageDialog <span style="color:#7F0000;text-style:italic">//declare</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">MessageDialog</span> <span style="color:#7F0000;text-style:italic">object</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> MessageDialogButton <span style="color:#7F0000;text-style:italic">//for</span> <span style="color:#7F0000;text-style:italic">handling</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">result</span>
+			
+			d.icon=MessageDialog.GraphicCaution <span style="color:#7F0000;text-style:italic">//display</span> <span style="color:#7F0000;text-style:italic">warning</span> <span style="color:#7F0000;text-style:italic">icon</span>
+			d.ActionButton.Caption=<span style="color:#6500FE">&quot;Continue&quot;</span>
+			d.CancelButton.Visible=<span style="color:#0000FF;font-weight: bold">True</span>    <span style="color:#7F0000;text-style:italic">//show</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Cancel</span> <span style="color:#7F0000;text-style:italic">button</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">warning</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">error?</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> BitAnd(ErrorType, <span style="color:#0000FF;font-weight: bold">me</span>.kE_WARNING) = <span style="color:#0000FF;font-weight: bold">me</span>.kE_WARNING <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">user</span> <span style="color:#7F0000;text-style:italic">decided</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">ignore,</span> <span style="color:#7F0000;text-style:italic">we&#39;ll</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> IgnoreWarnings <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span>
+				
+				d.Message=<span style="color:#6500FE">&quot;A</span> <span style="color:#6500FE">warning</span> <span style="color:#6500FE">occurred</span> <span style="color:#6500FE">while</span> <span style="color:#6500FE">processing</span> <span style="color:#6500FE">your</span> <span style="color:#6500FE">PDF</span> <span style="color:#6500FE">code.&quot;</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">third</span> <span style="color:#7F0000;text-style:italic">button</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">warnings</span>
+				d.AlternateActionButton.Caption = <span style="color:#6500FE">&quot;Ignore</span> <span style="color:#6500FE">warnings&quot;</span>
+				d.AlternateActionButton.Visible = <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				d.Message=<span style="color:#6500FE">&quot;An</span> <span style="color:#6500FE">error</span> <span style="color:#6500FE">occurred</span> <span style="color:#6500FE">while</span> <span style="color:#6500FE">processing</span> <span style="color:#6500FE">your</span> <span style="color:#6500FE">PDF</span> <span style="color:#6500FE">code.&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			d.Explanation = str(ErrorCode)+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+ErrorMessage
+			
+			b=d.ShowModal <span style="color:#7F0000;text-style:italic">//display</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">dialog</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">Case</span> b <span style="color:#7F0000;text-style:italic">//determine</span> <span style="color:#7F0000;text-style:italic">which</span> <span style="color:#7F0000;text-style:italic">button</span> <span style="color:#7F0000;text-style:italic">was</span> <span style="color:#7F0000;text-style:italic">pressed.</span>
+			<span style="color:#0000FF;font-weight: bold">Case</span> d.ActionButton
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+			<span style="color:#0000FF;font-weight: bold">Case</span> d.AlternateActionButton
+				IgnoreWarnings = <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+			<span style="color:#0000FF;font-weight: bold">Case</span> d.CancelButton
+				<span style="color:#0000FF;font-weight: bold">Return</span> -<span style="color:#326598">1</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">stop</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">select</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> CalcHeight(MediaBox <span style="color:#0000FF;font-weight: bold">as</span> DynaPDFRectMBS, CropBox <span style="color:#0000FF;font-weight: bold">as</span> DynaPDFRectMBS, destwidth <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">double</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> bbox <span style="color:#0000FF;font-weight: bold">as</span> DynaPDFRectMBS
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> CropBox = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				bbox = MediaBox
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				bbox = CropBox
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> w <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = bbox.Right - bbox.Left
+			<span style="color:#0000FF;font-weight: bold">dim</span> h <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = bbox.Top - bbox.Bottom
+			
+			<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#0000FF;font-weight: bold">me</span>.CalcWidthHeight(w, h, DestWidth, <span style="color:#006532">0.0</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> PlaceCentered(tmpl <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, MediaBox <span style="color:#0000FF;font-weight: bold">as</span> DynaPDFRectMBS, CropBox <span style="color:#0000FF;font-weight: bold">as</span> DynaPDFRectMBS, DestX <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>, DestY <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>, DestWidth <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>, DestHeight <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">boolean</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> bbox <span style="color:#0000FF;font-weight: bold">as</span> DynaPDFRectMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> x, y, w, h, sx <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> haveCropBox <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> CropBox = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				bbox        = MediaBox
+				haveCropBox = <span style="color:#0000FF;font-weight: bold">false</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				bbox        = CropBox
+				haveCropBox = <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			w  = bbox.Right - bbox.Left
+			h  = bbox.Top - bbox.Bottom
+			sx = DestWidth / w
+			<span style="color:#0000FF;font-weight: bold">if</span> (h * sx &lt;= DestHeight) <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				h = h * sx
+				w = (MediaBox.Right - MediaBox.Left) * sx
+				x = DestX - bbox.Left   * sx
+				y = DestY - bbox.Bottom * sx + (DestHeight - h) / <span style="color:#006532">2.0</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> (haveCropBox) <span style="color:#0000FF;font-weight: bold">then</span>
+					
+					<span style="color:#0000FF;font-weight: bold">call</span> <span style="color:#0000FF;font-weight: bold">me</span>.SaveGraphicState
+					<span style="color:#0000FF;font-weight: bold">call</span> <span style="color:#0000FF;font-weight: bold">me</span>.Rectangle(DestX, DestY, DestWidth, DestHeight, <span style="color:#0000FF;font-weight: bold">me</span>.kfmNoFill)
+					<span style="color:#0000FF;font-weight: bold">call</span> <span style="color:#0000FF;font-weight: bold">me</span>.ClipPath(<span style="color:#0000FF;font-weight: bold">me</span>.kcmWinding, <span style="color:#0000FF;font-weight: bold">me</span>.kfmNoFill)
+					<span style="color:#0000FF;font-weight: bold">call</span> <span style="color:#0000FF;font-weight: bold">me</span>.PlaceTemplate( Tmpl, x, y, w, <span style="color:#006532">0.0</span>)
+					<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#0000FF;font-weight: bold">me</span>.RestoreGraphicState
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#0000FF;font-weight: bold">me</span>.PlaceTemplate( Tmpl, x, y, w, <span style="color:#006532">0.0</span>)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				
+				sx = DestHeight / h
+				w = w * sx
+				h = (MediaBox.Top - MediaBox.Bottom) * sx
+				x = DestX - bbox.Left   * sx + (DestWidth - w) / <span style="color:#006532">2.0</span>
+				y = DestY - bbox.Bottom * sx
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> (haveCropBox) <span style="color:#0000FF;font-weight: bold">then</span>
+					
+					<span style="color:#0000FF;font-weight: bold">call</span> <span style="color:#0000FF;font-weight: bold">me</span>.SaveGraphicState
+					<span style="color:#0000FF;font-weight: bold">call</span> <span style="color:#0000FF;font-weight: bold">me</span>.Rectangle(DestX, DestY, DestWidth, DestHeight, <span style="color:#0000FF;font-weight: bold">me</span>.kfmNoFill)
+					<span style="color:#0000FF;font-weight: bold">call</span> <span style="color:#0000FF;font-weight: bold">me</span>.ClipPath( <span style="color:#0000FF;font-weight: bold">me</span>.kcmWinding, <span style="color:#0000FF;font-weight: bold">me</span>.kfmNoFill)
+					<span style="color:#0000FF;font-weight: bold">call</span> <span style="color:#0000FF;font-weight: bold">me</span>.PlaceTemplate( Tmpl, x, y, <span style="color:#006532">0.0</span>, h)
+					<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#0000FF;font-weight: bold">me</span>.RestoreGraphicState
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#0000FF;font-weight: bold">me</span>.PlaceTemplate( Tmpl, x, y, <span style="color:#006532">0.0</span>, h)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> IgnoreWarnings <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-chartdirector-placepdfchartwithdynapdf">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

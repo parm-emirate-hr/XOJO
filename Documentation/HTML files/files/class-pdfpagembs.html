@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - PDFPageMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="PDFPageMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">PDFPageMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>PDFPageMBS class</H3>
+<div class="M">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-pdfkit.html" translate="no">PDFKit</A></td>
+<td class=grau><a href="plugins-mbsmaccontrolsplugin.html">MBS MacControls Plugin</a></td>
+<td class=grau><a href="newinversion80.shtml" class=version>8.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+The PDFKit class for a page in a pdf document.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> file1,file2,file3,destfile <span style="color: #0000FF;">as</span> FolderItem<br /><span style="color: #0000FF;">dim</span> page1,page2,page3 <span style="color: #0000FF;">as</span> PDFPageMBS<br /><span style="color: #0000FF;">dim</span> doc1,doc2 <span style="color: #0000FF;">as</span> <A href="class-pdfdocumentmbs.html">PDFDocumentMBS</A><br /><span style="color: #0000FF;">dim</span> img <span style="color: #0000FF;">as</span> <A href="class-nsimagembs.html">NSImageMBS</A><br /><span style="color: #0000FF;">dim</span> doc <span style="color: #0000FF;">as</span> <A href="class-pdfdocumentmbs.html">PDFDocumentMBS</A><br /><br />file1=SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test1.pdf&quot;</span>)<br />file2=SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test2.pdf&quot;</span>)<br />file3=SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;logo.jpg&quot;</span>)<br /><br />doc1=new <A href="class-pdfdocumentmbs.html">PDFDocumentMBS</A>(file1)<br />doc2=new <A href="class-pdfdocumentmbs.html">PDFDocumentMBS</A>(file2)<br /><br />MsgBox str(doc1.pageCount)<br /><br />img=new <A href="class-nsimagembs.html">NSImageMBS</A>(file3)<br /><br />Backdrop=img.CopyPicture<br /><br />page1=new PDFPageMBS(img)<br />page2=doc1.pageAtIndex(<span style="color: #336698;">0</span>)<br />page3=doc2.pageAtIndex(<span style="color: #336698;">0</span>)<br /><br />doc=new <A href="class-pdfdocumentmbs.html">PDFDocumentMBS</A><br />doc.insertPage page1,<span style="color: #336698;">0</span><br />doc.insertPage page2,<span style="color: #336698;">1</span><br />doc.insertPage page3,<span style="color: #336698;">2</span><br /><br />destfile=SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test.pdf&quot;</span>)<br /><span style="color: #0000FF;">call</span> doc.write(destfile)</span>
+</pre>
+</div>
+</div>
+<ul>
+<li class="M">event <A href="pdfkit-pdfpagembs-event.html">drawRect</A>(box as Integer, g as <A href="class-nsgraphicsmbs.html">NSGraphicsMBS</A>)</li>
+<LI>10 properties<UL>
+<li class="M">property <A href="pdfkit-pdfpagembs-property.html">attributedString</A> as <A href="class-nsattributedstringmbs.html">NSAttributedStringMBS</A></li>
+<li class="M">property <A href="pdfkit-pdfpagembs-property.html#2">CGPDFPageHandle</A> as Integer</li>
+<li class="M">property <A href="pdfkit-pdfpagembs-property.html#3">dataRepresentation</A> as memoryblock</li>
+<li class="M">property <A href="pdfkit-pdfpagembs-property.html#4">displaysAnnotations</A> as boolean</li>
+<li class="M">property <A href="pdfkit-pdfpagembs-property.html#5">document</A> as <A href="class-pdfdocumentmbs.html">PDFDocumentMBS</A></li>
+<li class="M">property <A href="pdfkit-pdfpagembs-property.html#6">label</A> as string</li>
+<li class="M">property <A href="pdfkit-pdfpagembs-property.html#7">numberOfCharacters</A> as Integer</li>
+<li class="M">property <A href="pdfkit-pdfpagembs-property.html#8">rotation</A> as Integer</li>
+<li class="M">property <A href="pdfkit-pdfpagembs-property.html#9">stringValue</A> as string</li>
+<li class="M">property <A href="pdfkit-pdfpagembs-method.html#4">boundsForBox</A>(box as Integer) as <A href="class-nsrectmbs.html">NSRectMBS</A></li>
+</UL></LI>
+<LI>23 methods<UL>
+<li class="M">method <A href="pdfkit-pdfpagembs-method.html">addAnnotation</A>(annotation as <A href="class-pdfannotationmbs.html">PDFAnnotationMBS</A>)</li>
+<li class="M">method <A href="pdfkit-pdfpagembs-method.html#2">annotationAtPoint</A>(x as single, y as single) as <A href="class-pdfannotationmbs.html">PDFAnnotationMBS</A></li>
+<li class="M">method <A href="pdfkit-pdfpagembs-method.html#3">annotations</A> as <A href="class-pdfannotationmbs.html">PDFAnnotationMBS</A>()</li>
+<li class="M">method <A href="pdfkit-pdfpagembs-method.html#5">CalcTransformForBox</A>(box as Integer) as Variant</li>
+<li class="M">method <A href="pdfkit-pdfpagembs-method.html#6">characterBoundsAtIndex</A>(index as Integer) as <A href="class-nsrectmbs.html">NSRectMBS</A></li>
+<li class="M">method <A href="pdfkit-pdfpagembs-method.html#7">characterIndexAtPoint</A>(x as single, y as single) as Integer</li>
+<li class="M">method <A href="pdfkit-pdfpagembs-method.html#8">Constructor</A></li>
+<li class="M">method <A href="pdfkit-pdfpagembs-method.html#9">Constructor</A>(Handle as Integer)</li>
+<li class="M">method <A href="pdfkit-pdfpagembs-method.html#10">Constructor</A>(image as <A href="class-nsimagembs.html">NSImageMBS</A>)</li>
+<li class="M">method <A href="pdfkit-pdfpagembs-method.html#11">copy</A> as PDFPageMBS</li>
+<li class="M">method <A href="pdfkit-pdfpagembs-method.html#12">Destructor</A></li>
+<li class="M">method <A href="pdfkit-pdfpagembs-method.html#13">Draw</A>(g as <A href="class-nsgraphicsmbs.html">NSGraphicsMBS</A>, box as Integer = 0)</li>
+<li class="M">method <A href="pdfkit-pdfpagembs-method.html#14">drawWithBox</A>(box as Integer)</li>
+<li class="M">method <A href="pdfkit-pdfpagembs-method.html#15">removeAnnotation</A>(annotation as <A href="class-pdfannotationmbs.html">PDFAnnotationMBS</A>)</li>
+<li class="M">method <A href="pdfkit-pdfpagembs-method.html#16">Render</A>(dpi as Double = 72.0, box as Integer = 0, background as <A href="class-nscolormbs.html">NSColorMBS</A> = nil) as <A href="class-nsimagembs.html">NSImageMBS</A></li>
+<li class="M">method <A href="pdfkit-pdfpagembs-method.html#17">selectionForLineAtPoint</A>(left as single, top as single) as <A href="class-pdfselectionmbs.html">PDFSelectionMBS</A></li>
+<li class="M">method <A href="pdfkit-pdfpagembs-method.html#18">selectionForRange</A>(position as Integer, length as Integer) as <A href="class-pdfselectionmbs.html">PDFSelectionMBS</A></li>
+<li class="M">method <A href="pdfkit-pdfpagembs-method.html#19">selectionForRect</A>(left as single, top as single, width as single, height as single) as <A href="class-pdfselectionmbs.html">PDFSelectionMBS</A></li>
+<li class="M">method <A href="pdfkit-pdfpagembs-method.html#20">selectionForWordAtPoint</A>(left as single, top as single) as <A href="class-pdfselectionmbs.html">PDFSelectionMBS</A></li>
+<li class="M">method <A href="pdfkit-pdfpagembs-method.html#21">selectionFromPointToPoint</A>(startleft as single, starttop as single, endleft as single, endtop as single) as <A href="class-pdfselectionmbs.html">PDFSelectionMBS</A></li>
+<li class="M">method <A href="pdfkit-pdfpagembs-method.html#22">thumbnailOfSize</A>(size as <A href="class-nssizembs.html">NSSizeMBS</A>, box as integer) as <A href="class-nsimagembs.html">NSImageMBS</A></li>
+<li class="M">method <A href="pdfkit-pdfpagembs-method.html#23">transformContextForBox</A>(box as Integer)</li>
+<li class="M">method <A href="pdfkit-pdfpagembs-method.html#24">transformForBox</A>(box as integer) as variant</li>
+</UL></LI>
+<LI>5 constants<UL>
+<li class="M">const <A href="pdfkit-pdfpagembs-const.html">kPDFDisplayBoxArtBox</A> = 4</li>
+</UL></LI>
+</ul>
+<h3 lang="en">Boxes</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="pdfkit-pdfpagembs-const.html#2">kPDFDisplayBoxBleedBox </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="pdfkit-pdfpagembs-const.html#3">kPDFDisplayBoxCropBox </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="pdfkit-pdfpagembs-const.html#4">kPDFDisplayBoxMediaBox </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 0</td>
+<td bgcolor="#DDDDDD" valign=top>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="pdfkit-pdfpagembs-const.html#5">kPDFDisplayBoxTrimBox </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+</td>
+</tr>
+</table>
+<p>This class has no sub classes.</p>
+<h4>Some methods using this class:</h4><ul>
+<li class="M"><A href="pdfkit-custompdfviewmbs-method.html" translate="no">CustomPDFViewMBS.ClearOverlay</A>(page as PDFPageMBS, post as boolean = true)</li>
+<li class="M"><A href="pdfkit-pdfdocumentmbs-method.html#17" translate="no">PDFDocumentMBS.insertPage</A>(page as PDFPageMBS, index as Integer)</li>
+<li class="M"><A href="pdfkit-pdfdocumentmbs-method.html#20" translate="no">PDFDocumentMBS.pageAtIndex</A>(index as Integer) as PDFPageMBS</li>
+<li class="M"><A href="pdfkit-pdfselectionmbs-method.html#3" translate="no">PDFSelectionMBS.boundsForPage</A>(page as PDFPageMBS) as <A href="class-nsrectmbs.html">NSRectMBS</A></li>
+<li class="M"><A href="pdfkit-pdfselectionmbs-method.html#8" translate="no">PDFSelectionMBS.drawForPage</A>(page as PDFPageMBS, box as Integer, active as boolean)</li>
+<li class="M"><A href="pdfkit-pdfthumbnailviewmbs-method.html#4" translate="no">PDFThumbnailViewMBS.selectedPages</A> as PDFPageMBS()</li>
+<li class="M"><A href="pdfkit-pdfviewmbs-method.html#9" translate="no">PDFViewMBS.convertPointToPage</A>(point as <A href="class-nspointmbs.html">NSPointMBS</A>, page as PDFPageMBS) as <A href="class-nspointmbs.html">NSPointMBS</A></li>
+<li class="M"><A href="pdfkit-pdfviewmbs-method.html#13" translate="no">PDFViewMBS.drawPage</A>(page as PDFPageMBS)</li>
+<li class="M"><A href="pdfkit-pdfviewmbs-method.html#21" translate="no">PDFViewMBS.goToPage</A>(page as PDFPageMBS)</li>
+<li class="M"><A href="pdfkit-pdfviewmbs-method1.html#8" translate="no">PDFViewMBS.visiblePages</A> as PDFPageMBS()</li>
+</ul>
+<h4>Some properties using for this class:</h4><ul>
+<li class="M"><A href="pdfkit-pdfannotationmbs-property1.html#5" translate="no">PDFAnnotationMBS.page</A> as PDFPageMBS</li>
+<li class="M"><A href="pdfkit-pdfdestinationmbs-property.html#2" translate="no">PDFDestinationMBS.page</A> as PDFPageMBS</li>
+<li class="M"><A href="pdfkit-pdfviewmbs-property.html#14" translate="no">PDFViewMBS.currentPage</A> as PDFPageMBS</li>
+<li class="M"><A href="pdfkit-custompdfviewmbs-method.html#7" translate="no">CustomPDFViewMBS.Overlay</A>(page as PDFPageMBS, post as boolean = true) as variant</li>
+<li class="M"><A href="pdfkit-desktoppdfviewcontrolmbs-method.html#3" translate="no">DesktopPDFViewControlMBS.Overlay</A>(page as PDFPageMBS, post as boolean = true) as variant</li>
+<li class="M"><A href="pdfkit-pdfviewcontrolmbs-method.html#3" translate="no">PDFViewControlMBS.Overlay</A>(page as PDFPageMBS, post as boolean = true) as variant</li>
+</ul>
+<h4>Some events using this class:</h4><ul>
+<li class="M"><A href="pdfkit-custompdfviewmbs-event.html#4">CustomPDFViewMBS.AfterDrawPagePost</A>(graphics as <A href="class-nsgraphicsmbs.html">NSGraphicsMBS</A>, page as PDFPageMBS)</li>
+<li class="M"><A href="pdfkit-custompdfviewmbs-event.html#7">CustomPDFViewMBS.BeforeDrawPage</A>(graphics as <A href="class-nsgraphicsmbs.html">NSGraphicsMBS</A>, page as PDFPageMBS) as boolean</li>
+<li class="M"><A href="pdfkit-custompdfviewmbs-event.html#8">CustomPDFViewMBS.BeforeDrawPagePost</A>(graphics as <A href="class-nsgraphicsmbs.html">NSGraphicsMBS</A>, page as PDFPageMBS) as boolean</li>
+<li class="M"><A href="pdfkit-desktoppdfviewcontrolmbs-event.html#2">DesktopPDFViewControlMBS.AfterDrawPagePost</A>(graphics as <A href="class-nsgraphicsmbs.html">NSGraphicsMBS</A>, page as PDFPageMBS)</li>
+<li class="M"><A href="pdfkit-desktoppdfviewcontrolmbs-event.html#4">DesktopPDFViewControlMBS.BeforeDrawPage</A>(graphics as <A href="class-nsgraphicsmbs.html">NSGraphicsMBS</A>, page as PDFPageMBS) as boolean</li>
+<li class="M"><A href="pdfkit-desktoppdfviewcontrolmbs-event.html#5">DesktopPDFViewControlMBS.BeforeDrawPagePost</A>(graphics as <A href="class-nsgraphicsmbs.html">NSGraphicsMBS</A>, page as PDFPageMBS) as boolean</li>
+<li class="M"><A href="pdfkit-pdfviewcontrolmbs-event.html">PDFViewControlMBS.AfterDrawPage</A>(graphics as <A href="class-nsgraphicsmbs.html">NSGraphicsMBS</A>, page as PDFPageMBS)</li>
+<li class="M"><A href="pdfkit-pdfviewcontrolmbs-event.html#2">PDFViewControlMBS.AfterDrawPagePost</A>(graphics as <A href="class-nsgraphicsmbs.html">NSGraphicsMBS</A>, page as PDFPageMBS)</li>
+<li class="M"><A href="pdfkit-pdfviewcontrolmbs-event.html#4">PDFViewControlMBS.BeforeDrawPage</A>(graphics as <A href="class-nsgraphicsmbs.html">NSGraphicsMBS</A>, page as PDFPageMBS) as boolean</li>
+<li class="M"><A href="pdfkit-pdfviewcontrolmbs-event.html#5">PDFViewControlMBS.BeforeDrawPagePost</A>(graphics as <A href="class-nsgraphicsmbs.html">NSGraphicsMBS</A>, page as PDFPageMBS) as boolean</li>
+</ul>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-maccocoa-applyquartzfilterstopdf.html">/MacCocoa/Apply Quartz Filters to PDF</A></li>
+<li class=""><A href="example-maccocoa-pdfkit-addoutlineswithactionstopdf.html">/MacCocoa/PDFKit/Add Outlines with Actions to PDF</A></li>
+<li class=""><A href="example-maccocoa-pdfkit-addoutlineswithdestinationstopdf.html">/MacCocoa/PDFKit/Add Outlines with Destinations to PDF</A></li>
+<li class=""><A href="example-maccocoa-pdfkit-createpage.html">/MacCocoa/PDFKit/Create Page</A></li>
+<li class=""><A href="example-maccocoa-pdfkit-createpagewithcustomstampannotation.html">/MacCocoa/PDFKit/Create Page with custom stamp annotation</A></li>
+<li class=""><A href="example-maccocoa-pdfkit-pdfview-pdfviewcustomized.html">/MacCocoa/PDFKit/PDFView/PDFView customized</A></li>
+<li class=""><A href="example-maccocoa-pdfkit-pdfview-pdfviewcustomizedwithpictureoverlay.html">/MacCocoa/PDFKit/PDFView/PDFView customized with picture overlay</A></li>
+<li class=""><A href="example-maccocoa-pdfkit-pdfview-pdfviewoverlay-pdfviewoverlay.html">/MacCocoa/PDFKit/PDFView/PDFView overlay/PDFView overlay</A></li>
+<li class=""><A href="example-maccocoa-pdfkit-searchandhighlight-searchandhighlight.html">/MacCocoa/PDFKit/Search and Highlight/Search and Highlight</A></li>
+<li class=""><A href="example-macframeworks-ikslideshow.html">/MacFrameworks/IKSlideShow</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2021-11-05/Several_ways_for_picture_to_PD/monkeybreadsoftware_blog_xojo">Several ways for picture to PDF in MBS Plugins</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2021-03-16/News_from_the_MBS_Xojo_Plugins/monkeybreadsoftware_blog_xojo">News from the MBS Xojo Plugins Version 21.1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2020-05-19/New_in_the_MBS_Xojo_Plugins_Ve/monkeybreadsoftware_blog_xojo">New in the MBS Xojo Plugins Version 20.2</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2019-01-25/JPEG_rendering_in_MacOS_Mojave/monkeybreadsoftware_blog_xojo">JPEG rendering in MacOS Mojave</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2014-09-02/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 14.3pr8</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2011-05-04/MBS_Plugins_111_Release_notes/monkeybreadsoftware_blog_xojo">MBS Plugins 11.1 Release notes</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2010-11-20/Have_you_checked_out_PDFViewMB/monkeybreadsoftware_blog_xojo">Have you checked out PDFViewMBS class?</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2010-06-15/MBS_REALbasic_plug-ins_version/monkeybreadsoftware_blog_xojo">MBS REALbasic plug-ins version 10.3</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2010-06-15/MBS_Plugins_103_Release_Notes/monkeybreadsoftware_blog_xojo">MBS Plugins 10.3 Release Notes</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2010-05-21/MBS_REALbasic_Plugins_version_/monkeybreadsoftware_blog_xojo">MBS REALbasic Plugins, version 10.3pr5</a></li>
+</ul>
+<h4>Xojo Developer Magazine</h4>
+<ul>
+<li><a href="http://www.xdevmag.com/browse/6.4/">6.4, page 34: Creating PDF Files, How to create PDFs using the MBS Plugins by Christian Schmitz</a></li>
+<li><a href="http://www.xdevmag.com/browse/20.3/">20.3, page 80: Great Shots With Continuity Camera, Use your iOS device to take a picture for your Mac by Stefanie Juchmes</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmaccontrolsplugin.html">MBS MacControls Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-pdfoutlinembs.html">PDFOutlineMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-pdfselectionmbs.html">PDFSelectionMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-pdfpagembs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

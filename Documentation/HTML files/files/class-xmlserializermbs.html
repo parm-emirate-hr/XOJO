@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - XMLSerializerMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="XMLSerializerMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">XMLSerializerMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>XMLSerializerMBS class</H3>
+<div class="WLMI">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-xml.html" translate="no">XML</A></td>
+<td class=grau><a href="plugins-mbsxmlplugin.html">MBS XML Plugin</a></td>
+<td class=grau><a href="newinversion224.shtml" class=version>22.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+XMLSerializerMBS provides an API for serializing (writing) a DOM document out in an XML document. <BR>
+<B>Notes:</B> 
+<BR>
+The XML data is written to an output stream, the type of which depends on the specific language bindings in use. During serialization of XML data, namespace fixup is done when possible. <BR>
+<BR>
+XMLSerializerMBS accepts any node type for serialization. For nodes of type Document or Entity, well formed XML will be created if possible. The serialized output for these node types is either as a Document or an External Entity, respectively, and is acceptable input for an XML parser. For all other types of nodes the serialized form is not specified, but should be something useful to a human for debugging or diagnostic purposes. Note: rigorously designing an external (source) form for stand-alone node types that don&#39;t already have one defined in  seems a bit much to take on here. <BR>
+Within a Document or Entity being serialized, Nodes are processed as follows Documents are written including an XML declaration and a DTD subset, if one exists in the DOM. Writing a document node serializes the entire document.  Entity nodes, when written directly by write defined in the XMLSerializerMBS interface, output the entity expansion but no namespace fixup is done. The resulting output will be valid as an external entity.  Entity References nodes are serializes as an entity reference of the form &quot;&amp;entityName;&quot;) in the output. Child nodes (the expansion) of the entity reference are ignored.  CDATA sections containing content characters that can not be represented in the specified output encoding are handled according to the &quot;split-cdata-sections&quot; feature.If the feature is true, CDATA sections are split, and the unrepresentable characters are serialized as numeric character references in ordinary content. The exact position and number of splits is not specified. If the feature is false, unrepresentable characters in a CDATA section are reported as errors. The error is not recoverable - there is no mechanism for supplying alternative characters and continuing with the serialization. All other node types (<A href="class-xmlelementmbs.html">XMLElementMBS</A>, <A href="class-xmltextmbs.html">XMLTextMBS</A>, etc.) are serialized to their corresponding XML source form. <BR>
+<BR>
+Within the character data of a document (outside of markup), any characters that cannot be represented directly are replaced with character references. Occurrences of &#39;&lt;&#39; and &#39;&amp;&#39; are replaced by the predefined entities &amp;lt; and &amp;amp. The other predefined entities (&amp;gt, &amp;apos, etc.) are not used; these characters can be included directly. Any character that can not be represented directly in the output character encoding is serialized as a numeric character reference. <BR>
+<BR>
+Attributes not containing quotes are serialized in quotes. Attributes containing quotes but no apostrophes are serialized in apostrophes (single quotes). Attributes containing both forms of quotes are serialized in quotes, with quotes within the value represented by the predefined entity &amp;quot;. Any character that can not be represented directly in the output character encoding is serialized as a numeric character reference. <BR>
+<BR>
+Within markup, but outside of attributes, any occurrence of a character that cannot be represented in the output character encoding is reported as an error. An example would be serializing the element  with the encoding=&quot;us-ascii&quot;. <BR>
+When requested by setting the normalize-characters feature on XMLSerializerMBS, all data to be serialized, both markup and character data, is W3C Text normalized according to the rules defined in . The W3C Text normalization process affects only the data as it is being written; it does not alter the DOM&#39;s view of the document after serialization has completed. <BR>
+Namespaces are fixed up during serialization, the serialization process will verify that namespace declarations, namespace prefixes and the namespace URIs associated with Elements and Attributes are consistent. If inconsistencies are found, the serialized form of the document will be altered to remove them. The algorithm used for doing the namespace fixup while seralizing a document is a combination of the algorithms used for lookupNamespaceURI and lookupPrefix. previous paragraph to be defined closer here. <BR>
+Any changes made affect only the namespace prefixes and declarations appearing in the serialized data. The DOM&#39;s view of the document is not altered by the serialization operation, and does not reflect any changes made to namespace declarations or prefixes in the serialized output. <BR>
+While serializing a document the serializer will write out non-specified values (such as attributes whose specified is false) if the output-default-values feature is set to true. If the output-default-values flag is set to false and the use-abstract-schema feature is set to true the abstract schema will be used to determine if a value is specified or not, if use-abstract-schema is not set the specified flag on attribute nodes is used to determine if attribute values should be written out. <BR>
+Ref to Core spec (1.1.9, XML namespaces, 5th paragraph) entity ref description about warning about unbound entity refs. Entity refs are always serialized as &amp;foo;, also mention this in the load part of this spec. <BR>
+When serializing a document the XMLSerializerMBS checks to see if the document element in the document is a DOM Level 1 element or a DOM Level 2 (or higher) element (this check is done by looking at the localName of the root element). If the root element is a DOM Level 1 element then the XMLSerializerMBS will issue an error if a DOM Level 2 (or higher) element is found while serializing. Likewise if the document element is a DOM Level 2 (or higher) element and the XMLSerializerMBS sees a DOM Level 1 element an error is issued. Mixing DOM Level 1 elements with DOM Level 2 (or higher) is not supported. <BR>
+ XMLSerializerMBSs have a number of named features that can be queried or set. The name of XMLSerializerMBS features must be valid XML names. Implementation specific features (extensions) should choose an implementation dependent prefix to avoid name collisions. <BR>
+Here is a list of properties that must be recognized by all implementations. <BR>
+ <BR>
+&quot;normalize-characters&quot;<BR>
+ <BR>
+true: [ optional] (default) Perform the W3C Text Normalization of the characters in document as they are written out. Only the characters being written are (potentially) altered. The DOM document itself is unchanged. <BR>
+false: [required] do not perform character normalization.<BR>
+<BR>
+ &quot;split-cdata-sections&quot;<BR>
+ <BR>
+true: [required] (default) Split CDATA sections containing the CDATA section termination marker &#39;]]&gt;&#39; or characters that can not be represented in the output encoding, and output the characters using numeric character references. If a CDATA section is split a warning is issued. <BR>
+false: [ required] Signal an error if a CDATASection contains an unrepresentable character.<BR>
+<BR>
+&quot;validation&quot;<BR>
+ <BR>
+true: [ optional] Use the abstract schema to validate the document as it is being serialized. If validation errors are found the error handler is notified about the error. Setting this state will also set the feature use-abstract-schema to true. <BR>
+false: [ required] (default) Don&#39;t validate the document as it is being serialized.<BR>
+<BR>
+&quot;expand-entity-references&quot;<BR>
+ <BR>
+true: [ optional] Expand EntityReference nodes when serializing. <BR>
+false: [required] (default) Serialize all EntityReference nodes as XML entity references.<BR>
+<BR>
+&quot;whitespace-in-element-content&quot;<BR>
+ <BR>
+true: [required] ( default) Output all white spaces in the document. <BR>
+false: [ optional] Only output white space that is not within element content. The implementation is expected to use the isWhitespaceInElementContent flag on Text nodes to determine if a text node should be written out or not.<BR>
+<BR>
+ &quot;discard-default-content&quot;<BR>
+ <BR>
+true: [required] (default ) Use whatever information available to the implementation (i.e. XML schema, DTD, the specified flag on Attr nodes, and so on) to decide what attributes and content should be serialized or not. Note that the specified flag on Attr nodes in itself is not always reliable, it is only reliable when it is set to false since the only case where it can be set to false is if the attribute was created by a Level 1 implementation. <BR>
+false: [required] Output all attributes and all content.<BR>
+<BR>
+&quot;format-canonical&quot;<BR>
+ <BR>
+true: [optional] This formatting writes the document according to the rules specified in . Setting this feature to true will set the feature &quot;format-pretty-print&quot; to false. <BR>
+false: [required] (default) Don&#39;t canonicalize the output.<BR>
+<BR>
+&quot;format-pretty-print&quot;<BR>
+ <BR>
+true: [optional] Formatting the output by adding whitespace to produce a pretty-printed, indented, human-readable form. The exact form of the transformations is not specified by this specification. Setting this feature to true will set the feature &quot;format-canonical&quot; to false. <BR>
+false: [required] (default) Don&#39;t pretty-print the result.<BR>
+<BR>
+&quot;byte-order-mark&quot;<BR>
+ <BR>
+false: [optional] (default) Setting this feature to true will output the correct BOM for the specified encoding. <BR>
+true: [required] Don&#39;t generate a BOM.<BR>
+<BR>
+&quot;space-first-level-elements&quot;<BR>
+ <BR>
+true: [optional] (default) Setting this feature to true will add an extra line feed between the elements that are children of the document root. <BR>
+false: [required] Don&#39;t add the extra line feed. <BR>
+</div>
+<ul>
+<LI>4 properties<UL>
+<li class="WLMI">property <A href="xml-xmlserializermbs-property.html">DOMConfig</A> as <A href="class-xmlconfigurationmbs.html">XMLConfigurationMBS</A></li>
+<li class="WLMI">property <A href="xml-xmlserializermbs-property.html#2">Filter</A> as <A href="class-xmlserializerfiltermbs.html">XMLSerializerFilterMBS</A></li>
+<li class="WLMI">property <A href="xml-xmlserializermbs-property.html#3">Handle</A> as Integer</li>
+<li class="WLMI">property <A href="xml-xmlserializermbs-property.html#4">NewLine</A> as String</li>
+</UL></LI>
+<LI>5 methods<UL>
+<li class="WLMI">method <A href="xml-xmlserializermbs-method.html">Constructor</A></li>
+<li class="WLMI">method <A href="xml-xmlserializermbs-method.html#2">writeToBuffer</A>(Node as <A href="class-xmlnodembs.html">XMLNodeMBS</A>, output as <A href="class-xmloutputmbs.html">XMLOutputMBS</A>) as String</li>
+<li class="WLMI">method <A href="xml-xmlserializermbs-method.html#3">writeToFile</A>(Node as <A href="class-xmlnodembs.html">XMLNodeMBS</A>, File as FolderItem) as Boolean</li>
+<li class="WLMI">method <A href="xml-xmlserializermbs-method.html#4">writeToString</A>(Node as <A href="class-xmlnodembs.html">XMLNodeMBS</A>) as String</li>
+<li class="WLMI">method <A href="xml-xmlserializermbs-method.html#5">writeToURI</A>(Node as <A href="class-xmlnodembs.html">XMLNodeMBS</A>, URI as String) as Boolean</li>
+</UL></LI>
+</ul>
+<p>This class has no sub classes.</p>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsxmlplugin.html">MBS XML Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-xmlserializerfiltermbs.html">XMLSerializerFilterMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-xmltextmbs.html">XMLTextMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-xmlserializermbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

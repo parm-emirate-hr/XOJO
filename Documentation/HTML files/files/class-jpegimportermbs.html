@@ -1,0 +1,402 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - JPEGImporterMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="JPEGImporterMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">JPEGImporterMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>JPEGImporterMBS class</H3>
+<div class="WLM">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-jpeg.html" translate="no">JPEG</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion.shtml" class=version></a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+A class for JPEG Importing.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> g <span style="color: #0000FF;">as</span> FolderItem<br /><span style="color: #0000FF;">dim</span> ji <span style="color: #0000FF;">as</span> JPEGImporterMBS<br /><span style="color: #0000FF;">dim</span> je <span style="color: #0000FF;">as</span> <A href="class-jpegexportermbs.html">JPEGExporterMBS</A><br /><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> FolderItem<br /><span style="color: #0000FF;">dim</span> m <span style="color: #0000FF;">as</span> MemoryBlock<br /><br /><span style="color: #800000;">// this code copies a JPG: CMYK or RGB</span><br /><br /><span style="color: #800000;">// import it</span><br />g=SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;PICT1533.JPG&quot;</span>)<br />ji=new JPEGImporterMBS<br />ji.File=g<br />ji.AllowDamaged=true<br />ji.CMYK=true <span style="color: #800000;">// if it is cmyk</span><br /><span style="color: #0000FF;">if</span> ji.InitJPEG <span style="color: #0000FF;">then</span><br />  <span style="color: #0000FF;">do</span><br />  <span style="color: #0000FF;">loop</span> <span style="color: #0000FF;">until</span> ji.LoopJPEG&lt;&gt;0<br />  ji.FinishJPEG<br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br /><br /><span style="color: #800000;">// export it</span><br />f=SpecialFolder.Desktop.child(<span style="color: #6600FE;">&quot;PICT1533 copy.JPG&quot;</span>)<br />je=new <A href="class-jpegexportermbs.html">JPEGExporterMBS</A><br />je.File=f<br />je.Quality=75<br /><br /><span style="color: #0000FF;">if</span> ji.CMYK <span style="color: #0000FF;">then</span><br />  m=ji.PictureData<br />  je.ExportCMYK m, ji.Width, ji.Height, ji.Width*<span style="color: #336698;">4</span><br /><span style="color: #0000FF;">else</span><br />  je.Picture=ji.Picture<br />  je.Export<br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+This class is not depending on any library! It works without QuickTime even on System 7, but as it contains everything needed this method is around 100 KB big!<BR>
+<BR>
+Bases on libjpeg.<BR>
+</div>
+<ul>
+<LI>4 events<UL>
+<li class="WLM">event <A href="jpeg-jpegimportermbs-event.html">Error</A>(message as string, ErrorCode as Integer)</li>
+<li class="WLM">event <A href="jpeg-jpegimportermbs-event.html#2">HeadersRead</A> as boolean</li>
+<li class="WLM">event <A href="jpeg-jpegimportermbs-event.html#3">Info</A>(message as string, msglevel as Integer, ErrorCode as Integer)</li>
+<li class="WLM">event <A href="jpeg-jpegimportermbs-event.html#4">Warning</A>(message as string, ErrorCode as Integer)</li>
+</UL></LI>
+<LI>34 properties<UL>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html">AllowDamaged</A> as boolean</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#2">BlockSmoothing</A> as Boolean</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#3">CMYK</A> as Boolean</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#4">ColorComponentCount</A> as Integer</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#5">ColorSpace</A> as Integer</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#6">CurrentDepth</A> as Integer</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#7">data</A> as string</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#8">ErrorMessage</A> as string</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#9">ExifData</A> as String</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#10">ExifOrientation</A> as Integer</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#11">ExifThumbnail</A> as String</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#12">FancyUpsampling</A> as Boolean</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#13">file</A> as folderitem</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#14">FileOffset</A> as Integer</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#15">Height</A> as Integer</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#16">HorizontalResolution</A> as Integer</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#17">Mode</A> as Integer</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#18">OriginalDepth</A> as Integer</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#19">Path</A> as String</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#20">Picture</A> as Picture</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#21">PictureData</A> as MemoryBlock</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#22">ProfileData</A> as String</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#23">ProgressiveMode</A> as Boolean</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#24">ReadExifData</A> as Boolean</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#25">ReadMarkers</A> as Boolean</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#26">ReadProfileData</A> as Boolean</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#27">ReadXMPData</A> as Boolean</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#28">ResolutionUnit</A> as Integer</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property.html#29">ScaleFactor</A> as Integer</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property1.html">VerticalResolution</A> as Integer</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property1.html#2">WarningMessage</A> as String</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property1.html#3">Width</A> as Integer</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property1.html#4">XMPData</A> as String</li>
+<li class="WLM">property <A href="jpeg-jpegimportermbs-property1.html#5">YieldTicks</A> as Integer</li>
+</UL></LI>
+<li class="WLM">shared property <A href="jpeg-jpegimportermbs-shared-property.html">API</A> as String</li>
+<LI>12 methods<UL>
+<li class="WLM">method <A href="jpeg-jpegimportermbs-method.html">BlueTestPicture</A> as picture</li>
+<li class="WLM">method <A href="jpeg-jpegimportermbs-method.html#2">CleanMarkers</A></li>
+<li class="WLM">method <A href="jpeg-jpegimportermbs-method.html#3">FinishJPEG</A></li>
+<li class="WLM">method <A href="jpeg-jpegimportermbs-method.html#4">GreenTestPicture</A> as picture</li>
+<li class="WLM">method <A href="jpeg-jpegimportermbs-method.html#5">Import</A></li>
+<li class="WLM">method <A href="jpeg-jpegimportermbs-method.html#6">ImportCMYK</A></li>
+<li class="WLM">method <A href="jpeg-jpegimportermbs-method.html#7">InitJPEG</A> as boolean</li>
+<li class="WLM">method <A href="jpeg-jpegimportermbs-method.html#8">LoopJPEG</A> as Integer</li>
+<li class="WLM">method <A href="jpeg-jpegimportermbs-method.html#9">MarkerCount</A> as Integer</li>
+<li class="WLM">method <A href="jpeg-jpegimportermbs-method.html#10">MarkerItem</A>(index as Integer) as <A href="class-jpegimportermarkermbs.html">JPEGImporterMarkerMBS</A></li>
+<li class="WLM">method <A href="jpeg-jpegimportermbs-method.html#11">ReadHeader</A> as boolean</li>
+<li class="WLM">method <A href="jpeg-jpegimportermbs-method.html#12">RedTestPicture</A> as picture</li>
+</UL></LI>
+<LI>2 shared methods<UL>
+<li class="WLM">shared method <A href="jpeg-jpegimportermbs-shared-method.html">GetJPEGVersion</A> as String</li>
+<li class="WLM">shared method <A href="jpeg-jpegimportermbs-shared-method.html#2">SetAPI</A>(API as Ptr = nil)</li>
+</UL></LI>
+<LI>24 constants<UL>
+</UL></LI>
+</ul>
+<h3 lang="en">Color Spaces</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html">ColorSpaceCMYK </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 4</td>
+<td bgcolor="#DDDDDD" valign=top>
+C/M/Y/K<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html#2">ColorSpaceGrayScale </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+Gray<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html#3">ColorSpaceRGB </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+red/green/blue<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html#4">ColorSpaceUnknown </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 0</td>
+<td bgcolor="#DDDDDD" valign=top>
+Not set.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html#5">ColorSpaceYCbCr </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+Y/Cb/Cr (also known as YUV)<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html#6">ColorSpaceYCCK </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 5</td>
+<td bgcolor="#DDDDDD" valign=top>
+Y/Cb/Cr/K<BR>
+</td>
+</tr>
+</table>
+<h3 lang="en">Orientation Constants</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html#7">kOrientationBottomLeft </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 4</td>
+<td bgcolor="#DDDDDD" valign=top>
+row 0 bottom, col 0 lhs<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html#8">kOrientationBottomRight </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+row 0 bottom, col 0 rhs<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html#9">kOrientationLeftBottom </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 8</td>
+<td bgcolor="#DDDDDD" valign=top>
+row 0 lhs, col 0 bottom<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html#10">kOrientationLeftTop </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 5</td>
+<td bgcolor="#DDDDDD" valign=top>
+row 0 lhs, col 0 top<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html#11">kOrientationRightBottom </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 7</td>
+<td bgcolor="#DDDDDD" valign=top>
+row 0 rhs, col 0 bottom<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html#12">kOrientationRightTop </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 6</td>
+<td bgcolor="#DDDDDD" valign=top>
+row 0 rhs, col 0 top<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html#13">kOrientationTopLeft </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+row 0 top, col 0 lhs<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html#14">kOrientationTopRight </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+row 0 top, col 0 rhs<BR>
+</td>
+</tr>
+</table>
+<h3 lang="en">Modes</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html#15">ModeAuto </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 30</td>
+<td bgcolor="#DDDDDD" valign=top>
+Load the image into the picturedata property.<BR>
+Switches on import to RGB, Gray or CMYK depending on color space of JPEG file.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html#16">ModeAutoByRow </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 31</td>
+<td bgcolor="#DDDDDD" valign=top>
+Load the image into the picturedata property.<BR>
+Switches on import to RGB, Gray or CMYK depending on color space of JPEG file.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html#17">ModeCMYK </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+Load the image into the picturedata property.<BR>
+The PictureData Memoryblock uses 4 bytes per pixel.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html#18">ModeCMYKbyRow </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 12</td>
+<td bgcolor="#DDDDDD" valign=top>
+Same as ModeCMYK, but PictureData contains only the current row<BR>
+The PictureData Memoryblock uses 4 bytes per pixel.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html#19">ModeGray </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+Load the image into the picturedata property.<BR>
+The PictureData Memoryblock uses one byte per pixel.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html#20">ModeGraybyRow </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 13</td>
+<td bgcolor="#DDDDDD" valign=top>
+Same as ModeGray, but PictureData contains only the current row<BR>
+The PictureData Memoryblock uses one byte per pixel.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html#21">ModePicture </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 0</td>
+<td bgcolor="#DDDDDD" valign=top>
+Load the image into the picture property.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html#22">ModeRaw </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 20</td>
+<td bgcolor="#DDDDDD" valign=top>
+Load the image into the picturedata property.<BR>
+The PictureData Memoryblock uses 1 to 4 bytes per pixel.<BR>
+<BR>
+Check the colorspace property to know which color space is used.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html#23">ModeRGB </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+Load the image into the picturedata property.<BR>
+The PictureData Memoryblock uses 3 bytes per pixel.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="jpeg-jpegimportermbs-const.html#24">ModeRGBbyRow </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 11</td>
+<td bgcolor="#DDDDDD" valign=top>
+Same as ModeRGB, but PictureData contains only the current row<BR>
+The PictureData Memoryblock uses 3 bytes per pixel.<BR>
+</td>
+</tr>
+</table>
+<p>This class has no sub classes.</p>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-dynapdf-imagetopdf-imagetopdf.html">/DynaPDF/Image to PDF/Image to pdf</A></li>
+<li class=""><A href="example-images-jpeg-jpegbenchmark.html">/Images/JPEG/JPEG Benchmark</A></li>
+<li class=""><A href="example-images-jpeg-jpegmodes.html">/Images/JPEG/JPEG Modes</A></li>
+<li class=""><A href="example-images-jpeg-loadasjpegexample.html">/Images/JPEG/LoadAsJPEG Example</A></li>
+<li class=""><A href="example-images-jpeg-quicklygeneratepreviewsforjpegandtiff.html">/Images/JPEG/Quickly generate previews for JPEG and Tiff</A></li>
+<li class=""><A href="example-images-jpeg-stringtojpegexample.html">/Images/JPEG/StringToJPEG Example</A></li>
+<li class=""><A href="example-images-jpeg-testondamagedjpegs.html">/Images/JPEG/Test on damaged JPEGs</A></li>
+<li class=""><A href="example-images-largepicture-cmyk-picturembswithcmyk.html">/Images/LargePicture/CMYK/PictureMBS with CMYK</A></li>
+<li class=""><A href="example-images-largepicture-jpegmodes.html">/Images/LargePicture/JPEG Modes</A></li>
+<li class=""><A href="example-images-lcms2-convertimagetosrgbjpeg.html">/Images/LCMS2/Convert image to sRGB JPEG</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2020-03-17/News_from_the_MBS_Xojo_Plugins/monkeybreadsoftware_blog_xojo">News from the MBS Xojo Plugins Version 20.1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2020-03-10/MonkeyBread_Software_Releases_/monkeybreadsoftware_blog_xojo">MonkeyBread Software Releases the MBS Xojo Plugins in version 20.1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2020-03-02/MBS_Xojo_Plugins_version_201pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 20.1pr6</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2020-02-23/Reading_JPEG_Thumbnails_from_E/monkeybreadsoftware_blog_xojo">Reading JPEG Thumbnails from EXIF</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2019-11-07/libjpeg-turbo_for_Xojo/monkeybreadsoftware_blog_xojo">libjpeg-turbo for Xojo</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2017-07-10/MBS_Xojo_Plugins_version_173pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 17.3pr5</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2015-04-14/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 15.1pr5</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2013-02-20/JPEG_String_to_Picture/monkeybreadsoftware_blog_xojo">JPEG String to Picture</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2013-02-19/MBS_Real_Studio_Plugins_versio/monkeybreadsoftware_blog_xojo">MBS Real Studio Plugins, version 13.1pr3</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2008-08-12/MonkeyBread_Software_Releases_/monkeybreadsoftware_blog_xojo">MonkeyBread Software Releases the MBS REALbasic plug-ins 8.4</a></li>
+</ul>
+<h4>Xojo Developer Magazine</h4>
+<ul>
+<li><a href="http://www.xdevmag.com/browse/18.3/">18.3, page 10: News</a></li>
+<li><a href="http://www.xdevmag.com/browse/17.5/">17.5, page 40: What&#39;s New in the MBS Plugins, With the Plugins growing every year, here are new capabilities you may have missed by Stefanie Juchmes</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-jpegimportermarkermbs.html">JPEGImporterMarkerMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-jpegmoviembs.html">JPEGMovieMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-jpegimportermbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

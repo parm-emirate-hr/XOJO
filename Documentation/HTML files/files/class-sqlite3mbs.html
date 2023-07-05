@@ -1,0 +1,372 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - SQLite3MBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="SQLite3MBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">SQLite3MBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>SQLite3MBS class &nbsp; <b style="color: #8B0000"> Deprecated </b></H3>
+<P>Super class: <A href="class-sqlapimbs.html">SQLAPIMBS</A></p>
+<div class="WLM">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-sql.html" translate="no">SQL</A></td>
+<td class=grau><a href="plugins-mbssqlplugin.html">MBS SQL Plugin</a></td>
+<td class=grau><a href="newinversion95.shtml" class=version>9.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The class for the native SQLite API.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> con <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-sqlconnectionmbs.html">SQLConnectionMBS</A><br /><span style="color: #0000FF;">dim</span> path <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = <span style="color: #6600FE;">&quot;/tmp/test.db&quot;</span> <span style="color: #800000;">// change path for Windows!</span><br /><br />con.Connect(path,<span style="color: #6600FE;">&quot;&quot;</span>,<span style="color: #6600FE;">&quot;&quot;</span>,<A href="class-sqlconnectionmbs.html">SQLConnectionMBS</A>.kSQLiteClient)<br /><br /><span style="color: #0000FF;">dim</span> api <span style="color: #0000FF;">as</span> <A href="class-sqlapimbs.html">SQLAPIMBS</A> = con.NativeAPI<br /><span style="color: #0000FF;">if</span> api <span style="color: #0000FF;">isa</span> SQLite3MBS <span style="color: #0000FF;">then</span><br />  <span style="color: #0000FF;">dim</span> s <span style="color: #0000FF;">as</span> SQLite3MBS = SQLite3MBS(api)<br />  MsgBox s.Version<br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<DIV style="width: 300px; float: right; margin: 3pt; padding: 3pt; background-color: #FEE; border-width: 3pt;">
+This item is deprecated and should no longer be used. 
+</DIV>
+<B>Notes:</B> 
+<BR>
+Deprecated in favor of direct methods on <A href="class-sqlconnectionmbs.html">SQLConnectionMBS</A>. Please let us know if you need more SQLite specific functions.<BR>
+Subclass of the <A href="class-sqlapimbs.html">SQLAPIMBS</A> class.<BR>
+</div>
+<ul>
+<LI>5 properties<UL>
+<li class="WLM">property <A href="sql-sqlite3mbs-property.html">ConnectionHandle</A> as Ptr</li>
+<li class="WLM">property <A href="sql-sqlite3mbs-property.html#2">MemoryHighwater</A> as Int64</li>
+<li class="WLM">property <A href="sql-sqlite3mbs-property.html#3">MemoryUsed</A> as Int64</li>
+<li class="WLM">Property <A href="sql-sqlite3mbs-property.html#4">Version</A> as string</li>
+<li class="WLM">Property <A href="sql-sqlite3mbs-property.html#5">VersionNumber</A> as Integer</li>
+</UL></LI>
+<LI>18 methods<UL>
+<li class="WLM">method <A href="sql-sqlite3mbs-method.html">BackupFinish</A>(Backup as <A href="class-sqlite3backupmbs.html">SQLite3BackupMBS</A>) as Integer</li>
+<li class="WLM">method <A href="sql-sqlite3mbs-method.html#2">BackupInit</A>(Dest as Variant, DestName as String, Source as Variant, SourceName as String) as <A href="class-sqlite3backupmbs.html">SQLite3BackupMBS</A></li>
+<li class="WLM">method <A href="sql-sqlite3mbs-method.html#3">BackupPageCount</A>(Backup as <A href="class-sqlite3backupmbs.html">SQLite3BackupMBS</A>) as Integer</li>
+<li class="WLM">method <A href="sql-sqlite3mbs-method.html#4">BackupRemaining</A>(Backup as <A href="class-sqlite3backupmbs.html">SQLite3BackupMBS</A>) as Integer</li>
+<li class="WLM">method <A href="sql-sqlite3mbs-method.html#5">BackupStep</A>(Backup as <A href="class-sqlite3backupmbs.html">SQLite3BackupMBS</A>, Pages as Integer) as Integer</li>
+<li class="WLM">method <A href="sql-sqlite3mbs-method.html#6">EnableLoadExtension</A>(OnOff as boolean)</li>
+<li class="WLM">method <A href="sql-sqlite3mbs-method.html#7">ErrCode</A> as Integer</li>
+<li class="WLM">method <A href="sql-sqlite3mbs-method.html#8">ErrMessage</A> as string</li>
+<li class="WLM">method <A href="sql-sqlite3mbs-method.html#9">LastInsertRowID</A> as Int64</li>
+<li class="WLM">method <A href="sql-sqlite3mbs-method.html#10">LoadExtension</A>(file as FolderItem, ByRef ErrorMessage as String) as Integer</li>
+<li class="WLM">method <A href="sql-sqlite3mbs-method.html#11">LoadExtension</A>(path as String, ByRef ErrorMessage as String) as Integer</li>
+<li class="WLM">method <A href="sql-sqlite3mbs-method.html#12">MemoryHighwater</A>(reset as boolean) as Int64</li>
+<li class="WLM">method <A href="sql-sqlite3mbs-method.html#13">ReKey</A>(Key as String) as Integer</li>
+<li class="WLM">method <A href="sql-sqlite3mbs-method.html#14">SetBusyHandler</A>(MaxAttempts as Integer = 5)</li>
+<li class="WLM">method <A href="sql-sqlite3mbs-method.html#15">SetBusyTimeout</A>(TimeOutMS as Integer = 20)</li>
+<li class="WLM">method <A href="sql-sqlite3mbs-method.html#16">SetKey</A>(Key as String) as Integer</li>
+<li class="WLM">method <A href="sql-sqlite3mbs-method.html#17">TableColumnMetaData</A>(DBName as string, TableName as string, ColumnName as string, byref DataType as string, byref CollationSequence as string, byref NotNull as boolean, byref PrimaryKey as boolean, byref AutoIncrement as Boolean) as Integer</li>
+<li class="WLM">method <A href="sql-sqlite3mbs-method.html#18">Threadsafe</A> as Integer</li>
+</UL></LI>
+<LI>29 constants<UL>
+</UL></LI>
+</ul>
+<h3 lang="en">Error Codes</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html">kErrorAbort </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 4</td>
+<td bgcolor="#DDDDDD" valign=top>
+Callback routine requested an abort.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#2">kErrorAuth </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 23</td>
+<td bgcolor="#DDDDDD" valign=top>
+Authorization denied<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#3">kErrorBusy </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 5</td>
+<td bgcolor="#DDDDDD" valign=top>
+The database file is locked.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#4">kErrorCantopen </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 14</td>
+<td bgcolor="#DDDDDD" valign=top>
+Unable to open the database file.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#5">kErrorConstraint </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 19</td>
+<td bgcolor="#DDDDDD" valign=top>
+Abort due to constraint violation.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#6">kErrorCorrupt </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 11</td>
+<td bgcolor="#DDDDDD" valign=top>
+The database disk image is malformed.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#7">kErrorDone </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 101</td>
+<td bgcolor="#DDDDDD" valign=top>
+sqlite3_step() has finished executing.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#8">kErrorEmpty </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 16</td>
+<td bgcolor="#DDDDDD" valign=top>
+Database is empty<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#9">kErrorError </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+SQL error or missing database.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#10">kErrorFormat </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 24</td>
+<td bgcolor="#DDDDDD" valign=top>
+Auxiliary database format error.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#11">kErrorFull </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 13</td>
+<td bgcolor="#DDDDDD" valign=top>
+Insertion failed because database is full.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#12">kErrorInternal </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+Internal logic error in SQLite<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#13">kErrorInterrupt </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 9</td>
+<td bgcolor="#DDDDDD" valign=top>
+Operation terminated by sqlite3_interrupt().<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#14">kErrorIoerr </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 10</td>
+<td bgcolor="#DDDDDD" valign=top>
+Some kind of disk I/O error occurred.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#15">kErrorLocked </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 6</td>
+<td bgcolor="#DDDDDD" valign=top>
+A table in the database is locked.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#16">kErrorMismatch </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 20</td>
+<td bgcolor="#DDDDDD" valign=top>
+Data type mismatch.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#17">kErrorMisuse </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 21</td>
+<td bgcolor="#DDDDDD" valign=top>
+Library used incorrectly.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#18">kErrorNolfs </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 22</td>
+<td bgcolor="#DDDDDD" valign=top>
+Uses OS features not supported on host.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#19">kErrorNoMem </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 7</td>
+<td bgcolor="#DDDDDD" valign=top>
+Out of memory.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#20">kErrorNotaDB </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 26</td>
+<td bgcolor="#DDDDDD" valign=top>
+File opened that is not a database file.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#21">kErrorNotFound </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 12</td>
+<td bgcolor="#DDDDDD" valign=top>
+NOT USED. Table or record not found.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#22">kErrorOk </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 0</td>
+<td bgcolor="#DDDDDD" valign=top>
+Successful result<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#23">kErrorPerm </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+Access permission denied.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#24">kErrorProtocol </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 15</td>
+<td bgcolor="#DDDDDD" valign=top>
+NOT USED. Database lock protocol error.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#25">kErrorRange </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 25</td>
+<td bgcolor="#DDDDDD" valign=top>
+2nd parameter to sqlite3_bind out of range.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#26">kErrorReadonly </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 8</td>
+<td bgcolor="#DDDDDD" valign=top>
+Attempt to write a readonly database.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#27">kErrorRow </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 100</td>
+<td bgcolor="#DDDDDD" valign=top>
+sqlite3_step() has another row ready.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#28">kErrorSchema </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 17</td>
+<td bgcolor="#DDDDDD" valign=top>
+The database schema changed.<BR>
+</td>
+</tr>
+<tr class="WLM">
+<td bgcolor="#DDDDDD" valign=top><a href="sql-sqlite3mbs-const.html#29">kErrorToobig </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 18</td>
+<td bgcolor="#DDDDDD" valign=top>
+String or BLOB exceeds size limit.<BR>
+</td>
+</tr>
+</table>
+<h4>Super class <A href="class-sqlapimbs.html">SQLAPIMBS</A></h4>
+<ul>
+<LI>2 properties<UL>
+<li class="WLM">property <A href="sql-sqlapimbs-property.html">ClassName</A> as String</li>
+<li class="WLM">property <A href="sql-sqlapimbs-property.html#2">Connection</A> as Variant</li>
+</UL></LI>
+</ul>
+<p>This class has no sub classes.</p>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2022-06-09/News_from_the_MBS_Xojo_Plugins/monkeybreadsoftware_blog_xojo">News from the MBS Xojo Plugins Version 22.2</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2022-04-01/MBS_Xojo_Plugins_version_222pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 22.2pr1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2017-09-26/MonkeyBread_Software_Releases_/monkeybreadsoftware_blog_xojo">MonkeyBread Software Releases the MBS Xojo Plugins in version 17.4</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2017-08-14/MBS_Xojo_Plugins_version_174pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 17.4pr2</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2016-09-27/MBS_Releases_the_MBS_Xojo__Rea/monkeybreadsoftware_blog_xojo">MBS Releases the MBS Xojo / Real Studio plug-ins in version 16.4</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2016-03-08/MBS_Releases_the_MBS_Xojo__Rea/monkeybreadsoftware_blog_xojo">MBS Releases the MBS Xojo / Real Studio plug-ins in version 16.1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2015-09-24/Embedded_SQLite_and_encryption/monkeybreadsoftware_blog_xojo">Embedded SQLite and encryption</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2014-11-12/[ANN]_MonkeyBread_Software_Rel/monkeybreadsoftware_blog_xojo">[ANN] MonkeyBread Software Releases the MBS Xojo / Real Studio plug-ins in version 14.4</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2012-08-21/SQLite_Backup_Functions/monkeybreadsoftware_blog_xojo">SQLite Backup Functions</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2009-08-11/MBS_REALbasic_plug-ins_version/monkeybreadsoftware_blog_xojo">MBS REALbasic plug-ins version 9.5</a></li>
+</ul>
+<h4>Videos</h4>
+<ul>
+<li><a href="https://www.monkeybreadsoftware.de/xojo/video/MBSXojoKeynote2017.shtml">Presentation from London conference about MBS Plugins.</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbssqlplugin.html">MBS SQL Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-sqlite3backupmbs.html">SQLite3BackupMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-sqllongbinarymbs.html">SQLLongBinaryMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-sqlite3mbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,612 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - NSSavePanelMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="NSSavePanelMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">NSSavePanelMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>NSSavePanelMBS class</H3>
+<P>Super class: <A href="class-nspanelmbs.html">NSPanelMBS</A></p>
+<div class="M">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-navigation.html" translate="no">Navigation</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion78.shtml" class=version>7.8</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+The class for a Cocoa Save Panel.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> n <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> NSSavePanelMBS<br /><br /><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">integer</span> = n.runModal<br /><br /><span style="color: #0000FF;">if</span> e = n.NSCancelButton <span style="color: #0000FF;">then</span><br />  <span style="color: #800000;">// cancelled</span><br />  Break<br /><span style="color: #0000FF;">elseif</span> e = n.NSOKButton <span style="color: #0000FF;">then</span><br />  <span style="color: #800000;">// got file</span><br />  <span style="color: #0000FF;">dim</span> file <span style="color: #0000FF;">as</span> FolderItem = n.file<br />  Break<br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+Subclass of the <A href="class-nspanelmbs.html">NSPanelMBS</A> class.<BR>
+</div>
+<ul>
+<LI>8 events<UL>
+<li class="M">event <A href="navigation-nssavepanelmbs-event.html">compareFilename</A>(name1 as string, name2 as string, caseSensitive as boolean) as Integer</li>
+<li class="M">event <A href="navigation-nssavepanelmbs-event.html#2">directoryDidChange</A>(path as string, folder as folderitem)</li>
+<li class="M">event <A href="navigation-nssavepanelmbs-event.html#3">isValidFilename</A>(path as string, item as folderitem) as boolean</li>
+<li class="M">event <A href="navigation-nssavepanelmbs-event.html#4">panelSelectionDidChange</A></li>
+<li class="M">event <A href="navigation-nssavepanelmbs-event.html#5">savePanelDidEnd</A>(ReturnCode as Integer)</li>
+<li class="M">event <A href="navigation-nssavepanelmbs-event.html#6">shouldShowFilename</A>(path as string, item as folderitem) as boolean</li>
+<li class="M">event <A href="navigation-nssavepanelmbs-event.html#7">userEnteredFilename</A>(filename as string, confirmed as boolean) as string</li>
+<li class="M">event <A href="navigation-nssavepanelmbs-event.html#8">willExpand</A>(expanding as boolean)</li>
+</UL></LI>
+<LI>17 properties<UL>
+<li class="M">property <A href="navigation-nssavepanelmbs-property.html">accessoryView</A> as <A href="class-nsviewmbs.html">NSViewMBS</A></li>
+<li class="M">property <A href="navigation-nssavepanelmbs-property.html#2">allowsOtherFileTypes</A> as boolean</li>
+<li class="M">property <A href="navigation-nssavepanelmbs-property.html#3">canCreateDirectories</A> as boolean</li>
+<li class="M">property <A href="navigation-nssavepanelmbs-property.html#4">canSelectHiddenExtension</A> as boolean</li>
+<li class="M">property <A href="navigation-nssavepanelmbs-property.html#5">Directory</A> as folderitem</li>
+<li class="M">property <A href="navigation-nssavepanelmbs-property.html#6">directoryURL</A> as string</li>
+<li class="M">property <A href="navigation-nssavepanelmbs-property.html#7">isExpanded</A> as boolean</li>
+<li class="M">property <A href="navigation-nssavepanelmbs-property.html#8">isExtensionHidden</A> as boolean</li>
+<li class="M">property <A href="navigation-nssavepanelmbs-property.html#9">Message</A> as string</li>
+<li class="M">property <A href="navigation-nssavepanelmbs-property.html#10">NameFieldLabel</A> as string</li>
+<li class="M">property <A href="navigation-nssavepanelmbs-property.html#11">nameFieldStringValue</A> as string</li>
+<li class="M">property <A href="navigation-nssavepanelmbs-property.html#12">Prompt</A> as string</li>
+<li class="M">property <A href="navigation-nssavepanelmbs-property.html#13">requiredFileType</A> as string</li>
+<li class="M">property <A href="navigation-nssavepanelmbs-property.html#14">showsHiddenFiles</A> as boolean</li>
+<li class="M">property <A href="navigation-nssavepanelmbs-property.html#15">showsTagField</A> as Boolean</li>
+<li class="M">property <A href="navigation-nssavepanelmbs-property.html#16">Title</A> as string</li>
+<li class="M">property <A href="navigation-nssavepanelmbs-property.html#17">treatsFilePackagesAsDirectories</A> as boolean</li>
+</UL></LI>
+<LI>15 methods<UL>
+<li class="M">method <A href="navigation-nssavepanelmbs-method.html">allowedFileTypes</A> as string()</li>
+<li class="M">method <A href="navigation-nssavepanelmbs-method.html#2">beginSheetForDirectory</A>(path as folderitem, name as string, targetWindow as DesktopWindow)</li>
+<li class="M">method <A href="navigation-nssavepanelmbs-method.html#3">beginSheetForDirectory</A>(path as folderitem, name as string, targetWindow as window)</li>
+<li class="M">method <A href="navigation-nssavepanelmbs-method.html#4">Cancel</A></li>
+<li class="M">method <A href="navigation-nssavepanelmbs-method.html#5">Constructor</A></li>
+<li class="M">method <A href="navigation-nssavepanelmbs-method.html#6">File</A> as folderitem</li>
+<li class="M">method <A href="navigation-nssavepanelmbs-method.html#7">HideNSNavNodePopUpButton</A></li>
+<li class="M">method <A href="navigation-nssavepanelmbs-method.html#8">Ok</A></li>
+<li class="M">method <A href="navigation-nssavepanelmbs-method.html#9">runModal</A> as Integer</li>
+<li class="M">method <A href="navigation-nssavepanelmbs-method.html#10">runModalForDirectory</A>(path as folderitem, name as string) as Integer</li>
+<li class="M">method <A href="navigation-nssavepanelmbs-method.html#11">setAllowedFileTypes</A>(filetype as string)</li>
+<li class="M">method <A href="navigation-nssavepanelmbs-method.html#12">setAllowedFileTypes</A>(filetypes() as string)</li>
+<li class="M">method <A href="navigation-nssavepanelmbs-method.html#13">setTagNames</A>(tagNames() as string)</li>
+<li class="M">method <A href="navigation-nssavepanelmbs-method.html#14">tagNames</A> as string()</li>
+<li class="M">method <A href="navigation-nssavepanelmbs-method.html#15">validateVisibleColumns</A></li>
+</UL></LI>
+<li class="M">shared method <A href="navigation-nssavepanelmbs-shared-method.html">FileTypeForHFSType</A>(hfstype as string) as string</li>
+<LI>2 constants<UL>
+<li class="M">const <A href="navigation-nssavepanelmbs-const.html">NSCancelButton</A> = 0</li>
+<li class="M">const <A href="navigation-nssavepanelmbs-const.html#2">NSOKButton</A> = 1</li>
+</UL></LI>
+</ul>
+<h4>Super class <A href="class-nspanelmbs.html">NSPanelMBS</A></h4>
+<ul>
+<LI>3 properties<UL>
+<li class="M">property <A href="cocoa-nspanelmbs-method.html">becomesKeyOnlyIfNeeded</A> as boolean</li>
+<li class="M">property <A href="cocoa-nspanelmbs-method.html#3">isFloatingPanel</A> as boolean</li>
+<li class="M">property <A href="cocoa-nspanelmbs-method.html#4">worksWhenModal</A> as boolean</li>
+</UL></LI>
+<li class="M">method <A href="cocoa-nspanelmbs-method.html#2">Constructor</A>(x as Double, y as Double, w as Double, h as Double, styleMask as Integer, BackingStoreType as Integer, deferCreation as boolean)</li>
+<LI>12 shared methods<UL>
+<li class="M">shared method <A href="cocoa-nspanelmbs-shared-method.html">RunAlertPanel</A>(title as string, message as string, defaultButton as string, alternateButton as string, otherButton as string) as Integer</li>
+<li class="M">shared method <A href="cocoa-nspanelmbs-shared-method.html#2">RunAlertPanelRelativeToWindow</A>(title as string, message as string, defaultButton as string, alternateButton as string, otherButton as string, docWindow as DesktopWindow) as integer</li>
+<li class="M">shared method <A href="cocoa-nspanelmbs-shared-method.html#3">RunAlertPanelRelativeToWindow</A>(title as string, message as string, defaultButton as string, alternateButton as string, otherButton as string, docWindow as <A href="class-nswindowmbs.html">NSWindowMBS</A>) as Integer</li>
+<li class="M">shared method <A href="cocoa-nspanelmbs-shared-method.html#4">RunAlertPanelRelativeToWindow</A>(title as string, message as string, defaultButton as string, alternateButton as string, otherButton as string, docWindow as window) as Integer</li>
+<li class="M">shared method <A href="cocoa-nspanelmbs-shared-method.html#5">RunCriticalAlertPanel</A>(title as string, message as string, defaultButton as string, alternateButton as string, otherButton as string) as Integer</li>
+<li class="M">shared method <A href="cocoa-nspanelmbs-shared-method.html#6">RunCriticalAlertPanelRelativeToWindow</A>(title as string, message as string, defaultButton as string, alternateButton as string, otherButton as string, docWindow as DesktopWindow) as integer</li>
+<li class="M">shared method <A href="cocoa-nspanelmbs-shared-method.html#7">RunCriticalAlertPanelRelativeToWindow</A>(title as string, message as string, defaultButton as string, alternateButton as string, otherButton as string, docWindow as <A href="class-nswindowmbs.html">NSWindowMBS</A>) as Integer</li>
+<li class="M">shared method <A href="cocoa-nspanelmbs-shared-method.html#8">RunCriticalAlertPanelRelativeToWindow</A>(title as string, message as string, defaultButton as string, alternateButton as string, otherButton as string, docWindow as window) as Integer</li>
+<li class="M">shared method <A href="cocoa-nspanelmbs-shared-method.html#9">RunInformationalAlertPanel</A>(title as string, message as string, defaultButton as string, alternateButton as string, otherButton as string) as Integer</li>
+<li class="M">shared method <A href="cocoa-nspanelmbs-shared-method.html#10">RunInformationalAlertPanelRelativeToWindow</A>(title as string, message as string, defaultButton as string, alternateButton as string, otherButton as string, docWindow as DesktopWindow) as integer</li>
+<li class="M">shared method <A href="cocoa-nspanelmbs-shared-method.html#11">RunInformationalAlertPanelRelativeToWindow</A>(title as string, message as string, defaultButton as string, alternateButton as string, otherButton as string, docWindow as <A href="class-nswindowmbs.html">NSWindowMBS</A>) as Integer</li>
+<li class="M">shared method <A href="cocoa-nspanelmbs-shared-method.html#12">RunInformationalAlertPanelRelativeToWindow</A>(title as string, message as string, defaultButton as string, alternateButton as string, otherButton as string, docWindow as window) as Integer</li>
+</UL></LI>
+<LI>10 constants<UL>
+<li class="M">const <A href="cocoa-nspanelmbs-const.html">NSAlertAlternateReturn</A>=0</li>
+<li class="M">const <A href="cocoa-nspanelmbs-const.html#2">NSAlertDefaultReturn</A>=1</li>
+<li class="M">const <A href="cocoa-nspanelmbs-const.html#3">NSAlertErrorReturn</A>=-2</li>
+<li class="M">const <A href="cocoa-nspanelmbs-const.html#4">NSAlertOtherReturn</A>=-1</li>
+<li class="M">const <A href="cocoa-nspanelmbs-const.html#5">NSCancelButton</A>=0</li>
+<li class="M">const <A href="cocoa-nspanelmbs-const.html#6">NSDocModalWindowMask</A>=64</li>
+<li class="M">const <A href="cocoa-nspanelmbs-const.html#7">NSHUDWindowMask</A>=8192</li>
+<li class="M">const <A href="cocoa-nspanelmbs-const.html#8">NSNonactivatingPanelMask</A>=128</li>
+<li class="M">const <A href="cocoa-nspanelmbs-const.html#9">NSOKButton</A>=1</li>
+<li class="M">const <A href="cocoa-nspanelmbs-const.html#10">NSUtilityWindowMask</A>=16</li>
+</UL></LI>
+</ul>
+<h4>Super class <A href="class-nswindowmbs.html">NSWindowMBS</A></h4>
+<ul>
+<LI>88 properties<UL>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html">acceptsMouseMovedEvents</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#2">allowsConcurrentViewDrawing</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#3">allowsToolTipsWhenApplicationIsInactive</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#4">alphaValue</A> as Double</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#5">animationBehavior</A> as Integer</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#6">aspectRatio</A> as <A href="class-nssizembs.html">NSSizeMBS</A></li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#7">Autodisplay</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#8">backgroundColor</A> as <A href="class-nscolormbs.html">NSColorMBS</A></li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#9">backingLocation</A> as Integer</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#10">backingScaleFactor</A> as Double</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#11">backingType</A> as Integer</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#12">canBecomeKeyWindow</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#13">canBecomeMainWindow</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#14">canBecomeVisibleWithoutLogin</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#15">canHide</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#16">canStoreColor</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#17">className</A> as string</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#18">classPath</A> as string</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#19">collectionBehavior</A> as Integer</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#20">colorSpace</A> as <A href="class-nscolorspacembs.html">NSColorSpaceMBS</A></li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#21">contentAspectRatio</A> as <A href="class-nssizembs.html">NSSizeMBS</A></li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#22">contentLayoutRect</A> as <A href="class-nsrectmbs.html">NSRectMBS</A></li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#23">contentMaxSize</A> as <A href="class-nssizembs.html">NSSizeMBS</A></li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#24">contentMinSize</A> as <A href="class-nssizembs.html">NSSizeMBS</A></li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#25">contentResizeIncrements</A> as <A href="class-nssizembs.html">NSSizeMBS</A></li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#26">contentView</A> as <A href="class-nsviewmbs.html">NSViewMBS</A></li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#27">currentEvent</A> as <A href="class-nseventmbs.html">NSEventMBS</A></li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#28">deepestScreen</A> as <A href="class-nsscreenmbs.html">NSScreenMBS</A></li>
+<li class="M">property <A href="cocoa-nswindowmbs-property.html#29">depthLimit</A> as Integer</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html">displaysWhenScreenProfileChanges</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#2">frame</A> as <A href="class-nsrectmbs.html">NSRectMBS</A></li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#3">hasDynamicDepthLimit</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#4">hasShadow</A> as boolean</li>
+<li class="M">Property <A href="cocoa-nswindowmbs-property1.html#5">Height</A> as Double</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#6">hidesOnDeactivate</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#7">identifier</A> as string</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#8">ignoresMouseEvents</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#9">initialFirstResponder</A> as <A href="class-nsviewmbs.html">NSViewMBS</A></li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#10">isDocumentEdited</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#11">isExcludedFromWindowsMenu</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#12">isFlushWindowDisabled</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#13">isKeyWindow</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#14">isMainWindow</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#15">isMiniaturized</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#16">isMovableByWindowBackground</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#17">isOnActiveSpace</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#18">isOneShot</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#19">isOpaque</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#20">isSheet</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#21">isZoomed</A> as boolean</li>
+<li class="M">Property <A href="cocoa-nswindowmbs-property1.html#22">Left</A> as Double</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#23">Level</A> as Integer</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#24">maxSize</A> as <A href="class-nssizembs.html">NSSizeMBS</A></li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#25">miniwindowImage</A> as Variant</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#26">miniwindowTitle</A> as String</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#27">minSize</A> as <A href="class-nssizembs.html">NSSizeMBS</A></li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#28">Movable</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#29">parentWindow</A> as <A href="class-nswindowmbs.html">NSWindowMBS</A></li>
+<li class="M">property <A href="cocoa-nswindowmbs-property1.html#30">preferredBackingLocation</A> as Integer</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html">preservesContentDuringLiveResize</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#2">preventsApplicationTerminationWhenModal</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#3">representedFile</A> as folderitem</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#4">representedFilename</A> as string</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#5">representedURL</A> as string</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#6">resizeIncrements</A> as <A href="class-nssizembs.html">NSSizeMBS</A></li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#7">Restorable</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#8">screen</A> as <A href="class-nsscreenmbs.html">NSScreenMBS</A></li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#9">sharingType</A> as Integer</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#10">showsResizeIndicator</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#11">showsToolbarButton</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#12">styleMask</A> as Integer</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#13">SubTitle</A> as String</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#14">tabbingIdentifier</A> as String</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#15">tabbingMode</A> as Integer</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#16">Title</A> as String</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#17">titlebarAppearsTransparent</A> as Boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#18">titlebarSeparatorStyle</A> as Integer</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#19">titleVisibility</A> as Integer</li>
+<li class="M">property <A href="cocoatoolbar-nswindowmbs-property.html">toolbar</A> as Variant</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#20">toolbarStyle</A> as Integer</li>
+<li class="M">Property <A href="cocoa-nswindowmbs-property2.html#21">Top</A> as Double</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#22">viewsNeedDisplay</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#23">Visible</A> as boolean</li>
+<li class="M">Property <A href="cocoa-nswindowmbs-property2.html#24">Width</A> as Double</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#25">windowController</A> as <A href="class-nswindowcontrollermbs.html">NSWindowControllerMBS</A></li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#26">windowNumber</A> as Integer</li>
+<li class="M">property <A href="cocoa-nswindowmbs-property2.html#27">worksWhenModal</A> as boolean</li>
+<li class="M">property <A href="cocoa-nswindowmbs-method1.html#15">frameAutosaveName</A> as string</li>
+</UL></LI>
+<LI>2 shared properties<UL>
+<li class="M">shared property <A href="cocoa-nswindowmbs-shared-property.html">allowsAutomaticWindowTabbing</A> as Boolean</li>
+<li class="M">shared property <A href="cocoa-nswindowmbs-shared-property.html#2">userTabbingPreference</A> as Integer</li>
+</UL></LI>
+<LI>114 methods<UL>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html">addChildWindow</A>(win as DesktopWindow, order as integer)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#2">addChildWindow</A>(win as <A href="class-nswindowmbs.html">NSWindowMBS</A>, order as Integer)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#3">addChildWindow</A>(win as window, order as Integer)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#4">addTabbedWindow</A>(win as <A href="class-nswindowmbs.html">NSWindowMBS</A>, ordered as Integer)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#5">animator</A> as <A href="class-nswindowmbs.html">NSWindowMBS</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#6">areCursorRectsEnabled</A> as boolean</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#7">attachedSheet</A> as <A href="class-nswindowmbs.html">NSWindowMBS</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#8">autorecalculatesContentBorderThicknessForEdge</A>(edge as Integer) as boolean</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#9">becomeKeyWindow</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#10">becomeMainWindow</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#11">cacheImageInRect</A>(r as <A href="class-nsrectmbs.html">NSRectMBS</A>)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#12">Center</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#13">childWindows</A> as <A href="class-nswindowmbs.html">NSWindowMBS</A>()</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#14">ClearFocus</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#15">Close</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#16">Constructor</A>(w as DesktopWindow)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#17">Constructor</A>(w as window)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#18">Constructor</A>(x as Double, y as Double, w as Double, h as Double, styleMask as Integer, BackingStoreType as Integer = 0, deferCreation as boolean = false, canBecomeKeyWindow as boolean = false)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#19">contentBorderThicknessForEdge</A>(edge as Integer) as Double</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#20">contentRectForFrameRect</A>(windowFrame as <A href="class-nsrectmbs.html">NSRectMBS</A>) as <A href="class-nsrectmbs.html">NSRectMBS</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#21">convertBaseToScreen</A>(p as <A href="class-nspointmbs.html">NSPointMBS</A>) as <A href="class-nspointmbs.html">NSPointMBS</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#22">convertScreenToBase</A>(p as <A href="class-nspointmbs.html">NSPointMBS</A>) as <A href="class-nspointmbs.html">NSPointMBS</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#23">dataWithEPSInsideRect</A>(r as <A href="class-nsrectmbs.html">NSRectMBS</A>) as Memoryblock</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#24">dataWithPDFInsideRect</A>(r as <A href="class-nsrectmbs.html">NSRectMBS</A>) as Memoryblock</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#25">deminiaturize</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#26">disableCursorRects</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#27">disableFlushWindow</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#28">disableScreenUpdatesUntilFlush</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method.html#29">disableSnapshotRestoration</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html">discardCachedImage</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#2">discardCursorRects</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#3">display</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#4">displayIfNeeded</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#5">dockTile</A> as Variant</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#6">dragImage</A>(image as <A href="class-nsimagembs.html">NSImageMBS</A>, viewLocation as <A href="class-nspointmbs.html">NSPointMBS</A>, offset as <A href="class-nssizembs.html">NSSizeMBS</A>, NSEvent as <A href="class-nseventmbs.html">NSEventMBS</A>, pboard as <A href="class-nspasteboardmbs.html">NSPasteboardMBS</A>, source as <A href="class-nsviewmbs.html">NSViewMBS</A>, slideFlag as boolean)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#7">enableCursorRects</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#8">enableFlushWindow</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#9">enableSnapshotRestoration</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#10">endEditingFor</A>(anObject as object = nil)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#11">fieldEditor</A>(createFlag as boolean = True, forObject as object = nil) as Variant</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#12">firstResponder</A> as <A href="class-nsrespondermbs.html">NSResponderMBS</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#13">flushWindow</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#14">flushWindowIfNeeded</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#16">frameRectForContentRect</A>(windowContent as <A href="class-nsrectmbs.html">NSRectMBS</A>) as <A href="class-nsrectmbs.html">NSRectMBS</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#17">GetFrame</A>(byref left as Double, byref top as Double, byref width as Double, byref height as Double)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#18">gState</A> as Integer</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#19">Hide</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#20">inLiveResize</A> as boolean</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#21">invalidateCursorRectsForView</A>(View as <A href="class-nsviewmbs.html">NSViewMBS</A>)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#22">invalidateRestorableState</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#23">invalidateShadow</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#24">keyDown</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#25">makeFirstResponder</A>(r as <A href="class-nsrespondermbs.html">NSResponderMBS</A>) as boolean</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#26">makeKeyAndOrderFront</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#27">makeKeyWindow</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#28">makeMainWindow</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#29">mergeAllWindows</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method1.html#30">miniaturize</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html">moveTabToNewWindow</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#2">orderBack</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#3">orderFront</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#4">orderFrontRegardless</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#5">orderOut</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#6">PerformClose</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#7">performMiniaturize</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#8">performWindowDragWithEvent</A>(event as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#9">performZoom</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#10">print</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#11">registerForDraggedTypes</A>(Types() as string)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#12">removeChildWindow</A>(win as <A href="class-nswindowmbs.html">NSWindowMBS</A>)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#13">removeChildWindow</A>(win as window)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#14">resetCursorRects</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#15">resignKeyWindow</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#16">resignMainWindow</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#17">resizeFlags</A> as Integer</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#18">restoreCachedImage</A></li>
+<li class="M">method <A href="cocoatoolbar-nswindowmbs-method.html">runToolbarCustomizationPalette</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#19">saveFrameUsingName</A>(s as String)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#20">selectKeyViewFollowingView</A>(view as <A href="class-nsviewmbs.html">NSViewMBS</A>)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#21">selectKeyViewPrecedingView</A>(view as <A href="class-nsviewmbs.html">NSViewMBS</A>)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#22">selectNextKeyView</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#23">selectNextTab</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#24">selectPreviousKeyView</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#25">selectPreviousTab</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#26">sendEvent</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#27">setAutorecalculatesContentBorderThickness</A>(flag as boolean, edge as Integer)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#28">setBottomCornerRounded</A>(flag as boolean)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#29">setContentBorderThickness</A>(thickness as Double, edge as Integer)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method2.html#30">setContentSize</A>(size as <A href="class-nssizembs.html">NSSizeMBS</A>)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html">setFrame</A>(frameRect as <A href="class-nsrectmbs.html">NSRectMBS</A>)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#2">setFrame</A>(frameRect as <A href="class-nsrectmbs.html">NSRectMBS</A>, display as boolean)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#3">setFrame</A>(frameRect as <A href="class-nsrectmbs.html">NSRectMBS</A>, display as boolean, animated as boolean)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#4">SetFrame</A>(left as Double, top as Double, width as Double, height as Double)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#5">setFrameAutosaveName</A>(name as String) as boolean</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#6">setFrameFromString</A>(s as String)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#7">setFrameOrigin</A>(point as <A href="class-nspointmbs.html">NSPointMBS</A>)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#8">setFrameTopLeftPoint</A>(point as <A href="class-nspointmbs.html">NSPointMBS</A>)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#9">setFrameUsingName</A>(name as String, force as boolean = false) as boolean</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#10">setRestorationClass</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#11">setTitleWithRepresentedFile</A>(filename as folderitem)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#12">setTitleWithRepresentedFilename</A>(filename as string)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#13">Show</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#14">standardWindowButton</A>(button as Integer) as Variant</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#15">stringWithSavedFrame</A> as String</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#16">tabbedWindows</A> as <A href="class-nswindowmbs.html">NSWindowMBS</A>()</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#17">toggleFullScreen</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#18">toggleTabBar</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#19">toggleToolbarShown</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#20">toolbarview</A> as <A href="class-nsviewmbs.html">NSViewMBS</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#21">unregisterDraggedTypes</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#22">update</A></li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#23">useOptimizedDrawing</A>(value as boolean)</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#24">WindowHandle</A> as Integer</li>
+<li class="M">method <A href="cocoa-nswindowmbs-method3.html#25">zoom</A></li>
+</UL></LI>
+<LI>44 shared methods<UL>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html">contentRectForFrameRect</A>(windowFrame as <A href="class-nsrectmbs.html">NSRectMBS</A>, styleMask as UInt32) as <A href="class-nsrectmbs.html">NSRectMBS</A></li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#2">frameRectForContentRect</A>(windowContentRect as <A href="class-nsrectmbs.html">NSRectMBS</A>, styleMask as UInt32) as <A href="class-nsrectmbs.html">NSRectMBS</A></li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#3">minFrameWidthWithTitle</A>(WindowTitle as string, styleMask as UInt32) as Double</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#4">NSDockWindowLevel</A> as Integer</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#5">NSFloatingWindowLevel</A> as Integer</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#6">NSMainMenuWindowLevel</A> as Integer</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#7">NSModalPanelWindowLevel</A> as Integer</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#8">NSNormalWindowLevel</A> as Integer</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#9">NSPopUpMenuWindowLevel</A> as Integer</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#10">NSScreenSaverWindowLevel</A> as Integer</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#11">NSStatusWindowLevel</A> as Integer</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#12">NSSubmenuWindowLevel</A> as Integer</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#13">NSTornOffMenuWindowLevel</A> as Integer</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#14">NSWindowDidBecomeKeyNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#15">NSWindowDidBecomeMainNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#16">NSWindowDidChangeScreenNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#17">NSWindowDidChangeScreenProfileNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#18">NSWindowDidDeminiaturizeNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#19">NSWindowDidEndLiveResizeNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#20">NSWindowDidEndSheetNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#21">NSWindowDidEnterFullScreenNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#22">NSWindowDidEnterVersionBrowserNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#23">NSWindowDidExitFullScreenNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#24">NSWindowDidExitVersionBrowserNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#25">NSWindowDidExposeNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#26">NSWindowDidMiniaturizeNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#27">NSWindowDidMoveNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#28">NSWindowDidResignKeyNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method.html#29">NSWindowDidResignMainNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method1.html">NSWindowDidResizeNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method1.html#2">NSWindowDidUpdateNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method1.html#3">NSWindowWillBeginSheetNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method1.html#4">NSWindowWillCloseNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method1.html#5">NSWindowWillEnterFullScreenNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method1.html#6">NSWindowWillEnterVersionBrowserNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method1.html#7">NSWindowWillExitFullScreenNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method1.html#8">NSWindowWillExitVersionBrowserNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method1.html#9">NSWindowWillMiniaturizeNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method1.html#10">NSWindowWillMoveNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method1.html#11">NSWindowWillStartLiveResizeNotification</A> as string</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method1.html#12">removeFrameUsingName</A>(name as string)</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method1.html#13">standardWindowButton</A>(button as Integer, StyleMask as Integer) as Variant</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method1.html#14">windowNumberAtPoint</A>(x as Double, y as Double, belowWindowWithWindowNumber as Integer = 0) as Integer</li>
+<li class="M">shared method <A href="cocoa-nswindowmbs-shared-method1.html#15">windowNumbersWithOptions</A>(options as Integer = 0) as Integer()</li>
+</UL></LI>
+<LI><a href="class-nswindowmbs-nssavepanelmbs-const.html">68 constants</A></LI>
+</ul>
+<h4>Super class <A href="class-nsrespondermbs.html">NSResponderMBS</A></h4>
+<ul>
+<LI>3 properties<UL>
+<li class="M">property <A href="cocoa-nsrespondermbs-property.html">Handle</A> as Integer</li>
+<li class="M">property <A href="cocoa-nsrespondermbs-method1.html#15">menu</A> as <A href="class-nsmenumbs.html">NSMenuMBS</A></li>
+<li class="M">property <A href="cocoa-nsrespondermbs-method2.html#30">nextResponder</A> as <A href="class-nsrespondermbs.html">NSResponderMBS</A></li>
+</UL></LI>
+<LI>123 methods<UL>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html">beginGestureWithEvent</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#2">cancelOperation</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#3">capitalizeWord</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#4">centerSelectionInVisibleArea</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#5">changeCaseOfLetter</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#6">complete</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#7">Constructor</A> &nbsp; <b style="color: #8B0000"> Private </b></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#8">cursorUpdate</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#9">deleteBackward</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#10">deleteBackwardByDecomposingPreviousCharacter</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#11">deleteForward</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#12">deleteToBeginningOfLine</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#13">deleteToBeginningOfParagraph</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#14">deleteToEndOfLine</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#15">deleteToEndOfParagraph</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#16">deleteToMark</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#17">deleteWordBackward</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#18">deleteWordForward</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#19">endGestureWithEvent</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#20">flagsChanged</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#21">flushBufferedKeyEvents</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#22">helpRequested</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#23">indent</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#24">insertBacktab</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#25">insertContainerBreak</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#26">insertDoubleQuoteIgnoringSubstitution</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#27">insertLineBreak</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#28">insertNewline</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method.html#29">insertNewlineIgnoringFieldEditor</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html">insertParagraphSeparator</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#2">insertSingleQuoteIgnoringSubstitution</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#3">insertTab</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#4">insertTabIgnoringFieldEditor</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#5">keyDown</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#6">keyUp</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#7">lowercaseWord</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#8">magnifyWithEvent</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#9">makeBaseWritingDirectionLeftToRight</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#10">makeBaseWritingDirectionNatural</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#11">makeBaseWritingDirectionRightToLeft</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#12">makeTextWritingDirectionLeftToRight</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#13">makeTextWritingDirectionNatural</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#14">makeTextWritingDirectionRightToLeft</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#16">mouseDown</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#17">mouseDragged</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#18">mouseEntered</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#19">mouseExited</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#20">mouseMoved</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#21">mouseUp</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#22">moveBackward</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#23">moveBackwardAndModifySelection</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#24">moveDown</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#25">moveDownAndModifySelection</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#26">moveForward</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#27">moveForwardAndModifySelection</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#28">moveLeft</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#29">moveLeftAndModifySelection</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method1.html#30">moveParagraphBackwardAndModifySelection</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html">moveParagraphForwardAndModifySelection</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#2">moveRight</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#3">moveRightAndModifySelection</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#4">moveToBeginningOfDocument</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#5">moveToBeginningOfDocumentAndModifySelection</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#6">moveToBeginningOfLine</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#7">moveToBeginningOfLineAndModifySelection</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#8">moveToBeginningOfParagraph</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#9">moveToBeginningOfParagraphAndModifySelection</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#10">moveToEndOfDocument</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#11">moveToEndOfDocumentAndModifySelection</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#12">moveToEndOfLine</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#13">moveToEndOfLineAndModifySelection</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#14">moveToEndOfParagraph</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#15">moveToEndOfParagraphAndModifySelection</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#16">moveToLeftEndOfLine</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#17">moveToLeftEndOfLineAndModifySelection</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#18">moveToRightEndOfLine</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#19">moveToRightEndOfLineAndModifySelection</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#20">moveUp</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#21">moveUpAndModifySelection</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#22">moveWordBackward</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#23">moveWordBackwardAndModifySelection</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#24">moveWordForward</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#25">moveWordForwardAndModifySelection</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#26">moveWordLeft</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#27">moveWordLeftAndModifySelection</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#28">moveWordRight</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method2.html#29">moveWordRightAndModifySelection</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html">otherMouseDown</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#2">otherMouseDragged</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#3">otherMouseUp</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#4">pageDown</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#5">pageDownAndModifySelection</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#6">pageUp</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#7">pageUpAndModifySelection</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#8">performMnemonic</A>(theString as string) as boolean</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#9">presentError</A>(e as <A href="class-nserrormbs.html">NSErrorMBS</A>) as boolean</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#10">rightMouseDown</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#11">rightMouseDragged</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#12">rightMouseUp</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#13">rotateWithEvent</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#14">scrollLineDown</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#15">scrollLineUp</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#16">scrollPageDown</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#17">scrollPageUp</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#18">scrollToBeginningOfDocument</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#19">scrollToEndOfDocument</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#20">scrollWheel</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#21">selectAll</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#22">selectLine</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#23">selectParagraph</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#24">selectToMark</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#25">selectWord</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#26">setMark</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#27">showContextHelp</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#28">swapWithMark</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#29">swipeWithEvent</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method3.html#30">tabletPoint</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method4.html">tabletProximity</A>(e as <A href="class-nseventmbs.html">NSEventMBS</A>)</li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method4.html#2">transpose</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method4.html#3">transposeWords</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method4.html#4">undoManager</A> as <A href="class-nsundomanagermbs.html">NSUndoManagerMBS</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method4.html#5">uppercaseWord</A></li>
+<li class="M">method <A href="cocoa-nsrespondermbs-method4.html#6">yank</A></li>
+</UL></LI>
+</ul>
+<h4>Sub classes:</h4><ul>
+<li class="M"><A href="class-nsopenpanelmbs.html">class NSOpenPanelMBS</A>
+</li>
+</ul>
+<h4>Some events using this class:</h4><ul>
+<li class="M"><A href="cocoa-nssavepanelobservermbs-event.html">NSSavePanelObserverMBS.DidShowPanel</A>(panel as NSSavePanelMBS, Result as Integer)</li>
+<li class="M"><A href="cocoa-nssavepanelobservermbs-event.html#2">NSSavePanelObserverMBS.WillShowPanel</A>(panel as NSSavePanelMBS)</li>
+</ul>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-maccocoa-nssavepanel.html">/MacCocoa/NSSavePanel</A></li>
+<li class=""><A href="example-maccocoa-nssavepanelobserver.html">/MacCocoa/NSSavePanelObserver</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2023-01-25/News_from_the_MBS_Xojo_Plugins/monkeybreadsoftware_blog_xojo">News from the MBS Xojo Plugins in Version 23.0</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2022-12-13/MBS_Xojo_Plugins_version_226pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 22.6pr3</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2020-02-24/MBS_Xojo_Plugins_version_201pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 20.1pr5</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2020-02-07/Customized_File_Open_and_Save_/monkeybreadsoftware_blog_xojo">Customized File Open and Save Dialogs for Windows</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2019-08-08/MBS_Xojo_Plugins_version_194pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 19.4pr1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2014-07-15/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 14.3pr2</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2012-11-14/MBS_Real_Studio_Plugins_versio/monkeybreadsoftware_blog_xojo">MBS Real Studio Plugins, version 12.5pr8</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2011-10-02/Sandboxing/monkeybreadsoftware_blog_xojo">Sandboxing</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2011-05-04/MBS_Plugins_111_Release_notes/monkeybreadsoftware_blog_xojo">MBS Plugins 11.1 Release notes</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2008-04-08/MonkeyBread_Software_Releases_/monkeybreadsoftware_blog_xojo">MonkeyBread Software Releases the MBS Plugins 8.2</a></li>
+</ul>
+<h4>Xojo Developer Magazine</h4>
+<ul>
+<li><a href="http://www.xdevmag.com/browse/18.3/">18.3, page 52: Happy Birthday MonkeyBread Software, What is new in the MBS Xojo Plugins by Stefanie Juchmes</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmacbaseplugin.html">MBS MacBase Plugin</a>, <a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-nsrunningapplicationmbs.html">NSRunningApplicationMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-nssavepanelobservermbs.html">NSSavePanelObserverMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-nssavepanelmbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

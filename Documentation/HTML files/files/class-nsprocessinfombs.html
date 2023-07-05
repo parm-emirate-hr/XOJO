@@ -1,0 +1,280 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - NSProcessInfoMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="NSProcessInfoMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">NSProcessInfoMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>NSProcessInfoMBS class</H3>
+<div class="M">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-process.html" translate="no">Process</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion84.shtml" class=version>8.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The NSProcessInfo class provides methods to access information about the current process. <BR>
+<B>Notes:</B> 
+<BR>
+Each process has a single, shared NSProcessInfo object, known as process information agent.<BR>
+<BR>
+The process information agent can return such information as the arguments, environment variables, host name, or process name. The processInfo class method returns the shared agent for the current process&mdash;that is, the process whose object sent the message. For example, the following line returns the NSProcessInfo object, which then provides the name of the current process:<BR>
+<BR>
+dim processInfo as new NSProcessInfoMBS<BR>
+dim processName as string = processInfo.processName<BR>
+<BR>
+The NSProcessInfo class also includes the operatingSystem method, which returns an enum constant identifying the operating system on which the process is executing.<BR>
+<BR>
+NSProcessInfo objects attempt to interpret environment variables and command-line arguments in the user&#39;s default C string encoding if they cannot be converted to Unicode as UTF-8 strings. If neither conversion works, these values are ignored by the NSProcessInfo object.<BR>
+<BR>
+For Windows, please check <A href="class-windowsthreadexecutionstatembs.html">WindowsThreadExecutionStateMBS</A> to prevent system sleep.<BR>
+</div>
+<ul>
+<LI>21 properties<UL>
+<li class="M">property <A href="process-nsprocessinfombs-property.html">activeProcessorCount</A> as Integer</li>
+<li class="M">property <A href="process-nsprocessinfombs-property.html#2">argumentsCount</A> as Integer</li>
+<li class="M">property <A href="process-nsprocessinfombs-property.html#3">automaticTerminationSupportEnabled</A> as boolean</li>
+<li class="M">property <A href="process-nsprocessinfombs-property.html#4">environment</A> as dictionary</li>
+<li class="M">property <A href="process-nsprocessinfombs-property.html#5">globallyUniqueString</A> as string</li>
+<li class="M">property <A href="process-nsprocessinfombs-property.html#6">Handle</A> as Integer</li>
+<li class="M">property <A href="process-nsprocessinfombs-property.html#7">hostName</A> as string</li>
+<li class="M">property <A href="process-nsprocessinfombs-property.html#8">isiOSAppOnMac</A> as Boolean</li>
+<li class="M">property <A href="process-nsprocessinfombs-property.html#9">isLowPowerModeEnabled</A> as Boolean</li>
+<li class="M">property <A href="process-nsprocessinfombs-property.html#10">operatingSystem</A> as Integer</li>
+<li class="M">property <A href="process-nsprocessinfombs-property.html#11">operatingSystemName</A> as string</li>
+<li class="M">property <A href="process-nsprocessinfombs-property.html#12">operatingSystemVersionString</A> as string</li>
+<li class="M">property <A href="process-nsprocessinfombs-property.html#13">operationSystemVersionMajor</A> as Integer</li>
+<li class="M">property <A href="process-nsprocessinfombs-property.html#14">operationSystemVersionMinor</A> as Integer</li>
+<li class="M">property <A href="process-nsprocessinfombs-property.html#15">operationSystemVersionPatch</A> as Integer</li>
+<li class="M">property <A href="process-nsprocessinfombs-property.html#16">physicalMemory</A> as UInt64</li>
+<li class="M">property <A href="process-nsprocessinfombs-property.html#17">processIdentifier</A> as Integer</li>
+<li class="M">property <A href="process-nsprocessinfombs-property.html#18">processName</A> as string</li>
+<li class="M">property <A href="process-nsprocessinfombs-property.html#19">processorCount</A> as Integer</li>
+<li class="M">property <A href="process-nsprocessinfombs-property.html#20">systemUptime</A> as Double</li>
+<li class="M">property <A href="process-nsprocessinfombs-property.html#21">thermalState</A> as Integer</li>
+</UL></LI>
+<LI>10 methods<UL>
+<li class="M">method <A href="process-nsprocessinfombs-method.html">argument</A>(index as Integer) as string</li>
+<li class="M">method <A href="process-nsprocessinfombs-method.html#2">arguments</A> as string()</li>
+<li class="M">method <A href="process-nsprocessinfombs-method.html#3">beginActivity</A>(options as Integer, reason as string) as <A href="class-nsprocessinfoactivitymbs.html">NSProcessInfoActivityMBS</A></li>
+<li class="M">method <A href="process-nsprocessinfombs-method.html#4">Constructor</A></li>
+<li class="M">method <A href="process-nsprocessinfombs-method.html#5">disableAutomaticTermination</A>(Reason as string)</li>
+<li class="M">method <A href="process-nsprocessinfombs-method.html#6">disableSuddenTermination</A></li>
+<li class="M">method <A href="process-nsprocessinfombs-method.html#7">enableAutomaticTermination</A>(Reason as string)</li>
+<li class="M">method <A href="process-nsprocessinfombs-method.html#8">enableSuddenTermination</A></li>
+<li class="M">method <A href="process-nsprocessinfombs-method.html#9">endActivity</A>(activity as <A href="class-nsprocessinfoactivitymbs.html">NSProcessInfoActivityMBS</A>)</li>
+<li class="M">method <A href="process-nsprocessinfombs-method.html#10">operationSystemVersion</A>(byref Major as Integer, byref Minor as Integer, byref Patch as Integer)</li>
+</UL></LI>
+<LI>3 shared methods<UL>
+<li class="M">shared method <A href="process-nsprocessinfombs-shared-method.html">NSActivityLatencyCritical</A> as UInt64</li>
+<li class="M">shared method <A href="process-nsprocessinfombs-shared-method.html#2">NSProcessInfoThermalStateDidChangeNotification</A> as String</li>
+<li class="M">shared method <A href="process-nsprocessinfombs-shared-method.html#3">processInfo</A> as NSProcessInfoMBS</li>
+</UL></LI>
+<LI>18 constants<UL>
+<li class="M">const <A href="process-nsprocessinfombs-const.html#8">NSHPUXOperatingSystem</A>=4</li>
+<li class="M">const <A href="process-nsprocessinfombs-const.html#9">NSMACHOperatingSystem</A>=5</li>
+<li class="M">const <A href="process-nsprocessinfombs-const.html#10">NSOSF1OperatingSystem</A>=7</li>
+<li class="M">const <A href="process-nsprocessinfombs-const.html#15">NSSolarisOperatingSystem</A>=3</li>
+<li class="M">const <A href="process-nsprocessinfombs-const.html#16">NSSunOSOperatingSystem</A>=6</li>
+<li class="M">const <A href="process-nsprocessinfombs-const.html#17">NSWindows95OperatingSystem</A>=2</li>
+<li class="M">const <A href="process-nsprocessinfombs-const.html#18">NSWindowsNTOperatingSystem</A>=1</li>
+</UL></LI>
+</ul>
+<h3 lang="en">Activity Options</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="process-nsprocessinfombs-const.html">NSActivityAutomaticTerminationDisabled </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h8000</td>
+<td bgcolor="#DDDDDD" valign=top>
+Flag to prevent automatic termination.<BR>
+Available in OS X v10.9 and later.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="process-nsprocessinfombs-const.html#2">NSActivityBackground </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h000000FF</td>
+<td bgcolor="#DDDDDD" valign=top>
+Flag to indicate the app has initiated some kind of work, but not as the direct result of user request.<BR>
+Available in OS X v10.9 and later.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="process-nsprocessinfombs-const.html#3">NSActivityIdleDisplaySleepDisabled </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h10000000000</td>
+<td bgcolor="#DDDDDD" valign=top>
+Flag to require the screen to stay powered on.<BR>
+Available in OS X v10.9 and later.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="process-nsprocessinfombs-const.html#4">NSActivityIdleSystemSleepDisabled </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h100000</td>
+<td bgcolor="#DDDDDD" valign=top>
+Flag to prevent idle sleep.<BR>
+This is included in NSActivityUserInitiatedAllowingIdleSystemSleep.<BR>
+Available in OS X v10.9 and later.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="process-nsprocessinfombs-const.html#5">NSActivitySuddenTerminationDisabled </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h4000</td>
+<td bgcolor="#DDDDDD" valign=top>
+Flag to prevent sudden termination.<BR>
+This is included in NSActivityUserInitiatedAllowingIdleSystemSleep.<BR>
+Available in OS X v10.9 and later.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="process-nsprocessinfombs-const.html#6">NSActivityUserInitiated </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h00FFFFFF</td>
+<td bgcolor="#DDDDDD" valign=top>
+Flag to indicate the app is performing a user-requested action.<BR>
+Available in OS X v10.9 and later.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="process-nsprocessinfombs-const.html#7">NSActivityUserInitiatedAllowingIdleSystemSleep </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h00EFFFFF</td>
+<td bgcolor="#DDDDDD" valign=top>
+Flag to indicate the app is performing a user-requested action, but that the system can sleep on idle.<BR>
+Available in OS X v10.9 and later.<BR>
+</td>
+</tr>
+</table>
+<h3 lang="en">Thermal State Constants</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="process-nsprocessinfombs-const.html#11">NSProcessInfoThermalStateCritical </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+System performance is significantly impacted and the Mac needs to cool down. Recommendation: reduce application&#39;s usage of CPU, GPU, and I/O to the minimum level needed to respond to user actions. Consider stopping use of camera and other peripherals if your application is using them.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="process-nsprocessinfombs-const.html#12">NSProcessInfoThermalStateFair </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+The system has reached a state where fans may become audible.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="process-nsprocessinfombs-const.html#13">NSProcessInfoThermalStateNominal </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 0</td>
+<td bgcolor="#DDDDDD" valign=top>
+No corrective action is needed.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="process-nsprocessinfombs-const.html#14">NSProcessInfoThermalStateSerious </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+Fans are running at maximum speed, system performance maybe impacted. Recommendation: reduce application&#39;s usage of CPU, GPU and I/O, if possible. Switch to lower quality visual effects, reduce frame rates.<BR>
+</td>
+</tr>
+</table>
+<p>This class has no sub classes.</p>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-maccocoa-nsprocessinfoexample.html">/MacCocoa/NSProcessInfo Example</A></li>
+<li class=""><A href="example-maccocoa-processactivity.html">/MacCocoa/Process Activity</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2021-07-29/News_from_the_MBS_Xojo_Plugins/monkeybreadsoftware_blog_xojo">News from the MBS Xojo Plugins Version 21.3</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2021-07-12/MonkeyBread_Software_Releases_/monkeybreadsoftware_blog_xojo">MonkeyBread Software Releases the MBS Xojo Plugins in version 21.3</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2021-06-09/MBS_Xojo_Plugins_version_213pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 21.3pr2</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2021-01-26/MBS_Xojo_Plugins_Version_210_N/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins Version 21.0 News</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2021-01-09/MBS_Xojo_Plugins_version_210pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 21.0pr6</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2018-10-24/MBS_Xojo_Plugins_version_185pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 18.5pr3</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2016-09-07/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 16.4pr6</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2011-07-15/MBS_Real_Studio_Plugins_versio/monkeybreadsoftware_blog_xojo">MBS Real Studio Plugins, version 11.2pr9</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2008-08-12/MonkeyBread_Software_Releases_/monkeybreadsoftware_blog_xojo">MonkeyBread Software Releases the MBS REALbasic plug-ins 8.4</a></li>
+</ul>
+<h4>Xojo Developer Magazine</h4>
+<ul>
+<li><a href="http://www.xdevmag.com/browse/19.5/">19.5, page 9: News</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-nsprocessinfoactivitymbs.html">NSProcessInfoActivityMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-nsprogressindicatormbs.html">NSProgressIndicatorMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-nsprocessinfombs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

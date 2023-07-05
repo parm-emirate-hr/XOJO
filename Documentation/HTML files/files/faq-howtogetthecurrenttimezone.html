@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - FAQ</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="FAQ: How to get the current timezone?">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">FAQ</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="WM">
+<b>FAQ.<A name="1">How to get the current timezone?</A></b><br>
+<B>Answer:</B> 
+<br>
+You can use the <A href="class-timezonembs.html">TimeZoneMBS</A> class or the <A href="class-cftimezonembs.html">CFTimeZoneMBS</A> class.<BR>
+Or code like below:<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">Function</span> GMTOffsetInMinutes() <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span><br />  <span style="color: #800000;">// Returns the offset of the current time to GMT in minutes.</span><br />  <span style="color: #800000;">// supports Mac OS and Windows, but not Linux yet (let me know if</span><br />  <span style="color: #800000;">// you have code for that, please)</span><br />  <span style="color: #800000;">//</span><br />  <span style="color: #800000;">// Note that the offset is not always an even multiple of 60,  but</span><br />  <span style="color: #800000;">// there are also half hour offsets, even one 5:45h offset</span><br />  <br />  <span style="color: #800000;">// This version by Thomas Tempelmann (rb@tempel.org) on 25 Nov 2005</span><br />  <span style="color: #800000;">// with a fix that should also make it work with future Intel Mac targets.</span><br />  <span style="color: #800000;">//</span><br />  <span style="color: #800000;">// Using code from various authors found on the RB NUG mailing list</span><br />  <br />  <span style="color: #0000FF;">dim</span> result, bias, dayLightbias <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span><br />  <span style="color: #0000FF;">dim</span> info <span style="color: #0000FF;">as</span> memoryBlock<br />  <span style="color: #0000FF;">dim</span> offset <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span><br />  <br />  <span style="color: #0000FF;">#if</span> targetMacOS <span style="color: #0000FF;">then</span><br />    <br />    <span style="color: #0000FF;">Declare</span> <span style="color: #0000FF;">Sub</span> ReadLocation <span style="color: #0000FF;">lib</span> <span style="color: #6600FE;">&quot;Carbon&quot;</span> (location <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">ptr</span>)<br />    <br />    info = NewMemoryBlock(<span style="color: #336698;">12</span>)<br />    ReadLocation info<br />    <span style="color: #0000FF;">if</span> <span style="color: #0000FF;">false</span> <span style="color: #0000FF;">then</span><br />      <span style="color: #800000;">// bad, because it does not work on Intel Macs:</span><br />      <span style="color: #800000;">&apos;offset = info.short(9) * 256 + info.byte(11)</span><br />    <span style="color: #0000FF;">else</span><br />      offset = BitwiseAnd (info.long(<span style="color: #336698;">8</span>), <span style="color: #336698;">&amp;hFFFFFF</span>)<br />    <span style="color: #0000FF;">end</span><br />    <br />    offset = info.short(<span style="color: #336698;">9</span>) * <span style="color: #336698;">256</span> + info.byte(<span style="color: #336698;">11</span>)<br />    offset = offset \ <span style="color: #336698;">60</span><br />    <span style="color: #0000FF;">return</span> offset<br />    <br />  <span style="color: #0000FF;">#endif</span><br />  <br />  <span style="color: #0000FF;">#if</span> targetWin32 <span style="color: #0000FF;">then</span><br />    <br />    <span style="color: #0000FF;">Declare</span> <span style="color: #0000FF;">Function</span> GetTimeZoneInformation <span style="color: #0000FF;">Lib</span> <span style="color: #6600FE;">&quot;Kernel32&quot;</span> ( tzInfoPointer <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Ptr</span> ) <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span><br />    <span style="color: #800000;">// returns one of</span><br />    <span style="color: #800000;">// TIME_ZONE_ID_UNKNOWN 0</span><br />    <span style="color: #800000;">//      -- Note: e.g. New Delhi (GMT+5:30) and Newfoundland (-3:30) return this value 0</span><br />    <span style="color: #800000;">// TIME_ZONE_ID_STANDARD 1</span><br />    <span style="color: #800000;">// TIME_ZONE_ID_DAYLIGHT 2</span><br />    <br />    info = <span style="color: #0000FF;">new</span> MemoryBlock(<span style="color: #336698;">172</span>)<br />    result = GetTimeZoneInformation(info)<br />    <br />    bias = info.Long(<span style="color: #336698;">0</span>)<br />    <span style="color: #800000;">// note: the original code I found in the NUG archives used Long(84) and switched to Long(0)</span><br />    <span style="color: #800000;">// only for result=1 and result=2, but my tests found that Long(0) is also the right value for result=0</span><br />    <br />    <span style="color: #0000FF;">if</span> result = <span style="color: #336698;">2</span> <span style="color: #0000FF;">then</span><br />      daylightBias = info.long(<span style="color: #336698;">168</span>)<br />    <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br />    offset = - (bias + dayLightbias)<br />    <span style="color: #0000FF;">return</span> offset<br />    <br />  <span style="color: #0000FF;">#endif</span><br />  <br /><span style="color: #0000FF;">End</span> <span style="color: #0000FF;">Function</span></span>
+</pre>
+</div>
+</div>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=faq-howtogetthecurrenttimezone">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

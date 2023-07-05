@@ -1,0 +1,320 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - WinGestureConfigMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="WinGestureConfigMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">WinGestureConfigMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>WinGestureConfigMBS class</H3>
+<div class="W">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-windows.html" translate="no">Windows</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion162.shtml" class=version>16.2</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+ets and sets the configuration for enabling gesture messages and the type of this configuration.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #800000;">// make a config for accepting pan/rotate gestures</span><br /><span style="color: #0000FF;">dim</span> c1 <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> WinGestureConfigMBS<br /><br />c1.ID = c1.kGestureIDPan<br />c1.Want = c1.kPan<br />c1.Block = <span style="color: #336698;">0</span><br /><br /><span style="color: #0000FF;">dim</span> c2 <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> WinGestureConfigMBS<br />c2.ID = c2.kGestureIDRotate<br />c2.Want = c2.kRotate<br />c2.Block = <span style="color: #336698;">0</span><br /><br /><br /><span style="color: #0000FF;">dim</span> configs() <span style="color: #0000FF;">as</span> WinGestureConfigMBS<br />configs.Append c1<br />configs.Append c2<br /><br /><span style="color: #800000;">// and add to window</span><br /><span style="color: #0000FF;">if</span> <A href="class-winpointereventsmbs.html">WinPointerEventsMBS</A>.SetGestureConfig(window1, configs) <span style="color: #0000FF;">then</span><br />  MsgBox <span style="color: #6600FE;">&quot;OK&quot;</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+It is impossible to disable two-finger panning and keep single finger panning. You must set the want bits for GC_PAN before you can set them for GC_PAN_WITH_SINGLE_FINGER_HORIZONTALLY or GC_PAN_WITH_SINGLE_FINGER_VERTICALLY.<BR>
+An inertia vector is included in the GID_PAN message with the GF_END flag if inertia was disabled by a call to SetGestureConfig.<BR>
+When you pass this structure, the dwID member contains information for a set of gestures. This determines what the other flags will mean. If you set flags for pan messages, they will be different from those flags that are set for rotation messages.<BR>
+The following table indicates the various identifiers for gestures that are supported by the dwID member of the GESTURECONFIG structure. Note that setting dwID to 0 indicates that global gesture configuration flags are set.<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Name</TD><TD valign="top">Value</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">GID_ZOOM</TD><TD valign="top">3</TD><TD valign="top">Indicates configuration settings for the zoom gesture.</TD></TR>
+<TR><TD valign="top">GID_PAN</TD><TD valign="top">4</TD><TD valign="top">Indicates the pan gesture.</TD></TR>
+<TR><TD valign="top">GID_ROTATE</TD><TD valign="top">5</TD><TD valign="top">Indicates the rotation gesture.</TD></TR>
+<TR><TD valign="top">GID_TWOFINGERTAP</TD><TD valign="top">6</TD><TD valign="top">Indicates the two-finger tap gesture.</TD></TR>
+<TR><TD valign="top">GID_PRESSANDTAP</TD><TD valign="top">7</TD><TD valign="top">Indicates the press and tap gesture.</TD></TR>
+</TABLE>
+<BR>
+The following flags are used when dwID is set to 0.<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Name</TD><TD valign="top">Value</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">GC_ALLGESTURES</TD><TD valign="top">0x00000001</TD><TD valign="top">Indicates all of the gestures.</TD></TR>
+</TABLE>
+<BR>
+The following flags are used when dwID is set to GID_ZOOM.<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Name</TD><TD valign="top">Value</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">GC_ZOOM</TD><TD valign="top">0x00000001</TD><TD valign="top">Indicates the zoom gesture.</TD></TR>
+</TABLE>
+<BR>
+The following flags are used when dwID is set to GID_PAN.<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Name</TD><TD valign="top">Value</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">GC_PAN</TD><TD valign="top">0x00000001</TD><TD valign="top">Indicates all pan gestures.</TD></TR>
+<TR><TD valign="top">GC_PAN_WITH_SINGLE_FINGER_VERTICALLY</TD><TD valign="top">0x00000002</TD><TD valign="top">Indicates vertical pans with one finger.</TD></TR>
+<TR><TD valign="top">GC_PAN_WITH_SINGLE_FINGER_HORIZONTALLY</TD><TD valign="top">0x00000004</TD><TD valign="top">Indicates horizontal pans with one finger.</TD></TR>
+<TR><TD valign="top">GC_PAN_WITH_GUTTER</TD><TD valign="top">0x00000008</TD><TD valign="top">Limits perpendicular movement to primary direction until a threshold is reached to break out of the gutter.</TD></TR>
+<TR><TD valign="top">GC_PAN_WITH_INERTIA</TD><TD valign="top">0x00000010</TD><TD valign="top">Indicates panning with inertia to smoothly slow when pan gestures stop.</TD></TR>
+</TABLE>
+<BR>
+Note   Setting the GID_PAN flags in SetGestureConfig will affect the default gesture handler for panning. You should not have both dwWant and dwBlock set for the same flags; this will result in unexpected behavior. See Windows Touch Gestures for more information on panning and legacy panning support; see SetGestureConfig for examples of enabling and blocking gestures.<BR>
+<BR>
+The following flags are used when dwID is set to GID_ROTATE.<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Name</TD><TD valign="top">Value</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">GC_ROTATE</TD><TD valign="top">0x00000001</TD><TD valign="top">Indicates the rotation gesture.</TD></TR>
+</TABLE>
+<BR>
+The following flags are used when dwID is set to GID_TWOFINGERTAP.<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Name</TD><TD valign="top">Value</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">GC_TWOFINGERTAP</TD><TD valign="top">0x00000001</TD><TD valign="top">Indicates the two-finger tap gesture.</TD></TR>
+</TABLE>
+<BR>
+The following flags are used when dwID is set to GID_PRESSANDTAP.<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Name</TD><TD valign="top">Value</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">GC_PRESSANDTAP</TD><TD valign="top">0x00000001</TD><TD valign="top">Indicates the press and tap gesture.</TD></TR>
+</TABLE>
+</div>
+<ul>
+<LI>3 properties<UL>
+<li class="W">property <A href="windows-wingestureconfigmbs-property.html">Block</A> as Integer</li>
+<li class="W">property <A href="windows-wingestureconfigmbs-property.html#2">ID</A> as Integer</li>
+<li class="W">property <A href="windows-wingestureconfigmbs-property.html#3">Want</A> as Integer</li>
+</UL></LI>
+<LI>17 constants<UL>
+</UL></LI>
+</ul>
+<h3 lang="en">Gesture Options</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-wingestureconfigmbs-const.html">kAllGestures </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates all of the gestures. (for ID = 0)<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-wingestureconfigmbs-const.html#9">kPan </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates all pan gestures.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-wingestureconfigmbs-const.html#10">kPanWithGutter </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 8</td>
+<td bgcolor="#DDDDDD" valign=top>
+Limits perpendicular movement to primary direction until a threshold is reached to break out of the gutter.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-wingestureconfigmbs-const.html#11">kPanWithInteria </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 16</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates panning with inertia to smoothly slow when pan gestures stop.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-wingestureconfigmbs-const.html#12">kPanWithSingleFingerHorizontally </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 4</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates horizontal pans with one finger.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-wingestureconfigmbs-const.html#13">kPanWithSingleFingerVertically </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates vertical pans with one finger.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-wingestureconfigmbs-const.html#14">kPressAndTap </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates the press and tap gesture.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-wingestureconfigmbs-const.html#15">kRotate </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates the rotation gesture.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-wingestureconfigmbs-const.html#16">kTwoFingerTap </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates the two-finger tap gesture.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-wingestureconfigmbs-const.html#17">kZoom </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates the zoom gesture. (for ID = kGestureIDZoom)<BR>
+</td>
+</tr>
+</table>
+<h3 lang="en">Gesture IDs</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-wingestureconfigmbs-const.html#2">kGestureIDBegin </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+Begin of gesture.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-wingestureconfigmbs-const.html#3">kGestureIDEnd </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+End of a gesture<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-wingestureconfigmbs-const.html#4">kGestureIDPan </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 4</td>
+<td bgcolor="#DDDDDD" valign=top>
+Pan gesture<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-wingestureconfigmbs-const.html#5">kGestureIDPressAndTap </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 7</td>
+<td bgcolor="#DDDDDD" valign=top>
+Press and Tap gesture<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-wingestureconfigmbs-const.html#6">kGestureIDRotate </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 5</td>
+<td bgcolor="#DDDDDD" valign=top>
+Rotate gesture<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-wingestureconfigmbs-const.html#7">kGestureIDTwoFingerTap </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 6</td>
+<td bgcolor="#DDDDDD" valign=top>
+Two-Finger Tap<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-wingestureconfigmbs-const.html#8">kGestureIDZoom </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+Zoom gesture<BR>
+</td>
+</tr>
+</table>
+<p>This class has no sub classes.</p>
+<h4>Some methods using this class:</h4><ul>
+<li class="W"><A href="windows-winpointereventsmbs-shared-method.html#2" translate="no">WinPointerEventsMBS.GetGestureConfig</A>(Control as DesktopUIControl, config() as WinGestureConfigMBS, flags as Integer = 0) as Integer</li>
+<li class="W"><A href="windows-winpointereventsmbs-shared-method.html#3" translate="no">WinPointerEventsMBS.GetGestureConfig</A>(Control as RectControl, config() as WinGestureConfigMBS, flags as Integer = 0) as Integer</li>
+<li class="W"><A href="windows-winpointereventsmbs-shared-method.html#4" translate="no">WinPointerEventsMBS.GetGestureConfig</A>(win as DesktopWindow, config() as WinGestureConfigMBS, flags as Integer = 0) as Integer</li>
+<li class="W"><A href="windows-winpointereventsmbs-shared-method.html#5" translate="no">WinPointerEventsMBS.GetGestureConfig</A>(win as window, config() as WinGestureConfigMBS, flags as Integer = 0) as Integer</li>
+<li class="W"><A href="windows-winpointereventsmbs-shared-method.html#7" translate="no">WinPointerEventsMBS.SetGestureConfig</A>(Control as DesktopUIControl, config() as WinGestureConfigMBS = nil) as boolean</li>
+<li class="W"><A href="windows-winpointereventsmbs-shared-method.html#8" translate="no">WinPointerEventsMBS.SetGestureConfig</A>(Control as RectControl, config() as WinGestureConfigMBS = nil) as boolean</li>
+<li class="W"><A href="windows-winpointereventsmbs-shared-method.html#9" translate="no">WinPointerEventsMBS.SetGestureConfig</A>(win as DesktopWindow, config() as WinGestureConfigMBS = nil) as boolean</li>
+<li class="W"><A href="windows-winpointereventsmbs-shared-method.html#10" translate="no">WinPointerEventsMBS.SetGestureConfig</A>(win as window, config() as WinGestureConfigMBS = nil) as boolean</li>
+</ul>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-win-windowstouchevents.html">/Win/Windows Touch Events</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2017-10-20/Windows_Touch_Events/monkeybreadsoftware_blog_xojo">Windows Touch Events</a></li>
+</ul>
+<h4>Videos</h4>
+<ul>
+<li><a href="https://www.monkeybreadsoftware.de/xojo/video/MBSXojoKeynote2018.shtml">Presentation from Munich conference about MBS Plugins.</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbswinplugin.html">MBS Win Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-winfiletypembs.html">WinFileTypeMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-wingestureinfombs.html">WinGestureInfoMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-wingestureconfigmbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

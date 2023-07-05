@@ -1,0 +1,1187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - CGDisplayMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="CGDisplayMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">CGDisplayMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-cgdisplaymbs.html">CGDisplayMBS</a> class.  </p>
+<p>
+ 
+<a href="coregraphics-cgdisplaymbs-method1.html">Next items</a>
+</p>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="1">AllDisplayModes(Options as Dictionary = nil) as <A href="class-cgdisplaymodembs.html">CGDisplayModeMBS</A>()</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return an array of all modes for the specified display.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <A href="class-cgdisplaymbs.html">CGDisplayMBS</A> = <A href="class-cgdisplaymbs.html">CGDisplayMBS</A>.MainDisplay<br /><br /><span style="color: #0000FF;">Dim</span> options <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">New</span> Dictionary<br />options.Value(<A href="class-cgdisplaymbs.html">CGDisplayMBS</A>.kCGDisplayShowDuplicateLowResolutionModes) = <span style="color: #0000FF;">false</span><br /><br /><span style="color: #0000FF;">dim</span> modes(-<span style="color: #336698;">1</span>) <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span><br /><span style="color: #0000FF;">for</span> <span style="color: #0000FF;">each</span> mode <span style="color: #0000FF;">as</span> <A href="class-cgdisplaymodembs.html">CGDisplayModeMBS</A> <span style="color: #0000FF;">in</span> d.AllDisplayModes(options)<br />  modes.append str(mode.Width)+<span style="color: #6600FE;">&quot; x &quot;</span>+str(mode.Height)<br /><span style="color: #0000FF;">next</span><br />MsgBox Join(modes,EndOfLine)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Returns an empty array on any error.<BR>
+Requires Mac OS X 10.6<BR>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="2">AvailableModes as Dictionary()</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion33.shtml" class=version>3.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns an array filled with dictionaries (one for each mode).<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #800000;">// Display all available graphic modes:</span><br /><br />Listbox1.DeleteAllRows<br />Listbox1.ColumnCount = <span style="color: #336698;">4</span><br /><br /><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <A href="class-cgdisplaymbs.html">CGDisplayMBS</A> = <A href="class-cgdisplaymbs.html">CGDisplayMBS</A>.MainDisplay<br /><br /><span style="color: #0000FF;">dim</span> a(-<span style="color: #336698;">1</span>) <span style="color: #0000FF;">as</span> Dictionary = d.AvailableModes<br /><br /><span style="color: #0000FF;">for</span> <span style="color: #0000FF;">each</span> di <span style="color: #0000FF;">as</span> Dictionary <span style="color: #0000FF;">in</span> a<br />  <br />  Listbox1.AddRow di.Value(d.kCGDisplayMode).stringValue<br />  Listbox1.cell(Listbox1.LastIndex,<span style="color: #336698;">1</span>) = di.Value(d.kCGDisplayWidth)+<span style="color: #6600FE;">&quot; x &quot;</span>+di.Value(d.kCGDisplayHeight)<br />  Listbox1.cell(Listbox1.LastIndex,<span style="color: #336698;">2</span>) = di.Value(d.kCGDisplayRefreshRate)<br />  Listbox1.cell(Listbox1.LastIndex,<span style="color: #336698;">3</span>) = di.Value(d.kCGDisplayBitsPerPixel)<br />  <br /><span style="color: #0000FF;">next</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+Returns empty error on any error.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-maccg-coregraphicsdirectdisplay-cgmodelist.html">/MacCG/CoreGraphics DirectDisplay/CG Modelist</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="3">BestModeForParameters(BitsPerPixel as Integer, Width as Integer, Height as Integer, byref ExactMatch as boolean) as Dictionary</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion33.shtml" class=version>3.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns a Dictionary with the best mode found for the given parameters.<BR>
+<B>Notes:</B> 
+<BR>
+Returns nil on any error.<BR>
+<BR>
+Try to find a display mode of specified depth with dimensions equal or greater than specified.<BR>
+If no depth match is found, try for the next larger depth with dimensions equal or greater than specified.  If no luck, then just return the current mode.<BR>
+<BR>
+exactmatch is set to &#39;true&#39; if an exact match in width, height, and depth is found, and &#39;false&#39; otherwise.<BR>
+Returns nil if display is invalid.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="4">BestModeForParametersAndRefreshRate(BitsPerPixel as Integer, Width as Integer, Height as Integer, RefreshRate as Integer, byref ExactMatch as boolean) as Dictionary</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion33.shtml" class=version>3.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns a Dictionary with the best mode found for the given parameters.<BR>
+<B>Notes:</B> 
+<BR>
+Returns nil on any error.<BR>
+<BR>
+Try to find a display mode of specified depth with dimensions equal or greater than specified.<BR>
+If no depth match is found, try for the next larger depth with dimensions equal or greater than specified.  If no luck, then just return the current mode.<BR>
+<BR>
+exactmatch is set to &#39;true&#39; if an exact match in width, height, and depth is found, and &#39;false&#39; otherwise.<BR>
+Returns nil if display is invalid.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="5">BestModeForParametersAndRefreshRateWithProperty(BitsPerPixel as Integer, Width as Integer, Height as Integer, RefreshRate as Integer, propertyName as string, byref ExactMatch as boolean) as Dictionary</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns a Dictionary with the best mode found for the given parameters.<BR>
+<B>Notes:</B> 
+<BR>
+Returns nil on any error.<BR>
+<BR>
+Try to find a display mode of specified depth with dimensions equal or greater than specified.<BR>
+If no depth match is found, try for the next larger depth with dimensions equal or greater than specified.  If no luck, then just return the current mode.<BR>
+<BR>
+exactmatch is set to &#39;true&#39; if an exact match in width, height, and depth is found, and &#39;false&#39; otherwise.<BR>
+Returns nil if display is invalid.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="6">Capture as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion33.shtml" class=version>3.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Captures this display for your use.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <A href="class-cgdisplaymbs.html">CGDisplayMBS</A> = <A href="class-cgdisplaymbs.html">CGDisplayMBS</A>.MainDisplay<br /><br /><span style="color: #0000FF;">if</span> d.Capture = <span style="color: #336698;">0</span> <span style="color: #0000FF;">then</span><br />  <br />  <span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <A href="class-cgcontextmbs.html">CGContextMBS</A> = d.DrawingContext<br />  <br />  <span style="color: #800000;">// watch it drawing red</span><br />  c.SetRGBFillColor <span style="color: #006633;">1.0</span>, <span style="color: #006633;">0.0</span>, <span style="color: #006633;">0.0</span>, <span style="color: #006633;">1.0</span><br />  c.FillRect <A href="global-cgmakerectmbs.html">CGMakeRectMBS</A>(<span style="color: #336698;">0</span>,<span style="color: #336698;">0</span>,d.PixelsWide,d.PixelsHigh)<br />  <br />  <A href="global-delaymbs.html#2">DelayMBS</A> <span style="color: #006633;">3.0</span><br />  <br />  <span style="color: #0000FF;">call</span> d.Release<br /><span style="color: #0000FF;">else</span><br />  MsgBox <span style="color: #6600FE;">&quot;Failed to capture displays.&quot;</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Don&#39;t forget to Release the display later.<BR>
+Returns an error code.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="7">CaptureWithOptions(options as Integer) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Captures this display for your use.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <A href="class-cgdisplaymbs.html">CGDisplayMBS</A> = <A href="class-cgdisplaymbs.html">CGDisplayMBS</A>.MainDisplay<br /><br /><span style="color: #0000FF;">if</span> d.CaptureWithOptions(d.kCGCaptureNoOptions) = <span style="color: #336698;">0</span> <span style="color: #0000FF;">then</span><br />  <br />  <span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <A href="class-cgcontextmbs.html">CGContextMBS</A> = d.DrawingContext<br />  <br />  <span style="color: #800000;">// watch it drawing red</span><br />  c.SetRGBFillColor <span style="color: #006633;">1.0</span>, <span style="color: #006633;">0.0</span>, <span style="color: #006633;">0.0</span>, <span style="color: #006633;">1.0</span><br />  c.FillRect <A href="global-cgmakerectmbs.html">CGMakeRectMBS</A>(<span style="color: #336698;">0</span>,<span style="color: #336698;">0</span>,d.PixelsWide,d.PixelsHigh)<br />  <br />  <A href="global-delaymbs.html#2">DelayMBS</A> <span style="color: #006633;">3.0</span><br />  <br />  <span style="color: #0000FF;">call</span> d.Release<br /><span style="color: #0000FF;">else</span><br />  MsgBox <span style="color: #6600FE;">&quot;Failed to capture displays.&quot;</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Don&#39;t forget to Release the display later.<BR>
+Returns an error code.<BR>
+Use kCGCaptureNoOptions and kCGCaptureNoFill for options parameter.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="8">CreateImage as <A href="class-cgimagembs.html">CGImageMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return an image containing the contents of the display.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <A href="class-cgdisplaymbs.html">CGDisplayMBS</A> = <A href="class-cgdisplaymbs.html">CGDisplayMBS</A>.MainDisplay<br /><span style="color: #0000FF;">dim</span> img <span style="color: #0000FF;">as</span> <A href="class-cgimagembs.html">CGImageMBS</A> = d.CreateImage<br /><br />Backdrop = img.Picture</span>
+</pre>
+</div>
+<B>Notes:</B> 
+Requires Mac OS X 10.6.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="9">CreateImageAsync(receiverDelegate as <A href="delegate-cgdisplaymbs-createimageasyncdelegatembs.html">CreateImageAsyncDelegateMBS</A>, jpegQuality as Double = 0.9, tag as Variant = nil)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion153.shtml" class=version>15.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Asynchronously creates an image with screenshot.<BR>
+<B>Notes:</B> 
+<BR>
+If jpeg is &gt;= 0, we use it as quality for the jpeg compression and provide the JPEG data as memoryblock in the delegate.<BR>
+Tag is passed through as is.<BR>
+<BR>
+Delegate declaration: <BR>
+<A href="delegate-cgdisplaymbs-createimageasyncdelegatembs.html">CreateImageAsyncDelegateMBS</A>(img as <A href="class-cgimagembs.html">CGImageMBS</A>, JPEGData as MemoryBlock, Tag as Variant)<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-maccg-coregraphicsdirectdisplay-cgdisplaymbscreateimageasync.html">/MacCG/CoreGraphics DirectDisplay/CGDisplayMBS CreateImageAsync</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="10">CreateImageForRect(rect as <A href="class-cgrectmbs.html">CGRectMBS</A>) as <A href="class-cgimagembs.html">CGImageMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return an image containing the contents of the rectangle rect, specified in display space, of the display identified by self. <BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> r <span style="color: #0000FF;">as</span> <A href="class-cgrectmbs.html">CGRectMBS</A> = <A href="global-cgmakerectmbs.html">CGMakeRectMBS</A>(<span style="color: #336698;">100</span>,<span style="color: #336698;">100</span>,<span style="color: #336698;">500</span>,<span style="color: #336698;">500</span>)<br /><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <A href="class-cgdisplaymbs.html">CGDisplayMBS</A> = <A href="class-cgdisplaymbs.html">CGDisplayMBS</A>.MainDisplay<br /><span style="color: #0000FF;">dim</span> img <span style="color: #0000FF;">as</span> <A href="class-cgimagembs.html">CGImageMBS</A> = d.CreateImageForRect(r)<br /><br />Backdrop = img.Picture</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+The actual rectangle used is the rectangle returned from CGRectIntegral(rect).<BR>
+Requires Mac OS X 10.6.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-maccg-cgimagewithdifferentcolorspaces.html">/MacCG/CGImage with different color spaces</A></li>
+<li><A href="example-maccocoa-easystatusitem.html">/MacCocoa/EasyStatusItem</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="11">DrawingContext as <A href="class-cgcontextmbs.html">CGContextMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return a CGContext suitable for drawing to the captured display, or nil if display has not been captured. <BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <A href="class-cgdisplaymbs.html">CGDisplayMBS</A> = <A href="class-cgdisplaymbs.html">CGDisplayMBS</A>.MainDisplay<br /><br /><span style="color: #0000FF;">if</span> d.Capture = <span style="color: #336698;">0</span> <span style="color: #0000FF;">then</span><br />  <br />  <span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <A href="class-cgcontextmbs.html">CGContextMBS</A> = d.DrawingContext<br />  <br />  <span style="color: #800000;">// watch it drawing red</span><br />  c.SetRGBFillColor <span style="color: #006633;">1.0</span>, <span style="color: #006633;">0.0</span>, <span style="color: #006633;">0.0</span>, <span style="color: #006633;">1.0</span><br />  c.FillRect <A href="global-cgmakerectmbs.html">CGMakeRectMBS</A>(<span style="color: #336698;">0</span>,<span style="color: #336698;">0</span>,d.PixelsWide,d.PixelsHigh)<br />  <br />  <A href="global-delaymbs.html#2">DelayMBS</A> <span style="color: #006633;">3.0</span><br />  <br />  <span style="color: #0000FF;">call</span> d.Release<br /><span style="color: #0000FF;">else</span><br />  MsgBox <span style="color: #6600FE;">&quot;Failed to capture displays.&quot;</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+The context is owned by the device and should not be released by the caller.<BR>
+<BR>
+The context remains valid while the display is captured and while the display configuration is unchanged. Releasing the captured display or reconfiguring the display invalidates the drawing context.<BR>
+<BR>
+The determine when the display configuration is changing, use<BR>
+<A href="class-cgdisplayreconfigurationeventmbs.html">CGDisplayReconfigurationEventMBS</A> class.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-maccg-coregraphicsdirectdisplay-capturescreenwithcgcontextmbs.html">/MacCG/CoreGraphics DirectDisplay/Capture Screen with CGContextMBS</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="12">GetDisplayTransferByTable(capacity as Integer, red as memoryblock, green as memoryblock, blue as memoryblock, byref samplecount as Integer) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion33.shtml" class=version>3.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Get transfer tables.<BR>
+<B>Notes:</B> 
+<BR>
+Capacity should contain the number of samples each array can hold, and sampleCount is filled in with the number of samples actually copied in.<BR>
+<BR>
+You must pass in Memoryblocks with the given size (capacity*4 Bytes).<BR>
+Returns an error code.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="13">GetDisplayTransferFormula(byref formula as <A href="class-cgdisplaytransferformulambs.html">CGDisplayTransferFormulaMBS</A>) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion33.shtml" class=version>3.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Queries the display for the current gamma formula.<BR>
+<B>Notes:</B> 
+Returns an error code.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-maccg-coregraphicsdirectdisplay-gammatest.html">/MacCG/CoreGraphics DirectDisplay/Gamma Test</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="14">HideCursor as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion33.shtml" class=version>3.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Hides the mouse cursor.<BR>
+<B>Notes:</B> 
+<BR>
+Returns an error code.<BR>
+Decrements hide cursor count.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="15">Info as Dictionary</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion86.shtml" class=version>8.6</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns the information CFDictionary about the display.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <A href="class-cgdisplaymbs.html">CGDisplayMBS</A> = <A href="class-cgdisplaymbs.html">CGDisplayMBS</A>.MainDisplay<br /><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> Dictionary = c.Info<br /><br />MsgBox d.Value(<span style="color: #6600FE;">&quot;DisplaySerialNumber&quot;</span>)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+On any error the return value is nil.<BR>
+This function leaks around 4 to 16 KB of memory on Mac OS X 10.4. Not in the versions 10.3 or 10.5.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="16">InfoAsCFDictionary as Variant</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion144.shtml" class=version>14.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns the information CFDictionary about the display.<BR>
+<B>Notes:</B> 
+<BR>
+On any error the return value is nil.<BR>
+Returns a <A href="class-cfdictionarymbs.html">CFDictionaryMBS</A> object. Returned as Variant to reduce plugin dependencies.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="17">IsCaptured as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion33.shtml" class=version>3.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns true if you captured this display.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-cgdisplaymbs.html">CGDisplayMBS</A> <span style="color: #800000;">// pick main display</span><br /><br />MsgBox str(d.IsCaptured)</span>
+</pre>
+</div>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="18">MoveCursorToPoint(x as Double, y as Double) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion33.shtml" class=version>3.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Move the cursor to the specified point relative to the display origin (the upper left corner of the display).<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">Function</span> KeyDown(Key <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">String</span>) <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">Boolean</span><br />  <span style="color: #800000;">// in a window keydown event:</span><br />  <br />  <span style="color: #0000FF;">if</span> asc(key)=32 <span style="color: #0000FF;">then</span><br />    <span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-cgdisplaymbs.html">CGDisplayMBS</A><br />    <span style="color: #0000FF;">dim</span> error <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = c.MoveCursorToPoint(<span style="color: #336698;">200</span>,<span style="color: #336698;">200</span>)<br />    <br />    Title=str(error) <span style="color: #800000;">// zero on success</span><br />    <br />  <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br />  <br /><span style="color: #0000FF;">End</span> <span style="color: #0000FF;">Function</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Returns CGDisplayNoErr (0) on success.<BR>
+No events are generated as a result of this move.<BR>
+Points that would lie outside the desktop are clipped to the desktop.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="19">OpenGLDisplayMask as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return the OpenGL display mask for display, or 0 is display is an invalid display.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="20">Release as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion33.shtml" class=version>3.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Releases the display.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <A href="class-cgdisplaymbs.html">CGDisplayMBS</A> = <A href="class-cgdisplaymbs.html">CGDisplayMBS</A>.MainDisplay<br /><br /><span style="color: #0000FF;">if</span> d.Capture = <span style="color: #336698;">0</span> <span style="color: #0000FF;">then</span><br />  <br />  <span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <A href="class-cgcontextmbs.html">CGContextMBS</A> = d.DrawingContext<br />  <br />  <span style="color: #800000;">// watch it drawing red</span><br />  c.SetRGBFillColor <span style="color: #006633;">1.0</span>, <span style="color: #006633;">0.0</span>, <span style="color: #006633;">0.0</span>, <span style="color: #006633;">1.0</span><br />  c.FillRect <A href="global-cgmakerectmbs.html">CGMakeRectMBS</A>(<span style="color: #336698;">0</span>,<span style="color: #336698;">0</span>,d.PixelsWide,d.PixelsHigh)<br />  <br />  <A href="global-delaymbs.html#2">DelayMBS</A> <span style="color: #006633;">3.0</span><br />  <br />  <span style="color: #0000FF;">call</span> d.Release<br /><span style="color: #0000FF;">else</span><br />  MsgBox <span style="color: #6600FE;">&quot;Failed to capture displays.&quot;</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+Returns an error code.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="21">SetDisplayMode(mode as <A href="class-cgdisplaymodembs.html">CGDisplayModeMBS</A>) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Switch the display mode to mode. <BR>
+<B>Notes:</B> 
+<BR>
+The selected display mode persists for the life of the program, and automatically reverts to the permanent setting when the program terminates.<BR>
+<BR>
+When changing display modes of displays in a mirroring set, other displays in the mirroring set will be set to a display mode capable of mirroring the bounds of the largest display being explicitly set.<BR>
+<BR>
+Note that after switching, display parameters and addresses may change.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="22">SetDisplayTransferByByteTable(count as Integer, red as memoryblock, green as memoryblock, blue as memoryblock) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion33.shtml" class=version>3.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Set a display gamma/transfer function using tables of data for each channel.<BR>
+<B>Notes:</B> 
+<BR>
+As a convenience, allow setting of the gamma table by byte values.<BR>
+Returns an error code.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="23">SetDisplayTransferByTable(count as Integer, red as memoryblock, green as memoryblock, blue as memoryblock) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion33.shtml" class=version>3.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Set a display gamma/transfer function.<BR>
+<B>Notes:</B> 
+<BR>
+Set a display gamma/transfer function using tables of data for each channel.<BR>
+Values within each table should have values in the range of 0.0 through 1.0.<BR>
+The same table may be passed in for red, green, and blue channels. &#39;count&#39;  indicates the number of entries in each table.<BR>
+The tables are interpolated as needed to generate the number of samples needed by hardware.<BR>
+<BR>
+Returns an error code.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="24">SetDisplayTransferFormula(formula as <A href="class-cgdisplaytransferformulambs.html">CGDisplayTransferFormulaMBS</A>) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion33.shtml" class=version>3.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Set a display gamma/transfer function.<BR>
+<B>Notes:</B> 
+<BR>
+Set a display gamma/transfer function from a formula specifying min and max values and a gamma for each channel.<BR>
+Gamma values must be greater than 0.0.<BR>
+To get an antigamma of 1.6, one would specify a value of (1.0 / 1.6)<BR>
+Min values must be greater than or equal to 0.0 and less than 1.0.<BR>
+Max values must be greater than 0.0 and less than or equal to 1.0.<BR>
+Out of range values, or Max greater than or equal to Min result in a kCGSRangeCheck error.<BR>
+<BR>
+Values are computed by sampling a function for a range of indices from 0 through 1: value = Min + ((Max - Min) * pow(index, Gamma))<BR>
+The resulting values are converted to a machine specific format and loaded into hardware.<BR>
+<BR>
+Returns an error code.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-maccg-coregraphicsdirectdisplay-gammatest.html">/MacCG/CoreGraphics DirectDisplay/Gamma Test</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="25">SetRotation(angle as Integer) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion130.shtml" class=version>13.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Rescans the bus of displays and changes the rotation of the display.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <A href="class-cgdisplaymbs.html">CGDisplayMBS</A> = <A href="class-cgdisplaymbs.html">CGDisplayMBS</A>.MainDisplay<br /><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = d.SetRotation(<span style="color: #336698;">90</span>)<br /><br /><span style="color: #0000FF;">if</span> e&lt;&gt;0 <span style="color: #0000FF;">then</span><br />  MsgBox <span style="color: #6600FE;">&quot;Error: &quot;</span>+str(e)<br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Returns IOKit error code. Zero means success.<BR>
+<BR>
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="26">SetStereoOperation(stereo as boolean, forceBlueLine as boolean, option as Integer) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Immediately enable or disable stereo operation for a display.<BR>
+<B>Notes:</B> 
+<BR>
+Note that the system normally detects the presence of a stereo window, and will automatically switch a display containing a stereo window to stereo operation. This function provides a mechanism to force a display to stereo operation, and to set options (such as blue line sync signal) when in stereo operation.<BR>
+<BR>
+When in stereo operation, a display may need to generate a special stereo sync signal as part of the video output. The sync signal consists of a blue line which occupies the first 25% of the last scanline for the left eye view, and the first 75% of the last scanline for the right eye view. The remainder of the scanline is black. To force the display to generate this sync signal, pass true for forceBlueLine; otherwise, pass false.<BR>
+<BR>
+Lasterror is set to kCGErrorSuccess on success, or kCGErrorRangeCheck if the display does not support the stereo operation settings requested.<BR>
+<BR>
+On success, the display resolution, mirroring mode, and available display modes may change due to hardware-specific capabilities and limitations. You should check these settings to verify that they are appropriate for your application.<BR>
+<BR>
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="27">ShieldingWindowID as UInt32</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns window ID of the shield window for the captured display, or 0 if the display is not not shielded.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="28">ShowCursor as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion33.shtml" class=version>3.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Shows the mouse cursor.<BR>
+<B>Notes:</B> 
+<BR>
+Returns an error code.<BR>
+Increments hide cursor count.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-maccg-coregraphicsdirectdisplay-capturescreenwithcgcontextmbs.html">/MacCG/CoreGraphics DirectDisplay/Capture Screen with CGContextMBS</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-cgdisplaymbs.html">CGDisplayMBS</a>.<A name="29">SwitchToMode(Mode as Dictionary) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion33.shtml" class=version>3.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Switch display mode. <BR>
+<B>Notes:</B> 
+<BR>
+Note that after switching, display parameters and addresses may change.<BR>
+The selected display mode persists for the life of the program, and automatically reverts to the permanent setting made by Preferences when the program terminates.<BR>
+The mode dictionary passed in must be a dictionary vended by other CGDirectDisplay APIs such as BestModeForParameters() and AvailableModes().<BR>
+Returns an error code.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-maccg-coregraphicsdirectdisplay-cgmodelist.html">/MacCG/CoreGraphics DirectDisplay/CG Modelist</A></li>
+</ul>
+</div>
+<p>
+ 
+<a href="coregraphics-cgdisplaymbs-method1.html">Next items</a>
+</p>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=coregraphics-cgdisplaymbs-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

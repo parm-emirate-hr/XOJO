@@ -1,0 +1,839 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - SoftDeclareMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="SoftDeclareMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">SoftDeclareMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-softdeclarembs.html">SoftDeclareMBS</a> class.  </p>
+<div class="WLM">
+<b><a href="class-softdeclarembs.html">SoftDeclareMBS</a>.<A name="1">CallFunction(param as string,data as memoryblock) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-declare.html" translate="no">Declare</A></td>
+<td class=grau><a href="plugins-mbsutilplugin.html">MBS Util Plugin</a></td>
+<td class=grau><a href="newinversion77.shtml" class=version>7.7</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Calls a function.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <A href="class-softdeclarembs.html">SoftDeclareMBS</A><br /><span style="color: #0000FF;">dim</span> m,p,b <span style="color: #0000FF;">as</span> memoryBlock<br /><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> folderItem<br /><span style="color: #0000FF;">dim</span> path <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span><br /><br />f=<A href="global-applicationsfoldermbs.html">ApplicationsFolderMBS</A>(-<span style="color: #336698;">32766</span>) <span style="color: #800000;">// get a folder...</span><br />path=f.NativePath<br /><br />MsgBox path<br /><br />b=newmemoryBlock(<span style="color: #336698;">1024</span>)<br />b.long(<span style="color: #336698;">0</span>)=0 <span style="color: #800000;">// make empty C string</span><br /><br />p=newmemoryBlock(lenb(path)+<span style="color: #336698;">3</span>)<br />p.cstring(<span style="color: #336698;">0</span>)=path<br /><br />m=newmemoryBlock(<span style="color: #336698;">12</span>+<span style="color: #336698;">10</span>)<br />m.long(<span style="color: #336698;">0</span>)=p.<A href="memoryblock-addressmbs.html">AddressMBS</A>(<span style="color: #336698;">0</span>)<br />m.long(<span style="color: #336698;">4</span>)=b.<A href="memoryblock-addressmbs.html">AddressMBS</A>(<span style="color: #336698;">0</span>)<br />m.long(<span style="color: #336698;">8</span>)=1023<br /><br />c=new <A href="class-softdeclarembs.html">SoftDeclareMBS</A><br /><span style="color: #0000FF;">if</span> c.LoadDLL(<span style="color: #6600FE;">&quot;KERNEL32&quot;</span>) <span style="color: #0000FF;">then</span><br />  <span style="color: #0000FF;">if</span> c.loadfunction(<span style="color: #6600FE;">&quot;GetShortPathNameA&quot;</span>) <span style="color: #0000FF;">then</span><br />    c.CallingMode=0<br />    MsgBox <span style="color: #6600FE;">&quot;found function&quot;</span><br />    <span style="color: #0000FF;">if</span> c.CallFunction(<span style="color: #6600FE;">&quot;iii&quot;</span>,m) <span style="color: #0000FF;">then</span><br />      msgbox <span style="color: #6600FE;">&quot;Short path is: &quot;</span>+b.cstring(<span style="color: #336698;">0</span>)<br />    <span style="color: #0000FF;">else</span><br />      msgbox <span style="color: #6600FE;">&quot;Failed to call function.&quot;</span><br />    <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br />  <span style="color: #0000FF;">else</span><br />    msgbox <span style="color: #6600FE;">&quot;Loading of function &quot;</span>+c.FunctionName+<span style="color: #6600FE;">&quot; failed.&quot;</span><br />  <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br /><span style="color: #0000FF;">else</span><br />  msgbox <span style="color: #6600FE;">&quot;Loading of Kernel32 failed.&quot;</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+The param string is a combination of the characters &quot;i&quot; for integer, &quot;l&quot; for 64bit integer, &quot;f&quot; for single (float) and &quot;d&quot; for double.<BR>
+Use &quot;i&quot; for booleans, shorts and pointers.<BR>
+<BR>
+the memoryblock must match exactly the parameters you specified.<BR>
+Returns true on success.<BR>
+<p>See also:<ul>
+<li><A href="declare-softdeclarembs-method.html#2">CallFunction(paramcount as Integer,data as memoryblock) as boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-softdeclarembs.html">SoftDeclareMBS</a>.<A name="2">CallFunction(paramcount as Integer,data as memoryblock) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-declare.html" translate="no">Declare</A></td>
+<td class=grau><a href="plugins-mbsutilplugin.html">MBS Util Plugin</a></td>
+<td class=grau><a href="newinversion.shtml" class=version></a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Calls a function.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <A href="class-softdeclarembs.html">SoftDeclareMBS</A><br /><span style="color: #0000FF;">dim</span> m,p,b <span style="color: #0000FF;">as</span> memoryBlock<br /><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> folderItem<br /><span style="color: #0000FF;">dim</span> path <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span><br /><br />f=<A href="global-applicationsfoldermbs.html">ApplicationsFolderMBS</A>(-<span style="color: #336698;">32766</span>) <span style="color: #800000;">// get a folder...</span><br />path=f.NativePath<br /><br />MsgBox path<br /><br />b=newmemoryBlock(<span style="color: #336698;">1024</span>)<br />b.long(<span style="color: #336698;">0</span>)=0 <span style="color: #800000;">// make empty C string</span><br /><br />p=newmemoryBlock(lenb(path)+<span style="color: #336698;">3</span>)<br />p.cstring(<span style="color: #336698;">0</span>)=path<br /><br />m=newmemoryBlock(<span style="color: #336698;">12</span>+<span style="color: #336698;">10</span>)<br />m.long(<span style="color: #336698;">0</span>)=p.<A href="memoryblock-addressmbs.html">AddressMBS</A>(<span style="color: #336698;">0</span>)<br />m.long(<span style="color: #336698;">4</span>)=b.<A href="memoryblock-addressmbs.html">AddressMBS</A>(<span style="color: #336698;">0</span>)<br />m.long(<span style="color: #336698;">8</span>)=1023<br /><br />c=new <A href="class-softdeclarembs.html">SoftDeclareMBS</A><br /><span style="color: #0000FF;">if</span> c.LoadDLL(<span style="color: #6600FE;">&quot;KERNEL32&quot;</span>) <span style="color: #0000FF;">then</span><br />  <span style="color: #0000FF;">if</span> c.loadfunction(<span style="color: #6600FE;">&quot;GetShortPathNameA&quot;</span>) <span style="color: #0000FF;">then</span><br />    c.CallingMode=0<br />    MsgBox <span style="color: #6600FE;">&quot;found function&quot;</span><br />    <span style="color: #0000FF;">if</span> c.CallFunction(<span style="color: #336698;">3</span>,m) <span style="color: #0000FF;">then</span><br />      msgbox <span style="color: #6600FE;">&quot;Short path is: &quot;</span>+b.cstring(<span style="color: #336698;">0</span>)<br />    <span style="color: #0000FF;">else</span><br />      msgbox <span style="color: #6600FE;">&quot;Failed to call function.&quot;</span><br />    <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br />  <span style="color: #0000FF;">else</span><br />    msgbox <span style="color: #6600FE;">&quot;Loading of function &quot;</span>+c.FunctionName+<span style="color: #6600FE;">&quot; failed.&quot;</span><br />  <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br /><span style="color: #0000FF;">else</span><br />  msgbox <span style="color: #6600FE;">&quot;Loading of Kernel32 failed.&quot;</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+If paramtercount is 0, the memoryblock is ignored.<BR>
+The size of the memoryblock must be minimum 4*paramcount.<BR>
+Each parameter is set using m.long(n*4) where n=0 is the first parameter.<BR>
+A parameter may be any integer value or an address of a memoryblock. The address can be read using memoryblock.<A href="memoryblock-addressmbs.html">addressMBS</A> which is part of the plugin. You can even use only one memoryblock for all 3 parameters in the example like this:<BR>
+<BR>
+  m=newmemoryBlock(2100)<BR>
+  m.cstring(1024)=path<BR>
+  m.long(0)=m.address(20)<BR>
+  m.long(4)=m.address(1024)<BR>
+  m.long(8)=1024<BR>
+  <BR>
+First 12 bytes for the parameter table, the next 1000 bytes for the result buffer and finally a thousand bytes for the input string.<BR>
+<BR>
+Before RB 3.1 this function was named &quot;Call&quot;, but RB5 requires that the word &quot;Call&quot; is no longer valid for a function name.<BR>
+<BR>
+Softdeclare is limited to only 6 parameters for plugin version 3.2. Plugin version 3.3 extends this to 8 parameters.<BR>
+<p>See also:<ul>
+<li><A href="declare-softdeclarembs-method.html">CallFunction(param as string,data as memoryblock) as boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-softdeclarembs.html">SoftDeclareMBS</a>.<A name="3">CallFunctionDouble(param as string,data as memoryblock) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-declare.html" translate="no">Declare</A></td>
+<td class=grau><a href="plugins-mbsutilplugin.html">MBS Util Plugin</a></td>
+<td class=grau><a href="newinversion77.shtml" class=version>7.7</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Calls a function which returns a double value.<BR>
+<B>Notes:</B> 
+<BR>
+The param string is a combination of the characters &quot;i&quot; for integer, &quot;l&quot; for 64bit integer, &quot;f&quot; for single (float) and &quot;d&quot; for double.<BR>
+Use &quot;i&quot; for booleans, shorts and pointers.<BR>
+<BR>
+the memoryblock must match exactly the parameters you specified.<BR>
+Returns true on success.<BR>
+<p>See also:<ul>
+<li><A href="declare-softdeclarembs-method.html#4">CallFunctionDouble(paramcount as Integer,data as memoryblock) as boolean</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-util-softdeclares-softdeclarelinux.html">/Util/softDeclares/Softdeclare Linux</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-softdeclarembs.html">SoftDeclareMBS</a>.<A name="4">CallFunctionDouble(paramcount as Integer,data as memoryblock) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-declare.html" translate="no">Declare</A></td>
+<td class=grau><a href="plugins-mbsutilplugin.html">MBS Util Plugin</a></td>
+<td class=grau><a href="newinversion34.shtml" class=version>3.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Calls a function which returns a double value.<BR>
+<B>Notes:</B> 
+<BR>
+Fills the ResultDouble property.<BR>
+<BR>
+If paramtercount is 0, the memoryblock is ignored.<BR>
+The size of the memoryblock must be minimum 4*paramcount.<BR>
+Each parameter is set using m.long(n*4) where n=0 is the first parameter.<BR>
+A parameter may be any integer value or an address of a memoryblock. The address can be read using memoryblock.<A href="memoryblock-addressmbs.html">addressMBS</A> which is part of the plugin. <BR>
+Only 10 parameters can currently be used.<BR>
+<p>See also:<ul>
+<li><A href="declare-softdeclarembs-method.html#3">CallFunctionDouble(param as string,data as memoryblock) as boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-softdeclarembs.html">SoftDeclareMBS</a>.<A name="5">CallFunctionInteger64(param as string,data as memoryblock) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-declare.html" translate="no">Declare</A></td>
+<td class=grau><a href="plugins-mbsutilplugin.html">MBS Util Plugin</a></td>
+<td class=grau><a href="newinversion77.shtml" class=version>7.7</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Calls a function which returns an integer value.<BR>
+<B>Notes:</B> 
+<BR>
+The param string is a combination of the characters &quot;i&quot; for integer, &quot;l&quot; for 64bit integer, &quot;f&quot; for single (float) and &quot;d&quot; for double.<BR>
+Use &quot;i&quot; for booleans, shorts and pointers.<BR>
+<BR>
+the memoryblock must match exactly the parameters you specified.<BR>
+Returns true on success.<BR>
+<p>See also:<ul>
+<li><A href="declare-softdeclarembs-method.html#6">CallFunctionInteger64(paramcount as Integer,data as memoryblock) as boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-softdeclarembs.html">SoftDeclareMBS</a>.<A name="6">CallFunctionInteger64(paramcount as Integer,data as memoryblock) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-declare.html" translate="no">Declare</A></td>
+<td class=grau><a href="plugins-mbsutilplugin.html">MBS Util Plugin</a></td>
+<td class=grau><a href="newinversion34.shtml" class=version>3.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Calls a function which returns an integer value.<BR>
+<B>Notes:</B> 
+<BR>
+Fills the ResultInt64 property.<BR>
+<BR>
+If paramtercount is 0, the memoryblock is ignored.<BR>
+The size of the memoryblock must be minimum 4*paramcount.<BR>
+Each parameter is set using m.long(n*4) where n=0 is the first parameter.<BR>
+A parameter may be any integer value or an address of a memoryblock. The address can be read using memoryblock.<A href="memoryblock-addressmbs.html">addressMBS</A> which is part of the plugin. <BR>
+Only 10 parameters can currently be used.<BR>
+<p>See also:<ul>
+<li><A href="declare-softdeclarembs-method.html#5">CallFunctionInteger64(param as string,data as memoryblock) as boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-softdeclarembs.html">SoftDeclareMBS</a>.<A name="7">CallMethod(param as string,data as memoryblock) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-declare.html" translate="no">Declare</A></td>
+<td class=grau><a href="plugins-mbsutilplugin.html">MBS Util Plugin</a></td>
+<td class=grau><a href="newinversion77.shtml" class=version>7.7</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Calls a function which returns no value.<BR>
+<B>Notes:</B> 
+<BR>
+The param string is a combination of the characters &quot;i&quot; for integer, &quot;l&quot; for 64bit integer, &quot;f&quot; for single (float) and &quot;d&quot; for double.<BR>
+Use &quot;i&quot; for booleans, shorts and pointers.<BR>
+<BR>
+the memoryblock must match exactly the parameters you specified.<BR>
+Returns true on success.<BR>
+<p>See also:<ul>
+<li><A href="declare-softdeclarembs-method.html#8">CallMethod(paramcount as Integer,data as memoryblock) as boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-softdeclarembs.html">SoftDeclareMBS</a>.<A name="8">CallMethod(paramcount as Integer,data as memoryblock) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-declare.html" translate="no">Declare</A></td>
+<td class=grau><a href="plugins-mbsutilplugin.html">MBS Util Plugin</a></td>
+<td class=grau><a href="newinversion71.shtml" class=version>7.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Calls a function which returns no value.<BR>
+<B>Notes:</B> 
+<BR>
+If paramtercount is 0, the memoryblock is ignored.<BR>
+The size of the memoryblock must be minimum 4*paramcount.<BR>
+Each parameter is set using m.long(n*4) where n=0 is the first parameter.<BR>
+A parameter may be any integer value or an address of a memoryblock. The address can be read using memoryblock.<A href="memoryblock-addressmbs.html">addressMBS</A> which is part of the plugin. <BR>
+Only 10 parameters can currently be used.<BR>
+Returns true on success.<BR>
+<p>See also:<ul>
+<li><A href="declare-softdeclarembs-method.html#7">CallMethod(param as string,data as memoryblock) as boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-softdeclarembs.html">SoftDeclareMBS</a>.<A name="9">CopyLibrary(byref target as <A href="class-softdeclarembs.html">SoftDeclareMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-declare.html" translate="no">Declare</A></td>
+<td class=grau><a href="plugins-mbsutilplugin.html">MBS Util Plugin</a></td>
+<td class=grau><a href="newinversion77.shtml" class=version>7.7</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Copies the library handle to another softdeclare object.<BR>
+<B>Notes:</B> 
+<BR>
+if target is nil, a new object is created.<BR>
+The library handle in the target object is set to point to the same library as the original object.<BR>
+</div>
+<div class="W">
+<b><a href="class-softdeclarembs.html">SoftDeclareMBS</a>.<A name="10">FreeLibrary as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-declare.html" translate="no">Declare</A></td>
+<td class=grau><a href="plugins-mbsutilplugin.html">MBS Util Plugin</a></td>
+<td class=grau><a href="newinversion54.shtml" class=version>5.4</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Releases the library.<BR>
+<B>Notes:</B> 
+<BR>
+Only for Windows currently this function releases the handles and unloads the library. Windows internally has a reference counter for the library so memory is only released when the last reference is freed.<BR>
+Lasterror is set.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-softdeclarembs.html">SoftDeclareMBS</a>.<A name="11">LoadConstant(constname as string) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-declare.html" translate="no">Declare</A></td>
+<td class=grau><a href="plugins-mbsutilplugin.html">MBS Util Plugin</a></td>
+<td class=grau><a href="newinversion.shtml" class=version></a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Loads a constant from inside the library.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <A href="class-softdeclarembs.html">SoftDeclareMBS</A><br /><span style="color: #0000FF;">dim</span> s <span style="color: #0000FF;">as</span> <A href="class-cfstringmbs.html">CFStringMBS</A><br /><span style="color: #0000FF;">dim</span> m <span style="color: #0000FF;">as</span> MemoryBlock<br /><span style="color: #0000FF;">dim</span> handle <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span><br /><br /><span style="color: #800000;">// Test Mac OS X</span><br /><span style="color: #800000;">// Load the constant kABFirstNameProperty from the Addressbook framework</span><br /><br />c=new <A href="class-softdeclarembs.html">SoftDeclareMBS</A><br /><br /><span style="color: #0000FF;">if</span> c.LoadFramework(<span style="color: #6600FE;">&quot;Addressbook.framework&quot;</span>) <span style="color: #0000FF;">then</span><br />  msgbox <span style="color: #6600FE;">&quot;Loaded &quot;</span>+c.libname+<span style="color: #6600FE;">&quot; to &quot;</span>+format(c.libhandle,<span style="color: #6600FE;">&quot;-0&quot;</span>)+<span style="color: #6600FE;">&quot;.&quot;</span><br />  <span style="color: #0000FF;">if</span> c.LoadConstant(<span style="color: #6600FE;">&quot;kABFirstNameProperty&quot;</span>) <span style="color: #0000FF;">then</span><br />    msgbox <span style="color: #6600FE;">&quot;Loaded constant &quot;</span>+c.ConstantName+<span style="color: #6600FE;">&quot; to &quot;</span>+format(c.ConstantPointer,<span style="color: #6600FE;">&quot;-0&quot;</span>)+<span style="color: #6600FE;">&quot;.&quot;</span><br />    <br />    m=<A href="global-newmemoryblockfromptrmbs.html">NewMemoryBlockFromPtrMBS</A>(c.ConstantPointer) <span style="color: #800000;">// I hope it&apos;s not nil!</span><br />    <br />    handle=m.Long(<span style="color: #336698;">0</span>)<br />    <span style="color: #0000FF;">if</span> handle&lt;&gt;0 <span style="color: #0000FF;">then</span><br />      s=new <A href="class-cfstringmbs.html">CFStringMBS</A><br />      s.Handle=handle<br />      <br />      msgbox <span style="color: #6600FE;">&quot;Got value: &quot;</span>+s.str<br />    <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br />  <span style="color: #0000FF;">else</span><br />    msgbox <span style="color: #6600FE;">&quot;Loading of constant &quot;</span>+c.ConstantName+<span style="color: #6600FE;">&quot; failed.&quot;</span><br />  <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br /><span style="color: #0000FF;">else</span><br />  msgbox <span style="color: #6600FE;">&quot;Loading of Addressbook.framework failed.&quot;</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+Lasterror is set.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-util-softdeclares-softdeclare.html">/Util/softDeclares/SoftDeclare</A></li>
+</ul>
+</div>
+<div class="W">
+<b><a href="class-softdeclarembs.html">SoftDeclareMBS</a>.<A name="12">LoadDLL(libname as string) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-declare.html" translate="no">Declare</A></td>
+<td class=grau><a href="plugins-mbsutilplugin.html">MBS Util Plugin</a></td>
+<td class=grau><a href="newinversion54.shtml" class=version>5.4</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Loads a Windows DLL.<BR>
+<B>Notes:</B> 
+<BR>
+Lasterror is set.<BR>
+libname can be name (e.g. &quot;KERNEL32&quot;), filename (e.g. &quot;KERNEL32.DLL&quot;) or path (e.g. &quot;C:\WINDOWS\KERNEL32.DLL&quot;).<BR>
+</div>
+<div class="W">
+<b><a href="class-softdeclarembs.html">SoftDeclareMBS</a>.<A name="13">LoadDLLfromMemory(data as string) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-declare.html" translate="no">Declare</A></td>
+<td class=grau><a href="plugins-mbsutilplugin.html">MBS Util Plugin</a></td>
+<td class=grau><a href="newinversion77.shtml" class=version>7.7</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Loads a Windows DLL from a string.<BR>
+<B>Notes:</B> 
+<BR>
+Some libraries don&#39;t like to be loaded from a string.<BR>
+But else you can pass any DLL file content to this function.<BR>
+<BR>
+The string is locked so it stays in memory.<BR>
+On success the handle property is not zero and the function returns true.<BR>
+</div>
+<div class="M">
+<b><a href="class-softdeclarembs.html">SoftDeclareMBS</a>.<A name="14">LoadDylib(path as string) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-declare.html" translate="no">Declare</A></td>
+<td class=grau><a href="plugins-mbsutilplugin.html">MBS Util Plugin</a></td>
+<td class=grau><a href="newinversion54.shtml" class=version>5.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Loads a library in Mac OS X dylib format.<BR>
+<B>Notes:</B> 
+Lasterror and Liberror are set.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-util-softdeclares-softdeclare.html">/Util/softDeclares/SoftDeclare</A></li>
+<li><A href="example-vlc-playaudio.html">/VLC/Play audio</A></li>
+<li><A href="example-vlc-showtwovideos.html">/VLC/Show two videos</A></li>
+<li><A href="example-vlc-showvideosample.html">/VLC/Show video sample</A></li>
+<li><A href="example-vlc-thumbnailerconsole.html">/VLC/Thumbnailer Console</A></li>
+<li><A href="example-vlc-thumbnailergui.html">/VLC/Thumbnailer GUI</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-softdeclarembs.html">SoftDeclareMBS</a>.<A name="15">LoadFramework(frameworkfilename as string) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-declare.html" translate="no">Declare</A></td>
+<td class=grau><a href="plugins-mbsutilplugin.html">MBS Util Plugin</a></td>
+<td class=grau><a href="newinversion54.shtml" class=version>5.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Loads a framework in Mac OS X.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #800000;">// A user&apos;s question:</span><br /><span style="color: #800000;">// I am trying to call this to Carbon.framework using the softdeclare function:</span><br /><br /><span style="color: #800000;">// UInt32 SwapQDTextFlags(UInt32 newFlags);</span><br /><br /><span style="color: #800000;">// flags are OR&apos;d</span><br /><br /><span style="color: #800000;">// kQDUseDefaultTextRendering = 0</span><br /><span style="color: #800000;">// kQDUseTrueTypeScalerGlyphs = (1 &lt;&lt; 0)</span><br /><span style="color: #800000;">// kQDUseCGTextRendering = (1 &lt;&lt; 1)</span><br /><span style="color: #800000;">// kQDUseCGTextMetrics = (1 &lt;&lt; 2)</span><br /><span style="color: #800000;">// kQDDontChangeFlags = 0xFFFFFFFF</span><br /><br /><span style="color: #800000;">// The call is to make the system use Quartz rendering for QuickDraw text (like the text in my WASTEField). How should I call this?</span><br /><br /><span style="color: #800000;">// The solution code:</span><br /><br /><span style="color: #0000FF;">dim</span> s <span style="color: #0000FF;">as</span> <A href="class-softdeclarembs.html">SoftDeclareMBS</A><br /><span style="color: #0000FF;">dim</span> m <span style="color: #0000FF;">as</span> MemoryBlock<br /><br /><span style="color: #0000FF;">const</span> flags=-<span style="color: #336698;">1</span> <span style="color: #800000;">// = 0xFFFFFFFF</span><br /><br />s=new <A href="class-softdeclarembs.html">SoftDeclareMBS</A><br />m=NewMemoryBlock(<span style="color: #336698;">10</span>)<br />m.Long(<span style="color: #336698;">0</span>)=flags<br /><br /><span style="color: #0000FF;">if</span> s.LoadFramework(<span style="color: #6600FE;">&quot;Carbon.Framework&quot;</span>) <span style="color: #0000FF;">then</span><br />  <span style="color: #0000FF;">if</span> s.LoadFunction(<span style="color: #6600FE;">&quot;SwapQDTextFlags&quot;</span>) <span style="color: #0000FF;">then</span><br />    <span style="color: #0000FF;">if</span> s.CallFunction(<span style="color: #336698;">1</span>,m) <span style="color: #0000FF;">then</span><br />      MsgBox str(s.Result) <span style="color: #800000;">// returns 7 for me (using Silk)</span><br />    <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br />  <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br /><br /><span style="color: #800000;">// Without any error checking!</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+frameworkfilename is e.g. &quot;Carbon.framework&quot;<BR>
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-softdeclarembs.html">SoftDeclareMBS</a>.<A name="16">LoadFrameworkFile(frameworkpath as folderitem) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-declare.html" translate="no">Declare</A></td>
+<td class=grau><a href="plugins-mbsutilplugin.html">MBS Util Plugin</a></td>
+<td class=grau><a href="newinversion32.shtml" class=version>3.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Loads on Mac OS X a framework from the given file specification.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> FolderItem<br /><span style="color: #0000FF;">dim</span> s <span style="color: #0000FF;">as</span> <A href="class-softdeclarembs.html">SoftDeclareMBS</A><br /><br />f=SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;spellcheck.bundle&quot;</span>)<br />s=new <A href="class-softdeclarembs.html">SoftDeclareMBS</A><br /><br /><span style="color: #0000FF;">if</span> s.LoadFrameworkFile(f) <span style="color: #0000FF;">then</span><br />  MsgBox <span style="color: #6600FE;">&quot;OK&quot;</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Returns true if successfull.<BR>
+Lasterror is set.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-softdeclarembs.html">SoftDeclareMBS</a>.<A name="17">LoadFunction(funcname as string) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-declare.html" translate="no">Declare</A></td>
+<td class=grau><a href="plugins-mbsutilplugin.html">MBS Util Plugin</a></td>
+<td class=grau><a href="newinversion.shtml" class=version></a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Loads a function from inside the library.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> s <span style="color: #0000FF;">as</span> <A href="class-softdeclarembs.html">SoftDeclareMBS</A><br /><span style="color: #0000FF;">dim</span> m <span style="color: #0000FF;">as</span> MemoryBlock<br /><br /><span style="color: #0000FF;">const</span> flags=-<span style="color: #336698;">1</span> <span style="color: #800000;">// = 0xFFFFFFFF</span><br /><br />s=new <A href="class-softdeclarembs.html">SoftDeclareMBS</A><br />m=NewMemoryBlock(<span style="color: #336698;">10</span>)<br />m.Long(<span style="color: #336698;">0</span>)=flags<br /><br /><span style="color: #0000FF;">if</span> s.LoadLibrary(<span style="color: #6600FE;">&quot;Carbon.Framework&quot;</span>) <span style="color: #0000FF;">then</span><br />  <span style="color: #0000FF;">if</span> s.LoadFunction(<span style="color: #6600FE;">&quot;SwapQDTextFlags&quot;</span>) <span style="color: #0000FF;">then</span><br />    <span style="color: #0000FF;">if</span> s.CallFunction(<span style="color: #336698;">1</span>,m) <span style="color: #0000FF;">then</span><br />      MsgBox str(s.Result) <span style="color: #800000;">// returns 7 for me (using Silk)</span><br />    <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br />  <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+A user&#39;s question:<BR>
+I am trying to call this to Carbon.framework using the softdeclare function:<BR>
+<BR>
+UInt32 SwapQDTextFlags(UInt32 newFlags);<BR>
+<BR>
+flags are OR&#39;d<BR>
+<BR>
+kQDUseDefaultTextRendering = 0<BR>
+kQDUseTrueTypeScalerGlyphs = (1 &lt;&lt; 0)<BR>
+kQDUseCGTextRendering = (1 &lt;&lt; 1)<BR>
+kQDUseCGTextMetrics = (1 &lt;&lt; 2)<BR>
+kQDDontChangeFlags = 0xFFFFFFFF<BR>
+<BR>
+The call is to make the system use Quartz rendering for QuickDraw text (like the text in my WASTEField). How should I call this?<BR>
+<BR>
+The solution code is above without any error checking!<BR>
+<BR>
+Lasterror is set.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-softdeclarembs.html">SoftDeclareMBS</a>.<A name="18">LoadLibrary(libname as string) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-declare.html" translate="no">Declare</A></td>
+<td class=grau><a href="plugins-mbsutilplugin.html">MBS Util Plugin</a></td>
+<td class=grau><a href="newinversion.shtml" class=version></a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Loads a library.<BR>
+<B>Notes:</B> 
+<BR>
+On Mac OS X e.g. &quot;Carbon.framework&quot; or &quot;System.framework&quot;.<BR>
+On Mac OS Carbon inside Classic e.g. &quot;CarbonLib&quot;.<BR>
+On Windows e.g. &quot;KERNEL32&quot; or &quot;USER32&quot;.<BR>
+<BR>
+Lasterror is set.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-softdeclarembs.html">SoftDeclareMBS</a>.<A name="19">ParametersSupported(param as string) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-declare.html" translate="no">Declare</A></td>
+<td class=grau><a href="plugins-mbsutilplugin.html">MBS Util Plugin</a></td>
+<td class=grau><a href="newinversion77.shtml" class=version>7.7</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Tests whether plugin supports the given parameter string.<BR>
+<B>Notes:</B> 
+<BR>
+The param string is a combination of the characters &quot;i&quot; for integer, &quot;l&quot; for 64bit integer, &quot;f&quot; for single (float) and &quot;d&quot; for double.<BR>
+Use &quot;i&quot; for booleans, shorts and pointers.<BR>
+<BR>
+Any new parameter string can be added. Please send an email to support to get a new combination added.<BR>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsutilplugin.html">MBS Util Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=declare-softdeclarembs-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

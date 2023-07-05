@@ -1,0 +1,543 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - CGImageDestinationMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="CGImageDestinationMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">CGImageDestinationMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-cgimagedestinationmbs.html">CGImageDestinationMBS</a> class.  </p>
+<div class="M">
+<b><a href="class-cgimagedestinationmbs.html">CGImageDestinationMBS</a>.<A name="1">AddImage(image as <A href="class-cgimagembs.html">CGImageMBS</A>, properties as dictionary=nil)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion95.shtml" class=version>9.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Adds an image to an image destination.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> inputfile <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test.jpg&quot;</span>)<br /><br /><span style="color: #800000;">// reading the picture</span><br /><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-cgimagesourcembs.html">CGImageSourceMBS</A>(inputfile)<br /><span style="color: #0000FF;">dim</span> img <span style="color: #0000FF;">as</span> <A href="class-cgimagembs.html">CGImageMBS</A> = c.CreateImageAtIndex(<span style="color: #336698;">0</span>)<br /><span style="color: #0000FF;">dim</span> propertiesGlobal <span style="color: #0000FF;">as</span> Dictionary = c.Properties<br /><span style="color: #0000FF;">dim</span> propertiesImage <span style="color: #0000FF;">as</span> Dictionary = c.PropertiesAtIndex(<span style="color: #336698;">0</span>)<br /><br /><span style="color: #0000FF;">dim</span> outputFile <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;output.jpg&quot;</span>)<br /><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-cgimagedestinationmbs.html">CGImageDestinationMBS</A>(outputFile, <span style="color: #6600FE;">&quot;public.jpeg&quot;</span>, <span style="color: #336698;">1</span>)<br /><br /><span style="color: #800000;">// writing the picture and include metadata</span><br />d.SetProperties(propertiesGlobal)<br />d.AddImage(img, propertiesImage)<br /><span style="color: #0000FF;">if</span> d.FinalizeMT <span style="color: #0000FF;">then</span><br />  outputFile.Launch<br /><span style="color: #0000FF;">else</span><br />  MsgBox <span style="color: #6600FE;">&quot;Failed to write jpeg.&quot;</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+image: The image to add.<BR>
+properties: An optional dictionary that specifies the properties of the added image. <BR>
+<BR>
+For properties you can use those in the <A href="class-cgimagesourcembs.html">CGImageSourceMBS</A> class, kCGImageDestinationLossyCompressionQuality and kCGImageDestinationBackgroundColor.<BR>
+<BR>
+The function logs an error if you add more images than what you specified when you created the image destination.<BR>
+Available in Mac OS X version 10.4 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgimagedestinationmbs.html">CGImageDestinationMBS</a>.<A name="2">AddImageCF(image as <A href="class-cgimagembs.html">CGImageMBS</A>, properties as Variant = nil)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion135.shtml" class=version>13.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Adds an image to an image destination.<BR>
+<B>Notes:</B> 
+<BR>
+image: The image to add.<BR>
+properties: An optional dictionary or <A href="class-cfdictionarymbs.html">CFDictionaryMBS</A> that specifies the properties of the added image. <BR>
+<BR>
+For properties you can use those in the <A href="class-cgimagesourcembs.html">CGImageSourceMBS</A> class, kCGImageDestinationLossyCompressionQuality and kCGImageDestinationBackgroundColor.<BR>
+<BR>
+The function logs an error if you add more images than what you specified when you created the image destination.<BR>
+Available in Mac OS X version 10.4 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgimagedestinationmbs.html">CGImageDestinationMBS</a>.<A name="3">AddImageFromSource(source as <A href="class-cgimagesourcembs.html">CGImageSourceMBS</A>, index as Integer, options as dictionary = nil)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion95.shtml" class=version>9.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Adds an image from an image source to an image destination.<BR>
+<B>Notes:</B> 
+<BR>
+source: An image source.<BR>
+index: An index that specifies the location of the image in the image source. The index is zero-based.<BR>
+properties: A dictionary that specifies properties to overwrite or add to the source image properties. <BR>
+<BR>
+Available in Mac OS X version 10.4 and later.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-maccg-cgimagesource-cgimagesourceconvert.html">/MacCG/CGImageSource/CGImageSource Convert</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-cgimagedestinationmbs.html">CGImageDestinationMBS</a>.<A name="4">AddImageFromSourceCF(source as <A href="class-cgimagesourcembs.html">CGImageSourceMBS</A>, index as Integer, options as Variant = nil)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion135.shtml" class=version>13.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Adds an image from an image source to an image destination.<BR>
+<B>Notes:</B> 
+<BR>
+source: An image source.<BR>
+index: An index that specifies the location of the image in the image source. The index is zero-based.<BR>
+properties: A dictionary or CFDcitionaryMBS that specifies properties to overwrite or add to the source image properties. <BR>
+<BR>
+Available in Mac OS X version 10.4 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgimagedestinationmbs.html">CGImageDestinationMBS</a>.<A name="5">Constructor(file as folderitem, type as string, count as Integer = 1)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion95.shtml" class=version>9.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates an image destination that writes to a location specified by a folderitem.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">Dim</span> p <span style="color: #0000FF;">As</span> Picture = <A href="global-logombs.html">LogoMBS</A>(<span style="color: #336698;">500</span>)<br /><br /><span style="color: #800000;">// save as Photoshop</span><br /><br /><span style="color: #0000FF;">Dim</span> image <span style="color: #0000FF;">As</span> <A href="class-cgimagembs.html">CGImageMBS</A> = <A href="class-cgimagembs.html">CGImageMBS</A>.CreateImage(p)<br /><span style="color: #0000FF;">Dim</span> file1 <span style="color: #0000FF;">As</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test1.psd&quot;</span>)<br /><span style="color: #0000FF;">Dim</span> dest <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">New</span> <A href="class-cgimagedestinationmbs.html">CGImageDestinationMBS</A>(file1, <span style="color: #6600FE;">&quot;com.adobe.photoshop-image&quot;</span>, <span style="color: #336698;">1</span>)<br /><br />dest.AddImage(image, <span style="color: #0000FF;">Nil</span>)<br /><br /><span style="color: #0000FF;">If</span> dest.Finalize <span style="color: #0000FF;">Then</span><br />  <span style="color: #800000;">// MsgBox &quot;Saved&quot;</span><br /><span style="color: #0000FF;">Else</span><br />  MsgBox <span style="color: #6600FE;">&quot;Failed to save.&quot;</span><br /><span style="color: #0000FF;">End</span> <span style="color: #0000FF;">If</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+file: The file to write to. If the file already exists, the data at this location is overwritten.<BR>
+<BR>
+type: The UTI (uniform type identifier) of the resulting image file. See Uniform Type Identifiers Overview for a list of system-declared and third-party UTIs.<BR>
+<BR>
+count: The number of images (not including thumbnail images) that the image file will contain.<BR>
+<BR>
+On success the handle value is not zero.<BR>
+<BR>
+Available in Mac OS X version 10.4 and later.<BR>
+<p>See also:<ul>
+<li><A href="coregraphics-cgimagedestinationmbs-method.html#6">Constructor(type as string, count as Integer = 1)</A></li>
+<li><A href="coregraphics-cgimagedestinationmbs-method.html#7">Constructor(url as string, type as string, count as Integer = 1)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-cgimagedestinationmbs.html">CGImageDestinationMBS</a>.<A name="6">Constructor(type as string, count as Integer = 1)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion95.shtml" class=version>9.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates an image destination that writes to a string.<BR>
+<B>Notes:</B> 
+<BR>
+type: The uniform type identifier (UTI) of the resulting image file. See Uniform Type Identifiers Overview for a list of system-declared and third-party UTIs.<BR>
+<BR>
+count: The number of images (not including thumbnail images) that the image file will contain.<BR>
+<BR>
+On success the handle is not zero.<BR>
+<BR>
+Available in Mac OS X version 10.4 and later.<BR>
+<p>See also:<ul>
+<li><A href="coregraphics-cgimagedestinationmbs-method.html#5">Constructor(file as folderitem, type as string, count as Integer = 1)</A></li>
+<li><A href="coregraphics-cgimagedestinationmbs-method.html#7">Constructor(url as string, type as string, count as Integer = 1)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-cgimagedestinationmbs.html">CGImageDestinationMBS</a>.<A name="7">Constructor(url as string, type as string, count as Integer = 1)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion95.shtml" class=version>9.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates an image destination that writes to a location specified by a URL.<BR>
+<B>Notes:</B> 
+<BR>
+url: The URL to write to. If the URL already exists, the data at this location is overwritten.<BR>
+<BR>
+type: The UTI (uniform type identifier) of the resulting image file. See Uniform Type Identifiers Overview for a list of system-declared and third-party UTIs.<BR>
+<BR>
+count: The number of images (not including thumbnail images) that the image file will contain.<BR>
+<BR>
+On success the handle value is not zero.<BR>
+<BR>
+Available in Mac OS X version 10.4 and later.<BR>
+<p>See also:<ul>
+<li><A href="coregraphics-cgimagedestinationmbs-method.html#5">Constructor(file as folderitem, type as string, count as Integer = 1)</A></li>
+<li><A href="coregraphics-cgimagedestinationmbs-method.html#6">Constructor(type as string, count as Integer = 1)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-cgimagedestinationmbs.html">CGImageDestinationMBS</a>.<A name="8">Data as string</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion95.shtml" class=version>9.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Makes a copy of the data.<BR>
+<B>Notes:</B> 
+The data is collected and after you called Finalize you can pick the data here.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgimagedestinationmbs.html">CGImageDestinationMBS</a>.<A name="9">Finalize as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion95.shtml" class=version>9.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Writes image data and properties to the data or URL associated with the image destination.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> logo <span style="color: #0000FF;">as</span> Picture = <A href="global-logombs.html">LogoMBS</A>(<span style="color: #336698;">500</span>)<br /><span style="color: #0000FF;">dim</span> image <span style="color: #0000FF;">as</span> <A href="class-cgimagembs.html">CGImageMBS</A> = <A href="global-cgcreateimagembs.html#2">CGCreateImageMBS</A>(logo)<br /><br /><span style="color: #0000FF;">dim</span> file <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;logo.png&quot;</span>)<br /><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-cgimagedestinationmbs.html">CGImageDestinationMBS</A>(file, <span style="color: #6600FE;">&quot;public.png&quot;</span>, <span style="color: #336698;">1</span>)<br /><br />d.AddImage(image, <span style="color: #0000FF;">nil</span>)<br /><br /><span style="color: #0000FF;">if</span> d.Finalize <span style="color: #0000FF;">then</span><br />  MsgBox <span style="color: #6600FE;">&quot;Saved&quot;</span><br /><span style="color: #0000FF;">else</span><br />  MsgBox <span style="color: #6600FE;">&quot;Failed to save.&quot;</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Returns true if the image is successfully written; false otherwise.<BR>
+<BR>
+You must call this function or the output of the image destination will not be valid. After calling this function, no additional data can be added to the image destination.<BR>
+<BR>
+Available in Mac OS X version 10.4 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgimagedestinationmbs.html">CGImageDestinationMBS</a>.<A name="10">FinalizeMT as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion131.shtml" class=version>13.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Writes image data and properties to the data or URL associated with the image destination.<BR>
+<B>Notes:</B> 
+<BR>
+Returns true if the image is successfully written; false otherwise.<BR>
+<BR>
+You must call this function or the output of the image destination will not be valid. After calling this function, no additional data can be added to the image destination.<BR>
+<BR>
+Available in Mac OS X version 10.4 and later.<BR>
+<BR>
+The work is performed on a preemptive thread, so this function does not block the application and can yield time to other Xojo threads. Must be called in a Xojo thread to enjoy benefits. If called in main thread will block, but keep other background threads running.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgimagedestinationmbs.html">CGImageDestinationMBS</a>.<A name="11">SetProperties(options as dictionary = nil)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion95.shtml" class=version>9.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Applies one or more properties to all images in an image destination.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> inputfile <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test.jpg&quot;</span>)<br /><br /><span style="color: #800000;">// reading the picture</span><br /><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-cgimagesourcembs.html">CGImageSourceMBS</A>(inputfile)<br /><span style="color: #0000FF;">dim</span> img <span style="color: #0000FF;">as</span> <A href="class-cgimagembs.html">CGImageMBS</A> = c.CreateImageAtIndex(<span style="color: #336698;">0</span>)<br /><span style="color: #0000FF;">dim</span> propertiesGlobal <span style="color: #0000FF;">as</span> Dictionary = c.Properties<br /><span style="color: #0000FF;">dim</span> propertiesImage <span style="color: #0000FF;">as</span> Dictionary = c.PropertiesAtIndex(<span style="color: #336698;">0</span>)<br /><br /><span style="color: #0000FF;">dim</span> outputFile <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;output.jpg&quot;</span>)<br /><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-cgimagedestinationmbs.html">CGImageDestinationMBS</A>(outputFile, <span style="color: #6600FE;">&quot;public.jpeg&quot;</span>, <span style="color: #336698;">1</span>)<br /><br /><span style="color: #800000;">// writing the picture and include metadata</span><br />d.SetProperties(propertiesGlobal)<br />d.AddImage(img, propertiesImage)<br /><span style="color: #0000FF;">if</span> d.FinalizeMT <span style="color: #0000FF;">then</span><br />  outputFile.Launch<br /><span style="color: #0000FF;">else</span><br />  MsgBox <span style="color: #6600FE;">&quot;Failed to write jpeg.&quot;</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+Available in Mac OS X version 10.4 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-cgimagedestinationmbs.html">CGImageDestinationMBS</a>.<A name="12">SetPropertiesCF(options as Variant)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-coregraphics.html" translate="no">CoreGraphics</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion135.shtml" class=version>13.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Applies one or more properties to all images in an image destination.<BR>
+<B>Notes:</B> 
+<BR>
+Available in Mac OS X version 10.4 and later.<BR>
+Options can be a Dictionary or <A href="class-cfdictionarymbs.html">CFDictionaryMBS</A>.<BR>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=coregraphics-cgimagedestinationmbs-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

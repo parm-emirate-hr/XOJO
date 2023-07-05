@@ -1,0 +1,1105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - DynaPDFMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="DynaPDFMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">DynaPDFMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>DynaPDFMBS class</H3>
+<div class="WLM">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-dynapdf.html" translate="no">DynaPDF</A></td>
+<td class=grau><a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a></td>
+<td class=grau><a href="newinversion80.shtml" class=version>8.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The dynapdf class.<BR>
+<B>Notes:</B> 
+<BR>
+A pdf library to create, modify, import pdf files.<BR>
+You need a separate dynapdf license key for this class.<BR>
+<BR>
+Please note that all constants have the prefix k. In the dynapdf_help.pdf file, the constants don&#39;t have a k prefix. And the C functions there have IPDF parameters which the plugin automatically passes for you. So<BR>
+<BR>
+SI32 pdfSetPageCoords(const void* IDPF, TPageCoord PageCoords)<BR>
+<BR>
+translates in Xojo to<BR>
+<BR>
+function SetPageCoords(PageCoords as Integer) as Integer<BR>
+<BR>
+and you call it like this:<BR>
+<BR>
+call pdf.SetPageCoords pdf.kpcTopDown<BR>
+<BR>
+where in this sample the DynaPDF object is named pdf.<BR>
+<BR>
+Pro license is required for the following functions: <BR>
+<UL><LI>
+BeginTransparencyGroup
+</LI><LI>
+ConvertColors
+</LI><LI>
+Create3DAnnot
+</LI><LI>
+CreateSoftMask
+</LI><LI>
+FlattenForm
+</LI><LI>
+GetPageText
+</LI><LI>
+ImportPage and ImportPageEx
+</LI><LI>
+ParseContent
+</LI><LI>
+RenderAnnotOrField
+</LI><LI>
+RenderPage
+</LI><LI>
+SetCMapDir
+</LI><LI>
+SetExtColorSpace, SetExtFillColorSpace and SetExtStrokeColorSpace.
+</LI><LI>
+SetUseGlobalImpFiles
+</LI></UL>
+<BR>
+Lite is required for:<BR>
+<UL><LI>
+AddRenderingIntent and AddRenderingIntentEx
+</LI><LI>
+CreateFormFields
+</LI><LI>
+CloseFileEx
+</LI><LI>
+ConvertEMFSpool
+</LI><LI>
+CreateCollection
+</LI><LI>
+CreateExtGState
+</LI><LI>
+InsertMetafile and InsertMetafileEx
+</LI><LI>
+OpenImportBuffer, OpenImportFile and OpenImportStream
+</LI><LI>
+SetPDFVersion for PDF/A and PDF/X
+</LI></UL>
+<BR>
+And all functions relaying on those functions internally.<BR>
+</div>
+<ul>
+<LI>11 events<UL>
+<li class="WLM">event <A href="dynapdf-dynapdfmbs-event.html">EnumDocFont</A>(Font as <A href="class-dynapdffontmbs.html">DynaPDFFontMBS</A>, FontInfo as <A href="class-dynapdffontinfombs.html">DynaPDFFontInfoMBS</A>, Type as Integer, BaseFont as string, Fontname as string, Embedded as boolean, IsFormFont as boolean, Flags as Integer, FontRef as Integer) as Integer</li>
+<li class="WLM">event <A href="dynapdf-dynapdfmbs-event.html#2">EnumHostFont</A>(FamilyName as string, PostScriptName as string, Style as Integer) as Integer</li>
+<li class="WLM">event <A href="dynapdf-dynapdfmbs-event.html#3">EnumHostFontEx</A>(FamilyName as string, PostScriptName as string, Style as Integer, BaseType as Integer, Embeddable as boolean, Flags as Integer, FilePath as string) as Integer</li>
+<li class="WLM">event <A href="dynapdf-dynapdfmbs-event.html#4">Error</A>(ErrorCode as Integer, ErrorMessage as string, ErrorType as Integer) as Integer</li>
+<li class="WLM">event <A href="dynapdf-dynapdfmbs-event.html#5">InitProgress</A>(ProgType as Integer, MaxCount as Integer)</li>
+<li class="WLM">event <A href="dynapdf-dynapdfmbs-event.html#6">NextPage</A>(g as graphics)</li>
+<li class="WLM">event <A href="dynapdf-dynapdfmbs-event.html#7">OnFontNotFound</A>(PDFFontRef as Integer, FontName as string, Style as Integer, StdFontIndex as Integer, IsSymbolFont as boolean) as Integer</li>
+<li class="WLM">event <A href="dynapdf-dynapdfmbs-event.html#8">OnReplaceICCProfile</A>(Type as Integer, ColorSpace as Integer) as Integer</li>
+<li class="WLM">event <A href="dynapdf-dynapdfmbs-event.html#9">PageBreak</A>(LastPosX as Double, LastPosY as Double, PageBreak as boolean) as Integer</li>
+<li class="WLM">event <A href="dynapdf-dynapdfmbs-event.html#10">Progress</A>(ActivePage as Integer) as Integer</li>
+<li class="WLM">event <A href="dynapdf-dynapdfmbs-event.html#11">RasterShowText</A>(MatrixBefore as <A href="class-dynapdfmatrixmbs.html">DynaPDFMatrixMBS</A>, MatrixAfter as <A href="class-dynapdfmatrixmbs.html">DynapdfMatrixMBS</A>, TextBuffers() as <A href="class-dynapdftextrecordambs.html">DynaPDFTextRecordAMBS</A>, Texts() as String, Width as Double, Vertical as boolean, FontRef as Integer, textScaling as Double)</li>
+</UL></LI>
+<LI>18 properties<UL>
+<li class="WLM">property <A href="dynapdf-dynapdfmbs-property.html">ActiveFontInfo</A> as <A href="class-dynapdffontinfombs.html">DynaPDFFontInfoMBS</A></li>
+<li class="WLM">property <A href="dynapdf-dynapdfmbs-property.html#2">ClearRectMode</A> as Integer</li>
+<li class="WLM">property <A href="dynapdf-dynapdfmbs-property.html#3">ErrorCount</A> as Integer</li>
+<li class="WLM">property <A href="dynapdf-dynapdfmbs-property.html#4">FontSize</A> as Double</li>
+<li class="WLM">property <A href="dynapdf-dynapdfmbs-property.html#5">Handle</A> as Integer</li>
+<li class="WLM">property <A href="dynapdf-dynapdfmbs-property.html#6">HasLite</A> as Boolean</li>
+<li class="WLM">property <A href="dynapdf-dynapdfmbs-property.html#7">HasPro</A> as Boolean</li>
+<li class="WLM">property <A href="dynapdf-dynapdfmbs-property.html#8">ImportFlags</A> as Integer</li>
+<li class="WLM">property <A href="dynapdf-dynapdfmbs-property.html#9">ImportFlags2</A> as Integer</li>
+<li class="WLM">property <A href="dynapdf-dynapdfmbs-property.html#10">PageCoords</A> as Integer</li>
+<li class="WLM">property <A href="dynapdf-dynapdfmbs-property.html#11">PageGraphics</A> as Graphics</li>
+<li class="WLM">property <A href="dynapdf-dynapdfmbs-property.html#12">PageGraphicsPicture</A> as Picture</li>
+<li class="W">property <A href="dynapdf-dynapdfmbs-property.html#13">PrintCancelled</A> as Boolean</li>
+<li class="WLM">property <A href="dynapdf-dynapdfmbs-property.html#14">SpaceWidthFactor</A> as Single</li>
+<li class="WLM">property <A href="dynapdf-dynapdfmbs-property.html#15">TraceFile</A> as FolderItem</li>
+<li class="WLM">property <A href="dynapdf-dynapdfmbs-property.html#16">TraceHandle</A> as Integer</li>
+<li class="WLM">property <A href="dynapdf-dynapdfmbs-property.html#17">ValidateTextEncodings</A> as Boolean</li>
+<li class="WLM">property <A href="dynapdf-dynapdfmbs-property.html#18">WarningCount</A> as Integer</li>
+</UL></LI>
+<LI>4 shared properties<UL>
+<li class="WLM">shared property <A href="dynapdf-dynapdfmbs-shared-property.html">DynaPDFVersion</A> as String</li>
+<li class="WLM">shared property <A href="dynapdf-dynapdfmbs-shared-property.html#3">TIFFVersion</A> as String</li>
+<li class="WLM">shared property <A href="dynapdf-dynapdfmbs-shared-property.html#4">zlibVersion</A> as String</li>
+</UL></LI>
+<LI>899 methods<UL>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method.html">ActivateAltFontList</A>(FontListHandle as Integer, EnableSysFonts as Boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method.html#2">AddActionToObj</A>(ObjType as Integer, theEvent as Integer, ActHandle as Integer, ObjHandle as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method.html#3">AddAnnotToPage</A>(PageNum as UInt32, Handle as UInt32) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method.html#4">AddArticle</A>(PosX as Double, PosY as Double, Width as Double, Height as Double) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method.html#5">AddBookmark</A>(title as String, parent as Integer, DestPage as Integer, Open as boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method.html#7">AddBookmarkEx</A>(title as String, parent as Integer, NamedDest as Integer, Open as boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method.html#8">AddBookmarkEx2</A>(title as String, parent as Integer, NamedDest as String, unicode as boolean, Open as boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method.html#11">AddButtonImage</A>(BtnHandle as Integer, State as Integer, Caption as string, ImgFile as FolderItem) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method.html#12">AddButtonImageEx</A>(BtnHandle as Integer, State as Integer, Caption as string, hbitmap as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method.html#13">AddButtonImageEx2</A>(BtnHandle as integer, State as integer, Caption as string, ImageData as MemoryBlock) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method.html#14">AddButtonImageEx2</A>(BtnHandle as integer, State as integer, Caption as string, ImageData as String) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method.html#15">AddContinueText</A>(text as string) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method.html#17">AddDeviceNProcessColorants</A>(DeviceNCS as Integer, Colorants() as string, ProcessCS as Integer, Handle as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method.html#18">AddDeviceNSeparations</A>(DeviceNCS as Integer, Colorants() as string, SeparationCS() as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method.html#20">AddFieldToFormAction</A>(Action as Integer, Field as Integer, Include as Boolean) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method.html#21">AddFieldToHideAction</A>(HideAct as Integer, Field as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method.html#22">AddFileComment</A>(Text as string) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method.html#24">AddFontSearchPath</A>(path as folderitem, recursive as boolean = true) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method.html#25">AddFontSearchPath</A>(path as string, recursive as boolean = true) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method.html#26">AddImage</A>(Filter as Integer, Flags as Integer, Image as <A href="class-dynapdfimagembs.html">DynaPDFImageMBS</A>) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method.html#27">AddInkList</A>(InkAnnot as UInt32, points() as <A href="class-dynapdfpointmbs.html">DynaPDFPointMBS</A>) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method.html#28">AddJavaScript</A>(Name as string, Script as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html">AddLayerToDisplTree</A>(parent as <A href="class-dynapdflayergroupmbs.html">DynaPDFLayerGroupMBS</A>, layer as UInt32, Title as string) as <A href="class-dynapdflayergroupmbs.html">DynaPDFLayerGroupMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#3">AddMaskImage</A>(BaseImage as Integer, Buffer as MemoryBlock, Stride as UInt32, BitsPerPixel as UInt32, Width as UInt32, Height as UInt32) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#4">AddMaskImage</A>(BaseImage as Integer, Buffer as Ptr, BufSize as UInt32, Stride as UInt32, BitsPerPixel as UInt32, Width as UInt32, Height as UInt32) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#5">AddObjectToLayer</A>(OCG as UInt32, ObjType as Integer, Handle as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#6">AddOCGToAppEvent</A>(Handle as UInt32, Events as Integer, Categories as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#7">AddOutputIntent</A>(ICCFile as folderitem) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#8">AddOutputIntentEx</A>(buffer as Memoryblock) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#9">AddOutputIntentEx</A>(buffer as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#10">AddPageLabel</A>(StartRange as UInt32, PageLabelFormat as Integer, Value as string, FirstPageNum as Int32) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#12">AddValToChoiceField</A>(Field as Integer, ExpValue as string, Value as string, Selected as Boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#13">Append</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#14">AppendTraceFile</A>(File as FolderItem) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#15">ApplyAppEvent</A>(TOCAppEvent as Integer, SaveResult as Boolean) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#16">ApplyPattern</A>(PattHandle as Integer, ColorMode as Integer, ColorValue as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#17">ApplyShading</A>(ShadHandle as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#18">AssociateEmbFile</A>(DestObject as Integer, DestHandle as Integer, Relationship as Integer, EmbFile as UInt32) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#19">AttachFile</A>(File as folderitem, Description as string, Compress as boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#20">AttachFileEx</A>(Buffer as Memoryblock, Filename as string, Description as string, Compress as boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#21">AttachFileEx</A>(Buffer as string, Filename as string, Description as string, Compress as boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#22">AutoTemplate</A>(Templ as Integer, PosX as Double, PosY as Double, Width as Double, Height as Double) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#23">BeginContinueText</A>(PosX as Double, PosY as Double) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#24">BeginLayer</A>(OCG as UInt32) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#25">BeginPageTemplate</A>(Name as String, UseAutoTemplates as boolean) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#26">BeginPattern</A>(PatternType as Integer, TilingType as Integer, Width as Double, Height as Double) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#27">BeginTemplate</A>(Width as Double, Height as Double) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#28">BeginTemplateEx</A>(BBox as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A>, Matrix as <A href="class-dynapdfmatrixmbs.html">DynaPDFMatrixMBS</A>) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#29">BeginTransparencyGroup</A>(x1 as Double, y1 as Double, x2 as Double, y2 as Double, Isolated as Boolean, Knockout as Boolean, CS as Integer, CSHandle as Int32) as Int32</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method1.html#30">Bezier_1_2_3</A>(x1 as Double, y1 as Double, x2 as Double, y2 as Double, x3 as Double, y3 as Double) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method2.html">Bezier_1_3</A>(x1 as Double, y1 as Double, x3 as Double, y3 as Double) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method2.html#2">Bezier_2_3</A>(x2 as Double, y2 as Double, x3 as Double, y3 as Double) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method2.html#3">CalcWidthHeight</A>(OrgWidth as Double, OrgHeight as Double, ScaledWidth as Double, ScaledHeight as Double) as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method2.html#4">CaretAnnot</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, ColorValue as UInt32, ColorSpace as Integer, Author as string, Subject as string, Content as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method2.html#6">ChangeAnnotName</A>(Handle as Integer, Name as string) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method2.html#8">ChangeAnnotPos</A>(Handle as Integer, PosX as Double, PosY as Double, Width as Double, Height as Double) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method2.html#9">ChangeBookmark</A>(ABmk as Integer, Text as string, Parent as Integer, DestPage as Integer, Open as Boolean) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method2.html#11">ChangeFont</A>(Handle as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method2.html#12">ChangeFontEx</A>(Handle as integer, FontSize as double, Style as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method2.html#13">ChangeFontSize</A>(size as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method2.html#14">ChangeFontStyle</A>(Style as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method2.html#15">ChangeFontStyleEx</A>(Style as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method2.html#16">ChangeJavaScript</A>(Handle as Integer, Text as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method2.html#17">ChangeJavaScriptAction</A>(Handle as Integer, Text as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method2.html#20">ChangeJavaScriptName</A>(Handle as Integer, Text as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method2.html#22">ChangeLinkAnnot</A>(Handle as Integer, URL as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method2.html#23">ChangeNamedDest</A>(ObjType as Integer, Handle as Integer, Name as String) as Boolean &nbsp; <b style="color: #00008B"> New in 23.1 </b></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method2.html#24">ChangeOCGName</A>(Handle as Integer, Name as String) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method2.html#25">ChangeSeparationColor</A>(CSHandle as UInt32, NewColor as UInt32, AlternateExtColorSpace as Integer, AltHandle as Integer = -1) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method2.html#26">CheckCollection</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method2.html#27">CheckConformance</A>(ConformanceType as Integer, CheckOptions as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method2.html#28">CheckFieldNames</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method2.html#29">CircleAnnot</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, LineWidth as Double, FillColor as UInt32, StrokeColor as UInt32, ColorSpace as Integer, Author as string, Subject as string, Comment as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html">ClearAutoTemplates</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#2">ClearErrorLog</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#3">ClearHostFonts</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#4">ClearPageGraphics</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#5">ClipPath</A>(ClipMode as Integer, FillMode as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#6">CloseAndSignFile</A>(CertFile as folderitem, Password as string, Reason as string, Location as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#7">CloseAndSignFileEx</A>(OpenPwd as string, OwnerPwd as string, KeyLen as Integer, Restrict as Integer, CertFile as folderitem, Password as string, Reason as string, Location as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#8">CloseAndSignFileExt</A>(SigParams as <A href="class-dynapdfsigparmsmbs.html">DynaPDFSigParmsMBS</A>) as boolean</li>
+<li class="W">method <A href="dynapdf-dynapdfmbs-method3.html#9">CloseAndSignPDFFile</A>(OutputFile as FolderItem, CertificateData as String, Password as String, ContactInfo as String = "", Location as String = "", Reason as String = "") as boolean</li>
+<li class="W">method <A href="dynapdf-dynapdfmbs-method3.html#10">CloseAndSignPDFFileWithDialog</A>(OutputFile as FolderItem, StoreName as String = "MY", ContactInfo as String = "", Location as String = "", Reason as String = "") as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#11">CloseFile</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#12">CloseFileEx</A>(OpenPwd as string, OwnerPwd as string, KeyLen as Integer, Restrict as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#13">CloseImage</A> as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#14">CloseImportFile</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#15">CloseImportFileEx</A>(Handle as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#16">ClosePath</A>(FillMode as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#17">CloseTag</A> as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#18">ComputeBBox</A>(Flags as Integer) as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#19">ConvertColors</A>(Flags as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#20">ConvertEMFSpool</A>(File as folderitem, LeftMargin as Double, TopMargin as Double, Flags as Integer = 0) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#21">ConvertStyledText</A>(StyledText as StyledText, LeadingFactor as double = -1) as String</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#22">CopyChoiceValues</A>(Source as UInt32, Dest as UInt32, Share as Boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#23">Create3DAnnot</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, Author as string, Name as string, U3DFile as string, Image as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#25">Create3DBackground</A>(IView as Integer, BackColor as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#26">Create3DGotoViewAction</A>(Base3DAnnot as Integer, IView as Integer, Named as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#27">Create3DProjection</A>(IView as Integer, ProjType as Integer, ScaleType as Integer, Diameter as Double, FOV as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#28">Create3DView</A>(Base3DAnnot as Integer, Name as string, SetAsDefault as boolean, Matrix as memoryblock, CamDistance as Double, RenderingMode as Integer, LightingSheme as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method3.html#30">CreateAltFontList</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html">CreateAnnotAP</A>(annot as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#2">CreateArticleThread</A>(ThreadName as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#4">CreateAxialShading</A>(sX as Double, sY as Double, eX as Double, eY as Double, SCenter as Double, SColor as Integer, EColor as Integer, Extend1 as Boolean, Extend2 as boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#5">CreateBarcodeField</A>(Name as string, Parent as Integer, PosX as Double, PosY as Double, Width as Double, Height as Double, Barcode as <A href="class-dynapdfbarcodembs.html">DynaPDFBarcodeMBS</A>) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#6">CreateButton</A>(Name As String, Caption as string, Parent as Integer, PosX as Double, PosY as Double, Width as Double, Height as Double) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#8">CreateCheckBox</A>(Name as string, ExpValue as string, Checked as boolean, Parent as Integer, PosX as Double, PosY as Double, Width as Double, Height as Double) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#9">CreateCIEColorSpace</A>(Base as Integer, WhitePoint as memoryblock, BlackPoint as memoryblock, Gamma as memoryblock, Matrix as memoryblock) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#10">CreateColItemDate</A>(EmbFile as Integer, Key as string, Value as Integer, Prefix as string) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#11">CreateColItemNumber</A>(EmbFile as Integer, Key as string, Value as Double, Prefix as string) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#12">CreateColItemString</A>(EmbFile as Integer, Key as string, Value as string, Prefix as string) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#14">CreateCollection</A>(View as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#15">CreateCollectionField</A>(ColType as Integer, Column as Integer, Name as String, Key as string, Visible as boolean, Editable as boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#17">CreateComboBox</A>(Name as string, Sort as boolean, Parent as Integer, PosX as Double, PosY as Double, Width as Double, Height as Double) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#18">CreateDeviceNColorSpace</A>(Colorants() as string, PostScriptFunc as string, AlternateColorSpace as Integer, Handle as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#20">CreateExtGState</A>(e as <A href="class-dynapdfextgstatembs.html">DynaPDFExtGStateMBS</A>) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#21">CreateGoToAction</A>(DestType as Integer, PageNum as Integer, a as Double, b as Double, c as Double, d as Double) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#22">CreateGoToAction</A>(NamedDest as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#23">CreateGoToEAction</A>(Location as Integer, Source as string, SrcPage as Integer, Target as string, DestName as string, DestPage as Integer, NewWindow as boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#24">CreateGoToRAction</A>(File as folderitem, PageNum as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#25">CreateGoToRAction</A>(FilePath as String, PageNum as integer) as integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#26">CreateGoToRActionEx</A>(File as folderitem, DestName as String, NewWindow as boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#27">CreateGoToRActionEx</A>(FilePath as String, DestName as String, NewWindow as boolean) as integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#28">CreateGoToRActionExU</A>(File as folderitem, DestName as String, NewWindow as boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#29">CreateGoToRActionExU</A>(FilePath as String, DestName as String, NewWindow as boolean) as integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method4.html#30">CreateGroupField</A>(Name as string, Parent as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html">CreateHideAction</A>(Field as Integer, Hide as boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#2">CreateICCBasedColorSpace</A>(File as folderitem) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#3">CreateICCBasedColorSpace</A>(Path as String) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#4">CreateICCBasedColorSpaceEx</A>(Buffer as Memoryblock) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#5">CreateICCBasedColorSpaceEx</A>(Buffer as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#6">CreateImage</A>(file as folderitem, format as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#7">CreateImpDataAction</A>(DataFile as folderitem) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#8">CreateIndexedColorSpace</A>(Base as Integer, Handle as Integer, ColorTable as memoryblock, NumColors as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#9">CreateJSAction</A>(Script as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#11">CreateLaunchAction</A>(OP as Integer, FileName as folderitem, DefDir as string, Param as string, NewWindow as boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#12">CreateLaunchActionEx</A>(FileName as folderitem, NewWindow as boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#13">CreateListBox</A>(Name as string, Sort as boolean, Parent as Integer, PosX as Double, PosY as Double, Width as Double, Height as Double) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#14">CreateNamedAction</A>(Action as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#15">CreateNamedDest</A>(Name as string, DestPage as Integer, DestType as Integer, a as Double, b as Double, c as Double, d as Double) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#17">CreateNewPDF</A>(OutPDF as folderitem = nil) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#18">CreateOCG</A>(name as string, DisplayInUI as boolean, Visible as boolean, Intent as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#20">CreateOCMD</A>(Visibility as Integer, OCGs() as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#21">CreateRadialShading</A>(sX as Double, sY as Double, R1 as Double, eX as Double, eY as Double, R2 as Double, SCenter as Double, SColor as Integer, EColor as Integer, Extend1 as boolean, Extend2 as boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#22">CreateRadioButton</A>(Name as string, ExpValue as string, Checked as boolean, Parent as Integer, PosX as Double, PosY as Double, Width as Double, Height as Double) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#23">CreateRectilinearMeasure</A>(ViewPort as Integer, Scale as Double, UnitDescription as String, LabelDistance as String, LabelArea as String) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#25">CreateResetAction</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#26">CreateSeparationCS</A>(Colorant as string, Alternate as Integer, Handle as Integer, ColorValue as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#28">CreateSetOCGStateAction</A>(On() as UInt32, Off() as UInt32, Toggle() as UInt32, PreserveRB as boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#29">CreateSigField</A>(Name as string, Parent as Integer, PosX as Double, PosY as Double, Width as Double, Height as Double) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method5.html#30">CreateSigFieldAP</A>(SigField as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html">CreateSoftMask</A>(TranspGroup as UInt32, MaskType as Integer, BackColor as UInt32) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#2">CreateStdPattern</A>(Pattern as Integer, LineWidth as Double, Distance as Double, LineColor as Integer, BackColor as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#3">CreateStructureTree</A> as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#4">CreateStructureTreeEx</A>(Tag as Integer) as Boolean &nbsp; <b style="color: #00008B"> New in 23.1 </b></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#5">CreateSubmitAction</A>(Flags as Integer, URL as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#6">CreateTable</A>(AllocRows as UInt32, NumCols as UInt32, width as Double, DefRowHeight as Double) as <A href="class-dynapdftablembs.html">DynaPDFTableMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#7">CreateTextField</A>(Name as string, Parent as Integer, Multiline as boolean, MaxLen as Integer, PosX as Double, PosY as Double, Width as Double, Height as Double) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#8">CreateTraceFile</A>(File as FolderItem) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#9">CreateURIAction</A>(URL as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#10">CreateViewport</A>(Name as String, X1 as Double, Y1 as Double, X2 as Double, Y2 as Double) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#12">CreateXFAStream</A>(Name as String, Buffer as String) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#13">DecryptPDF</A>(File as folderitem, PwdType as Integer, Password as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#15">DeleteAcroForm</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#16">DeleteActionFromObj</A>(ObjType as Integer, ActHandle as Integer, ObjHandle as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#17">DeleteActionFromObjEx</A>(ObjType as Integer, ObjHandle as Integer, ActIndex as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#18">DeleteAltFontList</A>(FontListHandle as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#19">DeleteAnnotation</A>(Handle as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#20">DeleteAnnotationFromPage</A>(PageNum as UInt32, Handle as UInt32) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#21">DeleteAppEvents</A>(ApplyEvent as Boolean, TOCAppEvent as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#22">DeleteBookmark</A>(ABmk as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#23">DeleteEmbeddedFile</A>(handle as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#24">DeleteField</A>(Field as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#25">DeleteFieldEx</A>(URL as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#26">DeleteJavaScripts</A>(DelJavaScriptActions as boolean)</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#27">DeleteNamedDest</A>(Name as String) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#28">DeleteNamedDestByIndex</A>(Index as integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#29">DeleteOCGFromAppEvent</A>(Handle as UInt32, Events as Integer, Categories as Integer, DelCategoryOnly as Boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method6.html#30">DeleteOCGFromDisplayTree</A>(OCGHandle as UInt32, Recursive as Boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html">DeleteOCUINode</A>(OCGNodeHandle as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#2">DeleteOutputIntent</A>(Index as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#3">DeletePage</A>(PageNum as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#4">DeletePageLabels</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#5">DeleteSeparationInfo</A>(AllPages as boolean) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#6">DeleteTemplate</A>(handle as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#7">DeleteTemplateEx</A>(index as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#8">DeleteXFAForm</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#9">DrawArc</A>(PosX as Double, PosY as Double, Radius as Double, StartAngle as Double, EndAngle as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#10">DrawArcEx</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, StartAngle as Double, EndAngle as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#11">DrawChord</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, StartAngle as Double, EndAngle as Double, FillMode as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#12">DrawCircle</A>(PosX as Double, PosY as Double, Radius as Double, FillMode as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#13">DrawNGon</A>(PosX as double, PosY as double, Radius as double, Alpha as double, NumSides as Integer, FillMode as integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#14">DrawPie</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, StartAngle as Double, EndAngle as Double, FillMode as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#15">EditPage</A>(PageNum as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#16">EditTemplate</A>(index as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#17">EditTemplate2</A>(handle as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#18">Ellipse</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, FillMode as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#19">EnableMutex</A>(Value as boolean)</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#20">EncryptPDF</A>(File as folderitem, OpenPwd as string, OwnerPwd as string, KeyLen as Integer, Restrict as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#23">EndLayer</A> as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#24">EndPage</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#25">EndPattern</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#26">EndTemplate</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#27">EnumDocFonts</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method7.html#28">EnumDocFontsCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#3">ExchangeBookmarks</A>(Bmk1 as Integer, Bmk2 as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#4">ExchangePages</A>(first as Integer, second as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#5">ExtractPageText</A>(RemoveText as boolean = false) as String</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#6">ExtractPageTextRect</A>(Left as Double, Top as Double, Right as Double, Bottom as Double, RemoveText as boolean = false) as String</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#7">ExtractText</A>(PageNum as Integer, Flags as Integer, rect as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A> = nil, byref text as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#8">FileAttachAnnot</A>(PosX as Double, PosY as Double, Icon as Integer, Author as string, Desc as string, File as folderitem, Compress as boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#9">FileAttachAnnotEx</A>(PosX as double, PosY as double, Icon as integer, Author as string, Desc as string, Filename as String, FileBuffer as MemoryBlock, Compress as boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#10">FileAttachAnnotEx</A>(PosX as double, PosY as double, Icon as integer, Author as string, Desc as string, Filename as String, FileBuffer as String, Compress as boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#11">FileLink</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, FileLink as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#13">FindBookmark</A>(DestPage as Integer, Text as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#15">FindEmbeddedFile</A>(Name as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#16">FindField</A>(Name as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#18">FindLinkAnnot</A>(URL as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#19">FindNextBookmark</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#20">FinishSignature</A>(PKCS7 as Memoryblock) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#21">FinishSignature</A>(PKCS7 as string) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#22">FlattenAnnotOrField</A>(AnnotationOrFieldHandle as Integer, AnnotFlattenFlags as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#23">FlattenAnnots</A>(AnnotFlattenFlags as Integer = 0) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#24">FlattenForm</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#25">FlushPageContent</A>(stack as <A href="class-dynapdfstackmbs.html">DynaPDFStackMBS</A>) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#26">FlushPages</A>(Flags as Integer = 0) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#27">FlushPagesEx</A>(Flags as integer, LastPage as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#28">FreeImageBuffer</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#29">FreeImageObj</A>(Handle as UInt32) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method8.html#30">FreePDF</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html">FreeTextAnnot</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, Author as string, Text as string, Align as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#3">Get3DAnnotStream</A>(Annot as UInt32, byref Data as String, byref SubType as String) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#4">GetActionCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#5">GetActionHandle</A>(ObjType as Integer, ObjHandle as UInt32, ActIndex as UInt32) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#6">GetActionType</A>(ActHandle as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#7">GetActionTypeEx</A>(ObjType as Integer, ObjHandle as Integer, ActIndex as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#8">GetActiveFont</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#9">GetAllocBy</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#11">GetAnnotBBox</A>(ahandle as Integer) as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#12">GetAnnotCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#13">GetAnnotEx</A>(ahandle as Integer) as <A href="class-dynapdfannotationexmbs.html">DynaPDFAnnotationExMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#14">GetAnnotFlags</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#15">GetAnnotLink</A>(Handle as Integer) as string</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#16">GetAnnotType</A>(Handle as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#17">GetAscent</A> as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#18">GetBBox</A>(boundary as Integer) as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#19">GetBidiMode</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#20">GetBookmark</A>(ahandle as Integer) as <A href="class-dynapdfbookmarkmbs.html">DynaPDFBookmarkMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#21">GetBookmarkCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#22">GetBorderStyle</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#23">GetBuffer</A> as string</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#24">GetBufferMemory</A> as Memoryblock</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#25">GetCapHeight</A> as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#26">GetCharacterSpacing</A> as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#27">GetCheckBoxChar</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#28">GetCheckBoxCharEx</A>(Field as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#29">GetCheckBoxDefState</A>(Field as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method9.html#30">GetCMap</A>(index as Integer) as <A href="class-dynapdfcmapmbs.html">DynaPDFCMapMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html">GetCMapCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#2">GetColorSpace</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#3">GetColorSpaceCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#4">GetColorSpaceObj</A>(index as Integer) as <A href="class-dynapdfcolorspacembs.html">DynaPDFColorSpaceMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#5">GetCompressionFilter</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#6">GetCompressionLevel</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#7">GetContent</A> as string</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#8">GetDefBitsPerPixel</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#9">GetDescent</A> as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#10">GetDocInfo</A>(dinfo as Integer) as string</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#11">GetDocInfoCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#12">GetDocInfoEx</A>(index as Integer, byref DInfo as Integer, byref key as string, byref value as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#13">GetDocumentColorSpaces</A> as <A href="class-dynapdfcolorspacembs.html">DynaPDFColorSpaceMBS</A>()</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#14">GetDocUsesTransparency</A>(Flags as UInt32 = 0) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#15">GetDrawDirection</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#16">GetEmbeddedFile</A>(Handle as Integer, byref FileSpec as <A href="class-dynapdffilespecmbs.html">DynaPDFFileSpecMBS</A>, Decompress as boolean) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#17">GetEmbeddedFileCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#18">GetEMFPatternDistance</A> as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#19">GetErrLogMessage</A>(index as Integer) as <A href="class-dynapdferrormbs.html">DynaPDFErrorMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#20">GetErrLogMessageCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#21">GetErrorMessage</A> as string</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#22">GetErrorMode</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#24">GetFieldBackColor</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#25">GetFieldBorderColor</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#26">GetFieldBorderStyle</A>(Field as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#27">GetFieldBorderWidth</A>(aField as Integer) as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#28">GetFieldCalcOrder</A> as UInt32()</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#29">GetFieldChoiceValue</A>(Field as Integer, ValIndex as Integer) as <A href="class-dynapdfchoicevaluembs.html">DynaPDFChoiceValueMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method10.html#30">GetFieldColor</A>(Field as Integer, ColorType as Integer, byref ColorSpace as Integer, byref ColorValue as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html">GetFieldCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#2">GetFieldEx</A>(index as Integer) as <A href="class-dynapdffieldexmbs.html">DynaPDFFieldExMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#3">GetFieldExpValCount</A>(Field as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#4">GetFieldExpValue</A>(Field as Integer) as string</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#5">GetFieldExpValueEx</A>(Field as Integer, ValIndex as Integer, byref Value as string, byref ExpValue as string, byref Selected as boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#6">GetFieldFlags</A>(Field as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#7">GetFieldGroupType</A>(Field as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#8">GetFieldHighlightMode</A>(Field as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#9">GetFieldIndex</A>(Field as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#10">GetFieldMapName</A>(Field as Integer) as string</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#11">GetFieldName</A>(Field as Integer) as string</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#12">GetFieldOrientation</A>(Field as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#13">GetFieldTextAlign</A>(Field as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#14">GetFieldTextColor</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#15">GetFieldToolTip</A>(Field as Integer) as string</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#16">GetFieldType</A>(Field as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#17">GetFillColor</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#18">GetFontCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#20">GetFontInfoEx</A>(index as Integer) as <A href="class-dynapdffontinfombs.html">DynaPDFFontInfoMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#21">GetFontMetrics</A>(FontHandle as Integer) as <A href="class-dynapdffontmetricsmbs.html">DynaPDFFontMetricsMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#22">GetFontOrigin</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#23">GetFontSearchOrder</A> as Integer()</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#24">GetFontSelMode</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#25">GetFontWeight</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#26">GetFTextHeight</A>(Align as Integer, aText as string) as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#28">GetFTextHeightEx</A>(Width as Double, Align as Integer, aText as string) as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method11.html#30">GetGlyphIndex</A>(Index as UInt32) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html">GetGlyphOutline</A>(Index as UInt32) as <A href="class-dynapdfglyphoutlinembs.html">DynaPDFGlyphOutlineMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#2">GetGoToAction</A>(index as Integer, Decompress as Boolean = false, ImageParseFlags as Integer = &h00000080) as <A href="class-dynapdfgotoactionmbs.html">DynaPDFGoToActionMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#3">GetGoToRAction</A>(index as Integer, Decompress as Boolean = false, ImageParseFlags as Integer = &h00000080) as <A href="class-dynapdfgotoactionmbs.html">DynaPDFGoToActionMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#4">GetGStateFlags</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#5">GetHideAction</A>(index as Integer) as <A href="class-dynapdfhideactionmbs.html">DynaPDFHideActionMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#6">GetIconColor</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#7">GetImageBuffer</A> as string</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#8">GetImageBufferMemory</A> as memoryblock</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#9">GetImageCount</A>(File as folderitem) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#10">GetImageCount</A>(Path as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#11">GetImageCountEx</A>(Buffer as Memoryblock) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#12">GetImageCountEx</A>(Buffer as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#13">GetImageHeight</A>(Handle as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#14">GetImageObj</A>(Handle as UInt32, Flags as Integer) as <A href="class-dynapdfimagembs.html">DynaPDFImageMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#15">GetImageObjCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#16">GetImageWidth</A>(Handle as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#17">GetImportDataAction</A>(index as Integer, Decompress as Boolean = false, ImageParseFlags as Integer = &h00000080) as <A href="class-dynapdfimportdataactionmbs.html">DynaPDFImportDataActionMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#18">GetImportFlags</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#19">GetImportFlags2</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#20">GetInBBox</A>(PageNum as Integer, Boundary as Integer) as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#21">GetInDocInfo</A>(DInfo as Integer, byref value as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#22">GetInDocInfoCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#23">GetInDocInfoEx</A>(index as Integer, byref DInfo as Integer, byref key as string, byref value as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#24">GetInEncryptionFlags</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#25">GetInFieldCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#26">GetInIsCollection</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#27">GetInIsEncrypted</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#28">GetInIsSigned</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#29">GetInIsTaggedPDF</A> as integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method12.html#30">GetInIsTrapped</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html">GetInIsXFAForm</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#2">GetInMetadata</A>(PageNum as Integer) as String</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#3">GetInOrientation</A>(PageNum as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#4">GetInPageCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#5">GetInPDFVersion</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#6">GetInPDFVersionEx</A> as <A href="class-dynapdfversioninfombs.html">DynaPDFVersionInfoMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#7">GetInPrintSettings</A> as <A href="class-dynapdfprintsettingsmbs.html">DynaPDFPrintSettingsMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#8">GetInRepairMode</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#9">GetIsFixedPitch</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#10">GetIsTaggingEnabled</A> as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#11">GetItalicAngle</A> as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#12">GetJavaScript</A>(Handle as Integer) as string</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#15">GetJavaScriptActionEx</A>(index as Integer) as <A href="class-dynapdfjavascriptactionmbs.html">DynaPDFJavaScriptActionMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#16">GetJavaScriptCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#17">GetJavaScriptEx</A>(Name as string) as string</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#18">GetJavaScriptName</A>(Handle as Integer) as string</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#19">GetJPEGQuality</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#20">GetLanguage</A> as string</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#21">GetLastTextPosX</A> as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#22">GetLastTextPosY</A> as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#23">GetLaunchAction</A>(index as Integer, Decompress as Boolean = false, ImageParseFlags as Integer = &h00000080) as <A href="class-dynapdflaunchactionmbs.html">DynaPDFLaunchActionMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#24">GetLayerConfig</A>(Index as Integer) as <A href="class-dynapdfoclayerconfigmbs.html">DynaPDFOCLayerConfigMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#25">GetLayerConfigCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#26">GetLeading</A> as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#27">GetLineCapStyle</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#28">GetLineJoinStyle</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#29">GetLineWidth</A> as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method13.html#30">GetLinkHighlightMode</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html">GetLogMetafileSize</A>(FileName as folderitem) as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#2">GetLogMetafileSizeEx</A>(Buffer as Memoryblock) as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#3">GetLogMetafileSizeEx</A>(Buffer as string) as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#4">GetMatrix</A>(byref Matrix as <A href="class-dynapdfmatrixmbs.html">DynaPDFMatrixMBS</A>) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#5">GetMaxFieldLen</A>(TxtField as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#6">GetMetaConvFlags</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#7">GetMetadata</A>(ObjType as Integer, Handle as Integer) as String</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#8">GetMissingGlyphs</A> as UInt32()</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#9">GetMissingGlyphsString</A> as String</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#10">GetMiterLimit</A> as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#11">GetMovieAction</A>(index as Integer, Decompress as Boolean = false, ImageParseFlags as Integer = &h00000080) as <A href="class-dynapdffieldmbs.html">DynaPDFFieldMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#12">GetNamedAction</A>(index as Integer) as <A href="class-dynapdfnamedactionmbs.html">DynaPDFNamedActionMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#13">GetNamedDest</A>(index as Integer) as <A href="class-dynapdfnameddestmbs.html">DynaPDFNamedDestMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#14">GetNamedDestCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#15">GetNeedAppearance</A> as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#17">GetObjActions</A>(ObjType as Integer, ObjHandle as Integer, byref Actions as <A href="class-dynapdfobjactionsmbs.html">DynaPDFObjActionsMBS</A>) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#18">GetOCG</A>(Handle as UInt32) as <A href="class-dynapdfocgmbs.html">DynaPDFOCGMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#19">GetOCGContUsage</A>(Handle as UInt32) as <A href="class-dynapdfocgcontusagembs.html">DynaPDFOCGContUsageMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#20">GetOCGCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#21">GetOCGUsageUserName</A>(Handle as UInt32, Index as UInt32, byref Name as String) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#22">GetOCUINode</A>(Node as Integer) as <A href="class-dynapdfocuinodembs.html">DynaPDFOCUINodeMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#23">GetOpacity</A> as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#24">GetOrientation</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#25">GetOutputIntent</A>(Index as Integer) as <A href="class-dynapdfoutputintentmbs.html">DynaPDFOutputIntentMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#26">GetOutputIntentCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#27">GetPage</A>(PageNum as UInt32) as <A href="class-dynapdfpagembs.html">DynaPDFPageMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#29">GetPageAnnotCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method14.html#30">GetPageAnnotEx</A>(index as Integer) as <A href="class-dynapdfannotationexmbs.html">DynaPDFAnnotationExMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html">GetPageColorSpaces</A> as <A href="class-dynapdfcolorspacembs.html">DynaPDFColorSpaceMBS</A>()</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#2">GetPageCoords</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#3">GetPageCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#5">GetPageFieldCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#6">GetPageFieldEx</A>(Index as Integer) as <A href="class-dynapdffieldexmbs.html">DynaPDFFieldExMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#7">GetPageHeight</A> as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#8">GetPageLabel</A>(index as Integer, byref Label as <A href="class-dynapdfpagelabelmbs.html">DynaPDFPageLabelMBS</A>) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#9">GetPageLabelCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#10">GetPageLayout</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#11">GetPageMode</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#12">GetPageNum</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#13">GetPageText</A>(stack as <A href="class-dynapdfstackmbs.html">DynaPDFStackMBS</A>) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#14">GetPageWidth</A> as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#15">GetPDFVersion</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#16">GetPDFVersionEx</A> as <A href="class-dynapdfversioninfombs.html">DynaPDFVersionInfoMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#17">GetPrintSettings</A> as <A href="class-dynapdfprintsettingsmbs.html">DynaPDFPrintSettingsMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#18">GetResetAction</A>(Handle as UInt32) as <A href="class-dynapdfresetformactionmbs.html">DynaPDFResetFormActionMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#19">GetResolution</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#20">GetSaveNewImageFormat</A> as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#21">GetSeparationInfo</A>(byref Colorant as string, byref ColorSpace as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#22">GetStrokeColor</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#23">GetSubmitAction</A>(Handle as UInt32) as <A href="class-dynapdfsubmitformactionmbs.html">DynaPDFSubmitFormActionMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#24">GetSysFontInfo</A> as <A href="class-dynapdfsysfontmbs.html">DynaPDFSysFontMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#25">GetSysFontInfo</A>(PostscriptName as String) as <A href="class-dynapdfsysfontmbs.html">DynaPDFSysFontMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#26">GetSysFontInfos</A> as <A href="class-dynapdfsysfontmbs.html">DynaPDFSysFontMBS</A>()</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#27">GetSysFontInfos</A>(Name as String) as <A href="class-dynapdfsysfontmbs.html">DynaPDFSysFontMBS</A>()</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#28">GetTabLen</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#29">GetTemplCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method15.html#30">GetTemplHandle</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html">GetTemplHeight</A>(Handle as Integer) as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#2">GetTemplWidth</A>(Handle as Integer) as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#3">GetTextDrawMode</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#4">GetTextFieldValue</A>(Field as Integer, byref Value as string, byref DefValue as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#5">GetTextHeight</A>(Align as Integer, aText as string) as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#7">GetTextHeightEx</A>(Width as Double, Align as Integer, aText as string) as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#9">GetTextRect</A>(byref PosX as Double, byref PosY as Double, byref Width as Double, byref Height as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#10">GetTextRise</A> as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#11">GetTextScaling</A> as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#12">GetTextWidth</A>(aText as string) as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#14">GetTransparentColor</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#15">GetTrapped</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#16">GetTypoLeading</A> as double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#17">GetURIAction</A>(index as Integer) as <A href="class-dynapdfuriactionmbs.html">DynaPDFURIActionMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#18">GetUseExactPwd</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#19">GetUseGlobalImpFiles</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#20">GetUserRights</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#21">GetUserUnit</A> as single</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#22">GetUseStdFonts</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#23">GetUsesTransparency</A>(Page as Integer = -1) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#24">GetUseSystemFonts</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#25">GetUseTransparency</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#26">GetUseVisibleCoords</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#27">GetViewerPreferences</A>(byref Preference as Integer, byref AddVal as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#28">GetViewport</A>(Page as UInt32, index as Integer) as <A href="class-dynapdfviewportmbs.html">DynaPDFViewportMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#29">GetViewportCount</A>(Page as UInt32) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method16.html#30">GetWMFDefExtent</A>(byref width as Integer, byref height as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html">GetWMFPixelPerInch</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#2">GetWordSpacing</A> as Double</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#3">GetXFAStream</A>(Handle as UInt32) as <A href="class-dynapdfxfastreammbs.html">DynaPDFXFAStreamMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#4">GetXFAStreamCount</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#5">HaveOpenDoc</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#6">HaveOpenPage</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#7">HighlightAnnot</A>(SubType as Integer, PosX as Double, PosY as Double, Width as Double, Height as Double, ColorValue as Integer, Author as string, Subject as string, Comment as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#9">HighlightOnAllPages</A>(SearchText as string, ColorValue as Color, CaseInsenitive as boolean = false) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#10">HighlightOnCurrentPage</A>(SearchText as string, ColorValue as Color, CaseInsenitive as boolean = false) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#11">ImportBookmarks</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#12">ImportCatalogObjects</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#13">ImportDocInfo</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#14">ImportEncryptionSettings</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#15">ImportOCProperties</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#16">ImportPage</A>(PageNum as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#17">ImportPageEx</A>(PageNum as Integer, ScaleX as Double = 1.0, ScaleY as Double = 1.0) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#18">ImportPDFFile</A>(DestPage as Integer, ScaleX as Double = 1.0, ScaleY as Double = 1.0) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#19">ImportPDFPage</A>(PageNum as Integer, ScaleX as Double = 1.0, ScaleY as Double = 1.0) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#20">InitColorManagement</A>(profiles as <A href="class-dynapdfcolorprofilesmbs.html">DynaPDFColorProfilesMBS</A>, DestSpace as Integer, Flags as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#21">InitColorManagementEx</A>(profiles as <A href="class-dynapdfcolorprofilesexmbs.html">DynaPDFColorProfilesExMBS</A>, DestSpace as Integer, Flags as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#22">InitStack</A>(byref stack as <A href="class-dynapdfstackmbs.html">DynaPDFStackMBS</A>) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#23">InkAnnot</A>(points() as <A href="class-dynapdfpointmbs.html">DynaPDFPointMBS</A>, LineWidth as Double, ColorValue as UInt32, ColorSpace as Integer, Author as string, Subject as string, Content as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#25">InsertBarcode</A>(PosX as double, PosY as double, Width as double, Height as double, HAlign as Integer, VAlign as Integer, Barcode as <A href="class-dynapdfbarcode2mbs.html">DynaPDFBarcode2MBS</A>) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#29">InsertBMPFromHandle</A>(PosX as Double, PosY as Double, ScaleWidth as Double, ScaleHeight as Double, hBitmap as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method17.html#30">InsertBookmark</A>(title as String, parent as Integer, DestPage as Integer, Open as boolean, AddChildren as boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#2">InsertBookmarkEx</A>(title as String, parent as Integer, NamedDest as Integer, Open as boolean, AddChildren as boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#5">InsertImageEx</A>(PosX as Double, PosY as Double, ScaleWidth as Double, ScaleHeight as Double, File as folderitem, index as Integer = 1) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#6">InsertImageEx</A>(PosX as double, PosY as double, ScaleWidth as double, ScaleHeight as double, Path as String, index as integer = 1) as integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#7">InsertImageFromBuffer</A>(PosX as Double, PosY as Double, ScaleWidth as Double, ScaleHeight as Double, Buffer as Memoryblock, index as Integer = 1) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#8">InsertImageFromBuffer</A>(PosX as Double, PosY as Double, ScaleWidth as Double, ScaleHeight as Double, Buffer as string, index as Integer = 1) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#9">InsertMetafile</A>(FileName as folderitem, PosX as Double, PosY as Double, Width as Double, Height as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#10">InsertMetafileEx</A>(Buffer as memoryblock, PosX as Double, PosY as Double, Width as Double, Height as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#11">InsertMetafileEx</A>(Buffer as string, PosX as Double, PosY as Double, Width as Double, Height as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#12">InsertMetafileExt</A>(FileName as folderitem, View as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A>, PosX as Double, PosY as Double, Width as Double, Height as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#13">InsertMetafileExtEx</A>(Buffer as Memoryblock, View as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A>, PosX as Double, PosY as Double, Width as Double, Height as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#14">InsertMetafileExtEx</A>(Buffer as String, View as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A>, PosX as Double, PosY as Double, Width as Double, Height as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#15">InsertMetafileFromHandle</A>(hEnhMetafileHandle as Integer, PosX as Double, PosY as Double, Width as Double, Height as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#16">InsertMetafileFromHandleEx</A>(hEnhMetafileHandle as Integer, View as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A>, PosX as Double, PosY as Double, Width as Double, Height as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#17">InsertPicture</A>(pic as picture, mask as picture, PosX as Double, PosY as Double, ScaleWidth as Double, ScaleHeight as Double) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#18">InsertPicture</A>(pic as picture, PosX as Double, PosY as Double, ScaleWidth as Double, ScaleHeight as Double) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#19">InsertRawImage</A>(Data as String, BitsPerPixel as Integer, ColorCount as Integer, ImgWidth as Integer, ImgHeight as Integer, PosX as Double, PosY as Double, ScaleWidth as Double, ScaleHeight as Double) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#20">InsertRawImage</A>(Memory as MemoryBlock, BitsPerPixel as Integer, ColorCount as Integer, ImgWidth as Integer, ImgHeight as Integer, PosX as Double, PosY as Double, ScaleWidth as Double, ScaleHeight as Double) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#21">InsertRawImageEx</A>(PosX as Double, PosY as Double, ScaleWidth as Double, ScaleHeight as Double, Image as <A href="class-dynapdfrawimagembs.html">DynaPDFRawImageMBS</A>) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#22">IsBidiText</A>(Text as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#23">IsColorPage</A>(GrayIsColor as Boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#24">IsEmptyPage</A> as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#25">LineAnnot</A>(x1 as Double, y1 as Double, x2 as Double, y2 as Double, LineWidth as Double, StartLineEndStyle as Integer, EndLineEndStyle as Integer, FillColor as UInt32, StrokeColor as UInt32, ColorSpace as Integer, Author as string, Subject as string, Content as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#27">LineTo</A>(PosX as Double, PosY as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#28">LoadCMap</A>(CMapName as string, Embed as Boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#29">LoadFDFData</A>(FileName as folderitem, Password as string, Flags as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method18.html#30">LoadFDFDataEx</A>(Buffer as memoryblock, Password as string, Flags as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html">LoadFDFDataEx</A>(Buffer as string, Password as string, Flags as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#2">LoadFont</A>(Buffer as memoryblock, Style as Integer, size as Double, Embed as Boolean = false, CodePage as Integer = 2, CollectionIndex as UInt32 = 0) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#3">LoadFont</A>(Buffer as string, Style as Integer, size as Double, Embed as Boolean = false, CodePage as Integer = 2, CollectionIndex as UInt32 = 0) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#4">LoadFontEx</A>(File as folderitem, Style as Integer, size as Double, Embed as Boolean = false, CodePage as Integer = 2, CollectionIndex as UInt32 = 0) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#5">LoadFontEx</A>(Filepath as string, Style as Integer, size as Double, Embed as Boolean = false, CodePage as Integer = 2, CollectionIndex as UInt32 = 0) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#6">LoadLayerConfig</A>(Index as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#7">LockLayer</A>(layer as UInt32) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#8">MovePage</A>(source as Integer, dest as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#9">MoveTo</A>(PosX as Double, PosY as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#10">OpenImportBuffer</A>(Buffer as Memoryblock, PwdType as Integer = 0, Password as string = "") as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#11">OpenImportBuffer</A>(Buffer as string, PwdType as Integer = 0, Password as string = "") as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#12">OpenImportFile</A>(File as folderitem, PwdType as Integer = 0, Password as string = "") as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#13">OpenImportFile</A>(Path as String, PwdType as integer = 0, Password as string = "") as integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#14">OpenOutputFile</A>(File as folderitem) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#15">OpenOutputFile</A>(Path as String) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#16">OpenOutputFileEncrypted</A>(File as folderitem, OpenPwd as string, OwnerPwd as string, KeyLen as Integer, Restrict as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#17">OpenOutputFileEncrypted</A>(Path as String, OpenPwd as string, OwnerPwd as string, KeyLen as integer, Restrict as integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#18">OpenTag</A>(Tag as Integer, Lang as string, AltText as string, Expansion as string, BBox as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A> = nil) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#20">Optimize</A>(Flags as Integer = 0, Params as <A href="class-dynapdfoptimizeparamsmbs.html">DynaPDFOptimizeParamsMBS</A> = nil) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#21">PageLink</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, DestPage as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#22">PageLink2</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, NamedDest as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#23">PageLink3</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, NamedDest as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#24">PageLinkEx</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, DestType as Integer, DestPage as Integer, a as Double = 0.0, b as Double = 0.0, c as Double = 0.0, d as Double = 0.0) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#25">PageStatistic</A>(page as Integer = -1) as <A href="class-dynapdfpagestatisticmbs.html">DynaPDFPageStatisticMBS</A></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#26">ParseContent</A>(ParseInterface as <A href="class-dynapdfparseinterfacembs.html">DynaPDFParseInterfaceMBS</A>, flags as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#27">PlaceImage</A>(ImgHandle as Integer, PosX as Double, PosY as Double, Width as Double, Height as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#28">PlaceSigFieldValidateIcon</A>(SigField as Integer, PosX as Double, PosY as Double, Width as Double, Height as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#29">PlaceTemplate</A>(TmplHandle as Integer, PosX as Double, PosY as Double, Width as Double, Height as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method19.html#30">PlaceTemplateEx</A>(TmplHandle as Integer, PosX as Double, PosY as Double, ScaleWidth as Double, ScaleHeight as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method20.html">PolygonAnnot</A>(Vertices() as <A href="class-dynapdfpointmbs.html">DynaPDFPointMBS</A>, LineWidth as Double, FillColor as UInt32, StrokeColor as UInt32, ColorSpace as Integer, Author as string, Subject as string, Content as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method20.html#3">PolyLineAnnot</A>(Vertices() as <A href="class-dynapdfpointmbs.html">DynaPDFPointMBS</A>, LineWidth as Double, StartLineEndStyle as Integer, EndLineEndStyle as Integer, FillColor as UInt32, StrokeColor as UInt32, ColorSpace as Integer, Author as string, Subject as string, Content as string) as Integer</li>
+<li class="W">method <A href="dynapdf-dynapdfmbs-method20.html#5">PrintGetDevMode</A> as String</li>
+<li class="W">method <A href="dynapdf-dynapdfmbs-method20.html#6">PrintGetDevNames</A>(byref Driver as String, byref Device as String, byref Output as String, byref DefaultFlag as Integer) as Boolean</li>
+<li class="W">method <A href="dynapdf-dynapdfmbs-method20.html#7">PrintPDFFile</A>(TempDir as FolderItem, DocName as string, DCHandle as integer, Flags as Integer = 0, Margin as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A> = nil, PrintParams as <A href="class-dynapdfprintparamsmbs.html">DynaPDFPrintParamsMBS</A> = nil) as Boolean</li>
+<li class="W">method <A href="dynapdf-dynapdfmbs-method20.html#8">PrintPDFFile</A>(TempDir as FolderItem, DocName as string, PrinterName as String, Flags as Integer = 0, Margin as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A> = nil, PrintParams as <A href="class-dynapdfprintparamsmbs.html">DynaPDFPrintParamsMBS</A> = nil) as Boolean</li>
+<li class="W">method <A href="dynapdf-dynapdfmbs-method20.html#9">PrintPDFFileWithDialog</A>(TempDir as FolderItem, DocName as string, Flags as Integer = 0, Margin as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A> = nil, PrintParams as <A href="class-dynapdfprintparamsmbs.html">DynaPDFPrintParamsMBS</A> = nil, parentWindow as Window = nil) as Boolean</li>
+<li class="W">method <A href="dynapdf-dynapdfmbs-method20.html#10">PrintPDFFileWithDialog</A>(TempDir as FolderItem, DocName as string, Flags as Integer, Margin as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A>, PrintParams as <A href="class-dynapdfprintparamsmbs.html">DynaPDFPrintParamsMBS</A>, parentWindow as DesktopWindow) as Boolean</li>
+<li class="W">method <A href="dynapdf-dynapdfmbs-method20.html#11">PrintPDFPage</A>(PageNumber as Integer, DocName as string, DCHandle as integer, Flags as Integer = 0, Margin as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A> = nil, PrintParams as <A href="class-dynapdfprintparamsmbs.html">DynaPDFPrintParamsMBS</A> = nil) as Boolean</li>
+<li class="W">method <A href="dynapdf-dynapdfmbs-method20.html#12">PrintPDFPage</A>(PageNumber as Integer, DocName as string, PrinterName as String, Flags as Integer = 0, Margin as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A> = nil, PrintParams as <A href="class-dynapdfprintparamsmbs.html">DynaPDFPrintParamsMBS</A> = nil) as Boolean</li>
+<li class="W">method <A href="dynapdf-dynapdfmbs-method20.html#13">PrintPDFPageWithDialog</A>(PageNumber as Integer, DocName as string, Flags as Integer = 0, Margin as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A> = nil, PrintParams as <A href="class-dynapdfprintparamsmbs.html">DynaPDFPrintParamsMBS</A> = nil, parentWindow as Window = nil) as Boolean</li>
+<li class="W">method <A href="dynapdf-dynapdfmbs-method20.html#14">PrintPDFPageWithDialog</A>(PageNumber as Integer, DocName as string, Flags as Integer, Margin as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A>, PrintParams as <A href="class-dynapdfprintparamsmbs.html">DynaPDFPrintParamsMBS</A>, parentWindow as DesktopWindow) as Boolean</li>
+<li class="W">method <A href="dynapdf-dynapdfmbs-method20.html#15">PrintSetDevMode</A>(data as MemoryBlock) as Boolean</li>
+<li class="W">method <A href="dynapdf-dynapdfmbs-method20.html#16">PrintSetDevMode</A>(data as String) as Boolean</li>
+<li class="W">method <A href="dynapdf-dynapdfmbs-method20.html#17">PrintSetDevNames</A>(Driver as String, Device as String, Output as String, DefaultFlag as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method20.html#18">ReadImageFormat</A>(FileName as folderitem, byref Width as Integer, byref Height as Integer, byref BitsPerPixel as Integer, byref UseZip as Boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method20.html#19">ReadImageFormat2</A>(FileName as folderitem, Index as Integer, byref Width as Integer, byref Height as Integer, byref BitsPerPixel as Integer, byref UseZip as Boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method20.html#20">ReadImageFormatEx</A>(hBitmap as Integer, byref Width as Integer, byref Height as Integer, byref BitsPerPixel as Integer, byref UseZip as Boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method20.html#21">ReadImageFormatFromBuffer</A>(Buffer as memoryblock, Index as Integer, byref Width as Integer, byref Height as Integer, byref BitsPerPixel as Integer, byref UseZip as Boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method20.html#22">ReadImageFormatFromBuffer</A>(Buffer as string, Index as Integer, byref Width as Integer, byref Height as Integer, byref BitsPerPixel as Integer, byref UseZip as Boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method20.html#23">ReadImageResolution</A>(FileName as folderitem, Index as Integer, byref ResX as Integer, byref ResY as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method20.html#24">ReadImageResolutionEx</A>(Buffer as Memoryblock, Index as Integer, byref ResX as Integer, byref ResY as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method20.html#25">ReadImageResolutionEx</A>(Buffer as string, Index as Integer, byref ResX as Integer, byref ResY as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method20.html#26">Rectangle</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, FillMode as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method20.html#27">ReEncryptPDF</A>(File as folderitem, PwdType as Integer, InPwd as string, OpenPwd as string, OwnerPwd as string, KeyLen as Integer, Restrict as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method20.html#29">RenameSpotColor</A>(Colorant as string, NewName as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method20.html#30">RenderAnnotOrField</A>(Handle as UInt32, IsAnnot as boolean, State as Integer, Matrix as <A href="class-dynapdfmatrixmbs.html">DynaPDFMatrixMBS</A>, Flags as Integer, PixFmt as Integer, Filter as Integer, byref Out as <A href="class-dynapdfbitmapmbs.html">DynaPDFBitmapMBS</A>) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html">RenderPagePicture</A>(PageNum as Integer) as picture</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#2">RenderPagePicture</A>(PageNum as Integer, Width as Integer, Height as Integer, DefScale as Integer = 2, matrix as <A href="class-dynapdfmatrixmbs.html">DynaPDFMatrixMBS</A> = nil) as picture</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#3">RenderPageToImage</A>(PageNumber as UInt32, OutFile as folderitem, Resolution as UInt32, Width as UInt32, Height as UInt32, Flags as UInt32, PixFmt as UInt32, Filter as UInt32, Format as UInt32) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#4">RenderPageToImageMT</A>(PageNumber as UInt32, OutFile as folderitem, Resolution as UInt32, Width as UInt32, Height as UInt32, Flags as UInt32, PixFmt as UInt32, Filter as UInt32, Format as UInt32) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#5">RenderPageToPicture</A>(PageNum as integer, pic as picture, DefScale as integer = 2, matrix as <A href="class-dynapdfmatrixmbs.html">DynaPDFMatrixMBS</A> = nil, RenderWithAlpha as boolean = false) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#7">RenderPDFFileEx</A>(OutFile as folderitem, Resolution as UInt32, Width as Integer, Height as Integer, Flags as UInt32, PixFmt as UInt32, Filter as UInt32, Format as UInt32) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#8">RenderPDFFileExMT</A>(OutFile as folderitem, Resolution as UInt32, Width as Integer, Height as Integer, Flags as UInt32, PixFmt as UInt32, Filter as UInt32, Format as UInt32) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#10">ReOpenImportFile</A>(Handle as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#11">ReplaceFont</A>(PDFFontRef as Integer, Name as string, Style as integer = 0, NameIsFamilyName as boolean = true) as integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#13">ReplaceFontEx</A>(PDFFontRef as Integer, FontFile as FolderItem, Embed as boolean = true) as integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#14">ReplaceFontEx</A>(PDFFontRef as Integer, FontFilePath as string, Embed as boolean = true) as integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#16">ReplaceICCProfile</A>(ColorSpace as Integer, ICCFile as folderitem) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#17">ReplaceICCProfileEx</A>(ColorSpace as integer, ICCFileData as MemoryBlock) as integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#18">ReplaceICCProfileEx</A>(ColorSpace as integer, ICCFileData as String) as integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#19">ReplaceImage</A>(ImageToReplace as <A href="class-dynapdfimagembs.html">DynaPDFImageMBS</A>, ImageFile as FolderItem, Index as Integer = 1, ColorSpace as Integer = 0, CSHandle as Integer = -1, Flags as Integer = 0) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#20">ReplaceImageEx</A>(ImageToReplace as <A href="class-dynapdfimagembs.html">DynaPDFImageMBS</A>, ImageData as MemoryBlock, Index as Integer = 1, ColorSpace as Integer = 0, CSHandle as Integer = -1, Flags as Integer = 0) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#21">ReplaceImageEx</A>(ImageToReplace as <A href="class-dynapdfimagembs.html">DynaPDFImageMBS</A>, ImageData as String, Index as Integer = 1, ColorSpace as Integer = 0, CSHandle as Integer = -1, Flags as Integer = 0) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#22">ReplacePageText</A>(text as string, stack as <A href="class-dynapdfstackmbs.html">DynaPDFStackMBS</A>) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#23">ReplacePageTextEx</A>(text as string, stack as <A href="class-dynapdfstackmbs.html">DynaPDFStackMBS</A>) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#25">ResetAnnotAP</A>(Handle as integer = -1) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#26">ResetEncryptionSettings</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#27">ResetLineDashPattern</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#28">RestoreGraphicState</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#29">RotateCoords</A>(alpha as Double, OriginX as Double, OriginY as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method21.html#30">RotateTemplate</A>(OldTemplate as Integer, Rotation as Integer, RotateCoords as boolean = true) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html">RoundRect</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, Radius as Double, FillMode as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#2">RoundRectEx</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, rWidth as Double, rHeight as Double, FillMode as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#3">SaveGraphicState</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#4">ScaleCoords</A>(sx as Double, sy as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#5">SelfTest</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#6">Set3DAnnotProps</A>(Annot as Integer, ActType as Integer, DeActType as Integer, InstType as Integer, DeInstType as Integer, DisplayToolbar as boolean, DisplayModelTree as boolean) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#8">SetAllocBy</A>(Value as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#9">SetAltFonts</A>(FontListHandle as Integer, List() as String) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#10">SetAnnotBorderEffect</A>(Handle as Integer, BorderEffect as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#11">SetAnnotBorderStyle</A>(Handle as Integer, BorderStyle as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#12">SetAnnotBorderWidth</A>(Handle as Integer, LineWidth as Double) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#13">SetAnnotColor</A>(Handle as Integer, ColorType as Integer, PDFColorSpace as Integer, ColorValue as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#14">SetAnnotFlags</A>(Flags as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#15">SetAnnotFlagsEx</A>(Handle as Integer, Flags as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#16">SetAnnotHighlightMode</A>(Handle as Integer, HighlightMode as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#17">SetAnnotIcon</A>(Handle as Integer, AnnotIcon as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#18">SetAnnotLineDashPattern</A>(Handle as UInt32, dash as memoryblock, NumValues as integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#19">SetAnnotLineDashPattern</A>(Handle as UInt32, dash() as single) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#20">SetAnnotLineEndStyle</A>(Handle as UInt32, StartLineStyle as Integer, EndLineStyle as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#21">SetAnnotMigrationState</A>(Handle as Integer, State as Integer, Name as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#23">SetAnnotOpacity</A>(Handle as Integer, opacity as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#24">SetAnnotOpenState</A>(Handle as Integer, Open as Boolean) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#25">SetAnnotOrFieldDate</A>(CSHandle as UInt32, IsField as Boolean, Type as Integer, DateTime as UInt32) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#26">SetAnnotQuadPoints</A>(Handle as UInt32, points() as <A href="class-dynapdfpointmbs.html">DynaPDFPointMBS</A>) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#27">SetAnnotString</A>(Handle as Integer, StringType as Integer, Value as string) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method22.html#29">SetAnnotSubject</A>(Handle as Integer, Value as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html">SetBBox</A>(Boundary as Integer, LeftX as Double, LeftY as Double, RightX as Double, RightY as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#2">SetBidiMode</A>(BidiMode as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#3">SetBlack</A>(FillColor as Boolean, StrokeColor as Boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#4">SetBookmarkDest</A>(ABmk as Integer, DestType as Integer, a as Double, b as Double, c as Double, d as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#5">SetBookmarkStyle</A>(ABmk as Integer, Style as Integer, RGBColor as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#6">SetBorderStyle</A>(Style as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#7">SetCharacterSpacing</A>(value as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#8">SetCheckBoxChar</A>(CheckBoxChar as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#9">SetCheckBoxDefState</A>(Field as Integer, Checked as Boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#10">SetCheckBoxState</A>(Field as Integer, Checked as Boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#11">SetCIDFont</A>(CMapHandle as Integer, Name as string, Style as Integer, Size as Double, Embed as boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#12">SetCMapDir</A>(path as folderitem, flags as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#13">SetCMapDir</A>(path as string, flags as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#14">SetColDefFile</A>(EmbFile as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#15">SetColorMask</A>(ImageHandle as Integer, Mask as Ptr, Count as UInt32) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#16">SetColorMask</A>(ImageHandle as Integer, Mask() as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#17">SetColors</A>(ColorValue as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#18">SetColorSpace</A>(ColorSpace as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#19">SetColSortField</A>(ColField as Integer, AscendingOrder as boolean) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#20">SetCompressionFilter</A>(Filter as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#21">SetCompressionLevel</A>(CompressLevel as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#22">SetContent</A>(buffer as memoryblock) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#23">SetContent</A>(buffer as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#24">SetDateTimeFormat</A>(TxtField as Integer, Fmt as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#25">SetDefBitsPerPixel</A>(value as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#26">SetDocInfo</A>(DInfo as Integer, Text as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#28">SetDocInfoEx</A>(DInfo as Integer, Key as string, Text as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method23.html#30">SetDrawDirection</A>(Direction as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html">SetEMFFrameDPI</A>(DPIX as Integer, DPIY as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#2">SetEMFPatternDistance</A>(value as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#3">SetErrorMode</A>(ErrMode as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#4">SetExtColorSpace</A>(Handle as Integer) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#5">SetExtFillColorSpace</A>(Handle as UInt32) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#6">SetExtGState</A>(Handle as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#7">SetExtStrokeColorSpace</A>(Handle as UInt32) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#8">SetFieldBackColor</A>(ColorValue as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#9">SetFieldBBox</A>(Handle as Integer, rect as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A>) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#10">SetFieldBorderColor</A>(ColorValue as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#11">SetFieldBorderStyle</A>(Field as Integer, Style as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#12">SetFieldBorderWidth</A>(Field as Integer, LineWidth as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#13">SetFieldCalcOrder</A>(CurrIndex as UInt32, NewIndex as UInt32) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#14">SetFieldColor</A>(Field as Integer, ColorType as Integer, ColorSpace as Integer, ColorValue as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#15">SetFieldExpValue</A>(Field as Integer, ValIndex as Integer, Value as string, ExpValue as string, Selected as boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#17">SetFieldExpValueEx</A>(Field as Integer, ValIndex as Integer, Selected as boolean, DefSelected as boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#18">SetFieldFlags</A>(Field as Integer, Flags as Integer, Reset as boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#19">SetFieldFont</A>(Field as Integer, Name as string, Style as Integer = 0, Size as double = 12, Embed as boolean = true, CodePage as integer = &h27) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#21">SetFieldFontEx</A>(Field as UInt32, Handle as UInt32, FontSize as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#22">SetFieldFontSize</A>(aField as Integer, FontSize as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#23">SetFieldHighlightMode</A>(Field as Integer, HighlightMode as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#24">SetFieldIndex</A>(Field as Integer, Index as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#25">SetFieldMapName</A>(Field as Integer, Name as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#27">SetFieldName</A>(Field as Integer, NewName as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#29">SetFieldOrientation</A>(Field as Integer, Value as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method24.html#30">SetFieldTextAlign</A>(Field as Integer, Align as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html">SetFieldTextColor</A>(ColorValue as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#2">SetFieldToolTip</A>(Field as Integer, Value as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#4">SetFillColor</A>(ColorValue as Color) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#5">SetFillColor</A>(ColorValue as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#6">SetFillColor</A>(values() as Double) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#7">SetFillColor</A>(values() as single) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#8">SetFillColorEx</A>(colorvalues as memoryblock, count as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#9">SetFillColorEx</A>(ParamArray colorvalue as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#10">SetFillColorSpace</A>(Colorspace as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#11">SetFloatPrecision</A>(NumTextDecDigits as UInt32, NumVectDecDigits as UInt32) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#12">SetFont</A>(Name as string, Style as Integer = 0, Size as Double = 12, Embed as boolean = true, CP as Integer = &h27) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#14">SetFontEx</A>(Name as string, Style as Integer = 0, Size as Double = 12, Embed as boolean = true, CodePage as Integer = &h27) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#16">SetFontOrigin</A>(Origin as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#17">SetFontSearchOrder</A>(Order() as Integer)</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#18">SetFontSearchOrderEx</A>(Order1 as Integer, Order2 as Integer, Order3 as Integer, Order4 as Integer)</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#19">SetFontSelMode</A>(Mode as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#20">SetFontWeight</A>(Weight as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#21">SetGStateFlags</A>(Flags as Integer, Reset as boolean)</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#22">SetIconColor</A>(ColorValue as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#23">SetImportFlags</A>(Flags as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#24">SetImportFlags2</A>(Flags as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#25">SetItalicAngle</A>(value as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#26">SetJPEGQuality</A>(Value as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#27">SetLanguage</A>(ISOTag as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#28">SetLeading</A>(value as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method25.html#30">SetLicenseKeyGlobal</A>(Value as string) &nbsp; <b style="color: #8B0000"> Private </b></li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html">SetLineAnnotParms</A>(Handle as UInt32, FontHandle as Integer, FontSize as Double, Params as <A href="class-dynapdflineannotparametermbs.html">DynaPDFLineAnnotParameterMBS</A>) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#2">SetLineCapStyle</A>(Style as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#3">SetLineDashPattern</A>(Dash as string, Phase as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#4">SetLineDashPattern2</A>(dash() as double, Phase as double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#7">SetLineJoinStyle</A>(Style as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#8">SetLineWidth</A>(value as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#9">SetLinkHighlightMode</A>(Mode as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#10">SetListFont</A>(Handle as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#11">SetMatrix</A>(Matrix as <A href="class-dynapdfmatrixmbs.html">DynaPDFMatrixMBS</A>) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#12">SetMaxErrLogMsgCount</A>(value as Integer)</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#13">SetMaxFieldLen</A>(TxtField as Integer, MaxLen as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#14">SetMetaConvFlags</A>(Flags as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#15">SetMetadata</A>(ObjType as Integer, Handle as Integer, Buffer as Memoryblock) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#16">SetMetadata</A>(ObjType as Integer, Handle as Integer, Buffer as String) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#17">SetMiterLimit</A>(value as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#18">SetNeedAppearance</A>(value as boolean) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#19">SetNumberFormat</A>(TxtField as Integer, Sep as Integer, DecPlaces as Integer, NegStyle as Integer, CurrStr as string, Prepend as boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#20">SetOCGContUsage</A>(Handle as UInt32, Value as <A href="class-dynapdfocgcontusagembs.html">DynaPDFOCGContUsageMBS</A>) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#21">SetOCGState</A>(Handle as UInt32, On as Boolean, SaveState as Boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#22">SetOpacity</A>(value as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#23">SetOrientation</A>(Value as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#24">SetOrientationEx</A>(Value as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#25">SetPageCoords</A>(PageCoords as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#26">SetPageFormat</A>(Value as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#27">SetPageHeight</A>(value as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#28">SetPageLayout</A>(Layout as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#29">SetPageMode</A>(Mode as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method26.html#30">SetPageWidth</A>(value as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html">SetPDFVersion</A>(Version as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#2">SetPrintSettings</A>(Mode as Integer, PickTrayByPDFSize as Integer, NumCopies as Integer, PrintScaling as Integer, PrintRanges() as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#3">SetRenderingIntent</A>(ImgHandle as Integer, RenderingIntent as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#4">SetResolution</A>(Value as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#5">SetSaveNewImageFormat</A>(value as Boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#6">SetSeparationInfo</A>(Handle as Integer) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#7">SetStrokeColor</A>(ColorValue as color) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#8">SetStrokeColor</A>(ColorValue as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#9">SetStrokeColor</A>(values() as Double) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#10">SetStrokeColor</A>(values() as single) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#11">SetStrokeColorEx</A>(colorvalues as memoryblock, count as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#12">SetStrokeColorEx</A>(ParamArray colorvalue as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#13">SetStrokeColorSpace</A>(Colorspace as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#14">SetTabLen</A>(TabLen as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#15">SetTemplBBox</A>(TemplateHandle as Integer, PageBoundary as Integer, BBoxRect as <A href="class-dynapdfrectmbs.html">DynaPDFRectMBS</A>) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#16">SetTemplBBox</A>(TemplateHandle as Integer, PageBoundary as Integer, Left as Double, Top as Double, Right as Double, Bottom as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#17">SetTextDrawMode</A>(Mode as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#18">SetTextFieldValue</A>(Field as Integer, Value as string, DefValue as string, Align as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#21">SetTextFieldValueEx</A>(Field as Integer, Value as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#22">SetTextRect</A>(PosX as Double, PosY as Double, Width as Double, Height as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#23">SetTextRise</A>(value as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#24">SetTextScaling</A>(value as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#25">SetTransparentColor</A>(ColorValue as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#26">SetTrapped</A>(value as boolean)</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#27">SetUseExactPwd</A>(value as Boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#28">SetUseGlobalImpFiles</A>(value as Boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#29">SetUseImageInterpolation</A>(Index as Integer, Value as Boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method27.html#30">SetUserUnit</A>(value as single) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html">SetUseStdFonts</A>(value as Boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html#4">SetUseSystemFonts</A>(value as Boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html#5">SetUseTransparency</A>(value as Boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html#6">SetUseVisibleCoords</A>(value as Boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html#7">SetViewerPreferences</A>(Value as Integer, AddVal as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html#8">SetWhite</A>(FillColor as Boolean, StrokeColor as Boolean) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html#9">SetWMFDefExtent</A>(Width as Integer, Height as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html#10">SetWMFPixelPerInch</A>(Value as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html#11">SetWordSpacing</A>(value as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html#12">SetXFAStream</A>(Index as UInt32, Buffer as String) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html#13">ShowDifferences</A>(PageIndex1 as Integer, OtherPDF as DynaPDFMBS, PageIndex2 as Integer, CheckMoving as boolean, HighlightColor as UInt32 = &hFFFF, ScaleFactor as Integer = 1, ColorTolerance as Integer = 3, debug as boolean = false) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html#14">SkewCoords</A>(alpha as Double, beta as Double, OriginX as Double, OriginY as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html#15">SortFieldsByIndex</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html#16">SortFieldsByName</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html#17">SquareAnnot</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, LineWidth as Double, FillColor as UInt32, StrokeColor as UInt32, ColorSpace as Integer, Author as string, Subject as string, Comment as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html#19">StampAnnot</A>(SubType as Integer, PosX as Double, PosY as Double, Width as Double, Height as Double, Author as string, Subject as string, Comment as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html#21">StrokePath</A> as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html#22">TestGlyphs</A>(FontHandle as Integer, Text as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html#24">TextAnnot</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, Author as string, Text as string, Icon as Integer, Open as boolean) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html#26">TranslateCoords</A>(OriginX as Double, OriginY as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html#27">Triangle</A>(x1 as Double, y1 as Double, x2 as Double, y2 as Double, x3 as Double, y3 as Double, FillMode as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html#28">UnLockLayer</A>(layer as UInt32) as boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html#29">WatermarkAnnot</A>(PosX as Double, PosY as Double, Width as Double, Height as Double) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method28.html#30">WebLink</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, aText as string) as Integer</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#2">WriteAngleText</A>(aText as string, Angle as Double, PosX as Double, PosY as Double, Radius as Double, YOrigin as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#3">WriteAngleText</A>(glyphs() as Integer, Angle as Double, PosX as Double, PosY as Double, Radius as Double, YOrigin as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#5">WriteAngleTextDirect</A>(aText as string, Angle as Double, PosX as Double, PosY as Double, Radius as Double, YOrigin as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#6">WriteAngleTextDirect</A>(glyphs() as Integer, Angle as Double, PosX as Double, PosY as Double, Radius as Double, YOrigin as Double) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#7">WriteFText</A>(Align as Integer, aText as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#8">WriteFText</A>(Align as Integer, glyphs() as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#10">WriteFTextDirect</A>(Align as Integer, aText as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#11">WriteFTextDirect</A>(Align as Integer, glyphs() as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#12">WriteFTextEx</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, Align as Integer, aText as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#13">WriteFTextEx</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, Align as Integer, glyphs() as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#15">WriteFTextExDirect</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, Align as Integer, aText as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#16">WriteFTextExDirect</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, Align as Integer, glyphs() as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#17">WriteStyledText</A>(Align as Integer, StyledText as StyledText, LeadingFactor as double = -1) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#18">WriteStyledText</A>(Align as Integer, TextArea as TextArea, LeadingFactor as double = -1) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#19">WriteStyledTextEx</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, Align as Integer, StyledText as StyledText, LeadingFactor as double = -1) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#20">WriteStyledTextEx</A>(PosX as Double, PosY as Double, Width as Double, Height as Double, Align as Integer, TextArea as TextArea, LeadingFactor as double = -1) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#21">WriteText</A>(PosX as Double, PosY as Double, aText as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#22">WriteText</A>(PosX as Double, PosY as Double, glyphs() as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#24">WriteTextDirect</A>(PosX as Double, PosY as Double, aText as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#25">WriteTextDirect</A>(PosX as Double, PosY as Double, glyphs() as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#26">WriteTextMatrix</A>(Matrix as <A href="class-dynapdfmatrixmbs.html">DynaPDFMatrixMBS</A>, glyphs() as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#27">WriteTextMatrix</A>(Matrix as <A href="class-dynapdfmatrixmbs.html">DynaPDFMatrixMBS</A>, Text as string) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#29">WriteTextMatrixDirect</A>(Matrix as <A href="class-dynapdfmatrixmbs.html">DynaPDFMatrixMBS</A>, glyphs() as Integer) as Boolean</li>
+<li class="WLM">method <A href="dynapdf-dynapdfmbs-method29.html#30">WriteTextMatrixDirect</A>(Matrix as <A href="class-dynapdfmatrixmbs.html">DynaPDFMatrixMBS</A>, Text as string) as Boolean</li>
+</UL></LI>
+<LI>36 shared methods<UL>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html">AofLAB</A>(LAB as Integer) as Integer</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#2">BofLAB</A>(LAB as Integer) as Integer</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#3">BofRGB</A>(RGB as Integer) as Integer</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#4">BuildFamilyNameAndStyle</A>(IFont as Integer, byref name as string, byref style as Integer) as boolean</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#5">CMYK</A>(C as Integer, M as Integer, Y as Integer, K as Integer) as UInt32</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#6">CofCMYK</A>(CMYK as UInt32) as Integer</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#7">ConvColor</A>(Colors() as Double, SourceColorSpaceHandle as Integer, DestColorSpace as Integer) as Integer</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#8">GetDynaPDFVersion</A> as string</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#9">GetJPEGVersion</A> as String</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#10">GetPNGVersion</A> as String</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#11">GetSpaceWidth</A>(FontHandle as Integer, FontSize as Double) as Double</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#12">GetTextWidth</A>(FontHandle as integer, Text as String, CharSpacing as Single, WordSpacing as Single, TextScale as Single) as double</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#13">GetTIFFVersion</A> as String</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#14">GetZlibVersion</A> as String</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#15">GofRGB</A>(RGB as Integer) as Integer</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#16">IsWrongPwd</A>(errCode as Integer) as boolean</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#17">KofCMYK</A>(CMYK as UInt32) as Integer</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#18">LAB</A>(L as Integer, A as Integer, B as Integer) as Integer</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#19">LoadError</A> as String</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#20">LoadLibrary</A>(File as FolderItem) as boolean</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#21">LoadLibrary</A>(Path as string) as boolean</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#22">LofLAB</A>(LAB as Integer) as Integer</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#23">MofCMYK</A>(CMYK as UInt32) as Integer</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#24">MultiplyMatrix</A>(M1 as <A href="class-dynapdfmatrixmbs.html">DynaPDFMatrixMBS</A>, M2 as <A href="class-dynapdfmatrixmbs.html">DynapdfMatrixMBS</A>, NewMatrix as <A href="class-dynapdfmatrixmbs.html">DynapdfMatrixMBS</A>) as boolean</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#25">RGB</A>(R as Integer, G as Integer, B as Integer) as Integer</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#26">RofRGB</A>(RGB as Integer) as Integer</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#27">SetLicenseKeyGlobal</A>(Value as string)</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#28">TranslateRawCode</A>(IFont as Integer, text as string, byref Width as Double, byref Decoded as boolean, CharSpacing as Double, WordSpacing as Double, TextScale as Double) as string</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method.html#29">TranslateRawCode</A>(IFont as integer, text as string, textOffset as Integer, byref Width as double, byref Decoded as boolean, CharSpacing as double, WordSpacing as double, TextScale as double, byref count as integer) as string</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method1.html">TranslateString</A>(IFont as Integer, text as string, flags as Integer) as string</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method1.html#2">TranslateString</A>(stack as <A href="class-dynapdfstackmbs.html">DynaPDFStackMBS</A>, flags as Integer) as string</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method1.html#3">WeightFromStyle</A>(s as Integer) as Integer</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method1.html#4">WeightToStyle</A>(s as Integer) as Integer</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method1.html#5">WidthFromStyle</A>(s as Integer) as Integer</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method1.html#6">WidthToStyle</A>(s as Integer) as Integer</li>
+<li class="WLM">shared method <A href="dynapdf-dynapdfmbs-shared-method1.html#7">YofCMYK</A>(CMYK as UInt32) as Integer</li>
+</UL></LI>
+<LI><a href="class-dynapdfmbs-const.html">1259 constants</A></LI>
+</ul>
+<p>This class has no sub classes.</p>
+<h4>Some methods using this class:</h4><ul>
+<li class="WLM"><A href="dynapdf-dynapdfedittextmbs-method.html" translate="no">DynaPDFEditTextMBS.Constructor</A>(PDF as DynaPDFMBS)</li>
+<li class="WLM"><A href="dynapdf-dynapdfrasterizermbs-method.html#5" translate="no">DynaPDFRasterizerMBS.Constructor</A>(PDF as DynaPDFMBS, DeviceContextHandle as Integer, Width as UInt32, Height as UInt32, PixFmt as UInt32)</li>
+<li class="WLM"><A href="dynapdf-dynapdfrasterizermbs-method.html#6" translate="no">DynaPDFRasterizerMBS.Constructor</A>(PDF as DynaPDFMBS, Pic as Picture, RenderWithAlpha as boolean = false)</li>
+<li class="WLM"><A href="dynapdf-dynapdfrasterizermbs-method.html#7" translate="no">DynaPDFRasterizerMBS.Constructor</A>(PDF as DynaPDFMBS, Rows as Memoryblock, Buffer as Memoryblock, Width as UInt32, Height as UInt32, ScanlineLen as Int32, PixelFormat as UInt32)</li>
+<li class="WLM"><A href="dynapdf-dynapdfrasterizermbs-method.html#8" translate="no">DynaPDFRasterizerMBS.Constructor</A>(PDF as DynaPDFMBS, Width as Integer, Height as Integer)</li>
+<li class="WLM"><A href="dynapdf-dynapdftablembs-method2.html#10" translate="no">DynaPDFTableMBS.SetPDF</A>(pdf as DynaPDFMBS)</li>
+</ul>
+<h4>Some properties using for this class:</h4><ul>
+<li class="WLM"><A href="dynapdf-dynapdfedittextmbs-property.html" translate="no">DynaPDFEditTextMBS.Parent</A> as DynaPDFMBS</li>
+<li class="WLM"><A href="dynapdf-dynapdfimagembs-property1.html#11" translate="no">DynaPDFImageMBS.PDF</A> as DynaPDFMBS</li>
+<li class="WLM"><A href="dynapdf-dynapdflayergroupmbs-property.html#2" translate="no">DynaPDFLayerGroupMBS.Owner</A> as DynaPDFMBS</li>
+<li class="WLM"><A href="dynapdf-dynapdfpagembs-property.html#8" translate="no">DynaPDFPageMBS.PDF</A> as DynaPDFMBS</li>
+<li class="WLM"><A href="dynapdf-dynapdfrasterizermbs-property.html#4" translate="no">DynaPDFRasterizerMBS.PDF</A> as DynaPDFMBS</li>
+<li class="WLM"><A href="dynapdf-dynapdftablembs-property.html#2" translate="no">DynaPDFTableMBS.PDF</A> as DynaPDFMBS</li>
+</ul>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-dynapdf-createpdfwithbookmarks.html">/DynaPDF/Create PDF with Bookmarks</A></li>
+<li class=""><A href="example-dynapdf-createpdfwithdevicencolorspace.html">/DynaPDF/Create PDF with DeviceN Colorspace</A></li>
+<li class=""><A href="example-dynapdf-dynapdfgraphics-reporting-gasreport-gasreport.html">/DynaPDF/DynaPDF Graphics/Reporting/GasReport/GasReport</A></li>
+<li class=""><A href="example-dynapdf-dynapdfgraphics-reporting-listboxreport.html">/DynaPDF/DynaPDF Graphics/Reporting/ListBoxReport</A></li>
+<li class=""><A href="example-dynapdf-imagetopdf-batchimagetopdf.html">/DynaPDF/Image to PDF/Batch Image to PDF</A></li>
+<li class=""><A href="example-dynapdf-pagestatistics.html">/DynaPDF/Page Statistics</A></li>
+<li class=""><A href="example-dynapdf-parsepdfcontent.html">/DynaPDF/Parse PDF Content</A></li>
+<li class=""><A href="example-dynapdf-pdfwithpicture.html">/DynaPDF/PDF with picture</A></li>
+<li class=""><A href="example-dynapdf-raster-dynapdfrastertomemoryblock.html">/DynaPDF/Raster/DynaPDF Raster to MemoryBlock</A></li>
+<li class=""><A href="example-dynapdf-webedition-cardsweb.html">/DynaPDF/Web Edition/Cards Web</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2021-01-25/Text_Encoding_Speedups/monkeybreadsoftware_blog_xojo">Text Encoding Speedups</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2020-01-29/Xojo_Developer_Magazine_Links/monkeybreadsoftware_blog_xojo">Xojo Developer Magazine Links</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2019-06-12/MBS_Xojo_Plugins_version_193pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 19.3pr2</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2018-04-04/MBS_Xojo_Plugins_version_182pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 18.2pr1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2016-07-09/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 16.3pr6</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2015-11-10/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 15.4pr5</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2015-03-20/Tip_of_the_day_PDF_print_setti/monkeybreadsoftware_blog_xojo">Tip of the day: PDF print settings</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2014-05-20/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 14.2pr7</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2014-01-29/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 14.0pr5</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2012-12-02/MBS_Real_Studio_Plugins_versio/monkeybreadsoftware_blog_xojo">MBS Real Studio Plugins, version 12.5pr13</a></li>
+</ul>
+<h4>Xojo Developer Magazine</h4>
+<ul>
+<li><a href="http://www.xdevmag.com/browse/8.5/">8.5, page 18: Printing PDFs, Easy PDF printing on Mac and Windows</a></li>
+<li><a href="http://www.xdevmag.com/browse/6.4/">6.4, pages 28 to 29: Creating PDF Files, How to create PDFs using the MBS Plugins by Christian Schmitz</a></li>
+<li><a href="http://www.xdevmag.com/browse/21.1/">21.1, page 20</a></li>
+<li><a href="http://www.xdevmag.com/browse/20.4/">20.4, page 42: PDF Pie Charts, Adding Xojo Charts to Your PDFs by Stefanie Juchmes</a></li>
+<li><a href="http://www.xdevmag.com/browse/20.4/">20.4, page 10: News</a></li>
+<li><a href="http://www.xdevmag.com/browse/19.6/">19.6, page 12: Things you can do with DynaPDF, The MBS DynaPDF Plugin is more powerful than you think by Stefanie Juchmes</a></li>
+<li><a href="http://www.xdevmag.com/browse/19.2/">19.2, page 31: Getting Started with DynaPDF, If you&#39;ve never tried DynaPDF, you don&#39;t know how easy it is! by Stefanie Juchmes</a></li>
+<li><a href="http://www.xdevmag.com/browse/19.2/">19.2, page 24: Getting Started with DynaPDF, If you&#39;ve never tried DynaPDF, you don&#39;t know how easy it is! by Stefanie Juchmes</a></li>
+<li><a href="http://www.xdevmag.com/browse/19.2/">19.2, page 10: News</a></li>
+<li><a href="http://www.xdevmag.com/browse/17.5/">17.5, page 9: News</a></li>
+</ul>
+<h4>Videos</h4>
+<ul>
+<li><a href="https://www.monkeybreadsoftware.de/xojo/video/XojoInstallationWin.shtml">MBS Plugin Installation on Windows</a></li>
+<li><a href="https://www.monkeybreadsoftware.de/xojo/video/XojoInstallation.shtml">MBS Plugin Installation on macOS</a></li>
+<li><a href="https://www.monkeybreadsoftware.de/xojo/video/XojoDynaPDF.shtml">Xojo and DynaPDF</a></li>
+<li><a href="https://www.monkeybreadsoftware.de/xojo/video/MBSXojoKeynote2018.shtml">Presentation from Munich conference about MBS Plugins.</a></li>
+<li><a href="https://www.monkeybreadsoftware.de/xojo/video/MBSXojoKeynote2017.shtml">Presentation from London conference about MBS Plugins.</a></li>
+<li><a href="https://www.monkeybreadsoftware.de/xojo/video/MBSPluginsMiami.shtml">Presentation from Xojo Developer Conference 2019 in Miami.</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-dynapdfmatrixmbs.html">DynaPDFMatrixMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-dynapdfmeasurembs.html">DynaPDFMeasureMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-dynapdfmbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

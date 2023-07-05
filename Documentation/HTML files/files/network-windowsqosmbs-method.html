@@ -1,0 +1,627 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - WindowsQOSMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="WindowsQOSMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">WindowsQOSMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-windowsqosmbs.html">WindowsQOSMBS</a> class.  </p>
+<div class="W">
+<b><a href="class-windowsqosmbs.html">WindowsQOSMBS</a>.<A name="1">AddSocketToFlow(Socket as Integer, DestAddr as string, DestPort as Integer, TrafficType as Integer, Flags as Integer, byref FlowId as UInt32) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-network.html" translate="no">Network</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion135.shtml" class=version>13.5</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Adds a socket to a flow.<BR>
+<B>Notes:</B> 
+<BR>
+Socket: Identifies the socket that the application will use to flow traffic.<BR>
+DestAddr: The destination IP address to which the application will send traffic. DestAddr and DestPort are optional if the socket is already connected. If this parameter is specified, the remote IP address and port must match those used in the socket&#39;s connect call.<BR>
+If the socket is not connected, this parameter must be specified. If the socket is already connected, this parameter does not need to be specified. In this case, if the parameter is still specified, the destination host and port must match what was specified during the socket connect call.<BR>
+Since, under TCP, the socket connect call can be delayed, AddSocketToFlow can be called before a connection is established, passing in the remote system&#39;s IP address and port number in the DestAddr parameter.<BR>
+DestPort: The port for the connection.<BR>
+TrafficType: A QOSTrafficType* constant that specifies the type of traffic for which this flow will be used.<BR>
+Flags: Optional flag values. Can be QOSNonAdaptiveFlow.<BR>
+FlowID: Receives a flow identifier. On input, this value must be 0. On output, the buffer contains a flow identifier if the call succeeds.<BR>
+If a socket is being added to an existing flow, this parameter will be the identifier of that flow.<BR>
+An application can make use of this parameter if multiple sockets used can share the same QoS flow properties. The QoS subsystem, then does not have to incur the overhead of provisioning new flows for subsequent sockets with the same properties. Note that only non-adaptive flows can have multiple sockets attached to an existing flow.<BR>
+A FlowID is an unsigned 32-bit integer.<BR>
+<BR>
+Lasterror is set.<BR>
+<BR>
+The use of IPv4/v6 mixed addresses is not supported in qWAVE. The address specified by the DestAddr parameter must be either IPv4 or IPv6.<BR>
+If there is a requirement for network experiments over a specific network interface, the socket must be bound to that particular interface. Otherwise the most appropriate interface for the experiment, as indicated by the network stack, is assigned by the qWAVE subsystem.<BR>
+Network traffic associated with this flow is not affected by making this call alone. For example, packet prioritization does not occur immediately.<BR>
+There are two categories of applications that use this function: adaptive and non-adaptive. An adaptive application makes use of notifications and information in the FlowFundamentals for adapting to network changes such as congestion. The qWAVE service uses Link Layer Topology Discovery (LLTD) QoS extensions for adaptive flows which can be present on the destination device.<BR>
+After calling this function adaptive A/V applications should call the SetFlowRate function to affect network traffic.<BR>
+A non-adaptive application either does not adapt to changing network characteristics or is sending traffic to an endpoint that does not support adaptive capabilities as indicated by ERROR_NOT_SUPPORTED.<BR>
+Non-adaptive applications, or adaptive applications making non-adaptive flows, should call this function with the QOSNonAdaptiveFlow flag. After calling this function A/V applications should call the setOutgoingDSCPValue, setOutgoingRate or setTrafficType function with a Operation. They do not need to be called unless shaping is desired.<BR>
+<p>See also:<ul>
+<li><A href="network-windowsqosmbs-method.html#2">AddSocketToFlow(Socket as Integer, TrafficType as Integer, Flags as Integer, byref FlowId as UInt32) as boolean</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-win-windowsqos-windowsqos.html">/Win/Windows QOS/Windows QOS</A></li>
+<li><A href="example-win-windowsqos-windowsqoswithtcpsocket.html">/Win/Windows QOS/Windows QOS with TCPSocket</A></li>
+<li><A href="example-win-windowsqos-windowsqoswithudpsocket.html">/Win/Windows QOS/Windows QOS with UDPSocket</A></li>
+</ul>
+</div>
+<div class="W">
+<b><a href="class-windowsqosmbs.html">WindowsQOSMBS</a>.<A name="2">AddSocketToFlow(Socket as Integer, TrafficType as Integer, Flags as Integer, byref FlowId as UInt32) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-network.html" translate="no">Network</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion135.shtml" class=version>13.5</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Adds a socket to a flow.<BR>
+<B>Notes:</B> 
+<BR>
+Socket: Identifies the socket that the application will use to flow traffic.<BR>
+DestAddr: The destination IP address to which the application will send traffic. DestAddr and DestPort are optional if the socket is already connected. If this parameter is specified, the remote IP address and port must match those used in the socket&#39;s connect call.<BR>
+If the socket is not connected, this parameter must be specified. If the socket is already connected, this parameter does not need to be specified. In this case, if the parameter is still specified, the destination host and port must match what was specified during the socket connect call.<BR>
+Since, under TCP, the socket connect call can be delayed, AddSocketToFlow can be called before a connection is established, passing in the remote system&#39;s IP address and port number in the DestAddr parameter.<BR>
+DestPort: The port for the connection.<BR>
+TrafficType: A QOSTrafficType* constant that specifies the type of traffic for which this flow will be used.<BR>
+Flags: Optional flag values. Can be QOSNonAdaptiveFlow.<BR>
+FlowID: Receives a flow identifier. On input, this value must be 0. On output, the buffer contains a flow identifier if the call succeeds.<BR>
+If a socket is being added to an existing flow, this parameter will be the identifier of that flow.<BR>
+An application can make use of this parameter if multiple sockets used can share the same QoS flow properties. The QoS subsystem, then does not have to incur the overhead of provisioning new flows for subsequent sockets with the same properties. Note that only non-adaptive flows can have multiple sockets attached to an existing flow.<BR>
+A FlowID is an unsigned 32-bit integer.<BR>
+<BR>
+Lasterror is set.<BR>
+<BR>
+The use of IPv4/v6 mixed addresses is not supported in qWAVE. The address specified by the DestAddr parameter must be either IPv4 or IPv6.<BR>
+If there is a requirement for network experiments over a specific network interface, the socket must be bound to that particular interface. Otherwise the most appropriate interface for the experiment, as indicated by the network stack, is assigned by the qWAVE subsystem.<BR>
+Network traffic associated with this flow is not affected by making this call alone. For example, packet prioritization does not occur immediately.<BR>
+There are two categories of applications that use this function: adaptive and non-adaptive. An adaptive application makes use of notifications and information in the FlowFundamentals for adapting to network changes such as congestion. The qWAVE service uses Link Layer Topology Discovery (LLTD) QoS extensions for adaptive flows which can be present on the destination device.<BR>
+After calling this function adaptive A/V applications should call the SetFlowRate function to affect network traffic.<BR>
+A non-adaptive application either does not adapt to changing network characteristics or is sending traffic to an endpoint that does not support adaptive capabilities as indicated by ERROR_NOT_SUPPORTED.<BR>
+Non-adaptive applications, or adaptive applications making non-adaptive flows, should call this function with the QOSNonAdaptiveFlow flag. After calling this function A/V applications should call the setOutgoingDSCPValue, setOutgoingRate or setTrafficType function with a Operation. They do not need to be called unless shaping is desired.<BR>
+<p>See also:<ul>
+<li><A href="network-windowsqosmbs-method.html">AddSocketToFlow(Socket as Integer, DestAddr as string, DestPort as Integer, TrafficType as Integer, Flags as Integer, byref FlowId as UInt32) as boolean</A></li>
+</ul></p>
+</div>
+<div class="W">
+<b><a href="class-windowsqosmbs.html">WindowsQOSMBS</a>.<A name="3">Constructor</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-network.html" translate="no">Network</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion135.shtml" class=version>13.5</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+This function initializes the QOS subsystem.<BR>
+<B>Notes:</B> 
+<BR>
+On success Handle property is not zero.<BR>
+Lasterror is set.<BR>
+<BR>
+Every process intending to use qWAVE must first call Constructor. <BR>
+If a machine enters a power save mode that interrupts connectivity such as sleep or standby, existing and active network experiments such as QOSStartTrackingClient must be reinitiated. This recreation of the flow mirrors the cleanup and creation activities also necessary for existing sockets. A new handle must be created, and the flow must be recreated and readmitted.<BR>
+</div>
+<div class="W">
+<b><a href="class-windowsqosmbs.html">WindowsQOSMBS</a>.<A name="4">getFlowFundamentals(FlowID as Integer, byref BottleneckBandwidthSet as boolean, byref BottleneckBandwidth as UInt64, byref AvailableBandwidthSet as boolean, byref AvailableBandwidth as UInt64, byref RTTSet as boolean, byref RTT as UInt32, Flags as Integer = 0) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-network.html" translate="no">Network</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion135.shtml" class=version>13.5</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Queries flow fundamentals.<BR>
+<B>Notes:</B> 
+<BR>
+FlowID: A flow identifier. A flow id is an unsigned 32-bit integer.<BR>
+Flags: Optional, can be QOSQueryFlowFresh.<BR>
+BottleneckBandwidthSet: This Boolean value is set to true if the BottleneckBandwidth field contains a value.<BR>
+BottleneckBandwidth: Indicates the maximum end-to-end link capacity between the source and sink device, in bits.<BR>
+AvailableBandwidthSet: Set to true if the AvailableBandwidth field contains a value.<BR>
+AvailableBandwidth: Indicates how much bandwidth is available for submitting traffic on the end-to-end network path between the source and sink device, in bits.<BR>
+RTTSet: Set to true if the RTT field contains a value.<BR>
+RTT: Measures the round-trip time between the source and sink device, in microseconds.<BR>
+<BR>
+Lasterror is set. Returns true on success or false on failure.<BR>
+</div>
+<div class="W">
+<b><a href="class-windowsqosmbs.html">WindowsQOSMBS</a>.<A name="5">getOutgoingRate(FlowID as Integer, byref Bandwidth as UInt64, Flags as Integer = 0) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-network.html" translate="no">Network</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion135.shtml" class=version>13.5</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Queries flow rate.<BR>
+<B>Notes:</B> 
+<BR>
+FlowID: A flow identifier. A flow id is an unsigned 32-bit integer.<BR>
+Bandwidth: will contain a UINT64 value that indicates the flow rate specified when requesting the contract, in bits per second.<BR>
+Flags: Optional, can be QOSQueryFlowFresh.<BR>
+Lasterror is set. Returns true on success or false on failure.<BR>
+</div>
+<div class="W">
+<b><a href="class-windowsqosmbs.html">WindowsQOSMBS</a>.<A name="6">getPacketPriority(FlowID as Integer, byref ConformantDSCPValue as Integer, byref NonConformantDSCPValue as Integer, byref ConformantL2Value as Integer, byref NonConformantL2Value as Integer, Flags as Integer = 0) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-network.html" translate="no">Network</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion135.shtml" class=version>13.5</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Queries packet priorities.<BR>
+<B>Notes:</B> 
+<BR>
+FlowID: A flow identifier. A flow id is an unsigned 32-bit integer.<BR>
+Flags: Optional, can be QOSQueryFlowFresh.<BR>
+<BR>
+ConformantDSCPValue: Differential Services Code Point (DSCP) mark used for flow traffic that conforms to the specified flow rate.<BR>
+NonConformantDSCPValue: DSCP marking used for flow traffic that exceeds the specified flow rate. Non-conformant DSCP values are only applicable only if value is QOSUseNonConformantMarkings.<BR>
+ConformantL2Value: Layer-2 (L2) tag used for flow traffic that conforms to the specified flow rate. L2 tags will not be added to packets if the end-to-end path between source and sink does not support them.<BR>
+NonConformantL2Value: L2 tag used for flow traffic that exceeds the specified flow rate. Non-conformant L2 values are only applicable if value is QOSUseNonConformantMarkings.<BR>
+<BR>
+Lasterror is set. Returns true on success or false on failure.<BR>
+</div>
+<div class="W">
+<b><a href="class-windowsqosmbs.html">WindowsQOSMBS</a>.<A name="7">RemoveAllSocketsFromFlow(FlowID as Integer) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-network.html" translate="no">Network</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion135.shtml" class=version>13.5</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+The RemoveSocketFromFlow function notifies the QOS subsystem that a previously added flow has been terminated by the application, and that the subsystem must update its internal information accordingly.<BR>
+<B>Notes:</B> 
+<BR>
+FlowId: A flow identifier. A QOS_FLOWID is an unsigned 32-bit integer.<BR>
+<BR>
+Lasterror is set. Returns true on success or false on failure.<BR>
+The plugin closes all flows in destructor.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-win-windowsqos-windowsqos.html">/Win/Windows QOS/Windows QOS</A></li>
+<li><A href="example-win-windowsqos-windowsqoswithtcpsocket.html">/Win/Windows QOS/Windows QOS with TCPSocket</A></li>
+<li><A href="example-win-windowsqos-windowsqoswithudpsocket.html">/Win/Windows QOS/Windows QOS with UDPSocket</A></li>
+</ul>
+</div>
+<div class="W">
+<b><a href="class-windowsqosmbs.html">WindowsQOSMBS</a>.<A name="8">RemoveSocketFromFlow(socketHandle as Integer, FlowID as Integer) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-network.html" translate="no">Network</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion135.shtml" class=version>13.5</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+The RemoveSocketFromFlow function notifies the QOS subsystem that a previously added flow has been terminated by the application, and that the subsystem must update its internal information accordingly.<BR>
+<B>Notes:</B> 
+<BR>
+Socket: Socket to be removed from the flow.<BR>
+Only flows created with the QOSNonAdaptiveFlow flag may have multiple sockets added to the same flow. By passing the Socket parameter in this call, each socket can be removed individually. If the Socket parameter is not passed, the entire flow will be destroyed. If only one socket was attached to the flow, passing this socket as a parameter to this function and passing 0 as a socket are equivalent calls.<BR>
+FlowId: A flow identifier. A QOS_FLOWID is an unsigned 32-bit integer.<BR>
+<BR>
+Lasterror is set. Returns true on success or false on failure.<BR>
+The plugin closes all flows in destructor.<BR>
+</div>
+<div class="W">
+<b><a href="class-windowsqosmbs.html">WindowsQOSMBS</a>.<A name="9">setOutgoingDSCPValue(FlowID as Integer, OutgoingDSCPValue as Integer, Flags as Integer = 0) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-network.html" translate="no">Network</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion135.shtml" class=version>13.5</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Sets the outgoing DSCP value.<BR>
+<B>Notes:</B> 
+<BR>
+FlowID: A flow identifier. A flow id is an unsigned 32-bit integer.<BR>
+<BR>
+Lasterror is set. Returns true on success or false on failure.<BR>
+<BR>
+If StartTrackingClient has not already been called, calling QOSSetFlow will cause the QOS subsystem to perform the following.<BR>
+<UL><LI>
+Discover whether the end-to-end network path supports prioritization.
+</LI><LI>
+Track end-to-end network characteristics by way of network experiments. These experiments do not place any noteworthy stress on the network.
+</UL>
+</div>
+<div class="W">
+<b><a href="class-windowsqosmbs.html">WindowsQOSMBS</a>.<A name="10">setOutgoingRate(FlowID as Integer, Bandwidth as UInt64, ShapingBehavior as Integer, Reason as Integer, Flags as Integer = 0) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-network.html" translate="no">Network</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion135.shtml" class=version>13.5</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Sets a new outgoing rate.<BR>
+<B>Notes:</B> 
+<BR>
+FlowID: A flow identifier. A flow id is an unsigned 32-bit integer.<BR>
+Bandwidth: The rate at which data should be sent, in units of bits per second.<BR>
+Note  Traffic on the network is measured at the IP level, and not at the application level. The rate that is specified should account for the IP and protocol headers.<BR>
+ShapingBehavior: A shaping constant that defines the shaping behavior of the flow.<BR>
+Reason: A QOSFlowRate* constant that indicates the reason for a flow rate change.<BR>
+Lasterror is set. Returns true on success or false on failure.<BR>
+<BR>
+If StartTrackingClient has not already been called, calling QOSSetFlow will cause the QOS subsystem to perform the following.<BR>
+<UL><LI>
+Discover whether the end-to-end network path supports prioritization.
+</LI><LI>
+Track end-to-end network characteristics by way of network experiments. These experiments do not place any noteworthy stress on the network.#
+</UL>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-win-windowsqos-windowsqos.html">/Win/Windows QOS/Windows QOS</A></li>
+<li><A href="example-win-windowsqos-windowsqoswithtcpsocket.html">/Win/Windows QOS/Windows QOS with TCPSocket</A></li>
+<li><A href="example-win-windowsqos-windowsqoswithudpsocket.html">/Win/Windows QOS/Windows QOS with UDPSocket</A></li>
+</ul>
+</div>
+<div class="W">
+<b><a href="class-windowsqosmbs.html">WindowsQOSMBS</a>.<A name="11">setTrafficType(FlowID as Integer, TrafficType as Integer, Flags as Integer = 0) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-network.html" translate="no">Network</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion135.shtml" class=version>13.5</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Sets the type of traffic<BR>
+<B>Notes:</B> 
+<BR>
+FlowID: A flow identifier. A flow id is an unsigned 32-bit integer.<BR>
+TrafficType: One of the traffic type constants.<BR>
+Lasterror is set. Returns true on success or false on failure.<BR>
+<BR>
+If StartTrackingClient has not already been called, calling QOSSetFlow will cause the QOS subsystem to perform the following.<BR>
+<UL><LI>
+Discover whether the end-to-end network path supports prioritization.
+</LI><LI>
+Track end-to-end network characteristics by way of network experiments. These experiments do not place any noteworthy stress on the network.#
+</UL>
+</div>
+<div class="W">
+<b><a href="class-windowsqosmbs.html">WindowsQOSMBS</a>.<A name="12">StartTrackingClient(DestAddr as string, flags as Integer = 0) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-network.html" translate="no">Network</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion135.shtml" class=version>13.5</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+The StartTrackingClient function notifies the QOS subsystem of the existence of a new client. <BR>
+<B>Notes:</B> 
+<BR>
+Calling this function increases the likelihood that the QOS subsystem will have gathered sufficient information on the network path to assist when calling QOSSetFlow to set the flow.<BR>
+Note  This call is not required to add a flow with the QOSAddSocketToFlow function although it is highly recommended. Not calling this function may require network experiments to be started during the QOSSetFlow call and can result in QOSSetFlow failing with ERROR_NETWORK_BUSY on initial use.<BR>
+<BR>
+DestAddr: The IP address of the client device. Clients are identified by their IP address and address family. Any port number specified in the sockaddr structure will be ignored.<BR>
+Flags: Reserved for future use. Must be set to 0.<BR>
+<BR>
+On receipt of a QOSStartTrackingClient call the QoS subsystem begins gathering information about the client such as the QoS capabilities and available bandwidth on the end-to-end path.<BR>
+An application should call this function as soon as it becomes aware of a client device that may need QoS flow. For example this function should be called when a media player device first connects to a media server application.<BR>
+Network experiments performed by QOSStartTrackingClient do not introduce noteworthy load on the network even if no stream is started for a long period of time. The qWAVE service dynamically adjusts experiment traffic based on QoS subsystem activity.<BR>
+Link Layer Topology Discovery (LLTD) must be implemented on the sink PC or device for this function to work.<BR>
+<BR>
+Lasterror is set. Returns true on success or false on failure.<BR>
+</div>
+<div class="W">
+<b><a href="class-windowsqosmbs.html">WindowsQOSMBS</a>.<A name="13">StopTrackingClient(DestAddr as string, flags as Integer = 0) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-network.html" translate="no">Network</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion135.shtml" class=version>13.5</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+The StopTrackingClient function notifies the QoS subsystem to stop tracking a client that has previously used the StartTrackingClient function. <BR>
+<B>Notes:</B> 
+<BR>
+If a flow is currently in progress, this function will not affect it.<BR>
+<BR>
+DestAddr: The IP address of the client device. Clients are identified by their IP address and address family. A port number is not required and will be ignored.<BR>
+Flags: Reserved for future use.<BR>
+<BR>
+Lasterror is set. Returns true on success or false on failure.<BR>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbswinplugin.html">MBS Win Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=network-windowsqosmbs-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

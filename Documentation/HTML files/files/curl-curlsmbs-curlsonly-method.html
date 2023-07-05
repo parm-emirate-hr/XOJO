@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - CURLSMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="CURLSMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">CURLSMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-curlsmbs.html">CURLSMBS</a> class.  </p>
+<div class="WLM">
+<b><a href="class-curlsmbs.html">CURLSMBS</a>.<A name="1">SetupAWS(AWSAccessKeyId as String, AWSSecretAccessKey as String, Region as String, Service as String, Path as String, Domain as String, Verb as String, HashedPayload as String = &quot;&quot;, Headers() as String = nil, queryParameters() as string = nil, NoSSL as boolean = false) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion172.shtml" class=version>17.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Setup CURL to transfer to Amazon Webservices.<BR>
+<B>Notes:</B> 
+<BR>
+This implements AWS4-HMAC-SHA256 signature for credentials, sets authentication, URL, HTTP Headers and other parameters.<BR>
+For upload or post, please set input parameters first.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">AWSAccessKeyId</TD><TD valign="top">Your access key for AWS.</TD><TD valign="top"></TD></TR>
+<TR><TD valign="top">AWSSecretAccessKey</TD><TD valign="top">Your secret.</TD><TD valign="top"></TD></TR>
+<TR><TD valign="top">Region</TD><TD valign="top">The region to use.</TD><TD valign="top">&quot;eu-central-1&quot;</TD></TR>
+<TR><TD valign="top">Service</TD><TD valign="top">The service to use.</TD><TD valign="top">&quot;s3&quot;</TD></TR>
+<TR><TD valign="top">Path</TD><TD valign="top">The path for the URL. Should always start with &quot;/&quot;.</TD><TD valign="top">&quot;/test.jpg&quot;</TD></TR>
+<TR><TD valign="top">Domain</TD><TD valign="top">Optional the domain to use. By default we just build it from region and service.</TD><TD valign="top">&quot;s3.eu-central-1.amazonaws.com&quot; or &quot;s3-ap-southeast-2.amazonaws.com&quot;</TD></TR>
+<TR><TD valign="top">Verb</TD><TD valign="top">The HTTP Operation to do. Can be POST, PUT, PATCH, GET or DELETE.</TD><TD valign="top">&quot;PUT&quot;</TD></TR>
+<TR><TD valign="top">HashedPayload</TD><TD valign="top">The hashed payload. If empty, we calculate it automatically from input data or postfields. This is a lowercase hex SHA256.</TD></TR>
+<TR><TD valign="top">Headers</TD><TD valign="top">Optional extra HTTP headers to include.</TD><TD valign="top">&quot;x-amz-acl: public-read&quot;</TD></TR>
+<TR><TD valign="top">queryParameters</TD><TD valign="top">Optional query parameter list with entries like &quot;key=value&quot;, URL encoded.</TD></TR>
+</TABLE>
+<BR>
+Returns true on success or false on failure.<BR>
+Throws exceptions when parameters are insufficient.<BR>
+<BR>
+Works also for other compatible S3 services beside Amazon&#39;s like the one from Wasabi or Dell ECS.<BR>
+Added PATCH as verb in version 23.0.<BR>
+<BR>
+Please be aware that this function depends on a correct time and date set on the computer. If the time is not set correct, the authentication will fail.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-curl-curlsamazons3download.html">/CURL/CURLS Amazon S3 download</A></li>
+<li><A href="example-curl-curlsamazons3upload.html">/CURL/CURLS Amazon S3 upload</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-curlsmbs.html">CURLSMBS</a>.<A name="2">SetupOAuth(ConsumerKey as String, ConsumerSecret as String, AccessToken as String, AccessTokenSecret as String, HTTPVerb as String, URL as String, Parameters() as String = nil, Headers() as String = nil, Datas() as String = nil, Nonce as String = &quot;&quot;, Timestamp as String = &quot;&quot;, HMAC as String = &quot;&quot;, Verifier as String = &quot;&quot;, Realm as String = &quot;&quot;) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion183.shtml" class=version>18.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Setups an OAuth signed transfer.<BR>
+<B>Notes:</B> 
+<BR>
+The plugin calculates the signature and adds headers for authorization to the CURL handle.<BR>
+Sets URL with parameters and optionally data values for POST.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Description</TD><TD valign="top">Example</TD></TR>
+<TR><TD valign="top">ConsumerKey</TD><TD valign="top">The oauth consumer key.</TD><TD valign="top">&quot;xvz1evFS4wEEPTGEFPHBog&quot;</TD></TR>
+<TR><TD valign="top">ConsumerSecret</TD><TD valign="top">The oauth consumer secret.</TD><TD valign="top">&quot;kAcSOqF21Fu85e7zjz7ZN2U4ZRhfV3WpwPAoE3Z7kBw&quot;</TD></TR>
+<TR><TD valign="top">AccessToken</TD><TD valign="top">The oauth access token.</TD><TD valign="top">&quot;370773112-GmHxMAgYyLbNEtIKZeRNFsMKPR9EyMZeS9weJAEb&quot;</TD></TR>
+<TR><TD valign="top">AccessTokenSecret</TD><TD valign="top">The oauth access token secret. Can be empty if not yet known.</TD><TD valign="top">&quot;LswwdoUaIvS8ltyTt5jkRh4J50vUPVVHtR2YPi5kE&quot;</TD></TR>
+<TR><TD valign="top">HTTPVerb</TD><TD valign="top">The HTTP verb. e.g. POST, PUT, GET, DELETE. Default if empty is GET.</TD><TD valign="top">&quot;POST&quot;</TD></TR>
+<TR><TD valign="top">URL</TD><TD valign="top">The URL to query without parameters.</TD><TD valign="top">&quot;https://api.twitter.com/1.1/statuses/update.json&quot;</TD></TR>
+<TR><TD valign="top">Parameters</TD><TD valign="top">List of parameters. Can be empty. Please pass list with newline as delimiter. Values should be URL encoded already.</TD><TD valign="top">&quot;include_entities=true&quot;</TD></TR>
+<TR><TD valign="top">Headers</TD><TD valign="top">List of additional header entries to include. Can be empty. We automatically set Authorization header.</TD><TD valign="top">&quot;Accept: application/json&para;Content-Type: application/json&quot;</TD></TR>
+<TR><TD valign="top">Datas</TD><TD valign="top">Data value list for POST.</TD><TD valign="top">&quot;status=Hello&para;others=123&quot;</TD></TR>
+<TR><TD valign="top">Nonce</TD><TD valign="top">The nonce value. If empty, we generate it automatically for you.</TD><TD valign="top">&quot;kYjzVBB8Y0ZFabxSWbWovY3uYSQ2pTgmZeNu2VS4cg&quot;</TD></TR>
+<TR><TD valign="top">Timestamp</TD><TD valign="top">The timestamp to use for signature. If empty, we query current timestamp (same as you calling Time.UnixTimeStamp)</TD><TD valign="top">1318622958</TD></TR>
+<TR><TD valign="top">HMAC</TD><TD valign="top">Which HMAC algorithm to use. Can be HMAC-SHA512, HMAC-SHA256 or HMAC-SHA1. Default is HMAC-SHA1 if parameter is missing or empty.</TD><TD valign="top">&quot;HMAC-SHA1&quot;</TD></TR>
+<TR><TD valign="top">Verifier</TD><TD valign="top">The verifier. Usually an ID shown on a website after login to the service and authorization of an app.</TD><TD valign="top">&quot;3456789&quot;</TD></TR>
+</TABLE>
+<BR>
+Added Realm parameter for version 20.5.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-curl-webservices-curlsoauth.html">/CURL/WebServices/CURLS oAuth</A></li>
+<li><A href="example-curl-webservices-twitteroauth.html">/CURL/WebServices/Twitter oAuth</A></li>
+</ul>
+</div>
+<div class="WM">
+<b><a href="class-curlsmbs.html">CURLSMBS</a>.<A name="3">UseSystemCertificates as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion172.shtml" class=version>17.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Read certificate from system and installs them in CURL session,.<BR>
+<B>Notes:</B> 
+<BR>
+For macOS and Windows we load the available certificates from keychain or Windows Certificate Store and pass them to CURL. This is better than having no certificates at all.<BR>
+Even better is normally to provide a cacert.pem file with only the expected certificates.<BR>
+<BR>
+Returns number of certificates loaded.<BR>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=curl-curlsmbs-curlsonly-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,1172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - CLCommandQueueMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="CLCommandQueueMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">CLCommandQueueMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-clcommandqueuembs.html">CLCommandQueueMBS</a> class.  </p>
+<p>
+ 
+<a href="opencl-clcommandqueuembs-method1.html">Next items</a>
+</p>
+<div class="M">
+<b><a href="class-clcommandqueuembs.html">CLCommandQueueMBS</a>.<A name="1">Constructor(context as <A href="class-clcontextmbs.html">CLContextMBS</A>, device as <A href="class-cldevicembs.html">CLDeviceMBS</A>, flags as Integer = 0)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Create a command-queue on a specific device.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> devices(-<span style="color: #336698;">1</span>) <span style="color: #0000FF;">as</span> <A href="class-cldevicembs.html">CLDeviceMBS</A> = <A href="module-openclmbs.html">OpenCLMBS</A>.AllDevices(<A href="class-cldevicembs.html">CLDeviceMBS</A>.kDeviceTypeGPU)<br /><span style="color: #0000FF;">dim</span> device <span style="color: #0000FF;">as</span> <A href="class-cldevicembs.html">CLDeviceMBS</A> = devices(<span style="color: #336698;">0</span>) <span style="color: #800000;">// we use first one</span><br /><br /><span style="color: #800000;">// Create a context</span><br /><span style="color: #0000FF;">dim</span> context <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-clcontextmbs.html">CLContextMBS</A>(device, <A href="class-clcontextmbs.html">CLContextMBS</A>.kErrorModeLogMessagesToSystemLog)<br /><br /><span style="color: #800000;">// Create a command queue</span><br /><span style="color: #0000FF;">dim</span> queue <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-clcommandqueuembs.html">CLCommandQueueMBS</A>(context, device, <span style="color: #336698;">0</span>)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+context: Must be a valid OpenCL context.<BR>
+device: Must be a device associated with context. It can either be in the list of devices specified when context is created using <A href="class-clcontextmbs.html">CLContextMBS</A> Constructor or have the same device type as the device type specified when the context is created.<BR>
+flags: Specifies a list of properties for the command-queue. This is a bit-field. Only command-queue properties specified in the table below can be set in properties; otherwise the value specified in properties is considered to be not valid.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Command-Queue Properties</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">kQueueOutOfOrderExecModeEnable</TD><TD valign="top">Determines whether the commands queued in the command-queue are executed in-order or out-of-order. If set, the commands in the command-queue are executed out-of-order. Otherwise, commands are executed in-order.</TD></TR>
+<TR><TD valign="top">kQueueProfilingEnable</TD><TD valign="top">Enable or disable profiling of commands in the command-queue. If set, the profiling of commands is enabled. Otherwise profiling of commands is disabled. See clGetEventProfilingInfo for more information.</TD></TR>
+</TABLE>
+<BR>
+The <a href="topic-opencl.html">OpenCL</A> functions that are submitted to a command-queue are enqueued in the order the calls are made but can be configured to execute in-order or out-of-order. The properties argument in clCreateCommandQueue can be used to specify the execution order.<BR>
+<BR>
+If the kQueueOutOfOrderExecModeEnable property of a command-queue is not set, the commands enqueued to a command-queue execute in order. For example, if an application calls EnqueueNDRangeKernel to execute kernel A followed by a EnqueueNDRangeKernel to execute kernel B, the application can assume that kernel A finishes first and then kernel B is executed. If the memory objects output by kernel A are inputs to kernel B then kernel B will see the correct data in memory objects produced by execution of kernel A. If the kQueueOutOfOrderExecModeEnable property of a commandqueue is set, then there is no guarantee that kernel A will finish before kernel B starts execution.<BR>
+<BR>
+Applications can configure the commands enqueued to a command-queue to execute out-of-order by setting the kQueueOutOfOrderExecModeEnable property of the command-queue. This can be specified when the command-queue is created or can be changed dynamically using this Constructor. In out-of-order execution mode there is no guarantee that the enqueued commands will finish execution in the order they were queued. As there is no guarantee that kernels will be executed in order, i.e. based on when the EnqueueNDRangeKernel calls are made within a command-queue, it is therefore possible that an earlier EnqueueNDRangeKernel call to execute kernel A identified by event A may execute and/or finish later than a EnqueueNDRangeKernel call to execute kernel B which was called by the application at a later point in time. To guarantee a specific order of execution of kernels, a wait on a particular event (in this case event A) can be used. The wait for event A can be specified in the event_wait_list argument to EnqueueNDRangeKernel for kernel B.<BR>
+<BR>
+In addition, a wait for events or a barrier command can be enqueued to the command-queue. The wait for events command ensures that previously enqueued commands identified by the list of events to wait for have finished before the next batch of commands is executed. The barrier command ensures that all previously enqueued commands in a command-queue have finished execution before the next batch of commands is executed.<BR>
+<BR>
+Similarly, commands to read, write, copy or map memory objects that are enqueued after EnqueueNDRangeKernel, EnqueueTask or EnqueueNativeKernel commands are not guaranteed to wait for kernels scheduled for execution to have completed (if the kQueueOutOfOrderExecModeEnable property is set). To ensure correct ordering of commands, the event object returned by EnqueueNDRangeKernel, EnqueueTask or EnqueueNativeKernel can be used to enqueue a wait for event or a barrier command can be enqueued that must complete before reads or writes to the memory object(s) occur.<BR>
+<BR>
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-clcommandqueuembs.html">CLCommandQueueMBS</a>.<A name="2">Context as <A href="class-clcontextmbs.html">CLContextMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return the context specified when the command-queue is created.<BR>
+<B>Notes:</B> 
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-clcommandqueuembs.html">CLCommandQueueMBS</a>.<A name="3">Device as <A href="class-cldevicembs.html">CLDeviceMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return the device specified when the command-queue is created.<BR>
+<B>Notes:</B> 
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-clcommandqueuembs.html">CLCommandQueueMBS</a>.<A name="4">EnqueueBarrier</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+A synchronization point that enqueues a barrier operation.<BR>
+<B>Notes:</B> 
+<BR>
+EnqueueBarrier is a synchronization point that ensures that all queued commands in command_queue have finished execution before the next batch of commands can begin execution.<BR>
+<BR>
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-clcommandqueuembs.html">CLCommandQueueMBS</a>.<A name="5">EnqueueCopyBuffer(sourceBuffer as <A href="class-clmemmbs.html">CLMemMBS</A>, destBuffer as <A href="class-clmemmbs.html">CLMemMBS</A>, sourceOffset as Integer, destOffset as Integer, size as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Enqueues a command to copy a buffer object to another buffer object.<BR>
+<B>Notes:</B> 
+<BR>
+sourceBuffer: the source memory object.<BR>
+destBuffer: the destination memory object.<BR>
+sourceOffset: The offset where to begin copying data from sourceBuffer.<BR>
+destOffset: The offset where to begin copying data into destBuffer.<BR>
+size: Refers to the size in bytes to copy.<BR>
+EventWaitList: Optional, Specify events that need to complete before this particular command can be executed. If EventWaitList is empty or not passed, then this particular command does not wait on any event to complete. The events specified in event_wait_list act as synchronization points. The context associated with events in EventWaitList and <A href="class-clcommandqueuembs.html">CLCommandQueueMBS</A> must be the same.<BR>
+outEvent: Returns an event object that identifies this particular copy command and can be used to query or queue a wait for this particular command to complete. <BR>
+Lasterror is set.<BR>
+<p>See also:<ul>
+<li><A href="opencl-clcommandqueuembs-method.html#6">EnqueueCopyBuffer(sourceBuffer as CLMemMBS, destBuffer as CLMemMBS, sourceOffset as Integer, destOffset as Integer, size as Integer, EventWaitList() as CLEventMBS, byref outEvent as CLEventMBS)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-clcommandqueuembs.html">CLCommandQueueMBS</a>.<A name="6">EnqueueCopyBuffer(sourceBuffer as <A href="class-clmemmbs.html">CLMemMBS</A>, destBuffer as <A href="class-clmemmbs.html">CLMemMBS</A>, sourceOffset as Integer, destOffset as Integer, size as Integer, EventWaitList() as <A href="class-cleventmbs.html">CLEventMBS</A>, byref outEvent as <A href="class-cleventmbs.html">CLEventMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Enqueues a command to copy a buffer object to another buffer object.<BR>
+<B>Notes:</B> 
+<BR>
+sourceBuffer: the source memory object.<BR>
+destBuffer: the destination memory object.<BR>
+sourceOffset: The offset where to begin copying data from sourceBuffer.<BR>
+destOffset: The offset where to begin copying data into destBuffer.<BR>
+size: Refers to the size in bytes to copy.<BR>
+EventWaitList: Optional, Specify events that need to complete before this particular command can be executed. If EventWaitList is empty or not passed, then this particular command does not wait on any event to complete. The events specified in event_wait_list act as synchronization points. The context associated with events in EventWaitList and <A href="class-clcommandqueuembs.html">CLCommandQueueMBS</A> must be the same.<BR>
+outEvent: Returns an event object that identifies this particular copy command and can be used to query or queue a wait for this particular command to complete. <BR>
+Lasterror is set.<BR>
+<p>See also:<ul>
+<li><A href="opencl-clcommandqueuembs-method.html#5">EnqueueCopyBuffer(sourceBuffer as CLMemMBS, destBuffer as CLMemMBS, sourceOffset as Integer, destOffset as Integer, size as Integer)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-clcommandqueuembs.html">CLCommandQueueMBS</a>.<A name="7">EnqueueCopyBufferToImage(SourceBuffer as <A href="class-clmemmbs.html">CLMemMBS</A>, destImage as <A href="class-clmemmbs.html">CLMemMBS</A>, sourceOffset as Integer, destOriginX as Integer, destOriginY as Integer, destOriginZ as Integer, RegionWidth as Integer, RegionHeight as Integer, RegionDepth as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Enqueues a command to copy a buffer object to an image object.<BR>
+<B>Notes:</B> 
+<BR>
+SourceBuffer: A valid buffer object.<BR>
+destImage: A valid image object.<BR>
+<BR>
+sourceOffset: The offset where to begin copying data from SourceBuffer.<BR>
+<BR>
+destOrigin: The (x, y, z) offset in pixels where to begin copying data to destImage. If destImage is a 2D image object, the z value given by destOriginZ must be 0.<BR>
+<BR>
+region: Defines the (width, height, depth) in pixels of the 2D or 3D rectangle to copy. If destImage is a 2D image object, the depth value given by RegionDepth must be 1.<BR>
+<BR>
+The size in bytes of the region to be copied from SourceBuffer referred to as src_cb is computed as width * height * depth * bytes/image element if destImage is a 3D image object and is computed as width * height * bytes/image element if destImage is a 2D image object.<BR>
+<BR>
+EventWaitList: Optionally, Specify events that need to complete before this particular command can be executed. The events specified in event_wait_list act as synchronization points. The context associated with events in event_wait_list and command_queue must be the same.<BR>
+<BR>
+outEvent: Optional. Returns an event object that identifies this particular copy command and can be used to query or queue a wait for this particular command to complete. <BR>
+<BR>
+Lasterror is set.<BR>
+<p>See also:<ul>
+<li><A href="opencl-clcommandqueuembs-method.html#8">EnqueueCopyBufferToImage(SourceBuffer as CLMemMBS, destImage as CLMemMBS, sourceOffset as Integer, destOriginX as Integer, destOriginY as Integer, destOriginZ as Integer, RegionWidth as Integer, RegionHeight as Integer, RegionDepth as Integer, EventWaitList() as CLEventMBS, byref outEvent as CLEventMBS)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-clcommandqueuembs.html">CLCommandQueueMBS</a>.<A name="8">EnqueueCopyBufferToImage(SourceBuffer as <A href="class-clmemmbs.html">CLMemMBS</A>, destImage as <A href="class-clmemmbs.html">CLMemMBS</A>, sourceOffset as Integer, destOriginX as Integer, destOriginY as Integer, destOriginZ as Integer, RegionWidth as Integer, RegionHeight as Integer, RegionDepth as Integer, EventWaitList() as <A href="class-cleventmbs.html">CLEventMBS</A>, byref outEvent as <A href="class-cleventmbs.html">CLEventMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Enqueues a command to copy a buffer object to an image object.<BR>
+<B>Notes:</B> 
+<BR>
+SourceBuffer: A valid buffer object.<BR>
+destImage: A valid image object.<BR>
+<BR>
+sourceOffset: The offset where to begin copying data from SourceBuffer.<BR>
+<BR>
+destOrigin: The (x, y, z) offset in pixels where to begin copying data to destImage. If destImage is a 2D image object, the z value given by destOriginZ must be 0.<BR>
+<BR>
+region: Defines the (width, height, depth) in pixels of the 2D or 3D rectangle to copy. If destImage is a 2D image object, the depth value given by RegionDepth must be 1.<BR>
+<BR>
+The size in bytes of the region to be copied from SourceBuffer referred to as src_cb is computed as width * height * depth * bytes/image element if destImage is a 3D image object and is computed as width * height * bytes/image element if destImage is a 2D image object.<BR>
+<BR>
+EventWaitList: Optionally, Specify events that need to complete before this particular command can be executed. The events specified in event_wait_list act as synchronization points. The context associated with events in event_wait_list and command_queue must be the same.<BR>
+<BR>
+outEvent: Optional. Returns an event object that identifies this particular copy command and can be used to query or queue a wait for this particular command to complete. <BR>
+<BR>
+Lasterror is set.<BR>
+<p>See also:<ul>
+<li><A href="opencl-clcommandqueuembs-method.html#7">EnqueueCopyBufferToImage(SourceBuffer as CLMemMBS, destImage as CLMemMBS, sourceOffset as Integer, destOriginX as Integer, destOriginY as Integer, destOriginZ as Integer, RegionWidth as Integer, RegionHeight as Integer, RegionDepth as Integer)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-clcommandqueuembs.html">CLCommandQueueMBS</a>.<A name="9">EnqueueCopyImage(sourceImage as <A href="class-clmemmbs.html">CLMemMBS</A>, destImage as <A href="class-clmemmbs.html">CLMemMBS</A>, sourceOriginX as Integer, sourceOriginY as Integer, sourceOriginZ as Integer, destOriginX as Integer, destOriginY as Integer, destOriginZ as Integer, RegionWidth as Integer, RegionHeight as Integer, RegionDepth as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Enqueues a command to copy image objects.<BR>
+<B>Notes:</B> 
+<BR>
+sourceImage: Source image.<BR>
+destImage: Dest image.<BR>
+<BR>
+sourceOrigin: Defines the starting (x, y, z) location in pixels in src_image from where to start the data copy. If src_image is a 2D image object, the z value given by sourceOriginZ must be 0.<BR>
+<BR>
+sourceOrigin: Defines the starting (x, y, z) location in pixels in dst_image from where to start the data copy. If dst_image is a 2D image object, the z value given by sourceOriginZ must be 0.<BR>
+<BR>
+region: Defines the (width, height, depth) in pixels of the 2D or 3D rectangle to copy. If src_image or dst_image is a 2D image object, the depth value given by RegionDepth must be 1.<BR>
+<BR>
+EventWaitList: Optional, Specify events that need to complete before this particular command can be executed. The events specified in EventWaitList act as synchronization points. The context associated with events in EventWaitList and CommandQueue must be the same.<BR>
+<BR>
+outEvent: Optional, Returns an event object that identifies this particular copy command and can be used to query or queue a wait for this particular command to complete. <BR>
+<BR>
+It is currently a requirement that the sourceImage and destImage image memory objects for EnqueueCopyImage must have the exact same image format (i.e. the cl_image_format descriptor specified when sourceImage and destImage are created must match).<BR>
+<BR>
+sourceImage and destImage can be 2D or 3D image objects allowing us to perform the following actions:<BR>
+<BR>
+<UL><LI>
+Copy a 2D image object to a 2D image object.
+</LI><LI>
+Copy a 2D image object to a 2D slice of a 3D image object.
+</LI><LI>
+Copy a 2D slice of a 3D image object to a 2D image object.
+</LI><LI>
+Copy a 3D image object to a 3D image object.
+</LI></UL>
+<BR>
+Lasterror is set.<BR>
+<p>See also:<ul>
+<li><A href="opencl-clcommandqueuembs-method.html#10">EnqueueCopyImage(sourceImage as CLMemMBS, destImage as CLMemMBS, sourceOriginX as Integer, sourceOriginY as Integer, sourceOriginZ as Integer, destOriginX as Integer, destOriginY as Integer, destOriginZ as Integer, RegionWidth as Integer, RegionHeight as Integer, RegionDepth as Integer, EventWaitList() as CLEventMBS, byref outEvent as CLEventMBS)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-clcommandqueuembs.html">CLCommandQueueMBS</a>.<A name="10">EnqueueCopyImage(sourceImage as <A href="class-clmemmbs.html">CLMemMBS</A>, destImage as <A href="class-clmemmbs.html">CLMemMBS</A>, sourceOriginX as Integer, sourceOriginY as Integer, sourceOriginZ as Integer, destOriginX as Integer, destOriginY as Integer, destOriginZ as Integer, RegionWidth as Integer, RegionHeight as Integer, RegionDepth as Integer, EventWaitList() as <A href="class-cleventmbs.html">CLEventMBS</A>, byref outEvent as <A href="class-cleventmbs.html">CLEventMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Enqueues a command to copy image objects.<BR>
+<B>Notes:</B> 
+<BR>
+sourceImage: Source image.<BR>
+destImage: Dest image.<BR>
+<BR>
+sourceOrigin: Defines the starting (x, y, z) location in pixels in src_image from where to start the data copy. If src_image is a 2D image object, the z value given by sourceOriginZ must be 0.<BR>
+<BR>
+sourceOrigin: Defines the starting (x, y, z) location in pixels in dst_image from where to start the data copy. If dst_image is a 2D image object, the z value given by sourceOriginZ must be 0.<BR>
+<BR>
+region: Defines the (width, height, depth) in pixels of the 2D or 3D rectangle to copy. If src_image or dst_image is a 2D image object, the depth value given by RegionDepth must be 1.<BR>
+<BR>
+EventWaitList: Optional, Specify events that need to complete before this particular command can be executed. The events specified in EventWaitList act as synchronization points. The context associated with events in EventWaitList and CommandQueue must be the same.<BR>
+<BR>
+outEvent: Optional, Returns an event object that identifies this particular copy command and can be used to query or queue a wait for this particular command to complete. <BR>
+<BR>
+It is currently a requirement that the sourceImage and destImage image memory objects for EnqueueCopyImage must have the exact same image format (i.e. the cl_image_format descriptor specified when sourceImage and destImage are created must match).<BR>
+<BR>
+sourceImage and destImage can be 2D or 3D image objects allowing us to perform the following actions:<BR>
+<BR>
+<UL><LI>
+Copy a 2D image object to a 2D image object.
+</LI><LI>
+Copy a 2D image object to a 2D slice of a 3D image object.
+</LI><LI>
+Copy a 2D slice of a 3D image object to a 2D image object.
+</LI><LI>
+Copy a 3D image object to a 3D image object.
+</LI></UL>
+<BR>
+Lasterror is set.<BR>
+<p>See also:<ul>
+<li><A href="opencl-clcommandqueuembs-method.html#9">EnqueueCopyImage(sourceImage as CLMemMBS, destImage as CLMemMBS, sourceOriginX as Integer, sourceOriginY as Integer, sourceOriginZ as Integer, destOriginX as Integer, destOriginY as Integer, destOriginZ as Integer, RegionWidth as Integer, RegionHeight as Integer, RegionDepth as Integer)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-clcommandqueuembs.html">CLCommandQueueMBS</a>.<A name="11">EnqueueCopyImageToBuffer(sourceImage as <A href="class-clmemmbs.html">CLMemMBS</A>, destBuffer as <A href="class-clmemmbs.html">CLMemMBS</A>, sourceOriginX as Integer, sourceOriginY as Integer, sourceOriginZ as Integer, RegionWidth as Integer, RegionHeight as Integer, RegionDepth as Integer, destOffset as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Enqueues a command to copy an image object to a buffer object.<BR>
+<B>Notes:</B> 
+<BR>
+sourceImage: A valid image object.<BR>
+destBuffer: A valid buffer object.<BR>
+<BR>
+sourceOrigin: Defines the (x, y, z) offset in pixels in the image from where to copy. If sourceImage is a 2D image object, the z value given by sourceOriginZ must be 0.<BR>
+<BR>
+region: Defines the (width, height, depth) in pixels of the 2D or 3D rectangle to copy. If sourceImage is a 2D image object, the depth value given by RegionDepth must be 1.<BR>
+<BR>
+destOffset: The offset where to begin copying data into destBuffer. The size in bytes of the region to be copied referred to as dst_cb is computed as width * height * depth * bytes/image element if sourceImage is a 3D image object and is computed as width * height * bytes/image element if sourceImage is a 2D image object.<BR>
+<BR>
+EventWaitList: Specify events that need to complete before this particular command can be executed. The events specified in event_wait_list act as synchronization points. The context associated with events in event_wait_list and command_queue must be the same.<BR>
+<BR>
+outEvent: Returns an event object that identifies this particular copy command and can be used to query or queue a wait for this particular command to complete. <BR>
+<BR>
+Lasterror is set.<BR>
+<p>See also:<ul>
+<li><A href="opencl-clcommandqueuembs-method.html#12">EnqueueCopyImageToBuffer(sourceImage as CLMemMBS, destBuffer as CLMemMBS, sourceOriginX as Integer, sourceOriginY as Integer, sourceOriginZ as Integer, RegionWidth as Integer, RegionHeight as Integer, RegionDepth as Integer, destOffset as Integer, EventWaitList() as CLEventMBS, byref outEvent as CLEventMBS)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-clcommandqueuembs.html">CLCommandQueueMBS</a>.<A name="12">EnqueueCopyImageToBuffer(sourceImage as <A href="class-clmemmbs.html">CLMemMBS</A>, destBuffer as <A href="class-clmemmbs.html">CLMemMBS</A>, sourceOriginX as Integer, sourceOriginY as Integer, sourceOriginZ as Integer, RegionWidth as Integer, RegionHeight as Integer, RegionDepth as Integer, destOffset as Integer, EventWaitList() as <A href="class-cleventmbs.html">CLEventMBS</A>, byref outEvent as <A href="class-cleventmbs.html">CLEventMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Enqueues a command to copy an image object to a buffer object.<BR>
+<B>Notes:</B> 
+<BR>
+sourceImage: A valid image object.<BR>
+destBuffer: A valid buffer object.<BR>
+<BR>
+sourceOrigin: Defines the (x, y, z) offset in pixels in the image from where to copy. If sourceImage is a 2D image object, the z value given by sourceOriginZ must be 0.<BR>
+<BR>
+region: Defines the (width, height, depth) in pixels of the 2D or 3D rectangle to copy. If sourceImage is a 2D image object, the depth value given by RegionDepth must be 1.<BR>
+<BR>
+destOffset: The offset where to begin copying data into destBuffer. The size in bytes of the region to be copied referred to as dst_cb is computed as width * height * depth * bytes/image element if sourceImage is a 3D image object and is computed as width * height * bytes/image element if sourceImage is a 2D image object.<BR>
+<BR>
+EventWaitList: Specify events that need to complete before this particular command can be executed. The events specified in event_wait_list act as synchronization points. The context associated with events in event_wait_list and command_queue must be the same.<BR>
+<BR>
+outEvent: Returns an event object that identifies this particular copy command and can be used to query or queue a wait for this particular command to complete. <BR>
+<BR>
+Lasterror is set.<BR>
+<p>See also:<ul>
+<li><A href="opencl-clcommandqueuembs-method.html#11">EnqueueCopyImageToBuffer(sourceImage as CLMemMBS, destBuffer as CLMemMBS, sourceOriginX as Integer, sourceOriginY as Integer, sourceOriginZ as Integer, RegionWidth as Integer, RegionHeight as Integer, RegionDepth as Integer, destOffset as Integer)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-clcommandqueuembs.html">CLCommandQueueMBS</a>.<A name="13">EnqueueMapBuffer(buffer as <A href="class-clmemmbs.html">CLMemMBS</A>, BlockingMap as boolean, MapFlags as Integer, offset as Integer, size as Integer, EventWaitList() as <A href="class-cleventmbs.html">CLEventMBS</A>, byref outEvent as <A href="class-cleventmbs.html">CLEventMBS</A>) as memoryblock</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Enqueues a command to map a region of the buffer object given by buffer into the host address space and returns a pointer to this mapped region.<BR>
+<B>Notes:</B> 
+<BR>
+BlockingMap: Optional, Indicates if the map operation is blocking or non-blocking. If BlockingMap is true, EnqueueMapBuffer does not return until the specified region in buffer can be mapped. If BlockingMap is false i.e. map operation is non-blocking, the pointer to the mapped region returned by clEnqueueMapBuffer cannot be used until the map command has completed. The event argument returns an event object which can be used to query the execution status of the map command. When the map command is completed, the application can access the contents of the mapped region using the pointer returned by EnqueueMapBuffer.<BR>
+MapFlags: Is a bit-field and can be set to kMapRead to indicate that the region specified by (offset, size) in the buffer object is being mapped for reading, and/or kMapWrite to indicate that the region specified by (offset, size) in the buffer object is being mapped for writing.<BR>
+buffer: A valid buffer object. The OpenCL context associated with <A href="class-clcommandqueuembs.html">CLCommandQueueMBS</A> and buffer must be the same.<BR>
+offset, size: The offset in bytes and the size of the region in the buffer object that is being mapped.<BR>
+EventWaitList: Optional, Specify events that need to complete before this particular command can be executed. The events specified in EventWaitList act as synchronization points. The context associated with events in event_wait_list and command_queue must be the same.<BR>
+outEvent: Returns an event object that identifies this particular copy command and can be used toquery or queue a wait for this particular command to complete. <BR>
+<BR>
+Lasterror is set.<BR>
+<BR>
+The contents of the regions of a memory object mapped for writing (i.e. kMapWrite is set in map_flags argument to EnqueueMapBuffer or EnqueueMapImage) are considered to be undefined until this region is unmapped. Reads and writes by a kernel executing on a device to a memory region(s) mapped for writing are undefined.<BR>
+<BR>
+Multiple command-queues can map a region or overlapping regions of a memory object for reading (i.e. MapFlags = kMapRead). The contents of the regions of a memory object mapped for reading can also be read by kernels executing on a device(s). The behavior of writes by a kernel executing on a device to a mapped region of a memory object is undefined. Mapping (and unmapping) overlapped regions of a buffer or image memory object for writing is undefined.<BR>
+<BR>
+The behavior of OpenCL function calls that enqueue commands that write or copy to regions of a memory object that are mapped is undefined.<BR>
+<BR>
+Lasterror is set.<BR>
+<p>See also:<ul>
+<li><A href="opencl-clcommandqueuembs-method.html#14">EnqueueMapBuffer(buffer as CLMemMBS, MapFlags as Integer, offset as Integer, size as Integer) as memoryblock</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-clcommandqueuembs.html">CLCommandQueueMBS</a>.<A name="14">EnqueueMapBuffer(buffer as <A href="class-clmemmbs.html">CLMemMBS</A>, MapFlags as Integer, offset as Integer, size as Integer) as memoryblock</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Enqueues a command to map a region of the buffer object given by buffer into the host address space and returns a pointer to this mapped region.<BR>
+<B>Notes:</B> 
+<BR>
+BlockingMap: Optional, Indicates if the map operation is blocking or non-blocking. If BlockingMap is true, EnqueueMapBuffer does not return until the specified region in buffer can be mapped. If BlockingMap is false i.e. map operation is non-blocking, the pointer to the mapped region returned by clEnqueueMapBuffer cannot be used until the map command has completed. The event argument returns an event object which can be used to query the execution status of the map command. When the map command is completed, the application can access the contents of the mapped region using the pointer returned by EnqueueMapBuffer.<BR>
+MapFlags: Is a bit-field and can be set to kMapRead to indicate that the region specified by (offset, size) in the buffer object is being mapped for reading, and/or kMapWrite to indicate that the region specified by (offset, size) in the buffer object is being mapped for writing.<BR>
+buffer: A valid buffer object. The OpenCL context associated with <A href="class-clcommandqueuembs.html">CLCommandQueueMBS</A> and buffer must be the same.<BR>
+offset, size: The offset in bytes and the size of the region in the buffer object that is being mapped.<BR>
+EventWaitList: Optional, Specify events that need to complete before this particular command can be executed. The events specified in EventWaitList act as synchronization points. The context associated with events in event_wait_list and command_queue must be the same.<BR>
+outEvent: Returns an event object that identifies this particular copy command and can be used toquery or queue a wait for this particular command to complete. <BR>
+<BR>
+Lasterror is set.<BR>
+<BR>
+The contents of the regions of a memory object mapped for writing (i.e. kMapWrite is set in map_flags argument to EnqueueMapBuffer or EnqueueMapImage) are considered to be undefined until this region is unmapped. Reads and writes by a kernel executing on a device to a memory region(s) mapped for writing are undefined.<BR>
+<BR>
+Multiple command-queues can map a region or overlapping regions of a memory object for reading (i.e. MapFlags = kMapRead). The contents of the regions of a memory object mapped for reading can also be read by kernels executing on a device(s). The behavior of writes by a kernel executing on a device to a mapped region of a memory object is undefined. Mapping (and unmapping) overlapped regions of a buffer or image memory object for writing is undefined.<BR>
+<BR>
+The behavior of OpenCL function calls that enqueue commands that write or copy to regions of a memory object that are mapped is undefined.<BR>
+<BR>
+Lasterror is set.<BR>
+<p>See also:<ul>
+<li><A href="opencl-clcommandqueuembs-method.html#13">EnqueueMapBuffer(buffer as CLMemMBS, BlockingMap as boolean, MapFlags as Integer, offset as Integer, size as Integer, EventWaitList() as CLEventMBS, byref outEvent as CLEventMBS) as memoryblock</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-clcommandqueuembs.html">CLCommandQueueMBS</a>.<A name="15">EnqueueMapImage(image as <A href="class-clmemmbs.html">CLMemMBS</A>, BlockingMap as boolean, MapFlags as Integer, sourceOriginX as Integer, sourceOriginY as Integer, sourceOriginZ as Integer, RegionWidth as Integer, RegionHeight as Integer, RegionDepth as Integer, byref RowPitch as Integer, byref SlicePitch as Integer, EventWaitList() as <A href="class-cleventmbs.html">CLEventMBS</A>, byref outEvent as <A href="class-cleventmbs.html">CLEventMBS</A>) as memoryblock</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Enqueues a command to map a region of an image object into the host address space and returns a pointer to this mapped region.<BR>
+<B>Notes:</B> 
+<BR>
+image: A valid image object. The OpenCL context associated with <A href="class-clcommandqueuembs.html">CLCommandQueueMBS</A> and image must be the same.<BR>
+<BR>
+BlockingMap: Optional, Indicates if the map operation is blocking or non-blocking. If BlockingMap is true, EnqueueMapImage does not return until the specified region in image can be mapped. If BlockingMap is false i.e. map operation is non-blocking, the pointer to the mapped region returned by EnqueueMapImage cannot be used until the map command has completed. The event argument returns an event object which can be used to query the execution status of the map command. When the map command is completed, the application can access the contents of the mapped region using the pointer returned by EnqueueMapImage.<BR>
+<BR>
+MapFlags: Is a bit-field and can be set to kMapRead to indicate that the region specified by (origin, region) in the image object is being mapped for reading, and/or kMapWrite to indicate that the region specified by (origin, region) in the image object is being mapped for writing.<BR>
+origin, region: Define the (x, y, z) offset in pixels and (width, height, depth) in pixels of the 2D or 3D rectangle region that is to be mapped. If image is a 2D image object, the z value given by originZ must be 0 and the depth value given by regionDepth must be 1.<BR>
+<BR>
+RowPitch: Returns the scan-line pitch in bytes for the mapped region. This must be a non-nil value.<BR>
+SlicePitch: Returns the size in bytes of each 2D slice for the mapped region. For a 2D image, zero is returned if this argument is not nil. For a 3D image, image_slice_pitch must be a non-nil value.<BR>
+<BR>
+EventWaitList: Optional, Specify events that need to complete before EnqueueMapImage can be executed. The events specified in event_wait_list act as synchronization points. The context associated with events in event_wait_list and <A href="class-clcommandqueuembs.html">CLCommandQueueMBS</A> must be the same.<BR>
+<BR>
+outEvent: Optional, Returns an event object that identifies this particular copy command and can be used to query or queue a wait for this particular command to complete. event can be nil in which case it will not be possible for the application to query the status of this command or queue a wait for this command to complete.<BR>
+<BR>
+Lasterror is set.<BR>
+<BR>
+If the buffer or image object is created with kMemoryUseHostPtr set in mem_flags, the following will be true:<BR>
+<BR>
+The HostPtr specified in Constructor is guaranteed to contain the latest bits in the region being mapped when the EnqueueMapBuffer or EnqueueMapImage command has completed.<BR>
+The pointer value returned by EnqueueMapBuffer or EnqueueMapImage will be derived from the HostPtr specified when the buffer or image object is created.<BR>
+The contents of the regions of a memory object mapped for writing (i.e. kMapWrite is set in MapFlags argument to EnqueueMapBuffer or EnqueueMapImage) are considered to be undefined until this region is unmapped. Reads and writes by a kernel executing on a device to a memory region(s) mapped for writing are undefined.<BR>
+<BR>
+Multiple command-queues can map a region or overlapping regions of a memory object for reading (i.e. MapFlags = kMapRead). The contents of the regions of a memory object mapped for reading can also be read by kernels executing on a device(s). The behavior of writes by a kernel executing on a device to a mapped region of a memory object is undefined. Mapping (and unmapping) overlapped regions of a buffer or image memory object for writing is undefined.<BR>
+<BR>
+The behavior of OpenCL function calls that enqueue commands that write or copy to regions of a memory object that are mapped is undefined.<BR>
+<p>See also:<ul>
+<li><A href="opencl-clcommandqueuembs-method.html#16">EnqueueMapImage(image as CLMemMBS, MapFlags as Integer, sourceOriginX as Integer, sourceOriginY as Integer, sourceOriginZ as Integer, RegionWidth as Integer, RegionHeight as Integer, RegionDepth as Integer, byref RowPitch as Integer, byref SlicePitch as Integer) as memoryblock</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-clcommandqueuembs.html">CLCommandQueueMBS</a>.<A name="16">EnqueueMapImage(image as <A href="class-clmemmbs.html">CLMemMBS</A>, MapFlags as Integer, sourceOriginX as Integer, sourceOriginY as Integer, sourceOriginZ as Integer, RegionWidth as Integer, RegionHeight as Integer, RegionDepth as Integer, byref RowPitch as Integer, byref SlicePitch as Integer) as memoryblock</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Enqueues a command to map a region of an image object into the host address space and returns a pointer to this mapped region.<BR>
+<B>Notes:</B> 
+<BR>
+image: A valid image object. The OpenCL context associated with <A href="class-clcommandqueuembs.html">CLCommandQueueMBS</A> and image must be the same.<BR>
+<BR>
+BlockingMap: Optional, Indicates if the map operation is blocking or non-blocking. If BlockingMap is true, EnqueueMapImage does not return until the specified region in image can be mapped. If BlockingMap is false i.e. map operation is non-blocking, the pointer to the mapped region returned by EnqueueMapImage cannot be used until the map command has completed. The event argument returns an event object which can be used to query the execution status of the map command. When the map command is completed, the application can access the contents of the mapped region using the pointer returned by EnqueueMapImage.<BR>
+<BR>
+MapFlags: Is a bit-field and can be set to kMapRead to indicate that the region specified by (origin, region) in the image object is being mapped for reading, and/or kMapWrite to indicate that the region specified by (origin, region) in the image object is being mapped for writing.<BR>
+origin, region: Define the (x, y, z) offset in pixels and (width, height, depth) in pixels of the 2D or 3D rectangle region that is to be mapped. If image is a 2D image object, the z value given by originZ must be 0 and the depth value given by regionDepth must be 1.<BR>
+<BR>
+RowPitch: Returns the scan-line pitch in bytes for the mapped region. This must be a non-nil value.<BR>
+SlicePitch: Returns the size in bytes of each 2D slice for the mapped region. For a 2D image, zero is returned if this argument is not nil. For a 3D image, image_slice_pitch must be a non-nil value.<BR>
+<BR>
+EventWaitList: Optional, Specify events that need to complete before EnqueueMapImage can be executed. The events specified in event_wait_list act as synchronization points. The context associated with events in event_wait_list and <A href="class-clcommandqueuembs.html">CLCommandQueueMBS</A> must be the same.<BR>
+<BR>
+outEvent: Optional, Returns an event object that identifies this particular copy command and can be used to query or queue a wait for this particular command to complete. event can be nil in which case it will not be possible for the application to query the status of this command or queue a wait for this command to complete.<BR>
+<BR>
+Lasterror is set.<BR>
+<BR>
+If the buffer or image object is created with kMemoryUseHostPtr set in mem_flags, the following will be true:<BR>
+<BR>
+The HostPtr specified in Constructor is guaranteed to contain the latest bits in the region being mapped when the EnqueueMapBuffer or EnqueueMapImage command has completed.<BR>
+The pointer value returned by EnqueueMapBuffer or EnqueueMapImage will be derived from the HostPtr specified when the buffer or image object is created.<BR>
+The contents of the regions of a memory object mapped for writing (i.e. kMapWrite is set in MapFlags argument to EnqueueMapBuffer or EnqueueMapImage) are considered to be undefined until this region is unmapped. Reads and writes by a kernel executing on a device to a memory region(s) mapped for writing are undefined.<BR>
+<BR>
+Multiple command-queues can map a region or overlapping regions of a memory object for reading (i.e. MapFlags = kMapRead). The contents of the regions of a memory object mapped for reading can also be read by kernels executing on a device(s). The behavior of writes by a kernel executing on a device to a mapped region of a memory object is undefined. Mapping (and unmapping) overlapped regions of a buffer or image memory object for writing is undefined.<BR>
+<BR>
+The behavior of OpenCL function calls that enqueue commands that write or copy to regions of a memory object that are mapped is undefined.<BR>
+<p>See also:<ul>
+<li><A href="opencl-clcommandqueuembs-method.html#15">EnqueueMapImage(image as CLMemMBS, BlockingMap as boolean, MapFlags as Integer, sourceOriginX as Integer, sourceOriginY as Integer, sourceOriginZ as Integer, RegionWidth as Integer, RegionHeight as Integer, RegionDepth as Integer, byref RowPitch as Integer, byref SlicePitch as Integer, EventWaitList() as CLEventMBS, byref outEvent as CLEventMBS) as memoryblock</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-clcommandqueuembs.html">CLCommandQueueMBS</a>.<A name="17">EnqueueMarker(byref outEvent as <A href="class-cleventmbs.html">CLEventMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Enqueues a marker command.<BR>
+<B>Notes:</B> 
+<BR>
+Enqueues a marker command to the command queue. The marker command returns an event which can be used to queue a wait on this marker event i.e. wait for all commands queued before the marker command to complete.<BR>
+<BR>
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-clcommandqueuembs.html">CLCommandQueueMBS</a>.<A name="18">EnqueueNativeKernel(FunctionPtr as ptr, args as memoryblock, argsSize as Integer, NumberOfMemoryObjects as Integer, MemList as memoryblock, ArgsMemoryLocations as memoryblock)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Enqueues a command to execute a native C/C++ function not compiled using the OpenCL compiler.<BR>
+<B>Notes:</B> 
+<BR>
+First a warning: Don&#39;t use this with Xojo methods. You can point to a function written in C which you made thread safe.<BR>
+<BR>
+self: A valid command-queue. A native user function can only be executed on a command-queue created on a device that has kExceNativeKernel capability set in ExecutionCapabilities property.<BR>
+<BR>
+FunctionPtr: A pointer to a host-callable user function.<BR>
+<BR>
+args: A pointer to the args list that FunctionPtr should be called with.<BR>
+argsSize: The size in bytes of the args list that args points to.<BR>
+<BR>
+The data pointed to by args and argsSize bytes in size will be copied and a pointer to this copied region will be passed to FunctionPtr. The copy needs to be done because the memory objects (<A href="class-clmemmbs.html">CLMemMBS</A>.handle values) that args may contain need to be modified and replaced by appropriate pointers to global memory. When EnqueueNativeKernel returns, the memory region pointed to by args can be reused by the application.<BR>
+<BR>
+NumberOfMemoryObjects: The number of buffer objects that are passed in args.<BR>
+<BR>
+MemList: A list of valid buffer objects, if NumberOfMemoryObjects is greater than 0. The buffer object values specified in MemList are memory object handles (<A href="class-clmemmbs.html">CLMemMBS</A>.handle values) or nil.<BR>
+<BR>
+ArgsMemoryLocations: A pointer to appropriate locations that args points to where memory object handles (<A href="class-clmemmbs.html">CLMemMBS</A>.handle values) are stored. Before the user function is executed, the memory object handles are replaced by pointers to global memory.<BR>
+<BR>
+EventWaitList: Optionally, Specify events that need to complete before this particular command can be executed. The events specified in event_wait_list act as synchronization points. The context associated with events in event_wait_list and command_queue must be the same.<BR>
+<BR>
+outEvent: Optionally, Returns an event object that identifies this particular kernel execution instance. <BR>
+<BR>
+The data pointed to by args and argsSize bytes in size will be copied and a pointer to this copied region will be passed to FunctionPtr. The copy needs to be done because the memory objects (<A href="class-clmemmbs.html">CLMemMBS</A>.handle values) that args may contain need to be modified and replaced by appropriate pointers to global memory. When EnqueueNativeKernel returns, the memory region pointed to by args can be reused by the application.<BR>
+<BR>
+Lasterror is set.<BR>
+<p>See also:<ul>
+<li><A href="opencl-clcommandqueuembs-method.html#19">EnqueueNativeKernel(FunctionPtr as ptr, args as memoryblock, argsSize as Integer, NumberOfMemoryObjects as Integer, MemList as memoryblock, ArgsMemoryLocations as memoryblock, EventWaitList() as CLEventMBS, byref outEvent as CLEventMBS)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-clcommandqueuembs.html">CLCommandQueueMBS</a>.<A name="19">EnqueueNativeKernel(FunctionPtr as ptr, args as memoryblock, argsSize as Integer, NumberOfMemoryObjects as Integer, MemList as memoryblock, ArgsMemoryLocations as memoryblock, EventWaitList() as <A href="class-cleventmbs.html">CLEventMBS</A>, byref outEvent as <A href="class-cleventmbs.html">CLEventMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Enqueues a command to execute a native C/C++ function not compiled using the OpenCL compiler.<BR>
+<B>Notes:</B> 
+<BR>
+First a warning: Don&#39;t use this with Xojo methods. You can point to a function written in C which you made thread safe.<BR>
+<BR>
+self: A valid command-queue. A native user function can only be executed on a command-queue created on a device that has kExceNativeKernel capability set in ExecutionCapabilities property.<BR>
+<BR>
+FunctionPtr: A pointer to a host-callable user function.<BR>
+<BR>
+args: A pointer to the args list that FunctionPtr should be called with.<BR>
+argsSize: The size in bytes of the args list that args points to.<BR>
+<BR>
+The data pointed to by args and argsSize bytes in size will be copied and a pointer to this copied region will be passed to FunctionPtr. The copy needs to be done because the memory objects (<A href="class-clmemmbs.html">CLMemMBS</A>.handle values) that args may contain need to be modified and replaced by appropriate pointers to global memory. When EnqueueNativeKernel returns, the memory region pointed to by args can be reused by the application.<BR>
+<BR>
+NumberOfMemoryObjects: The number of buffer objects that are passed in args.<BR>
+<BR>
+MemList: A list of valid buffer objects, if NumberOfMemoryObjects is greater than 0. The buffer object values specified in MemList are memory object handles (<A href="class-clmemmbs.html">CLMemMBS</A>.handle values) or nil.<BR>
+<BR>
+ArgsMemoryLocations: A pointer to appropriate locations that args points to where memory object handles (<A href="class-clmemmbs.html">CLMemMBS</A>.handle values) are stored. Before the user function is executed, the memory object handles are replaced by pointers to global memory.<BR>
+<BR>
+EventWaitList: Optionally, Specify events that need to complete before this particular command can be executed. The events specified in event_wait_list act as synchronization points. The context associated with events in event_wait_list and command_queue must be the same.<BR>
+<BR>
+outEvent: Optionally, Returns an event object that identifies this particular kernel execution instance. <BR>
+<BR>
+The data pointed to by args and argsSize bytes in size will be copied and a pointer to this copied region will be passed to FunctionPtr. The copy needs to be done because the memory objects (<A href="class-clmemmbs.html">CLMemMBS</A>.handle values) that args may contain need to be modified and replaced by appropriate pointers to global memory. When EnqueueNativeKernel returns, the memory region pointed to by args can be reused by the application.<BR>
+<BR>
+Lasterror is set.<BR>
+<p>See also:<ul>
+<li><A href="opencl-clcommandqueuembs-method.html#18">EnqueueNativeKernel(FunctionPtr as ptr, args as memoryblock, argsSize as Integer, NumberOfMemoryObjects as Integer, MemList as memoryblock, ArgsMemoryLocations as memoryblock)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-clcommandqueuembs.html">CLCommandQueueMBS</a>.<A name="20">EnqueueNDRangeKernel(kernel as <A href="class-clkernelmbs.html">CLKernelMBS</A>, GlobalWorkSize as Integer, LocalWorkSize as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Enqueues a command to execute a kernel on a device.<BR>
+<B>Notes:</B> 
+<BR>
+kernel: A valid kernel object. The OpenCL context associated with kernel and command_queue must be the same.<BR>
+GlobalWorkSize: The number of global work-items.<BR>
+LocalWorkSize: The number of work-items that make up a work-group (also referred to as the size of the work-group) that will execute the kernel specified by kernel. <BR>
+<BR>
+The work-group size to be used for kernel can also be specified in the program source using the __attribute__((reqd_work_group_size(X, Y, Z)))qualifier. In this case the size of work group specified by local_work_size must match the value specified by the reqd_work_group_size __attribute__ qualifier.<BR>
+<BR>
+EventWaitList: Optional, Specify events that need to complete before this particular command can be executed. If EventWaitList is empty or not passed, then this particular command does not wait on any event to complete. The events specified in EventWaitList act as synchronization points. The context associated with events in EventWaitList and <A href="class-clcommandqueuembs.html">CLCommandQueueMBS</A> must be the same.<BR>
+outEvent: Optional, Returns an event object that identifies this particular kernel execution instance. Event objects are unique and can be used to identify a particular kernel execution instance later on. <BR>
+<BR>
+Work-group instances are executed in parallel across multiple compute units or concurrently on the same compute unit.<BR>
+<BR>
+Each work-item is uniquely identified by a global identifier. The global ID, which can be read inside the kernel, is computed using the value given by GlobalWorkSize and global_work_offset. In OpenCL 1.0, the starting global ID is always (0, 0, ... 0). In addition, a work-item is also identified within a work-group by a unique local ID. The local ID, which can also be read by the kernel, is computed using the value given by LocalWorkSize. The starting local ID is always (0, 0, ... 0).<BR>
+<BR>
+Lasterror is set.<BR>
+<p>See also:<ul>
+<li><A href="opencl-clcommandqueuembs-method.html#21">EnqueueNDRangeKernel(kernel as CLKernelMBS, GlobalWorkSize as Integer, LocalWorkSize as Integer, EventWaitList() as CLEventMBS, byref outEvent as CLEventMBS)</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-macframeworks-opencl-openclhelloworld.html">/MacFrameworks/OpenCL/OpenCL HelloWorld</A></li>
+<li><A href="example-macframeworks-opencl-openclhelper18-openclhelper18.html">/MacFrameworks/OpenCL/OpenCL Helper 18/OpenCL Helper 18</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-clcommandqueuembs.html">CLCommandQueueMBS</a>.<A name="21">EnqueueNDRangeKernel(kernel as <A href="class-clkernelmbs.html">CLKernelMBS</A>, GlobalWorkSize as Integer, LocalWorkSize as Integer, EventWaitList() as <A href="class-cleventmbs.html">CLEventMBS</A>, byref outEvent as <A href="class-cleventmbs.html">CLEventMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Enqueues a command to execute a kernel on a device.<BR>
+<B>Notes:</B> 
+<BR>
+kernel: A valid kernel object. The OpenCL context associated with kernel and command_queue must be the same.<BR>
+GlobalWorkSize: The number of global work-items.<BR>
+LocalWorkSize: The number of work-items that make up a work-group (also referred to as the size of the work-group) that will execute the kernel specified by kernel. <BR>
+<BR>
+The work-group size to be used for kernel can also be specified in the program source using the __attribute__((reqd_work_group_size(X, Y, Z)))qualifier. In this case the size of work group specified by local_work_size must match the value specified by the reqd_work_group_size __attribute__ qualifier.<BR>
+<BR>
+EventWaitList: Optional, Specify events that need to complete before this particular command can be executed. If EventWaitList is empty or not passed, then this particular command does not wait on any event to complete. The events specified in EventWaitList act as synchronization points. The context associated with events in EventWaitList and <A href="class-clcommandqueuembs.html">CLCommandQueueMBS</A> must be the same.<BR>
+outEvent: Optional, Returns an event object that identifies this particular kernel execution instance. Event objects are unique and can be used to identify a particular kernel execution instance later on. <BR>
+<BR>
+Work-group instances are executed in parallel across multiple compute units or concurrently on the same compute unit.<BR>
+<BR>
+Each work-item is uniquely identified by a global identifier. The global ID, which can be read inside the kernel, is computed using the value given by GlobalWorkSize and global_work_offset. In OpenCL 1.0, the starting global ID is always (0, 0, ... 0). In addition, a work-item is also identified within a work-group by a unique local ID. The local ID, which can also be read by the kernel, is computed using the value given by LocalWorkSize. The starting local ID is always (0, 0, ... 0).<BR>
+<BR>
+Lasterror is set.<BR>
+<p>See also:<ul>
+<li><A href="opencl-clcommandqueuembs-method.html#20">EnqueueNDRangeKernel(kernel as CLKernelMBS, GlobalWorkSize as Integer, LocalWorkSize as Integer)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-clcommandqueuembs.html">CLCommandQueueMBS</a>.<A name="22">EnqueueReadBuffer(buffer as <A href="class-clmemmbs.html">CLMemMBS</A>, BlockingRead as boolean, offset as Integer, size as Integer, mem as Memoryblock, EventWaitList() as <A href="class-cleventmbs.html">CLEventMBS</A>, byref outEvent as <A href="class-cleventmbs.html">CLEventMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Enqueue commands to read from a buffer object to host memory.<BR>
+<B>Notes:</B> 
+<BR>
+buffer: Refers to a valid buffer object.<BR>
+BlockingRead: Optional, Indicates if the read operations are blocking or non-blocking. If BlockingRead is true i.e. the read command is blocking, clEnqueueReadBuffer does not return until the buffer data has been read and copied into memory pointed to by ptr.<BR>
+<BR>
+If BlockingRead is false i.e. the read command is non-blocking, EnqueueReadBuffer queues a non-blocking read command and returns. The contents of the buffer that ptr points to cannot be used until the read command has completed. The event argument returns an event object which can be used to query the execution status of the read command. When the read command has completed, the contents of the buffer that ptr points to can be used by the application.<BR>
+<BR>
+offset: The offset in bytes in the buffer object to read from.<BR>
+size: The size in bytes of data being read.<BR>
+mem: The pointer to buffer in host memory where data is to be read into.<BR>
+<BR>
+EventWaitList: Optional, specifies events that need to complete before this particular command can be executed. If EventWaitList is empty or not passed, then this particular command does not wait on any event to complete. The events specified in EventWaitList act as synchronization points. The context associated with events in EventWaitList and command_queue must be the same.<BR>
+<BR>
+outEvent: Optional, Returns an event object that identifies this particular read command and can be used to query or queue a wait for this particular command to complete. <BR>
+<BR>
+Calling EnqueueReadBuffer to read a region of the buffer object with the ptr argument value set to mem + offset, where mem is a pointer to the memory region specified when the buffer object being read is created with kMemoryUseHostPtr, must meet the following requirements in order to avoid undefined behavior:<BR>
+<BR>
+All commands that use this buffer object have finished execution before the read command begins execution<BR>
+The buffer object is not mapped<BR>
+The buffer object is not used by any command-queue until the read command has finished execution<BR>
+<BR>
+Lasterror is set.<BR>
+<p>See also:<ul>
+<li><A href="opencl-clcommandqueuembs-method1.html">EnqueueReadBuffer(buffer as CLMemMBS, offset as Integer, size as Integer, mem as Memoryblock)</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-macframeworks-opencl-openclhelloworld.html">/MacFrameworks/OpenCL/OpenCL HelloWorld</A></li>
+<li><A href="example-macframeworks-opencl-openclhelper18-openclhelper18.html">/MacFrameworks/OpenCL/OpenCL Helper 18/OpenCL Helper 18</A></li>
+</ul>
+</div>
+<p>
+ 
+<a href="opencl-clcommandqueuembs-method1.html">Next items</a>
+</p>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=opencl-clcommandqueuembs-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+
