@@ -1,0 +1,319 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - CALayerMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="CALayerMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">CALayerMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>CALayerMBS class</H3>
+<div class="M">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-coreanimation.html" translate="no">CoreAnimation</A></td>
+<td class=grau><a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a></td>
+<td class=grau><a href="newinversion131.shtml" class=version>13.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The plugin class for a CoreAnimation.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #800000;">// add gray layer over Xojo window. Or hide it on second call, show on third call, etc...</span><br /><br /><span style="color: #0000FF;">If</span> view = <span style="color: #0000FF;">Nil</span> <span style="color: #0000FF;">Then</span><br />  <span style="color: #800000;">// view is property in window/module</span><br />  <br />  <span style="color: #0000FF;">Dim</span> win <span style="color: #0000FF;">As</span> <A href="class-nswindowmbs.html">NSWindowMBS</A> = Self.<A href="class-nswindowmbs.html">NSWindowMBS</A><br />  <br />  view = <span style="color: #0000FF;">New</span> <A href="class-nsviewmbs.html">NSViewMBS</A>(<span style="color: #336698;">0</span>, <span style="color: #336698;">0</span>, Width, Height)<br />  <br />  win.contentView.AddSubView(view)<br />  <br />  view.wantsLayer = <span style="color: #0000FF;">True</span><br />  view.autoresizesSubviews = <span style="color: #0000FF;">True</span><br />  view.autoresizingMask = view.NSViewWidthSizable + view.NSViewHeightSizable<br />  <br />  <span style="color: #0000FF;">Dim</span> layer <span style="color: #0000FF;">As</span> CALayerMBS = view.layer<br />  layer.backgroundColor = <A href="class-cgcolormbs.html">CGColorMBS</A>.CreateDeviceGray(<span style="color: #006633;">0.3</span>, <span style="color: #006633;">0.5</span>)<br />  <br /><span style="color: #0000FF;">Else</span><br />  <br />  <span style="color: #800000;">// show or hide</span><br />  view.isHidden = <span style="color: #0000FF;">Not</span> view.isHidden<br />  <br /><span style="color: #0000FF;">End</span> <span style="color: #0000FF;">If</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+The CALayer class manages image-based content and allows you to perform animations on that content. Layers are often used to provide the backing store for views but can also be used without a view to display content. A layer&#39;s main job is to manage the visual content that you provide but the layer itself has visual attributes that can be set, such as a background color, border, and shadow. In addition to managing visual content, the layer also maintains information about the geometry of its content (such as its position, size, and transform) that is used to present that content onscreen. Modifying the properties of the layer is how you initiate animations on the layer&#39;s content or geometry. A layer object encapsulates the duration and pacing of a layer and its animations by adopting the CAMediaTiming protocol, which defines the layer&#39;s timing information.<BR>
+<BR>
+If the layer object was created by a view, the view typically assigns itself as the layer&#39;s delegate automatically, and you should not change that relationship. For layers you create yourself, you can assign a delegate object and use that object to provide the contents of the layer dynamically and perform other tasks. A layer may also have a layout manager object (assigned to the layoutManager property) to manage the layout of subviews separately.<BR>
+<BR>
+Available in OS X v10.5 and later.<BR>
+</div>
+<ul>
+<LI>41 properties<UL>
+<li class="M">property <A href="coreanimation-calayermbs-property.html">affineTransform</A> as <A href="class-cgaffinetransformmbs.html">CGAffineTransformMBS</A></li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#2">anchorPoint</A> as <A href="class-cgrectmbs.html">CGRectMBS</A></li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#3">anchorPointZ</A> as Double</li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#4">AutoresizingMask</A> as Integer</li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#5">backgroundColor</A> as Variant</li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#6">borderColor</A> as Variant</li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#7">borderWidth</A> as Double</li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#8">bounds</A> as <A href="class-cgrectmbs.html">CGRectMBS</A></li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#9">className</A> as string</li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#10">classPath</A> as string</li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#11">contents</A> as Variant</li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#12">contentsCenter</A> as <A href="class-cgrectmbs.html">CGRectMBS</A></li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#13">contentsRect</A> as <A href="class-cgrectmbs.html">CGRectMBS</A></li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#14">contentsScale</A> as Double</li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#15">cornerRadius</A> as Double</li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#16">DoubleSided</A> as boolean</li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#17">drawsAsynchronously</A> as boolean</li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#18">frame</A> as <A href="class-cgrectmbs.html">CGRectMBS</A></li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#19">Handle</A> as Integer</li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#20">Hidden</A> as boolean</li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#21">mask</A> as CALayerMBS</li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#22">masksToBounds</A> as Boolean</li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#23">minificationFilterBias</A> as Double</li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#24">modelLayer</A> as CALayerMBS</li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#25">needsDisplay</A> as boolean</li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#26">needsDisplayOnBoundsChange</A> as boolean</li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#27">needsLayout</A> as boolean</li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#28">opacity</A> as Double</li>
+<li class="M">property <A href="coreanimation-calayermbs-property.html#29">Opaque</A> as boolean</li>
+<li class="M">property <A href="coreanimation-calayermbs-property1.html">position</A> as <A href="class-cgrectmbs.html">CGRectMBS</A></li>
+<li class="M">property <A href="coreanimation-calayermbs-property1.html#2">preferredFrameSize</A> as <A href="class-cgsizembs.html">CGSizeMBS</A></li>
+<li class="M">property <A href="coreanimation-calayermbs-property1.html#3">presentationLayer</A> as CALayerMBS</li>
+<li class="M">property <A href="coreanimation-calayermbs-property1.html#4">rasterizationScale</A> as Double</li>
+<li class="M">property <A href="coreanimation-calayermbs-property1.html#5">shadowColor</A> as Variant</li>
+<li class="M">property <A href="coreanimation-calayermbs-property1.html#6">shadowOffset</A> as <A href="class-cgsizembs.html">CGSizeMBS</A></li>
+<li class="M">property <A href="coreanimation-calayermbs-property1.html#7">shadowOpacity</A> as Double</li>
+<li class="M">property <A href="coreanimation-calayermbs-property1.html#8">shadowPath</A> as Variant</li>
+<li class="M">property <A href="coreanimation-calayermbs-property1.html#9">shadowRadius</A> as Double</li>
+<li class="M">property <A href="coreanimation-calayermbs-property1.html#10">shouldRasterize</A> as Boolean</li>
+<li class="M">property <A href="coreanimation-calayermbs-property1.html#11">superlayer</A> as CALayerMBS</li>
+<li class="M">property <A href="coreanimation-calayermbs-property1.html#12">zPosition</A> as Double</li>
+</UL></LI>
+<LI>14 methods<UL>
+<li class="M">method <A href="coreanimation-calayermbs-method.html">addSublayer</A>(layer as CALayerMBS)</li>
+<li class="M">method <A href="coreanimation-calayermbs-method.html#2">Constructor</A></li>
+<li class="M">method <A href="coreanimation-calayermbs-method.html#3">display</A></li>
+<li class="M">method <A href="coreanimation-calayermbs-method.html#4">displayIfNeeded</A></li>
+<li class="M">method <A href="coreanimation-calayermbs-method.html#5">layoutIfNeeded</A></li>
+<li class="M">method <A href="coreanimation-calayermbs-method.html#6">layoutSublayers</A></li>
+<li class="M">method <A href="coreanimation-calayermbs-method.html#7">removeAllAnimations</A></li>
+<li class="M">method <A href="coreanimation-calayermbs-method.html#8">removeFromSuperlayer</A></li>
+<li class="M">method <A href="coreanimation-calayermbs-method.html#9">renderInContext</A>(CGContextHandle as Integer) as boolean</li>
+<li class="M">method <A href="coreanimation-calayermbs-method.html#10">renderInPicture</A>(Pic as Picture) as boolean</li>
+<li class="M">method <A href="coreanimation-calayermbs-method.html#11">setNeedsDisplay</A></li>
+<li class="M">method <A href="coreanimation-calayermbs-method.html#12">setNeedsDisplayInRect</A>(r as <A href="class-cgrectmbs.html">CGRectMBS</A>)</li>
+<li class="M">method <A href="coreanimation-calayermbs-method.html#13">setNeedsLayout</A></li>
+<li class="M">method <A href="coreanimation-calayermbs-method.html#14">sublayers</A> as CALayerMBS()</li>
+</UL></LI>
+<LI>4 shared methods<UL>
+<li class="M">shared method <A href="coreanimation-calayermbs-shared-method.html">available</A> as boolean</li>
+<li class="M">shared method <A href="coreanimation-calayermbs-shared-method.html#2">layer</A> as CALayerMBS</li>
+<li class="MI">shared method <A href="coreanimation-calayermbs-shared-method.html#3">layerFromHandle</A>(Handle as Integer) as CALayerMBS</li>
+<li class="MI">shared method <A href="coreanimation-calayermbs-shared-method.html#4">layerFromHandle</A>(Handle as Ptr) as CALayerMBS</li>
+</UL></LI>
+<LI>11 constants<UL>
+</UL></LI>
+</ul>
+<h3 lang="en">Edge constants</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="coreanimation-calayermbs-const.html">kCALayerBottomEdge </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 4</td>
+<td bgcolor="#DDDDDD" valign=top>
+Specifies that the bottom edge of the receiver&#39;s content should be antialiased.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="coreanimation-calayermbs-const.html#3">kCALayerLeftEdge </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+Specifies that the left edge of the receiver&#39;s content should be antialiased.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="coreanimation-calayermbs-const.html#9">kCALayerRightEdge </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+Specifies that the right edge of the receiver&#39;s content should be antialiased.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="coreanimation-calayermbs-const.html#10">kCALayerTopEdge </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 8</td>
+<td bgcolor="#DDDDDD" valign=top>
+Specifies that the top edge of the receiver&#39;s content should be antialiased.<BR>
+</td>
+</tr>
+</table>
+<h3 lang="en">Autoresize Mask Constants</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="coreanimation-calayermbs-const.html#2">kCALayerHeightSizable </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 16</td>
+<td bgcolor="#DDDDDD" valign=top>
+The receiver&#39;s height is flexible.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="coreanimation-calayermbs-const.html#4">kCALayerMaxXMargin </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 4</td>
+<td bgcolor="#DDDDDD" valign=top>
+The left margin between the receiver and its superview is flexible.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="coreanimation-calayermbs-const.html#5">kCALayerMaxYMargin </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 32</td>
+<td bgcolor="#DDDDDD" valign=top>
+The top margin between the receiver and its superview is flexible.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="coreanimation-calayermbs-const.html#6">kCALayerMinXMargin </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+The left margin between the receiver and its superview is flexible.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="coreanimation-calayermbs-const.html#7">kCALayerMinYMargin </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 8</td>
+<td bgcolor="#DDDDDD" valign=top>
+The top margin between the receiver and its superview is flexible.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="coreanimation-calayermbs-const.html#8">kCALayerNotSizable </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 0</td>
+<td bgcolor="#DDDDDD" valign=top>
+The receiver cannot be resized.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="coreanimation-calayermbs-const.html#11">kCALayerWidthSizable </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+The receiver&#39;s width is flexible.<BR>
+</td>
+</tr>
+</table>
+<h4>Sub classes:</h4><ul>
+<li class="M"><A href="class-avcapturevideopreviewlayermbs.html">class AVCaptureVideoPreviewLayerMBS</A>
+</li>
+<li class="M"><A href="class-avplayerlayermbs.html">class AVPlayerLayerMBS</A>
+</li>
+<li class="M"><A href="class-avsamplebufferdisplaylayermbs.html">class AVSampleBufferDisplayLayerMBS</A>
+</li>
+<li class="M"><A href="class-avsynchronizedlayermbs.html">class AVSynchronizedLayerMBS</A>
+</li>
+<li class="M"><A href="class-catextlayermbs.html">class CATextLayerMBS</A>
+</li>
+</ul>
+<h4>Some methods using this class:</h4><ul>
+<li class="M"><A href="avfoundation-avvideocompositioncoreanimationtoolmbs-shared-method.html#2" translate="no">AVVideoCompositionCoreAnimationToolMBS.videoCompositionCoreAnimationToolWithAdditionalLayer</A>(layer as CALayerMBS, trackID as Integer) as <A href="class-avvideocompositioncoreanimationtoolmbs.html">AVVideoCompositionCoreAnimationToolMBS</A></li>
+<li class="M"><A href="avfoundation-avvideocompositioncoreanimationtoolmbs-shared-method.html#3" translate="no">AVVideoCompositionCoreAnimationToolMBS.videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayer</A>(videoLayer as CALayerMBS, animationLayer as CALayerMBS) as <A href="class-avvideocompositioncoreanimationtoolmbs.html">AVVideoCompositionCoreAnimationToolMBS</A></li>
+<li class="M"><A href="avfoundation-avvideocompositioncoreanimationtoolmbs-shared-method.html#4" translate="no">AVVideoCompositionCoreAnimationToolMBS.videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayers</A>(videoLayers() as CALayerMBS, animationLayer as CALayerMBS) as <A href="class-avvideocompositioncoreanimationtoolmbs.html">AVVideoCompositionCoreAnimationToolMBS</A></li>
+<li class="M"><A href="control-calayermbs.html" translate="no">Control.CALayerMBS</A> as CALayerMBS</li>
+<li class="M"><A href="desktopcontrol-calayermbs.html" translate="no">DesktopControl.CALayerMBS</A> as CALayerMBS</li>
+<li class="M"><A href="imagekit-ikimagebrowsercellmbs-method.html#10" translate="no">IKImageBrowserCellMBS.layerForType</A>(type as string) as CALayerMBS</li>
+<li class="M"><A href="scenekit-scnmaterialpropertymbs-shared-method.html#4" translate="no">SCNMaterialPropertyMBS.materialPropertyWithLayer</A>(layer as CALayerMBS) as <A href="class-scnmaterialpropertymbs.html">SCNMaterialPropertyMBS</A></li>
+</ul>
+<h4>Some properties using for this class:</h4><ul>
+<li class="M"><A href="coreanimation-calayermbs-property.html#21" translate="no">CALayerMBS.mask</A> as CALayerMBS</li>
+<li class="M"><A href="coreanimation-calayermbs-property.html#24" translate="no">CALayerMBS.modelLayer</A> as CALayerMBS</li>
+<li class="M"><A href="coreanimation-calayermbs-property1.html#3" translate="no">CALayerMBS.presentationLayer</A> as CALayerMBS</li>
+<li class="M"><A href="coreanimation-calayermbs-property1.html#11" translate="no">CALayerMBS.superlayer</A> as CALayerMBS</li>
+<li class="M"><A href="imagekit-ikimagebrowserviewmbs-method.html#6" translate="no">IKImageBrowserViewMBS.backgroundLayer</A> as CALayerMBS</li>
+<li class="M"><A href="imagekit-ikimagebrowserviewmbs-method.html#21" translate="no">IKImageBrowserViewMBS.foregroundLayer</A> as CALayerMBS</li>
+</ul>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-avfoundation-avvideowall.html">/AVFoundation/AVVideoWall</A></li>
+<li class=""><A href="example-avfoundation-donutvideoplayeroverlay.html">/AVFoundation/Donut Video Player Overlay</A></li>
+<li class=""><A href="example-avfoundation-livebarcodedetection.html">/AVFoundation/Live Barcode Detection</A></li>
+<li class=""><A href="example-avfoundation-livebarcodedetectionwithvision-livebarcodedetectionwithvision.html">/AVFoundation/Live Barcode Detection with Vision/Live Barcode Detection with Vision</A></li>
+<li class=""><A href="example-avfoundation-overlayvideotrackwithpicture.html">/AVFoundation/Overlay video track with picture</A></li>
+<li class=""><A href="example-avfoundation-recorder.html">/AVFoundation/Recorder</A></li>
+<li class=""><A href="example-avfoundation-screeninput.html">/AVFoundation/Screen Input</A></li>
+<li class=""><A href="example-avfoundation-screenrecorder.html">/AVFoundation/Screen Recorder</A></li>
+<li class=""><A href="example-avfoundation-simpleplayer.html">/AVFoundation/Simple Player</A></li>
+<li class=""><A href="example-avfoundation-transparentplayer.html">/AVFoundation/Transparent Player</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2022-04-13/MBS_Xojo_Plugins_version_222pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 22.2pr2</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2021-08-11/MBS_Xojo_Plugins_version_214pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 21.4pr2</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2016-02-25/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 16.1pr3</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2015-09-16/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 15.3pr3</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2015-02-19/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 15.0pr12</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2014-12-01/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 14.5pr2</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2013-04-13/MBS_Real_Studio_Plugins_versio/monkeybreadsoftware_blog_xojo">MBS Real Studio Plugins, version 13.1pr13</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2013-03-25/MBS_Real_Studio_Plugins_versio/monkeybreadsoftware_blog_xojo">MBS Real Studio Plugins, version 13.1pr9</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsavfoundationplugin.html">MBS AVFoundation Plugin</a>, <a href="plugins-mbsmaccgplugin.html">MBS MacCG Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-calattendeembs.html">CalAttendeeMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-calcalendaritemmbs.html">CalCalendarItemMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-calayermbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

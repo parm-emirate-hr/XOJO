@@ -1,0 +1,770 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - NSFilePresenterMBS events</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="NSFilePresenterMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">NSFilePresenterMBS events</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-nsfilepresentermbs.html">NSFilePresenterMBS</a> class.  </p>
+<div class="M">
+<b><a href="class-nsfilepresentermbs.html">NSFilePresenterMBS</a>.<A name="1">accommodatePresentedItemDeletionWithCompletionHandler(Complete as <A href="class-nsfilepresenterhandlermbs.html">NSFilePresenterHandlerMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>event</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau></td>
+</tr>
+</table>
+<B>Function:</B> 
+Tells your object that its presented item is about to be deleted.<BR>
+<B>Notes:</B> 
+<BR>
+Complete: The complete handler object to call after updating your data structures. Pass nil to the run method&#39;s errorOrNil parameter if you were able to successfully prepare for the deletion of the item. Pass an error object if your object could not prepare itself properly.<BR>
+<BR>
+A file coordinator calls this method when your object&#39;s presented item is about to be deleted. You can use this method to perform any actions that are needed to prepare for the deletion. For example, document objects typically use this method to close the document.<BR>
+<BR>
+Important: If you implement this method, you must execute the run method in the complete parameter at the end of your implementation. The system waits for you to execute that method before allowing the other object to delete the file or directory. Therefore, failure to execute the method could stall threads in your application or other processes.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilepresentermbs.html">NSFilePresenterMBS</a>.<A name="2">accommodatePresentedSubitemDeletionAtURL(URL as string, file as FolderItem, Complete as <A href="class-nsfilepresenterhandlermbs.html">NSFilePresenterHandlerMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>event</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau></td>
+</tr>
+</table>
+<B>Function:</B> 
+Tells the delegate that some entity wants to delete an item that is inside of a presented directory. (required)<BR>
+<B>Notes:</B> 
+<BR>
+url: The URL of the item being deleted from the presented directory. The item need not be at the top level of the presented directory but may itself be inside a nested subdirectory.<BR>
+file: URL as folderitem.<BR>
+complete: The complete handler object to call after updating your data structures. Pass nil to the run method&#39;s errorOrNil parameter if you were able to successfully prepare for the deletion of the item. Pass an error object if your object could not prepare itself properly.<BR>
+<BR>
+This method is relevant for applications that present directories. This might occur if the delegate manages the contents of a directory or manages a file that is implemented as a file package. When called, your implementation of this method should take whatever actions needed to update your application to handle the deletion of the specified file.<BR>
+<BR>
+Important: If you implement this method, you must execute the run method in the Complete parameter at the end of your implementation. The system waits for you to execute that method before allowing the other object to delete the item at the specified URL. Therefore, failure to execute the method could stall threads in your application or in other processes.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilepresentermbs.html">NSFilePresenterMBS</a>.<A name="3">presentedItemDidChange</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>event</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau></td>
+</tr>
+</table>
+<B>Function:</B> 
+This event is called when the item changed.<BR>
+<B>Notes:</B> 
+<BR>
+Be notified that the file or file package&#39;s contents or attributes have been been written to. Because this method may be be invoked when the attributes have changed but the contents have not, implementations that read the contents must use modification date checking to avoid needless rereading. They should check that the modification date has changed since the receiver most recently read from or wrote to the item. To avoid race conditions, getting the modification date should typically be done within invocations of one of the <A href="class-nsfilecoordinatormbs.html">NSFileCoordinatorMBS</A>.coordinate... methods.<BR>
+<BR>
+For example, NSDocument implements this method to react to both contents changes (like the user overwriting the document file with another application) and attribute changes (like the user toggling the &quot;Hide extension&quot; checkbox in a Finder info panel). It uses modification date checking as described above.<BR>
+<BR>
+Not all programs use file coordination. Your NSFileProvider may be sent this message without being sent relinquishPresentedItemToWriter first. Make your application do the best it can in that case.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilepresentermbs.html">NSFilePresenterMBS</a>.<A name="4">presentedItemDidGainVersion(version as <A href="class-nsfileversionmbs.html">NSFileVersionMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>event</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau></td>
+</tr>
+</table>
+<B>Function:</B> 
+Be notified that something in the system has added a version of the file or file package.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilepresentermbs.html">NSFilePresenterMBS</a>.<A name="5">presentedItemDidLoseVersion(version as <A href="class-nsfileversionmbs.html">NSFileVersionMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>event</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau></td>
+</tr>
+</table>
+<B>Function:</B> 
+Be notified that something in the system has removed a version of the file or file package.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilepresentermbs.html">NSFilePresenterMBS</a>.<A name="6">presentedItemDidMoveToURL(url as string, file as folderitem)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>event</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau></td>
+</tr>
+</table>
+<B>Function:</B> 
+Be notified that the file or directory has been moved or renamed, or a directory containing it has been moved or renamed. <BR>
+<B>Notes:</B> 
+<BR>
+A typical implementation of this method will cause subsequent invocations of presentedItemURL to return the new URL.<BR>
+<BR>
+The new URL may have a different file name extension than the current value of the presentedItemURL property.<BR>
+<BR>
+For example, NSDocument implements this method to handle document file moving and renaming. A shoebox application would only implement this method to be robust against surprising things like the user moving its data directory while the application is running.<BR>
+<BR>
+Not all programs use file coordination. Your NSFileProvider may be sent this message without being sent relinquishPresentedItemToWriter first. Make your application do the best it can in that case.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilepresentermbs.html">NSFilePresenterMBS</a>.<A name="7">presentedItemDidResolveConflictVersion(version as <A href="class-nsfileversionmbs.html">NSFileVersionMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>event</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau></td>
+</tr>
+</table>
+<B>Function:</B> 
+Be notified that something in the system has resolved a version of the file or file package.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilepresentermbs.html">NSFilePresenterMBS</a>.<A name="8">presentedItemURL as string</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>event</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau></td>
+</tr>
+</table>
+<B>Function:</B> 
+The URL that locates the file or directory that the receiver is presenting to the user. <BR>
+<B>Notes:</B> 
+<BR>
+Implementations of this method must be prepared to be invoked by Cocoa in any queue, at any time, including from within invocations of NSFileCoordinator methods. A nil value is valid and means that the presented item does not exist yet. An NSFilePresenter with a nil presentedItemURL will be asked for its presentedItemURL again when coordinated file access on behalf of that NSFilePresenter completes, in case the presented item was just created.<BR>
+<BR>
+For example, NSDocument has a -presentedItemURL method that usually returns self.fileURL. In a shoebox application that stores the user&#39;s data in files somewhere on the user&#39;s computer you can implement this method to specify the directory that contains those files.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilepresentermbs.html">NSFilePresenterMBS</a>.<A name="9">presentedSubitemAtURLdidGainVersion(URL as string, file as FolderItem, version as <A href="class-nsfileversionmbs.html">NSFileVersionMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>event</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau></td>
+</tr>
+</table>
+<B>Function:</B> 
+Tells the delegate that the item inside the presented directory gained a new version. (required)<BR>
+<B>Notes:</B> 
+<BR>
+url: The URL of the item inside the presented directory that gained a new version. The item need not be at the top level of the presented directory but may itself be inside a nested subdirectory.<BR>
+file: url as folderitem.<BR>
+version: The file version object containing information about the new file version.<BR>
+<BR>
+Your delegate can use this method to determine how to incorporate data from the new version of the item. This might involve incorporating the version silently or asking the user about how to proceed.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilepresentermbs.html">NSFilePresenterMBS</a>.<A name="10">presentedSubitemAtURLdidLoseVersion(URL as string, file as FolderItem, version as <A href="class-nsfileversionmbs.html">NSFileVersionMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>event</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau></td>
+</tr>
+</table>
+<B>Function:</B> 
+Tells the delegate that the item inside the presented directory lost an existing version. (required)<BR>
+<B>Notes:</B> 
+<BR>
+url: The URL of the item inside the presented directory that lost a version. The item need not be at the top level of the presented directory but may itself be inside a nested subdirectory.<BR>
+file: URL as folderitem.<BR>
+version: The file version object containing information about the version that was removed.<BR>
+<BR>
+Your delegate can use this method to determine how to handle the loss of the specified file version. For an old version, you might not have to do anything. However, if your application is currently using the lost version, you would need to update your application&#39;s user interface or prompt the user about how to proceed.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilepresentermbs.html">NSFilePresenterMBS</a>.<A name="11">presentedSubitemAtURLdidMoveToURL(oldURL as string, newURL as string, oldFile as folderitem, newFile as folderitem)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>event</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau></td>
+</tr>
+</table>
+<B>Function:</B> 
+Tells the delegate that an item in the presented directory moved to a new location. (required)<BR>
+<B>Notes:</B> 
+<BR>
+oldURL: The original URL of the item inside the presented directory. The item need not be at the top level of the presented directory but may itself be inside a nested subdirectory.<BR>
+newURL: The new URL for the item. This URL may or may not be located inside the presented directory.<BR>
+oldFile: oldURL as folderitem.<BR>
+newFile: newURL as folderitem.<BR>
+<BR>
+This method is relevant for applications that present directories. This might occur if the delegate manages the contents of a directory or manages a file that is implemented as a file package. Your implementation of this method should take whatever actions necessary to handle the change in location of the specified item. For example, you might update references to the item in your application&#39;s data structures and refresh your user interface.<BR>
+<BR>
+If the presented directory is a file package, the system calls the presentedItemDidChange method if your delegate does not implement this method.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilepresentermbs.html">NSFilePresenterMBS</a>.<A name="12">presentedSubitemAtURLdidResolveConflictVersion(URL as string, file as FolderItem, version as <A href="class-nsfileversionmbs.html">NSFileVersionMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>event</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau></td>
+</tr>
+</table>
+<B>Function:</B> 
+Tells the delegate that the item inside the presented directory had a version conflict resolved by an outside entity. (required)<BR>
+<B>Notes:</B> 
+<BR>
+url: The URL of the item inside the presented directory that was in conflict. The item need not be at the top level of the presented directory but may itself be inside a nested subdirectory.<BR>
+file: URL as folderitem.<BR>
+version: The version object containing the conflicting change.<BR>
+<BR>
+Your delegate can use this method to respond to the resolution of a version conflict by a different file presenter. This might occur if a version of your application running on another device resolves the conflict first. You might then use this method to update your user interface to indicate that there is no longer a conflict.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilepresentermbs.html">NSFilePresenterMBS</a>.<A name="13">presentedSubitemDidAppearAtURL(URL as string, file as FolderItem)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>event</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau></td>
+</tr>
+</table>
+<B>Function:</B> 
+Tells the delegate that an item was added to the presented directory. (required)<BR>
+<B>Notes:</B> 
+<BR>
+url: The URL of the item being added to the presented directory. The item need not be at the top level of the presented directory but may itself be inside a nested subdirectory.<BR>
+file: URL as a folderitem.<BR>
+<BR>
+This method is relevant for applications that present directories. This might occur if the delegate manages the contents of a directory or manages a file that is implemented as a file package. Your implementation of this method should take whatever actions necessary to incorporate the new file or directory into the presented content. For example, you might add the new item to your application&#39;s data structures and refresh your user interface.<BR>
+<BR>
+If the presented directory is a file package, the system calls the presentedItemDidChange method if your delegate does not implement this method.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilepresentermbs.html">NSFilePresenterMBS</a>.<A name="14">presentedSubitemDidChangeAtURL(URL as string, file as FolderItem)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>event</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau></td>
+</tr>
+</table>
+<B>Function:</B> 
+Tells the delegate that the contents or attributes of the specified item changed. (required)<BR>
+<B>Notes:</B> 
+<BR>
+url: The URL of the item in the presented directory that changed. The item need not be at the top level of the presented directory but may itself be inside a nested subdirectory.<BR>
+<BR>
+This method is relevant for applications that present directories. This might occur if the delegate manages the contents of a directory or manages a file that is implemented as a file package. Your implementation of this method should take whatever actions necessary to handle the change in content or attributes of the specified item.<BR>
+<BR>
+If the presented directory is a file package, the system calls the presentedItemDidChange method if your delegate does not implement this method.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilepresentermbs.html">NSFilePresenterMBS</a>.<A name="15">primaryPresentedItemURL as string</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>event</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion131.shtml" class=version>13.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau></td>
+</tr>
+</table>
+<B>Function:</B> 
+The URL of a secondary item&#39;s primary presented file or directory. (read-only)<BR>
+<B>Notes:</B> 
+<BR>
+This property supports App Sandbox in OS X.<BR>
+<BR>
+Some apps require access to secondary files or directories with names that are related to the primary, user-selected file. For example, a subtitle file, by convention, has the same name as its corresponding movie file, but with a different filename extension. If a movie player is sandboxed, an NSOpenPanel object will grant access only to the user-selected movie file (the primary item) and not its associated subtitle file (the secondary item).<BR>
+<BR>
+To gain access to a secondary item, first register an NSFilePresenter object for it. At any point in its existence, a secondary item must be able to return an NSURL object to its primary item. This is done by using this property. When done accessing the secondary item, unregister the file presenter object.<BR>
+<BR>
+Available in OS X v10.8 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilepresentermbs.html">NSFilePresenterMBS</a>.<A name="16">reacquirer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>event</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau></td>
+</tr>
+</table>
+<B>Function:</B> 
+The reacquirer event.<BR>
+<B>Notes:</B> 
+<BR>
+Called when you can reacquire an object.<BR>
+e.g. called by relinquishPresentedItemToReader method.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilepresentermbs.html">NSFilePresenterMBS</a>.<A name="17">relinquishPresentedItemToReader(reader as <A href="class-nsfilepresenterhandlermbs.html">NSFilePresenterHandlerMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>event</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau></td>
+</tr>
+</table>
+<B>Function:</B> 
+Notifies your object that another object or process wants to read the presented file or directory.<BR>
+<B>Notes:</B> 
+<BR>
+reader: A handler object. The reacquirer event is called to notify when the reader is done. If your object does not need to be notified, it can pass nil for the reacquirer block.<BR>
+<BR>
+You use this method to provide an appropriate response when another object wants to read from your presented URL. For example, when this method is called, you might temporarily stop making changes to the file or directory. After taking any appropriate steps, you must execute the block in the reader parameter to let the waiting object know that it may now proceed with its task. If you want to be notified when the reader has completed its task, pass your own block to the reader and use that block to reacquire the file or URL for your own uses.<BR>
+<BR>
+Important: If you implement this method, you must execute the run method in the reader parameter as part of your implementation. The system waits for you to execute that method before allowing the reader to operate on the file. Therefore, failure to execute the method could stall threads in your application or other processes until the user takes corrective actions.<BR>
+<BR>
+Your implementation of this method is executed using the queue in the presentedItemOperationQueue property. Your reacquirer event is executed on the queue associated with the reader.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilepresentermbs.html">NSFilePresenterMBS</a>.<A name="18">relinquishPresentedItemToWriter(writer as <A href="class-nsfilepresenterhandlermbs.html">NSFilePresenterHandlerMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>event</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau></td>
+</tr>
+</table>
+<B>Function:</B> 
+Notifies your object that another object or process wants to write to the presented file or directory.<BR>
+<B>Notes:</B> 
+<BR>
+writer: A complete handler object. The reacquirer event is called so that your object can be notified when the writer is done. <BR>
+<BR>
+You use this method to provide an appropriate response when another object wants to write to your presented URL. For example, when this method is called, you would likely stop making changes to the file or directory. After taking any appropriate steps, you must execute the run method in the writer parameter to let the waiting object know that it may now proceed with its task. <BR>
+<BR>
+Important: If you implement this method, you must execute the run method in the writer parameter at the end of your implementation. The system waits for you to execute that block before allowing the writer to operate on the file. Therefore, failure to execute the run method could stall threads in your application or other processes.<BR>
+If the writer changes the file or directory, you do not need to incorporate those changes in your reacquirer block. Instead, implement the presentedItemDidChange method and use it to detect when a writer actually wrote its changes to disk.<BR>
+<BR>
+Your implementation of this method is executed using the queue in the presentedItemOperationQueue property. Your reacquirer event is executed on the queue associated with the writer.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilepresentermbs.html">NSFilePresenterMBS</a>.<A name="19">savePresentedItemChangesWithCompletionHandler(Complete as <A href="class-nsfilepresenterhandlermbs.html">NSFilePresenterHandlerMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>event</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau></td>
+</tr>
+</table>
+<B>Function:</B> 
+Tells your object to save any unsaved changes for the presented item.<BR>
+<B>Notes:</B> 
+<BR>
+Complete: The handler object to call after you save your changes. If you saved your changes successfully, pass nil for the run&#39;s errorOrNil parameter; otherwise, pass an error object indicating why the changes could not be saved.<BR>
+<BR>
+The file coordinator calls this method to ensure that all objects trying to access the file or directory see the same contents. Implement this method if your object can change the presented item in a way that requires you to write those changes back to disk. If your presenter object does not make changes that need to be saved, you do not need to implement this method.<BR>
+<BR>
+Important: If you implement this method, you must execute the run method in the Complete parameter at the end of your implementation. The system waits for you to execute that block before allowing other objects to operate on the file. Therefore, failure to execute the run method could stall threads in your application or other processes.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=icloud-nsfilepresentermbs-event">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

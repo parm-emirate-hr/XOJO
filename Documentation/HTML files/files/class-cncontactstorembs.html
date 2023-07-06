@@ -1,0 +1,299 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - CNContactStoreMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="CNContactStoreMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">CNContactStoreMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>CNContactStoreMBS class</H3>
+<div class="M">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-contacts.html" translate="no">Contacts</A></td>
+<td class=grau><a href="plugins-mbsmac64bitplugin.html">MBS Mac64bit Plugin</a></td>
+<td class=grau><a href="newinversion163.shtml" class=version>16.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>Desktop & iOS</td>
+</tr>
+</table>
+<B>Function:</B> 
+The CNContactStore class is a thread-safe class that can fetch and save contacts, groups, and containers.<BR>
+<B>Notes:</B> 
+<BR>
+The CNContactStore class provides ways to execute fetch and save requests. There are a few recommended ways you can implement these requests in your app to load contacts:<BR>
+<BR>
+<UL><LI>
+Fetch only the contact properties that will be used.
+</LI><LI>
+When fetching all contacts and caching the results, first fetch all contacts identifiers, then fetch batches of detailed contacts by identifiers as required.
+</LI><LI>
+To aggregate several contacts fetches, first collect a set of unique identifiers from the fetches. Then fetch batches of detailed contacts by those unique identifiers.
+</LI><LI>
+If you cache the fetched contacts, groups, or containers, you need to refetch these objects (and release the old cached objects) when CNContactStoreDidChangeNotification is posted.
+</LI></UL>
+<BR>
+Because CNContactStore fetch methods perform I/O, it&rsquo;s recommended that you avoid using the main thread to execute fetches.<BR>
+<BR>
+Your app must be code signed to see contacts.<BR>
+<BR>
+Warning: Do not use in macOS 10.11 or earlier due to bugs, which have been fixed in macOS 10.12.<BR>
+</div>
+<ul>
+<LI>3 events<UL>
+<li class="M">event <A href="contacts-cncontactstorembs-event.html">DidChange</A></li>
+<li class="M">event <A href="contacts-cncontactstorembs-event.html#2">enumerateContactsWithFetchRequest</A>(contact as <A href="class-cncontactmbs.html">CNContactMBS</A>, byref stop as boolean, tag as Variant)</li>
+<li class="M">event <A href="contacts-cncontactstorembs-event.html#3">requestAccessForEntityType</A>(granted as boolean, error as <A href="class-nserrormbs.html">NSErrorMBS</A>, tag as Variant)</li>
+</UL></LI>
+<LI>2 properties<UL>
+<li class="M">property <A href="contacts-cncontactstorembs-property.html">currentHistoryToken</A> as MemoryBlock</li>
+<li class="M">property <A href="contacts-cncontactstorembs-property.html#2">Handle</A> as Integer</li>
+</UL></LI>
+<LI>20 methods<UL>
+<li class="M">method <A href="contacts-cncontactstorembs-method.html">allContacts</A>(byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as <A href="class-cncontactmbs.html">CNContactMBS</A>()</li>
+<li class="M">method <A href="contacts-cncontactstorembs-method.html#2">Constructor</A></li>
+<li class="M">method <A href="contacts-cncontactstorembs-method.html#3">ContactsWithFetchRequest</A>(fetchRequest as <A href="class-cncontactfetchrequestmbs.html">CNContactFetchRequestMBS</A>, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as <A href="class-cncontactmbs.html">CNContactMBS</A>()</li>
+<li class="M">method <A href="contacts-cncontactstorembs-method.html#4">containersMatchingPredicate</A>(predicate as <A href="class-nspredicatembs.html">NSPredicateMBS</A>, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as <A href="class-cncontainermbs.html">CNContainerMBS</A>()</li>
+<li class="M">method <A href="contacts-cncontactstorembs-method.html#5">defaultContainerIdentifier</A> as String</li>
+<li class="M">method <A href="contacts-cncontactstorembs-method.html#6">Destructor</A></li>
+<li class="M">method <A href="contacts-cncontactstorembs-method.html#7">enumerateContactsWithFetchRequest</A>(fetchRequest as <A href="class-cncontactfetchrequestmbs.html">CNContactFetchRequestMBS</A>, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>, tag as Variant = nil) as Boolean</li>
+<li class="M">method <A href="contacts-cncontactstorembs-method.html#8">enumeratorForChangeHistoryFetchRequest</A>(request as <A href="class-cnchangehistoryfetchrequestmbs.html">CNChangeHistoryFetchRequestMBS</A>, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as <A href="class-cnfetchresultmbs.html">CNFetchResultMBS</A></li>
+<li class="M">method <A href="contacts-cncontactstorembs-method.html#9">enumeratorForContactFetchRequest</A>(request as <A href="class-cncontactfetchrequestmbs.html">CNContactFetchRequestMBS</A>, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as <A href="class-cnfetchresultmbs.html">CNFetchResultMBS</A></li>
+<li class="M">method <A href="contacts-cncontactstorembs-method.html#10">executeSaveRequest</A>(saveRequest as <A href="class-cnsaverequestmbs.html">CNSaveRequestMBS</A>, byref Error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as Boolean</li>
+<li class="M">method <A href="contacts-cncontactstorembs-method.html#11">groupsByName</A>(name as String, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as <A href="class-cngroupmbs.html">CNGroupMBS</A>()</li>
+<li class="M">method <A href="contacts-cncontactstorembs-method.html#12">groupsForContact</A>(contact as <A href="class-cncontactmbs.html">CNContactMBS</A>, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as <A href="class-cngroupmbs.html">CNGroupMBS</A>()</li>
+<li class="M">method <A href="contacts-cncontactstorembs-method.html#13">groupsMatchingPredicate</A>(predicate as <A href="class-nspredicatembs.html">NSPredicateMBS</A>, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as <A href="class-cngroupmbs.html">CNGroupMBS</A>()</li>
+<li class="M">method <A href="contacts-cncontactstorembs-method.html#14">requestAccessForEntityType</A>(entityType as Integer = 0, tag as Variant = nil)</li>
+<li class="M">method <A href="contacts-cncontactstorembs-method.html#15">unifiedContactsMatchingPredicate</A>(predicate as <A href="class-nspredicatembs.html">NSPredicateMBS</A>, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as <A href="class-cncontactmbs.html">CNContactMBS</A>()</li>
+<li class="M">method <A href="contacts-cncontactstorembs-method.html#16">unifiedContactsMatchingPredicate</A>(predicate as <A href="class-nspredicatembs.html">NSPredicateMBS</A>, keysToFetch() as <A href="class-cnkeydescriptormbs.html">CNKeyDescriptorMBS</A>, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as <A href="class-cncontactmbs.html">CNContactMBS</A>()</li>
+<li class="M">method <A href="contacts-cncontactstorembs-method.html#17">unifiedContactWithIdentifier</A>(identifier as string, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as <A href="class-cncontactmbs.html">CNContactMBS</A></li>
+<li class="M">method <A href="contacts-cncontactstorembs-method.html#18">unifiedContactWithIdentifier</A>(identifier as string, keys() as <A href="class-cnkeydescriptormbs.html">CNKeyDescriptorMBS</A>, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as <A href="class-cncontactmbs.html">CNContactMBS</A></li>
+<li class="M">method <A href="contacts-cncontactstorembs-method.html#19">unifiedMeContact</A>(byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as <A href="class-cncontactmbs.html">CNContactMBS</A></li>
+<li class="M">method <A href="contacts-cncontactstorembs-method.html#20">unifiedMeContactWithKeysToFetch</A>(keys() as <A href="class-cnkeydescriptormbs.html">CNKeyDescriptorMBS</A>, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as <A href="class-cncontactmbs.html">CNContactMBS</A></li>
+</UL></LI>
+<LI>9 shared methods<UL>
+<li class="M">shared method <A href="contacts-cncontactstorembs-shared-method.html">AllFetchKeys</A> as String()</li>
+<li class="M">shared method <A href="contacts-cncontactstorembs-shared-method.html#2">authorizationStatusForEntityType</A>(entityType as Integer = 0) as Integer</li>
+<li class="M">shared method <A href="contacts-cncontactstorembs-shared-method.html#3">available</A> as Boolean</li>
+<li class="M">shared method <A href="contacts-cncontactstorembs-shared-method.html#4">CNContactStoreDidChangeNotification</A> as String</li>
+<li class="M">shared method <A href="contacts-cncontactstorembs-shared-method.html#5">CNErrorDomain</A> as String</li>
+<li class="M">shared method <A href="contacts-cncontactstorembs-shared-method.html#6">CNErrorUserInfoAffectedRecordIdentifiersKey</A> as String</li>
+<li class="M">shared method <A href="contacts-cncontactstorembs-shared-method.html#7">CNErrorUserInfoAffectedRecordsKey</A> as String</li>
+<li class="M">shared method <A href="contacts-cncontactstorembs-shared-method.html#8">CNErrorUserInfoKeyPathsKey</A> as String</li>
+<li class="M">shared method <A href="contacts-cncontactstorembs-shared-method.html#9">CNErrorUserInfoValidationErrorsKey</A> as String</li>
+</UL></LI>
+<LI>19 constants<UL>
+<li class="M">const <A href="contacts-cncontactstorembs-const.html">CNAuthorizationStatusAuthorized</A> = 3</li>
+<li class="M">const <A href="contacts-cncontactstorembs-const.html#2">CNAuthorizationStatusDenied</A> = 2</li>
+<li class="M">const <A href="contacts-cncontactstorembs-const.html#3">CNAuthorizationStatusNotDetermined</A> = 0</li>
+<li class="M">const <A href="contacts-cncontactstorembs-const.html#4">CNAuthorizationStatusRestricted</A> = 1</li>
+</UL></LI>
+</ul>
+<h3 lang="en">Contact Types</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="contacts-cncontactstorembs-const.html#5">CNEntityTypeContacts </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 0</td>
+<td bgcolor="#DDDDDD" valign=top>
+Contacts<BR>
+</td>
+</tr>
+</table>
+<h3 lang="en">Error Codes</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="contacts-cncontactstorembs-const.html#6">CNErrorCodeAuthorizationDenied </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 100</td>
+<td bgcolor="#DDDDDD" valign=top>
+Authentication denied error.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="contacts-cncontactstorembs-const.html#7">CNErrorCodeCommunicationError </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+Communication error.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="contacts-cncontactstorembs-const.html#8">CNErrorCodeContainmentCycle </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 202</td>
+<td bgcolor="#DDDDDD" valign=top>
+Code containment cycle error.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="contacts-cncontactstorembs-const.html#9">CNErrorCodeContainmentScope </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 203</td>
+<td bgcolor="#DDDDDD" valign=top>
+Code containment scope error.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="contacts-cncontactstorembs-const.html#10">CNErrorCodeDataAccessError </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+Data access error.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="contacts-cncontactstorembs-const.html#11">CNErrorCodeInsertedRecordAlreadyExists </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 201</td>
+<td bgcolor="#DDDDDD" valign=top>
+Record already exists.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="contacts-cncontactstorembs-const.html#12">CNErrorCodeParentRecordDoesNotExist </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 204</td>
+<td bgcolor="#DDDDDD" valign=top>
+The contact does not exist error.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="contacts-cncontactstorembs-const.html#13">CNErrorCodePolicyViolation </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 500</td>
+<td bgcolor="#DDDDDD" valign=top>
+Policy validation error.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="contacts-cncontactstorembs-const.html#14">CNErrorCodePredicateInvalid </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 400</td>
+<td bgcolor="#DDDDDD" valign=top>
+Invalid predicate error.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="contacts-cncontactstorembs-const.html#15">CNErrorCodeRecordDoesNotExist </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 200</td>
+<td bgcolor="#DDDDDD" valign=top>
+Record not found.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="contacts-cncontactstorembs-const.html#16">CNErrorCodeRecordIdentifierInvalid </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 205</td>
+<td bgcolor="#DDDDDD" valign=top>
+Record identifier not valid.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="contacts-cncontactstorembs-const.html#17">CNErrorCodeValidationConfigurationError </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 302</td>
+<td bgcolor="#DDDDDD" valign=top>
+Configuration validation error.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="contacts-cncontactstorembs-const.html#18">CNErrorCodeValidationMultipleErrors </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 300</td>
+<td bgcolor="#DDDDDD" valign=top>
+Multiple validation error.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="contacts-cncontactstorembs-const.html#19">CNErrorCodeValidationTypeMismatch </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 301</td>
+<td bgcolor="#DDDDDD" valign=top>
+Type mismatch validation error.<BR>
+</td>
+</tr>
+</table>
+<p>This class has no sub classes.</p>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-mac64bit-contacts-cncontactpickertest.html">/Mac64bit/Contacts/CNContactPicker Test</A></li>
+<li class=""><A href="example-mac64bit-contacts-contactsdisplayperson.html">/Mac64bit/Contacts/Contacts Display Person</A></li>
+<li class=""><A href="example-mac64bit-contacts-contactshistory.html">/Mac64bit/Contacts/Contacts History</A></li>
+<li class=""><A href="example-mac64bit-contacts-contactstest.html">/Mac64bit/Contacts/Contacts Test</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2022-02-03/News_from_the_MBS_Xojo_Plugins/monkeybreadsoftware_blog_xojo">News from the MBS Xojo Plugins Version 22.0</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2022-01-11/Contacts_history_for_Xojo/monkeybreadsoftware_blog_xojo">Contacts history for Xojo</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2020-10-01/MBS_Xojo_Plugins_version_205pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 20.5pr1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2019-01-15/MBS_Xojo_Plugins_version_190pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 19.0pr8</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2018-09-03/MBS_Xojo_Plugins_version_184pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 18.4pr7</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2018-08-27/MBS_Xojo_Plugins_version_184pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 18.4pr5</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2018-02-02/MBS_Xojo_Plugins_version_181pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 18.1pr1</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmac64bitplugin.html">MBS Mac64bit Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-cncontactrelationmbs.html">CNContactRelationMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-cncontactsuserdefaultsmbs.html">CNContactsUserDefaultsMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-cncontactstorembs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

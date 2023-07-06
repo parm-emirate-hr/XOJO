@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /ChartDirector/waterfall</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /ChartDirector/waterfall</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/ChartDirector/waterfall</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS ChartDirector Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /ChartDirector/waterfall<BR>
+This example is the version from Sun, 17th Mar 2012.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;waterfall.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;L&ouml;schen&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;Beenden&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> PicWindow <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">4</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">points</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">represent</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">cash</span> <span style="color:#7F0000;text-style:italic">flow</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Q1</span> <span style="color:#7F0000;text-style:italic">-</span> <span style="color:#7F0000;text-style:italic">Q4</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> data(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = <span style="color:#0000FF;font-weight: bold">array</span>(<span style="color:#326598">230</span>, <span style="color:#326598">140</span>, <span style="color:#326598">220</span>, <span style="color:#326598">330</span>, <span style="color:#006532">150.0</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">We</span> <span style="color:#7F0000;text-style:italic">want</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">plot</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">waterfall</span> <span style="color:#7F0000;text-style:italic">chart</span> <span style="color:#7F0000;text-style:italic">showing</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">4</span> <span style="color:#7F0000;text-style:italic">quarters</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">well</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">total</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> labels(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = <span style="color:#0000FF;font-weight: bold">array</span>(<span style="color:#6500FE">&quot;Product</span> <span style="color:#6500FE">1&quot;</span>, <span style="color:#6500FE">&quot;Product</span> <span style="color:#6500FE">2&quot;</span>, <span style="color:#6500FE">&quot;Product</span> <span style="color:#6500FE">3&quot;</span>, <span style="color:#6500FE">&quot;Product</span> <span style="color:#6500FE">4&quot;</span>, <span style="color:#6500FE">&quot;Product</span> <span style="color:#6500FE">5&quot;</span>, <span style="color:#6500FE">&quot;Total&quot;</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">top</span> <span style="color:#7F0000;text-style:italic">side</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">bars</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">waterfall</span> <span style="color:#7F0000;text-style:italic">chart</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">accumulated</span> <span style="color:#7F0000;text-style:italic">data.</span> <span style="color:#7F0000;text-style:italic">We</span> <span style="color:#7F0000;text-style:italic">use</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">ChartDirector</span> <span style="color:#7F0000;text-style:italic">ArrayMath</span> <span style="color:#7F0000;text-style:italic">utility</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">accumulate</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">data.</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">&quot;total&quot;</span> <span style="color:#7F0000;text-style:italic">is</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">handled</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">inserting</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">zero</span> <span style="color:#7F0000;text-style:italic">point</span> <span style="color:#7F0000;text-style:italic">at</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">end</span> <span style="color:#7F0000;text-style:italic">before</span> <span style="color:#7F0000;text-style:italic">accumulation</span> <span style="color:#7F0000;text-style:italic">(after</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">accumulation</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">will</span> <span style="color:#7F0000;text-style:italic">become</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">total).</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> boxTop <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> CDArrayMBS(data)
+			boxTop.insert(<span style="color:#326598">0</span>, <span style="color:#326598">1</span>)
+			boxTop.acc
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">botom</span> <span style="color:#7F0000;text-style:italic">side</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">bars</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">just</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">top</span> <span style="color:#7F0000;text-style:italic">side</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">previous</span> <span style="color:#7F0000;text-style:italic">bar.</span> <span style="color:#7F0000;text-style:italic">So</span> <span style="color:#7F0000;text-style:italic">we</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">shifted</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">top</span> <span style="color:#7F0000;text-style:italic">side</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">obtain</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">bottom</span> <span style="color:#7F0000;text-style:italic">side</span> <span style="color:#7F0000;text-style:italic">data.</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> boxBottom <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> CDArrayMBS(boxTop)
+			boxBottom.shift(<span style="color:#326598">1</span>, <span style="color:#326598">0</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">last</span> <span style="color:#7F0000;text-style:italic">point</span> <span style="color:#7F0000;text-style:italic">(total)</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">different.</span> <span style="color:#7F0000;text-style:italic">Its</span> <span style="color:#7F0000;text-style:italic">bottom</span> <span style="color:#7F0000;text-style:italic">side</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">always</span> <span style="color:#7F0000;text-style:italic">0.</span>
+			boxBottom.trim(<span style="color:#326598">0</span>, <span style="color:#326598">5</span>)
+			boxBottom.insert(<span style="color:#326598">0</span>, <span style="color:#326598">1</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Create</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">XYChart</span> <span style="color:#7F0000;text-style:italic">object</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">size</span> <span style="color:#7F0000;text-style:italic">500</span> <span style="color:#7F0000;text-style:italic">x</span> <span style="color:#7F0000;text-style:italic">280</span> <span style="color:#7F0000;text-style:italic">pixels.</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">background</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">to</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">light</span> <span style="color:#7F0000;text-style:italic">blue</span> <span style="color:#7F0000;text-style:italic">(ccccff),</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">1</span> <span style="color:#7F0000;text-style:italic">pixel</span> <span style="color:#7F0000;text-style:italic">3D</span> <span style="color:#7F0000;text-style:italic">border</span> <span style="color:#7F0000;text-style:italic">effect.</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> CDXYChartMBS(<span style="color:#326598">500</span>, <span style="color:#326598">290</span>, <span style="color:#326598">&amp;hccccff</span>, <span style="color:#326598">&amp;h000000</span>, <span style="color:#326598">1</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">title</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">chart</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">13</span> <span style="color:#7F0000;text-style:italic">points</span> <span style="color:#7F0000;text-style:italic">Arial</span> <span style="color:#7F0000;text-style:italic">Bold</span> <span style="color:#7F0000;text-style:italic">Itatic</span> <span style="color:#7F0000;text-style:italic">font,</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">white</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">(ffffff)</span> <span style="color:#7F0000;text-style:italic">text</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">deep</span> <span style="color:#7F0000;text-style:italic">blue</span> <span style="color:#7F0000;text-style:italic">(&amp;h80)</span> <span style="color:#7F0000;text-style:italic">background</span>
+			c.addTitle(<span style="color:#6500FE">&quot;Product</span> <span style="color:#6500FE">Revenue</span> <span style="color:#6500FE">-</span> <span style="color:#6500FE">Year</span> <span style="color:#6500FE">2004&quot;</span>, <span style="color:#6500FE">&quot;arialbi.ttf&quot;</span>, <span style="color:#326598">13</span>, <span style="color:#326598">&amp;hffffff</span>).setBackground(<span style="color:#326598">&amp;h000080</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">plotarea</span> <span style="color:#7F0000;text-style:italic">at</span> <span style="color:#7F0000;text-style:italic">(55,</span> <span style="color:#7F0000;text-style:italic">50)</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">size</span> <span style="color:#7F0000;text-style:italic">430</span> <span style="color:#7F0000;text-style:italic">x</span> <span style="color:#7F0000;text-style:italic">215</span> <span style="color:#7F0000;text-style:italic">pixels.</span> <span style="color:#7F0000;text-style:italic">Use</span> <span style="color:#7F0000;text-style:italic">alternative</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">white/grey</span> <span style="color:#7F0000;text-style:italic">background.</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> c.setPlotArea(<span style="color:#326598">55</span>, <span style="color:#326598">45</span>, <span style="color:#326598">430</span>, <span style="color:#326598">215</span>, <span style="color:#326598">&amp;hffffff</span>, <span style="color:#326598">&amp;heeeeee</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">labels</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">x</span> <span style="color:#7F0000;text-style:italic">axis</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">Arial</span> <span style="color:#7F0000;text-style:italic">Bold</span> <span style="color:#7F0000;text-style:italic">font</span>
+			c.xAxis.setLabels(labels).setFontStyle(<span style="color:#6500FE">&quot;arialbd.ttf&quot;</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">x-axis</span> <span style="color:#7F0000;text-style:italic">ticks</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">grid</span> <span style="color:#7F0000;text-style:italic">lines</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">between</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">bars</span>
+			c.xAxis.setTickOffset(<span style="color:#006532">0.5</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Use</span> <span style="color:#7F0000;text-style:italic">Arial</span> <span style="color:#7F0000;text-style:italic">Bold</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">y</span> <span style="color:#7F0000;text-style:italic">axis</span> <span style="color:#7F0000;text-style:italic">label</span> <span style="color:#7F0000;text-style:italic">font</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> c.yAxis.setLabelStyle(<span style="color:#6500FE">&quot;arialbd.ttf&quot;</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">title</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">y</span> <span style="color:#7F0000;text-style:italic">axis</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> c.yAxis.setTitle(<span style="color:#6500FE">&quot;USD</span> <span style="color:#6500FE">(in</span> <span style="color:#6500FE">millions)&quot;</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> bTop(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> bBottom(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> i,count <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			
+			count=boxtop.count-<span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">for</span> i=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> count
+				btop.append boxtop.getvalue(i)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			count=boxbottom.count-<span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">for</span> i=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> count
+				bbottom.append boxbottom.getvalue(i)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">multi-color</span> <span style="color:#7F0000;text-style:italic">box-whisker</span> <span style="color:#7F0000;text-style:italic">layer</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">represent</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">waterfall</span> <span style="color:#7F0000;text-style:italic">bars</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> layer <span style="color:#0000FF;font-weight: bold">as</span> CDBoxWhiskerLayerMBS
+			layer = c.addBoxWhiskerLayer2(bTop, bBottom)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Put</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">labels</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">bars</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">show</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">cash</span> <span style="color:#7F0000;text-style:italic">flow</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">Arial</span> <span style="color:#7F0000;text-style:italic">Bold</span> <span style="color:#7F0000;text-style:italic">font</span>
+			layer.setDataLabelFormat(<span style="color:#6500FE">&quot;{={top}-{bottom}}M&quot;</span>)
+			layer.setDataLabelStyle(<span style="color:#6500FE">&quot;arialbd.ttf&quot;</span>).setAlignment(c.kCenter)
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Output</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">chart</span>
+			Backdrop=c.makeChartPicture
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;Ablage&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Bearbeiten&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;R&uuml;ckg&auml;ngig&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;&amp;Ausschneiden&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Kopieren&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Einf&uuml;gen&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;&amp;Alles</span> <span style="color:#6500FE">ausw&auml;hlen&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-chartdirector-waterfall">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

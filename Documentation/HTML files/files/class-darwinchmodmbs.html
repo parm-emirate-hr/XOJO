@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - DarwinChmodMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="DarwinChmodMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">DarwinChmodMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>DarwinChmodMBS class</H3>
+<div class="M">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-files.html" translate="no">Files</A></td>
+<td class=grau><a href="plugins-mbsmaccfplugin.html">MBS MacCF Plugin</a></td>
+<td class=grau><a href="newinversion31.shtml" class=version>3.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+A class to change the owner or mode of a file on Mac OS X.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> DarwinChmodMBS<br /><span style="color: #0000FF;">dim</span> userfolder <span style="color: #0000FF;">as</span> FolderItem<br /><span style="color: #0000FF;">dim</span> darwinResult <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span><br /><span style="color: #0000FF;">dim</span> s <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span><br /><br />c=new DarwinChmodMBS<br /><br />userFolder=SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;chmod.rb&quot;</span>)<br />s=userFolder.NativePath<br /><br />darwinResult = c.chmod( s, <span style="color: #336698;">&amp;B111111111</span> ) <span style="color: #800000;">// all rwx</span><br /><br /><span style="color: #800000;">// 1 = ---------x</span><br /><span style="color: #800000;">// 2 = --------wx</span><br /><span style="color: #800000;">// 7 = -------rwx</span><br /><span style="color: #800000;">// 8 = ------x---</span><br /><br />darwinResult=c.lstat(s)<br /><br />MsgBox s+<span style="color: #6600FE;">&quot; &quot;</span>+str(darwinResult)+<span style="color: #6600FE;">&quot; &quot;</span>+str(c.error)</span>
+</pre>
+</div>
+</div>
+<ul>
+<LI>12 properties<UL>
+<li class="M">property <A href="files-darwinchmodmbs-property.html">blocks</A> as Double</li>
+<li class="M">property <A href="files-darwinchmodmbs-property.html#2">blocksize</A> as Integer</li>
+<li class="M">property <A href="files-darwinchmodmbs-property.html#3">dev</A> as Integer</li>
+<li class="M">property <A href="files-darwinchmodmbs-property.html#4">flags</A> as Integer</li>
+<li class="M">property <A href="files-darwinchmodmbs-property.html#5">gen</A> as Integer</li>
+<li class="M">property <A href="files-darwinchmodmbs-property.html#6">gid</A> as Integer</li>
+<li class="M">property <A href="files-darwinchmodmbs-property.html#7">ino</A> as Integer</li>
+<li class="M">property <A href="files-darwinchmodmbs-property.html#8">mode</A> as Integer</li>
+<li class="M">property <A href="files-darwinchmodmbs-property.html#9">nlink</A> as Integer</li>
+<li class="M">property <A href="files-darwinchmodmbs-property.html#10">rdev</A> as Integer</li>
+<li class="M">property <A href="files-darwinchmodmbs-property.html#11">size</A> as Double</li>
+<li class="M">property <A href="files-darwinchmodmbs-property.html#12">uid</A> as Integer</li>
+</UL></LI>
+<LI>6 methods<UL>
+<li class="M">method <A href="files-darwinchmodmbs-method.html">chflags</A>(path as string, flags as Integer) as Integer</li>
+<li class="M">method <A href="files-darwinchmodmbs-method.html#2">chmod</A>(path as string, mode as Integer) as Integer</li>
+<li class="M">method <A href="files-darwinchmodmbs-method.html#3">chown</A>(path as string, uid as Integer, gid as Integer) as Integer</li>
+<li class="M">method <A href="files-darwinchmodmbs-method.html#4">error</A> as Integer</li>
+<li class="M">method <A href="files-darwinchmodmbs-method.html#5">lstat</A>(path as string) as Integer</li>
+<li class="M">method <A href="files-darwinchmodmbs-method.html#6">stat</A>(path as string) as Integer</li>
+</UL></LI>
+</ul>
+<p>This class has no sub classes.</p>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-maccf-darwinchmodtest.html">/MacCF/Darwin Chmod test</A></li>
+<li class=""><A href="example-maccf-fstatlist.html">/MacCF/FStat List</A></li>
+<li class=""><A href="example-util-streams.html">/Util/Streams</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2014-01-03/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 14.0pr1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2012-09-29/MBS_Real_Studio_Plugins_versio/monkeybreadsoftware_blog_xojo">MBS Real Studio Plugins, version 12.4pr10</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmaccfplugin.html">MBS MacCF Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-dadissentermbs.html">DADissenterMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-darwindrivestatisticsmbs.html">DarwinDriveStatisticsMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-darwinchmodmbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

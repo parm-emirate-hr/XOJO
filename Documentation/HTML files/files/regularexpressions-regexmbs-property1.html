@@ -1,0 +1,967 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - RegExMBS properties</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="RegExMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">RegExMBS properties</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-regexmbs.html">RegExMBS</a> class.  </p>
+<p>
+<a href="regularexpressions-regexmbs-property.html">Previous items</a>
+ 
+</p>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="1">ExecuteOptionBSRUnicode as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+This option and ExecuteOptionBSRAnyCRLF (which are mutually exclusive) control what the \R escape sequence matches. <BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> rg <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">new</span> <A href="class-regexmbs.html">RegExMBS</A><br />rg.CompileOptionUngreedy = <span style="color: #0000FF;">false</span><br />rg.ExecuteOptionBSRUnicode = <span style="color: #0000FF;">true</span><br /><br /><span style="color: #0000FF;">dim</span> ts <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = <span style="color: #6600FE;">&quot;one&quot;</span> + EndOfLine.UNIX + <span style="color: #6600FE;">&quot;test&quot;</span> + chr(<span style="color: #336698;">&amp;h2028</span>) + <span style="color: #6600FE;">&quot;more&quot;</span><br /><br /><span style="color: #800000;">// replace all end lines with #</span><br /><span style="color: #0000FF;">if</span> rg.Compile(<span style="color: #6600FE;">&quot;\R+&quot;</span>) <span style="color: #0000FF;">then</span><br />  <br />  ts = rg.ReplaceAll(ts,<span style="color: #6600FE;">&quot;#&quot;</span>)<br />  <br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br /><br />MsgBox ts</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+The choice is either to match only CR, LF, or CRLF, or to match any Unicode newline sequence. The default is specified when PCRE is built. It can be overridden from within the pattern, or by setting an option when a compiled pattern is matched.<BR>
+(Read and Write property)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="2">ExecuteOptionNewLineAny as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+This option override the default newline definition that was chosen when PCRE was built. <BR>
+<B>Notes:</B> 
+<BR>
+Setting ExecuteOptionNewLineCR or ExecuteOptionNewLineLF specifies that a newline is indicated by a single character (CR or LF, respectively). Setting ExecuteOptionNewLineCRLF specifies that a newline is indicated by the two-character CRLF sequence. Setting ExecuteOptionNewLineAnyCRLF specifies that any of the three preceding sequences should be recognized. Setting ExecuteOptionNewLineAny specifies that any Unicode newline sequence should be recognized. The Unicode newline sequences are the three just mentioned, plus the single characters VT (vertical tab, U+000B), FF (formfeed, U+000C), NEL (next line, U+0085), LS (line separator, U+2028), and PS (paragraph separator, U+2029). The last two are recognized only in UTF-8 mode.<BR>
+The newline setting in the options word uses three bits that are treated as a number, giving eight possibilities. Currently only six are used (default plus the five values above). This means that if you set more than one newline option, the combination may or may not be sensible. For example, ExecuteOptionNewLineCR with ExecuteOptionNewLineLF is equivalent to ExecuteOptionNewLineCRLF, but other combinations may yield unused numbers and cause an error.<BR>
+<BR>
+The only time that a line break in a pattern is specially recognized when compiling is when PCRE_EXTENDED is set. CR and LF are whitespace characters, and so are ignored in this mode. Also, an unescaped # outside a character class indicates a comment that lasts until after the next line break sequence. In other circumstances, line break sequences in patterns are treated as literal data.<BR>
+(Read and Write property)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="3">ExecuteOptionNewLineAnyCRLF as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+This option override the default newline definition that was chosen when PCRE was built. <BR>
+<B>Notes:</B> 
+<BR>
+See ExecuteOptionNewLineAny for more details.<BR>
+(Read and Write property)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="4">ExecuteOptionNewLineCR as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+This option override the default newline definition that was chosen when PCRE was built. <BR>
+<B>Notes:</B> 
+<BR>
+See ExecuteOptionNewLineAny for more details.<BR>
+(Read and Write property)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="5">ExecuteOptionNewLineCRLF as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+This option override the default newline definition that was chosen when PCRE was built. <BR>
+<B>Notes:</B> 
+<BR>
+See ExecuteOptionNewLineAny for more details.<BR>
+(Read and Write property)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="6">ExecuteOptionNewLineLF as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+This option override the default newline definition that was chosen when PCRE was built. <BR>
+<B>Notes:</B> 
+<BR>
+See ExecuteOptionNewLineAny for more details.<BR>
+(Read and Write property)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="7">ExecuteOptionNoStartOptimize as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+There are a number of optimizations that Execute uses at the start of a match, in order to speed up the process. <BR>
+<B>Notes:</B> 
+<BR>
+For example, if it is known that an unanchored match must start with a specific character, it searches the subject for that character, and fails immediately if it cannot find it, without actually running the main matching function. This means that a special item such as (*COMMIT) at the start of a pattern is not considered until after a suitable starting point for the match has been found. When callouts or (*MARK) items are in use, these &quot;start-up&quot; optimizations can cause them to be skipped if the pattern is never actually used. The start-up optimizations are in effect a pre-scan of the subject that takes place before the pattern is run.<BR>
+The ExecuteOptionNoStartOptimize option disables the start-up optimizations, possibly causing performance to suffer, but ensuring that in cases where the result is &quot;no match&quot;, the callouts do occur, and that items such as (*COMMIT) and (*MARK) are considered at every possible starting position in the subject string. If ExecuteOptionNoStartOptimize is set at compile time, it cannot be unset at matching time.<BR>
+<BR>
+Setting ExecuteOptionNoStartOptimize can change the outcome of a matching operation. Consider the pattern<BR>
+<BR>
+  (*COMMIT)ABC<BR>
+When this is compiled, PCRE records the fact that a match must start with the character &quot;A&quot;. Suppose the subject string is &quot;DEFABC&quot;. The start-up optimization scans along the subject, finds &quot;A&quot; and runs the first match attempt from there. The (*COMMIT) item means that the pattern must match the current starting position, which in this case, it does. However, if the same match is run with ExecuteOptionNoStartOptimize set, the initial scan along the subject string does not happen. The first match attempt is run starting from &quot;D&quot; and when this fails, (*COMMIT) prevents any further matches being tried, so the overall result is &quot;no match&quot;. If the pattern is studied, more start-up optimizations may be used. For example, a minimum length for the subject may be recorded. Consider the pattern<BR>
+  (*MARK:A)(X|Y)<BR>
+The minimum length for a match is one character. If the subject is &quot;ABC&quot;, there will be attempts to match &quot;ABC&quot;, &quot;BC&quot;, &quot;C&quot;, and then finally an empty string. If the pattern is studied, the final attempt does not take place, because PCRE knows that the subject is too short, and so the (*MARK) is never encountered. In this case, studying the pattern does not affect the overall match result, which is still &quot;no match&quot;, but it does affect the auxiliary information that is returned.<BR>
+(Read and Write property)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="8">ExecuteOptionNotBOL as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion62.shtml" class=version>6.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Option for Execute: Subject is not the beginning of a line<BR>
+<B>Notes:</B> 
+(Read and Write property)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="9">ExecuteOptionNotEmpty as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion62.shtml" class=version>6.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Option for Execute: An empty string is not a valid match<BR>
+<B>Notes:</B> 
+(Read and Write property)<BR>
+<h4>Some examples using this property:</h4>
+<ul translate="no">
+<li><A href="example-regex-pcre2-pcre2speedtest.html">/RegEx/PCRE2/PCRE2 Speed Test</A></li>
+<li><A href="example-regex-regex-regexspeedtest.html">/RegEx/RegEx/RegEx Speed Test</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="10">ExecuteOptionNotEmptyAtStart as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+One of the options.<BR>
+<B>Notes:</B> 
+<BR>
+This is like ExecuteOptionNotEmpty, except that an empty string match that is not at the start of the subject is permitted. If the pattern is anchored, such a match can occur only if the pattern contains \K.<BR>
+Perl has no direct equivalent of ExecuteOptionNotEmpty or ExecuteOptionNotEmptyAtStart, but it does make a special case of a pattern match of the empty string within its split() function, and when using the /g modifier. It is possible to emulate Perl&#39;s behaviour after matching a null string by first trying the match again at the same offset with ExecuteOptionNotEmptyAtStart and ExecuteOptionAnchored, and then if that fails, by advancing the starting offset (see below) and trying an ordinary match again. There is some code that demonstrates how to do this in the pcredemo sample program. In the most general case, you have to check to see if the newline convention recognizes CRLF as a newline, and if so, and the current character is CR followed by LF, advance the starting offset by two characters instead of one.<BR>
+(Read and Write property)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="11">ExecuteOptionNotEOL as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion62.shtml" class=version>6.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Option for Execute: Subject is not the end of a line<BR>
+<B>Notes:</B> 
+(Read and Write property)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="12">ExecuteOptionNoUTF8Check as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion62.shtml" class=version>6.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Option for Execute: Do not check the subject for UTF-8 validity<BR>
+<B>Notes:</B> 
+(Read and Write property)<BR>
+<h4>Some examples using this property:</h4>
+<ul translate="no">
+<li><A href="example-regex-regex-regexmbs.html">/RegEx/RegEx/RegExMBS</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="13">ExecuteOptionPartial as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion62.shtml" class=version>6.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Option for Execute: Return PCRE_ERROR_PARTIAL for a partial match<BR>
+<B>Notes:</B> 
+(Read and Write property)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="14">ExecuteOptionPartialHard as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+This option (and ExecuteOptionPartial) turn on the partial matching feature. <BR>
+<B>Notes:</B> 
+<BR>
+A partial match occurs if the end of the subject string is reached successfully, but there are not enough subject characters to complete the match. If this happens when ExecuteOptionPartial (but not ExecuteOptionPartialHard) is set, matching continues by testing any remaining alternatives. Only if no complete match can be found is ErrorPartial returned instead of PCRE_ERROR_NOMATCH. In other words, ExecuteOptionPartial says that the caller is prepared to handle a partial match, but only if no complete match can be found.<BR>
+If ExecuteOptionPartialHard is set, it overrides ExecuteOptionPartial. In this case, if a partial match is found, Execute() immediately returns ErrorPartial, without considering any other alternatives. In other words, when ExecuteOptionPartialHard is set, a partial match is considered to be more important that an alternative complete match.<BR>
+<BR>
+In both cases, the portion of the string that was inspected when the partial match was found is set as the first matching string. There is a more detailed discussion of partial and multi-segment matching, with examples, in the pcrepartial documentation.<BR>
+(Read and Write property)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="15">ExecuteOptions as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion63.shtml" class=version>6.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The internal value of all the execute options.<BR>
+<B>Notes:</B> 
+<BR>
+You can get and set the bits using the CompileOption* Boolean properties.<BR>
+(Read and Write property)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="16">Handle as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion62.shtml" class=version>6.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The handle to the pattern data structure.<BR>
+<B>Notes:</B> 
+(Read only property)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="17">InfoCaptureCount as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion134.shtml" class=version>13.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Queries number of captures defined in the pattern.<BR>
+<B>Notes:</B> 
+<BR>
+Only valid after pattern was compiled.<BR>
+(Read only property)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="18">InfoNameCount as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion134.shtml" class=version>13.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Queries number of names defined in the pattern.<BR>
+<B>Notes:</B> 
+<BR>
+Only valid after pattern was compiled.<BR>
+(Read only property)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="19">InfoSize as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion134.shtml" class=version>13.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Queries the size of the compiled pattern.<BR>
+<B>Notes:</B> 
+<BR>
+Only valid after pattern was compiled.<BR>
+(Read only property)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="20">InfoStudySize as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion134.shtml" class=version>13.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Queries the study details size.<BR>
+<B>Notes:</B> 
+<BR>
+Only valid after calling Study.<BR>
+(Read only property)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="21">Lasterror as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion62.shtml" class=version>6.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The last error code reported.<BR>
+<B>Notes:</B> 
+<BR>
+0 is no error and -1 is some parameter error.<BR>
+See Error* constants for other values.<BR>
+(Read only property)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="22">MatchLimit as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion131.shtml" class=version>13.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The match limit.<BR>
+<B>Notes:</B> 
+<BR>
+You can set it to a limit value. If set to zero, the plugin will use the default.<BR>
+<BR>
+The default value for the limit can be set when PCRE is built; the default default is 10 million, which handles all but the most extreme cases. You can override the default by setting this property.<BR>
+(Read and Write property)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="23">MatchLimitRecursion as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion131.shtml" class=version>13.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The limit for recursion.<BR>
+<B>Notes:</B> 
+<BR>
+The MatchLimitRecursion field is similar to MatchLimit, but instead of limiting the total number of times that match() is called, it limits the depth of recursion. The recursion depth is a smaller number than the total number of calls, because not all calls to match() are recursive. This limit is of use only if it is set smaller than MatchLimit.<BR>
+<BR>
+Limiting the recursion depth limits the amount of stack that can be used.<BR>
+<BR>
+The default value for MatchLimitRecursion can be set when PCRE is built; the default default is the same value as the default for MatchLimit. You can override the default by setting this property. If value is zero, the plugin uses the default.<BR>
+(Read and Write property)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="24">Text as String</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion62.shtml" class=version>6.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The text used for the last successfull compile call.<BR>
+<B>Notes:</B> 
+(Read only property)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="25">TextMemory as Memoryblock</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion63.shtml" class=version>6.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The text used for the last successfull compiletext call.<BR>
+<B>Notes:</B> 
+(Read only property)<BR>
+</div>
+<div class="WLM">
+<b><a href="class-regexmbs.html">RegExMBS</a>.<A name="26">VectorSize as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>property</td>
+<td class=grau><A href="topic-regularexpressions.html" translate="no">Regular Expressions</A></td>
+<td class=grau><a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a></td>
+<td class=grau><a href="newinversion134.shtml" class=version>13.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The internal vector size.<BR>
+<B>Notes:</B> 
+(Read only property)<BR>
+</div>
+<p>
+<a href="regularexpressions-regexmbs-property.html">Previous items</a>
+ 
+</p>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsregexplugin.html">MBS RegEx Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=regularexpressions-regexmbs-property1">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

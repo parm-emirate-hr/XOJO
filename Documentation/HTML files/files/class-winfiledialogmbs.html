@@ -1,0 +1,476 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - WinFileDialogMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="WinFileDialogMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">WinFileDialogMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>WinFileDialogMBS class</H3>
+<div class="W">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-navigation.html" translate="no">Navigation</A></td>
+<td class=grau><a href="plugins-mbswinframeworksplugin.html">MBS WinFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion201.shtml" class=version>20.1</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+The class for a file dialog.<BR>
+<B>Notes:</B> 
+<BR>
+All methods may raise <A href="class-winfiledialogexceptionmbs.html">WinFileDialogExceptionMBS</A> in case of errors.<BR>
+This is an abstract class. You can&#39;t create an instance, but you can get one from various plugin functions.<BR>
+</div>
+<ul>
+<LI>11 events<UL>
+<li class="W">event <A href="navigation-winfiledialogmbs-event.html">ButtonClicked</A>(ControlID as Integer)</li>
+<li class="W">event <A href="navigation-winfiledialogmbs-event.html#2">CheckButtonToggled</A>(ControlID as Integer, Checked as Boolean)</li>
+<li class="W">event <A href="navigation-winfiledialogmbs-event.html#3">ControlActivating</A>(ControlID as Integer)</li>
+<li class="W">event <A href="navigation-winfiledialogmbs-event.html#4">FileOk</A> as Boolean</li>
+<li class="W">event <A href="navigation-winfiledialogmbs-event.html#5">FileTypeChanged</A></li>
+<li class="W">event <A href="navigation-winfiledialogmbs-event.html#6">FolderChanged</A></li>
+<li class="W">event <A href="navigation-winfiledialogmbs-event.html#7">FolderChanging</A>(Folder as <A href="class-winshellitemmbs.html">WinShellItemMBS</A>) as boolean</li>
+<li class="W">event <A href="navigation-winfiledialogmbs-event.html#8">ItemSelected</A>(ControlID as Integer, ItemID as Integer)</li>
+<li class="W">event <A href="navigation-winfiledialogmbs-event.html#9">Overwrite</A>(item as <A href="class-winshellitemmbs.html">WinShellItemMBS</A>) as Integer</li>
+<li class="W">event <A href="navigation-winfiledialogmbs-event.html#10">SelectionChange</A></li>
+<li class="W">event <A href="navigation-winfiledialogmbs-event.html#11">ShareViolation</A>(item as <A href="class-winshellitemmbs.html">WinShellItemMBS</A>) as Integer</li>
+</UL></LI>
+<LI>45 properties<UL>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html">ClientGuid</A> as String</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#2">CurrentSelection</A> as <A href="class-winshellitemmbs.html">WinShellItemMBS</A></li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#3">DefaultExtension</A> as String</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#4">DefaultFolder</A> as <A href="class-winshellitemmbs.html">WinShellItemMBS</A></li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#5">FileName</A> as String</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#6">FileNameLabel</A> as String</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#7">FileTypeIndex</A> as Integer</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#8">Folder</A> as <A href="class-winshellitemmbs.html">WinShellItemMBS</A></li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#9">Handle</A> as Integer</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#10">OkButtonLabel</A> as String</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#11">OptionAllNonStorageItems</A> as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#12">OptionAllowMultiSelect</A> as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#13">OptionCreatePrompt</A> as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#14">OptionDefaultNoMiniMode</A> as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#15">OptionDontAaddToRecent</A> as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#16">OptionFileMustExist</A> as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#17">OptionForceFileSystem</A> as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#18">OptionForcePreviewPaneOn</A> as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#19">OptionForceShowHidden</A> as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#20">OptionHideMRUPlaces</A> as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#21">OptionHidePinnedPlaces</A> as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#22">OptionNoChangeDir</A> as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#23">OptionNoDereferenceLinks</A> as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#24">OptionNoReadOnlyReturn</A> as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#25">OptionNoTestFileCreate</A> as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#26">OptionNoValidate</A> as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#27">OptionOKButtonNeedsInteraction</A> as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#28">OptionOverwritePrompt</A> as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property.html#29">OptionPathMustExist</A> as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property1.html">OptionPickFolders</A> as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property1.html#2">Options</A> as Integer</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property1.html#3">OptionShareaware</A> as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property1.html#4">OptionStrictFileTypes</A> as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property1.html#5">OptionSupportsStreamableItems</A> as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property1.html#6">ProminentControlID</A> as Integer</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property1.html#7">Result</A> as <A href="class-winshellitemmbs.html">WinShellItemMBS</A></li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property1.html#8">Title</A> as String</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-property1.html#9">WindowHandle</A> as Integer</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-method.html#11">CheckButtonState</A>(ControlID as Integer) as Boolean</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-method.html#15">ControlItemState</A>(ControlID as Integer, ItemID as Integer) as Integer</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-method.html#16">ControlItemText</A>(ControlID as Integer, ItemID as Integer) as String</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-method.html#17">ControlLabel</A>(ControlID as Integer) as String</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-method.html#18">ControlState</A>(ControlID as Integer) as Integer</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-method.html#19">EditBoxText</A>(ControlID as Integer) as String</li>
+<li class="W">property <A href="navigation-winfiledialogmbs-method.html#24">SelectedControlItem</A>(ControlID as Integer) as Integer</li>
+</UL></LI>
+<LI>22 methods<UL>
+<li class="W">method <A href="navigation-winfiledialogmbs-method.html">AddCheckButton</A>(ControlID as Integer, label as String, Checked as boolean = false)</li>
+<li class="W">method <A href="navigation-winfiledialogmbs-method.html#2">AddComboBox</A>(ControlID as Integer)</li>
+<li class="W">method <A href="navigation-winfiledialogmbs-method.html#3">AddControlItem</A>(ControlID as Integer, ItemID as Integer, Label as String)</li>
+<li class="W">method <A href="navigation-winfiledialogmbs-method.html#4">AddEditBox</A>(ControlID as Integer, Text as String = "")</li>
+<li class="W">method <A href="navigation-winfiledialogmbs-method.html#5">AddMenu</A>(ControlID as Integer, Label as String)</li>
+<li class="W">method <A href="navigation-winfiledialogmbs-method.html#6">AddPlace</A>(Item as <A href="class-winshellitemmbs.html">WinShellItemMBS</A>, top as boolean = false)</li>
+<li class="W">method <A href="navigation-winfiledialogmbs-method.html#7">AddPushButton</A>(ControlID as Integer, Label as String)</li>
+<li class="W">method <A href="navigation-winfiledialogmbs-method.html#8">AddRadioButtonList</A>(ControlID as Integer)</li>
+<li class="W">method <A href="navigation-winfiledialogmbs-method.html#9">AddSeparator</A>(ControlID as Integer)</li>
+<li class="W">method <A href="navigation-winfiledialogmbs-method.html#10">AddText</A>(ControlID as Integer, Text as String = "")</li>
+<li class="W">method <A href="navigation-winfiledialogmbs-method.html#12">ClearClientData</A></li>
+<li class="W">method <A href="navigation-winfiledialogmbs-method.html#13">Close</A>(cancel as boolean = false)</li>
+<li class="W">method <A href="navigation-winfiledialogmbs-method.html#14">Constructor</A> &nbsp; <b style="color: #8B0000"> Private </b></li>
+<li class="W">method <A href="navigation-winfiledialogmbs-method.html#20">EnableOpenDropDown</A>(ControlID as Integer)</li>
+<li class="W">method <A href="navigation-winfiledialogmbs-method.html#21">EndVisualGroup</A></li>
+<li class="W">method <A href="navigation-winfiledialogmbs-method.html#22">RemoveAllControlItems</A>(ControlID as Integer)</li>
+<li class="W">method <A href="navigation-winfiledialogmbs-method.html#23">RemoveControlItem</A>(ControlID as Integer, ItemID as Integer)</li>
+<li class="W">method <A href="navigation-winfiledialogmbs-method.html#25">SetFileTypes</A>(FileTypes() as <A href="class-winfiletypembs.html">WinFileTypeMBS</A>)</li>
+<li class="W">method <A href="navigation-winfiledialogmbs-method.html#26">Show</A> as Boolean</li>
+<li class="W">method <A href="navigation-winfiledialogmbs-method.html#27">Show</A>(parent as DesktopWindow) as Boolean</li>
+<li class="W">method <A href="navigation-winfiledialogmbs-method.html#28">Show</A>(parent as window) as Boolean</li>
+<li class="W">method <A href="navigation-winfiledialogmbs-method.html#29">StartVisualGroup</A>(ControlID as Integer, label as String)</li>
+</UL></LI>
+<LI>33 constants<UL>
+</UL></LI>
+</ul>
+<h3 lang="en">Control States</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html">kControlStateEnabled </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+The control is active.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#2">kControlStateEnableVisible </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+The control is visible and enabled.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#3">kControlStateInactive </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 0</td>
+<td bgcolor="#DDDDDD" valign=top>
+The control is inactive and cannot be accessed by the user.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#4">kControlStateVisible </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+The control is visible. The absence of this value indicates that the control is hidden.<BR>
+</td>
+</tr>
+</table>
+<h3 lang="en">Option Flags</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#5">kOptionsAllNonStorageItems </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h80</td>
+<td bgcolor="#DDDDDD" valign=top>
+Enables the user to choose any item in the Shell namespace, not just those with SFGAO_STREAM or SFAGO_FILESYSTEM attributes. This flag cannot be combined with kOptionsForceFileSystem.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#6">kOptionsAllowMultiSelect </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h200</td>
+<td bgcolor="#DDDDDD" valign=top>
+Enables the user to select multiple items in the open dialog. Note that when this flag is set, the <A href="class-winfileopendialogmbs.html">WinFileOpenDialogMBS</A> class must be used to retrieve those items.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#7">kOptionsCreatePrompt </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h2000</td>
+<td bgcolor="#DDDDDD" valign=top>
+Prompt for creation if the item returned in the save dialog does not exist. Note that this does not actually create the item.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#8">kOptionsDefaultNoMiniMode </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h20000000</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates to the Save As dialog box that it should open in expanded mode. Expanded mode is the mode that is set and unset by clicking the button in the lower-left corner of the Save As dialog box that switches between Browse Folders and Hide Folders when clicked. This value is not supported as of Windows 7.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#9">kOptionsDontAaddToRecent </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h2000000</td>
+<td bgcolor="#DDDDDD" valign=top>
+Do not add the item being opened or saved to the recent documents list.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#10">kOptionsFileMustExist </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h1000</td>
+<td bgcolor="#DDDDDD" valign=top>
+The item returned must exist. This is a default value for the Open dialog.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#11">kOptionsForceFileSystem </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h40</td>
+<td bgcolor="#DDDDDD" valign=top>
+Ensures that returned items are file system items. Note that this does not apply to items returned by CurrentSelection.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#12">kOptionsForcePreviewPaneOn </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h40000000</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates to the Open dialog box that the preview pane should always be displayed.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#13">kOptionsForceShowHidden </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h10000000</td>
+<td bgcolor="#DDDDDD" valign=top>
+Include hidden and system items.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#14">kOptionsHideMRUPlaces </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h20000</td>
+<td bgcolor="#DDDDDD" valign=top>
+Hide the list of places from which the user has recently opened or saved items. This value is not supported as of Windows 7.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#15">kOptionsHidePinnedPlaces </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h40000</td>
+<td bgcolor="#DDDDDD" valign=top>
+Hide items shown by default in the view&#39;s navigation pane. This flag is often used in conjunction with the AddPlace method, to hide standard locations and replace them with custom locations.<BR>
+<BR>
+Windows 7 and later. Hide all of the standard namespace locations (such as Favorites, Libraries, Computer, and Network) shown in the navigation pane.<BR>
+<BR>
+Windows Vista. Hide the contents of the Favorite Links tree in the navigation pane. Note that the category itself is still displayed, but shown as empty.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#16">kOptionsNoChangeDir </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 8</td>
+<td bgcolor="#DDDDDD" valign=top>
+Don&#39;t change the current working directory.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#17">kOptionsNoDereferenceLinks </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h100000</td>
+<td bgcolor="#DDDDDD" valign=top>
+Shortcuts should not be treated as their target items. This allows an application to open a .lnk file rather than what that file is a shortcut to.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#18">kOptionsNoReadOnlyReturn </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h8000</td>
+<td bgcolor="#DDDDDD" valign=top>
+Do not return read-only items. This is a default value for the Save dialog.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#19">kOptionsNoTestFileCreate </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h10000</td>
+<td bgcolor="#DDDDDD" valign=top>
+Do not test whether creation of the item as specified in the Save dialog will be successful. If this flag is not set, the calling application must handle errors, such as denial of access, discovered when the item is created.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#20">kOptionsNoValidate </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h100</td>
+<td bgcolor="#DDDDDD" valign=top>
+Do not check for situations that would prevent an application from opening the selected file, such as sharing violations or access denied errors.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#21">kOptionsOKButtonNeedsInteraction </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h200000</td>
+<td bgcolor="#DDDDDD" valign=top>
+OKButton needs interaction?<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#22">kOptionsOverwritePrompt </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+When saving a file, prompt before overwriting an existing file of the same name. This is a default value for the Save dialog.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#23">kOptionsPathMustExist </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h800</td>
+<td bgcolor="#DDDDDD" valign=top>
+The item returned must be in an existing folder. This is a default value.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#24">kOptionsPickFolders </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h20</td>
+<td bgcolor="#DDDDDD" valign=top>
+Present an Open dialog that offers a choice of folders rather than files.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#25">kOptionsShareaware </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h4000</td>
+<td bgcolor="#DDDDDD" valign=top>
+In the case of a sharing violation when an application is opening a file, call the application back through ShareViolation event for guidance. This flag is overridden by kOptionsNoValidate.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#26">kOptionsStrictFileTypes </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 4</td>
+<td bgcolor="#DDDDDD" valign=top>
+In the Save dialog, only allow the user to choose a file that has one of the file name extensions specified through SetFileTypes.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#27">kOptionsSupportsStreamableItems </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h80000000</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates that the caller is opening a file as a stream (BHID_Stream), so there is no need to download that file.<BR>
+</td>
+</tr>
+</table>
+<h3 lang="en">Overwrite Responses</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#28">kOverwriteAccept </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+The application has determined that the file should be returned from the dialog.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const.html#29">kOverwriteDefault </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 0</td>
+<td bgcolor="#DDDDDD" valign=top>
+The application has not handled the event. The dialog displays a UI asking the user whether the file should be overwritten and returned from the dialog.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const1.html">kOverwriteRefuse </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+The application has determined that the file should not be returned from the dialog.<BR>
+</td>
+</tr>
+</table>
+<h3 lang="en">Share Violation Responds</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const1.html#2">kShareViolationAccept </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+The application has determined that the file should be returned from the dialog.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const1.html#3">kShareViolationDefault </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 0</td>
+<td bgcolor="#DDDDDD" valign=top>
+The application has not handled the event. The dialog displays a UI that indicates that the file is in use and a different file must be chosen.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="navigation-winfiledialogmbs-const1.html#4">kShareViolationRefuse </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+The application has determined that the file should not be returned from the dialog.<BR>
+</td>
+</tr>
+</table>
+<h4>Sub classes:</h4><ul>
+<li class="W"><A href="class-winfileopendialogmbs.html">class WinFileOpenDialogMBS</A>
+</li>
+<li class="W"><A href="class-winfilesavedialogmbs.html">class WinFileSaveDialogMBS</A>
+</li>
+</ul>
+<h4>Some events using this class:</h4><ul>
+<li class="W"><A href="navigation-winfiledialogobservermbs-event.html">WinFileDialogObserverMBS.DidShowDialog</A>(dialog as WinFileDialogMBS, Result as Integer)</li>
+<li class="W"><A href="navigation-winfiledialogobservermbs-event.html#2">WinFileDialogObserverMBS.WillShowDialog</A>(dialog as WinFileDialogMBS)</li>
+</ul>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-winframeworks-windowsfiledialog.html">/WinFrameworks/Windows File Dialog</A></li>
+<li class=""><A href="example-winframeworks-winfiledialogobserver.html">/WinFrameworks/WinFileDialogObserver</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2020-03-17/News_from_the_MBS_Xojo_Plugins/monkeybreadsoftware_blog_xojo">News from the MBS Xojo Plugins Version 20.1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2020-03-10/MonkeyBread_Software_Releases_/monkeybreadsoftware_blog_xojo">MonkeyBread Software Releases the MBS Xojo Plugins in version 20.1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2020-02-10/MBS_Xojo_Plugins_version_201pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 20.1pr3</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2020-02-07/Customized_File_Open_and_Save_/monkeybreadsoftware_blog_xojo">Customized File Open and Save Dialogs for Windows</a></li>
+</ul>
+<h4>Xojo Developer Magazine</h4>
+<ul>
+<li><a href="http://www.xdevmag.com/browse/18.3/">18.3, page 10: News</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbswinframeworksplugin.html">MBS WinFrameworks Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-winfiledialogexceptionmbs.html">WinFileDialogExceptionMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-winfiledialogobservermbs.html">WinFileDialogObserverMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-winfiledialogmbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

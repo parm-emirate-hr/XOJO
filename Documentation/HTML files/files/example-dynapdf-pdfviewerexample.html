@@ -1,0 +1,963 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /DynaPDF/PDF Viewer Example</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /DynaPDF/PDF Viewer Example</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/DynaPDF/PDF Viewer Example</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS MacCG Plugin, MBS Picture Plugin, MBS DynaPDF Plugin, MBS MacCF Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /DynaPDF/PDF Viewer Example<BR>
+This example is the version from Fri, 4th May 2023.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;PDF</span> <span style="color:#6500FE">Viewer</span> <span style="color:#6500FE">Example.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> NewDocument()
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = GetOpenFolderItem(FileTypes1.Pdf)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> f&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				OpenDocument f
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> OpenDocument(item <span style="color:#0000FF;font-weight: bold">As</span> FolderItem)
+			PDFPreview.RunShared item
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MainMenuBar</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileClose = <span style="color:#6500FE">&quot;Close&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator2 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> PDFPreview <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> StepSize = <span style="color:#326598">5</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Out <span style="color:#0000FF;font-weight: bold">Inherits</span> Canvas</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Out <span style="color:#0000FF;font-weight: bold">Inherits</span> Canvas</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> KeyDown(Key <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+				<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">case</span> asc(key)
+				<span style="color:#0000FF;font-weight: bold">case</span> <span style="color:#326598">30</span>
+					MovePrev
+					<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">case</span> <span style="color:#326598">31</span>
+					MoveNext
+					<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> MouseDown(X <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, Y <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> zoomed <span style="color:#0000FF;font-weight: bold">then</span>
+					
+					
+					<span style="color:#0000FF;font-weight: bold">me</span>.MouseCursor = System.Cursors.HandClosed
+					
+					mx = x
+					my = y
+					
+					LastClick = ticks
+					isMoving = <span style="color:#0000FF;font-weight: bold">true</span>
+					
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					zoomed = <span style="color:#0000FF;font-weight: bold">true</span>
+					isMoving = <span style="color:#0000FF;font-weight: bold">false</span>
+					DrawOffsetX = <span style="color:#326598">0</span>
+					DrawOffsetY = <span style="color:#326598">0</span>
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> faktor <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span> = min( <span style="color:#0000FF;font-weight: bold">me</span>.Height / Pic.Height, <span style="color:#0000FF;font-weight: bold">me</span>.Width / Pic.Width)
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> faktor&gt;<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						faktor = <span style="color:#326598">1</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> mx <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = x
+					<span style="color:#0000FF;font-weight: bold">dim</span> my <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = y
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Calculate</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">size</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> pw <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = Pic.Width * faktor
+					<span style="color:#0000FF;font-weight: bold">dim</span> ph <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = Pic.Height * faktor
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> px <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = (<span style="color:#0000FF;font-weight: bold">me</span>.Width  - pw)/<span style="color:#326598">2</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> py <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = (<span style="color:#0000FF;font-weight: bold">me</span>.height - ph)/<span style="color:#326598">2</span>
+					
+					x = x - px
+					y = y - py
+					
+					x = x / faktor
+					y = y / faktor
+					
+					x =  mx - x
+					y =  my - y
+					
+					move x, y
+					
+					
+					<span style="color:#0000FF;font-weight: bold">me</span>.Invalidate(<span style="color:#0000FF;font-weight: bold">False</span>)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> MouseDrag(X <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, Y <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+				<span style="color:#0000FF;font-weight: bold">if</span> isMoving <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> xx <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = x-mx
+					<span style="color:#0000FF;font-weight: bold">dim</span> yy <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = y-my
+					
+					move xx, yy
+					
+					mx = x
+					my = Y
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> MouseEnter()
+				<span style="color:#0000FF;font-weight: bold">if</span> zoomed <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">&#39;me.MouseCursor</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">System.Cursors.HandOpen</span>
+					<span style="color:#0000FF;font-weight: bold">me</span>.MouseCursor = System.Cursors.MagnifySmaller
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					<span style="color:#0000FF;font-weight: bold">me</span>.MouseCursor = System.Cursors.MagnifyLarger
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> MouseExit()
+				<span style="color:#0000FF;font-weight: bold">me</span>.MouseCursor = System.Cursors.StandardPointer
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> MouseUp(X <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, Y <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+				<span style="color:#0000FF;font-weight: bold">me</span>.MouseCursor = System.Cursors.MagnifySmaller
+				
+				
+				isMoving = <span style="color:#0000FF;font-weight: bold">false</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> abs(ticks-LastClick) &lt; <span style="color:#326598">30</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">0,5</span> <span style="color:#7F0000;text-style:italic">sekunden</span>
+					
+					zoomed = <span style="color:#0000FF;font-weight: bold">false</span>
+					<span style="color:#0000FF;font-weight: bold">me</span>.Invalidate(<span style="color:#0000FF;font-weight: bold">false</span>)
+					<span style="color:#0000FF;font-weight: bold">me</span>.MouseCursor = System.Cursors.MagnifyLarger
+					
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> MouseWheel(X <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, Y <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, deltaX <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, deltaY <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> zoomed <span style="color:#0000FF;font-weight: bold">then</span>
+					
+					move -deltax, -deltay
+					
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					
+					<span style="color:#0000FF;font-weight: bold">static</span> time <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> abs(ticks-time)&gt;<span style="color:#326598">30</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						time = ticks <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">nur</span> <span style="color:#7F0000;text-style:italic">alle</span> <span style="color:#7F0000;text-style:italic">0,5</span> <span style="color:#7F0000;text-style:italic">Sekunden</span>
+						
+						<span style="color:#0000FF;font-weight: bold">if</span> deltay &gt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+							MoveNext
+							
+						<span style="color:#0000FF;font-weight: bold">elseif</span> deltay&lt; <span style="color:#326598">0</span>  <span style="color:#0000FF;font-weight: bold">then</span>
+							MovePrev
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Paint(g <span style="color:#0000FF;font-weight: bold">As</span> Graphics, areas() <span style="color:#0000FF;font-weight: bold">As</span> REALbasic.Rect)
+				<span style="color:#0000FF">#pragma</span> unused areas
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pic = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					g.clearRect <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, g.width, g.height
+					
+					
+				<span style="color:#0000FF;font-weight: bold">elseif</span> zoomed <span style="color:#0000FF;font-weight: bold">then</span>
+					g.DrawPicture Pic, DrawOffsetX, DrawOffsetY, pic.Width, pic.Height, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, pic.Width, pic.Height
+					
+					
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					g.clearRect <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, g.width, g.height
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Calculate</span> <span style="color:#7F0000;text-style:italic">scale</span> <span style="color:#7F0000;text-style:italic">factor</span>
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> faktor <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span> = min( g.Height / Pic.Height, g.Width / Pic.Width)
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> faktor&gt;<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						faktor = <span style="color:#326598">1</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Calculate</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">size</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> w <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = Pic.Width * faktor
+					<span style="color:#0000FF;font-weight: bold">dim</span> h <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = Pic.Height * faktor
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> x <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = (g.Width  - w)/<span style="color:#326598">2</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> y <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = (g.height - h)/<span style="color:#326598">2</span>
+					
+					g.DrawPicture Pic, x, y, w, h, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, Pic.Width, Pic.Height
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control SaveButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance SaveButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = GetSaveFolderItem(FileTypes1.Pdf, <span style="color:#6500FE">&quot;output.pdf&quot;</span>)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> f = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BinaryStream = BinaryStream.Create(f, <span style="color:#0000FF;font-weight: bold">true</span>)
+				
+				b.Write PDFData
+				b.Close
+				
+				
+				<span style="color:#0000FF;font-weight: bold">Exception</span> io <span style="color:#0000FF;font-weight: bold">as</span> IOException
+				
+				MsgBox <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">write</span> <span style="color:#6500FE">file.&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PrintButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PrintButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF">#if</span> TargetMachO <span style="color:#0000FF;font-weight: bold">then</span>
+					
+					PrintMac <span style="color:#0000FF;font-weight: bold">true</span>
+					
+				<span style="color:#0000FF">#elseif</span> TargetWin32 <span style="color:#0000FF;font-weight: bold">then</span>
+					
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> r <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> RegistryItem(<span style="color:#6500FE">&quot;HKEY_CLASSES_ROOT\Software\Adobe\Acrobat\Exe&quot;</span>)
+					<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = r.DefaultValue
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> len(s)=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						Break
+						MsgBox <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">find</span> <span style="color:#6500FE">Acrobat</span> <span style="color:#6500FE">Reader.&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">else</span>
+						<span style="color:#0000FF;font-weight: bold">static</span> sh <span style="color:#0000FF;font-weight: bold">as</span> shell
+						
+						sh = <span style="color:#0000FF;font-weight: bold">new</span> shell
+						sh.Mode=<span style="color:#326598">2</span>
+						
+						
+						sh.Execute s+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">/p</span> <span style="color:#6500FE">&quot;</span>+PDFFile.ShellPath
+						<span style="color:#7F0000;text-style:italic">&#39;sh.Execute</span> <span style="color:#7F0000;text-style:italic">s+&quot;</span> <span style="color:#7F0000;text-style:italic">/h</span> <span style="color:#7F0000;text-style:italic">/p</span> <span style="color:#7F0000;text-style:italic">&quot;+f.ShellPath</span>
+						
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+				<span style="color:#0000FF">#else</span>
+					Break
+				<span style="color:#0000FF">#endif</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control MyCloseButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance MyCloseButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				close
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> CellBackgroundPaint(g <span style="color:#0000FF;font-weight: bold">As</span> Graphics, row <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, column <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+				<span style="color:#0000FF">#pragma</span> unused column
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> row &lt; <span style="color:#0000FF;font-weight: bold">me</span>.ListCount <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> LineV <span style="color:#0000FF;font-weight: bold">as</span> Variant = <span style="color:#0000FF;font-weight: bold">me</span>.CellTag(row,<span style="color:#326598">0</span>)
+					<span style="color:#0000FF;font-weight: bold">dim</span> PageIndex <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#0000FF;font-weight: bold">me</span>.RowTag(row)
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">selected?</span>
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">me</span>.ListIndex &gt;= <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#0000FF;font-weight: bold">dim</span> SelectedPageIndex <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#0000FF;font-weight: bold">me</span>.RowTag(<span style="color:#0000FF;font-weight: bold">me</span>.ListIndex)
+						
+						<span style="color:#0000FF;font-weight: bold">if</span> SelectedPageIndex = PageIndex <span style="color:#0000FF;font-weight: bold">then</span>
+							g.ForeColor = HighlightColor
+							g.FillRect <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, g.Width, g.Height
+						<span style="color:#0000FF;font-weight: bold">else</span>
+							g.ForeColor = &amp;c<span style="color:#FF0000">FF</span><span style="color:#00FF00">FF</span><span style="color:#0000FF">FF</span>
+							g.FillRect <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, g.Width, g.Height
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">draw</span> <span style="color:#7F0000;text-style:italic">page</span>
+					<span style="color:#0000FF;font-weight: bold">if</span> linev&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#0000FF;font-weight: bold">dim</span> p <span style="color:#0000FF;font-weight: bold">as</span> Picture = pages(PageIndex)
+						<span style="color:#0000FF;font-weight: bold">if</span> p&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+							<span style="color:#0000FF;font-weight: bold">dim</span> w <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = p.Width
+							<span style="color:#0000FF;font-weight: bold">dim</span> xx <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = (g.Width -w)/<span style="color:#326598">2</span>
+							
+							g.DrawPicture p, xx, <span style="color:#326598">0</span>, w, StepSize, <span style="color:#326598">0</span>, LineV.IntegerValue, w, StepSize
+							
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					
+					
+					<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Change()
+				<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">me</span>.ListIndex &gt;= <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> v <span style="color:#0000FF;font-weight: bold">as</span> Variant = <span style="color:#0000FF;font-weight: bold">me</span>.RowTag(<span style="color:#0000FF;font-weight: bold">me</span>.ListIndex)
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> v &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						
+						RenderPage v+<span style="color:#326598">1</span>
+						
+						DrawOffsetX = <span style="color:#326598">0</span>
+						DrawOffsetY = <span style="color:#326598">0</span>
+						
+						out.Invalidate(<span style="color:#0000FF;font-weight: bold">False</span>)
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">fix</span> <span style="color:#7F0000;text-style:italic">redrawing</span> <span style="color:#7F0000;text-style:italic">issues</span>
+					<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#0000FF;font-weight: bold">me</span>.ListCount-<span style="color:#326598">1</span>
+						<span style="color:#0000FF;font-weight: bold">me</span>.InvalidateCell(i,<span style="color:#326598">0</span>)
+					<span style="color:#0000FF;font-weight: bold">next</span>
+					
+					
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> KeyDown(Key <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+				<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">case</span> asc(key)
+				<span style="color:#0000FF;font-weight: bold">case</span> <span style="color:#326598">30</span>
+					MovePrev
+					<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">case</span> <span style="color:#326598">31</span>
+					MoveNext
+					<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Thread1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Thread</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Thread1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Thread</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Run()
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">render</span> <span style="color:#7F0000;text-style:italic">page</span> <span style="color:#7F0000;text-style:italic">previews</span>
+				
+				<span style="color:#0000FF;font-weight: bold">Dim</span> pdf <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> MyDynaPDFMBS
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">load</span> <span style="color:#7F0000;text-style:italic">CharacterMaps</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">want</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">correctly</span> <span style="color:#7F0000;text-style:italic">process</span> <span style="color:#7F0000;text-style:italic">asian</span> <span style="color:#7F0000;text-style:italic">fonts</span>
+				<span style="color:#7F0000;text-style:italic">&#39;call</span> <span style="color:#7F0000;text-style:italic">pdf.SetCMapDir(SpecialFolder.Desktop.Child(&quot;CMap&quot;),</span> <span style="color:#7F0000;text-style:italic">pdf.klcmRecursive)</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> pdf.CreateNewPDF(<span style="color:#0000FF;font-weight: bold">nil</span>) <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">create</span> <span style="color:#7F0000;text-style:italic">pdf</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">memory</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				InitColorManagement pdf
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> e <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> PDFFile = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					e = pdf.OpenImportBuffer(PDFData) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">load</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">memory</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					e = pdf.OpenImportFile(PDFFile) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">load</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">file</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> e&lt;&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">failed</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetImportFlags(pdf.kifImportAsPage) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">important!</span> <span style="color:#7F0000;text-style:italic">Import</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">page</span> <span style="color:#7F0000;text-style:italic">makes</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">rendering</span> <span style="color:#7F0000;text-style:italic">faster.</span>
+				e = pdf.ImportPDFFile(<span style="color:#326598">1</span>,<span style="color:#006532">1.0</span>,<span style="color:#006532">1.0</span>)
+				<span style="color:#0000FF;font-weight: bold">if</span> e &lt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = pdf.GetPageCount
+				
+				<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> c
+					<span style="color:#0000FF;font-weight: bold">me</span>.Sleep(<span style="color:#326598">10</span>)
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> list= <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Fenster</span> <span style="color:#7F0000;text-style:italic">schon</span> <span style="color:#7F0000;text-style:italic">zu</span>
+					
+					<span style="color:#7F0000;text-style:italic">&#39;dim</span> <span style="color:#7F0000;text-style:italic">page</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">DynaPDFPageMBS</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">pdf.GetPage(i)</span>
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> w <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">148</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> h <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">198</span>
+					
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> pic <span style="color:#0000FF;font-weight: bold">as</span> Picture = pdf.RenderPagePicture(i, w, h, pdf.kpsFitBest)
+					
+					newpages.Append pic
+					
+				<span style="color:#0000FF;font-weight: bold">next</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control UpdateTimer <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance UpdateTimer <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">while</span> UBound(NewPages)&gt;=<span style="color:#326598">0</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> p <span style="color:#0000FF;font-weight: bold">as</span> Picture = NewPages(<span style="color:#326598">0</span>)
+					NewPages.Remove <span style="color:#326598">0</span>
+					pages.Append p
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> v <span style="color:#0000FF;font-weight: bold">as</span> Variant = UBound(pages)
+					List.AddRow <span style="color:#6500FE">&quot;&quot;</span>
+					List.RowTag(List.LastIndex) = v
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> h <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = p.Height-<span style="color:#326598">1</span>
+					<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> h <span style="color:#0000FF;font-weight: bold">step</span> StepSize
+						List.AddRow <span style="color:#6500FE">&quot;&quot;</span>
+						List.RowTag(List.LastIndex) = v
+						List.CellTag(List.LastIndex,<span style="color:#326598">0</span>) = i
+					<span style="color:#0000FF;font-weight: bold">next</span>
+					
+					List.AddRow <span style="color:#6500FE">&quot;&quot;</span>
+					List.RowTag(List.LastIndex) = v
+				<span style="color:#0000FF;font-weight: bold">wend</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control RotateButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance RotateButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				pic = pic.Rotate270MBS
+				
+				move <span style="color:#326598">0</span>, <span style="color:#326598">0</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control ZoomButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance ZoomButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				zoomed = <span style="color:#0000FF;font-weight: bold">not</span> zoomed
+				
+				out.Invalidate(<span style="color:#0000FF;font-weight: bold">False</span>)
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Wheel <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressWheel</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Wheel <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressWheel</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+				<span style="color:#0000FF;font-weight: bold">me</span>.Left = (Width -<span style="color:#0000FF;font-weight: bold">me</span>.Width )/<span style="color:#326598">2</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.top  = (Height-<span style="color:#0000FF;font-weight: bold">me</span>.Height)/<span style="color:#326598">2</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> KeyDown(Key <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">case</span> asc(key)
+			<span style="color:#0000FF;font-weight: bold">case</span> <span style="color:#326598">30</span>
+				MovePrev
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> <span style="color:#326598">31</span>
+				MoveNext
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			list.DefaultRowHeight = StepSize
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Resized()
+			move <span style="color:#326598">0</span>,<span style="color:#326598">0</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Resizing()
+			move <span style="color:#326598">0</span>,<span style="color:#326598">0</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> FileClose() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			close
+			<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">True</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> CheckFileFormat()
+			<span style="color:#0000FF;font-weight: bold">if</span> PDFData &lt;&gt; <span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> leftb(PDFData,<span style="color:#326598">3</span>) = <span style="color:#6500FE">&quot;PNG&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					isBild = <span style="color:#0000FF;font-weight: bold">true</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> leftb(PDFData,<span style="color:#326598">4</span>) = <span style="color:#6500FE">&quot;%PDF&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					isPDF = <span style="color:#0000FF;font-weight: bold">true</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BinaryStream = BinaryStream.Open(PDFFile)
+			<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = b.Read(<span style="color:#326598">4</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> leftb(s,<span style="color:#326598">3</span>) = <span style="color:#6500FE">&quot;PNG&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				isBild = <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> leftb(s,<span style="color:#326598">4</span>) = <span style="color:#6500FE">&quot;%PDF&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				isPDF = <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Exception</span> io <span style="color:#0000FF;font-weight: bold">as</span> IOException
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">no</span> <span style="color:#7F0000;text-style:italic">file</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">read?</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Shared</span> <span style="color:#0000FF;font-weight: bold">Function</span> FindFile(name <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>) <span style="color:#0000FF;font-weight: bold">As</span> FolderItem
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Look</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">file</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">parent</span> <span style="color:#7F0000;text-style:italic">folders</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">executable</span> <span style="color:#7F0000;text-style:italic">on</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> parent <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = app.ExecutableFile.Parent
+			
+			<span style="color:#0000FF;font-weight: bold">while</span> parent&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> file <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = parent.Child(name)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> file&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">and</span> file.Exists <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> file
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				parent = parent.Parent
+			<span style="color:#0000FF;font-weight: bold">wend</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> HideWheel()
+			wheel.visible = <span style="color:#0000FF;font-weight: bold">false</span>
+			
+			out.Visible = <span style="color:#0000FF;font-weight: bold">true</span>
+			UpdateTimer.Enabled = <span style="color:#0000FF;font-weight: bold">true</span>
+			list.Visible = out.Left &gt; <span style="color:#326598">0</span>
+			MyCloseButton.Enabled = <span style="color:#0000FF;font-weight: bold">true</span>
+			PrintButton.Enabled = <span style="color:#0000FF;font-weight: bold">true</span>
+			RotateButton.Enabled = <span style="color:#0000FF;font-weight: bold">true</span>
+			SaveButton.Enabled = <span style="color:#0000FF;font-weight: bold">true</span>
+			ZoomButton.Enabled = <span style="color:#0000FF;font-weight: bold">true</span>
+			
+			
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> out.MouseX &gt;= <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">and</span> out.MouseX &lt;= out.Width <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> out.MouseY &gt;= <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">and</span> out.MouseY &lt;= out.Height <span style="color:#0000FF;font-weight: bold">then</span>
+					
+					<span style="color:#0000FF;font-weight: bold">me</span>.MouseCursor = System.Cursors.MagnifyLarger
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Shared</span> <span style="color:#0000FF;font-weight: bold">Sub</span> InitColorManagement(PDF <span style="color:#0000FF;font-weight: bold">as</span> DynaPDFMBS)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">init</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">management,</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">have</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">files</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> profiles <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> DynaPDFColorProfilesMBS
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">some</span> <span style="color:#7F0000;text-style:italic">generic</span> <span style="color:#7F0000;text-style:italic">profiles</span> <span style="color:#7F0000;text-style:italic">here</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">case</span> <span style="color:#7F0000;text-style:italic">none</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">PDF</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> CMYK_Profile_File <span style="color:#0000FF;font-weight: bold">As</span> FolderItem = findFile(<span style="color:#6500FE">&quot;Generic</span> <span style="color:#6500FE">CMYK</span> <span style="color:#6500FE">Profile.icc&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span>  RGB_Profile_File <span style="color:#0000FF;font-weight: bold">As</span> FolderItem = findFile(<span style="color:#6500FE">&quot;Generic</span> <span style="color:#6500FE">RGB</span> <span style="color:#6500FE">Profile.icc&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> Gray_Profile_File <span style="color:#0000FF;font-weight: bold">As</span> FolderItem = findFile(<span style="color:#6500FE">&quot;Generic</span> <span style="color:#6500FE">Gray</span> <span style="color:#6500FE">Profile.icc&quot;</span>)
+			
+			Profiles.DefInCMYK = CMYK_Profile_File
+			Profiles.DefInGray = Gray_Profile_File
+			Profiles.DefInRGB = RGB_Profile_File
+			Profiles.DeviceProfile = <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">CMYK_Profile_File</span>
+			Profiles.SoftProof = <span style="color:#0000FF;font-weight: bold">Nil</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">me</span> <span style="color:#7F0000;text-style:italic">seems</span> <span style="color:#7F0000;text-style:italic">better</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">kcsDeviceRGB</span> <span style="color:#7F0000;text-style:italic">here</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">DeviceProfile</span> <span style="color:#7F0000;text-style:italic">nil!?</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">better</span> <span style="color:#7F0000;text-style:italic">than</span> <span style="color:#7F0000;text-style:italic">kcsDeviceCMYK</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">passing</span> <span style="color:#7F0000;text-style:italic">CMYK</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">device</span> <span style="color:#7F0000;text-style:italic">profile.</span>
+			
+			<span style="color:#0000FF;font-weight: bold">If</span> pdf.InitColorManagement(profiles, pdf.kcsDeviceRGB, pdf.kicmBPCompensation) <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">okay</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> MoveNext()
+			<span style="color:#0000FF;font-weight: bold">if</span> list.ListIndex &lt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				list.ListIndex = <span style="color:#326598">0</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> SelectedPageIndex <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = list.RowTag(list.ListIndex)
+				<span style="color:#0000FF;font-weight: bold">dim</span> SuchePageIndex <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = SelectedPageIndex + <span style="color:#326598">1</span>
+				
+				<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = list.ListIndex+<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> List.ListCount-<span style="color:#326598">1</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> pageIndex <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = List.RowTag(i)
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> pageIndex = SuchePageIndex <span style="color:#0000FF;font-weight: bold">then</span>
+						List.ListIndex = i
+						<span style="color:#0000FF;font-weight: bold">exit</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">next</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> MovePrev()
+			<span style="color:#0000FF;font-weight: bold">if</span> list.ListIndex &lt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				list.ListIndex = <span style="color:#326598">0</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> SelectedPageIndex <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = list.RowTag(list.ListIndex)
+				<span style="color:#0000FF;font-weight: bold">dim</span> SuchePageIndex <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = SelectedPageIndex - <span style="color:#326598">1</span>
+				
+				
+				<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = list.ListIndex-<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">downto</span> <span style="color:#326598">0</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> pageIndex <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = List.RowTag(i)
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> pageIndex = SuchePageIndex <span style="color:#0000FF;font-weight: bold">then</span>
+						List.ListIndex = i
+						<span style="color:#0000FF;font-weight: bold">exit</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">next</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> PrintMac(ShowDialog <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>)
+			<span style="color:#0000FF">#if</span> TargetMacOS <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Print</span> <span style="color:#7F0000;text-style:italic">PDF</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">Mac</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> p <span style="color:#0000FF;font-weight: bold">as</span> CGPDFDocumentMBS = CGPDFDocumentMBS.CreateWithData(PDFData)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> p=<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					MsgBox <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">read</span> <span style="color:#6500FE">the</span> <span style="color:#6500FE">PDF.&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> g <span style="color:#0000FF;font-weight: bold">as</span> Graphics
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> ShowDialog <span style="color:#0000FF;font-weight: bold">then</span>
+					g = OpenPrinterDialog
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					g = OpenPrinter
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> g&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>=p.PageCount
+					<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>=<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> c
+						g.DrawCGPDFDocumentMBS p, p.CropBox(i), i
+						
+						<span style="color:#0000FF;font-weight: bold">if</span> i&lt;c <span style="color:#0000FF;font-weight: bold">then</span>
+							g.NextPage
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+						
+					<span style="color:#0000FF;font-weight: bold">next</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+			<span style="color:#0000FF">#endif</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Shared</span> <span style="color:#0000FF;font-weight: bold">Function</span> ReadFile(file <span style="color:#0000FF;font-weight: bold">as</span> FolderItem) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BinaryStream = BinaryStream.Open(file)
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> b.Read(B.Length)
+			
+			<span style="color:#0000FF;font-weight: bold">Exception</span> io <span style="color:#0000FF;font-weight: bold">as</span> IOException
+			Break
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> RenderPage(n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> pdf <span style="color:#0000FF;font-weight: bold">as</span> MyDynaPDFMBS = MainThreadPDF
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> pdf&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> page <span style="color:#0000FF;font-weight: bold">as</span> DynaPDFPageMBS = pdf.GetPage(n)
+				<span style="color:#0000FF;font-weight: bold">dim</span> mr <span style="color:#0000FF;font-weight: bold">as</span> DynaPDFRectMBS = page.BBox(page.kpbMediaBox)
+				<span style="color:#0000FF;font-weight: bold">dim</span> cr <span style="color:#0000FF;font-weight: bold">as</span> DynaPDFRectMBS = page.BBox(page.kpbCropBox)
+				<span style="color:#0000FF;font-weight: bold">if</span> cr&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					mr = cr
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> w <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = mr.Width
+				<span style="color:#0000FF;font-weight: bold">dim</span> h <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = abs(mr.Bottom-mr.top)
+				
+				w = W * <span style="color:#326598">2</span>
+				h = h * <span style="color:#326598">2</span>
+				
+				pic = pdf.RenderPagePicture(n, w, h, pdf.kpsFitBest)
+				
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				pic = <span style="color:#0000FF;font-weight: bold">nil</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			zoomed = <span style="color:#0000FF;font-weight: bold">false</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> RenderPreview() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			CheckFileFormat
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> list = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">false</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Fenster</span> <span style="color:#7F0000;text-style:italic">schon</span> <span style="color:#7F0000;text-style:italic">zu</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> isPDF <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				
+				<span style="color:#0000FF;font-weight: bold">Dim</span> pdf <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> MyDynaPDFMBS
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">load</span> <span style="color:#7F0000;text-style:italic">CharacterMaps</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">want</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">correctly</span> <span style="color:#7F0000;text-style:italic">process</span> <span style="color:#7F0000;text-style:italic">asian</span> <span style="color:#7F0000;text-style:italic">fonts</span>
+				<span style="color:#7F0000;text-style:italic">&#39;call</span> <span style="color:#7F0000;text-style:italic">pdf.SetCMapDir(SpecialFolder.Desktop.Child(&quot;CMap&quot;),</span> <span style="color:#7F0000;text-style:italic">pdf.klcmRecursive)</span>
+				
+				MainThreadPDF = pdf
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> pdf.CreateNewPDF(<span style="color:#0000FF;font-weight: bold">nil</span>) <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">create</span> <span style="color:#7F0000;text-style:italic">pdf</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">memory</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">false</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				InitColorManagement pdf
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> e <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> PDFFile = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					e = pdf.OpenImportBuffer(PDFData) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">load</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">memory</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					e = pdf.OpenImportFile(PDFFile) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">load</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">file</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> e&lt;&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">failed</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">false</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetImportFlags(pdf.kifImportAsPage) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">important!</span> <span style="color:#7F0000;text-style:italic">Import</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">page</span> <span style="color:#7F0000;text-style:italic">makes</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">rendering</span> <span style="color:#7F0000;text-style:italic">faster.</span>
+				e = pdf.ImportPDFFile(<span style="color:#326598">1</span>,<span style="color:#006532">1.0</span>,<span style="color:#006532">1.0</span>)
+				<span style="color:#0000FF;font-weight: bold">if</span> e &lt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">false</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = pdf.GetPageCount
+				RenderPage <span style="color:#326598">1</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> c = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">if</span> list= <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">false</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Fenster</span> <span style="color:#7F0000;text-style:italic">schon</span> <span style="color:#7F0000;text-style:italic">zu</span>
+					list.Visible = <span style="color:#0000FF;font-weight: bold">false</span>
+					out.left = <span style="color:#326598">0</span>
+					out.Width = <span style="color:#0000FF;font-weight: bold">self</span>.Width
+					
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					Thread1.run
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+				
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				
+				pic = Picture.Open(PDFFile)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> pic &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Run(file <span style="color:#0000FF;font-weight: bold">as</span> FolderItem)
+			<span style="color:#0000FF;font-weight: bold">self</span>.PDFData = ReadFile(file)
+			<span style="color:#0000FF;font-weight: bold">self</span>.PDFFile = file
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">self</span>.RenderPreview <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">self</span>.show
+				<span style="color:#0000FF;font-weight: bold">self</span>.HideWheel
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				<span style="color:#0000FF;font-weight: bold">self</span>.close
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Run(PDFData <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			<span style="color:#0000FF;font-weight: bold">self</span>.PDFData = PDFData
+			<span style="color:#0000FF;font-weight: bold">if</span> RenderPreview <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">self</span>.HideWheel
+				<span style="color:#0000FF;font-weight: bold">self</span>.show
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				<span style="color:#0000FF;font-weight: bold">self</span>.close
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Shared</span> <span style="color:#0000FF;font-weight: bold">Sub</span> RunShared(file <span style="color:#0000FF;font-weight: bold">as</span> FolderItem)
+			<span style="color:#0000FF;font-weight: bold">dim</span> p <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> PDFPreview
+			
+			p.run file
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Shared</span> <span style="color:#0000FF;font-weight: bold">Sub</span> RunShared(PDFData <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> p <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> PDFPreview
+			p.run PDFData
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> move(deltax <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, deltay <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			DrawOffsetX = DrawOffsetX + deltax
+			DrawOffsetY = DrawOffsetY + deltay
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> DrawOffsetX&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				DrawOffsetX = <span style="color:#326598">0</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> DrawOffsetY&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				DrawOffsetY = <span style="color:#326598">0</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> pic &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> w <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = out.Width  - pic.Width
+				<span style="color:#0000FF;font-weight: bold">dim</span> h <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = out.Height - pic.Height
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> DrawOffsetX &lt; w <span style="color:#0000FF;font-weight: bold">then</span>
+					DrawOffsetX = w
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> DrawOffsetY &lt; h <span style="color:#0000FF;font-weight: bold">then</span>
+					DrawOffsetY = h
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			out.Invalidate(<span style="color:#0000FF;font-weight: bold">False</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> DrawOffsetX <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> DrawOffsetY <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> LastClick <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> MainThreadPDF <span style="color:#0000FF;font-weight: bold">As</span> MyDynaPDFMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> NewPages() <span style="color:#0000FF;font-weight: bold">As</span> Picture</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> PDFData <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> PDFFile <span style="color:#0000FF;font-weight: bold">As</span> FolderItem</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Pic <span style="color:#0000FF;font-weight: bold">As</span> Picture</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> isBild <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> isMoving <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> isPDF <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> mx <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> my <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> pages() <span style="color:#0000FF;font-weight: bold">As</span> picture</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> zoomed <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	FileTypes1</div>
+<div class="RB_Code">		Filetype application/pdf</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> FileTypes1</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyDynaPDFMBS <span style="color:#0000FF;font-weight: bold">Inherits</span> DynaPDFMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> Error(ErrorCode <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, ErrorMessage <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, ErrorType <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">output</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">messages</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">console:</span>
+			System.DebugLog str(ErrorCode)+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+ErrorMessage
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> ErrorCode = <span style="color:#326598">116</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">WriteFText</span> <span style="color:#7F0000;text-style:italic">cancelled</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> ErrorCode = <span style="color:#326598">63</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Type1</span> <span style="color:#7F0000;text-style:italic">Font</span> <span style="color:#7F0000;text-style:italic">nicht</span> <span style="color:#7F0000;text-style:italic">unterst&uuml;tzt</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> app.CurrentThread &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				Break
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ignore</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">threads</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">dialog:</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">New</span> MessageDialog <span style="color:#7F0000;text-style:italic">//declare</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">MessageDialog</span> <span style="color:#7F0000;text-style:italic">object</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> MessageDialogButton <span style="color:#7F0000;text-style:italic">//for</span> <span style="color:#7F0000;text-style:italic">handling</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">result</span>
+			
+			d.icon=MessageDialog.GraphicCaution <span style="color:#7F0000;text-style:italic">//display</span> <span style="color:#7F0000;text-style:italic">warning</span> <span style="color:#7F0000;text-style:italic">icon</span>
+			d.ActionButton.Caption=<span style="color:#6500FE">&quot;Continue&quot;</span>
+			d.CancelButton.Visible=<span style="color:#0000FF;font-weight: bold">True</span>    <span style="color:#7F0000;text-style:italic">//show</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Cancel</span> <span style="color:#7F0000;text-style:italic">button</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">warning</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">error?</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> BitAnd(ErrorType, <span style="color:#0000FF;font-weight: bold">me</span>.kE_WARNING) = <span style="color:#0000FF;font-weight: bold">me</span>.kE_WARNING <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">user</span> <span style="color:#7F0000;text-style:italic">decided</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">ignore,</span> <span style="color:#7F0000;text-style:italic">we&#39;ll</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> IgnoreWarnings <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span>
+				
+				d.Message=<span style="color:#6500FE">&quot;A</span> <span style="color:#6500FE">warning</span> <span style="color:#6500FE">occurred</span> <span style="color:#6500FE">while</span> <span style="color:#6500FE">processing</span> <span style="color:#6500FE">your</span> <span style="color:#6500FE">PDF</span> <span style="color:#6500FE">code.&quot;</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">third</span> <span style="color:#7F0000;text-style:italic">button</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">warnings</span>
+				d.AlternateActionButton.Caption = <span style="color:#6500FE">&quot;Ignore</span> <span style="color:#6500FE">warnings&quot;</span>
+				d.AlternateActionButton.Visible = <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				d.Message=<span style="color:#6500FE">&quot;An</span> <span style="color:#6500FE">error</span> <span style="color:#6500FE">occurred</span> <span style="color:#6500FE">while</span> <span style="color:#6500FE">processing</span> <span style="color:#6500FE">your</span> <span style="color:#6500FE">PDF</span> <span style="color:#6500FE">code.&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			d.Explanation = str(ErrorCode)+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+ErrorMessage
+			
+			b=d.ShowModal <span style="color:#7F0000;text-style:italic">//display</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">dialog</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">Case</span> b <span style="color:#7F0000;text-style:italic">//determine</span> <span style="color:#7F0000;text-style:italic">which</span> <span style="color:#7F0000;text-style:italic">button</span> <span style="color:#7F0000;text-style:italic">was</span> <span style="color:#7F0000;text-style:italic">pressed.</span>
+			<span style="color:#0000FF;font-weight: bold">Case</span> d.ActionButton
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+			<span style="color:#0000FF;font-weight: bold">Case</span> d.AlternateActionButton
+				IgnoreWarnings = <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+			<span style="color:#0000FF;font-weight: bold">Case</span> d.CancelButton
+				<span style="color:#0000FF;font-weight: bold">Return</span> -<span style="color:#326598">1</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">stop</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">select</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> PageBreak(LastPosX <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>, LastPosY <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>, PageBreak <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">boolean</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">Return</span> -<span style="color:#326598">1</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> IgnoreWarnings <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-dynapdf-pdfcoloranalyze.html">/DynaPDF/PDF Color Analyze</A></li>
+<li><A href="example-dynapdf-pdfcoloranalyzeperpage.html">/DynaPDF/PDF Color Analyze per Page</A></li>
+<li><A href="example-dynapdf-pdfformwithhttppost.html">/DynaPDF/PDF Form with HTTP POST</A></li>
+<li><A href="example-dynapdf-pdfviewerexamplewithlinks.html">/DynaPDF/PDF Viewer Example with links</A></li>
+<li><A href="example-dynapdf-pdfwithpicture.html">/DynaPDF/PDF with picture</A></li>
+<li><A href="example-dynapdf-pdfwithpicturedirect.html">/DynaPDF/PDF with picture direct</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-dynapdf-pdfviewerexample">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - MDQueryMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="MDQueryMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">MDQueryMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>MDQueryMBS class</H3>
+<div class="M">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-spotlight.html" translate="no">Spotlight</A></td>
+<td class=grau><a href="plugins-mbsmacosxplugin.html">MBS MacOSX Plugin</a></td>
+<td class=grau><a href="newinversion96.shtml" class=version>9.6</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+MDQuery encapsulates all queries against the MetaData database. <BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> m <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> MDQueryMBS(<span style="color: #6600FE;">&quot;* == &quot;</span><span style="color: #6600FE;">&quot;Hello&quot;</span><span style="color: #6600FE;">&quot;wcd || kMDItemTextContent = &quot;</span><span style="color: #6600FE;">&quot;Hello&quot;</span><span style="color: #6600FE;">&quot;c&quot;</span>)<br /><br /><span style="color: #0000FF;">call</span> m.Execute(m.kMDQuerySynchronous)<br /><br />MsgBox str(m.ResultCount) <span style="color: #800000;">// shows a lot of results</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Depending on what and how you want to search, you can decide whether MDQueryMBS or <A href="class-catsearchmbs.html">CatSearchMBS</A> is the better choice.<BR>
+<BR>
+Available in Mac OS X version 10.4 and later.<BR>
+<BR>
+Queries gather results or process updates only while the current thread&#39;s run loop is running. Queries normally operate asynchronously, and only send out progress notificiations as the list is being collected. The query list is kept up to date with respect to value lists and sorting as the progress notifications are sent out, so the query is in a good state during those events.<BR>
+<BR>
+An MDQuery presents its results as if it were a simple array object.  The results are MDItem.<BR>
+<BR>
+Query Sorting Sorting the results from a query can be performed in one  of two ways. First is to let the library sort the results for you by passing an array of attributes to sort on to constructor. The default sort provided by the constructor is a assending sort strings are compared using CFStringCompare() with the options kCFCompareNonliteral | kCFCompareLocalized | kCFCompareNumerically. <BR>
+<BR>
+If used in a thread, please use a loop with calling <A href="class-nsrunloopmbs.html">NSRunLoopMBS</A>.currentRunLoop.runUntilDate(nil) to give time for update events to fire.<BR>
+</div>
+<ul>
+<LI>3 events<UL>
+<li class="M">event <A href="spotlight-mdquerymbs-event.html">Finish</A>()</li>
+<li class="M">event <A href="spotlight-mdquerymbs-event.html#2">Progress</A>(AddedItems() as <A href="class-mditemmbs.html">MDItemMBS</A>, ChangedItems() as <A href="class-mditemmbs.html">MDItemMBS</A>, RemovedItems() as <A href="class-mditemmbs.html">MDItemMBS</A>)</li>
+<li class="M">event <A href="spotlight-mdquerymbs-event.html#3">Update</A>(AddedItems() as <A href="class-mditemmbs.html">MDItemMBS</A>, ChangedItems() as <A href="class-mditemmbs.html">MDItemMBS</A>, RemovedItems() as <A href="class-mditemmbs.html">MDItemMBS</A>)</li>
+</UL></LI>
+<LI>3 properties<UL>
+<li class="M">property <A href="spotlight-mdquerymbs-property.html">Handle</A> as Integer</li>
+<li class="M">property <A href="spotlight-mdquerymbs-property.html#2">Tag</A> as Variant</li>
+<li class="M">property <A href="spotlight-mdquerymbs-method.html#2">BatchingParameters</A> as <A href="class-mdquerybatchingparamsmbs.html">MDQueryBatchingParamsMBS</A></li>
+</UL></LI>
+<LI>26 methods<UL>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html">AttributeValueOfResultAtIndex</A>(name as string, index as UInt32) as Variant</li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#3">Constructor</A>(query as MDQueryMBS, queryString as string)</li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#4">Constructor</A>(query as MDQueryMBS, queryString as string, valueListAttributes() as string)</li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#5">Constructor</A>(query as MDQueryMBS, queryString as string, valueListAttributes() as string, sortingAttributes() as string)</li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#6">Constructor</A>(queryString as string)</li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#7">Constructor</A>(queryString as string, valueListAttributes() as string)</li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#8">Constructor</A>(queryString as string, valueListAttributes() as string, sortingAttributes() as string)</li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#9">CountOfResultsWithAttributeValue</A>(name as string, Value as Variant) as UInt32</li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#10">DisableUpdates</A></li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#11">EnableUpdates</A></li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#12">Execute</A>(flags as Integer) as boolean</li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#13">GetSortOptionFlagsForAttribute</A>(fieldName as string) as Integer</li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#14">IndexOfResult</A>(it as <A href="class-mditemmbs.html">MDItemMBS</A>) as Integer</li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#15">IsGatheringComplete</A> as boolean</li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#16">QueryString</A> as string</li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#17">ResultAtIndex</A>(index as Integer) as <A href="class-mditemmbs.html">MDItemMBS</A></li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#18">ResultCount</A> as Integer</li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#19">Results</A>(limit as Integer = -1) as <A href="class-mditemmbs.html">MDItemMBS</A>()</li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#20">SetMaxCount</A>(size as Integer)</li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#21">SetSearchScope</A>(paths() as folderitem, options() as string)</li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#22">SetSortOptionFlagsForAttribute</A>(fieldName as string, flags as UInt32) as Boolean</li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#23">SetSortOrder</A>(sortingAttrs() as string) as Boolean</li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#24">SortingAttributes</A> as string()</li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#25">Stop</A></li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#26">ValueListAttributes</A> as string()</li>
+<li class="M">method <A href="spotlight-mdquerymbs-method.html#27">ValuesOfAttribute</A>(name as string) as Variant()</li>
+</UL></LI>
+<LI>9 constants<UL>
+<li class="M">const <A href="spotlight-mdquerymbs-const.html">kMDQueryReverseSortOrderFlag</A>=1</li>
+<li class="M">const <A href="spotlight-mdquerymbs-const.html#2">kMDQueryScopeAllIndexed</A>="kMDQueryScopeAllIndexed"</li>
+<li class="M">const <A href="spotlight-mdquerymbs-const.html#3">kMDQueryScopeComputer</A>="kMDQueryScopeComputer"</li>
+<li class="M">const <A href="spotlight-mdquerymbs-const.html#4">kMDQueryScopeComputerIndexed</A>="kMDQueryScopeComputerIndexed"</li>
+<li class="M">const <A href="spotlight-mdquerymbs-const.html#5">kMDQueryScopeHome</A>="kMDQueryScopeHome"</li>
+<li class="M">const <A href="spotlight-mdquerymbs-const.html#6">kMDQueryScopeNetwork</A>="kMDQueryScopeNetwork"</li>
+<li class="M">const <A href="spotlight-mdquerymbs-const.html#7">kMDQueryScopeNetworkIndexed</A>="kMDQueryScopeNetworkIndexed"</li>
+<li class="M">const <A href="spotlight-mdquerymbs-const.html#8">kMDQuerySynchronous</A>=1</li>
+<li class="M">const <A href="spotlight-mdquerymbs-const.html#9">kMDQueryWantsUpdates</A>=4</li>
+</UL></LI>
+</ul>
+<p>This class has no sub classes.</p>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-dynapdf-raster-searchandshowpdffiles.html">/DynaPDF/Raster/Search and show PDF files</A></li>
+<li class=""><A href="example-macosx-spotlight-findrealbasicprojects.html">/MacOSX/Spotlight/Find REALbasic Projects</A></li>
+<li class=""><A href="example-macosx-spotlight-query.html">/MacOSX/Spotlight/Query</A></li>
+<li class=""><A href="example-macosx-spotlight-querywithattributes.html">/MacOSX/Spotlight/Query with attributes</A></li>
+<li class=""><A href="example-macosx-spotlight-searchallapplications.html">/MacOSX/Spotlight/Search all applications</A></li>
+<li class=""><A href="example-macosx-spotlight-searchallapplicationsinapplicationsfolder.html">/MacOSX/Spotlight/Search all applications in applications folder</A></li>
+<li class=""><A href="example-macosx-spotlight-searchalldiscimages.html">/MacOSX/Spotlight/Search all disc images</A></li>
+<li class=""><A href="example-macosx-spotlight-searchrealbasic.html">/MacOSX/Spotlight/Search REALbasic</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2013-11-01/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 13.5pr3</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2011-05-04/MBS_Plugins_111_Release_notes/monkeybreadsoftware_blog_xojo">MBS Plugins 11.1 Release notes</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2011-04-11/MBS_Real_Studio_Plugins_versio/monkeybreadsoftware_blog_xojo">MBS Real Studio Plugins, version 11.1pr10</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2011-03-09/MBS_Real_Studio_Plugins_versio/monkeybreadsoftware_blog_xojo">MBS Real Studio Plugins, version 11.1pr7</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2009-09-17/MBS_REALbasic_plug-in_96/monkeybreadsoftware_blog_xojo">MBS REALbasic plug-in 9.6</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmacosxplugin.html">MBS MacOSX Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-mdquerybatchingparamsmbs.html">MDQueryBatchingParamsMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-mediakeysmbs.html">MediaKeysMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-mdquerymbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

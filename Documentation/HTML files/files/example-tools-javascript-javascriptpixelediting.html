@@ -1,0 +1,448 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Tools/JavaScript/JavaScript Pixel Editing</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Tools/JavaScript/JavaScript Pixel Editing</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Tools/JavaScript/JavaScript Pixel Editing</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS Tools Plugin, MBS Main Plugin, MBS Picture Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Tools/JavaScript/JavaScript Pixel Editing<BR>
+This example is the version from Thu, 26th Feb 2020.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;JavaScript</span> <span style="color:#6500FE">Pixel</span> <span style="color:#6500FE">Editing.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MainWindow <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> DoubleClick()
+				MsgBox <span style="color:#0000FF;font-weight: bold">me</span>.Cell(<span style="color:#0000FF;font-weight: bold">me</span>.ListIndex,<span style="color:#326598">0</span>)
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control InputText <span style="color:#0000FF;font-weight: bold">Inherits</span> TextArea</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance InputText <span style="color:#0000FF;font-weight: bold">Inherits</span> TextArea</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control EvalButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance EvalButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				EvalJavaScript
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Canvas1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Canvas</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Canvas1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Canvas</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Canvas2 <span style="color:#0000FF;font-weight: bold">Inherits</span> Canvas</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Canvas2 <span style="color:#0000FF;font-weight: bold">Inherits</span> Canvas</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control EvalThreadButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance EvalThreadButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				EvalJavaScriptMT <span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Timer1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Timer1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				EvalJavaScriptMT_Finish
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control EvalThreadButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance EvalThreadButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				EvalJavaScriptMT <span style="color:#326598">8</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control ProgressWheel1 <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressWheel</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance ProgressWheel1 <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressWheel</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control EvalXojoButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance EvalXojoButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				EvalXojo1
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CheckTimes <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CheckTimes <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">global</span> <span style="color:#7F0000;text-style:italic">JavaScript</span>
+			jg = <span style="color:#0000FF;font-weight: bold">New</span> MyJavaScriptEngineMBS
+			
+			InputPicture = LogoMBS(<span style="color:#326598">300</span>)
+			OutputPicture = <span style="color:#0000FF;font-weight: bold">Nil</span>
+			
+			canvas1.Backdrop = InputPicture
+			canvas2.Backdrop = OutputPicture
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> EvalJavaScript()
+			List.AppendRow <span style="color:#6500FE">&quot;Run</span> <span style="color:#6500FE">this</span> <span style="color:#6500FE">in</span> <span style="color:#6500FE">JavaScript&quot;</span>
+			
+			ProgressWheel1.Visible = <span style="color:#0000FF;font-weight: bold">True</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> je <span style="color:#0000FF;font-weight: bold">As</span> MyJavaScriptEngineMBS = jg
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> m1 <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = Microseconds
+			<span style="color:#0000FF;font-weight: bold">Dim</span> w <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = InputPicture.Width
+			<span style="color:#0000FF;font-weight: bold">Dim</span> h <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = InputPicture.Height
+			<span style="color:#0000FF;font-weight: bold">Dim</span> m <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> MemoryBlock(W * H * <span style="color:#326598">3</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> count <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">If</span> CheckTimes.Value <span style="color:#0000FF;font-weight: bold">Then</span>
+				count = <span style="color:#326598">100</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Call</span> InputPicture.CopyRGBtoMemoryblockMBS(m, <span style="color:#326598">0</span>)
+			
+			
+			<span style="color:#0000FF;font-weight: bold">Try</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Pass</span> <span style="color:#7F0000;text-style:italic">Memoryblock</span> <span style="color:#7F0000;text-style:italic">To</span> <span style="color:#7F0000;text-style:italic">JavaScript</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">reference</span>
+				je.GlobalMemoryBlock(<span style="color:#6500FE">&quot;mem&quot;</span>) = m
+				je.AddFunction <span style="color:#6500FE">&quot;processPixels&quot;</span>, InputText.Text
+				
+				<span style="color:#0000FF;font-weight: bold">Dim</span> v <span style="color:#0000FF;font-weight: bold">As</span> Variant = je.CallFunction(<span style="color:#6500FE">&quot;processPixels&quot;</span>, w, h, count)
+				
+				List.AppendRow <span style="color:#6500FE">&quot;result:</span> <span style="color:#6500FE">&quot;</span>+v.StringValue
+				
+				
+			<span style="color:#0000FF;font-weight: bold">Catch</span> j <span style="color:#0000FF;font-weight: bold">As</span> JavaScriptEngineExceptionMBS
+				
+				List.AppendRow <span style="color:#6500FE">&quot;Exception:</span> <span style="color:#6500FE">&quot;</span>+j.Message
+				
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Try</span>
+			
+			
+			OutputPicture = MemoryblockRGBtoPictureMBS(m, <span style="color:#326598">0</span>, w, h)
+			canvas2.Backdrop = OutputPicture
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> m2 <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = Microseconds
+			List.AppendRow Str((m2-m1)/<span style="color:#326598">1000</span>, <span style="color:#6500FE">&quot;0.0&quot;</span>)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">ms&quot;</span>
+			
+			ProgressWheel1.Visible = <span style="color:#0000FF;font-weight: bold">False</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> EvalJavaScriptMT(ThreadCount <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			List.AppendRow <span style="color:#6500FE">&quot;Run</span> <span style="color:#6500FE">&quot;</span>+Str(ThreadCount)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">threads</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">JavaScript.&quot;</span>
+			
+			EvalThreadButton.Enabled = <span style="color:#0000FF;font-weight: bold">False</span>
+			EvalThreadButton1.Enabled = <span style="color:#0000FF;font-weight: bold">False</span>
+			
+			ProgressWheel1.Visible = <span style="color:#0000FF;font-weight: bold">True</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> StartTime <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = Microseconds
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> w <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = InputPicture.Width
+			<span style="color:#0000FF;font-weight: bold">Dim</span> h <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = InputPicture.Height
+			<span style="color:#0000FF;font-weight: bold">Dim</span> NewScript <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = InputText.Text
+			<span style="color:#0000FF;font-weight: bold">Dim</span> count <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">If</span> CheckTimes.Value <span style="color:#0000FF;font-weight: bold">Then</span>
+				count = <span style="color:#326598">100</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">For</span> i <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">To</span> ThreadCount
+				<span style="color:#0000FF;font-weight: bold">Dim</span> je <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> MyJavaScriptEngineMBS
+				
+				<span style="color:#0000FF;font-weight: bold">Dim</span> m <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> MemoryBlock(W * H * <span style="color:#326598">3</span>)
+				<span style="color:#0000FF;font-weight: bold">Call</span> InputPicture.CopyRGBtoMemoryblockMBS(m, <span style="color:#326598">0</span>)
+				
+				<span style="color:#0000FF;font-weight: bold">Dim</span> t <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> WorkThread
+				t.Width = w
+				t.Height = h
+				t.mem = m
+				t.NewScript = NewScript
+				t.StartTime = StartTime
+				t.je = je
+				t.count = count
+				t.ThreadCount = ThreadCount
+				
+				<span style="color:#0000FF;font-weight: bold">If</span> MyThread = <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">let</span> <span style="color:#7F0000;text-style:italic">only</span> <span style="color:#7F0000;text-style:italic">last</span> <span style="color:#7F0000;text-style:italic">one</span> <span style="color:#7F0000;text-style:italic">report</span>
+					MyThread = t
+					t.FinishMethod = <span style="color:#0000FF;font-weight: bold">AddressOf</span> EvalJavaScriptMT_Finish
+				<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+				
+				t.run
+				
+				
+			<span style="color:#0000FF;font-weight: bold">Next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> EvalJavaScriptMT_Finish()
+			<span style="color:#0000FF;font-weight: bold">Dim</span> t <span style="color:#0000FF;font-weight: bold">As</span> WorkThread = MyThread
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> m <span style="color:#0000FF;font-weight: bold">As</span> MemoryBlock = t.mem
+			<span style="color:#0000FF;font-weight: bold">Dim</span> w <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = t.Width
+			<span style="color:#0000FF;font-weight: bold">Dim</span> h <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = t.Height
+			
+			OutputPicture = MemoryblockRGBtoPictureMBS(m, <span style="color:#326598">0</span>, w, h)
+			canvas2.Backdrop = OutputPicture
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> EndTime <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = Microseconds
+			List.AppendRow t.result
+			List.AppendRow Str((EndTime-t.StartTime)/<span style="color:#326598">1000</span>, <span style="color:#6500FE">&quot;0.0&quot;</span>)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">ms</span> <span style="color:#6500FE">for</span> <span style="color:#6500FE">running</span> <span style="color:#6500FE">&quot;</span>+Str(t.ThreadCount)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">times,</span> <span style="color:#6500FE">each</span> <span style="color:#6500FE">on</span> <span style="color:#6500FE">one</span> <span style="color:#6500FE">preemptive</span> <span style="color:#6500FE">thread.&quot;</span>
+			
+			
+			ProgressWheel1.Visible = <span style="color:#0000FF;font-weight: bold">False</span>
+			EvalThreadButton.Enabled = <span style="color:#0000FF;font-weight: bold">True</span>
+			EvalThreadButton1.Enabled = <span style="color:#0000FF;font-weight: bold">True</span>
+			MyThread = <span style="color:#0000FF;font-weight: bold">Nil</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> EvalXojo1()
+			List.AppendRow <span style="color:#6500FE">&quot;Run</span> <span style="color:#6500FE">similar</span> <span style="color:#6500FE">function</span> <span style="color:#6500FE">in</span> <span style="color:#6500FE">pure</span> <span style="color:#6500FE">Xojo&quot;</span>
+			
+			<span style="color:#0000FF">#Pragma</span> DisableBackgroundTasks <span style="color:#0000FF;font-weight: bold">True</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> m1 <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = Microseconds
+			<span style="color:#0000FF;font-weight: bold">Dim</span> w <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = InputPicture.Width
+			<span style="color:#0000FF;font-weight: bold">Dim</span> h <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = InputPicture.Height
+			<span style="color:#0000FF;font-weight: bold">Dim</span> m <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> MemoryBlock(W * H * <span style="color:#326598">3</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> count <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">If</span> CheckTimes.Value <span style="color:#0000FF;font-weight: bold">Then</span>
+				count = <span style="color:#326598">100</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Call</span> InputPicture.CopyRGBtoMemoryblockMBS(m, <span style="color:#326598">0</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> offset <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">0</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ptr</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">faster</span> <span style="color:#7F0000;text-style:italic">than</span> <span style="color:#7F0000;text-style:italic">MemoryBlock</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> p <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">ptr</span> = m
+			
+			<span style="color:#0000FF;font-weight: bold">For</span> n <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">To</span> count
+				<span style="color:#0000FF;font-weight: bold">For</span> y <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">To</span> h
+					<span style="color:#0000FF;font-weight: bold">For</span> x <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">To</span> w
+						
+						p.<span style="color:#0000FF;font-weight: bold">UInt8</span>(offset + <span style="color:#326598">0</span>) = p.<span style="color:#0000FF;font-weight: bold">UInt8</span>(offset + <span style="color:#326598">0</span>) * <span style="color:#006532">0.8</span> + <span style="color:#006532">0.2</span>
+						p.<span style="color:#0000FF;font-weight: bold">UInt8</span>(offset + <span style="color:#326598">1</span>) = p.<span style="color:#0000FF;font-weight: bold">UInt8</span>(offset + <span style="color:#326598">1</span>) * <span style="color:#006532">0.8</span> + <span style="color:#006532">0.2</span>
+						p.<span style="color:#0000FF;font-weight: bold">UInt8</span>(offset + <span style="color:#326598">2</span>) = p.<span style="color:#0000FF;font-weight: bold">UInt8</span>(offset + <span style="color:#326598">2</span>) * <span style="color:#006532">0.8</span> + <span style="color:#006532">0.2</span>
+						offset = offset + <span style="color:#326598">3</span>
+					<span style="color:#0000FF;font-weight: bold">Next</span>
+				<span style="color:#0000FF;font-weight: bold">Next</span>
+			<span style="color:#0000FF;font-weight: bold">Next</span>
+			
+			OutputPicture = MemoryblockRGBtoPictureMBS(m, <span style="color:#326598">0</span>, w, h)
+			canvas2.Backdrop = OutputPicture
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> m2 <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = Microseconds
+			List.AppendRow Str((m2-m1)/<span style="color:#326598">1000</span>, <span style="color:#6500FE">&quot;0.0&quot;</span>)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">ms&quot;</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> EvalXojo2()
+			List.AppendRow <span style="color:#6500FE">&quot;Run</span> <span style="color:#6500FE">similar</span> <span style="color:#6500FE">function</span> <span style="color:#6500FE">in</span> <span style="color:#6500FE">pure</span> <span style="color:#6500FE">Xojo&quot;</span>
+			
+			<span style="color:#0000FF">#Pragma</span> DisableBackgroundTasks <span style="color:#0000FF;font-weight: bold">True</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> m1 <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = Microseconds
+			<span style="color:#0000FF;font-weight: bold">Dim</span> w <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = InputPicture.Width
+			<span style="color:#0000FF;font-weight: bold">Dim</span> h <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = InputPicture.Height
+			<span style="color:#0000FF;font-weight: bold">Dim</span> m <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> MemoryBlock(W * H * <span style="color:#326598">3</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> count <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">If</span> CheckTimes.Value <span style="color:#0000FF;font-weight: bold">Then</span>
+				count = <span style="color:#326598">100</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Call</span> InputPicture.CopyRGBtoMemoryblockMBS(m, <span style="color:#326598">0</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> offset <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">0</span>
+			
+			<span style="color:#0000FF;font-weight: bold">For</span> n <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">To</span> count
+				<span style="color:#0000FF;font-weight: bold">For</span> y <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">To</span> h
+					<span style="color:#0000FF;font-weight: bold">For</span> x <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">To</span> w
+						
+						m.UInt8Value(offset + <span style="color:#326598">0</span>) = m.UInt8Value(offset + <span style="color:#326598">0</span>) * <span style="color:#006532">0.8</span> + <span style="color:#006532">0.2</span>
+						m.UInt8Value(offset + <span style="color:#326598">1</span>) = m.UInt8Value(offset + <span style="color:#326598">1</span>) * <span style="color:#006532">0.8</span> + <span style="color:#006532">0.2</span>
+						m.UInt8Value(offset + <span style="color:#326598">2</span>) = m.UInt8Value(offset + <span style="color:#326598">2</span>) * <span style="color:#006532">0.8</span> + <span style="color:#006532">0.2</span>
+						offset = offset + <span style="color:#326598">3</span>
+					<span style="color:#0000FF;font-weight: bold">Next</span>
+				<span style="color:#0000FF;font-weight: bold">next</span>
+			<span style="color:#0000FF;font-weight: bold">Next</span>
+			
+			OutputPicture = MemoryblockRGBtoPictureMBS(m, <span style="color:#326598">0</span>, w, h)
+			canvas2.Backdrop = OutputPicture
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> m2 <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = Microseconds
+			List.AppendRow Str((m2-m1)/<span style="color:#326598">1000</span>, <span style="color:#6500FE">&quot;0.0&quot;</span>)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">ms&quot;</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> InputPicture <span style="color:#0000FF;font-weight: bold">As</span> Picture</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> MyThread <span style="color:#0000FF;font-weight: bold">As</span> WorkThread</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> OutputPicture <span style="color:#0000FF;font-weight: bold">As</span> Picture</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> jg <span style="color:#0000FF;font-weight: bold">As</span> MyJavaScriptEngineMBS</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MainMenuBar</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator2 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyJavaScriptEngineMBS <span style="color:#0000FF;font-weight: bold">Inherits</span> JavaScriptEngineMBS</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Module</span> Module1</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> AppendRow(<span style="color:#0000FF;font-weight: bold">extends</span> l <span style="color:#0000FF;font-weight: bold">as</span> listbox, s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			l.AddRow s
+			l.ScrollPosition = l.ListCount <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">go</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">end</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Module</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> WorkThread <span style="color:#0000FF;font-weight: bold">Inherits</span> Thread</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Run()
+			<span style="color:#0000FF;font-weight: bold">Try</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Pass</span> <span style="color:#7F0000;text-style:italic">Memoryblock</span> <span style="color:#7F0000;text-style:italic">To</span> <span style="color:#7F0000;text-style:italic">JavaScript</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">reference</span>
+				je.GlobalMemoryBlock(<span style="color:#6500FE">&quot;mem&quot;</span>) = mem
+				je.AddFunction <span style="color:#6500FE">&quot;processPixels&quot;</span>, NewScript
+				
+				<span style="color:#0000FF;font-weight: bold">Dim</span> v <span style="color:#0000FF;font-weight: bold">As</span> Variant = je.CallFunctionMT(<span style="color:#6500FE">&quot;processPixels&quot;</span>, width, height, count)
+				
+				<span style="color:#0000FF;font-weight: bold">Self</span>.Result = <span style="color:#6500FE">&quot;Result:</span> <span style="color:#6500FE">&quot;</span>+v.StringValue
+				
+				
+			<span style="color:#0000FF;font-weight: bold">Catch</span> j <span style="color:#0000FF;font-weight: bold">As</span> JavaScriptEngineExceptionMBS
+				
+				<span style="color:#0000FF;font-weight: bold">Self</span>.Result = <span style="color:#6500FE">&quot;Exception:</span> <span style="color:#6500FE">&quot;</span>+j.Message
+				
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Try</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">If</span> FinishMethod &lt;&gt; <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				xojo.core.Timer.CallLater <span style="color:#326598">0</span>, FinishMethod
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> FinishMethod <span style="color:#0000FF;font-weight: bold">As</span> Xojo.Core.Timer.CallNoParams</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Height <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> NewScript <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Result <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> StartTime <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> ThreadCount <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Width <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> count <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> je <span style="color:#0000FF;font-weight: bold">As</span> MyJavaScriptEngineMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> mem <span style="color:#0000FF;font-weight: bold">As</span> MemoryBlock</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-tools-javascript-javascriptaes-javascriptaes.html">/Tools/JavaScript/JavaScript AES/JavaScript AES</A></li>
+<li><A href="example-tools-javascript-javascriptengine.html">/Tools/JavaScript/JavaScript Engine</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbstoolsplugin.html">MBS Tools Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-tools-javascript-javascriptpixelediting">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

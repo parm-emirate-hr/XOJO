@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /MacClassic/Catalog Search/Find stuff from today</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /MacClassic/Catalog Search/Find stuff from today</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/MacClassic/Catalog Search/Find stuff from today</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS MacClassic Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /MacClassic/Catalog Search/Find stuff from today<BR>
+This example is the version from Sun, 17th Mar 2012.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Find</span> <span style="color:#6500FE">stuff</span> <span style="color:#6500FE">from</span> <span style="color:#6500FE">today.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> mainwindow <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control volumename <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance volumename <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control bar <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressBar</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance bar <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressBar</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			w=<span style="color:#0000FF;font-weight: bold">new</span> workthread
+			w.run <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">.start</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">don&#39;t</span> <span style="color:#7F0000;text-style:italic">want</span> <span style="color:#7F0000;text-style:italic">threading.</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> w <span style="color:#0000FF;font-weight: bold">As</span> workthread</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar Men&uuml;</div>
+<div class="RB_Code">		MenuItem UntitledMenu3 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem UntitledMenu2 = <span style="color:#6500FE">&quot;Ablage&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;Beenden&quot;</span></div>
+<div class="RB_Code">		MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;Bearbeiten&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Ausschneiden&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;Kopieren&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;Einf&uuml;gen&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;L&ouml;schen&quot;</span></div>
+<div class="RB_Code">			MenuItem AppleAbout = <span style="color:#6500FE">&quot;About...&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Workthread <span style="color:#0000FF;font-weight: bold">Inherits</span> Thread</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Run()
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			
+			t=ticks
+			start
+			t=ticks-t
+			
+			MsgBox format(t/<span style="color:#326598">60</span>,<span style="color:#6500FE">&quot;0.0&quot;</span>)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">seconds.&quot;</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> additem(f <span style="color:#0000FF;font-weight: bold">as</span> folderItem)
+			<span style="color:#0000FF;font-weight: bold">dim</span> list <span style="color:#0000FF;font-weight: bold">as</span> listbox
+			<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> date
+			
+			d=f.ModificationDate
+			
+			list=mainwindow.list
+			list.addrow f.DisplayName
+			list.Cell(list.lastIndex,<span style="color:#326598">1</span>)=d.LongDate+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+d.LongTime
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> searchOnVolume(v <span style="color:#0000FF;font-weight: bold">as</span> folderItem)
+			<span style="color:#0000FF;font-weight: bold">dim</span> c <span style="color:#0000FF;font-weight: bold">as</span> CatSearchMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> folderItem
+			<span style="color:#0000FF;font-weight: bold">dim</span> error <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">boolean</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">We</span> <span style="color:#7F0000;text-style:italic">ignore</span> <span style="color:#7F0000;text-style:italic">some</span> <span style="color:#7F0000;text-style:italic">errors</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">example!</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> k,nn <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> date
+			<span style="color:#0000FF;font-weight: bold">dim</span> start,ende,d1,d2 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>
+			
+			d=<span style="color:#0000FF;font-weight: bold">new</span> date
+			
+			d.Minute=<span style="color:#326598">0</span>
+			d.Second=<span style="color:#326598">0</span>
+			d.Hour=<span style="color:#326598">0</span>
+			
+			d1=<span style="color:#006532">2147483647.0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">&amp;H7FFFFFFF</span>
+			d2=<span style="color:#006532">4294967296.0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">pow(2,32)</span>
+			
+			start=d.TotalSeconds
+			<span style="color:#0000FF;font-weight: bold">if</span> start&gt;d1 <span style="color:#0000FF;font-weight: bold">then</span>
+				start=start-d2
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			d.day=d.day+<span style="color:#326598">1</span>
+			ende=d.TotalSeconds
+			<span style="color:#0000FF;font-weight: bold">if</span> ende&gt;d1 <span style="color:#0000FF;font-weight: bold">then</span>
+				ende=ende-d2
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> v&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				c=<span style="color:#0000FF;font-weight: bold">new</span> CatSearchMBS
+				<span style="color:#7F0000;text-style:italic">&#39;c.UseIndexedSearch=true</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> c.search(v,<span style="color:#0000FF;font-weight: bold">true</span>) <span style="color:#0000FF;font-weight: bold">then</span>
+					c.ModificationDateStart=start
+					c.ModificationDateEnd=ende
+					
+					nn=c.searchNext
+					<span style="color:#0000FF;font-weight: bold">while</span> nn&gt;=<span style="color:#326598">0</span>
+						k=k+<span style="color:#326598">1</span>
+						<span style="color:#0000FF;font-weight: bold">if</span> k=<span style="color:#326598">10000</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">something</span> <span style="color:#7F0000;text-style:italic">wrong?</span>
+							msgBox <span style="color:#6500FE">&quot;Takes</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">long</span> <span style="color:#6500FE">time!?</span> <span style="color:#6500FE">Better</span> <span style="color:#6500FE">we</span> <span style="color:#6500FE">stop.&quot;</span>
+							<span style="color:#0000FF;font-weight: bold">return</span>
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+						f=c.result
+						<span style="color:#0000FF;font-weight: bold">if</span> f&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">and</span> nn=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+							additem f
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+						nn=c.searchNext
+					<span style="color:#0000FF;font-weight: bold">wend</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> start()
+			<span style="color:#0000FF;font-weight: bold">dim</span> n,i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> v <span style="color:#0000FF;font-weight: bold">as</span> folderItem
+			
+			n=volumecount-<span style="color:#326598">1</span>
+			
+			mainwindow.bar.maximum=n
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> i=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> n
+				mainwindow.bar.value=i
+				v=volume(i)
+				mainwindow.volumename.text=v.name
+				searchonvolume v
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			mainwindow.bar.value=n
+			
+			mainwindow.bar.visible=<span style="color:#0000FF;font-weight: bold">false</span>
+			mainwindow.volumename.text=<span style="color:#6500FE">&quot;ready&quot;</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-macclassic-catalogsearch-catsearchdemo.html">/MacClassic/Catalog Search/CatSearch Demo</A></li>
+<li><A href="example-macclassic-catalogsearch-findfiledemo.html">/MacClassic/Catalog Search/Findfile demo</A></li>
+<li><A href="example-macclassic-catalogsearch-findfilewiththreaddemo.html">/MacClassic/Catalog Search/Findfile with Thread demo</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmacclassicplugin.html">MBS MacClassic Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-macclassic-catalogsearch-findstufffromtoday">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

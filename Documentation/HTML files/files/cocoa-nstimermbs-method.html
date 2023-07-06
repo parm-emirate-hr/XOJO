@@ -1,0 +1,363 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - NSTimerMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="NSTimerMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">NSTimerMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-nstimermbs.html">NSTimerMBS</a> class.  </p>
+<div class="M">
+<b><a href="class-nstimermbs.html">NSTimerMBS</a>.<A name="1">Constructor(fireDate as date, timeInterval as Double, repeats as boolean)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoa.html" translate="no">Cocoa</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion100.shtml" class=version>10.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Initializes a new NSTimer.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> date<br />d.hour = d.hour + <span style="color: #336698;">1</span> <span style="color: #800000;">// start in one hour</span><br /><br /><span style="color: #0000FF;">dim</span> n <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-nstimermbs.html">NSTimerMBS</A>(d, <span style="color: #336698;">5</span>, <span style="color: #0000FF;">true</span>)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+fireDate: The time at which the timer should first fire.<BR>
+<BR>
+timeInterval: For a repeating timer, this parameter contains the number of seconds between firings of the timer. If seconds is less than or equal to 0.0, this method chooses the nonnegative value of 0.1 milliseconds instead.<BR>
+repeats: If true, the timer will repeatedly reschedule itself until invalidated. If false, the timer will be invalidated after it fires.<BR>
+<BR>
+The time is initialized such that, when added to a run loop, it will fire at date and then, if repeats is true, every seconds after that.<BR>
+<p>See also:<ul>
+<li><A href="cocoa-nstimermbs-method.html#2">Constructor(fireDate as date, timeInterval as Double, repeats as boolean, runloop as NSRunLoopMBS, runloopMode as string)</A></li>
+<li><A href="cocoa-nstimermbs-method.html#3">Constructor(fireDate as dateTime, timeInterval as double, repeats as boolean)</A></li>
+<li><A href="cocoa-nstimermbs-method.html#4">Constructor(fireDate as dateTime, timeInterval as double, repeats as boolean, runloop as NSRunLoopMBS, runloopMode as string)</A></li>
+<li><A href="cocoa-nstimermbs-method.html#5">Constructor(timeInterval as Double, repeats as boolean)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nstimermbs.html">NSTimerMBS</a>.<A name="2">Constructor(fireDate as date, timeInterval as Double, repeats as boolean, runloop as <A href="class-nsrunloopmbs.html">NSRunLoopMBS</A>, runloopMode as string)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoa.html" translate="no">Cocoa</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion135.shtml" class=version>13.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Initializes a new NSTimer.<BR>
+<B>Notes:</B> 
+<BR>
+fireDate: The time at which the timer should first fire.<BR>
+<BR>
+timeInterval: For a repeating timer, this parameter contains the number of seconds between firings of the timer. If seconds is less than or equal to 0.0, this method chooses the nonnegative value of 0.1 milliseconds instead.<BR>
+repeats: If true, the timer will repeatedly reschedule itself until invalidated. If false, the timer will be invalidated after it fires.<BR>
+<BR>
+The time is initialized such that, when added to a run loop, it will fire at date and then, if repeats is true, every seconds after that.<BR>
+<BR>
+Schedules the timer to run on the given runloop in the given mode.<BR>
+<p>See also:<ul>
+<li><A href="cocoa-nstimermbs-method.html">Constructor(fireDate as date, timeInterval as Double, repeats as boolean)</A></li>
+<li><A href="cocoa-nstimermbs-method.html#3">Constructor(fireDate as dateTime, timeInterval as double, repeats as boolean)</A></li>
+<li><A href="cocoa-nstimermbs-method.html#4">Constructor(fireDate as dateTime, timeInterval as double, repeats as boolean, runloop as NSRunLoopMBS, runloopMode as string)</A></li>
+<li><A href="cocoa-nstimermbs-method.html#5">Constructor(timeInterval as Double, repeats as boolean)</A></li>
+</ul></p>
+</div>
+<div class="MI">
+<b><a href="class-nstimermbs.html">NSTimerMBS</a>.<A name="3">Constructor(fireDate as dateTime, timeInterval as double, repeats as boolean)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoa.html" translate="no">Cocoa</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion205.shtml" class=version>20.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates and returns a new NSTimer object and schedules it on the current run loop in the default mode.<BR>
+<B>Notes:</B> 
+<BR>
+timeInterval: The number of seconds between firings of the timer. If seconds is less than or equal to 0.0, this method chooses the nonnegative value of 0.1 milliseconds instead.<BR>
+repeats: If true, the timer will repeatedly reschedule itself until invalidated. If false, the timer will be invalidated after it fires.<BR>
+<BR>
+After seconds seconds have elapsed, the timer fires, calling the Action event.<BR>
+<p>See also:<ul>
+<li><A href="cocoa-nstimermbs-method.html">Constructor(fireDate as date, timeInterval as Double, repeats as boolean)</A></li>
+<li><A href="cocoa-nstimermbs-method.html#2">Constructor(fireDate as date, timeInterval as Double, repeats as boolean, runloop as NSRunLoopMBS, runloopMode as string)</A></li>
+<li><A href="cocoa-nstimermbs-method.html#4">Constructor(fireDate as dateTime, timeInterval as double, repeats as boolean, runloop as NSRunLoopMBS, runloopMode as string)</A></li>
+<li><A href="cocoa-nstimermbs-method.html#5">Constructor(timeInterval as Double, repeats as boolean)</A></li>
+</ul></p>
+</div>
+<div class="MI">
+<b><a href="class-nstimermbs.html">NSTimerMBS</a>.<A name="4">Constructor(fireDate as dateTime, timeInterval as double, repeats as boolean, runloop as <A href="class-nsrunloopmbs.html">NSRunLoopMBS</A>, runloopMode as string)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoa.html" translate="no">Cocoa</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion205.shtml" class=version>20.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Initializes a new NSTimer.<BR>
+<B>Notes:</B> 
+<BR>
+fireDate: The time at which the timer should first fire.<BR>
+<BR>
+timeInterval: For a repeating timer, this parameter contains the number of seconds between firings of the timer. If seconds is less than or equal to 0.0, this method chooses the nonnegative value of 0.1 milliseconds instead.<BR>
+repeats: If true, the timer will repeatedly reschedule itself until invalidated. If false, the timer will be invalidated after it fires.<BR>
+<BR>
+The time is initialized such that, when added to a run loop, it will fire at date and then, if repeats is true, every seconds after that.<BR>
+<BR>
+Schedules the timer to run on the given runloop in the given mode.<BR>
+<p>See also:<ul>
+<li><A href="cocoa-nstimermbs-method.html">Constructor(fireDate as date, timeInterval as Double, repeats as boolean)</A></li>
+<li><A href="cocoa-nstimermbs-method.html#2">Constructor(fireDate as date, timeInterval as Double, repeats as boolean, runloop as NSRunLoopMBS, runloopMode as string)</A></li>
+<li><A href="cocoa-nstimermbs-method.html#3">Constructor(fireDate as dateTime, timeInterval as double, repeats as boolean)</A></li>
+<li><A href="cocoa-nstimermbs-method.html#5">Constructor(timeInterval as Double, repeats as boolean)</A></li>
+</ul></p>
+</div>
+<div class="MI">
+<b><a href="class-nstimermbs.html">NSTimerMBS</a>.<A name="5">Constructor(timeInterval as Double, repeats as boolean)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoa.html" translate="no">Cocoa</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion100.shtml" class=version>10.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates and returns a new NSTimer object and schedules it on the current run loop in the default mode.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> n <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-nstimermbs.html">NSTimerMBS</A>(<span style="color: #336698;">5</span>, <span style="color: #0000FF;">true</span>)<br />MsgBox str(n.timeInterval)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+timeInterval: The number of seconds between firings of the timer. If seconds is less than or equal to 0.0, this method chooses the nonnegative value of 0.1 milliseconds instead.<BR>
+repeats: If true, the timer will repeatedly reschedule itself until invalidated. If false, the timer will be invalidated after it fires.<BR>
+<BR>
+After seconds seconds have elapsed, the timer fires, calling the Action event.<BR>
+<p>See also:<ul>
+<li><A href="cocoa-nstimermbs-method.html">Constructor(fireDate as date, timeInterval as Double, repeats as boolean)</A></li>
+<li><A href="cocoa-nstimermbs-method.html#2">Constructor(fireDate as date, timeInterval as Double, repeats as boolean, runloop as NSRunLoopMBS, runloopMode as string)</A></li>
+<li><A href="cocoa-nstimermbs-method.html#3">Constructor(fireDate as dateTime, timeInterval as double, repeats as boolean)</A></li>
+<li><A href="cocoa-nstimermbs-method.html#4">Constructor(fireDate as dateTime, timeInterval as double, repeats as boolean, runloop as NSRunLoopMBS, runloopMode as string)</A></li>
+</ul></p>
+</div>
+<div class="MI">
+<b><a href="class-nstimermbs.html">NSTimerMBS</a>.<A name="6">fire</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoa.html" translate="no">Cocoa</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion100.shtml" class=version>10.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Causes the receiver&#39;s message to be sent to its target.<BR>
+<B>Notes:</B> 
+You can use this method to fire a repeating timer without interrupting its regular firing schedule. If the timer is non-repeating, it is automatically invalidated after firing, even if its scheduled fire date has not arrived.<BR>
+</div>
+<div class="MI">
+<b><a href="class-nstimermbs.html">NSTimerMBS</a>.<A name="7">invalidate</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoa.html" translate="no">Cocoa</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion100.shtml" class=version>10.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Stops the receiver from ever firing again and requests its removal from its run loop.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> n <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-nstimermbs.html">NSTimerMBS</A>(<span style="color: #336698;">5</span>, <span style="color: #0000FF;">true</span>)<br /><br /><span style="color: #800000;">// later</span><br /><br />n.invalidate</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+The destructor calls invalide automatically for you.<BR>
+<BR>
+This method is the only way to remove a timer from an NSRunLoop object. The NSRunLoop object removes and releases the timer, either just before the invalidate method returns or at some later point.<BR>
+<BR>
+You must send this message from the thread on which the timer was installed. If you send this message from another thread, the input source associated with the timer may not be removed from its run loop, which could prevent the thread from exiting properly.<BR>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=cocoa-nstimermbs-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

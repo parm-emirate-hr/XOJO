@@ -1,0 +1,681 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - NSFileCoordinatorMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="NSFileCoordinatorMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">NSFileCoordinatorMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-nsfilecoordinatormbs.html">NSFileCoordinatorMBS</a> class.  </p>
+<div class="M">
+<b><a href="class-nsfilecoordinatormbs.html">NSFileCoordinatorMBS</a>.<A name="1">cancel</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Cancel all invocations of coordinate... and prepare... methods for the receiver. <BR>
+<B>Notes:</B> 
+<BR>
+Any current invocation of one of those methods will stop waiting and return immediately, unless it has already invoked the passed-in block, in which case it will return when the passed-in block returns. Subsequent invocations of those methods will not invoke the blocks passed into them at all. When an invocation of coordinate... or prepare... returns without invoking the passed-in block because this method was invoked it instead returns an error whose domain is NSCocoaErrorDomain and whose code is NSUserCancelledError. Messages that have already been sent to NSFilePresenters will not be cancelled but the file coordination machinery will stop waiting for the replies.<BR>
+<BR>
+This method this can be invoked from any thread. It always returns immediately, without waiting for anything. Cancellation is racy; you usually cannot assume that no block passed into a coordinate... or prepare... method is already being invoked, so the code inside those blocks typically still has to check for cancellation, whatever that means in your application.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilecoordinatormbs.html">NSFileCoordinatorMBS</a>.<A name="2">Constructor(filePresenter as <A href="class-nsfilepresentermbs.html">NSFilePresenterMBS</A> = nil)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The constructor.<BR>
+<B>Notes:</B> 
+<BR>
+The designated initializer. If an NSFilePresenter is provided then the receiver is considered to have been created by that NSFilePresenter, or on its behalf.<BR>
+<BR>
+NSFileCoordinator is meant to be instantiated on a per-file-operation basis, where a file operation is something like the opening or saving of a document, or the copying or moving of a batch of folders and files. There is no benefit to keeping an instance of it alive in your application for much more time than it takes to actually perform the file operation. Doing so can be harmful, or at least wasteful of memory, because NSFileCoordinators may retain NSFilePresenters.<BR>
+<BR>
+You pass an NSFilePresenter to this initializer when the operation whose file access is to be coordinated is being performed by that NSFilePresenter. Associating an NSFileCoordinator with an NSFilePresenter accomplishes a few important things:<BR>
+- It prevents the NSFileCoordinator from sending messages to that NSFilePresenter, so the NSFilePresenter does not have to somehow filter out messages about its own file operations. The exception to this rule is that messages about versions of the presented item being added, remove, or resolved during coordinated writing are sent to every relevant NSFilePresenter, even the one passed to Constructor.<BR>
+- It allows the file coordination mechanism to determine when coordinated writing is being done in response to an NSFilePresenter receiving a savePresentedItemChangesWithCompletionHandler message, and not deadlock. Usually coordinated writing done by one NSFileCoordinator must wait for coordinated reading of the same file or directory done by another NSFileCoordinator. But, for example, when coordinated reading is begun with one NSFileCoordinator, and that causes an NSFilePresenter to do coordinated writing using another NSFileCoordinator, the writing done with the second NSFileCoordinator should not wait for the completion of the first NSFileCoordinator&#39;s reading, it should instead happen while the first NSFileCoordinator is waiting to read.<BR>
+- It allows the file coordination mechanism to handle a race condition that can occur when it has sent an NSFilePresenter a presentedItemDidMoveToURL message in the NSFilePresenter&#39;s operation queue but before that message is dequeued the NSFilePresenter enqueues, on a different queue, an operation using the old URL. For this to be effective however the NSFileCoordinator must be initialized in the same operation queue in which NSFilePresenter messages are received.<BR>
+- It allows the file coordination mechanism to gracefully handle your application&#39;s registration of an NSFilePresenter that at first returns nil when sent presentedItemURL but can later return non-nil at the end of doing a coordinated write that creates the presented item in the file system for the very first time. AppKit for example takes advantage of this by registering brand new untitled NSDocuments as NSFilePresenters immediately, instead of waiting until after the first time the user causes the document to be saved to a file, which would be more complicated.<BR>
+<BR>
+For example, NSDocument creates a single NSFileCoordinator for all of the coordinated reading and writing it does during the saving of a document. It always creates the NSFileCoordinator in the main queue even when it is doing the actual coordinated reading and writing in a background queue to implement asynchronous saving.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilecoordinatormbs.html">NSFileCoordinatorMBS</a>.<A name="3">coordinateReadingItemAtURL(File as folderitem, options as Integer, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>, tag as Variant = nil)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Initiates a read operation on a single file or directory using the specified options.<BR>
+<B>Notes:</B> 
+<BR>
+file: A URL identifying the file or directory to read. If other objects or processes are acting on the item at the URL, the actual URL passed to reader parameter may be different than the one in this parameter. The plugin converts the folderitem to an URL for you.<BR>
+options: One of the reading options (see constants). If you pass 0 for this parameter, the savePresentedItemChangesWithCompletionHandler method of relevant file presenters is called before your block executes.<BR>
+Error: If a file presenter encounters an error while preparing for this read operation, that error is returned in this parameter and the block in the reader parameter is not executed. If you cancel this operation before the reader block is executed, this parameter contains an error object on output.<BR>
+<BR>
+The coordinateReadingItemAtURL event performs the file operations in a coordinated manner. This block receives an url and folderitem  of the item and returns no value. Always use the URL/folderitem passed into the event instead of the value in the url parameter.<BR>
+<BR>
+You use this method to perform read-related operations on a file or directory in a coordinated manner. This method executes synchronously, blocking the current thread until the reader event finishes executing. Before executing that event, though, the file coordinator waits until other relevant file presenter objects finish in-progress actions. Similarly, your read operation may cause pending actions for other file presenters to wait until your operations are complete. Whether or not the file coordinator waits depends on whether the item being read is a file or directory and also depends on other related operations.<BR>
+<BR>
+If the url parameter specifies a file:<BR>
+<UL><LI>
+This method waits for other writers of the exact same file to finish in-progress actions.
+</LI><LI>
+This method waits if the file is a file package and other writers are writing to items in the package directory.
+</LI><LI>
+This method does not wait for other readers of the file.
+</LI><LI>
+This method does not wait for writers that are manipulating the parent directory of the file, unless one of those writers specified the NSFileCoordinatorWritingForDeleting or NSFileCoordinatorWritingForMoving option.
+</LI></UL>
+<BR>
+If the url parameter specifies a directory:<BR>
+<UL><LI>
+This method waits if other write operations are occurring on the exact same directory.
+</LI><LI>
+This method does not wait if write operations are occurring on items inside the directory (but not on the directory itself).
+</LI><LI>
+This method does not wait for other readers of the directory.
+</LI><LI>
+This method does not wait for writers that are manipulating the parent directory of the directory, unless one of those writers specified the NSFileCoordinatorWritingForDeleting or NSFileCoordinatorWritingForMoving option.
+</LI></UL>
+<BR>
+This method calls the relinquishPresentedItemToReader method of any relevant file presenters. This method is called both for file presenters in the current process and in other processes. Depending on the options you specify, other methods of the file presenters may also be called. When reading a file package directory, file presenter objects that are currently reading the contents of that file package also receive these notifications. All of the called methods must return successfully before the file coordinator executes your block. If multiple file presenters are operating on the item, the order in which those presenters are notified is undefined.<BR>
+<BR>
+Do not nest calls to file coordinator methods inside the event. If you call this method or any of the other file coordination methods from inside your event, the file coordinator object throws an exception. If you want to perform a write operation from inside a read block, use the coordinateWritingItemAtURL method instead. If you want to perform a batch read operation on multiple files, use the prepareForReadingItemsAtURLs method.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilecoordinatormbs-event.html">coordinateReadingItemAtURL(url as string, file as folderitem, tag as Variant)</A></li>
+<li><A href="icloud-nsfilecoordinatormbs-method.html#4">coordinateReadingItemAtURL(URL as string, options as Integer, byref error as NSErrorMBS, tag as Variant = nil)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsfilecoordinatormbs.html">NSFileCoordinatorMBS</a>.<A name="4">coordinateReadingItemAtURL(URL as string, options as Integer, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>, tag as Variant = nil)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Initiates a read operation on a single file or directory using the specified options.<BR>
+<B>Notes:</B> 
+<BR>
+url: A URL identifying the file or directory to read. If other objects or processes are acting on the item at the URL, the actual URL passed to reader parameter may be different than the one in this parameter.<BR>
+options: One of the reading options (see constants). If you pass 0 for this parameter, the savePresentedItemChangesWithCompletionHandler method of relevant file presenters is called before your block executes.<BR>
+Error: If a file presenter encounters an error while preparing for this read operation, that error is returned in this parameter and the block in the reader parameter is not executed. If you cancel this operation before the reader block is executed, this parameter contains an error object on output.<BR>
+<BR>
+The coordinateReadingItemAtURL event performs the file operations in a coordinated manner. This block receives an url and folderitem  of the item and returns no value. Always use the URL/folderitem passed into the event instead of the value in the url parameter.<BR>
+<BR>
+You use this method to perform read-related operations on a file or directory in a coordinated manner. This method executes synchronously, blocking the current thread until the reader event finishes executing. Before executing that event, though, the file coordinator waits until other relevant file presenter objects finish in-progress actions. Similarly, your read operation may cause pending actions for other file presenters to wait until your operations are complete. Whether or not the file coordinator waits depends on whether the item being read is a file or directory and also depends on other related operations.<BR>
+<BR>
+If the url parameter specifies a file:<BR>
+<UL><LI>
+This method waits for other writers of the exact same file to finish in-progress actions.
+</LI><LI>
+This method waits if the file is a file package and other writers are writing to items in the package directory.
+</LI><LI>
+This method does not wait for other readers of the file.
+</LI><LI>
+This method does not wait for writers that are manipulating the parent directory of the file, unless one of those writers specified the NSFileCoordinatorWritingForDeleting or NSFileCoordinatorWritingForMoving option.
+</LI></UL>
+<BR>
+If the url parameter specifies a directory:<BR>
+<UL><LI>
+This method waits if other write operations are occurring on the exact same directory.
+</LI><LI>
+This method does not wait if write operations are occurring on items inside the directory (but not on the directory itself).
+</LI><LI>
+This method does not wait for other readers of the directory.
+</LI><LI>
+This method does not wait for writers that are manipulating the parent directory of the directory, unless one of those writers specified the NSFileCoordinatorWritingForDeleting or NSFileCoordinatorWritingForMoving option.
+</LI></UL>
+<BR>
+This method calls the relinquishPresentedItemToReader method of any relevant file presenters. This method is called both for file presenters in the current process and in other processes. Depending on the options you specify, other methods of the file presenters may also be called. When reading a file package directory, file presenter objects that are currently reading the contents of that file package also receive these notifications. All of the called methods must return successfully before the file coordinator executes your block. If multiple file presenters are operating on the item, the order in which those presenters are notified is undefined.<BR>
+<BR>
+Do not nest calls to file coordinator methods inside the event. If you call this method or any of the other file coordination methods from inside your event, the file coordinator object throws an exception. If you want to perform a write operation from inside a read block, use the coordinateWritingItemAtURL method instead. If you want to perform a batch read operation on multiple files, use the prepareForReadingItemsAtURLs method.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilecoordinatormbs-method.html#3">coordinateReadingItemAtURL(File as folderitem, options as Integer, byref error as NSErrorMBS, tag as Variant = nil)</A></li>
+<li><A href="icloud-nsfilecoordinatormbs-event.html">coordinateReadingItemAtURL(url as string, file as folderitem, tag as Variant)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsfilecoordinatormbs.html">NSFileCoordinatorMBS</a>.<A name="5">coordinateReadingItemAtURLwritingItemAtURL(readingFile as folderitem, readingOptions as Integer, writingItemAtFile as folderitem, writingOptions as Integer, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>, tag as Variant = nil)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Initiates a read operation that contains a follow-up write operation.<BR>
+<B>Notes:</B> 
+<BR>
+readingFile: A URL identifying the file or directory to read. If other objects or processes are acting on the item at the URL, the actual URL passed to the block in the readerWriter parameter may be different than the one in this parameter.<BR>
+readingOptions: One of the reading options (see constants). If you pass 0 for this parameter, the savePresentedItemChangesWithCompletionHandler: method of relevant file presenters is called before your block executes.<BR>
+writingItemAtFile: A URL identifying the file or directory to write. If other objects or processes are acting on the item at the URL, the actual URL passed to the block in the readerWriter parameter may be different than the one in this parameter.<BR>
+writingOptions: One of the writing options (see constants). The options you specify partially determine how file presenters are notified and how this file coordinator object waits to execute your block.<BR>
+Error: If a file presenter encounters an error while preparing for this operation, that error is returned in this parameter and the event is not executed. If you cancel this operation before the readerWriter event is executed, this parameter contains an error object on output.<BR>
+<BR>
+The coordinateReadingItemAtURLwritingItemAtURL event performs the read and write operations in a coordinated manner. This event receives URLs of the items to read and write and returns no value. Always use the URLs passed into the block instead of the values in the readingURL and writingURL parameters.<BR>
+<BR>
+You use this method to perform a read operation that might also contain a write operation that needs to be coordinated. This method executes synchronously, blocking the current thread until the readerWriter event finishes executing. When performing the write operation, you may call the coordinateWritingItemAtURL method from your readerWriter block. This method does the canonical lock ordering that is required to prevent a potential deadlock of the file operations.<BR>
+<BR>
+This method makes the same calls to file presenters, and has the same general wait behavior as the coordinateReadingItemAtURL method.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilecoordinatormbs-event.html#2">coordinateReadingItemAtURLwritingItemAtURL(readingURL as string, readingFile as folderitem, writingURL as string, writingFile as folderitem, tag as Variant)</A></li>
+<li><A href="icloud-nsfilecoordinatormbs-method.html#6">coordinateReadingItemAtURLwritingItemAtURL(readingURL as string, readingOptions as Integer, writingItemAtURL as string, writingOptions as Integer, byref error as NSErrorMBS, tag as Variant = nil)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsfilecoordinatormbs.html">NSFileCoordinatorMBS</a>.<A name="6">coordinateReadingItemAtURLwritingItemAtURL(readingURL as string, readingOptions as Integer, writingItemAtURL as string, writingOptions as Integer, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>, tag as Variant = nil)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Initiates a read operation that contains a follow-up write operation.<BR>
+<B>Notes:</B> 
+<BR>
+readingURL: A URL identifying the file or directory to read. If other objects or processes are acting on the item at the URL, the actual URL passed to the block in the readerWriter parameter may be different than the one in this parameter.<BR>
+readingOptions: One of the reading options (see constants). If you pass 0 for this parameter, the savePresentedItemChangesWithCompletionHandler: method of relevant file presenters is called before your block executes.<BR>
+writingItemAtURL: A URL identifying the file or directory to write. If other objects or processes are acting on the item at the URL, the actual URL passed to the block in the readerWriter parameter may be different than the one in this parameter.<BR>
+writingOptions: One of the writing options (see constants). The options you specify partially determine how file presenters are notified and how this file coordinator object waits to execute your block.<BR>
+Error: If a file presenter encounters an error while preparing for this operation, that error is returned in this parameter and the event is not executed. If you cancel this operation before the readerWriter event is executed, this parameter contains an error object on output.<BR>
+<BR>
+The coordinateReadingItemAtURLwritingItemAtURL event performs the read and write operations in a coordinated manner. This event receives URLs of the items to read and write and returns no value. Always use the URLs passed into the block instead of the values in the readingURL and writingURL parameters.<BR>
+<BR>
+You use this method to perform a read operation that might also contain a write operation that needs to be coordinated. This method executes synchronously, blocking the current thread until the readerWriter event finishes executing. When performing the write operation, you may call the coordinateWritingItemAtURL method from your readerWriter block. This method does the canonical lock ordering that is required to prevent a potential deadlock of the file operations.<BR>
+<BR>
+This method makes the same calls to file presenters, and has the same general wait behavior as the coordinateReadingItemAtURL method.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilecoordinatormbs-method.html#5">coordinateReadingItemAtURLwritingItemAtURL(readingFile as folderitem, readingOptions as Integer, writingItemAtFile as folderitem, writingOptions as Integer, byref error as NSErrorMBS, tag as Variant = nil)</A></li>
+<li><A href="icloud-nsfilecoordinatormbs-event.html#2">coordinateReadingItemAtURLwritingItemAtURL(readingURL as string, readingFile as folderitem, writingURL as string, writingFile as folderitem, tag as Variant)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsfilecoordinatormbs.html">NSFileCoordinatorMBS</a>.<A name="7">coordinateWritingItemAtURL(File as folderitem, options as Integer, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>, tag as Variant = nil)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Initiates a write operation on a single file or directory using the specified options.<BR>
+<B>Notes:</B> 
+<BR>
+File: A URL identifying the file or directory to write. If other objects or processes are acting on the item at the URL, the actual URL passed to writer parameter may be different than the one in this parameter. (plugin converts from folderitem to URL for you)<BR>
+options: One of the writing options (see constants). The options you specify partially determine how file presenters are notified and how this file coordinator object waits to execute your coordinateWritingItemAtURL event.<BR>
+error: If a file presenter encounters an error while preparing for this write operation, that error is returned in this parameter and the event in the writer parameter is not executed. If you cancel this operation before the writer event is executed, this parameter contains an error object on output.<BR>
+<BR>
+The coordinateWritingItemAtURL event performs the file operations in a coordinated manner. This event receives the file reference containing the URL of the item and returns no value. Always use the UR passed into the block instead of the value in the url parameter.<BR>
+<BR>
+You use this method to perform write-related operations on a file or directory in a coordinated manner. This method executes synchronously, blocking the current thread until the writer block finishes executing. Before executing the block, though, the file coordinator waits until other relevant file presenter objects finish in-progress actions. Similarly, your write operation may cause pending actions for other file presenters to wait until your operations are complete. Whether or not the file coordinator waits depends on whether the item being written is a file or directory and also depends on other related operations.<BR>
+<BR>
+If the url parameter specifies a file:<BR>
+<UL><LI>
+This method waits for other readers and writers of the exact same file to finish in-progress actions.
+</LI><LI>
+This method waits if the file is a file package and other writers are reading or writing items in the package directory.
+</LI><LI>
+This method does not wait for readers or writers that are manipulating the parent directory of the file, unless one of those writers specified the NSFileCoordinatorWritingForDeleting or NSFileCoordinatorWritingForMoving option.
+</LI></UL>
+<BR>
+If the url parameter specifies a directory:<BR>
+<UL><LI>
+This method waits if other read or write operations are occurring on the exact same directory.
+</LI><LI>
+This method does not wait if read or write operations are occurring on items inside the directory (but not on the directory itself).
+</LI><LI>
+This method does not wait for readers or writers that are manipulating the parent directory of the directory, unless one of those writers specified the NSFileCoordinatorWritingForDeleting or NSFileCoordinatorWritingForMoving option.
+</LI></UL>
+<BR>
+This method calls the relinquishPresentedItemToWriter method of any relevant file presenters. This method is called both for file presenters in the current process and in other processes. Depending on the options you specify, other methods of the file presenters may also be called. When writing a file package directory, file presenter objects that are currently reading or writing the contents of that file package also receive these notifications. All of the called methods must return successfully before the file coordinator executes your block. If multiple file presenters are operating on the item, the order in which those presenters are notified is undefined.<BR>
+<BR>
+Note: When deleting an item inside a file package using the NSFileCoordinatorWritingForDeleting option, the file coordinator does not call the accommodatePresentedItemDeletionWithCompletionHandler method of any file presenters monitoring the file package directory itself. Instead, the delete operation is treated as a write operation on the file package.<BR>
+With one exception, do not nest calls to file coordinator methods inside the block you pass to this method. You may call the coordinateReadingItemAtURL method to read the file if you discover through modification-date checking that the contents of the file have changed. However, if you call this method from inside your block, the file coordinator object throws an exception.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilecoordinatormbs-event.html#3">coordinateWritingItemAtURL(url as string, file as folderitem, tag as Variant)</A></li>
+<li><A href="icloud-nsfilecoordinatormbs-method.html#8">coordinateWritingItemAtURL(URL as string, options as Integer, byref error as NSErrorMBS, tag as Variant = nil)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsfilecoordinatormbs.html">NSFileCoordinatorMBS</a>.<A name="8">coordinateWritingItemAtURL(URL as string, options as Integer, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>, tag as Variant = nil)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Initiates a write operation on a single file or directory using the specified options.<BR>
+<B>Notes:</B> 
+<BR>
+url: A URL identifying the file or directory to write. If other objects or processes are acting on the item at the URL, the actual URL passed to writer parameter may be different than the one in this parameter.<BR>
+options: One of the writing options (see constants). The options you specify partially determine how file presenters are notified and how this file coordinator object waits to execute your coordinateWritingItemAtURL event.<BR>
+error: If a file presenter encounters an error while preparing for this write operation, that error is returned in this parameter and the event in the writer parameter is not executed. If you cancel this operation before the writer event is executed, this parameter contains an error object on output.<BR>
+<BR>
+The coordinateWritingItemAtURL event performs the file operations in a coordinated manner. This event receives the file reference containing the URL of the item and returns no value. Always use the UR passed into the block instead of the value in the url parameter.<BR>
+<BR>
+You use this method to perform write-related operations on a file or directory in a coordinated manner. This method executes synchronously, blocking the current thread until the writer block finishes executing. Before executing the block, though, the file coordinator waits until other relevant file presenter objects finish in-progress actions. Similarly, your write operation may cause pending actions for other file presenters to wait until your operations are complete. Whether or not the file coordinator waits depends on whether the item being written is a file or directory and also depends on other related operations.<BR>
+<BR>
+If the url parameter specifies a file:<BR>
+<UL><LI>
+This method waits for other readers and writers of the exact same file to finish in-progress actions.
+</LI><LI>
+This method waits if the file is a file package and other writers are reading or writing items in the package directory.
+</LI><LI>
+This method does not wait for readers or writers that are manipulating the parent directory of the file, unless one of those writers specified the NSFileCoordinatorWritingForDeleting or NSFileCoordinatorWritingForMoving option.
+</LI></UL>
+<BR>
+If the url parameter specifies a directory:<BR>
+<UL><LI>
+This method waits if other read or write operations are occurring on the exact same directory.
+</LI><LI>
+This method does not wait if read or write operations are occurring on items inside the directory (but not on the directory itself).
+</LI><LI>
+This method does not wait for readers or writers that are manipulating the parent directory of the directory, unless one of those writers specified the NSFileCoordinatorWritingForDeleting or NSFileCoordinatorWritingForMoving option.
+</LI></UL>
+<BR>
+This method calls the relinquishPresentedItemToWriter method of any relevant file presenters. This method is called both for file presenters in the current process and in other processes. Depending on the options you specify, other methods of the file presenters may also be called. When writing a file package directory, file presenter objects that are currently reading or writing the contents of that file package also receive these notifications. All of the called methods must return successfully before the file coordinator executes your block. If multiple file presenters are operating on the item, the order in which those presenters are notified is undefined.<BR>
+<BR>
+Note: When deleting an item inside a file package using the NSFileCoordinatorWritingForDeleting option, the file coordinator does not call the accommodatePresentedItemDeletionWithCompletionHandler method of any file presenters monitoring the file package directory itself. Instead, the delete operation is treated as a write operation on the file package.<BR>
+With one exception, do not nest calls to file coordinator methods inside the block you pass to this method. You may call the coordinateReadingItemAtURL method to read the file if you discover through modification-date checking that the contents of the file have changed. However, if you call this method from inside your block, the file coordinator object throws an exception.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilecoordinatormbs-method.html#7">coordinateWritingItemAtURL(File as folderitem, options as Integer, byref error as NSErrorMBS, tag as Variant = nil)</A></li>
+<li><A href="icloud-nsfilecoordinatormbs-event.html#3">coordinateWritingItemAtURL(url as string, file as folderitem, tag as Variant)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsfilecoordinatormbs.html">NSFileCoordinatorMBS</a>.<A name="9">itemAtURLdidMoveToURL(oldURL as string, newURL as string)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Announce that the item located by a URL is now located by another URL.<BR>
+<B>Notes:</B> 
+<BR>
+This triggers the sending of messages to NSFilePresenters that implement the corresponding optional methods, even those in other processes, except the one specified when -initWithFilePresenter: was invoked:<BR>
+- presentedItemDidMoveToURL: is sent to NSFilePresenters of the item.<BR>
+- If the item is a directory then presentedItemDidMoveToURL is sent to NSFilePresenters of each item contained by it.<BR>
+- presentedSubitemAtURL is sent to NSFilePresenters of each directory that contains the item, unless that method is not implemented but presentedItemDidChange is, and the directory is actually a file package, in which case presentedItemDidChange is sent instead.<BR>
+<BR>
+Useless invocations of this method are harmless, so you don&#39;t have to write code that compares NSURLs for equality, which is not straightforward. This method must be invoked from within the block passed to an invocation of coordinateWritingItemAtURL.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilecoordinatormbs.html">NSFileCoordinatorMBS</a>.<A name="10">itemAtURLwillMoveToURL(oldURL as string, newURL as string)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion131.shtml" class=version>13.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Announce that the item located by a URL is going to be located by another URL.<BR>
+<B>Notes:</B> 
+<BR>
+Support for App Sandbox on OS X. Some applications can rename files while saving them. For example, when a user adds attachments to a rich text document, TextEdit changes the document&#39;s extension from .rtf to .rtfd. A sandboxed application like TextEdit must ordinarily prompt the user for approval before renaming a document. You can invoke this method to make your process declare its intent to rename a document without user approval. After the renaming succeeds you must invoke itemAtURLdidMoveToURL, with the same arguments, for the process to keep access to the file with its new name and to give up access to any file that appears with the old name. If the renaming fails you should probably not invoke itemAtURLwillMoveToURL.<BR>
+<BR>
+There is no reason to invoke this method from applications that do not use App Sandbox. Invoking it does nothing on iOS.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilecoordinatormbs.html">NSFileCoordinatorMBS</a>.<A name="11">prepareForReadingItemsAtURLs(readingFiles() as folderitem, readingOptions as Integer, writingItemsAtFiles() as folderitem, writingOptions as Integer, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>, tag as Variant = nil)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Prepare to read or write from multiple files in a single batch operation.<BR>
+<B>Notes:</B> 
+<BR>
+readingFiles: An array of folderitems identifying the items you want to read.<BR>
+readingOptions: One of the reading options (see constants). If you pass 0 for this parameter, the savePresentedItemChangesWithCompletionHandler method of relevant file presenters is called before the prepareComplete event executes.<BR>
+writingItemsAtFiles: An array of folderitems identifying the items you want to write.<BR>
+writingOptions: One of the writing options (see constants). The options you specify partially determine how file presenters are notified and how this file coordinator object waits to execute your block.<BR>
+<BR>
+Error: If a file presenter encounters an error while preparing for this operation, that error is returned in this parameter and the block in the writer parameter is not executed. If you cancel this operation before the batchAccessor block is executed, this parameter contains an error object on output.<BR>
+<BR>
+The prepareComplete event is called and receives a completion handler that it must execute when it has finished its read and write calls.<BR>
+<BR>
+You use this method to prepare the file coordinator for multiple read and write operations. This method executes synchronously, blocking the current thread until the prepareComplete event finishes executing. The event does not perform the actual operations itself but calls the coordinateReadingItemAtURL and coordinateWritingItemAtURL methods to perform them. The reason to call this method first is to improve performance when reading and writing large numbers of files or directories.<BR>
+<BR>
+Because file coordination requires interprocess communication, it is much more efficient to batch changes to large numbers of files and directories than to change each item individually. The file coordinator uses the values in the readingURLs and writingURLs parameters together with reading and writing options to prepare any relevant file presenters for the upcoming operations. Specifically, it uses these parameters in the same way as the coordinateReadingItemAtURL and coordinateWritingItemAtURL methods to determine which file presenter methods to call.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilecoordinatormbs-method.html#12">prepareForReadingItemsAtURLs(readingURLs() as string, readingOptions as Integer, writingItemsAtURLs() as string, writingOptions as Integer, byref error as NSErrorMBS, tag as Variant = nil)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-nsfilecoordinatormbs.html">NSFileCoordinatorMBS</a>.<A name="12">prepareForReadingItemsAtURLs(readingURLs() as string, readingOptions as Integer, writingItemsAtURLs() as string, writingOptions as Integer, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>, tag as Variant = nil)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Prepare to read or write from multiple files in a single batch operation.<BR>
+<B>Notes:</B> 
+<BR>
+readingURLs: An array of url strings identifying the items you want to read.<BR>
+readingOptions: One of the reading options (see constants). If you pass 0 for this parameter, the savePresentedItemChangesWithCompletionHandler method of relevant file presenters is called before the prepareComplete event executes.<BR>
+writingItemsAtURLs: An array of url strings identifying the items you want to write.<BR>
+writingOptions: One of the writing options (see constants). The options you specify partially determine how file presenters are notified and how this file coordinator object waits to execute your block.<BR>
+<BR>
+Error: If a file presenter encounters an error while preparing for this operation, that error is returned in this parameter and the block in the writer parameter is not executed. If you cancel this operation before the batchAccessor block is executed, this parameter contains an error object on output.<BR>
+<BR>
+The prepareComplete event is called and receives a completion handler that it must execute when it has finished its read and write calls.<BR>
+<BR>
+You use this method to prepare the file coordinator for multiple read and write operations. This method executes synchronously, blocking the current thread until the prepareComplete event finishes executing. The event does not perform the actual operations itself but calls the coordinateReadingItemAtURL and coordinateWritingItemAtURL methods to perform them. The reason to call this method first is to improve performance when reading and writing large numbers of files or directories.<BR>
+<BR>
+Because file coordination requires interprocess communication, it is much more efficient to batch changes to large numbers of files and directories than to change each item individually. The file coordinator uses the values in the readingURLs and writingURLs parameters together with reading and writing options to prepare any relevant file presenters for the upcoming operations. Specifically, it uses these parameters in the same way as the coordinateReadingItemAtURL and coordinateWritingItemAtURL methods to determine which file presenter methods to call.<BR>
+<BR>
+Available in Mac OS X v10.7 and later.<BR>
+<p>See also:<ul>
+<li><A href="icloud-nsfilecoordinatormbs-method.html#11">prepareForReadingItemsAtURLs(readingFiles() as folderitem, readingOptions as Integer, writingItemsAtFiles() as folderitem, writingOptions as Integer, byref error as NSErrorMBS, tag as Variant = nil)</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=icloud-nsfilecoordinatormbs-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,648 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - DirectShowCaptureGraphBuilderMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="DirectShowCaptureGraphBuilderMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">DirectShowCaptureGraphBuilderMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-directshowcapturegraphbuildermbs.html">DirectShowCaptureGraphBuilderMBS</a> class.  </p>
+<div class="W">
+<b><a href="class-directshowcapturegraphbuildermbs.html">DirectShowCaptureGraphBuilderMBS</a>.<A name="1">AllocCapFile(FilePath as string, Size as UInt64)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-directshow.html" translate="no">DirectShow</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion121.shtml" class=version>12.1</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+The AllocCapFile method preallocates a capture file to a specified size. For best results, always capture to a defragmented, preallocated capture file that is larger than the size of the capture data.<BR>
+<B>Notes:</B> 
+<BR>
+FilePath: a string that contains the name of the file to create or resize.<BR>
+Size: Size of the file to allocate, in bytes.<BR>
+<BR>
+Lasterror is set.<BR>
+<BR>
+This method fails if the file is read-only.<BR>
+It is best to allocate as much space as possible&mdash;ideally, more than needed. However, this can result in a very large file that contains relatively little data. For example, a 1-gigabyte (GB) capture file might contain a few megabytes of captured video. Use the CopyCaptureFile method to copy the data into a new file. That method copies only the data and ignores the empty portion of the original file.<BR>
+If you use this method to preallocate the file, call SetMode on the file-writer filter with the value zero. If the filter is set to AM_FILE_OVERWRITE, it will delete the preallocated file. Note that some file-writer filters do not support mode 0.<BR>
+</div>
+<div class="W">
+<b><a href="class-directshowcapturegraphbuildermbs.html">DirectShowCaptureGraphBuilderMBS</a>.<A name="2">Constructor</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-directshow.html" translate="no">DirectShow</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion121.shtml" class=version>12.1</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+The constructor.<BR>
+</div>
+<div class="W">
+<b><a href="class-directshowcapturegraphbuildermbs.html">DirectShowCaptureGraphBuilderMBS</a>.<A name="3">Crossbar(filter as <A href="class-directshowbasefiltermbs.html">DirectShowBaseFilterMBS</A>) as <A href="class-directshowamcrossbarmbs.html">DirectShowAMCrossbarMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-directshow.html" translate="no">DirectShow</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion141.shtml" class=version>14.1</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Finds a crossbar in the graph.<BR>
+<B>Notes:</B> 
+<BR>
+See also:<BR>
+<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd390991(v=vs.85).aspx" target=_blank>http://msdn.microsoft.com/en-us/library/windows/desktop/dd390991(v=vs.85).aspx</a><BR>
+<BR>
+This function implements the FindInterface call with LOOK_UPSTREAM_ONLY and the filter you provide.<BR>
+</div>
+<div class="W">
+<b><a href="class-directshowcapturegraphbuildermbs.html">DirectShowCaptureGraphBuilderMBS</a>.<A name="4">FindPin(Source as <A href="class-directshowbasefiltermbs.html">DirectShowBaseFilterMBS</A>, PinDirection as Integer, Category as <A href="class-directshowguidmbs.html">DirectShowGUIDMBS</A> = nil, Type as <A href="class-directshowguidmbs.html">DirectShowGUIDMBS</A> = nil, Unconnected as boolean = false, Num as Integer = 0) as <A href="class-directshowpinmbs.html">DirectShowPinMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-directshow.html" translate="no">DirectShow</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion211.shtml" class=version>21.1</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+The FindPin method retrieves a particular pin on a filter, or determines whether a given pin matches the specified criteria.<BR>
+<B>Notes:</B> 
+<BR>
+Source: an interface on a filter, or to an interface on a pin.<BR>
+PinDirection: Specifies the pin direction (input or output). See constants in <A href="class-directshowpinmbs.html">DirectShowPinMBS</A> class.<BR>
+Category: A GUID that specifies one of the pin categories listed in Pin Property Set. To match any pin, regardless of category, set this parameter to nil.<BR>
+Type: A major type GUID that specifies the media type. Use nil to match any media type.<BR>
+Unconnected: Boolean value that specifies whether the pin must be unconnected. If true, the pin must be unconnected. If false, the pin can be connected or unconnected.<BR>
+num: Zero-based index of the pin to retrieve, from the set of matching pins. If Source is a filter, and more than one pin matches the search criteria, this parameter specifies which pin to retrieve. If Source is a pin, this parameter is ignored.<BR>
+<BR>
+Returns the pin object.<BR>
+Lasterror is set.<BR>
+<BR>
+If Source is a filter, the method searches for the nth pin on that filter that matches the search criteria, where n is given by the num parameter. If the method finds a matching pin, it returns the pin.<BR>
+If Source is a pin, the method tests that pin against the search criteria. If the pin matches the criteria, the method returns the pin. Otherwise, it returns nil.<BR>
+<BR>
+Typically, an application will not need to use this method. It is provided for unusually complex tasks, when the RenderStream method cannot build the filter graph. Use this method to retrieve a desired pin from a capture filter, and then build the rest of the graph manually.<BR>
+<p>See also:<ul>
+<li><A href="directshow-directshowcapturegraphbuildermbs-method.html#5">FindPin(Source as DirectShowPinMBS, PinDirection as Integer, Category as DirectShowGUIDMBS = nil, Type as DirectShowGUIDMBS = nil, Unconnected as boolean = false, Num as Integer = 0) as DirectShowPinMBS</A></li>
+</ul></p>
+</div>
+<div class="W">
+<b><a href="class-directshowcapturegraphbuildermbs.html">DirectShowCaptureGraphBuilderMBS</a>.<A name="5">FindPin(Source as <A href="class-directshowpinmbs.html">DirectShowPinMBS</A>, PinDirection as Integer, Category as <A href="class-directshowguidmbs.html">DirectShowGUIDMBS</A> = nil, Type as <A href="class-directshowguidmbs.html">DirectShowGUIDMBS</A> = nil, Unconnected as boolean = false, Num as Integer = 0) as <A href="class-directshowpinmbs.html">DirectShowPinMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-directshow.html" translate="no">DirectShow</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion211.shtml" class=version>21.1</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+The FindPin method retrieves a particular pin on a filter, or determines whether a given pin matches the specified criteria.<BR>
+<B>Notes:</B> 
+<BR>
+Source: an interface on a filter, or to an interface on a pin.<BR>
+PinDirection: Specifies the pin direction (input or output). See constants in <A href="class-directshowpinmbs.html">DirectShowPinMBS</A> class.<BR>
+Category: A GUID that specifies one of the pin categories listed in Pin Property Set. To match any pin, regardless of category, set this parameter to nil.<BR>
+Type: A major type GUID that specifies the media type. Use nil to match any media type.<BR>
+Unconnected: Boolean value that specifies whether the pin must be unconnected. If true, the pin must be unconnected. If false, the pin can be connected or unconnected.<BR>
+num: Zero-based index of the pin to retrieve, from the set of matching pins. If Source is a filter, and more than one pin matches the search criteria, this parameter specifies which pin to retrieve. If Source is a pin, this parameter is ignored.<BR>
+<BR>
+Returns the pin object.<BR>
+Lasterror is set.<BR>
+<BR>
+If Source is a filter, the method searches for the nth pin on that filter that matches the search criteria, where n is given by the num parameter. If the method finds a matching pin, it returns the pin.<BR>
+If Source is a pin, the method tests that pin against the search criteria. If the pin matches the criteria, the method returns the pin. Otherwise, it returns nil.<BR>
+<BR>
+Typically, an application will not need to use this method. It is provided for unusually complex tasks, when the RenderStream method cannot build the filter graph. Use this method to retrieve a desired pin from a capture filter, and then build the rest of the graph manually.<BR>
+<p>See also:<ul>
+<li><A href="directshow-directshowcapturegraphbuildermbs-method.html#4">FindPin(Source as DirectShowBaseFilterMBS, PinDirection as Integer, Category as DirectShowGUIDMBS = nil, Type as DirectShowGUIDMBS = nil, Unconnected as boolean = false, Num as Integer = 0) as DirectShowPinMBS</A></li>
+</ul></p>
+</div>
+<div class="W">
+<b><a href="class-directshowcapturegraphbuildermbs.html">DirectShowCaptureGraphBuilderMBS</a>.<A name="6">GetFiltergraph as <A href="class-directshowgraphbuildermbs.html">DirectShowGraphBuilderMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-directshow.html" translate="no">DirectShow</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion121.shtml" class=version>12.1</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Retrieves the filter graph that the builder is using.<BR>
+<B>Notes:</B> 
+Sets lasterror.<BR>
+</div>
+<div class="W">
+<b><a href="class-directshowcapturegraphbuildermbs.html">DirectShowCaptureGraphBuilderMBS</a>.<A name="7">GetStreamConfig(Category as <A href="class-directshowguidmbs.html">DirectShowGUIDMBS</A>, filter as <A href="class-directshowbasefiltermbs.html">DirectShowBaseFilterMBS</A>) as <A href="class-directshowamstreamconfigmbs.html">DirectShowAMStreamConfigMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-directshow.html" translate="no">DirectShow</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion211.shtml" class=version>21.1</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Queries the stream config object for this graph.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> graph <span style="color: #0000FF;">as</span> <A href="class-directshowcapturegraphbuildermbs.html">DirectShowCaptureGraphBuilderMBS</A> <span style="color: #800000;">// your graph</span><br /><span style="color: #0000FF;">dim</span> filter <span style="color: #0000FF;">as</span> <A href="class-directshowbasefiltermbs.html">DirectShowBaseFilterMBS</A> <span style="color: #800000;">// your filter</span><br /><br /><span style="color: #0000FF;">dim</span> StreamConfig <span style="color: #0000FF;">as</span> <A href="class-directshowamstreamconfigmbs.html">DirectShowAMStreamConfigMBS</A><br />StreamConfig = g.GetStreamConfig(<A href="class-directshowpinmbs.html">DirectShowPinMBS</A>.PIN_CATEGORY_STILL, filter)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Lasterror is set.<BR>
+e.g. pass PIN_CATEGORY_CAPTURE or PIN_CATEGORY_PREVIEW for category, as defined in PinMBS class.<BR>
+<p>See also:<ul>
+<li><A href="directshow-directshowcapturegraphbuildermbs-method.html#8">GetStreamConfig(preview as boolean, filter as DirectShowBaseFilterMBS) as DirectShowAMStreamConfigMBS</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-win-directshow-playcap.html">/Win/DirectShow/PlayCap</A></li>
+<li><A href="example-win-directshow-playcapwithformatsettings.html">/Win/DirectShow/PlayCap with format settings</A></li>
+</ul>
+</div>
+<div class="W">
+<b><a href="class-directshowcapturegraphbuildermbs.html">DirectShowCaptureGraphBuilderMBS</a>.<A name="8">GetStreamConfig(preview as boolean, filter as <A href="class-directshowbasefiltermbs.html">DirectShowBaseFilterMBS</A>) as <A href="class-directshowamstreamconfigmbs.html">DirectShowAMStreamConfigMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-directshow.html" translate="no">DirectShow</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion134.shtml" class=version>13.4</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Queries the stream config object for this graph.<BR>
+<B>Notes:</B> 
+<BR>
+Lasterror is set.<BR>
+<BR>
+Preview: Pass true to get the preview pin or pass false for the capture pin instead.<BR>
+<p>See also:<ul>
+<li><A href="directshow-directshowcapturegraphbuildermbs-method.html#7">GetStreamConfig(Category as DirectShowGUIDMBS, filter as DirectShowBaseFilterMBS) as DirectShowAMStreamConfigMBS</A></li>
+</ul></p>
+</div>
+<div class="W">
+<b><a href="class-directshowcapturegraphbuildermbs.html">DirectShowCaptureGraphBuilderMBS</a>.<A name="9">RenderStream(category as <A href="class-directshowguidmbs.html">DirectShowGUIDMBS</A>, Type as <A href="class-directshowguidmbs.html">DirectShowGUIDMBS</A>, Source as <A href="class-directshowbasefiltermbs.html">DirectShowBaseFilterMBS</A>, Intermediate as <A href="class-directshowbasefiltermbs.html">DirectShowBaseFilterMBS</A> = nil, Sink as <A href="class-directshowbasefiltermbs.html">DirectShowBaseFilterMBS</A> = nil)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-directshow.html" translate="no">DirectShow</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion121.shtml" class=version>12.1</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+The RenderStream method connects an output pin on a source filter to a sink filter, optionally through an intermediate filter.<BR>
+<B>Notes:</B> 
+<BR>
+Lasterror is set:<BR>
+<BR>
+Category: A GUID that specifies one of the pin categories listed in Pin Property Set. To match any pin, regardless of category, set this parameter to nil. Typical values include the following. PIN_CATEGORY_CAPTURE, PIN_CATEGORY_PREVIEW, PIN_CATEGORY_CC.<BR>
+Type: A major-type GUID that specifies the media type of the output pin; or nil to use any pin, regardless of media type. <BR>
+Source: Specifies a pointer to the starting filter for the connection, or to an output pin.<BR>
+Intermediate: BaseFilter interface of an intermediate filter, such as a compression filter. Can be nil.<BR>
+Sink: BaseFilter interface of a sink filter, such as a renderer or mux filter. If the value is nil, the method uses a default renderer (see Remarks).<BR>
+<BR>
+see also:<BR>
+<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd311924(v=vs.85).aspx" target=_blank>http://msdn.microsoft.com/en-us/library/windows/desktop/dd311924(v=vs.85).aspx</a><BR>
+<p>See also:<ul>
+<li><A href="directshow-directshowcapturegraphbuildermbs-method.html#10">RenderStream(category as DirectShowGUIDMBS, Type as DirectShowGUIDMBS, Source as DirectShowPinMBS, Intermediate as DirectShowBaseFilterMBS = nil, Sink as DirectShowBaseFilterMBS = nil)</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-win-directshow-playcap.html">/Win/DirectShow/PlayCap</A></li>
+<li><A href="example-win-directshow-playcapwithformatsettings.html">/Win/DirectShow/PlayCap with format settings</A></li>
+<li><A href="example-win-directshow-playcapwithframegrabber.html">/Win/DirectShow/PlayCap with frame grabber</A></li>
+<li><A href="example-win-directshow-playcapwithframegrabberevent.html">/Win/DirectShow/PlayCap with frame grabber event</A></li>
+<li><A href="example-win-directshow-selectandcapture.html">/Win/DirectShow/Select and Capture</A></li>
+<li><A href="example-win-directshow-selectandcapturewithaudio.html">/Win/DirectShow/Select and Capture with Audio</A></li>
+</ul>
+</div>
+<div class="W">
+<b><a href="class-directshowcapturegraphbuildermbs.html">DirectShowCaptureGraphBuilderMBS</a>.<A name="10">RenderStream(category as <A href="class-directshowguidmbs.html">DirectShowGUIDMBS</A>, Type as <A href="class-directshowguidmbs.html">DirectShowGUIDMBS</A>, Source as <A href="class-directshowpinmbs.html">DirectShowPinMBS</A>, Intermediate as <A href="class-directshowbasefiltermbs.html">DirectShowBaseFilterMBS</A> = nil, Sink as <A href="class-directshowbasefiltermbs.html">DirectShowBaseFilterMBS</A> = nil)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-directshow.html" translate="no">DirectShow</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion121.shtml" class=version>12.1</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+The RenderStream method connects an output pin on a source filter to a sink filter, optionally through an intermediate filter.<BR>
+<B>Notes:</B> 
+<BR>
+Lasterror is set:<BR>
+<BR>
+Category: A GUID that specifies one of the pin categories listed in Pin Property Set. To match any pin, regardless of category, set this parameter to nil. Typical values include the following. PIN_CATEGORY_CAPTURE, PIN_CATEGORY_PREVIEW, PIN_CATEGORY_CC.<BR>
+Type: A major-type GUID that specifies the media type of the output pin; or nil to use any pin, regardless of media type. <BR>
+Source: Specifies a pointer to the starting filter for the connection, or to an output pin.<BR>
+Intermediate: BaseFilter interface of an intermediate filter, such as a compression filter. Can be nil.<BR>
+Sink: BaseFilter interface of a sink filter, such as a renderer or mux filter. If the value is nil, the method uses a default renderer (see Remarks).<BR>
+<BR>
+see also:<BR>
+<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd311924(v=vs.85).aspx" target=_blank>http://msdn.microsoft.com/en-us/library/windows/desktop/dd311924(v=vs.85).aspx</a><BR>
+<p>See also:<ul>
+<li><A href="directshow-directshowcapturegraphbuildermbs-method.html#9">RenderStream(category as DirectShowGUIDMBS, Type as DirectShowGUIDMBS, Source as DirectShowBaseFilterMBS, Intermediate as DirectShowBaseFilterMBS = nil, Sink as DirectShowBaseFilterMBS = nil)</A></li>
+</ul></p>
+</div>
+<div class="W">
+<b><a href="class-directshowcapturegraphbuildermbs.html">DirectShowCaptureGraphBuilderMBS</a>.<A name="11">SetFiltergraph(graph as <A href="class-directshowgraphbuildermbs.html">DirectShowGraphBuilderMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-directshow.html" translate="no">DirectShow</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion121.shtml" class=version>12.1</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Tells the graph builder object which filter graph to use.<BR>
+<B>Notes:</B> 
+<BR>
+Lasterror is set.<BR>
+<BR>
+graph: specifies the filter graph to use for subsequent calls to the AddFilter method.<BR>
+<BR>
+The graph builder will automatically create a filter graph if you don&#39;t call this method. If you call this method after the graph builder has created its own filter graph, the call will fail.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-win-directshow-playcap.html">/Win/DirectShow/PlayCap</A></li>
+<li><A href="example-win-directshow-playcapwithformatsettings.html">/Win/DirectShow/PlayCap with format settings</A></li>
+<li><A href="example-win-directshow-playcapwithframegrabber.html">/Win/DirectShow/PlayCap with frame grabber</A></li>
+<li><A href="example-win-directshow-playcapwithframegrabberevent.html">/Win/DirectShow/PlayCap with frame grabber event</A></li>
+<li><A href="example-win-directshow-selectandcapture.html">/Win/DirectShow/Select and Capture</A></li>
+<li><A href="example-win-directshow-selectandcapturewithaudio.html">/Win/DirectShow/Select and Capture with Audio</A></li>
+</ul>
+</div>
+<div class="W">
+<b><a href="class-directshowcapturegraphbuildermbs.html">DirectShowCaptureGraphBuilderMBS</a>.<A name="12">SetOutputFileName(Type as <A href="class-directshowguidmbs.html">DirectShowGUIDMBS</A>, FilePath as string)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-directshow.html" translate="no">DirectShow</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion121.shtml" class=version>12.1</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates the rendering section of the filter graph, which will save bits to disk with the specified file name.<BR>
+<B>Notes:</B> 
+<BR>
+Lasterror is set.<BR>
+<BR>
+Type: GUID representing the media subtype. Must be MEDIASUBTYPE_Avi.<BR>
+FilePath: string containing the output file name.<BR>
+filter: Optional, a filter representing the multiplexer filter. <BR>
+Sink: Optional, a FileSinkFilter object representing the file writer. <BR>
+<BR>
+This method inserts the multiplexer and the file writer into the filter graph and calls SetFileName to set the output file name.<BR>
+<p>See also:<ul>
+<li><A href="directshow-directshowcapturegraphbuildermbs-method.html#13">SetOutputFileName(Type as DirectShowGUIDMBS, FilePath as string, byref filter as DirectShowBaseFilterMBS, byref sink as DirectShowFileSinkFilterMBS)</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-win-directshow-playcap.html">/Win/DirectShow/PlayCap</A></li>
+<li><A href="example-win-directshow-playcapwithformatsettings.html">/Win/DirectShow/PlayCap with format settings</A></li>
+<li><A href="example-win-directshow-selectandcapture.html">/Win/DirectShow/Select and Capture</A></li>
+<li><A href="example-win-directshow-selectandcapturewithaudio.html">/Win/DirectShow/Select and Capture with Audio</A></li>
+</ul>
+</div>
+<div class="W">
+<b><a href="class-directshowcapturegraphbuildermbs.html">DirectShowCaptureGraphBuilderMBS</a>.<A name="13">SetOutputFileName(Type as <A href="class-directshowguidmbs.html">DirectShowGUIDMBS</A>, FilePath as string, byref filter as <A href="class-directshowbasefiltermbs.html">DirectShowBaseFilterMBS</A>, byref sink as <A href="class-directshowfilesinkfiltermbs.html">DirectShowFileSinkFilterMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-directshow.html" translate="no">DirectShow</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion121.shtml" class=version>12.1</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates the rendering section of the filter graph, which will save bits to disk with the specified file name.<BR>
+<B>Notes:</B> 
+<BR>
+Lasterror is set.<BR>
+<BR>
+Type: GUID representing the media subtype. Must be MEDIASUBTYPE_Avi.<BR>
+FilePath: string containing the output file name.<BR>
+filter: Optional, a filter representing the multiplexer filter. <BR>
+Sink: Optional, a FileSinkFilter object representing the file writer. <BR>
+<BR>
+This method inserts the multiplexer and the file writer into the filter graph and calls SetFileName to set the output file name.<BR>
+<p>See also:<ul>
+<li><A href="directshow-directshowcapturegraphbuildermbs-method.html#12">SetOutputFileName(Type as DirectShowGUIDMBS, FilePath as string)</A></li>
+</ul></p>
+</div>
+<div class="W">
+<b><a href="class-directshowcapturegraphbuildermbs.html">DirectShowCaptureGraphBuilderMBS</a>.<A name="14">SetupHighestResolution(videoInputFilter as <A href="class-directshowbasefiltermbs.html">DirectShowBaseFilterMBS</A>, preview as boolean = false)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-directshow.html" translate="no">DirectShow</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion184.shtml" class=version>18.4</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Convenience function to query stream config and select the one with highest resolution.<BR>
+<B>Notes:</B> 
+Queries internally GetStreamConfig, walks over all VideoCaps, picks best and sets it as format.<BR>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbswinplugin.html">MBS Win Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=directshow-directshowcapturegraphbuildermbs-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

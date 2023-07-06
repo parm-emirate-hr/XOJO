@@ -1,0 +1,965 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /MacControls/Listbox and TableView Demos/NSOutlineView/Disk Browser</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /MacControls/Listbox and TableView Demos/NSOutlineView/Disk Browser</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/MacControls/Listbox and TableView Demos/NSOutlineView/Disk Browser</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS MacCocoa Plugin, MBS MacBase Plugin, MBS MacOSX Plugin, MBS Main Plugin, MBS MacControls Plugin, MBS MacFrameworks Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /MacControls/Listbox and TableView Demos/NSOutlineView/Disk Browser<BR>
+This example is the version from Sun, 5th Nov 2022.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Disk</span> <span style="color:#6500FE">Browser.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MainWindow <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> moveScriptCode = <span style="color:#6500FE">&quot;on</span> <span style="color:#6500FE">moveFiles</span> <span style="color:#6500FE">(src,</span> <span style="color:#6500FE">dest)\r</span>  <span style="color:#6500FE">tell</span> <span style="color:#6500FE">application</span> <span style="color:#6500FE">&quot;</span><span style="color:#6500FE">&quot;Finder&quot;</span><span style="color:#6500FE">&quot;\r</span>    <span style="color:#6500FE">with</span> <span style="color:#6500FE">timeout</span> <span style="color:#6500FE">of</span> <span style="color:#6500FE">5</span> <span style="color:#6500FE">seconds\r</span>      <span style="color:#6500FE">move</span> <span style="color:#6500FE">src</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">dest\r</span>    <span style="color:#6500FE">end</span> <span style="color:#6500FE">timeout\r</span>  <span style="color:#6500FE">end</span> <span style="color:#6500FE">tell\rend</span> <span style="color:#6500FE">moveFiles&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control folderBrowser <span style="color:#0000FF;font-weight: bold">Inherits</span> HierarchicalMacListBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance folderBrowser <span style="color:#0000FF;font-weight: bold">Inherits</span> HierarchicalMacListBox</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> DoubleClick()
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Let&#39;s</span> <span style="color:#7F0000;text-style:italic">open</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">selected</span> <span style="color:#7F0000;text-style:italic">items</span>
+				
+				<span style="color:#0000FF;font-weight: bold">self</span>.openSelectedItems <span style="color:#0000FF;font-weight: bold">nil</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> ItemDidCollapse(notification <span style="color:#0000FF;font-weight: bold">as</span> NSNotificationMBS, item <span style="color:#0000FF;font-weight: bold">as</span> NSOutlineViewItemMBS)
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">At</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">point,</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">may</span> <span style="color:#7F0000;text-style:italic">dispose</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">children,</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">order</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">release</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">memory</span> <span style="color:#7F0000;text-style:italic">used</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">them.</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">However,</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">will</span> <span style="color:#7F0000;text-style:italic">also</span> <span style="color:#7F0000;text-style:italic">make</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">OutlineView</span> <span style="color:#7F0000;text-style:italic">forget</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">&quot;expanded&quot;</span> <span style="color:#7F0000;text-style:italic">state</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">inner</span> <span style="color:#7F0000;text-style:italic">folders.</span>
+				
+				<span style="color:#7F0000;text-style:italic">&#39;dim</span> <span style="color:#7F0000;text-style:italic">node</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">DiskItem</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">nodeForItem</span> <span style="color:#7F0000;text-style:italic">(item)</span>
+				<span style="color:#7F0000;text-style:italic">&#39;node.ClearChildren</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">two</span> <span style="color:#7F0000;text-style:italic">columns</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">listbox</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> col <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> NSTableColumnMBS(<span style="color:#6500FE">&quot;name&quot;</span>)
+				col.width = <span style="color:#326598">200</span>
+				col.minWidth = <span style="color:#326598">100</span>
+				col.Title = <span style="color:#6500FE">&quot;Name&quot;</span>
+				col.Editable = <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.AddColumn col
+				col = <span style="color:#0000FF;font-weight: bold">new</span> NSTableColumnMBS(<span style="color:#6500FE">&quot;size&quot;</span>)
+				col.width = <span style="color:#326598">120</span>
+				col.minWidth = <span style="color:#326598">60</span>
+				col.Title = <span style="color:#6500FE">&quot;Size&quot;</span>
+				col.Editable = <span style="color:#0000FF;font-weight: bold">false</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.AddColumn col
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">some</span> <span style="color:#7F0000;text-style:italic">options</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">make</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">list</span> <span style="color:#7F0000;text-style:italic">&quot;prettier&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.View.usesAlternatingRowBackgroundColors = <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.View.gridStyleMask = NSTableViewMBS.NSTableViewSolidHorizontalGridLineMask+NSTableViewMBS.NSTableViewSolidVerticalGridLineMask
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Specify</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">column</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">contains</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">&quot;expand&quot;</span> <span style="color:#7F0000;text-style:italic">icons.</span> <span style="color:#7F0000;text-style:italic">If</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">don&#39;t</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">this,</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">effectively</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">flat</span> <span style="color:#7F0000;text-style:italic">list</span> <span style="color:#7F0000;text-style:italic">instead</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> cols() <span style="color:#0000FF;font-weight: bold">as</span> NSTableColumnMBS = <span style="color:#0000FF;font-weight: bold">me</span>.View.tableColumns()
+				<span style="color:#0000FF;font-weight: bold">me</span>.View.outlineTableColumn = cols(<span style="color:#326598">0</span>) <span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">first</span> <span style="color:#7F0000;text-style:italic">column</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">If</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">want</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">allow</span> <span style="color:#7F0000;text-style:italic">column</span> <span style="color:#7F0000;text-style:italic">resizing,</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">option</span> <span style="color:#7F0000;text-style:italic">should</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">avoid</span> <span style="color:#7F0000;text-style:italic">ugly</span> <span style="color:#7F0000;text-style:italic">visual</span> <span style="color:#7F0000;text-style:italic">effect</span> <span style="color:#7F0000;text-style:italic">while</span> <span style="color:#7F0000;text-style:italic">resizing</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">(i.e.</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">vertical</span> <span style="color:#7F0000;text-style:italic">grid</span> <span style="color:#7F0000;text-style:italic">lines</span> <span style="color:#7F0000;text-style:italic">do</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">move</span> <span style="color:#7F0000;text-style:italic">nicely,</span> <span style="color:#7F0000;text-style:italic">then),</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">gridlines</span> <span style="color:#7F0000;text-style:italic">should</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">used.</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.View.autoresizesOutlineColumn = <span style="color:#0000FF;font-weight: bold">false</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">And</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">window</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">resized,</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">want</span> <span style="color:#7F0000;text-style:italic">only</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">first</span> <span style="color:#7F0000;text-style:italic">column</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">resize</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.View.columnAutoresizingStyle = NSTableViewMBS.NSTableViewFirstColumnOnlyAutoresizingStyle
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">up</span> <span style="color:#7F0000;text-style:italic">our</span> <span style="color:#7F0000;text-style:italic">hierarchical</span> <span style="color:#7F0000;text-style:italic">data,</span> <span style="color:#7F0000;text-style:italic">which</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">tree</span> <span style="color:#7F0000;text-style:italic">structure</span>
+				mRootItem = <span style="color:#0000FF;font-weight: bold">new</span> DiskItem (<span style="color:#0000FF;font-weight: bold">me</span>.View)
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Let&#39;s</span> <span style="color:#7F0000;text-style:italic">add</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">currently</span> <span style="color:#7F0000;text-style:italic">available</span> <span style="color:#7F0000;text-style:italic">volumes</span>
+				<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> VolumeCount-<span style="color:#326598">1</span>
+					mRootItem.AddChild Volume(i)
+				<span style="color:#0000FF;font-weight: bold">next</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Reload <span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">forces</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">listbox</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">update</span> <span style="color:#7F0000;text-style:italic">(by</span> <span style="color:#7F0000;text-style:italic">calling</span> <span style="color:#7F0000;text-style:italic">Events</span> <span style="color:#7F0000;text-style:italic">such</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">childOfItem</span> <span style="color:#7F0000;text-style:italic">etc.)</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Let&#39;s</span> <span style="color:#7F0000;text-style:italic">save</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">re-open</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">expanded</span> <span style="color:#7F0000;text-style:italic">folder</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">restart</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">app</span> <span style="color:#7F0000;text-style:italic">(needs</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">happen</span> <span style="color:#7F0000;text-style:italic">after</span> <span style="color:#7F0000;text-style:italic">loading</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">data,</span> <span style="color:#7F0000;text-style:italic">so</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">list</span> <span style="color:#7F0000;text-style:italic">root</span> <span style="color:#7F0000;text-style:italic">has</span> <span style="color:#7F0000;text-style:italic">been</span> <span style="color:#7F0000;text-style:italic">loaded</span> <span style="color:#7F0000;text-style:italic">already)</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.View.autosaveName = <span style="color:#6500FE">&quot;Open</span> <span style="color:#6500FE">Folders&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.View.autosaveExpandedItems = <span style="color:#0000FF;font-weight: bold">true</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">And</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">allow</span> <span style="color:#7F0000;text-style:italic">dragging</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">out</span> <span style="color:#7F0000;text-style:italic">items</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">well</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.View.registerForDraggedTypes <span style="color:#0000FF;font-weight: bold">Array</span> (NSPasteboardMBS.NSFilenamesPboardType, <span style="color:#6500FE">&quot;public.file-url&quot;</span>)
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">up</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">contextual</span> <span style="color:#7F0000;text-style:italic">menu</span>
+				mMenuItems.Append <span style="color:#0000FF;font-weight: bold">new</span> MyMenuItem (<span style="color:#6500FE">&quot;Open&quot;</span>, <span style="color:#326598">1</span>, <span style="color:#0000FF;font-weight: bold">AddressOf</span> openSelectedItems)
+				mMenuItems.Append <span style="color:#0000FF;font-weight: bold">new</span> MyMenuItem (<span style="color:#6500FE">&quot;Rename&quot;</span>, <span style="color:#326598">2</span>, <span style="color:#0000FF;font-weight: bold">AddressOf</span> renameClickedItem)
+				mMenuItems.Append <span style="color:#0000FF;font-weight: bold">new</span> MyMenuItem (<span style="color:#6500FE">&quot;Refresh&quot;</span>, <span style="color:#326598">3</span>, <span style="color:#0000FF;font-weight: bold">AddressOf</span> refreshSelectedItems)
+				mMenu = <span style="color:#0000FF;font-weight: bold">new</span> NSMenuMBS
+				<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> item <span style="color:#0000FF;font-weight: bold">as</span> NSMenuItemMBS <span style="color:#0000FF;font-weight: bold">in</span> mMenuItems
+					mMenu.addItem item
+				<span style="color:#0000FF;font-weight: bold">next</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.View.menu = mMenu
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> acceptDrop(info <span style="color:#0000FF;font-weight: bold">as</span> NSDraggingInfoMBS, item <span style="color:#0000FF;font-weight: bold">as</span> NSOutlineViewItemMBS, index <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">This</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">called</span> <span style="color:#7F0000;text-style:italic">when</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">got</span> <span style="color:#7F0000;text-style:italic">dropped</span> <span style="color:#7F0000;text-style:italic">onto</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">specific</span> <span style="color:#7F0000;text-style:italic">row.</span> <span style="color:#7F0000;text-style:italic">We</span> <span style="color:#7F0000;text-style:italic">return</span> <span style="color:#7F0000;text-style:italic">whether</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">want</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">accept</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">data.</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">If</span> <span style="color:#7F0000;text-style:italic">index</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">-1,</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">means</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">drop</span> <span style="color:#7F0000;text-style:italic">onto</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">item,</span> <span style="color:#7F0000;text-style:italic">otherwise</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">means</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">drop</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">insert</span> <span style="color:#7F0000;text-style:italic">at</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">child</span> <span style="color:#7F0000;text-style:italic">index</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">given</span> <span style="color:#7F0000;text-style:italic">parent</span> <span style="color:#7F0000;text-style:italic">item.</span>
+				
+				<span style="color:#0000FF;font-weight: bold">redim</span> mDraggedFiles(-<span style="color:#326598">1</span>)
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> draggedFiles() <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = fetchFilesFromPboard (info.draggingPasteboard)
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> targetItem <span style="color:#0000FF;font-weight: bold">as</span> DiskItem = determineDropTarget (item, index)
+				<span style="color:#0000FF;font-weight: bold">dim</span> targetFolder <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = targetItem.FolderItem
+				<span style="color:#0000FF;font-weight: bold">if</span> targetFolder = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Can&#39;t</span> <span style="color:#7F0000;text-style:italic">drag</span> <span style="color:#7F0000;text-style:italic">into</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">root,</span> <span style="color:#7F0000;text-style:italic">which</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">list</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">volumes</span>
+					<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#0000FF;font-weight: bold">false</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Now</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">move</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">selected</span> <span style="color:#7F0000;text-style:italic">files</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">target</span> <span style="color:#7F0000;text-style:italic">folder</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">However,</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">need</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">delay</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">operation,</span> <span style="color:#7F0000;text-style:italic">because</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">AppleScript</span> <span style="color:#7F0000;text-style:italic">we&#39;ll</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">won&#39;t</span> <span style="color:#7F0000;text-style:italic">run</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">long</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">drag</span> <span style="color:#7F0000;text-style:italic">isn&#39;t</span> <span style="color:#7F0000;text-style:italic">finished,</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">which</span> <span style="color:#7F0000;text-style:italic">would</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">leading</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">timeout.</span> <span style="color:#7F0000;text-style:italic">Instead,</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">move</span> <span style="color:#7F0000;text-style:italic">will</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">handled</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">draggingExited</span> <span style="color:#7F0000;text-style:italic">event.</span>
+				mDropSourceFiles = draggedFiles
+				mDropDestFolder = targetFolder
+				
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> childOfItem(index <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, item <span style="color:#0000FF;font-weight: bold">as</span> NSOutlineViewItemMBS) <span style="color:#0000FF;font-weight: bold">As</span> NSOutlineViewItemMBS
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Returns</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">child</span> <span style="color:#7F0000;text-style:italic">object</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">row.</span> <span style="color:#7F0000;text-style:italic">If</span> <span style="color:#7F0000;text-style:italic">item</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">nil,</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">means</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">root</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">hierarchy</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> node <span style="color:#0000FF;font-weight: bold">as</span> DiskItem = nodeForItem (item)
+				<span style="color:#0000FF;font-weight: bold">if</span> node &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">return</span> node.ChildAtIndex(index)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> concludeDragOperation(info <span style="color:#0000FF;font-weight: bold">as</span> NSDraggingInfoMBS)
+				<span style="color:#0000FF;font-weight: bold">redim</span> mDraggedFiles(-<span style="color:#326598">1</span>)
+				<span style="color:#0000FF;font-weight: bold">if</span> mDropSourceFiles.Ubound &gt;= <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">and</span> mDropDestFolder &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">We</span> <span style="color:#7F0000;text-style:italic">have</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">Timer</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">we&#39;ll</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">Timeout</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">drag</span> <span style="color:#7F0000;text-style:italic">came</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Finder</span>
+					mDropFinishTimer = <span style="color:#0000FF;font-weight: bold">new</span> Timer
+					<span style="color:#0000FF;font-weight: bold">AddHandler</span> mDropFinishTimer.Action, <span style="color:#0000FF;font-weight: bold">AddressOf</span> moveFilesInTimer
+					mDropFinishTimer.Mode = Timer.ModeSingle
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					<span style="color:#0000FF;font-weight: bold">redim</span> mDropSourceFiles(-<span style="color:#326598">1</span>)
+					mDropDestFolder = <span style="color:#0000FF;font-weight: bold">nil</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> draggingEnded(info <span style="color:#0000FF;font-weight: bold">as</span> NSDraggingInfoMBS)
+				<span style="color:#0000FF;font-weight: bold">redim</span> mDraggedFiles(-<span style="color:#326598">1</span>)
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> draggingExited(info <span style="color:#0000FF;font-weight: bold">as</span> NSDraggingInfoMBS)
+				<span style="color:#0000FF;font-weight: bold">redim</span> mDraggedFiles(-<span style="color:#326598">1</span>)
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> isItemExpandable(item <span style="color:#0000FF;font-weight: bold">as</span> NSOutlineViewItemMBS) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Returns</span> <span style="color:#7F0000;text-style:italic">whether</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">row</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">expandable</span> <span style="color:#7F0000;text-style:italic">(then</span> <span style="color:#7F0000;text-style:italic">showing</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">&quot;triangle&quot;</span> <span style="color:#7F0000;text-style:italic">expand</span> <span style="color:#7F0000;text-style:italic">control)</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> node <span style="color:#0000FF;font-weight: bold">as</span> DiskItem = nodeForItem (item)
+				<span style="color:#0000FF;font-weight: bold">if</span> node &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">return</span> node.IsFolder
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> itemForPersistentObject(persistentObject <span style="color:#0000FF;font-weight: bold">as</span> Variant) <span style="color:#0000FF;font-weight: bold">As</span> NSOutlineViewItemMBS
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">This</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">called</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">identify</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">item,</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">restoring</span> <span style="color:#7F0000;text-style:italic">its</span> <span style="color:#7F0000;text-style:italic">expand</span> <span style="color:#7F0000;text-style:italic">state</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">preferences.</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">It</span> <span style="color:#7F0000;text-style:italic">goes</span> <span style="color:#7F0000;text-style:italic">along</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">persistentObjectForItem(),</span> <span style="color:#7F0000;text-style:italic">which</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">inverse</span> <span style="color:#7F0000;text-style:italic">operation.</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> node <span style="color:#0000FF;font-weight: bold">as</span> DiskItem = mRootItem.FindByPath (persistentObject)
+				<span style="color:#0000FF;font-weight: bold">return</span> node
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> numberOfChildrenOfItem(item <span style="color:#0000FF;font-weight: bold">as</span> NSOutlineViewItemMBS) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Returns</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">number</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">child</span> <span style="color:#7F0000;text-style:italic">objects</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">row.</span> <span style="color:#7F0000;text-style:italic">If</span> <span style="color:#7F0000;text-style:italic">item</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">nil,</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">means</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">root</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">hierarchy</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> node <span style="color:#0000FF;font-weight: bold">as</span> DiskItem = nodeForItem (item)
+				<span style="color:#0000FF;font-weight: bold">if</span> node &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">return</span> node.ChildCount
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> objectValue(tableColumn <span style="color:#0000FF;font-weight: bold">as</span> NSTableColumnMBS, item <span style="color:#0000FF;font-weight: bold">as</span> NSOutlineViewItemMBS) <span style="color:#0000FF;font-weight: bold">As</span> Variant
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Returns</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">text</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">cell</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> node <span style="color:#0000FF;font-weight: bold">as</span> DiskItem = nodeForItem (item)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> node = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">or</span> node.FolderItem = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;&quot;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> tableColumn.identifier = <span style="color:#6500FE">&quot;Name&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">return</span> node.FolderItem.Name
+				<span style="color:#0000FF;font-weight: bold">elseif</span> node.IsFolder <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;-&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					<span style="color:#0000FF;font-weight: bold">return</span> Format (node.FolderItem.Length, <span style="color:#6500FE">&quot;,###&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">end</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> persistentObjectForItem(item <span style="color:#0000FF;font-weight: bold">as</span> NSOutlineViewItemMBS) <span style="color:#0000FF;font-weight: bold">As</span> Variant
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">This</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">called</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">identify</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">folder,</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">preserving</span> <span style="color:#7F0000;text-style:italic">its</span> <span style="color:#7F0000;text-style:italic">expand</span> <span style="color:#7F0000;text-style:italic">state</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">preferences.</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">It</span> <span style="color:#7F0000;text-style:italic">goes</span> <span style="color:#7F0000;text-style:italic">along</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">itemForPersistentObject(),</span> <span style="color:#7F0000;text-style:italic">which</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">inverse</span> <span style="color:#7F0000;text-style:italic">operation.</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> node <span style="color:#0000FF;font-weight: bold">as</span> DiskItem = nodeForItem (item)
+				<span style="color:#0000FF;font-weight: bold">return</span> node.Path
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> setObjectValue(tableColumn <span style="color:#0000FF;font-weight: bold">as</span> NSTableColumnMBS, item <span style="color:#0000FF;font-weight: bold">as</span> NSOutlineViewItemMBS, value <span style="color:#0000FF;font-weight: bold">as</span> Variant)
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">This</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">called</span> <span style="color:#7F0000;text-style:italic">when</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">user</span> <span style="color:#7F0000;text-style:italic">has</span> <span style="color:#7F0000;text-style:italic">edited</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">cell</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">leaving</span> <span style="color:#7F0000;text-style:italic">it</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> node <span style="color:#0000FF;font-weight: bold">as</span> DiskItem = nodeForItem (item)
+				<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = node.FolderItem
+				<span style="color:#0000FF;font-weight: bold">if</span> f &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					f.Name = value
+					<span style="color:#0000FF;font-weight: bold">if</span> f.LastErrorCode &lt;&gt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						beep <span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">rename</span> <span style="color:#7F0000;text-style:italic">failed</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> shouldEdit(tableColumn <span style="color:#0000FF;font-weight: bold">as</span> NSTableColumnMBS, item <span style="color:#0000FF;font-weight: bold">as</span> NSOutlineViewItemMBS) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">This</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">called</span> <span style="color:#7F0000;text-style:italic">when</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">user</span> <span style="color:#7F0000;text-style:italic">click</span> <span style="color:#7F0000;text-style:italic">into</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">editable</span> <span style="color:#7F0000;text-style:italic">cell</span> <span style="color:#7F0000;text-style:italic">-</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">still</span> <span style="color:#7F0000;text-style:italic">deny</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">here</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">individual</span> <span style="color:#7F0000;text-style:italic">cells</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> node <span style="color:#0000FF;font-weight: bold">as</span> DiskItem = nodeForItem (item)
+				<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = node.FolderItem
+				<span style="color:#0000FF;font-weight: bold">if</span> f &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">and</span> <span style="color:#0000FF;font-weight: bold">not</span> f.Locked <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> validateDrop(info <span style="color:#0000FF;font-weight: bold">as</span> NSDraggingInfoMBS, proposedItem <span style="color:#0000FF;font-weight: bold">as</span> NSOutlineViewItemMBS, proposedChildIndex <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">This</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">called</span> <span style="color:#7F0000;text-style:italic">when</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">gets</span> <span style="color:#7F0000;text-style:italic">dragged</span> <span style="color:#7F0000;text-style:italic">over</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">specific</span> <span style="color:#7F0000;text-style:italic">row.</span> <span style="color:#7F0000;text-style:italic">We</span> <span style="color:#7F0000;text-style:italic">return</span> <span style="color:#7F0000;text-style:italic">whether</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">would</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">accepted</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">drop.</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">We</span> <span style="color:#7F0000;text-style:italic">may</span> <span style="color:#7F0000;text-style:italic">also</span> <span style="color:#7F0000;text-style:italic">retarget</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">different</span> <span style="color:#7F0000;text-style:italic">row,</span> <span style="color:#7F0000;text-style:italic">e.g.</span> <span style="color:#7F0000;text-style:italic">we&#39;d</span> <span style="color:#7F0000;text-style:italic">target</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">enclosing</span> <span style="color:#7F0000;text-style:italic">folder,</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">calling</span> <span style="color:#7F0000;text-style:italic">.</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">If</span> <span style="color:#7F0000;text-style:italic">index</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">-1,</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">means</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">drop</span> <span style="color:#7F0000;text-style:italic">onto</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">item,</span> <span style="color:#7F0000;text-style:italic">otherwise</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">means</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">drop</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">insert</span> <span style="color:#7F0000;text-style:italic">at</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">child</span> <span style="color:#7F0000;text-style:italic">index</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">given</span> <span style="color:#7F0000;text-style:italic">parent</span> <span style="color:#7F0000;text-style:italic">item.</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Determine</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">dragged</span> <span style="color:#7F0000;text-style:italic">items</span> <span style="color:#7F0000;text-style:italic">(files,</span> <span style="color:#7F0000;text-style:italic">folders)</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> mDraggedFiles.Ubound &lt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">or</span> info.draggingSequenceNumber &lt;&gt; mLastDragSequence <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">It&#39;s</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">drag</span> <span style="color:#7F0000;text-style:italic">operation</span> <span style="color:#7F0000;text-style:italic">-</span> <span style="color:#7F0000;text-style:italic">let&#39;s</span> <span style="color:#7F0000;text-style:italic">cache</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">dragged</span> <span style="color:#7F0000;text-style:italic">files</span> <span style="color:#7F0000;text-style:italic">(for</span> <span style="color:#7F0000;text-style:italic">performance</span> <span style="color:#7F0000;text-style:italic">reasons)</span>
+					mLastDragSequence = info.draggingSequenceNumber
+					mDraggedFiles = fetchFilesFromPboard (info.draggingPasteboard)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">We</span> <span style="color:#7F0000;text-style:italic">retarget</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">enclosing</span> <span style="color:#7F0000;text-style:italic">folder</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> targetItem <span style="color:#0000FF;font-weight: bold">as</span> DiskItem = determineDropTarget (proposedItem, proposedChildIndex)
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> targetFolder <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = targetItem.FolderItem
+				<span style="color:#0000FF;font-weight: bold">if</span> targetFolder = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Can&#39;t</span> <span style="color:#7F0000;text-style:italic">drag</span> <span style="color:#7F0000;text-style:italic">into</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">root,</span> <span style="color:#7F0000;text-style:italic">which</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">list</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">volumes</span>
+					<span style="color:#0000FF;font-weight: bold">me</span>.View.setDropItem <span style="color:#0000FF;font-weight: bold">nil</span>, <span style="color:#0000FF;font-weight: bold">me</span>.View.NSOutlineViewDropOnItemIndex
+					<span style="color:#0000FF;font-weight: bold">return</span> NSDraggingInfoMBS.NSDragOperationNone
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">We</span> <span style="color:#7F0000;text-style:italic">must</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">allow</span> <span style="color:#7F0000;text-style:italic">dragging</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">folder</span> <span style="color:#7F0000;text-style:italic">into</span> <span style="color:#7F0000;text-style:italic">one</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">its</span> <span style="color:#7F0000;text-style:italic">own</span> <span style="color:#7F0000;text-style:italic">sub</span> <span style="color:#7F0000;text-style:italic">folders,</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">such</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">move</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">permited</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">file</span> <span style="color:#7F0000;text-style:italic">system</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> targetPath <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span> = targetFolder.UnixpathMBS
+				<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem <span style="color:#0000FF;font-weight: bold">in</span> mDraggedFiles
+					<span style="color:#0000FF;font-weight: bold">if</span> f.Directory <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#0000FF;font-weight: bold">dim</span> sourcePath <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span> = f.UnixpathMBS
+						<span style="color:#0000FF;font-weight: bold">if</span> StrComp (sourcePath, targetPath.Left(sourcePath.Len), <span style="color:#326598">0</span>) = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+							<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">dragged</span> <span style="color:#7F0000;text-style:italic">folder</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">parent</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">target</span> <span style="color:#7F0000;text-style:italic">folder</span>
+							<span style="color:#0000FF;font-weight: bold">me</span>.View.setDropItem <span style="color:#0000FF;font-weight: bold">nil</span>, <span style="color:#0000FF;font-weight: bold">me</span>.View.NSOutlineViewDropOnItemIndex
+							<span style="color:#0000FF;font-weight: bold">return</span> NSDraggingInfoMBS.NSDragOperationNone <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">disallow</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">drag</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">current</span> <span style="color:#7F0000;text-style:italic">target</span>
+						<span style="color:#0000FF;font-weight: bold">end</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">next</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">designated</span> <span style="color:#7F0000;text-style:italic">drop</span> <span style="color:#7F0000;text-style:italic">folder</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.View.setDropItem targetItem, <span style="color:#0000FF;font-weight: bold">me</span>.View.NSOutlineViewDropOnItemIndex
+				
+				<span style="color:#0000FF;font-weight: bold">return</span> NSDraggingInfoMBS.NSDragOperationMove <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">We</span> <span style="color:#7F0000;text-style:italic">could</span> <span style="color:#7F0000;text-style:italic">also</span> <span style="color:#7F0000;text-style:italic">support</span> <span style="color:#7F0000;text-style:italic">Copy,</span> <span style="color:#7F0000;text-style:italic">Link</span> <span style="color:#7F0000;text-style:italic">(generating</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">Alias)</span> <span style="color:#7F0000;text-style:italic">etc.,</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">returning</span> <span style="color:#7F0000;text-style:italic">those</span> <span style="color:#7F0000;text-style:italic">options</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">well,</span> <span style="color:#7F0000;text-style:italic">but</span> <span style="color:#7F0000;text-style:italic">would</span> <span style="color:#7F0000;text-style:italic">have</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">handle</span> <span style="color:#7F0000;text-style:italic">them</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">acceptDrop</span> <span style="color:#7F0000;text-style:italic">then.</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> writeItems(items() <span style="color:#0000FF;font-weight: bold">as</span> NSOutlineViewItemMBS, pasteboard <span style="color:#0000FF;font-weight: bold">as</span> NSPasteboardMBS) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">This</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">called</span> <span style="color:#7F0000;text-style:italic">when</span> <span style="color:#7F0000;text-style:italic">rows</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">dragged.</span>
+				
+				<span style="color:#0000FF;font-weight: bold">call</span> pasteboard.clearContents
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> pbItems() <span style="color:#0000FF;font-weight: bold">as</span> NSPasteboardItemMBS
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Let&#39;s</span> <span style="color:#7F0000;text-style:italic">drag</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">selected</span> <span style="color:#7F0000;text-style:italic">file(s)</span>
+				<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> item <span style="color:#0000FF;font-weight: bold">as</span> NSOutlineViewItemMBS <span style="color:#0000FF;font-weight: bold">in</span> items
+					<span style="color:#0000FF;font-weight: bold">dim</span> pbItem <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> NSPasteboardItemMBS
+					<span style="color:#0000FF;font-weight: bold">dim</span> url <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span> = nodeForItem(item).FolderItem.URLPath
+					<span style="color:#0000FF;font-weight: bold">dim</span> name <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span> = nodeForItem(item).FolderItem.Name
+					pbItem.stringForType(<span style="color:#6500FE">&quot;public.file-url&quot;</span>) = url.ConvertEncoding(Encodings.UTF8)
+					pbItem.stringForType(NSPasteboardMBS.NSPasteboardTypeString) = name.ConvertEncoding(Encodings.UTF8)
+					pbItems.Append pbItem
+				<span style="color:#0000FF;font-weight: bold">next</span>
+				
+				<span style="color:#0000FF;font-weight: bold">call</span> pasteboard.SetPasteboardItems pbItems
+				
+				<span style="color:#0000FF;font-weight: bold">me</span>.View.setDraggingSourceOperationMask (NSDraggingInfoMBS.NSDragOperationEvery, <span style="color:#0000FF;font-weight: bold">false</span>)
+				
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control showHiddenChk <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance showHiddenChk <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				mRootItem.ShowHidden = <span style="color:#0000FF;font-weight: bold">me</span>.Value
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Function</span> determineDropTarget(item <span style="color:#0000FF;font-weight: bold">as</span> NSOutlineViewItemMBS, index <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> DiskItem
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">We</span> <span style="color:#7F0000;text-style:italic">retarget</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">drop</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">their</span> <span style="color:#7F0000;text-style:italic">enclosing</span> <span style="color:#7F0000;text-style:italic">folder</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> targetItem <span style="color:#0000FF;font-weight: bold">as</span> DiskItem = nodeForItem (item)
+			<span style="color:#0000FF;font-weight: bold">if</span> index &gt;= <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">It&#39;s</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">insert</span> <span style="color:#7F0000;text-style:italic">-</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">already</span> <span style="color:#7F0000;text-style:italic">have</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">parent</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">&#39;node&#39;</span>
+			<span style="color:#0000FF;font-weight: bold">elseif</span> <span style="color:#0000FF;font-weight: bold">not</span> targetItem.IsFolder <span style="color:#0000FF;font-weight: bold">then</span>
+				targetItem = targetItem.Parent
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">return</span> targetItem
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Function</span> fetchFilesFromPboard(pb <span style="color:#0000FF;font-weight: bold">as</span> NSPasteboardMBS) <span style="color:#0000FF;font-weight: bold">As</span> FolderItem()
+			<span style="color:#0000FF;font-weight: bold">dim</span> res() <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> items() <span style="color:#0000FF;font-weight: bold">as</span> NSPasteboardItemMBS = pb.pasteboardItems
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> item <span style="color:#0000FF;font-weight: bold">as</span> NSPasteboardItemMBS <span style="color:#0000FF;font-weight: bold">in</span> items
+				<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+				<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span> = item.stringForType(NSPasteboardMBS.NSFilenamesPboardType).DefineEncoding(Encodings.UTF8)
+				<span style="color:#0000FF;font-weight: bold">if</span> s &lt;&gt; <span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					f = PathToFolderItemMBS (s)
+				<span style="color:#0000FF;font-weight: bold">end</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> f = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					s = item.stringForType(<span style="color:#6500FE">&quot;public.file-url&quot;</span>).DefineEncoding(Encodings.UTF8)
+					f = GetTrueFolderItem (s, FolderItem.PathTypeURL)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> f &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					res.Append f
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			<span style="color:#0000FF;font-weight: bold">return</span> res
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Function</span> moveFiles(sourceFiles() <span style="color:#0000FF;font-weight: bold">as</span> FolderItem, destFolder <span style="color:#0000FF;font-weight: bold">as</span> FolderItem) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">We&#39;re</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">Xojo&#39;s</span> <span style="color:#7F0000;text-style:italic">MoveFileTo</span> <span style="color:#7F0000;text-style:italic">because</span> <span style="color:#7F0000;text-style:italic">(a)</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">would</span> <span style="color:#7F0000;text-style:italic">also</span> <span style="color:#7F0000;text-style:italic">move</span> <span style="color:#7F0000;text-style:italic">files</span> <span style="color:#7F0000;text-style:italic">across</span> <span style="color:#7F0000;text-style:italic">volumes,</span> <span style="color:#7F0000;text-style:italic">which</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">unexpected,</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">may</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">copy</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">metadata,</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">provides</span> <span style="color:#7F0000;text-style:italic">no</span> <span style="color:#7F0000;text-style:italic">Undo.</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Instead,</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">ask</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Finder</span> <span style="color:#7F0000;text-style:italic">via</span> <span style="color:#7F0000;text-style:italic">AppleScript,</span> <span style="color:#7F0000;text-style:italic">which</span> <span style="color:#7F0000;text-style:italic">takes</span> <span style="color:#7F0000;text-style:italic">care</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">this,</span> <span style="color:#7F0000;text-style:italic">including</span> <span style="color:#7F0000;text-style:italic">error</span> <span style="color:#7F0000;text-style:italic">reporting.</span>
+			
+			<span style="color:#0000FF">#if</span> <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Using</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Finder</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> script <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> NSAppleScriptMBS (moveScriptCode)
+				<span style="color:#0000FF;font-weight: bold">dim</span> error <span style="color:#0000FF;font-weight: bold">as</span> Dictionary
+				<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> script.Compile (error) <span style="color:#0000FF;font-weight: bold">then</span>
+					break
+					<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#0000FF;font-weight: bold">false</span>
+				<span style="color:#0000FF;font-weight: bold">end</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> srcList <span style="color:#0000FF;font-weight: bold">as</span> NSAppleEventDescriptorMBS = NSAppleEventDescriptorMBS.listDescriptor()
+				<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem <span style="color:#0000FF;font-weight: bold">in</span> sourceFiles
+					srcList.insertDescriptor NSAppleEventDescriptorMBS.descriptorWithFileURL(f), <span style="color:#326598">0</span>
+				<span style="color:#0000FF;font-weight: bold">next</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> args() <span style="color:#0000FF;font-weight: bold">As</span> NSAppleEventDescriptorMBS
+				args.Append srcList
+				args.Append NSAppleEventDescriptorMBS.descriptorWithFileURL(destFolder)
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> p <span style="color:#0000FF;font-weight: bold">as</span> NSAppleEventDescriptorMBS = script.executeSubroutine (<span style="color:#6500FE">&quot;moveFiles&quot;</span>, args, error)
+				<span style="color:#0000FF">#pragma</span> unused p
+				<span style="color:#0000FF;font-weight: bold">if</span> error &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					break <span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">check</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">&quot;error&quot;</span> <span style="color:#7F0000;text-style:italic">dictionary</span>
+					beep
+				<span style="color:#0000FF;font-weight: bold">end</span>
+				
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+				
+			<span style="color:#0000FF">#else</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Lame</span> <span style="color:#7F0000;text-style:italic">version</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">moves</span> <span style="color:#7F0000;text-style:italic">files</span> <span style="color:#7F0000;text-style:italic">across</span> <span style="color:#7F0000;text-style:italic">volumes,</span> <span style="color:#7F0000;text-style:italic">even,</span> <span style="color:#7F0000;text-style:italic">unless</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">check</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">first</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">CopyFileTo</span> <span style="color:#7F0000;text-style:italic">instead</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> hadError <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+				<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem <span style="color:#0000FF;font-weight: bold">in</span> draggedFiles
+					f.MoveFileTo targetFolder
+					<span style="color:#0000FF;font-weight: bold">if</span> f.LastErrorCode &lt;&gt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						hadError = <span style="color:#0000FF;font-weight: bold">true</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">next</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> hadError <span style="color:#0000FF;font-weight: bold">then</span>
+					beep
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+				
+			<span style="color:#0000FF">#endif</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> moveFilesInTimer(t <span style="color:#0000FF;font-weight: bold">as</span> Timer)
+			t.Mode = Timer.ModeOff
+			mDropFinishTimer = <span style="color:#0000FF;font-weight: bold">nil</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> mDropSourceFiles.Ubound &gt;= <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">and</span> mDropDestFolder &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">call</span> moveFiles (mDropSourceFiles, mDropDestFolder)
+				<span style="color:#0000FF;font-weight: bold">dim</span> destPath <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span> = mDropDestFolder.UnixpathMBS
+				<span style="color:#0000FF;font-weight: bold">dim</span> item <span style="color:#0000FF;font-weight: bold">as</span> DiskItem = mRootItem.FindByPath (destPath)
+				<span style="color:#0000FF;font-weight: bold">if</span> item &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					item.UpdateChildrenFromDisk
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">redim</span> mDropSourceFiles(-<span style="color:#326598">1</span>)
+			mDropDestFolder = <span style="color:#0000FF;font-weight: bold">nil</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Function</span> nodeForItem(item <span style="color:#0000FF;font-weight: bold">as</span> NSOutlineViewItemMBS) <span style="color:#0000FF;font-weight: bold">As</span> DiskItem
+			<span style="color:#0000FF;font-weight: bold">dim</span> node <span style="color:#0000FF;font-weight: bold">as</span> DiskItem
+			<span style="color:#0000FF;font-weight: bold">if</span> item = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				node = mRootItem
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				node = DiskItem(item)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">return</span> node
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> openSelectedItems(menuItem <span style="color:#0000FF;font-weight: bold">as</span> MyMenuItem)
+			<span style="color:#0000FF;font-weight: bold">dim</span> selected <span style="color:#0000FF;font-weight: bold">as</span> NSIndexSetMBS = selectedItems (menuItem, folderBrowser)
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> row <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span> <span style="color:#0000FF;font-weight: bold">in</span> selected.Values
+				<span style="color:#0000FF;font-weight: bold">dim</span> item <span style="color:#0000FF;font-weight: bold">as</span> NSOutlineViewItemMBS = folderBrowser.View.itemAtRow (row)
+				<span style="color:#0000FF;font-weight: bold">if</span> item = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					break <span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">huh?</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> node <span style="color:#0000FF;font-weight: bold">as</span> DiskItem = nodeForItem (item)
+					<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = node.FolderItem
+					<span style="color:#0000FF;font-weight: bold">if</span> f &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						f.Launch (<span style="color:#0000FF;font-weight: bold">false</span>)
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> refreshSelectedItems(menuItem <span style="color:#0000FF;font-weight: bold">as</span> MyMenuItem)
+			<span style="color:#0000FF;font-weight: bold">dim</span> selected <span style="color:#0000FF;font-weight: bold">as</span> NSIndexSetMBS = selectedItems (menuItem, folderBrowser)
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> row <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span> <span style="color:#0000FF;font-weight: bold">in</span> selected.Values
+				<span style="color:#0000FF;font-weight: bold">dim</span> item <span style="color:#0000FF;font-weight: bold">as</span> NSOutlineViewItemMBS = folderBrowser.View.itemAtRow (row)
+				<span style="color:#0000FF;font-weight: bold">if</span> item = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					break <span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">huh?</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> node <span style="color:#0000FF;font-weight: bold">as</span> DiskItem = nodeForItem (item)
+					node.UpdateChildrenFromDisk
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> renameClickedItem(menuItem <span style="color:#0000FF;font-weight: bold">as</span> MyMenuItem)
+			<span style="color:#0000FF;font-weight: bold">dim</span> row <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = folderBrowser.View.clickedRow
+			folderBrowser.View.edit (<span style="color:#326598">0</span>, row, <span style="color:#0000FF;font-weight: bold">true</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Function</span> selectedItems(menuItem <span style="color:#0000FF;font-weight: bold">as</span> NSMenuItemMBS, lb <span style="color:#0000FF;font-weight: bold">as</span> NSOutlineControlMBS) <span style="color:#0000FF;font-weight: bold">As</span> NSIndexSetMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> selected <span style="color:#0000FF;font-weight: bold">as</span> NSIndexSetMBS = lb.View.selectedRowIndexes
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">We</span> <span style="color:#7F0000;text-style:italic">also</span> <span style="color:#7F0000;text-style:italic">need</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">check</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">clicked</span> <span style="color:#7F0000;text-style:italic">row</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">it&#39;s</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">contextual</span> <span style="color:#7F0000;text-style:italic">menu</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> menuItem &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> row <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = lb.View.clickedRow
+				<span style="color:#0000FF;font-weight: bold">if</span> selected.containsIndex (row) <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">right-click</span> <span style="color:#7F0000;text-style:italic">happened</span> <span style="color:#7F0000;text-style:italic">inside</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">selection</span> <span style="color:#7F0000;text-style:italic">-&gt;</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">entire</span> <span style="color:#7F0000;text-style:italic">selection</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">right-click</span> <span style="color:#7F0000;text-style:italic">happened</span> <span style="color:#7F0000;text-style:italic">outside</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">selection</span> <span style="color:#7F0000;text-style:italic">-&gt;</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">only</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">clicked</span> <span style="color:#7F0000;text-style:italic">row</span>
+					selected = NSIndexSetMBS.indexSetWithIndex (row)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">return</span> selected
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Note">		Note <span style="color:#6500FE">&quot;About&quot;</span>
+<div class="RB_Comment">			Written 8 Mar 2017 by Thomas Tempelmann, tempelmann@gmail.com
+			Consider this sample code - you made use it as you like.</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> mDraggedFiles() <span style="color:#0000FF;font-weight: bold">As</span> FolderItem
+<div class="RB_Comment">			We cache the dragged files here during a drop operation</div></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> mDropDestFolder <span style="color:#0000FF;font-weight: bold">As</span> FolderItem</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> mDropFinishTimer <span style="color:#0000FF;font-weight: bold">As</span> Timer</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> mDropSourceFiles() <span style="color:#0000FF;font-weight: bold">As</span> FolderItem</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> mLastDragSequence <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> mMenu <span style="color:#0000FF;font-weight: bold">As</span> NSMenuMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> mMenuItems() <span style="color:#0000FF;font-weight: bold">As</span> NSMenuItemMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> mRootItem <span style="color:#0000FF;font-weight: bold">As</span> DiskItem</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	FileTypesFolder</div>
+<div class="RB_Code">		Filetype special/disk</div>
+<div class="RB_Code">		Filetype special/folder</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> FileTypesFolder</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> HierarchicalMacListBox <span style="color:#0000FF;font-weight: bold">Inherits</span> NSOutlineControlMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> ConstructContextualMenu(base <span style="color:#0000FF;font-weight: bold">as</span> MenuItem, x <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, y <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">let&#39;s</span> <span style="color:#7F0000;text-style:italic">ignore</span> <span style="color:#7F0000;text-style:italic">these</span> <span style="color:#7F0000;text-style:italic">here</span> <span style="color:#7F0000;text-style:italic">-</span> <span style="color:#7F0000;text-style:italic">we&#39;ll</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">tableView&#39;s</span> <span style="color:#7F0000;text-style:italic">menu</span> <span style="color:#7F0000;text-style:italic">property</span> <span style="color:#7F0000;text-style:italic">instead</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> ContextualMenuAction(hitItem <span style="color:#0000FF;font-weight: bold">as</span> MenuItem) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">let&#39;s</span> <span style="color:#7F0000;text-style:italic">ignore</span> <span style="color:#7F0000;text-style:italic">these</span> <span style="color:#7F0000;text-style:italic">here</span> <span style="color:#7F0000;text-style:italic">-</span> <span style="color:#7F0000;text-style:italic">we&#39;ll</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">tableView&#39;s</span> <span style="color:#7F0000;text-style:italic">menu</span> <span style="color:#7F0000;text-style:italic">property</span> <span style="color:#7F0000;text-style:italic">instead</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> DragEnter(obj <span style="color:#0000FF;font-weight: bold">As</span> DragItem, action <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#7F0000;text-style:italic">&#39;</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> DragExit(obj <span style="color:#0000FF;font-weight: bold">As</span> DragItem, action <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+			<span style="color:#7F0000;text-style:italic">&#39;</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> DragOver(x <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, y <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, obj <span style="color:#0000FF;font-weight: bold">As</span> DragItem, action <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#7F0000;text-style:italic">&#39;</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> DropObject(obj <span style="color:#0000FF;font-weight: bold">As</span> DragItem, action <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+			<span style="color:#7F0000;text-style:italic">&#39;</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> AddColumn(col <span style="color:#0000FF;font-weight: bold">as</span> NSTableColumnMBS)
+			mRetainedCols.Append col
+			<span style="color:#0000FF;font-weight: bold">me</span>.View.addTableColumn col
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Reload()
+			<span style="color:#0000FF;font-weight: bold">me</span>.View.reloadData
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> mRetainedCols() <span style="color:#0000FF;font-weight: bold">As</span> NSTableColumnMBS</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> DiskItem <span style="color:#0000FF;font-weight: bold">Inherits</span> NSOutlineViewItemMBS</div>
+<div class="RB_Code">		ComputedProperty <span style="color:#0000FF;font-weight: bold">Shared</span> ShowHidden <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">			<span style="color:#0000FF;font-weight: bold">Sub</span> <span style="color:#0000FF;font-weight: bold">Set</span>()
+				gShowHidden = value
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Set</span></div>
+<div class="RB_Code">			<span style="color:#0000FF;font-weight: bold">Sub</span> <span style="color:#0000FF;font-weight: bold">Get</span>()
+				<span style="color:#0000FF;font-weight: bold">return</span> gShowHidden
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Get</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> ComputedProperty</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> AddChild(f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem)
+			children.Append <span style="color:#0000FF;font-weight: bold">new</span> DiskItem (mTableView, f, <span style="color:#0000FF;font-weight: bold">me</span>)
+			mChildrenByPath = <span style="color:#0000FF;font-weight: bold">nil</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> ChildAtIndex(index <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> DiskItem
+			fetchChildren()
+			<span style="color:#0000FF;font-weight: bold">return</span> children (index)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> ChildCount() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+			fetchChildren()
+			<span style="color:#0000FF;font-weight: bold">return</span> children.Ubound + <span style="color:#326598">1</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> ClearChildren()
+			<span style="color:#0000FF;font-weight: bold">redim</span> children(-<span style="color:#326598">1</span>)
+			mLoaded = <span style="color:#0000FF;font-weight: bold">false</span>
+			mMonitor = <span style="color:#0000FF;font-weight: bold">nil</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> Constructor()
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(lb <span style="color:#0000FF;font-weight: bold">as</span> NSOutlineViewMBS)
+			<span style="color:#0000FF;font-weight: bold">me</span>.Constructor (lb, <span style="color:#0000FF;font-weight: bold">nil</span>, <span style="color:#0000FF;font-weight: bold">nil</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(lb <span style="color:#0000FF;font-weight: bold">as</span> NSOutlineViewMBS, f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem, parent <span style="color:#0000FF;font-weight: bold">as</span> DiskItem)
+			<span style="color:#0000FF;font-weight: bold">if</span> parent &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> parent.mSelfRef = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">We</span> <span style="color:#7F0000;text-style:italic">cache</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">parent&#39;s</span> <span style="color:#7F0000;text-style:italic">WeakRef</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">avoid</span> <span style="color:#7F0000;text-style:italic">creating</span> <span style="color:#7F0000;text-style:italic">many</span> <span style="color:#7F0000;text-style:italic">identical</span> <span style="color:#7F0000;text-style:italic">WeakRef</span> <span style="color:#7F0000;text-style:italic">instances</span>
+					parent.mSelfRef = <span style="color:#0000FF;font-weight: bold">new</span> WeakRef (parent)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				mParent = parent.mSelfRef
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			mTableView = lb
+			<span style="color:#0000FF;font-weight: bold">me</span>.f = f
+			<span style="color:#0000FF;font-weight: bold">if</span> f &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				mPath = f.UnixpathMBS+<span style="color:#6500FE">&quot;/&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">super</span>.Constructor
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> FindByPath(path <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span>) <span style="color:#0000FF;font-weight: bold">As</span> DiskItem
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Recurses</span> <span style="color:#7F0000;text-style:italic">into</span> <span style="color:#7F0000;text-style:italic">its</span> <span style="color:#7F0000;text-style:italic">children</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> path = <span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#0000FF;font-weight: bold">nil</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> path.Right(<span style="color:#326598">1</span>) &lt;&gt; <span style="color:#6500FE">&quot;/&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				path = path + <span style="color:#6500FE">&quot;/&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> node <span style="color:#0000FF;font-weight: bold">as</span> DiskItem = findChild (path)
+			<span style="color:#0000FF;font-weight: bold">if</span> node &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">return</span> node
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Try</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">parents</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> dirs() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span> = path.Split(<span style="color:#6500FE">&quot;/&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">do</span>
+				<span style="color:#0000FF;font-weight: bold">call</span> dirs.Pop
+				<span style="color:#0000FF;font-weight: bold">if</span> dirs.Ubound &lt;= <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">exit</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				dirs(dirs.Ubound) = <span style="color:#6500FE">&quot;&quot;</span>
+				node = findChild (Join (dirs, <span style="color:#6500FE">&quot;/&quot;</span>))
+				<span style="color:#0000FF;font-weight: bold">if</span> node &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					node.fetchChildren()
+					<span style="color:#0000FF;font-weight: bold">return</span> node.FindByPath (path)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">loop</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> FolderItem() <span style="color:#0000FF;font-weight: bold">As</span> FolderItem
+			<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#0000FF;font-weight: bold">me</span>.f
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> IsFolder() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#0000FF;font-weight: bold">return</span> f &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">and</span> f.Directory
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> Parent() <span style="color:#0000FF;font-weight: bold">As</span> DiskItem
+			<span style="color:#0000FF;font-weight: bold">if</span> mParent &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">return</span> DiskItem(mParent.Value)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> Path() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			<span style="color:#0000FF;font-weight: bold">return</span> mPath
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> UpdateChildrenFromDisk()
+			mUpdateChildren = <span style="color:#0000FF;font-weight: bold">true</span>
+			mTableView.reloadItem (<span style="color:#0000FF;font-weight: bold">me</span>, <span style="color:#0000FF;font-weight: bold">true</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> UpdateFromDisk()
+			<span style="color:#0000FF;font-weight: bold">me</span>.f = PathToFolderItemMBS (mPath)
+			mTableView.reloadItem (<span style="color:#0000FF;font-weight: bold">me</span>, <span style="color:#0000FF;font-weight: bold">false</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> fetchChildren()
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> mLoaded <span style="color:#0000FF;font-weight: bold">or</span> mUpdateChildren <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">We&#39;re</span> <span style="color:#7F0000;text-style:italic">going</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">fetch</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">folder</span> <span style="color:#7F0000;text-style:italic">contents</span> <span style="color:#7F0000;text-style:italic">now.</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Let&#39;s</span> <span style="color:#7F0000;text-style:italic">also</span> <span style="color:#7F0000;text-style:italic">install</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">watcher</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">changes</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">folder</span> <span style="color:#7F0000;text-style:italic">so</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">automatically</span> <span style="color:#7F0000;text-style:italic">update</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">list</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">me</span>.f &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">and</span> mMonitor = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					mMonitor = <span style="color:#0000FF;font-weight: bold">new</span> FolderMonitor (mPath, <span style="color:#0000FF;font-weight: bold">AddressOf</span> folderHasChanged)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">me</span>.f &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> newChildren() <span style="color:#0000FF;font-weight: bold">as</span> DiskItem
+					<span style="color:#0000FF;font-weight: bold">me</span>.f = GetFolderItem(f.NativePath) <span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">recreates</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">FolderItem</span> <span style="color:#7F0000;text-style:italic">so</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">doesn&#39;t</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">cached</span> <span style="color:#7F0000;text-style:italic">information</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#0000FF;font-weight: bold">me</span>.f.Count
+					<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> n
+						<span style="color:#0000FF;font-weight: bold">dim</span> f2 <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = f.TrueItem (i)
+						<span style="color:#0000FF;font-weight: bold">dim</span> item <span style="color:#0000FF;font-weight: bold">as</span> DiskItem
+						<span style="color:#0000FF;font-weight: bold">if</span> gShowHidden <span style="color:#0000FF;font-weight: bold">or</span> f2 &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">and</span> f2.Visible <span style="color:#0000FF;font-weight: bold">then</span>
+							<span style="color:#0000FF;font-weight: bold">if</span> mUpdateChildren <span style="color:#0000FF;font-weight: bold">and</span> f2 &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+								<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">This</span> <span style="color:#7F0000;text-style:italic">means</span> <span style="color:#7F0000;text-style:italic">we&#39;ll</span> <span style="color:#7F0000;text-style:italic">have</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">keep</span> <span style="color:#7F0000;text-style:italic">existing</span> <span style="color:#7F0000;text-style:italic">children</span> <span style="color:#7F0000;text-style:italic">(this</span> <span style="color:#7F0000;text-style:italic">assures</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">any</span> <span style="color:#7F0000;text-style:italic">expanded</span> <span style="color:#7F0000;text-style:italic">folders</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">list</span> <span style="color:#7F0000;text-style:italic">remain</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">way)</span>
+								item = findChild (f2)
+							<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+							<span style="color:#0000FF;font-weight: bold">if</span> item = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+								item = <span style="color:#0000FF;font-weight: bold">new</span> DiskItem (mTableView, f2, <span style="color:#0000FF;font-weight: bold">me</span>)
+							<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+							newChildren.Append item
+							mChildrenByPath = <span style="color:#0000FF;font-weight: bold">nil</span>
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					<span style="color:#0000FF;font-weight: bold">next</span>
+					<span style="color:#0000FF;font-weight: bold">me</span>.children = newChildren
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				mUpdateChildren = <span style="color:#0000FF;font-weight: bold">false</span>
+				mLoaded = <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Function</span> findChild(f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem) <span style="color:#0000FF;font-weight: bold">As</span> DiskItem
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Looks</span> <span style="color:#7F0000;text-style:italic">only</span> <span style="color:#7F0000;text-style:italic">at</span> <span style="color:#7F0000;text-style:italic">immediate</span> <span style="color:#7F0000;text-style:italic">children</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> f &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> path <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span> = f.UnixpathMBS+<span style="color:#6500FE">&quot;/&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">return</span> findChild (path)
+			<span style="color:#0000FF;font-weight: bold">end</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Function</span> findChild(path <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span>) <span style="color:#0000FF;font-weight: bold">As</span> DiskItem
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Looks</span> <span style="color:#7F0000;text-style:italic">only</span> <span style="color:#7F0000;text-style:italic">at</span> <span style="color:#7F0000;text-style:italic">immediate</span> <span style="color:#7F0000;text-style:italic">children</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> mChildrenByPath = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">rebuild</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">cache</span>
+				mChildrenByPath = <span style="color:#0000FF;font-weight: bold">new</span> Dictionary
+				<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> child <span style="color:#0000FF;font-weight: bold">as</span> DiskItem <span style="color:#0000FF;font-weight: bold">in</span> <span style="color:#0000FF;font-weight: bold">me</span>.children
+					mChildrenByPath.Value (child.mPath) = child
+				<span style="color:#0000FF;font-weight: bold">next</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">return</span> mChildrenByPath.Lookup (path, <span style="color:#0000FF;font-weight: bold">nil</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> folderHasChanged(path <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span>)
+			<span style="color:#0000FF;font-weight: bold">me</span>.UpdateChildrenFromDisk
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Note">		Note <span style="color:#6500FE">&quot;About&quot;</span>
+<div class="RB_Comment">			Written 8 Mar 2017 by Thomas Tempelmann, tempelmann@gmail.com
+			Consider this sample code - you made use it as you like.</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> children() <span style="color:#0000FF;font-weight: bold">As</span> DiskItem</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> f <span style="color:#0000FF;font-weight: bold">As</span> FolderItem</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Shared</span> gShowHidden <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> mChildrenByPath <span style="color:#0000FF;font-weight: bold">As</span> Dictionary</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> mLoaded <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> mMonitor <span style="color:#0000FF;font-weight: bold">As</span> FolderMonitor</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> mParent <span style="color:#0000FF;font-weight: bold">As</span> WeakRef</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> mPath <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> mSelfRef <span style="color:#0000FF;font-weight: bold">As</span> WeakRef</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> mTableView <span style="color:#0000FF;font-weight: bold">As</span> NSOutlineViewMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> mUpdateChildren <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> FolderMonitor</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> Logging = <span style="color:#0000FF;font-weight: bold">true</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Delegate</span> <span style="color:#0000FF;font-weight: bold">Sub</span> FolderChangedProc(path <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span>)</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(path <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span>, callee <span style="color:#0000FF;font-weight: bold">as</span> FolderChangedProc)
+			<span style="color:#0000FF;font-weight: bold">if</span> path.Left(<span style="color:#326598">1</span>) &lt;&gt; <span style="color:#6500FE">&quot;/&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">raise</span> <span style="color:#0000FF;font-weight: bold">new</span> InvalidParentException <span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">Paths</span> <span style="color:#7F0000;text-style:italic">may</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">relative</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> path.Right(<span style="color:#326598">1</span>) &lt;&gt; <span style="color:#6500FE">&quot;/&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Paths</span> <span style="color:#7F0000;text-style:italic">need</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">end</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">&quot;/&quot;</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">matching</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">handleFSEvent()</span>
+				path = path + <span style="color:#6500FE">&quot;/&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Determine</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">path</span> <span style="color:#7F0000;text-style:italic">requires</span> <span style="color:#7F0000;text-style:italic">us</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">watch</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">FSEvents</span> <span style="color:#7F0000;text-style:italic">root</span> <span style="color:#7F0000;text-style:italic">path</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> needsNewRoot <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>, commonPath <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> gWatcher = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">or</span> gCurrentFSEventsPath = <span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				needsNewRoot = <span style="color:#0000FF;font-weight: bold">true</span>
+				commonPath = path
+				<span style="color:#0000FF;font-weight: bold">if</span> DefaultLatencyInSeconds &lt;= <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span> DefaultLatencyInSeconds = <span style="color:#326598">1</span> <span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">default:</span> <span style="color:#7F0000;text-style:italic">1</span> <span style="color:#7F0000;text-style:italic">second</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				commonPath = determineCommonPath (path, gCurrentFSEventsPath)
+				<span style="color:#0000FF;font-weight: bold">if</span> commonPath.Len &lt; gCurrentFSEventsPath.Len <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">This</span> <span style="color:#7F0000;text-style:italic">means</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">path</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">parent</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">currently</span> <span style="color:#7F0000;text-style:italic">used</span> <span style="color:#7F0000;text-style:italic">FSEvents</span> <span style="color:#7F0000;text-style:italic">path</span>
+					needsNewRoot = <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> needsNewRoot <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">By</span> <span style="color:#7F0000;text-style:italic">monitoring</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">root</span> <span style="color:#7F0000;text-style:italic">dir,</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">learn</span> <span style="color:#7F0000;text-style:italic">about</span> <span style="color:#7F0000;text-style:italic">changes</span> <span style="color:#7F0000;text-style:italic">even</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">other</span> <span style="color:#7F0000;text-style:italic">volumes,</span> <span style="color:#7F0000;text-style:italic">including</span> <span style="color:#7F0000;text-style:italic">network</span> <span style="color:#7F0000;text-style:italic">volumes</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> since <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">UInt64</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> gWatcher = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Let&#39;s</span> <span style="color:#7F0000;text-style:italic">start</span> <span style="color:#7F0000;text-style:italic">watching</span> <span style="color:#7F0000;text-style:italic">now</span>
+					since = FSEventsMBS.kFSEventStreamEventIdSinceNow
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Let&#39;s</span> <span style="color:#7F0000;text-style:italic">start</span> <span style="color:#7F0000;text-style:italic">watching</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">currently</span> <span style="color:#7F0000;text-style:italic">last</span> <span style="color:#7F0000;text-style:italic">reported</span> <span style="color:#7F0000;text-style:italic">event</span>
+					gWatcher.Stop
+					since = gWatcher.GetLatestEventId
+					gWatcher = <span style="color:#0000FF;font-weight: bold">nil</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				gCurrentFSEventsPath = commonPath
+				gWatcher = <span style="color:#0000FF;font-weight: bold">new</span> FSEventsMBS (gCurrentFSEventsPath, since, DefaultLatencyInSeconds, <span style="color:#326598">0</span>)
+				<span style="color:#0000FF;font-weight: bold">AddHandler</span> gWatcher.Callback, <span style="color:#0000FF;font-weight: bold">AddressOf</span> handleFSEvent
+				<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> gWatcher.Start <span style="color:#0000FF;font-weight: bold">then</span>
+					break <span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">huh?</span>
+					<span style="color:#0000FF;font-weight: bold">raise</span> <span style="color:#0000FF;font-weight: bold">new</span> UnsupportedOperationException
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> gClientPaths = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				gClientPaths = <span style="color:#0000FF;font-weight: bold">new</span> Dictionary
+			<span style="color:#0000FF;font-weight: bold">end</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> v <span style="color:#0000FF;font-weight: bold">as</span> Variant = gClientPaths.Lookup (path, <span style="color:#0000FF;font-weight: bold">nil</span>)
+			<span style="color:#0000FF;font-weight: bold">if</span> v <span style="color:#0000FF;font-weight: bold">is</span> <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				gClientPaths.Value (path) = callee
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">already</span> <span style="color:#7F0000;text-style:italic">watch</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">path</span> <span style="color:#7F0000;text-style:italic">-</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">value</span> <span style="color:#7F0000;text-style:italic">may</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">single</span> <span style="color:#7F0000;text-style:italic">entry</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">type</span> <span style="color:#7F0000;text-style:italic">FolderChangedProc</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">array</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">them</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> v <span style="color:#0000FF;font-weight: bold">isA</span> FolderChangedProc <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">turn</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Dictionary&#39;s</span> <span style="color:#7F0000;text-style:italic">value</span> <span style="color:#7F0000;text-style:italic">into</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">array</span>
+					<span style="color:#0000FF;font-weight: bold">if</span> v = callee <span style="color:#0000FF;font-weight: bold">then</span>
+						break <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">we&#39;ve</span> <span style="color:#7F0000;text-style:italic">already</span> <span style="color:#7F0000;text-style:italic">registered</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">one</span>
+						<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">do</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">want</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">mPath</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">mCallee</span> <span style="color:#7F0000;text-style:italic">so</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Destructor</span> <span style="color:#7F0000;text-style:italic">won&#39;t</span> <span style="color:#7F0000;text-style:italic">release</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">duplicate</span>
+					<span style="color:#0000FF;font-weight: bold">end</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> callees() <span style="color:#0000FF;font-weight: bold">as</span> FolderChangedProc
+					callees.Append v
+					callees.Append callee
+					gClientPaths.Value (path) = callees
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">it&#39;s</span> <span style="color:#7F0000;text-style:italic">already</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">array</span> <span style="color:#7F0000;text-style:italic">-</span> <span style="color:#7F0000;text-style:italic">add</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">it</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> callees() <span style="color:#0000FF;font-weight: bold">as</span> FolderChangedProc = v
+					<span style="color:#0000FF;font-weight: bold">if</span> callees.IndexOf (callee) &gt;= <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						break <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">we&#39;ve</span> <span style="color:#7F0000;text-style:italic">already</span> <span style="color:#7F0000;text-style:italic">registered</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">one</span>
+						<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">do</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">want</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">mPath</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">mCallee</span> <span style="color:#7F0000;text-style:italic">so</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Destructor</span> <span style="color:#7F0000;text-style:italic">won&#39;t</span> <span style="color:#7F0000;text-style:italic">release</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">duplicate</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					callees.Append callee
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			mPath = path
+			mCallee = callee
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> Destructor()
+			<span style="color:#0000FF;font-weight: bold">if</span> mCallee = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">was</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">duplicate</span>
+				<span style="color:#0000FF;font-weight: bold">return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> v <span style="color:#0000FF;font-weight: bold">as</span> Variant = gClientPaths.Lookup (mPath, <span style="color:#0000FF;font-weight: bold">nil</span>)
+			<span style="color:#0000FF;font-weight: bold">if</span> v <span style="color:#0000FF;font-weight: bold">is</span> <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				break <span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">huh?</span>
+			<span style="color:#0000FF;font-weight: bold">elseif</span> v <span style="color:#0000FF;font-weight: bold">isA</span> FolderChangedProc <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> v &lt;&gt; mCallee <span style="color:#0000FF;font-weight: bold">then</span>
+					break <span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">huh?</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					gClientPaths.Remove (mPath)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">it&#39;s</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">array</span> <span style="color:#7F0000;text-style:italic">-</span> <span style="color:#7F0000;text-style:italic">remove</span> <span style="color:#7F0000;text-style:italic">our</span> <span style="color:#7F0000;text-style:italic">callee</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">it</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> callees() <span style="color:#0000FF;font-weight: bold">as</span> FolderChangedProc = v
+				<span style="color:#0000FF;font-weight: bold">dim</span> idx <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = callees.IndexOf (mCallee)
+				<span style="color:#0000FF;font-weight: bold">if</span> idx &lt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					break <span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">huh?</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					callees.Remove idx
+					<span style="color:#0000FF;font-weight: bold">if</span> callees.Ubound &lt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						gClientPaths.Remove (mPath)
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> gClientPaths.Count = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">No</span> <span style="color:#7F0000;text-style:italic">more</span> <span style="color:#7F0000;text-style:italic">clients</span> <span style="color:#7F0000;text-style:italic">-&gt;</span> <span style="color:#7F0000;text-style:italic">dispose</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">FSEvents</span> <span style="color:#7F0000;text-style:italic">watcher</span>
+				gWatcher = <span style="color:#0000FF;font-weight: bold">nil</span>
+				gClientPaths = <span style="color:#0000FF;font-weight: bold">nil</span>
+				gCurrentFSEventsPath = <span style="color:#6500FE">&quot;&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Function</span> determineCommonPath(path1 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span>, path2 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> dirs1() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span> = path1.Split(<span style="color:#6500FE">&quot;/&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> dirs2() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span> = path2.Split(<span style="color:#6500FE">&quot;/&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = Min (dirs1.Ubound-<span style="color:#326598">1</span>, dirs2.Ubound-<span style="color:#326598">1</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+			<span style="color:#0000FF;font-weight: bold">for</span> i = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> n
+				<span style="color:#0000FF;font-weight: bold">if</span> dirs1(i) &lt;&gt; dirs2(i) <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">exit</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			<span style="color:#0000FF;font-weight: bold">redim</span> dirs1(i)
+			dirs1(i) = <span style="color:#6500FE">&quot;&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> res <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span> = Join (dirs1, <span style="color:#6500FE">&quot;/&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">return</span> res
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Shared</span> <span style="color:#0000FF;font-weight: bold">Sub</span> handleFSEvent(sender <span style="color:#0000FF;font-weight: bold">as</span> FSEventsMBS, index <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, count <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, path <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, flags <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, eventID <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">UInt64</span>)
+			<span style="color:#0000FF">#if</span> DebugBuild <span style="color:#0000FF;font-weight: bold">and</span> Logging
+				System.DebugLog <span style="color:#6500FE">&quot;handleFSEvent:</span> <span style="color:#6500FE">&quot;</span>+path
+			<span style="color:#0000FF">#endif</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> gClientPaths &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> v <span style="color:#0000FF;font-weight: bold">as</span> Variant = gClientPaths.Lookup (path, <span style="color:#0000FF;font-weight: bold">nil</span>)
+				<span style="color:#0000FF;font-weight: bold">if</span> v = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">we&#39;re</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">monitoring</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">path</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					<span style="color:#0000FF">#if</span> DebugBuild <span style="color:#0000FF;font-weight: bold">and</span> Logging
+						System.DebugLog <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">-&gt;</span> <span style="color:#6500FE">notifiying&quot;</span>
+					<span style="color:#0000FF">#endif</span>
+					<span style="color:#0000FF;font-weight: bold">if</span> v <span style="color:#0000FF;font-weight: bold">isA</span> FolderChangedProc <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#0000FF;font-weight: bold">dim</span> callee <span style="color:#0000FF;font-weight: bold">as</span> FolderChangedProc = v
+						callee.Invoke (path)
+					<span style="color:#0000FF;font-weight: bold">else</span>
+						<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">it&#39;s</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">array</span> <span style="color:#7F0000;text-style:italic">-</span> <span style="color:#7F0000;text-style:italic">call</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">callees</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">it</span>
+						<span style="color:#0000FF;font-weight: bold">dim</span> callees() <span style="color:#0000FF;font-weight: bold">as</span> FolderChangedProc = v
+						<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> callee <span style="color:#0000FF;font-weight: bold">as</span> FolderChangedProc <span style="color:#0000FF;font-weight: bold">in</span> callees
+							callee.Invoke (path)
+						<span style="color:#0000FF;font-weight: bold">next</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Note">		Note <span style="color:#6500FE">&quot;About&quot;</span>
+<div class="RB_Comment">			This class was written on 8 Mar 2017 by Thomas Tempelmann, tempelmann@gmail.com.
+			You may use this code freely without restrictions.
+			
+			It provides an easy way to monitor changes to particular folders. It uses the MBS plugin's
+			FSEventsMBS class. While the FSEventsMBS is meant to monitor not only just one folder
+			but also all its contained folders, this class makes it possible to instead just pick single
+			folders (by their paths, which you can obtain with FolderItem.UnixpathMBS) and get a
+			callback when one of them changes.
+			
+			This class takes care of all the management requires for this, such as having multiple
+			watchers interested in the same path, and disposing of the FSEventsMBS watcher once
+			there's no monitoring requested any more.
+			
+			To use it, write something like
+			
+			   dim monitor as new FolderMonitor (file.UnixpathMBS, AddressOf handleFolderChange)
+			
+			and then store 'monitor' in a property for as long as you want the given folder monitored.
+			
+			You also have to implement a method like this:
+			
+			  sub handleFolderChange (path as String)
+			
+			It will be called once the given folder has changed, with up to about a second delay, usually.
+			
+			See FolderMonitorTestWin for a demo.</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Shared</span> DefaultLatencyInSeconds <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Shared</span> gClientPaths <span style="color:#0000FF;font-weight: bold">As</span> Dictionary
+<div class="RB_Comment">			Key: path as String, Value: callee as FolderChangedProc or an array of them.</div></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Shared</span> gCurrentFSEventsPath <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Shared</span> gWatcher <span style="color:#0000FF;font-weight: bold">As</span> FSEventsMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> mCallee <span style="color:#0000FF;font-weight: bold">As</span> FolderChangedProc</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> mPath <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyMenuItem <span style="color:#0000FF;font-weight: bold">Inherits</span> NSMenuItemMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Delegate</span> <span style="color:#0000FF;font-weight: bold">Sub</span> ActionProc(menuItem <span style="color:#0000FF;font-weight: bold">as</span> MyMenuItem)</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+			mAction.Invoke (<span style="color:#0000FF;font-weight: bold">me</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(title <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span>, ttag <span style="color:#0000FF;font-weight: bold">as</span> Variant, actionHandler <span style="color:#0000FF;font-weight: bold">as</span> ActionProc)
+			<span style="color:#0000FF;font-weight: bold">me</span>.myTag = ttag
+			mAction = actionHandler
+			<span style="color:#0000FF;font-weight: bold">super</span>.Constructor (title)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> mAction <span style="color:#0000FF;font-weight: bold">As</span> ActionProc</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> myTag <span style="color:#0000FF;font-weight: bold">As</span> Variant</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-maccontrols-listboxandtableviewdemos-listboxtvdrop-in-flatonly-listboxtvdatabasewithdatasou.html">/MacControls/Listbox and TableView Demos/ListboxTV drop-in/Flat Only/ListBoxTV Database with DataSource</A></li>
+<li><A href="example-maccontrols-listboxandtableviewdemos-listboxtvdrop-in-flatonly-listboxtvsimpledemowithdatas.html">/MacControls/Listbox and TableView Demos/ListboxTV drop-in/Flat Only/ListBoxTV Simple Demo with DataSource</A></li>
+<li><A href="example-maccontrols-listboxandtableviewdemos-listboxtvdrop-in-flatonly-listboxtvtableview.html">/MacControls/Listbox and TableView Demos/ListboxTV drop-in/Flat Only/ListBoxTV TableView</A></li>
+<li><A href="example-maccontrols-listboxandtableviewdemos-listboxtvdrop-in-flatonly-listboxtvwithcontainercontro.html">/MacControls/Listbox and TableView Demos/ListboxTV drop-in/Flat Only/ListboxTV with ContainerControl Cells</A></li>
+<li><A href="example-maccontrols-listboxandtableviewdemos-listboxtvdrop-in-hierarchicalflat-listboxtvoutlineview.html">/MacControls/Listbox and TableView Demos/ListboxTV drop-in/Hierarchical & Flat/ListBoxTV OutlineView</A></li>
+<li><A href="example-maccontrols-listboxandtableviewdemos-nsoutlineview-outlinecontrol.html">/MacControls/Listbox and TableView Demos/NSOutlineView/OutlineControl</A></li>
+<li><A href="example-maccontrols-listboxrowcolors.html">/MacControls/Listbox Row Colors</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmaccontrolsplugin.html">MBS MacControls Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-maccontrols-listboxandtableviewdemos-nsoutlineview-diskbrowser">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

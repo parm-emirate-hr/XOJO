@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Mac64bit/Contacts/Contacts History</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Mac64bit/Contacts/Contacts History</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Mac64bit/Contacts/Contacts History</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS Mac64bit Plugin, MBS MacBase Plugin, MBS MacCloud Plugin, MBS Main Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Mac64bit/Contacts/Contacts History<BR>
+This example is the version from Mon, 9th Jan 2022.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Contacts</span> <span style="color:#6500FE">History.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#0000FF">#if</span> Target64Bit <span style="color:#0000FF;font-weight: bold">and</span> TargetMacOS <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> CNContactStoreMBS.available <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ok</span>
+					
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					MsgBox <span style="color:#6500FE">&quot;please</span> <span style="color:#6500FE">run</span> <span style="color:#6500FE">on</span> <span style="color:#6500FE">OS</span> <span style="color:#6500FE">X</span> <span style="color:#6500FE">10.11</span> <span style="color:#6500FE">or</span> <span style="color:#6500FE">newer.&quot;</span>
+					quit
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+			<span style="color:#0000FF">#else</span>
+				
+				MsgBox <span style="color:#6500FE">&quot;Please</span> <span style="color:#6500FE">run</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">Xojo</span> <span style="color:#6500FE">as</span> <span style="color:#6500FE">64-bit</span> <span style="color:#6500FE">app</span> <span style="color:#6500FE">on</span> <span style="color:#6500FE">Mac.&quot;</span>
+				quit
+				
+			<span style="color:#0000FF">#endif</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MainWindow <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">check</span> <span style="color:#7F0000;text-style:italic">authorization</span>
+			
+			m = <span style="color:#0000FF;font-weight: bold">new</span> MyContactStore
+			
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> x <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = m.authorizationStatusForEntityType(m.CNEntityTypeContacts)
+			
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">case</span> x
+			<span style="color:#0000FF;font-weight: bold">case</span> m.CNAuthorizationStatusAuthorized
+				system.DebugLog <span style="color:#6500FE">&quot;Authorization</span> <span style="color:#6500FE">status:</span> <span style="color:#6500FE">Authorized&quot;</span>
+				QueryHistory
+			<span style="color:#0000FF;font-weight: bold">case</span> m.CNAuthorizationStatusDenied
+				system.DebugLog <span style="color:#6500FE">&quot;Authorization</span> <span style="color:#6500FE">status:</span> <span style="color:#6500FE">Denied&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> m.CNAuthorizationStatusNotDetermined
+				system.DebugLog <span style="color:#6500FE">&quot;Authorization</span> <span style="color:#6500FE">status:</span> <span style="color:#6500FE">Not</span> <span style="color:#6500FE">Determined&quot;</span>
+				m.requestAccessForEntityType m.CNEntityTypeContacts
+			<span style="color:#0000FF;font-weight: bold">case</span> m.CNAuthorizationStatusRestricted
+				system.DebugLog <span style="color:#6500FE">&quot;Authorization</span> <span style="color:#6500FE">status:</span> <span style="color:#6500FE">Restricted&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				system.DebugLog <span style="color:#6500FE">&quot;Authorization</span> <span style="color:#6500FE">status:</span> <span style="color:#6500FE">&quot;</span>+str(x)
+				break
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> QueryHistory()
+			<span style="color:#0000FF;font-weight: bold">Dim</span> request <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> CNChangeHistoryFetchRequestMBS
+			
+			request.shouldUnifyResults = <span style="color:#0000FF;font-weight: bold">True</span>
+			request.includeGroupChanges = <span style="color:#0000FF;font-weight: bold">true</span>
+			request.startingToken = LastTimeToken <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">nil</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">all,</span> <span style="color:#7F0000;text-style:italic">old</span> <span style="color:#7F0000;text-style:italic">token</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">find</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">stuff</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ask</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">more</span> <span style="color:#7F0000;text-style:italic">keys,</span> <span style="color:#7F0000;text-style:italic">so</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">have</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">display</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> keys() <span style="color:#0000FF;font-weight: bold">as</span> CNKeyDescriptorMBS
+			
+			keys.Append CNContactMBS.CNContactOrganizationNameKey
+			keys.Append CNContactMBS.CNContactGivenNameKey
+			keys.Append CNContactMBS.CNContactFamilyNameKey
+			keys.Append CNContactMBS.CNContactTypeKey
+			request.setAdditionalContactKeyDescriptors keys
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> error <span style="color:#0000FF;font-weight: bold">as</span> NSErrorMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> result <span style="color:#0000FF;font-weight: bold">as</span> CNFetchResultMBS = m.enumeratorForChangeHistoryFetchRequest(request, error)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> error &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				MessageBox error.LocalizedDescription
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				
+				ShowHistory result
+				
+				LastTimeToken = result.currentHistoryToken
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> ShowHistory(result <span style="color:#0000FF;font-weight: bold">as</span> CNFetchResultMBS)
+			<span style="color:#0000FF;font-weight: bold">dim</span> list <span style="color:#0000FF;font-weight: bold">as</span> listbox = <span style="color:#0000FF;font-weight: bold">self</span>.List
+			<span style="color:#0000FF;font-weight: bold">dim</span> items() <span style="color:#0000FF;font-weight: bold">as</span> CNChangeHistoryEventMBS = result.ChangeHistoryEvents
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> item <span style="color:#0000FF;font-weight: bold">as</span> Variant <span style="color:#0000FF;font-weight: bold">in</span> items
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> item <span style="color:#0000FF;font-weight: bold">isa</span> CNChangeHistoryAddContactEventMBS <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> his <span style="color:#0000FF;font-weight: bold">as</span> CNChangeHistoryAddContactEventMBS = item
+					
+					list.AddRow <span style="color:#6500FE">&quot;Add</span> <span style="color:#6500FE">contact</span> <span style="color:#6500FE">&quot;</span>+his.contact.displayName
+					
+				<span style="color:#0000FF;font-weight: bold">elseif</span> item <span style="color:#0000FF;font-weight: bold">isa</span> CNChangeHistoryAddGroupEventMBS <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> his <span style="color:#0000FF;font-weight: bold">as</span> CNChangeHistoryAddGroupEventMBS = item
+					
+					list.AddRow <span style="color:#6500FE">&quot;Add</span> <span style="color:#6500FE">group</span> <span style="color:#6500FE">&quot;</span>+his.group.Name
+					
+				<span style="color:#0000FF;font-weight: bold">elseif</span> item <span style="color:#0000FF;font-weight: bold">isa</span> CNChangeHistoryAddSubgroupToGroupEventMBS <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> his <span style="color:#0000FF;font-weight: bold">as</span> CNChangeHistoryAddSubgroupToGroupEventMBS = item
+					
+					list.AddRow <span style="color:#6500FE">&quot;Add</span> <span style="color:#6500FE">sub</span> <span style="color:#6500FE">group</span> <span style="color:#6500FE">&quot;</span>+his.subgroup.Name+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">&quot;</span>+his.group.Name
+					
+				<span style="color:#0000FF;font-weight: bold">elseif</span> item <span style="color:#0000FF;font-weight: bold">isa</span> CNChangeHistoryAddMemberToGroupEventMBS <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> his <span style="color:#0000FF;font-weight: bold">as</span> CNChangeHistoryAddMemberToGroupEventMBS = item
+					
+					list.AddRow <span style="color:#6500FE">&quot;Add</span> <span style="color:#6500FE">member</span> <span style="color:#6500FE">&quot;</span>+his.member.displayName+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">&quot;</span>+his.group.Name
+					
+				<span style="color:#0000FF;font-weight: bold">elseif</span> item <span style="color:#0000FF;font-weight: bold">isa</span> CNChangeHistoryDeleteContactEventMBS <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> his <span style="color:#0000FF;font-weight: bold">as</span> CNChangeHistoryDeleteContactEventMBS = item
+					
+					list.AddRow <span style="color:#6500FE">&quot;Delete</span> <span style="color:#6500FE">contact</span> <span style="color:#6500FE">&quot;</span>+his.contactIdentifier
+					
+				<span style="color:#0000FF;font-weight: bold">elseif</span> item <span style="color:#0000FF;font-weight: bold">isa</span> CNChangeHistoryDeleteGroupEventMBS <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> his <span style="color:#0000FF;font-weight: bold">as</span> CNChangeHistoryDeleteGroupEventMBS = item
+					
+					list.AddRow <span style="color:#6500FE">&quot;Delete</span> <span style="color:#6500FE">group</span> <span style="color:#6500FE">&quot;</span>+his.groupIdentifier
+					
+				<span style="color:#0000FF;font-weight: bold">elseif</span> item <span style="color:#0000FF;font-weight: bold">isa</span> CNChangeHistoryDropEverythingEventMBS <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> his <span style="color:#0000FF;font-weight: bold">as</span> CNChangeHistoryDropEverythingEventMBS = item
+					
+					list.AddRow <span style="color:#6500FE">&quot;Drop</span> <span style="color:#6500FE">everything.&quot;</span>
+					
+				<span style="color:#0000FF;font-weight: bold">elseif</span> item <span style="color:#0000FF;font-weight: bold">isa</span> CNChangeHistoryRemoveMemberFromGroupEventMBS <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> his <span style="color:#0000FF;font-weight: bold">as</span> CNChangeHistoryRemoveMemberFromGroupEventMBS = item
+					
+					list.AddRow <span style="color:#6500FE">&quot;Remove</span> <span style="color:#6500FE">member</span> <span style="color:#6500FE">&quot;</span>+his.member.displayName+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">&quot;</span>+his.group.Name
+					
+				<span style="color:#0000FF;font-weight: bold">elseif</span> item <span style="color:#0000FF;font-weight: bold">isa</span> CNChangeHistoryRemoveSubgroupFromGroupEventMBS <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> his <span style="color:#0000FF;font-weight: bold">as</span> CNChangeHistoryRemoveSubgroupFromGroupEventMBS = item
+					
+					list.AddRow <span style="color:#6500FE">&quot;Remove</span> <span style="color:#6500FE">sub</span> <span style="color:#6500FE">group</span> <span style="color:#6500FE">&quot;</span>+his.subgroup.Name+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">&quot;</span>+his.group.Name
+					
+				<span style="color:#0000FF;font-weight: bold">elseif</span> item <span style="color:#0000FF;font-weight: bold">isa</span> CNChangeHistoryUpdateContactEventMBS <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> his <span style="color:#0000FF;font-weight: bold">as</span> CNChangeHistoryUpdateContactEventMBS = item
+					
+					list.AddRow <span style="color:#6500FE">&quot;Update</span> <span style="color:#6500FE">contact</span> <span style="color:#6500FE">&quot;</span>+his.contact.displayName
+					
+				<span style="color:#0000FF;font-weight: bold">elseif</span> item <span style="color:#0000FF;font-weight: bold">isa</span> CNChangeHistoryUpdateGroupEventMBS <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> his <span style="color:#0000FF;font-weight: bold">as</span> CNChangeHistoryUpdateGroupEventMBS = item
+					
+					list.AddRow <span style="color:#6500FE">&quot;Update</span> <span style="color:#6500FE">group</span> <span style="color:#6500FE">&quot;</span>+his.group.Name
+					
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					Break
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> LastTimeToken <span style="color:#0000FF;font-weight: bold">As</span> MemoryBlock</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> m <span style="color:#0000FF;font-weight: bold">As</span> MyContactStore</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MainMenuBar</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator2 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	ExternalFile info</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> ExternalFile</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyContactStore <span style="color:#0000FF;font-weight: bold">Inherits</span> CNContactStoreMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> DidChange()
+			System.DebugLog <span style="color:#6500FE">&quot;Contacts</span> <span style="color:#6500FE">Changed&quot;</span>
+			
+			
+			MainWindow.QueryHistory
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> requestAccessForEntityType(granted <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">boolean</span>, error <span style="color:#0000FF;font-weight: bold">as</span> NSErrorMBS, tag <span style="color:#0000FF;font-weight: bold">as</span> Variant)
+			<span style="color:#0000FF">#Pragma</span> unused tag
+			
+			system.DebugLog <span style="color:#6500FE">&quot;requestAccessForEntityType</span> <span style="color:#6500FE">completed&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> granted <span style="color:#0000FF;font-weight: bold">then</span>
+				system.DebugLog <span style="color:#6500FE">&quot;permissions</span> <span style="color:#6500FE">granted&quot;</span>
+				MainWindow.QueryHistory
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				system.DebugLog <span style="color:#6500FE">&quot;Permissions</span> <span style="color:#6500FE">denied&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			<span style="color:#0000FF;font-weight: bold">If</span> error &lt;&gt; <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				system.DebugLog error.LocalizedDescription
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Module</span> UtilModule</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> displayName(<span style="color:#0000FF;font-weight: bold">extends</span> c <span style="color:#0000FF;font-weight: bold">as</span> CNContactMBS) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> c.contactType = CNContactMBS.CNContactTypeOrganization <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">return</span> c.organizationName
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				<span style="color:#0000FF;font-weight: bold">return</span> c.givenName + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span> + c.familyName
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Module</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-mac64bit-contacts-contactsdisplayperson.html">/Mac64bit/Contacts/Contacts Display Person</A></li>
+<li><A href="example-mac64bit-contacts-contactstest.html">/Mac64bit/Contacts/Contacts Test</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmac64bitplugin.html">MBS Mac64bit Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-mac64bit-contacts-contactshistory">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

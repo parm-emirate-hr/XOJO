@@ -1,0 +1,428 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Main/Picture Benchmark</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Main/Picture Benchmark</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Main/Picture Benchmark</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS Main Plugin, MBS Images Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Main/Picture Benchmark<BR>
+This example is the version from Sun, 17th Mar 2012.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Picture</span> <span style="color:#6500FE">Benchmark.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Window1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Listbox1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Listbox1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> CellBackgroundPaint(g <span style="color:#0000FF;font-weight: bold">As</span> Graphics, row <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, column <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> row&lt;<span style="color:#0000FF;font-weight: bold">me</span>.ListCount <span style="color:#0000FF;font-weight: bold">and</span> row &lt;&gt; <span style="color:#0000FF;font-weight: bold">me</span>.ListIndex <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> v <span style="color:#0000FF;font-weight: bold">as</span> Variant = <span style="color:#0000FF;font-weight: bold">me</span>.CellTag(row, column)
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> VarType(v) = v.TypeColor <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#0000FF;font-weight: bold">dim</span> c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">color</span> = v
+						
+						g.ForeColor = c
+						g.FillRect <span style="color:#326598">0</span>,<span style="color:#326598">0</span>,g.Width, g.Height
+						<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+						
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+				<span style="color:#0000FF;font-weight: bold">me</span>.ColumnAlignment(<span style="color:#326598">1</span>) = <span style="color:#0000FF;font-weight: bold">me</span>.AlignRight
+				<span style="color:#0000FF;font-weight: bold">me</span>.ColumnAlignment(<span style="color:#326598">2</span>) = <span style="color:#0000FF;font-weight: bold">me</span>.AlignRight
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			CheckSmallJPEGCompression
+			CheckSmallJPEGDecompression
+			
+			CheckSmallPNGCompression
+			CheckSmallPNGDecompression
+			
+			CheckMiddleJPEGCompression
+			CheckMiddleJPEGDecompression
+			
+			CheckMiddlePNGCompression
+			CheckMiddlePNGDecompression
+			
+			CheckBigJPEGCompression
+			CheckBigJPEGDecompression
+			
+			CheckBigPNGCompression
+			CheckBigPNGDecompression
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> CheckBigJPEGCompression()
+			<span style="color:#0000FF">#pragma</span> BackgroundTasks <span style="color:#0000FF;font-weight: bold">false</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> pic <span style="color:#0000FF;font-weight: bold">as</span> Picture = logoMBS(<span style="color:#326598">2000</span>)
+			
+			listbox1.AddRow <span style="color:#6500FE">&quot;JPEG</span> <span style="color:#6500FE">compression</span> <span style="color:#6500FE">big&quot;</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">10</span>
+				data = pic.GetData(pic.FormatJPEG, pic.QualityHigh)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">2</span>, t/<span style="color:#006532">10.0</span>
+			
+			t = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">10</span>
+				data = PictureToJPEGStringMBS(pic, <span style="color:#326598">80</span>)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">1</span>, t/<span style="color:#006532">10.0</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> CheckBigJPEGDecompression()
+			<span style="color:#0000FF">#pragma</span> BackgroundTasks <span style="color:#0000FF;font-weight: bold">false</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> pic <span style="color:#0000FF;font-weight: bold">as</span> Picture
+			
+			listbox1.AddRow <span style="color:#6500FE">&quot;JPEG</span> <span style="color:#6500FE">decompression</span> <span style="color:#6500FE">big&quot;</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">10</span>
+				pic = Picture.FromData(data)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">2</span>, t/<span style="color:#006532">10.0</span>
+			
+			t = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">10</span>
+				pic = JPEGStringToPictureMBS(data)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">1</span>, t/<span style="color:#006532">10.0</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> CheckBigPNGCompression()
+			<span style="color:#0000FF">#pragma</span> BackgroundTasks <span style="color:#0000FF;font-weight: bold">false</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> pic <span style="color:#0000FF;font-weight: bold">as</span> Picture = logoMBS(<span style="color:#326598">2000</span>)
+			
+			listbox1.AddRow <span style="color:#6500FE">&quot;PNG</span> <span style="color:#6500FE">compression</span> <span style="color:#6500FE">big&quot;</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">10</span>
+				data = pic.GetData(pic.FormatPNG, pic.QualityHigh)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">2</span>, t/<span style="color:#006532">10.0</span>
+			
+			t = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">10</span>
+				data = PictureToPNGStringMBS(pic)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">1</span>, t/<span style="color:#006532">10.0</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> CheckBigPNGDecompression()
+			<span style="color:#0000FF">#pragma</span> BackgroundTasks <span style="color:#0000FF;font-weight: bold">false</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> pic <span style="color:#0000FF;font-weight: bold">as</span> Picture
+			
+			listbox1.AddRow <span style="color:#6500FE">&quot;PNG</span> <span style="color:#6500FE">decompression</span> <span style="color:#6500FE">big&quot;</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">10</span>
+				pic = Picture.FromData(data)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">2</span>, t/<span style="color:#006532">10.0</span>
+			
+			t = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">10</span>
+				pic = PNGStringToPictureMBS(data)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">1</span>, t/<span style="color:#006532">10.0</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> CheckMiddleJPEGCompression()
+			<span style="color:#0000FF">#pragma</span> BackgroundTasks <span style="color:#0000FF;font-weight: bold">false</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> pic <span style="color:#0000FF;font-weight: bold">as</span> Picture = logoMBS(<span style="color:#326598">500</span>)
+			
+			listbox1.AddRow <span style="color:#6500FE">&quot;JPEG</span> <span style="color:#6500FE">compression</span> <span style="color:#6500FE">middle&quot;</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">20</span>
+				data = pic.GetData(pic.FormatJPEG, pic.QualityHigh)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">2</span>, t/<span style="color:#006532">20.0</span>
+			
+			t = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">20</span>
+				data = PictureToJPEGStringMBS(pic, <span style="color:#326598">80</span>)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">1</span>, t/<span style="color:#006532">20.0</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> CheckMiddleJPEGDecompression()
+			<span style="color:#0000FF">#pragma</span> BackgroundTasks <span style="color:#0000FF;font-weight: bold">false</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> pic <span style="color:#0000FF;font-weight: bold">as</span> Picture
+			
+			listbox1.AddRow <span style="color:#6500FE">&quot;JPEG</span> <span style="color:#6500FE">decompression</span> <span style="color:#6500FE">middle&quot;</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">20</span>
+				pic = Picture.FromData(data)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">2</span>, t/<span style="color:#006532">20.0</span>
+			
+			t = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">20</span>
+				pic = JPEGStringToPictureMBS(data)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">1</span>, t/<span style="color:#006532">20.0</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> CheckMiddlePNGCompression()
+			<span style="color:#0000FF">#pragma</span> BackgroundTasks <span style="color:#0000FF;font-weight: bold">false</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> pic <span style="color:#0000FF;font-weight: bold">as</span> Picture = logoMBS(<span style="color:#326598">500</span>)
+			
+			listbox1.AddRow <span style="color:#6500FE">&quot;PNG</span> <span style="color:#6500FE">compression</span> <span style="color:#6500FE">middle&quot;</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">20</span>
+				data = pic.GetData(pic.FormatPNG, pic.QualityHigh)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">2</span>, t/<span style="color:#006532">20.0</span>
+			
+			t = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">20</span>
+				data = PictureToPNGStringMBS(pic)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">1</span>, t/<span style="color:#006532">20.0</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> CheckMiddlePNGDecompression()
+			<span style="color:#0000FF">#pragma</span> BackgroundTasks <span style="color:#0000FF;font-weight: bold">false</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> pic <span style="color:#0000FF;font-weight: bold">as</span> Picture
+			
+			listbox1.AddRow <span style="color:#6500FE">&quot;PNG</span> <span style="color:#6500FE">decompression</span> <span style="color:#6500FE">middle&quot;</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">20</span>
+				pic = Picture.FromData(data)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">2</span>, t/<span style="color:#006532">20.0</span>
+			
+			t = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">20</span>
+				pic = PNGStringToPictureMBS(data)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">1</span>, t/<span style="color:#006532">20.0</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> CheckSmallJPEGCompression()
+			<span style="color:#0000FF">#pragma</span> BackgroundTasks <span style="color:#0000FF;font-weight: bold">false</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> pic <span style="color:#0000FF;font-weight: bold">as</span> Picture = logoMBS(<span style="color:#326598">50</span>)
+			
+			listbox1.AddRow <span style="color:#6500FE">&quot;JPEG</span> <span style="color:#6500FE">compression</span> <span style="color:#6500FE">small&quot;</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">30</span>
+				data = pic.GetData(pic.FormatJPEG, pic.QualityHigh)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">2</span>, t/<span style="color:#006532">30.0</span>
+			
+			t = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">30</span>
+				data = PictureToJPEGStringMBS(pic, <span style="color:#326598">80</span>)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">1</span>, t/<span style="color:#006532">30.0</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> CheckSmallJPEGDecompression()
+			<span style="color:#0000FF">#pragma</span> BackgroundTasks <span style="color:#0000FF;font-weight: bold">false</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> pic <span style="color:#0000FF;font-weight: bold">as</span> Picture
+			
+			listbox1.AddRow <span style="color:#6500FE">&quot;JPEG</span> <span style="color:#6500FE">decompression</span> <span style="color:#6500FE">small&quot;</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">30</span>
+				pic = Picture.FromData(data)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">2</span>, t/<span style="color:#006532">30.0</span>
+			
+			t = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">30</span>
+				pic = JPEGStringToPictureMBS(data)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">1</span>, t/<span style="color:#006532">30.0</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> CheckSmallPNGCompression()
+			<span style="color:#0000FF">#pragma</span> BackgroundTasks <span style="color:#0000FF;font-weight: bold">false</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> pic <span style="color:#0000FF;font-weight: bold">as</span> Picture = logoMBS(<span style="color:#326598">50</span>)
+			
+			listbox1.AddRow <span style="color:#6500FE">&quot;PNG</span> <span style="color:#6500FE">compression</span> <span style="color:#6500FE">small&quot;</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">30</span>
+				data = pic.GetData(pic.FormatPNG, pic.QualityHigh)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">2</span>, t/<span style="color:#006532">30.0</span>
+			
+			t = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">30</span>
+				data = PictureToPNGStringMBS(pic)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">1</span>, t/<span style="color:#006532">30.0</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> CheckSmallPNGDecompression()
+			<span style="color:#0000FF">#pragma</span> BackgroundTasks <span style="color:#0000FF;font-weight: bold">false</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> pic <span style="color:#0000FF;font-weight: bold">as</span> Picture
+			
+			listbox1.AddRow <span style="color:#6500FE">&quot;PNG</span> <span style="color:#6500FE">decompression</span> <span style="color:#6500FE">small&quot;</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">30</span>
+				pic = Picture.FromData(data)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">2</span>, t/<span style="color:#006532">30.0</span>
+			
+			t = microseconds
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">30</span>
+				pic = PNGStringToPictureMBS(data)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			t = microseconds - t
+			Report <span style="color:#326598">1</span>, t/<span style="color:#006532">30.0</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Report(n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, d <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>)
+			Listbox1.cell(Listbox1.LastIndex, n) = Format(d / <span style="color:#326598">1000000</span>, <span style="color:#6500FE">&quot;0.000000&quot;</span>)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">s&quot;</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> n = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> d&lt;x <span style="color:#0000FF;font-weight: bold">then</span>
+					Listbox1.celltag(Listbox1.LastIndex, <span style="color:#326598">1</span>) = &amp;c<span style="color:#FF0000">CC</span><span style="color:#00FF00">FF</span><span style="color:#0000FF">CC</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					Listbox1.celltag(Listbox1.LastIndex, <span style="color:#326598">1</span>) = &amp;c<span style="color:#FF0000">FF</span><span style="color:#00FF00">CC</span><span style="color:#0000FF">FF</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				x = d
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> data <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> x <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">double</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmainplugin.html">MBS Main Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-main-picturebenchmark">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

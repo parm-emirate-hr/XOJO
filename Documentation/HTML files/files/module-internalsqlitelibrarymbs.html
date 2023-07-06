@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - The module InternalSQLiteLibraryMBS</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="InternalSQLiteLibraryMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">The module InternalSQLiteLibraryMBS</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>The module InternalSQLiteLibraryMBS</H3>
+<B><A href="module-internalsqlitelibrarymbs.html">module InternalSQLiteLibraryMBS</A></B>
+<div class="WLM">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>module</td>
+<td class=grau><A href="topic-sql.html" translate="no">SQL</A></td>
+<td class=grau><a href="plugins-mbssqlplugin.html">MBS SQL Plugin</a></td>
+<td class=grau><a href="newinversion152.shtml" class=version>15.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The module for our internal SQLite3 engine.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #800000;">// enable our built-in SQLite library, which supports encryption</span><br /><span style="color: #0000FF;">Call</span> InternalSQLiteLibraryMBS.Use<br /><br /><span style="color: #800000;">// where to store?</span><br /><span style="color: #0000FF;">Dim</span> f <span style="color: #0000FF;">As</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test.db&quot;</span>)<br /><span style="color: #0000FF;">Dim</span> storage_database <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">New</span> <A href="class-sqldatabasembs.html">SQLDatabaseMBS</A> <span style="color: #800000;">&apos; SQLiteDatabase</span><br />storage_database.SQLiteEncryptionKey = <span style="color: #6600FE;">&quot;aes256:password&quot;</span>  <span style="color: #800000;">&apos; &lt;-- password with AES256 as prefix to pick algorithm</span><br />storage_database.DatabaseName = <span style="color: #6600FE;">&quot;sqlite:&quot;</span>+ f.NativePath<br /><br /><span style="color: #0000FF;">If</span> storage_database.Connect <span style="color: #0000FF;">Then</span><br />  <br />  <span style="color: #800000;">// create table if this is not yet here</span><br />  storage_database.SQLExecute <span style="color: #6600FE;">&quot;Create table if not exists pics(pic_id integer PRIMARY KEY AUTOINCREMENT, name varchar(20), pic blob)&quot;</span><br />  <br />  <span style="color: #800000;">// done</span><br />  MsgBox <span style="color: #6600FE;">&quot;Ready&quot;</span><br /><span style="color: #0000FF;">Else</span><br />  MsgBox storage_database.ErrorMessage<br /><span style="color: #0000FF;">End</span> <span style="color: #0000FF;">If</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+This is a SQLite3 library built into a plugin, so you can decide with use of MBS SQL Plugin to use this plugin instead of providing your own external copy of SQLite shared library.<BR>
+</div>
+<ul>
+<li class="WLM">method <A href="sql-internalsqlitelibrarymbs-method.html">CompileOption</A>(index as Integer) as String</li>
+<li class="WLM">method <A href="sql-internalsqlitelibrarymbs-method.html#2">CompileOptionUsed</A>(optionName as String) as Boolean</li>
+<li class="WLM">method <A href="sql-internalsqlitelibrarymbs-method.html#3">DumpToFile</A>(SqliteDBConectionHandle as Ptr, File as FolderItem, TableName as string = &quot;&quot;, PreserveRowid as Boolean = false, Newlines as Boolean = false, DumpDataOnly as Boolean = false, DumpNoSys as Boolean = false)</li>
+<li class="WLM">method <A href="sql-internalsqlitelibrarymbs-method.html#4">DumpToString</A>(SqliteDBConectionHandle as Ptr, byref Data as String, MaximumSize as Integer = 10000000, TableName as string = &quot;&quot;, PreserveRowid as Boolean = false, Newlines as Boolean = false, DumpDataOnly as Boolean = false, DumpNoSys as Boolean = false)</li>
+<li class="WLM">method <A href="sql-internalsqlitelibrarymbs-method.html#5">isKeyword</A>(name as string) as boolean</li>
+<li class="WLM">method <A href="sql-internalsqlitelibrarymbs-method.html#6">Keywords</A> as String()</li>
+<li class="WLM">method <A href="sql-internalsqlitelibrarymbs-method.html#7">LoadICU</A> as Boolean</li>
+<li class="WLM">method <A href="sql-internalsqlitelibrarymbs-method.html#8">SourceID</A> as String</li>
+<li class="WLM">method <A href="sql-internalsqlitelibrarymbs-method.html#9">Use</A> as boolean</li>
+<li class="WLM">method <A href="sql-internalsqlitelibrarymbs-method.html#10">Version</A> as String</li>
+<li class="WLM">method <A href="sql-internalsqlitelibrarymbs-method.html#11">VersionNumber</A> as Integer</li>
+<li class="WLM">property <A href="sql-internalsqlitelibrarymbs-property.html">ICUEnabled</A> as Boolean</li>
+<li class="WLM">property <A href="sql-internalsqlitelibrarymbs-property.html#2">ICULoaded</A> as Boolean</li>
+<li class="WLM">property <A href="sql-internalsqlitelibrarymbs-property.html#3">ICUUsed</A> as Boolean</li>
+<li class="WLM">property <A href="sql-internalsqlitelibrarymbs-property.html#4">MemoryHighwater</A> as Int64</li>
+<li class="WLM">property <A href="sql-internalsqlitelibrarymbs-property.html#5">MemoryUsed</A> as Int64</li>
+</ul>
+<h4>Some examples which use this module:</h4><ul>
+<li class=""><A href="example-sql-sqldatabasembsduckdb.html">/SQL/SQLDatabaseMBS DuckDB</A></li>
+<li class=""><A href="example-sql-sqldatabasembssqliteapi2.html">/SQL/SQLDatabaseMBS SQLite API 2</A></li>
+<li class=""><A href="example-sql-sqldatabasembssqliteblobtest.html">/SQL/SQLDatabaseMBS SQLite Blob test</A></li>
+<li class=""><A href="example-sql-sqldatabasembssqliteconnect.html">/SQL/SQLDatabaseMBS SQLite Connect</A></li>
+<li class=""><A href="example-sql-sqldatabasembssqliteconnectconsole.html">/SQL/SQLDatabaseMBS SQLite Connect console</A></li>
+<li class=""><A href="example-sql-sqldatabasembssqliteconnectinmemorydatabase.html">/SQL/SQLDatabaseMBS SQLite Connect in Memory Database</A></li>
+<li class=""><A href="example-sql-sqldatabasembssqlitecreateencrypted.html">/SQL/SQLDatabaseMBS SQLite Create Encrypted</A></li>
+<li class=""><A href="example-sql-sqldatabasembssqliteencryptionfetchvalues.html">/SQL/SQLDatabaseMBS SQLite Encryption Fetch values</A></li>
+<li class=""><A href="example-sql-sqldatabasembssqliteexecutesql.html">/SQL/SQLDatabaseMBS SQLite ExecuteSQL</A></li>
+<li class=""><A href="example-sql-sqldatabasembssqliteexecutesqlthreaded.html">/SQL/SQLDatabaseMBS SQLite ExecuteSQL threaded</A></li>
+<li class=""><A href="example-sql-sqldatabasembssqliteexecutesqlwithworkers.html">/SQL/SQLDatabaseMBS SQLite ExecuteSQL with Workers</A></li>
+<li class=""><A href="example-sql-sqldatabasembssqlitefetchvalues.html">/SQL/SQLDatabaseMBS SQLite Fetch values</A></li>
+<li class=""><A href="example-sql-sqldatabasembssqlitefetchvaluesthreaded.html">/SQL/SQLDatabaseMBS SQLite Fetch values threaded</A></li>
+<li class=""><A href="example-sql-sqldatabasembssqliteinsertrecord.html">/SQL/SQLDatabaseMBS SQLite insert record</A></li>
+<li class=""><A href="example-sql-sqldatabasembssqliteinsertrecordwithtransaction.html">/SQL/SQLDatabaseMBS SQLite insert record with transaction</A></li>
+<li class=""><A href="example-sql-sqldatabasembssqliteloadextension.html">/SQL/SQLDatabaseMBS SQLite load extension</A></li>
+<li class=""><A href="example-sql-sqldatabasembssqlitepreparedstatement.html">/SQL/SQLDatabaseMBS SQLite Prepared Statement</A></li>
+<li class=""><A href="example-sql-sqldatabasembssqliteselectversion.html">/SQL/SQLDatabaseMBS SQLite select version</A></li>
+<li class=""><A href="example-sql-sqlitebackup.html">/SQL/SQLite Backup</A></li>
+<li class=""><A href="example-sql-sqlitebenchmarkvsrealsqldatabase.html">/SQL/SQLite Benchmark vs REALSQLDatabase</A></li>
+<li class=""><A href="example-sql-sqliteblobtest.html">/SQL/SQLite Blob test</A></li>
+<li class=""><A href="example-sql-sqliteconnect.html">/SQL/SQLite Connect</A></li>
+<li class=""><A href="example-sql-sqliteconnectinmemorydatabase.html">/SQL/SQLite Connect in Memory Database</A></li>
+<li class=""><A href="example-sql-sqlitedisplayschema.html">/SQL/SQLite Display Schema</A></li>
+<li class=""><A href="example-sql-sqliteencryptionfetchvalues.html">/SQL/SQLite Encryption Fetch values</A></li>
+<li class=""><A href="example-sql-sqliteexecutesql.html">/SQL/SQLite ExecuteSQL</A></li>
+<li class=""><A href="example-sql-sqliteexecutesqlwithparameters.html">/SQL/SQLite ExecuteSQL with Parameters</A></li>
+<li class=""><A href="example-sql-sqlitefetchrowsbulk.html">/SQL/SQLite Fetch rows bulk</A></li>
+<li class=""><A href="example-sql-sqlitefetchvalues.html">/SQL/SQLite Fetch values</A></li>
+<li class=""><A href="example-sql-sqlitefetchvalueswithrecordset.html">/SQL/SQLite Fetch values with Recordset</A></li>
+<li class=""><A href="example-sql-sqlitefetchvalueswithrowset.html">/SQL/SQLite Fetch values with RowSet</A></li>
+<li class=""><A href="example-sql-sqliteinternallibrarycompileroptions.html">/SQL/SQLite Internal Library Compiler Options</A></li>
+<li class=""><A href="example-sql-sqliteloadextension.html">/SQL/SQLite load extension</A></li>
+<li class=""><A href="example-sql-sqlitelocktest-sqlitebusyhandler.html">/SQL/SQLite Lock Test/SQLite Busy Handler</A></li>
+<li class=""><A href="example-sql-sqliteselectversion.html">/SQL/SQLite select version</A></li>
+<li class=""><A href="example-sql-sqliteselectversionwithtraceevents.html">/SQL/SQLite select version with Trace events</A></li>
+<li class=""><A href="example-sql-sqlitetabledefinition.html">/SQL/SQLite Table Definition</A></li>
+<li class=""><A href="example-sql-sqliteunicodetest.html">/SQL/SQLite Unicode test</A></li>
+<li class=""><A href="example-sql-sqliteupdatevalues.html">/SQL/SQLite Update values</A></li>
+<li class=""><A href="example-sql-sqliteversion.html">/SQL/SQLite Version</A></li>
+<li class=""><A href="example-sql-sqlitewithicu.html">/SQL/SQLite with ICU</A></li>
+<li class=""><A href="example-sql-sqlitewriteblobtofile.html">/SQL/SQLite Write blob to file</A></li>
+<li class=""><A href="example-sql-webapp-withsqlconnectionmbs.html">/SQL/Web app/with SQLConnectionMBS</A></li>
+<li class=""><A href="example-sql-webapp-withsqldatabasembs.html">/SQL/Web app/with SQLDatabaseMBS</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2022-04-01/MBS_Xojo_Plugins_version_222pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 22.2pr1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2021-05-26/News_from_the_MBS_Xojo_Plugins/monkeybreadsoftware_blog_xojo">News from the MBS Xojo Plugins Version 21.2</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2021-05-18/MonkeyBread_Software_Releases_/monkeybreadsoftware_blog_xojo">MonkeyBread Software Releases the MBS Xojo Plugins in version 21.2</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2021-03-22/SQLite_and_ICU_Extension_for_X/monkeybreadsoftware_blog_xojo">SQLite and ICU Extension for Xojo</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2021-01-27/Converting_Xojo_project_to_use/monkeybreadsoftware_blog_xojo">Converting Xojo project to use MBS SQL Plugin</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2018-05-28/CubeSQL_support_for_MBS_Xojo_S/monkeybreadsoftware_blog_xojo">CubeSQL support for MBS Xojo SQL Plugin</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2018-04-24/Use_JSON_functions_with_SQLite/monkeybreadsoftware_blog_xojo">Use JSON functions with SQLite</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2016-09-27/MBS_Releases_the_MBS_Xojo__Rea/monkeybreadsoftware_blog_xojo">MBS Releases the MBS Xojo / Real Studio plug-ins in version 16.4</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2015-08-04/MBS_Releases_the_MBS_Xojo__Rea/monkeybreadsoftware_blog_xojo">MBS Releases the MBS Xojo / Real Studio plug-ins in version 15.2</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2015-06-08/SQL_Plugin_option_to_include_S/monkeybreadsoftware_blog_xojo">SQL Plugin option to include SQLite Library</a></li>
+</ul>
+<h4>Xojo Developer Magazine</h4>
+<ul>
+<li><a href="http://www.xdevmag.com/browse/14.1/">14.1, page 27: The MBS SQL Plugin, An alternative way to connect to databases by Christian Schmitz</a></li>
+<li><a href="http://www.xdevmag.com/browse/13.5/">13.5, page 8: News</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbssqlplugin.html">MBS SQL Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=module-internalsqlitelibrarymbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

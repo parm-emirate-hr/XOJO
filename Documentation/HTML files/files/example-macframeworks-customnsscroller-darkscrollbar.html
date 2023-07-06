@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /MacFrameworks/CustomNSScroller/Dark scrollbar</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /MacFrameworks/CustomNSScroller/Dark scrollbar</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/MacFrameworks/CustomNSScroller/Dark scrollbar</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS MacFrameworks Plugin, MBS MacCocoa Plugin, MBS MacBase Plugin, MBS Main Plugin, MBS MacControls Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /MacFrameworks/CustomNSScroller/Dark scrollbar<BR>
+This example is the version from Sun, 17th Mar 2012.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Dark</span> <span style="color:#6500FE">scrollbar.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;Effacer&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;Quitter&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> TargetCocoa <span style="color:#0000FF;font-weight: bold">then</span>
+				MsgBox <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">example</span> <span style="color:#6500FE">requires</span> <span style="color:#6500FE">Cocoa</span> <span style="color:#6500FE">target.&quot;</span>
+				quit
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Window1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> a_big_text = <span style="color:#6500FE">&quot;Lorem</span> <span style="color:#6500FE">ipsum</span> <span style="color:#6500FE">dolor</span> <span style="color:#6500FE">sit</span> <span style="color:#6500FE">amet,</span> <span style="color:#6500FE">consectetuer</span> <span style="color:#6500FE">adipiscing</span> <span style="color:#6500FE">elit.</span> <span style="color:#6500FE">Sed</span> <span style="color:#6500FE">non</span> <span style="color:#6500FE">risus.</span> <span style="color:#6500FE">Suspendisse</span> <span style="color:#6500FE">lectus</span> <span style="color:#6500FE">tortor,</span> <span style="color:#6500FE">dignissim</span> <span style="color:#6500FE">sit</span> <span style="color:#6500FE">amet,</span> <span style="color:#6500FE">adipiscing</span> <span style="color:#6500FE">nec,</span> <span style="color:#6500FE">ultricies</span> <span style="color:#6500FE">sed,</span> <span style="color:#6500FE">dolor.</span> <span style="color:#6500FE">Cras</span> <span style="color:#6500FE">elementum</span> <span style="color:#6500FE">ultrices</span> <span style="color:#6500FE">diam.</span> <span style="color:#6500FE">Maecenas</span> <span style="color:#6500FE">ligula</span> <span style="color:#6500FE">massa,</span> <span style="color:#6500FE">varius</span> <span style="color:#6500FE">a,</span> <span style="color:#6500FE">semper</span> <span style="color:#6500FE">congue,</span> <span style="color:#6500FE">euismod</span> <span style="color:#6500FE">non,</span> <span style="color:#6500FE">mi.</span> <span style="color:#6500FE">Proin</span> <span style="color:#6500FE">porttitor,</span> <span style="color:#6500FE">orci</span> <span style="color:#6500FE">nec</span> <span style="color:#6500FE">nonummy</span> <span style="color:#6500FE">molestie,</span> <span style="color:#6500FE">enim</span> <span style="color:#6500FE">est</span> <span style="color:#6500FE">eleifend</span> <span style="color:#6500FE">mi,</span> <span style="color:#6500FE">non</span> <span style="color:#6500FE">fermentum</span> <span style="color:#6500FE">diam</span> <span style="color:#6500FE">nisl</span> <span style="color:#6500FE">sit</span> <span style="color:#6500FE">amet</span> <span style="color:#6500FE">erat.</span> <span style="color:#6500FE">Duis</span> <span style="color:#6500FE">semper.</span> <span style="color:#6500FE">Duis</span> <span style="color:#6500FE">arcu</span> <span style="color:#6500FE">massa,</span> <span style="color:#6500FE">scelerisque</span> <span style="color:#6500FE">vitae,</span> <span style="color:#6500FE">consequat</span> <span style="color:#6500FE">in,</span> <span style="color:#6500FE">pretium</span> <span style="color:#6500FE">a,</span> <span style="color:#6500FE">enim.</span> <span style="color:#6500FE">Pellentesque</span> <span style="color:#6500FE">congue.</span> <span style="color:#6500FE">Ut</span> <span style="color:#6500FE">in</span> <span style="color:#6500FE">risus</span> <span style="color:#6500FE">volutpat</span> <span style="color:#6500FE">libero</span> <span style="color:#6500FE">pharetra</span> <span style="color:#6500FE">tempor.</span> <span style="color:#6500FE">Cras</span> <span style="color:#6500FE">vestibulum</span> <span style="color:#6500FE">bibendum</span> <span style="color:#6500FE">augue.</span> <span style="color:#6500FE">Praesent</span> <span style="color:#6500FE">egestas</span> <span style="color:#6500FE">leo</span> <span style="color:#6500FE">in</span> <span style="color:#6500FE">pede.</span> <span style="color:#6500FE">Praesent</span> <span style="color:#6500FE">blandit</span> <span style="color:#6500FE">odio</span> <span style="color:#6500FE">eu</span> <span style="color:#6500FE">enim.</span> <span style="color:#6500FE">Pellentesque</span> <span style="color:#6500FE">sed</span> <span style="color:#6500FE">dui</span> <span style="color:#6500FE">ut</span> <span style="color:#6500FE">augue</span> <span style="color:#6500FE">blandit</span> <span style="color:#6500FE">sodales.</span> <span style="color:#6500FE">\r\rVestibulum</span> <span style="color:#6500FE">ante</span> <span style="color:#6500FE">ipsum</span> <span style="color:#6500FE">primis</span> <span style="color:#6500FE">in</span> <span style="color:#6500FE">faucibus</span> <span style="color:#6500FE">orci</span> <span style="color:#6500FE">luctus</span> <span style="color:#6500FE">et</span> <span style="color:#6500FE">ultrices</span> <span style="color:#6500FE">posuere</span> <span style="color:#6500FE">cubilia</span> <span style="color:#6500FE">Curae;</span> <span style="color:#6500FE">Aliquam</span> <span style="color:#6500FE">nibh.</span> <span style="color:#6500FE">Mauris</span> <span style="color:#6500FE">ac</span> <span style="color:#6500FE">mauris</span> <span style="color:#6500FE">sed</span> <span style="color:#6500FE">pede</span> <span style="color:#6500FE">pellentesque</span> <span style="color:#6500FE">fermentum.</span> <span style="color:#6500FE">Maecenas</span> <span style="color:#6500FE">adipiscing</span> <span style="color:#6500FE">ante</span> <span style="color:#6500FE">non</span> <span style="color:#6500FE">diam</span> <span style="color:#6500FE">sodales</span> <span style="color:#6500FE">hendrerit.</span> <span style="color:#6500FE">Ut</span> <span style="color:#6500FE">velit</span> <span style="color:#6500FE">mauris,</span> <span style="color:#6500FE">egestas</span> <span style="color:#6500FE">sed,</span> <span style="color:#6500FE">gravida</span> <span style="color:#6500FE">nec,</span> <span style="color:#6500FE">ornare</span> <span style="color:#6500FE">ut,</span> <span style="color:#6500FE">mi.</span> <span style="color:#6500FE">\rAenean</span> <span style="color:#6500FE">ut</span> <span style="color:#6500FE">orci</span> <span style="color:#6500FE">vel</span> <span style="color:#6500FE">massa</span> <span style="color:#6500FE">suscipit</span> <span style="color:#6500FE">pulvinar.</span> <span style="color:#6500FE">Nulla</span> <span style="color:#6500FE">sollicitudin.</span> <span style="color:#6500FE">Fusce</span> <span style="color:#6500FE">varius,</span> <span style="color:#6500FE">ligula</span> <span style="color:#6500FE">non</span> <span style="color:#6500FE">tempus</span> <span style="color:#6500FE">aliquam,</span> <span style="color:#6500FE">nunc</span> <span style="color:#6500FE">turpis</span> <span style="color:#6500FE">ullamcorper</span> <span style="color:#6500FE">nibh,</span> <span style="color:#6500FE">in</span> <span style="color:#6500FE">tempus</span> <span style="color:#6500FE">sapien</span> <span style="color:#6500FE">eros</span> <span style="color:#6500FE">vitae</span> <span style="color:#6500FE">ligula.</span> <span style="color:#6500FE">Pellentesque</span> <span style="color:#6500FE">rhoncus</span> <span style="color:#6500FE">nunc</span> <span style="color:#6500FE">et</span> <span style="color:#6500FE">augue.</span> <span style="color:#6500FE">Integer</span> <span style="color:#6500FE">id</span> <span style="color:#6500FE">felis.</span> <span style="color:#6500FE">Curabitur</span> <span style="color:#6500FE">aliquet</span> <span style="color:#6500FE">pellentesque</span> <span style="color:#6500FE">diam.</span> <span style="color:#6500FE">Integer</span> <span style="color:#6500FE">quis</span> <span style="color:#6500FE">metus</span> <span style="color:#6500FE">vitae</span> <span style="color:#6500FE">elit</span> <span style="color:#6500FE">lobortis</span> <span style="color:#6500FE">egestas.</span> <span style="color:#6500FE">Lorem</span> <span style="color:#6500FE">ipsum</span> <span style="color:#6500FE">dolor</span> <span style="color:#6500FE">sit</span> <span style="color:#6500FE">amet,</span> <span style="color:#6500FE">consectetuer</span> <span style="color:#6500FE">adipiscing</span> <span style="color:#6500FE">elit.</span> <span style="color:#6500FE">Morbi</span> <span style="color:#6500FE">vel</span> <span style="color:#6500FE">erat</span> <span style="color:#6500FE">non</span> <span style="color:#6500FE">mauris</span> <span style="color:#6500FE">convallis</span> <span style="color:#6500FE">vehicula.</span> <span style="color:#6500FE">Nulla</span> <span style="color:#6500FE">et</span> <span style="color:#6500FE">sapien.</span> <span style="color:#6500FE">Integer</span> <span style="color:#6500FE">tortor</span> <span style="color:#6500FE">tellus,</span> <span style="color:#6500FE">aliquam</span> <span style="color:#6500FE">faucibus,</span> <span style="color:#6500FE">convallis</span> <span style="color:#6500FE">id,</span> <span style="color:#6500FE">congue</span> <span style="color:#6500FE">eu,</span> <span style="color:#6500FE">quam.</span> <span style="color:#6500FE">\r\rMauris</span> <span style="color:#6500FE">ullamcorper</span> <span style="color:#6500FE">felis</span> <span style="color:#6500FE">vitae</span> <span style="color:#6500FE">erat.</span> <span style="color:#6500FE">Proin</span> <span style="color:#6500FE">feugiat,</span> <span style="color:#6500FE">augue</span> <span style="color:#6500FE">non</span> <span style="color:#6500FE">elementum</span> <span style="color:#6500FE">posuere,</span> <span style="color:#6500FE">metus</span> <span style="color:#6500FE">purus</span> <span style="color:#6500FE">iaculis</span> <span style="color:#6500FE">lectus,</span> <span style="color:#6500FE">et</span> <span style="color:#6500FE">tristique</span> <span style="color:#6500FE">ligula</span> <span style="color:#6500FE">justo</span> <span style="color:#6500FE">vitae</span> <span style="color:#6500FE">magna.</span> <span style="color:#6500FE">Aliquam</span> <span style="color:#6500FE">convallis</span> <span style="color:#6500FE">sollicitudin</span> <span style="color:#6500FE">purus.</span> <span style="color:#6500FE">Praesent</span> <span style="color:#6500FE">aliquam,</span> <span style="color:#6500FE">enim</span> <span style="color:#6500FE">at</span> <span style="color:#6500FE">fermentum</span> <span style="color:#6500FE">mollis,</span> <span style="color:#6500FE">ligula</span> <span style="color:#6500FE">massa</span> <span style="color:#6500FE">adipiscing</span> <span style="color:#6500FE">nisl,</span> <span style="color:#6500FE">ac</span> <span style="color:#6500FE">euismod</span> <span style="color:#6500FE">nibh</span> <span style="color:#6500FE">nisl</span> <span style="color:#6500FE">eu</span> <span style="color:#6500FE">lectus.</span> <span style="color:#6500FE">Fusce</span> <span style="color:#6500FE">vulputate</span> <span style="color:#6500FE">sem</span> <span style="color:#6500FE">at</span> <span style="color:#6500FE">sapien.</span> <span style="color:#6500FE">Vivamus</span> <span style="color:#6500FE">leo.</span> <span style="color:#6500FE">Aliquam</span> <span style="color:#6500FE">euismod</span> <span style="color:#6500FE">libero</span> <span style="color:#6500FE">eu</span> <span style="color:#6500FE">enim.</span> <span style="color:#6500FE">Nulla</span> <span style="color:#6500FE">nec</span> <span style="color:#6500FE">felis</span> <span style="color:#6500FE">sed</span> <span style="color:#6500FE">leo</span> <span style="color:#6500FE">placerat</span> <span style="color:#6500FE">imperdiet.</span> <span style="color:#6500FE">Aenean</span> <span style="color:#6500FE">suscipit</span> <span style="color:#6500FE">nulla</span> <span style="color:#6500FE">in</span> <span style="color:#6500FE">justo.</span> <span style="color:#6500FE">Suspendisse</span> <span style="color:#6500FE">cursus</span> <span style="color:#6500FE">rutrum</span> <span style="color:#6500FE">augue.</span> <span style="color:#6500FE">Nulla</span> <span style="color:#6500FE">tincidunt</span> <span style="color:#6500FE">tincidunt</span> <span style="color:#6500FE">mi.</span> <span style="color:#6500FE">Curabitur</span> <span style="color:#6500FE">iaculis,</span> <span style="color:#6500FE">lorem</span> <span style="color:#6500FE">vel</span> <span style="color:#6500FE">rhoncus</span> <span style="color:#6500FE">faucibus,</span> <span style="color:#6500FE">felis</span> <span style="color:#6500FE">magna</span> <span style="color:#6500FE">fermentum</span> <span style="color:#6500FE">augue,</span> <span style="color:#6500FE">et</span> <span style="color:#6500FE">ultricies</span> <span style="color:#6500FE">lacus</span> <span style="color:#6500FE">lorem</span> <span style="color:#6500FE">varius</span> <span style="color:#6500FE">purus.</span> <span style="color:#6500FE">Curabitur</span> <span style="color:#6500FE">eu</span> <span style="color:#6500FE">amet.&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CocoaControlMBS1 <span style="color:#0000FF;font-weight: bold">Inherits</span> CocoaControlMBS</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CocoaControlMBS1 <span style="color:#0000FF;font-weight: bold">Inherits</span> CocoaControlMBS</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> GetView() <span style="color:#0000FF;font-weight: bold">As</span> NSViewMBS
+				scrollview = <span style="color:#0000FF;font-weight: bold">New</span> NSScrollViewMBS( <span style="color:#326598">0</span>,<span style="color:#326598">0</span>,<span style="color:#0000FF;font-weight: bold">Me</span>.Width,<span style="color:#0000FF;font-weight: bold">Me</span>.Height )
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">We</span> <span style="color:#7F0000;text-style:italic">create</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">add</span> <span style="color:#7F0000;text-style:italic">our</span> <span style="color:#7F0000;text-style:italic">custom</span> <span style="color:#7F0000;text-style:italic">NSScroller</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">NSScrollView.</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">scroller</span> <span style="color:#7F0000;text-style:italic">must</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">stored</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">property</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">order</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">work.</span>
+				VScroller = <span style="color:#0000FF;font-weight: bold">New</span> MyCustomNSScroller( <span style="color:#326598">0</span>,<span style="color:#326598">0</span>,<span style="color:#326598">15</span>,<span style="color:#0000FF;font-weight: bold">Me</span>.Height )
+				VScroller.knobSlotImage = <span style="color:#0000FF;font-weight: bold">New</span> NSImageMBS( CustomNSscrollerDarkKnobSlot )
+				VScroller.knobImage = <span style="color:#0000FF;font-weight: bold">New</span> NSImageMBS( CustomNSscrollerDarkKnob )
+				VScroller.IncrArrowImage = <span style="color:#0000FF;font-weight: bold">New</span> NSImageMBS( CustomNSscrollerDarkIncrArrow )
+				VScroller.DecrArrowImage = <span style="color:#0000FF;font-weight: bold">New</span> NSImageMBS( CustomNSscrollerDarkDecrArrow )
+				VScroller.BackColor = NSColorMBS.colorWithDeviceHSV(<span style="color:#006532">0.0</span>, <span style="color:#006532">0.0</span>, <span style="color:#006532">0.22</span>, <span style="color:#006532">1.0</span>)
+				scrollview.verticalScroller = VScroller
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">We</span> <span style="color:#7F0000;text-style:italic">create</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">text</span> <span style="color:#7F0000;text-style:italic">field</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">NSScrollView.</span>
+				textView=<span style="color:#0000FF;font-weight: bold">New</span> NSTextViewMBS( <span style="color:#326598">0</span>,<span style="color:#326598">0</span>,<span style="color:#0000FF;font-weight: bold">Me</span>.Width,<span style="color:#0000FF;font-weight: bold">Me</span>.Height )
+				<span style="color:#0000FF;font-weight: bold">dim</span> tPadding <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> NSSizeMBS( <span style="color:#326598">15</span>,<span style="color:#326598">15</span> )
+				textView.ContinuousSpellCheckingEnabled = <span style="color:#0000FF;font-weight: bold">false</span>
+				textView.allowsUndo = <span style="color:#0000FF;font-weight: bold">true</span>
+				textView.autoresizingMask = textView.NSViewHeightSizable+textView.NSViewWidthSizable
+				textView.textContainerInset = tPadding
+				textView.backgroundColor = NSColorMBS.colorWithDeviceHSV(<span style="color:#006532">0.0</span>, <span style="color:#006532">0.0</span>, <span style="color:#006532">0.22</span>, <span style="color:#006532">1.0</span>)
+				textView.textColor = NSColorMBS.whiteColor
+				textView.text = a_big_text
+				scrollview.documentView = textView
+				
+				scrollview.hasHorizontalScroller = <span style="color:#0000FF;font-weight: bold">false</span>
+				scrollview.hasVerticalScroller = <span style="color:#0000FF;font-weight: bold">true</span>
+				scrollview.autohidesScrollers = <span style="color:#0000FF;font-weight: bold">true</span>
+				
+				<span style="color:#0000FF;font-weight: bold">Return</span> scrollview
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> CocoaControlMBS1.Available <span style="color:#0000FF;font-weight: bold">then</span>
+				MsgBox <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">example</span> <span style="color:#6500FE">requires</span> <span style="color:#6500FE">Mac</span> <span style="color:#6500FE">OS</span> <span style="color:#6500FE">X</span> <span style="color:#6500FE">10.5.&quot;</span>
+				quit
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> VScroller <span style="color:#0000FF;font-weight: bold">As</span> MyCustomNSScroller</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> scrollview <span style="color:#0000FF;font-weight: bold">As</span> nsscrollViewMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> textView <span style="color:#0000FF;font-weight: bold">As</span> NSTextViewMBS</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;Fichier&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;Edition&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;Annuler&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Couper&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copier&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;Coller&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Tout</span> <span style="color:#6500FE">S&eacute;lectionner&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyCustomNSScroller <span style="color:#0000FF;font-weight: bold">Inherits</span> CustomNSScrollerMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> drawArrow(g <span style="color:#0000FF;font-weight: bold">as</span> NSGraphicsMBS, Arrow <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, highlight <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">boolean</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> w,h,dx <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> Arrow=NSScrollerIncrementArrow <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> IncrArrowImage&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Arrow</span> <span style="color:#7F0000;text-style:italic">size</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">position</span>
+					IncrArrowRect=<span style="color:#0000FF;font-weight: bold">Self</span>.rectForPart( NSScrollerIncrementArrow )
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Draw</span> <span style="color:#7F0000;text-style:italic">arrow</span> <span style="color:#7F0000;text-style:italic">image</span>
+					w=IncrArrowImage.width
+					h=IncrArrowImage.height
+					<span style="color:#0000FF;font-weight: bold">if</span> highlight <span style="color:#0000FF;font-weight: bold">then</span> dx=w/<span style="color:#326598">2</span>
+					g.drawInRect IncrArrowImage, DecrArrowRect.X,DecrArrowRect.Y, w,h, dx,<span style="color:#326598">0</span>, w,h, NSGraphicsMBS.NSCompositeSourceOver, <span style="color:#006532">1.0</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+			<span style="color:#0000FF;font-weight: bold">elseif</span> Arrow=NSScrollerDecrementArrow <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> DecrArrowImage&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Arrow</span> <span style="color:#7F0000;text-style:italic">size</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">position</span>
+					DecrArrowRect=<span style="color:#0000FF;font-weight: bold">Self</span>.rectForPart( NSScrollerDecrementArrow )
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Draw</span> <span style="color:#7F0000;text-style:italic">arrow</span> <span style="color:#7F0000;text-style:italic">image</span>
+					w=IncrArrowImage.width
+					h=IncrArrowImage.height
+					<span style="color:#0000FF;font-weight: bold">if</span> highlight <span style="color:#0000FF;font-weight: bold">then</span> dx=w/<span style="color:#326598">2</span>
+					g.drawInRect IncrArrowImage, DecrArrowRect.X,DecrArrowRect.Y, w,h, dx,<span style="color:#326598">0</span>, w,h, NSGraphicsMBS.NSCompositeSourceOver, <span style="color:#006532">1.0</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> drawKnob(g <span style="color:#0000FF;font-weight: bold">as</span> NSGraphicsMBS)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Knob</span> <span style="color:#7F0000;text-style:italic">size</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">position</span>
+			knobRect=<span style="color:#0000FF;font-weight: bold">Self</span>.rectForPart( NSScrollerKnob )
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Draw</span> <span style="color:#7F0000;text-style:italic">knob</span> <span style="color:#7F0000;text-style:italic">image</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> knobImage&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> w,h,hm,rh <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				w=knobImage.width
+				h=knobImage.height
+				hm=Floor( h/<span style="color:#326598">2</span> )
+				rh=knobRect.Height
+				<span style="color:#0000FF;font-weight: bold">if</span> rh&gt;h <span style="color:#0000FF;font-weight: bold">then</span>
+					g.drawInRect knobImage, knobRect.X,knobRect.Y, w,hm, <span style="color:#326598">0</span>,<span style="color:#326598">0</span>, w,hm, NSGraphicsMBS.NSCompositeSourceOver, <span style="color:#006532">1.0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">bottom</span> <span style="color:#7F0000;text-style:italic">part</span>
+					g.drawInRect knobImage, knobRect.X,knobRect.Y+hm, w,rh-(hm*<span style="color:#326598">2</span>), <span style="color:#326598">0</span>,hm, w,<span style="color:#326598">1</span>, NSGraphicsMBS.NSCompositeSourceOver, <span style="color:#006532">1.0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">middle</span> <span style="color:#7F0000;text-style:italic">part</span>
+					g.drawInRect knobImage, knobRect.X,knobRect.Y+rh-hm, w,hm, <span style="color:#326598">0</span>,h-hm, w,hm, NSGraphicsMBS.NSCompositeSourceOver, <span style="color:#006532">1.0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">top</span> <span style="color:#7F0000;text-style:italic">part</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> drawKnobSlotInRect(g <span style="color:#0000FF;font-weight: bold">as</span> NSGraphicsMBS, slotRect <span style="color:#0000FF;font-weight: bold">as</span> NSRectMBS, highlight <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">boolean</span>)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Draw</span> <span style="color:#7F0000;text-style:italic">knob</span> <span style="color:#7F0000;text-style:italic">slot</span> <span style="color:#7F0000;text-style:italic">image</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> knobSlotImage&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> w,h,hm,rh <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				w=knobSlotImage.width
+				h=knobSlotImage.height
+				hm=Floor( h/<span style="color:#326598">2</span> )
+				rh=slotRect.Height
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> BackColor&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					g.SetColor BackColor
+					g.fillRect slotRect.X, slotRect.Y, slotRect.Width, slotRect.Height
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> rh&gt;h <span style="color:#0000FF;font-weight: bold">then</span>
+					g.drawInRect knobSlotImage, slotRect.X,slotRect.Y, w,hm, <span style="color:#326598">0</span>,<span style="color:#326598">0</span>, w,hm, NSGraphicsMBS.NSCompositeSourceOver, <span style="color:#006532">1.0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">bottom</span> <span style="color:#7F0000;text-style:italic">part</span>
+					g.drawInRect knobSlotImage, slotRect.X,slotRect.Y+hm, w,rh-(hm*<span style="color:#326598">2</span>), <span style="color:#326598">0</span>,hm, w,<span style="color:#326598">1</span>, NSGraphicsMBS.NSCompositeSourceOver, <span style="color:#006532">1.0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">middle</span> <span style="color:#7F0000;text-style:italic">part</span>
+					g.drawInRect knobSlotImage, slotRect.X,slotRect.Y+rh-hm, w,hm, <span style="color:#326598">0</span>,h-hm, w,hm, NSGraphicsMBS.NSCompositeSourceOver, <span style="color:#006532">1.0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">top</span> <span style="color:#7F0000;text-style:italic">part</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Note">		Note <span style="color:#6500FE">&quot;Thanks&quot;</span>
+<div class="RB_Comment">			Thanks to David Della Rocca <dellarocca.david@free.fr> for sharing this example with us.</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> BackColor <span style="color:#0000FF;font-weight: bold">As</span> NSColorMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> DecrArrowImage <span style="color:#0000FF;font-weight: bold">As</span> NSImageMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> DecrArrowRect <span style="color:#0000FF;font-weight: bold">As</span> NSRectMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> IncrArrowImage <span style="color:#0000FF;font-weight: bold">As</span> NSImageMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> IncrArrowRect <span style="color:#0000FF;font-weight: bold">As</span> NSRectMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> knobImage <span style="color:#0000FF;font-weight: bold">As</span> NSImageMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> knobRect <span style="color:#0000FF;font-weight: bold">As</span> NSRectMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> knobSlotImage <span style="color:#0000FF;font-weight: bold">As</span> NSImageMBS</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	ExternalFile CustomNSscrollerDarkDecrArrow</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> ExternalFile</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	ExternalFile CustomNSscrollerDarkIncrArrow</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> ExternalFile</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	ExternalFile CustomNSscrollerDarkKnob</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> ExternalFile</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	ExternalFile CustomNSscrollerDarkKnobSlot</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> ExternalFile</div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-macframeworks-customnsscroller-darkscrollbar">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

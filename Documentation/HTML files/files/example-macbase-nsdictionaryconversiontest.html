@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /MacBase/NSDictionary Conversion Test</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /MacBase/NSDictionary Conversion Test</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/MacBase/NSDictionary Conversion Test</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS MacBase Plugin, MBS Main Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /MacBase/NSDictionary Conversion Test<BR>
+This example is the version from Mon, 5th May 2019.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;NSDictionary</span> <span style="color:#6500FE">Conversion</span> <span style="color:#6500FE">Test.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;L&ouml;schen&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;Beenden&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">create</span> <span style="color:#7F0000;text-style:italic">input</span> <span style="color:#7F0000;text-style:italic">Dictionary</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> inputDic <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> Dictionary
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> _int64 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Int64</span> = <span style="color:#326598">1234567890</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> _int32 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Int32</span> = <span style="color:#326598">1234567890</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> _boolean <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">boolean</span> = <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> _single <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">single</span> = <span style="color:#006532">1.2345678</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> _double <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = <span style="color:#006532">1.2345678</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> _date <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> date
+			<span style="color:#0000FF;font-weight: bold">dim</span> _dic <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> Dictionary(<span style="color:#6500FE">&quot;left&quot;</span> : <span style="color:#326598">0</span>, <span style="color:#6500FE">&quot;top&quot;</span> : <span style="color:#326598">10</span>, <span style="color:#6500FE">&quot;width&quot;</span> : <span style="color:#326598">300</span>, <span style="color:#6500FE">&quot;height&quot;</span> : <span style="color:#326598">300</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> _string <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = <span style="color:#6500FE">&quot;Hello</span> <span style="color:#6500FE">World&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> _mem <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock = _string
+			<span style="color:#0000FF;font-weight: bold">dim</span> _folderitem <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = SpecialFolder.Desktop
+			<span style="color:#0000FF;font-weight: bold">dim</span> _nscolor <span style="color:#0000FF;font-weight: bold">as</span> NSColorMBS = NSColorMBS.greenColor
+			<span style="color:#0000FF;font-weight: bold">dim</span> _nsrect <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> NSRectMBS(<span style="color:#326598">1</span>,<span style="color:#326598">2</span>,<span style="color:#326598">3</span>,<span style="color:#326598">4</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> _nspoint <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> NSPointMBS(<span style="color:#326598">1</span>,<span style="color:#326598">2</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> _nssize <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> NSSizeMBS(<span style="color:#326598">1</span>,<span style="color:#326598">2</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> _nsrange <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> NSRangeMBS(<span style="color:#326598">1</span>,<span style="color:#326598">2</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> _stringarray() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = <span style="color:#0000FF;font-weight: bold">array</span>(_string, <span style="color:#6500FE">&quot;hello&quot;</span>, <span style="color:#6500FE">&quot;world&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> _int32rarray() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">int32</span> = <span style="color:#0000FF;font-weight: bold">array</span>(_int32)
+			<span style="color:#0000FF;font-weight: bold">dim</span> _int64rarray() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">int64</span> = <span style="color:#0000FF;font-weight: bold">array</span>(_int64, <span style="color:#326598">1</span>, <span style="color:#326598">2</span>, <span style="color:#326598">3</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> _doublearray() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = <span style="color:#0000FF;font-weight: bold">array</span>(_double, <span style="color:#006532">1.0</span>, <span style="color:#006532">2.0</span>, <span style="color:#006532">3.0</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> _singlearray() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">single</span> = <span style="color:#0000FF;font-weight: bold">array</span>(_single)
+			<span style="color:#0000FF;font-weight: bold">dim</span> _booleanarray() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">boolean</span> = <span style="color:#0000FF;font-weight: bold">array</span>(_boolean, <span style="color:#0000FF;font-weight: bold">true</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#0000FF;font-weight: bold">false</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> _objectarray() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">object</span> = <span style="color:#0000FF;font-weight: bold">array</span>(_nscolor, _nscolor)
+			
+			inputDic.Value(<span style="color:#6500FE">&quot;int64&quot;</span>) = _int64
+			inputDic.Value(<span style="color:#6500FE">&quot;int32&quot;</span>) = _int32
+			inputDic.Value(<span style="color:#6500FE">&quot;boolean&quot;</span>) = _boolean
+			inputDic.Value(<span style="color:#6500FE">&quot;single&quot;</span>) = _single
+			inputDic.Value(<span style="color:#6500FE">&quot;double&quot;</span>) = _double
+			inputDic.Value(<span style="color:#6500FE">&quot;date&quot;</span>) = _date
+			inputDic.Value(<span style="color:#6500FE">&quot;dic&quot;</span>) = _dic
+			inputDic.Value(<span style="color:#6500FE">&quot;string&quot;</span>) = _string
+			inputDic.Value(<span style="color:#6500FE">&quot;mem&quot;</span>) = _mem
+			inputDic.Value(<span style="color:#6500FE">&quot;folderitem&quot;</span>) = _folderitem
+			inputDic.Value(<span style="color:#6500FE">&quot;nscolor&quot;</span>) = _nscolor
+			inputDic.Value(<span style="color:#6500FE">&quot;nsrect&quot;</span>) = _nsrect
+			inputDic.Value(<span style="color:#6500FE">&quot;nspoint&quot;</span>) = _nspoint
+			inputDic.Value(<span style="color:#6500FE">&quot;nssize&quot;</span>) = _nssize
+			inputDic.Value(<span style="color:#6500FE">&quot;nsrange&quot;</span>) = _nsrange
+			inputDic.Value(<span style="color:#6500FE">&quot;stringarray&quot;</span>) = _stringarray
+			inputDic.Value(<span style="color:#6500FE">&quot;int32rarray&quot;</span>) = _int32rarray
+			inputDic.Value(<span style="color:#6500FE">&quot;int64rarray&quot;</span>) = _int64rarray
+			inputDic.Value(<span style="color:#6500FE">&quot;doublearray&quot;</span>) = _doublearray
+			inputDic.Value(<span style="color:#6500FE">&quot;singlearray&quot;</span>) = _singlearray
+			inputDic.Value(<span style="color:#6500FE">&quot;booleanarray&quot;</span>) = _booleanarray
+			inputDic.Value(<span style="color:#6500FE">&quot;objectarray&quot;</span>) = _objectarray
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">now</span> <span style="color:#7F0000;text-style:italic">convert</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">NSDictionary</span> <span style="color:#7F0000;text-style:italic">internally</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">creating</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">NSNotification</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> NSNotificationMBS(<span style="color:#6500FE">&quot;test&quot;</span>, <span style="color:#6500FE">&quot;test&quot;</span>, inputDic)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">convert</span> <span style="color:#7F0000;text-style:italic">back</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">querying</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">user</span> <span style="color:#7F0000;text-style:italic">info</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> outputDic <span style="color:#0000FF;font-weight: bold">as</span> Dictionary = n.userInfo
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> vint64 <span style="color:#0000FF;font-weight: bold">as</span> Variant = outputDic.Value(<span style="color:#6500FE">&quot;int64&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> vint32 <span style="color:#0000FF;font-weight: bold">as</span> Variant = outputDic.Value(<span style="color:#6500FE">&quot;int32&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> vboolean <span style="color:#0000FF;font-weight: bold">as</span> Variant = outputDic.Value(<span style="color:#6500FE">&quot;boolean&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> vsingle <span style="color:#0000FF;font-weight: bold">as</span> Variant = outputDic.Value(<span style="color:#6500FE">&quot;single&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> vdouble <span style="color:#0000FF;font-weight: bold">as</span> Variant = outputDic.Value(<span style="color:#6500FE">&quot;double&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> vdate <span style="color:#0000FF;font-weight: bold">as</span> Variant = outputDic.Value(<span style="color:#6500FE">&quot;date&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> vdic <span style="color:#0000FF;font-weight: bold">as</span> Variant = outputDic.Value(<span style="color:#6500FE">&quot;dic&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> vstring <span style="color:#0000FF;font-weight: bold">as</span> Variant = outputDic.Value(<span style="color:#6500FE">&quot;string&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> vmem <span style="color:#0000FF;font-weight: bold">as</span> Variant = outputDic.Value(<span style="color:#6500FE">&quot;mem&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> vfolderitem <span style="color:#0000FF;font-weight: bold">as</span> Variant = outputDic.Value(<span style="color:#6500FE">&quot;folderitem&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> vnscolor <span style="color:#0000FF;font-weight: bold">as</span> Variant = outputDic.Value(<span style="color:#6500FE">&quot;nscolor&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> vnsrect <span style="color:#0000FF;font-weight: bold">as</span> Variant = outputDic.Value(<span style="color:#6500FE">&quot;nsrect&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> vnspoint <span style="color:#0000FF;font-weight: bold">as</span> Variant = outputDic.Value(<span style="color:#6500FE">&quot;nspoint&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> vnssize <span style="color:#0000FF;font-weight: bold">as</span> Variant = outputDic.Value(<span style="color:#6500FE">&quot;nssize&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> vnsrange <span style="color:#0000FF;font-weight: bold">as</span> Variant = outputDic.Value(<span style="color:#6500FE">&quot;nsrange&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> vstringarray <span style="color:#0000FF;font-weight: bold">as</span> Variant = outputDic.Value(<span style="color:#6500FE">&quot;stringarray&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> vint32rarray <span style="color:#0000FF;font-weight: bold">as</span> Variant = outputDic.Value(<span style="color:#6500FE">&quot;int32rarray&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> vint64rarray <span style="color:#0000FF;font-weight: bold">as</span> Variant = outputDic.Value(<span style="color:#6500FE">&quot;int64rarray&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> vdoublearray <span style="color:#0000FF;font-weight: bold">as</span> Variant = outputDic.Value(<span style="color:#6500FE">&quot;doublearray&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> vsinglearray <span style="color:#0000FF;font-weight: bold">as</span> Variant = outputDic.Value(<span style="color:#6500FE">&quot;singlearray&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> vbooleanarray <span style="color:#0000FF;font-weight: bold">as</span> Variant = outputDic.Value(<span style="color:#6500FE">&quot;booleanarray&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> vobjectarray <span style="color:#0000FF;font-weight: bold">as</span> Variant = outputDic.Value(<span style="color:#6500FE">&quot;objectarray&quot;</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> vint64.Type &lt;&gt; Variant.TypeLong <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> vint32.Type &lt;&gt; Variant.TypeInteger <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> vboolean.Type &lt;&gt; Variant.TypeBoolean <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> vsingle.Type &lt;&gt; Variant.TypeSingle <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> vdouble.Type &lt;&gt; Variant.TypeDouble <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> vstring.Type &lt;&gt; Variant.TypeString <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> (vmem <span style="color:#0000FF;font-weight: bold">isa</span> MemoryBlock) <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> (vdate <span style="color:#0000FF;font-weight: bold">isa</span> date) <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> (vdic <span style="color:#0000FF;font-weight: bold">isa</span> Dictionary) <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> (vfolderitem <span style="color:#0000FF;font-weight: bold">isa</span> folderitem) <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> (vnscolor <span style="color:#0000FF;font-weight: bold">isa</span> NSColorMBS) <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> (vnsrect <span style="color:#0000FF;font-weight: bold">isa</span> NSRectMBS) <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> (vnspoint <span style="color:#0000FF;font-weight: bold">isa</span> NSPointMBS) <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> (vnssize <span style="color:#0000FF;font-weight: bold">isa</span> NSSizeMBS) <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> (vnsrange <span style="color:#0000FF;font-weight: bold">isa</span> NSRangeMBS) <span style="color:#0000FF;font-weight: bold">then</span> break
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> vstringarray.IsArray = <span style="color:#0000FF;font-weight: bold">false</span> <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> vint32rarray.IsArray = <span style="color:#0000FF;font-weight: bold">false</span> <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> vint64rarray.IsArray = <span style="color:#0000FF;font-weight: bold">false</span> <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> vdoublearray.IsArray = <span style="color:#0000FF;font-weight: bold">false</span> <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> vsinglearray.IsArray = <span style="color:#0000FF;font-weight: bold">false</span> <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> vbooleanarray.IsArray = <span style="color:#0000FF;font-weight: bold">false</span> <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> vobjectarray.IsArray = <span style="color:#0000FF;font-weight: bold">false</span> <span style="color:#0000FF;font-weight: bold">then</span> break
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">conversion</span> <span style="color:#7F0000;text-style:italic">back</span> <span style="color:#7F0000;text-style:italic">gives</span> <span style="color:#7F0000;text-style:italic">always</span> <span style="color:#7F0000;text-style:italic">variant</span> <span style="color:#7F0000;text-style:italic">arrays</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> tstringarray() <span style="color:#0000FF;font-weight: bold">as</span> variant = vstringarray
+			<span style="color:#0000FF;font-weight: bold">dim</span> tint32rarray() <span style="color:#0000FF;font-weight: bold">as</span> variant = vint32rarray
+			<span style="color:#0000FF;font-weight: bold">dim</span> tint64rarray() <span style="color:#0000FF;font-weight: bold">as</span> variant = vint64rarray
+			<span style="color:#0000FF;font-weight: bold">dim</span> tdoublearray() <span style="color:#0000FF;font-weight: bold">as</span> variant = vdoublearray
+			<span style="color:#0000FF;font-weight: bold">dim</span> tsinglearray() <span style="color:#0000FF;font-weight: bold">as</span> variant = vsinglearray
+			<span style="color:#0000FF;font-weight: bold">dim</span> tbooleanarray() <span style="color:#0000FF;font-weight: bold">as</span> variant = vbooleanarray
+			<span style="color:#0000FF;font-weight: bold">dim</span> tobjectarray() <span style="color:#0000FF;font-weight: bold">as</span> variant = vobjectarray
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">check</span> <span style="color:#7F0000;text-style:italic">types</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">value</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">array</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> tstringarray(<span style="color:#326598">0</span>).Type &lt;&gt; Variant.TypeString <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> tint32rarray(<span style="color:#326598">0</span>).Type &lt;&gt; Variant.TypeInteger <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> tint64rarray(<span style="color:#326598">0</span>).Type &lt;&gt; Variant.TypeLong <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> tdoublearray(<span style="color:#326598">0</span>).Type &lt;&gt; Variant.TypeDouble <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> tsinglearray(<span style="color:#326598">0</span>).Type &lt;&gt; Variant.TypeSingle <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> tbooleanarray(<span style="color:#326598">0</span>).Type &lt;&gt; Variant.TypeBoolean <span style="color:#0000FF;font-weight: bold">then</span> break
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> (tobjectarray(<span style="color:#326598">0</span>) <span style="color:#0000FF;font-weight: bold">isa</span> NSColorMBS) <span style="color:#0000FF;font-weight: bold">then</span> break
+			
+			break
+			
+			MsgBox <span style="color:#6500FE">&quot;OK&quot;</span>
+			quit
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;Ablage&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Bearbeiten&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;R&uuml;ckg&auml;ngig&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;&amp;Ausschneiden&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Kopieren&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Einf&uuml;gen&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;&amp;Alles</span> <span style="color:#6500FE">ausw&auml;hlen&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmacbaseplugin.html">MBS MacBase Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-macbase-nsdictionaryconversiontest">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

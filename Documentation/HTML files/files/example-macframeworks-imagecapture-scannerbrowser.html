@@ -1,0 +1,538 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /MacFrameworks/Image Capture/Scanner Browser</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /MacFrameworks/Image Capture/Scanner Browser</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/MacFrameworks/Image Capture/Scanner Browser</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS MacOSX Plugin, MBS AVFoundation Plugin, MBS MacCocoa Plugin, MBS MacBase Plugin, MBS Main Plugin, MBS MacCG Plugin, MBS MacCF Plugin, MBS MacControls Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /MacFrameworks/Image Capture/Scanner Browser<BR>
+This example is the version from Wed, 15th Jul 2014.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Scanner</span> <span style="color:#6500FE">Browser.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;L&ouml;schen&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;Beenden&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MainWindow <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> CellTextPaint(g <span style="color:#0000FF;font-weight: bold">As</span> Graphics, row <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, column <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, x <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, y <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> column = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> pic <span style="color:#0000FF;font-weight: bold">as</span> Picture = <span style="color:#0000FF;font-weight: bold">me</span>.CellTag(row, column)
+					<span style="color:#0000FF;font-weight: bold">if</span> pic&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						g.DrawPicture pic, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, <span style="color:#326598">50</span>, <span style="color:#326598">50</span>, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, pic.Width, pic.Height
+						<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Change()
+				OpenButton.Enabled = <span style="color:#0000FF;font-weight: bold">me</span>.ListIndex &gt;= <span style="color:#326598">0</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Image <span style="color:#0000FF;font-weight: bold">Inherits</span> ImageWell</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Image <span style="color:#0000FF;font-weight: bold">Inherits</span> ImageWell</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PopupMode <span style="color:#0000FF;font-weight: bold">Inherits</span> PopupMenu</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PopupMode <span style="color:#0000FF;font-weight: bold">Inherits</span> PopupMenu</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Change()
+				<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">me</span>.Enabled <span style="color:#0000FF;font-weight: bold">and</span> <span style="color:#0000FF;font-weight: bold">me</span>.ListIndex&gt;=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> scanner <span style="color:#0000FF;font-weight: bold">as</span> ICScannerDeviceMBS = <span style="color:#0000FF;font-weight: bold">self</span>.selectedScanner
+					<span style="color:#0000FF;font-weight: bold">dim</span> selectedType <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#0000FF;font-weight: bold">me</span>.RowTag(<span style="color:#0000FF;font-weight: bold">me</span>.ListIndex)
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> selectedType &lt;&gt; scanner.selectedFunctionalUnit.type <span style="color:#0000FF;font-weight: bold">then</span>
+						scanner.requestSelectFunctionalUnit selectedType
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label2 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label2 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control OverviewButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance OverviewButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				startOverviewScan
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control ScanButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance ScanButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				startscan
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control OpenButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance OpenButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				openCloseSession
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control ProgressBar1 <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressBar</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance ProgressBar1 <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressBar</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StatusMessage <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StatusMessage <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control ProgressTimer <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance ProgressTimer <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> scanner <span style="color:#0000FF;font-weight: bold">as</span> ICScannerDeviceMBS = selectedScanner
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> scanner&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> fu <span style="color:#0000FF;font-weight: bold">as</span> ICScannerFunctionalUnitMBS = scanner.selectedFunctionalUnit
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> fu&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span> = fu.scanProgressPercentDone
+						
+						ProgressBar1.Value = d
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			events = <span style="color:#0000FF;font-weight: bold">new</span> MyImageCaptureEvents
+			
+			PopupMode.DeleteAllRows
+			PopupMode.Enabled = <span style="color:#0000FF;font-weight: bold">false</span>
+			
+			DeviceBrowser = <span style="color:#0000FF;font-weight: bold">new</span> ICDeviceBrowserMBS
+			DeviceBrowser.browsedDeviceTypeMask = bitwise.BitOr(ICDeviceMBS.ICDeviceLocationTypeMaskLocal, ICDeviceMBS.ICDeviceLocationTypeMaskRemote, ICDeviceMBS.ICDeviceTypeMaskScanner)
+			DeviceBrowser.start
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> AddDevice(scanner <span style="color:#0000FF;font-weight: bold">as</span> ICScannerDeviceMBS)
+			Scanners.Append scanner
+			
+			List.AddRow <span style="color:#6500FE">&quot;&quot;</span>, scanner.Name
+			List.RowTag(List.LastIndex) = scanner
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> image <span style="color:#0000FF;font-weight: bold">as</span> CGImageMBS = scanner.Icon
+			<span style="color:#0000FF;font-weight: bold">dim</span> pic <span style="color:#0000FF;font-weight: bold">as</span> Picture = image.Picture
+			
+			List.CellTag(List.LastIndex,<span style="color:#326598">0</span>) = pic
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> StartScan()
+			<span style="color:#0000FF;font-weight: bold">dim</span> scanner <span style="color:#0000FF;font-weight: bold">as</span> ICScannerDeviceMBS = <span style="color:#0000FF;font-weight: bold">self</span>.selectedScanner
+			<span style="color:#0000FF;font-weight: bold">dim</span> fu <span style="color:#0000FF;font-weight: bold">as</span> ICScannerFunctionalUnitMBS = scanner.selectedFunctionalUnit
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> ( ( fu.scanInProgress = <span style="color:#0000FF;font-weight: bold">false</span> ) <span style="color:#0000FF;font-weight: bold">and</span> ( fu.overviewScanInProgress = <span style="color:#0000FF;font-weight: bold">false</span> ) ) <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> ( fu.type = ICScannerFunctionalUnitMBS.ICScannerFunctionalUnitTypeDocumentFeeder ) <span style="color:#0000FF;font-weight: bold">then</span>
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> dfu <span style="color:#0000FF;font-weight: bold">as</span> ICScannerFunctionalUnitDocumentFeederMBS = ICScannerFunctionalUnitDocumentFeederMBS(fu)
+					
+					dfu.documentType  = ICScannerFunctionalUnitMBS.ICScannerDocumentTypeUSLetter
+					
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> NSSizeMBS = fu.physicalSize
+					
+					fu.measurementUnit  = ICScannerFunctionalUnitMBS.ICScannerMeasurementUnitInches
+					fu.scanArea         = <span style="color:#0000FF;font-weight: bold">new</span> NSRectMBS( <span style="color:#006532">0.0</span>, <span style="color:#006532">0.0</span>, s.width, s.height )
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				fu.resolution                   = fu.supportedResolutions.indexGreaterThanOrEqualToIndex(<span style="color:#326598">100</span>)
+				fu.bitDepth                     = ICScannerFunctionalUnitMBS.ICScannerBitDepth8Bits
+				fu.pixelDataType                = ICScannerFunctionalUnitMBS.ICScannerPixelDataTypeRGB
+				
+				scanner.transferMode            = ICScannerDeviceMBS.ICScannerTransferModeFileBased
+				scanner.downloadsDirectory      = SpecialFolder.Desktop.URLPath
+				scanner.documentName            = <span style="color:#6500FE">&quot;Scan&quot;</span>
+				scanner.documentUTI             = UTTypeMBS.kUTTypeJPEG
+				
+				scanner.requestScan
+				ProgressBar1.Visible = <span style="color:#0000FF;font-weight: bold">true</span>
+				ProgressBar1.Value = <span style="color:#326598">0</span>
+				ProgressBar1.Maximum = <span style="color:#326598">100</span>
+				ProgressTimer.mode = <span style="color:#326598">2</span>
+				
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				scanner.cancelScan
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> deviceDidBecomeReady(scanner <span style="color:#0000FF;font-weight: bold">as</span> ICScannerDeviceMBS)
+			<span style="color:#0000FF;font-weight: bold">dim</span> availabeTypes() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = scanner.availableFunctionalUnitTypes
+			<span style="color:#0000FF;font-weight: bold">dim</span> functionalUnit <span style="color:#0000FF;font-weight: bold">as</span> ICScannerFunctionalUnitMBS = scanner.selectedFunctionalUnit
+			
+			PopupMode.Enabled = <span style="color:#0000FF;font-weight: bold">false</span>
+			PopupMode.DeleteAllRows
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> availabeTypes.Ubound &gt;= <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> selectedfunctionalUnit <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = -<span style="color:#326598">1</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> functionalUnit&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					selectedfunctionalUnit = functionalUnit.type
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> <span style="color:#0000FF;font-weight: bold">in</span> availabeTypes
+					<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">case</span> n
+					<span style="color:#0000FF;font-weight: bold">case</span> ICScannerFunctionalUnitMBS.ICScannerFunctionalUnitTypeFlatbed
+						PopupMode.AddRow <span style="color:#6500FE">&quot;Flatbed&quot;</span>, ICScannerFunctionalUnitMBS.ICScannerFunctionalUnitTypeFlatbed
+						
+						<span style="color:#0000FF;font-weight: bold">if</span> selectedfunctionalUnit = ICScannerFunctionalUnitMBS.ICScannerFunctionalUnitTypeFlatbed <span style="color:#0000FF;font-weight: bold">then</span>
+							PopupMode.ListIndex = PopupMode.ListCount-<span style="color:#326598">1</span>
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+						
+					<span style="color:#0000FF;font-weight: bold">case</span> ICScannerFunctionalUnitMBS.ICScannerFunctionalUnitTypePositiveTransparency
+						PopupMode.AddRow <span style="color:#6500FE">&quot;Postive</span> <span style="color:#6500FE">Transparency&quot;</span>, ICScannerFunctionalUnitMBS.ICScannerFunctionalUnitTypePositiveTransparency
+						
+						<span style="color:#0000FF;font-weight: bold">if</span> selectedfunctionalUnit = ICScannerFunctionalUnitMBS.ICScannerFunctionalUnitTypePositiveTransparency <span style="color:#0000FF;font-weight: bold">then</span>
+							PopupMode.ListIndex = PopupMode.ListCount-<span style="color:#326598">1</span>
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+						
+					<span style="color:#0000FF;font-weight: bold">case</span> ICScannerFunctionalUnitMBS.ICScannerFunctionalUnitTypeNegativeTransparency
+						PopupMode.AddRow <span style="color:#6500FE">&quot;Negative</span> <span style="color:#6500FE">Transparency&quot;</span>, ICScannerFunctionalUnitMBS.ICScannerFunctionalUnitTypeNegativeTransparency
+						
+						<span style="color:#0000FF;font-weight: bold">if</span> selectedfunctionalUnit = ICScannerFunctionalUnitMBS.ICScannerFunctionalUnitTypeNegativeTransparency <span style="color:#0000FF;font-weight: bold">then</span>
+							PopupMode.ListIndex = PopupMode.ListCount-<span style="color:#326598">1</span>
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+						
+					<span style="color:#0000FF;font-weight: bold">case</span> ICScannerFunctionalUnitMBS.ICScannerFunctionalUnitTypeDocumentFeeder
+						PopupMode.AddRow <span style="color:#6500FE">&quot;Document</span> <span style="color:#6500FE">Feeder&quot;</span>, ICScannerFunctionalUnitMBS.ICScannerFunctionalUnitTypeDocumentFeeder
+						
+						<span style="color:#0000FF;font-weight: bold">if</span> selectedfunctionalUnit = ICScannerFunctionalUnitMBS.ICScannerFunctionalUnitTypeDocumentFeeder <span style="color:#0000FF;font-weight: bold">then</span>
+							PopupMode.ListIndex = PopupMode.ListCount-<span style="color:#326598">1</span>
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+						
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">select</span>
+				<span style="color:#0000FF;font-weight: bold">next</span>
+				
+				PopupMode.Enabled = <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			scanButton.Enabled = <span style="color:#0000FF;font-weight: bold">true</span>
+			overviewButton.Enabled = <span style="color:#0000FF;font-weight: bold">true</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> didCompleteOverviewScan(scanner <span style="color:#0000FF;font-weight: bold">as</span> ICScannerDeviceMBS)
+			ProgressBar1.Visible = <span style="color:#0000FF;font-weight: bold">false</span>
+			ProgressTimer.mode = <span style="color:#326598">0</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> scanner&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> v <span style="color:#0000FF;font-weight: bold">as</span> Variant = scanner.selectedFunctionalUnit.overviewImage
+				<span style="color:#0000FF;font-weight: bold">if</span> v <span style="color:#0000FF;font-weight: bold">isa</span> CGImageMBS <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> img <span style="color:#0000FF;font-weight: bold">as</span> CGImageMBS = v
+					<span style="color:#0000FF;font-weight: bold">dim</span> pic <span style="color:#0000FF;font-weight: bold">as</span> Picture = img.Picture
+					image.Image = pic.ProportinalScaled(image.Width, image.Height)
+					<span style="color:#0000FF;font-weight: bold">Return</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			image.Image = <span style="color:#0000FF;font-weight: bold">nil</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> didCompleteScan()
+			ProgressBar1.Visible = <span style="color:#0000FF;font-weight: bold">false</span>
+			ProgressTimer.mode = <span style="color:#326598">0</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> didReceiveStatusInformation(Status <span style="color:#0000FF;font-weight: bold">as</span> Dictionary)
+			<span style="color:#0000FF;font-weight: bold">dim</span> StatusValue <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = status.Lookup(ICDeviceMBS.ICStatusNotificationKey, <span style="color:#6500FE">&quot;&quot;</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> StatusValue = ICScannerDeviceMBS.ICScannerStatusWarmingUp <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				ProgressBar1.Maximum = <span style="color:#326598">0</span>
+				ProgressBar1.Value = <span style="color:#326598">0</span>
+				ProgressTimer.mode = <span style="color:#326598">0</span>
+				StatusMessage.Text = status.lookup(ICDeviceMBS.ICLocalizedStatusNotificationKey, <span style="color:#6500FE">&quot;?&quot;</span>)
+				ProgressBar1.Visible = <span style="color:#0000FF;font-weight: bold">True</span>
+				
+			<span style="color:#0000FF;font-weight: bold">elseif</span> StatusValue = ICScannerDeviceMBS.ICScannerStatusWarmUpDone <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				StatusMessage.Text = <span style="color:#6500FE">&quot;&quot;</span>
+				ProgressBar1.Value = <span style="color:#326598">0</span>
+				ProgressBar1.Maximum = <span style="color:#326598">100</span>
+				ProgressBar1.Visible = <span style="color:#0000FF;font-weight: bold">True</span>
+				ProgressTimer.mode = <span style="color:#326598">2</span>
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> didRemoveDevice(d <span style="color:#0000FF;font-weight: bold">as</span> ICDeviceMBS)
+			<span style="color:#0000FF;font-weight: bold">dim</span> u <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = List.ListCount-<span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> u
+				<span style="color:#0000FF;font-weight: bold">if</span> list.RowTag(i) = d <span style="color:#0000FF;font-weight: bold">then</span>
+					List.RemoveRow i
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> openCloseSession()
+			<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> ICScannerDeviceMBS = selectedScanner
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> s&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> s.HasOpenSession <span style="color:#0000FF;font-weight: bold">then</span>
+					s.requestCloseSession
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					s.requestOpenSession
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> selectedScanner() <span style="color:#0000FF;font-weight: bold">As</span> ICScannerDeviceMBS
+			<span style="color:#0000FF;font-weight: bold">if</span> list.listindex &gt;= <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> List.RowTag(List.ListIndex)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> startOverviewScan()
+			<span style="color:#0000FF;font-weight: bold">dim</span> scanner <span style="color:#0000FF;font-weight: bold">as</span> ICScannerDeviceMBS = <span style="color:#0000FF;font-weight: bold">self</span>.selectedScanner
+			<span style="color:#0000FF;font-weight: bold">dim</span> fu <span style="color:#0000FF;font-weight: bold">as</span> ICScannerFunctionalUnitMBS = scanner.selectedFunctionalUnit
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> ( fu.canPerformOverviewScan <span style="color:#0000FF;font-weight: bold">and</span> ( fu.scanInProgress = <span style="color:#0000FF;font-weight: bold">false</span> ) <span style="color:#0000FF;font-weight: bold">and</span> ( fu.overviewScanInProgress = <span style="color:#0000FF;font-weight: bold">false</span> ) ) <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				
+				fu.overviewResolution = fu.supportedResolutions.indexGreaterThanOrEqualToIndex(<span style="color:#326598">72</span>)
+				
+				scanner.requestOverviewScan
+				ProgressBar1.Visible = <span style="color:#0000FF;font-weight: bold">true</span>
+				ProgressBar1.Value = <span style="color:#326598">0</span>
+				ProgressBar1.Maximum = <span style="color:#326598">100</span>
+				ProgressTimer.mode = <span style="color:#326598">2</span>
+				
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				scanner.cancelScan
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> DeviceBrowser <span style="color:#0000FF;font-weight: bold">As</span> ICDeviceBrowserMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Scanners() <span style="color:#0000FF;font-weight: bold">As</span> ICScannerDeviceMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> events <span style="color:#0000FF;font-weight: bold">As</span> MyImageCaptureEvents</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;Ablage&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Bearbeiten&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;R&uuml;ckg&auml;ngig&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;&amp;Ausschneiden&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Kopieren&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Einf&uuml;gen&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;&amp;Alles</span> <span style="color:#6500FE">ausw&auml;hlen&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyImageCaptureEvents <span style="color:#0000FF;font-weight: bold">Inherits</span> ImageCaptureEventsMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> deviceBrowserDeviceDidChangeName(browser <span style="color:#0000FF;font-weight: bold">as</span> ICDeviceBrowserMBS, device <span style="color:#0000FF;font-weight: bold">as</span> ICDeviceMBS)
+			System.DebugLog CurrentMethodName
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> deviceBrowserDeviceDidChangeSharingState(browser <span style="color:#0000FF;font-weight: bold">as</span> ICDeviceBrowserMBS, device <span style="color:#0000FF;font-weight: bold">as</span> ICDeviceMBS)
+			System.DebugLog CurrentMethodName
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> deviceBrowserDidAddDevice(browser <span style="color:#0000FF;font-weight: bold">as</span> ICDeviceBrowserMBS, device <span style="color:#0000FF;font-weight: bold">as</span> ICDeviceMBS, moreComing <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">boolean</span>)
+			System.DebugLog CurrentMethodName
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> BitwiseAnd(device.type, device.ICDeviceTypeMaskScanner) = device.ICDeviceTypeMaskScanner <span style="color:#0000FF;font-weight: bold">then</span>
+				MainWindow.AddDevice ICScannerDeviceMBS(device)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> deviceBrowserDidEnumerateLocalDevices(browser <span style="color:#0000FF;font-weight: bold">as</span> ICDeviceBrowserMBS)
+			System.DebugLog CurrentMethodName
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> deviceBrowserDidRemoveDevice(browser <span style="color:#0000FF;font-weight: bold">as</span> ICDeviceBrowserMBS, device <span style="color:#0000FF;font-weight: bold">as</span> ICDeviceMBS, moreGoing <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">boolean</span>)
+			System.DebugLog CurrentMethodName
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> deviceBrowserRequestsSelectDevice(browser <span style="color:#0000FF;font-weight: bold">as</span> ICDeviceBrowserMBS, device <span style="color:#0000FF;font-weight: bold">as</span> ICDeviceMBS)
+			System.DebugLog CurrentMethodName
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> deviceDidBecomeReady(device <span style="color:#0000FF;font-weight: bold">as</span> ICDeviceMBS)
+			System.DebugLog CurrentMethodName
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> device <span style="color:#0000FF;font-weight: bold">isa</span> ICScannerDeviceMBS <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				MainWindow.deviceDidBecomeReady ICScannerDeviceMBS(Device)
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> deviceDidChangeName(device <span style="color:#0000FF;font-weight: bold">as</span> ICDeviceMBS)
+			System.DebugLog CurrentMethodName
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> deviceDidChangeSharingState(device <span style="color:#0000FF;font-weight: bold">as</span> ICDeviceMBS)
+			System.DebugLog CurrentMethodName
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> deviceDidCloseSessionWithError(device <span style="color:#0000FF;font-weight: bold">as</span> ICDeviceMBS, error <span style="color:#0000FF;font-weight: bold">as</span> NSErrorMBS)
+			System.DebugLog CurrentMethodName
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> deviceDidEncounterError(device <span style="color:#0000FF;font-weight: bold">as</span> ICDeviceMBS, error <span style="color:#0000FF;font-weight: bold">as</span> NSErrorMBS)
+			System.DebugLog CurrentMethodName
+			MsgBox error.LocalizedDescription
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> deviceDidOpenSessionWithError(device <span style="color:#0000FF;font-weight: bold">as</span> ICDeviceMBS, error <span style="color:#0000FF;font-weight: bold">as</span> NSErrorMBS)
+			System.DebugLog CurrentMethodName
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> deviceDidReceiveButtonPress(device <span style="color:#0000FF;font-weight: bold">as</span> ICDeviceMBS, buttonType <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span>)
+			System.DebugLog CurrentMethodName
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> deviceDidReceiveCustomNotification(device <span style="color:#0000FF;font-weight: bold">as</span> ICDeviceMBS, notification <span style="color:#0000FF;font-weight: bold">as</span> Dictionary, data <span style="color:#0000FF;font-weight: bold">as</span> Memoryblock)
+			System.DebugLog CurrentMethodName
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> deviceDidReceiveStatusInformation(device <span style="color:#0000FF;font-weight: bold">as</span> ICDeviceMBS, status <span style="color:#0000FF;font-weight: bold">as</span> Dictionary)
+			System.DebugLog CurrentMethodName
+			
+			MainWindow.didReceiveStatusInformation Status
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> deviceDidRemove(device <span style="color:#0000FF;font-weight: bold">as</span> ICDeviceMBS)
+			System.DebugLog CurrentMethodName
+			
+			MainWindow.didRemoveDevice device
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> deviceDidSendMessage(messageCode <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">UInt32</span>, data <span style="color:#0000FF;font-weight: bold">as</span> Memoryblock, error <span style="color:#0000FF;font-weight: bold">as</span> NSErrorMBS, device <span style="color:#0000FF;font-weight: bold">as</span> ICDeviceMBS)
+			System.DebugLog CurrentMethodName
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> scannerDeviceDidBecomeAvailable(scanner <span style="color:#0000FF;font-weight: bold">as</span> ICScannerDeviceMBS)
+			System.DebugLog CurrentMethodName
+			scanner.requestOpenSession
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> scannerDeviceDidCompleteOverviewScanWithError(scanner <span style="color:#0000FF;font-weight: bold">as</span> ICScannerDeviceMBS, error <span style="color:#0000FF;font-weight: bold">as</span> NSErrorMBS)
+			System.DebugLog CurrentMethodName
+			MainWindow.didCompleteOverviewScan scanner
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> scannerDeviceDidCompleteScanWithError(scanner <span style="color:#0000FF;font-weight: bold">as</span> ICScannerDeviceMBS, error <span style="color:#0000FF;font-weight: bold">as</span> NSErrorMBS)
+			System.DebugLog CurrentMethodName
+			MainWindow.didCompleteScan
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> scannerDeviceDidScanToBandData(scanner <span style="color:#0000FF;font-weight: bold">as</span> ICScannerDeviceMBS, Data <span style="color:#0000FF;font-weight: bold">as</span> ICScannerBandDataMBS)
+			System.DebugLog CurrentMethodName
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> scannerDeviceDidScanToURL(scanner <span style="color:#0000FF;font-weight: bold">as</span> ICScannerDeviceMBS, URL <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, file <span style="color:#0000FF;font-weight: bold">as</span> folderitem, data <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock)
+			System.DebugLog CurrentMethodName
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> scannerDeviceDidSelectFunctionalUnit(scanner <span style="color:#0000FF;font-weight: bold">as</span> ICScannerDeviceMBS, functionalUnit <span style="color:#0000FF;font-weight: bold">as</span> variant, Error <span style="color:#0000FF;font-weight: bold">as</span> NSErrorMBS)
+			System.DebugLog CurrentMethodName
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Module</span> UtilModule</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> AddRow(<span style="color:#0000FF;font-weight: bold">extends</span> p <span style="color:#0000FF;font-weight: bold">as</span> PopupMenu, text <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, tag <span style="color:#0000FF;font-weight: bold">as</span> Variant)
+			p.AddRow text
+			p.RowTag(p.ListCount-<span style="color:#326598">1</span>) = tag
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> ProportinalScaled(<span style="color:#0000FF;font-weight: bold">extends</span> pic <span style="color:#0000FF;font-weight: bold">as</span> Picture, Width <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, Height <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> Picture
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Calculate</span> <span style="color:#7F0000;text-style:italic">scale</span> <span style="color:#7F0000;text-style:italic">factor</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> faktor <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span> = min( Height / Pic.Height, Width / Pic.Width)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Calculate</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">size</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> w <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = Pic.Width * faktor
+			<span style="color:#0000FF;font-weight: bold">dim</span> h <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = Pic.Height * faktor
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">create</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">picture</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> NewPic <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> Picture(w,h,<span style="color:#326598">32</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">draw</span> <span style="color:#7F0000;text-style:italic">picture</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">size</span>
+			NewPic.Graphics.DrawPicture Pic, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, w, h, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, Pic.Width, Pic.Height
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">return</span> <span style="color:#7F0000;text-style:italic">result</span>
+			<span style="color:#0000FF;font-weight: bold">Return</span> NewPic
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Module</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-macframeworks-imagecapture-camerabrowser.html">/MacFrameworks/Image Capture/Camera Browser</A></li>
+<li><A href="example-macframeworks-imagecapture-imagecaptureviews.html">/MacFrameworks/Image Capture/Image Capture Views</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-macframeworks-imagecapture-scannerbrowser">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

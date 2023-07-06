@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Util/Math functions Demo</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Util/Math functions Demo</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Util/<a href="topic-math.html">Math</A> functions Demo</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS Util Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Util/<a href="topic-math.html">Math</A> functions Demo<BR>
+This example is the version from Sun, 17th Mar 2012.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Math</span> <span style="color:#6500FE">functions</span> <span style="color:#6500FE">Demo.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	FileTypes</div>
+<div class="RB_Code">		Filetype text</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> FileTypes</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar Menu</div>
+<div class="RB_Code">		MenuItem UntitledMenu3 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem UntitledMenu2 = <span style="color:#6500FE">&quot;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;Quit&quot;</span></div>
+<div class="RB_Code">		MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cut&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;Clear&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			TestIntOps()
+			MsgBox <span style="color:#6500FE">&quot;The</span> <span style="color:#6500FE">bitwise</span> <span style="color:#6500FE">integer</span> <span style="color:#6500FE">functions</span> <span style="color:#6500FE">seem</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">be</span> <span style="color:#6500FE">working</span> <span style="color:#6500FE">fine.&quot;</span>
+			
+			quit
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Module</span> TestModule</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> TestIntOps()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">This</span> <span style="color:#7F0000;text-style:italic">routine</span> <span style="color:#7F0000;text-style:italic">tests</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Integer</span> <span style="color:#7F0000;text-style:italic">methods</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> i, j, k <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+			
+			i = BitValMBS(<span style="color:#326598">5</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">32</span>
+			assert(i = <span style="color:#326598">32</span>, <span style="color:#6500FE">&quot;BitVal&quot;</span>)
+			
+			i = BitInclMBS(<span style="color:#326598">6</span>, <span style="color:#326598">0</span>)
+			assert(i = <span style="color:#326598">7</span>, <span style="color:#6500FE">&quot;BitIncl</span> <span style="color:#6500FE">#1&quot;</span>)
+			i = BitInclMBS(i, <span style="color:#326598">2</span>)
+			assert(i = <span style="color:#326598">7</span>, <span style="color:#6500FE">&quot;BitIncl</span> <span style="color:#6500FE">#2&quot;</span>)
+			
+			i = BitExclMBS(<span style="color:#326598">6</span>, <span style="color:#326598">0</span>)
+			assert(i = <span style="color:#326598">6</span>, <span style="color:#6500FE">&quot;BitExcl</span> <span style="color:#6500FE">#1&quot;</span>)
+			i = BitExclMBS(<span style="color:#326598">6</span>, <span style="color:#326598">1</span>)
+			assert(i = <span style="color:#326598">4</span>, <span style="color:#6500FE">&quot;BitExcl</span> <span style="color:#6500FE">#2&quot;</span>)
+			
+			assert(BitIsSetMBS(<span style="color:#326598">1</span>, <span style="color:#326598">0</span>), <span style="color:#6500FE">&quot;BitIsSet</span> <span style="color:#6500FE">#1&quot;</span>)
+			assert(<span style="color:#0000FF;font-weight: bold">not</span> BitIsSetMBS(<span style="color:#326598">1</span>, <span style="color:#326598">1</span>), <span style="color:#6500FE">&quot;BitIsSet</span> <span style="color:#6500FE">#2&quot;</span>)
+			
+			i = ArithmeticShiftMBS(<span style="color:#326598">2</span>, <span style="color:#326598">1</span>)
+			assert(i = <span style="color:#326598">4</span>, <span style="color:#6500FE">&quot;ArithmeticShift</span> <span style="color:#6500FE">#1&quot;</span>)
+			i = ArithmeticShiftMBS(<span style="color:#326598">1</span>, <span style="color:#326598">31</span>)
+			assert(i = BitValMBS(<span style="color:#326598">31</span>), <span style="color:#6500FE">&quot;ArithmeticShift</span> <span style="color:#6500FE">#2&quot;</span>)
+			i = ArithmeticShiftMBS(<span style="color:#326598">4</span>, -<span style="color:#326598">1</span>)
+			assert(i = <span style="color:#326598">2</span>, <span style="color:#6500FE">&quot;ArithmeticShift</span> <span style="color:#6500FE">#3&quot;</span>)
+			i = ArithmeticShiftMBS(<span style="color:#326598">4</span>, -<span style="color:#326598">3</span>)
+			assert(i = <span style="color:#326598">0</span>, <span style="color:#6500FE">&quot;ArithmeticShift</span> <span style="color:#6500FE">#4&quot;</span>)
+			i = ArithmeticShiftMBS(-<span style="color:#326598">4</span>, -<span style="color:#326598">1</span>)
+			assert(i = -<span style="color:#326598">2</span>, <span style="color:#6500FE">&quot;ArithmeticShift</span> <span style="color:#6500FE">#5&quot;</span>)
+			
+			i = LogicalShiftMBS(<span style="color:#326598">2</span>, <span style="color:#326598">1</span>)
+			assert(i = <span style="color:#326598">4</span>, <span style="color:#6500FE">&quot;LogicalShift</span> <span style="color:#6500FE">#1&quot;</span>)
+			i = LogicalShiftMBS(<span style="color:#326598">1</span>, <span style="color:#326598">31</span>)
+			assert(i = BitValMBS(<span style="color:#326598">31</span>), <span style="color:#6500FE">&quot;LogicalShift</span> <span style="color:#6500FE">#2&quot;</span>)
+			i = LogicalShiftMBS(<span style="color:#326598">4</span>, -<span style="color:#326598">1</span>)
+			assert(i = <span style="color:#326598">2</span>, <span style="color:#6500FE">&quot;LogicalShift</span> <span style="color:#6500FE">#3&quot;</span>)
+			i = LogicalShiftMBS(<span style="color:#326598">4</span>, -<span style="color:#326598">3</span>)
+			assert(i = <span style="color:#326598">0</span>, <span style="color:#6500FE">&quot;LogicalShift</span> <span style="color:#6500FE">#4&quot;</span>)
+			i = LogicalShiftMBS(BitValMBS(<span style="color:#326598">31</span>), -<span style="color:#326598">1</span>)
+			assert(i = BitValMBS(<span style="color:#326598">30</span>), <span style="color:#6500FE">&quot;LogicalShift</span> <span style="color:#6500FE">#5&quot;</span>)
+			
+			i = BitwiseNotMBS(-<span style="color:#326598">2</span>)
+			assert(i = <span style="color:#326598">1</span>, <span style="color:#6500FE">&quot;BitwiseNot&quot;</span>)
+			
+			i = BitwiseRotateMBS(<span style="color:#326598">&amp;H0110</span>, <span style="color:#326598">1</span>, <span style="color:#326598">0</span>, <span style="color:#326598">16</span>)
+			assert(i = <span style="color:#326598">&amp;H0220</span>, <span style="color:#6500FE">&quot;BitwiseRotate</span> <span style="color:#6500FE">#1&quot;</span>)
+			i = BitwiseRotateMBS(<span style="color:#326598">&amp;H0220</span>, -<span style="color:#326598">1</span>, <span style="color:#326598">0</span>, <span style="color:#326598">32</span>)
+			assert(i = <span style="color:#326598">&amp;H0110</span>, <span style="color:#6500FE">&quot;BitwiseRotate</span> <span style="color:#6500FE">#2&quot;</span>)
+			i = BitwiseRotateMBS(<span style="color:#326598">&amp;HF0100</span>, -<span style="color:#326598">1</span>, <span style="color:#326598">0</span>, <span style="color:#326598">32</span>)
+			assert(i = <span style="color:#326598">&amp;H78080</span>, <span style="color:#6500FE">&quot;BitwiseRotate</span> <span style="color:#6500FE">#3&quot;</span>)
+			i = BitwiseRotateMBS(<span style="color:#326598">&amp;HF0100</span>, -<span style="color:#326598">1</span>, <span style="color:#326598">0</span>, <span style="color:#326598">16</span>)
+			assert(i = <span style="color:#326598">&amp;HF0080</span>, <span style="color:#6500FE">&quot;BitwiseRotate</span> <span style="color:#6500FE">#4&quot;</span>)
+			i = BitwiseRotateMBS(<span style="color:#326598">&amp;HF0100</span>, <span style="color:#326598">1</span>, <span style="color:#326598">0</span>, <span style="color:#326598">17</span>)
+			assert(i = <span style="color:#326598">&amp;HE0201</span>, <span style="color:#6500FE">&quot;BitwiseRotate</span> <span style="color:#6500FE">#5&quot;</span>)
+			i = BitwiseRotateMBS(<span style="color:#326598">&amp;HE0201</span>, -<span style="color:#326598">1</span>, <span style="color:#326598">1</span>, <span style="color:#326598">16</span>)
+			assert(i = <span style="color:#326598">&amp;HE0101</span>, <span style="color:#6500FE">&quot;BitwiseRotate</span> <span style="color:#6500FE">#6&quot;</span>)
+			i = BitwiseRotateMBS(<span style="color:#326598">&amp;HE0103</span>, <span style="color:#326598">1</span>, <span style="color:#326598">1</span>, <span style="color:#326598">16</span>)
+			assert(i = <span style="color:#326598">&amp;HE0205</span>, <span style="color:#6500FE">&quot;BitwiseRotate</span> <span style="color:#6500FE">#7&quot;</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> assert(assertion <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>, msg <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span>)
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> assertion <span style="color:#0000FF;font-weight: bold">then</span>
+				MsgBox <span style="color:#6500FE">&quot;The</span> <span style="color:#6500FE">following</span> <span style="color:#6500FE">function</span> <span style="color:#6500FE">does</span> <span style="color:#6500FE">not</span> <span style="color:#6500FE">work</span> <span style="color:#6500FE">as</span> <span style="color:#6500FE">expected:&quot;</span> + chr(<span style="color:#326598">13</span>) + msg
+				quit
+			<span style="color:#0000FF;font-weight: bold">end</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Module</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsutilplugin.html">MBS Util Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-util-mathfunctionsdemo">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

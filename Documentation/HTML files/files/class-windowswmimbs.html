@@ -1,0 +1,270 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - WindowsWMIMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="WindowsWMIMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">WindowsWMIMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>WindowsWMIMBS class</H3>
+<P>Super class: <A href="class-wmiobjectmbs.html">WMIObjectMBS</A></p>
+<div class="W">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-windows.html" translate="no">Windows</A></td>
+<td class=grau><a href="plugins-mbswinplugin.html">MBS Win Plugin</a></td>
+<td class=grau><a href="newinversion74.shtml" class=version>7.4</a></td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+A class to run queries in the Windows Management Interface.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> w <span style="color: #0000FF;">as</span> WindowsWMIMBS<br /><br />w=new WindowsWMIMBS<br /><br /><span style="color: #0000FF;">if</span> w.ConnectServer(<span style="color: #6600FE;">&quot;root\cimv2&quot;</span>) <span style="color: #0000FF;">then</span><br />  MsgBox <span style="color: #6600FE;">&quot;ConnectServer: ok&quot;</span><br />  <br />  <span style="color: #0000FF;">if</span> w.query(<span style="color: #6600FE;">&quot;WQL&quot;</span>,<span style="color: #6600FE;">&quot;SELECT * FROM Win32_Processor&quot;</span>) <span style="color: #0000FF;">then</span><br />    MsgBox <span style="color: #6600FE;">&quot;query: ok&quot;</span><br />    <br />    <span style="color: #0000FF;">if</span> w.NextItem <span style="color: #0000FF;">then</span><br />      MsgBox <span style="color: #6600FE;">&quot;NextItem: ok&quot;</span><br />      <br />      MsgBox w.GetPropertyString(<span style="color: #6600FE;">&quot;Name&quot;</span>) <span style="color: #800000;">// string</span><br />      MsgBox str(w.GetPropertyInteger(<span style="color: #6600FE;">&quot;MaxClockSpeed&quot;</span>)) <span style="color: #800000;">// uint32</span><br />      MsgBox str(w.GetPropertyInteger(<span style="color: #6600FE;">&quot;ProcessorType&quot;</span>)) <span style="color: #800000;">// uint16</span><br />      <br />    <span style="color: #0000FF;">else</span><br />      MsgBox <span style="color: #6600FE;">&quot;NextItem: fail&quot;</span><br />    <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br />  <span style="color: #0000FF;">else</span><br />    MsgBox <span style="color: #6600FE;">&quot;query: fail&quot;</span><br />  <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br />  <br /><span style="color: #0000FF;">else</span><br />  MsgBox <span style="color: #6600FE;">&quot;ConnectServer: fail&quot;</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+In Windows 8.1 (or later) it looks like WindowsWMIMBS.InitSecurity(false) must be called at app.Constructor time as Xojo will do some things in background when opening first window which block our queries.<BR>
+Subclass of the <A href="class-wmiobjectmbs.html">WMIObjectMBS</A> class.<BR>
+</div>
+<ul>
+<LI>3 properties<UL>
+<li class="W">property <A href="windows-windowswmimbs-property.html">EnumeratorHandle</A> as Integer</li>
+<li class="W">property <A href="windows-windowswmimbs-property.html#2">LocatorHandle</A> as Integer</li>
+<li class="W">property <A href="windows-windowswmimbs-property.html#3">ServiceHandle</A> as Integer</li>
+</UL></LI>
+<LI>7 methods<UL>
+<li class="W">method <A href="windows-windowswmimbs-method.html">CancelAsyncCall</A> as boolean</li>
+<li class="W">method <A href="windows-windowswmimbs-method.html#2">ConnectServer</A>(NetworkResource as string, Username as string="", Password as string="", Locale as string="", Authority as string="") as boolean</li>
+<li class="W">method <A href="windows-windowswmimbs-method.html#3">Constructor</A></li>
+<li class="W">method <A href="windows-windowswmimbs-method.html#4">ExecNotificationQueryAsync</A>(QueryLanguage as string, QueryText as string) as boolean</li>
+<li class="W">method <A href="windows-windowswmimbs-method.html#5">InitAuthentication</A>(User as string, Domain as string, Password as string) as boolean</li>
+<li class="W">method <A href="windows-windowswmimbs-method.html#6">NextItem</A> as boolean</li>
+<li class="W">method <A href="windows-windowswmimbs-method.html#7">Query</A>(QueryLanguage as string, QueryText as string) as boolean</li>
+</UL></LI>
+<LI>2 shared methods<UL>
+<li class="W">shared method <A href="windows-windowswmimbs-shared-method.html">InitSecurity</A>(AuthnLevel as Integer, ImpLevel as Integer) as boolean</li>
+<li class="W">shared method <A href="windows-windowswmimbs-shared-method.html#2">InitSecurity</A>(remote as boolean) as boolean</li>
+</UL></LI>
+<LI>12 constants<UL>
+</UL></LI>
+</ul>
+<h3 lang="en">Authentication Level</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-windowswmimbs-const.html">kAuthenticationLevelCall </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+Authenticates only at the beginning of each remote procedure call when the server receives the request. Datagram transports use kAuthenticationLevelPaket instead.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-windowswmimbs-const.html#2">kAuthenticationLevelConnect </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+Authenticates the credentials of the client only when the client establishes a relationship with the server. Datagram transports always use kAuthenticationLevelPacket instead.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-windowswmimbs-const.html#3">kAuthenticationLevelDefault </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 0</td>
+<td bgcolor="#DDDDDD" valign=top>
+Tells DCOM to choose the authentication level using its normal security blanket negotiation algorithm. For more information, see Security Blanket Negotiation.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-windowswmimbs-const.html#4">kAuthenticationLevelNone </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+Performs no authentication.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-windowswmimbs-const.html#5">kAuthenticationLevelPacket </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 4</td>
+<td bgcolor="#DDDDDD" valign=top>
+Authenticates that all data received is from the expected client.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-windowswmimbs-const.html#6">kAuthenticationLevelPacketIntegrity </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 5</td>
+<td bgcolor="#DDDDDD" valign=top>
+Authenticates and verifies that none of the data transferred between client and server has been modified.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-windowswmimbs-const.html#7">kAuthenticationLevelPacketPrivacy </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 6</td>
+<td bgcolor="#DDDDDD" valign=top>
+Authenticates all previous levels and encrypts the argument value of each remote procedure call.<BR>
+</td>
+</tr>
+</table>
+<h3 lang="en">Impersonation Level Constants</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-windowswmimbs-const.html#8">kImpersonationLevelAnonymous </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+The client is anonymous to the server. The server process can impersonate the client, but the impersonation token will not contain any information and cannot be used.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-windowswmimbs-const.html#9">kImpersonationLevelDefault </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 0</td>
+<td bgcolor="#DDDDDD" valign=top>
+DCOM can choose the impersonation level using its normal security blanket negotiation algorithm. For more information, see Security Blanket Negotiation.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-windowswmimbs-const.html#10">kImpersonationLevelDelegate </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 4</td>
+<td bgcolor="#DDDDDD" valign=top>
+The server process can impersonate the client&#39;s security context while acting on behalf of the client. The server process can also make outgoing calls to other servers while acting on behalf of the client, using cloaking. The server may use the client&#39;s security context on other machines to access local and remote resources as the client. When impersonating at this level, the impersonation token can be passed across any number of computer boundaries.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-windowswmimbs-const.html#11">kImpersonationLevelIdentity </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+The server can obtain the client&#39;s identity. The server can impersonate the client for ACL checking, but it cannot access system objects as the client.<BR>
+</td>
+</tr>
+<tr class="W">
+<td bgcolor="#DDDDDD" valign=top><a href="windows-windowswmimbs-const.html#12">kImpersonationLevelImpersonate </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+The server process can impersonate the client&#39;s security context while acting on behalf of the client. This level of impersonation can be used to access local resources such as files. When impersonating at this level, the impersonation token can only be passed across one machine boundary. The Schannel authentication service only supports this level of impersonation.<BR>
+</td>
+</tr>
+</table>
+<h4>Super class <A href="class-wmiobjectmbs.html">WMIObjectMBS</A></h4>
+<ul>
+<LI>3 properties<UL>
+<li class="W">property <A href="windows-wmiobjectmbs-property.html">Handle</A> as Integer</li>
+<li class="W">property <A href="windows-wmiobjectmbs-property.html#2">Lasterror</A> as Integer</li>
+<li class="W">property <A href="windows-wmiobjectmbs-property.html#3">LasterrorMessage</A> as String</li>
+</UL></LI>
+<LI>11 methods<UL>
+<li class="W">method <A href="windows-wmiobjectmbs-method.html">GetNames</A> as string()</li>
+<li class="W">method <A href="windows-wmiobjectmbs-method.html#2">GetProperty</A>(Name as string) as Variant</li>
+<li class="W">method <A href="windows-wmiobjectmbs-method.html#3">GetPropertyBoolean</A>(Name as string) as Boolean</li>
+<li class="W">method <A href="windows-wmiobjectmbs-method.html#4">GetPropertyDouble</A>(Name as string) as Double</li>
+<li class="W">method <A href="windows-wmiobjectmbs-method.html#5">GetPropertyInt64</A>(Name as string) as Int64</li>
+<li class="W">method <A href="windows-wmiobjectmbs-method.html#6">GetPropertyInteger</A>(Name as string) as Integer</li>
+<li class="W">method <A href="windows-wmiobjectmbs-method.html#7">GetPropertyObject</A>(Name as string) as <A href="class-wmiobjectmbs.html">WMIObjectMBS</A></li>
+<li class="W">method <A href="windows-wmiobjectmbs-method.html#8">GetPropertyString</A>(Name as string) as string</li>
+<li class="W">method <A href="windows-wmiobjectmbs-method.html#9">GetPropertyStringArray</A>(Name as string) as string()</li>
+<li class="W">method <A href="windows-wmiobjectmbs-method.html#10">GetPropertyType</A>(Name as string) as Integer</li>
+<li class="W">method <A href="windows-wmiobjectmbs-method.html#11">GetPropertyTypeString</A>(Name as string) as string</li>
+</UL></LI>
+</ul>
+<p>This class has no sub classes.</p>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-win-usbsticktodriveletter.html">/Win/USB Stick to Drive Letter</A></li>
+<li class=""><A href="example-win-wmi-wmifileevents.html">/Win/WMI/WMI File Events</A></li>
+<li class=""><A href="example-win-wmi-wmihddinfo.html">/Win/WMI/WMI HDD Info</A></li>
+<li class=""><A href="example-win-wmi-wminetworktest.html">/Win/WMI/WMI Network Test</A></li>
+<li class=""><A href="example-win-wmi-wmiprocesscreationevents.html">/Win/WMI/WMI Process Creation Events</A></li>
+<li class=""><A href="example-win-wmi-wmiprocesscreationeventsviaremote.html">/Win/WMI/WMI Process Creation Events via Remote</A></li>
+<li class=""><A href="example-win-wmi-wmiquery.html">/Win/WMI/WMI Query</A></li>
+<li class=""><A href="example-win-wmi-wmirecentwindowsevents.html">/Win/WMI/WMI Recent Windows Events</A></li>
+<li class=""><A href="example-win-wmi-wmirecentwindowseventsweb.html">/Win/WMI/WMI Recent Windows Events Web</A></li>
+<li class=""><A href="example-win-wmi-wmiwirelesslansignalstrength.html">/Win/WMI/WMI Wireless LAN Signal Strength</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2021-08-12/Xojo_News/monkeybreadsoftware_blog_xojo">Xojo News</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2017-06-03/Windows_Task_Monitor_written_i/monkeybreadsoftware_blog_xojo">Windows Task Monitor written in Xojo</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2012-04-29/MBS_Real_Studio_Plugins_versio/monkeybreadsoftware_blog_xojo">MBS Real Studio Plugins, version 12.2pr6</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2012-02-24/Detecting_drive_letter_for_an_/monkeybreadsoftware_blog_xojo">Detecting drive letter for an USB Stick</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2012-01-17/MBS_Releases_the_MBS_Real_Stud/monkeybreadsoftware_blog_xojo">MBS Releases the MBS Real Studio plug-ins in version 12.0</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2011-12-17/MBS_Real_Studio_Plugins_versio/monkeybreadsoftware_blog_xojo">MBS Real Studio Plugins, version 11.4pr1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2010-08-24/MBS_REALbasic_Plugins_Version_/monkeybreadsoftware_blog_xojo">MBS REALbasic Plugins Version 10.4 release notes</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2010-08-19/MBS_REALbasic_Plugins_version_/monkeybreadsoftware_blog_xojo">MBS REALbasic Plugins, version 10.4pr13</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbswinplugin.html">MBS Win Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-windowsvolumeinformationmbs.html">WindowsVolumeInformationMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-winexceptionmbs.html">WinExceptionMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-windowswmimbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,435 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - TextConverterMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="TextConverterMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">TextConverterMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>TextConverterMBS class</H3>
+<div class="WLM">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-string.html" translate="no">String</A></td>
+<td class=grau><a href="plugins-mbstoolsplugin.html">MBS Tools Plugin</a></td>
+<td class=grau><a href="newinversion191.shtml" class=version>19.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The class for converting text from one text encoding to other one.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> s <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = <span style="color: #6600FE;">&quot;Hello &auml;&ouml;&uuml;&quot;</span><br /><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> TextConverterMBS<br /><br />c.Input = s<br />c.InputEncoding = <span style="color: #6600FE;">&quot;UTF-8&quot;</span><br />c.OutputEncoding = <span style="color: #6600FE;">&quot;WINDOWS-1252&quot;</span><br /><br />c.Convert<br /><br /><span style="color: #0000FF;">dim</span> output <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = c.Output<br /><br />Break <span style="color: #800000;">// see in debugger</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Wraps iconv library. Please use LoadIconvLibrary function to load it. Without the library, we use fallback code, which just passes through data.<BR>
+<BR>
+Encoding list with alternative names:<BR>
+<BR>
+<UL><LI>
+ANSI_X3.4-1968,ANSI_X3.4-1986,ASCII,CP367,IBM367,ISO-IR-6,ISO646-US,ISO_646.IRV:1991,US,US-ASCII,CSASCII
+</LI><LI>
+UTF-8
+</LI><LI>
+ISO-10646-UCS-2,UCS-2,CSUNICODE
+</LI><LI>
+UCS-2BE,UNICODE-1-1,UNICODEBIG,CSUNICODE11
+</LI><LI>
+UCS-2LE,UNICODELITTLE
+</LI><LI>
+ISO-10646-UCS-4,UCS-4,CSUCS4
+</LI><LI>
+UCS-4BE
+</LI><LI>
+UCS-4LE
+</LI><LI>
+UTF-16
+</LI><LI>
+UTF-16BE
+</LI><LI>
+UTF-16LE
+</LI><LI>
+UTF-32
+</LI><LI>
+UTF-32BE
+</LI><LI>
+UTF-32LE
+</LI><LI>
+UNICODE-1-1-UTF-7,UTF-7,CSUNICODE11UTF7
+</LI><LI>
+UCS-2-INTERNAL
+</LI><LI>
+UCS-2-SWAPPED
+</LI><LI>
+UCS-4-INTERNAL
+</LI><LI>
+UCS-4-SWAPPED
+</LI><LI>
+C99
+</LI><LI>
+JAVA
+</LI><LI>
+CP819,IBM819,ISO-8859-1,ISO-IR-100,ISO8859-1,ISO_8859-1,ISO_8859-1:1987,L1,LATIN1,CSISOLATIN1
+</LI><LI>
+ISO-8859-2,ISO-IR-101,ISO8859-2,ISO_8859-2,ISO_8859-2:1987,L2,LATIN2,CSISOLATIN2
+</LI><LI>
+ISO-8859-3,ISO-IR-109,ISO8859-3,ISO_8859-3,ISO_8859-3:1988,L3,LATIN3,CSISOLATIN3
+</LI><LI>
+ISO-8859-4,ISO-IR-110,ISO8859-4,ISO_8859-4,ISO_8859-4:1988,L4,LATIN4,CSISOLATIN4
+</LI><LI>
+CYRILLIC,ISO-8859-5,ISO-IR-144,ISO8859-5,ISO_8859-5,ISO_8859-5:1988,CSISOLATINCYRILLIC
+</LI><LI>
+ARABIC,ASMO-708,ECMA-114,ISO-8859-6,ISO-IR-127,ISO8859-6,ISO_8859-6,ISO_8859-6:1987,CSISOLATINARABIC
+</LI><LI>
+ECMA-118,ELOT_928,GREEK,GREEK8,ISO-8859-7,ISO-IR-126,ISO8859-7,ISO_8859-7,ISO_8859-7:1987,ISO_8859-7:2003,CSISOLATINGREEK
+</LI><LI>
+HEBREW,ISO-8859-8,ISO-IR-138,ISO8859-8,ISO_8859-8,ISO_8859-8:1988,CSISOLATINHEBREW
+</LI><LI>
+ISO-8859-9,ISO-IR-148,ISO8859-9,ISO_8859-9,ISO_8859-9:1989,L5,LATIN5,CSISOLATIN5
+</LI><LI>
+ISO-8859-10,ISO-IR-157,ISO8859-10,ISO_8859-10,ISO_8859-10:1992,L6,LATIN6,CSISOLATIN6
+</LI><LI>
+ISO-8859-11,ISO8859-11,ISO_8859-11
+</LI><LI>
+ISO-8859-13,ISO-IR-179,ISO8859-13,ISO_8859-13,L7,LATIN7
+</LI><LI>
+ISO-8859-14,ISO-CELTIC,ISO-IR-199,ISO8859-14,ISO_8859-14,ISO_8859-14:1998,L8,LATIN8
+</LI><LI>
+ISO-8859-15,ISO-IR-203,ISO8859-15,ISO_8859-15,ISO_8859-15:1998,LATIN-9
+</LI><LI>
+ISO-8859-16,ISO-IR-226,ISO8859-16,ISO_8859-16,ISO_8859-16:2001,L10,LATIN10
+</LI><LI>
+KOI8-R,CSKOI8R
+</LI><LI>
+KOI8-U
+</LI><LI>
+KOI8-RU
+</LI><LI>
+CP1250,MS-EE,WINDOWS-1250
+</LI><LI>
+CP1251,MS-CYRL,WINDOWS-1251
+</LI><LI>
+CP1252,MS-ANSI,WINDOWS-1252
+</LI><LI>
+CP1253,MS-GREEK,WINDOWS-1253
+</LI><LI>
+CP1254,MS-TURK,WINDOWS-1254
+</LI><LI>
+CP1255,MS-HEBR,WINDOWS-1255
+</LI><LI>
+CP1256,MS-ARAB,WINDOWS-1256
+</LI><LI>
+CP1257,WINBALTRIM,WINDOWS-1257
+</LI><LI>
+CP1258,WINDOWS-1258
+</LI><LI>
+850,CP850,IBM850,CSPC850MULTILINGUAL
+</LI><LI>
+862,CP862,IBM862,CSPC862LATINHEBREW
+</LI><LI>
+866,CP866,IBM866,CSIBM866
+</LI><LI>
+CP1131
+</LI><LI>
+MAC,MACINTOSH,MACROMAN,CSMACINTOSH
+</LI><LI>
+MACCENTRALEUROPE
+</LI><LI>
+MACICELAND
+</LI><LI>
+MACCROATIAN
+</LI><LI>
+MACROMANIA
+</LI><LI>
+MACCYRILLIC
+</LI><LI>
+MACUKRAINE
+</LI><LI>
+MACGREEK
+</LI><LI>
+MACTURKISH
+</LI><LI>
+MACHEBREW
+</LI><LI>
+MACARABIC
+</LI><LI>
+MACTHAI
+</LI><LI>
+HP-ROMAN8,R8,ROMAN8,CSHPROMAN8
+</LI><LI>
+NEXTSTEP
+</LI><LI>
+ARMSCII-8
+</LI><LI>
+GEORGIAN-ACADEMY
+</LI><LI>
+GEORGIAN-PS
+</LI><LI>
+KOI8-T
+</LI><LI>
+CP154,CYRILLIC-ASIAN,PT154,PTCP154,CSPTCP154
+</LI><LI>
+KZ-1048,RK1048,STRK1048-2002,CSKZ1048
+</LI><LI>
+MULELAO-1
+</LI><LI>
+CP1133,IBM-CP1133
+</LI><LI>
+ISO-IR-166,TIS-620,TIS620,TIS620-0,TIS620.2529-1,TIS620.2533-0,TIS620.2533-1
+</LI><LI>
+CP874,WINDOWS-874
+</LI><LI>
+VISCII,VISCII1.1-1,CSVISCII
+</LI><LI>
+TCVN,TCVN-5712,TCVN5712-1,TCVN5712-1:1993
+</LI><LI>
+ISO-IR-14,ISO646-JP,JIS_C6220-1969-RO,JP,CSISO14JISC6220RO
+</LI><LI>
+JISX0201-1976,JIS_X0201,X0201,CSHALFWIDTHKATAKANA
+</LI><LI>
+ISO-IR-87,JIS0208,JIS_C6226-1983,JIS_X0208,JIS_X0208-1983,JIS_X0208-1990,X0208,CSISO87JISX0208
+</LI><LI>
+ISO-IR-159,JIS_X0212,JIS_X0212-1990,JIS_X0212.1990-0,X0212,CSISO159JISX02121990
+</LI><LI>
+CN,GB_1988-80,ISO-IR-57,ISO646-CN,CSISO57GB1988
+</LI><LI>
+CHINESE,GB_2312-80,ISO-IR-58,CSISO58GB231280
+</LI><LI>
+CN-GB-ISOIR165,ISO-IR-165
+</LI><LI>
+ISO-IR-149,KOREAN,KSC_5601,KS_C_5601-1987,KS_C_5601-1989,CSKSC56011987
+</LI><LI>
+EUC-JP,EUCJP,EXTENDED_UNIX_CODE_PACKED_FORMAT_FOR_JAPANESE,CSEUCPKDFMTJAPANESE
+</LI><LI>
+MS_KANJI,SHIFT-JIS,SHIFT_JIS,SJIS,CSSHIFTJIS
+</LI><LI>
+CP932
+</LI><LI>
+ISO-2022-JP,CSISO2022JP
+</LI><LI>
+ISO-2022-JP-1
+</LI><LI>
+ISO-2022-JP-2,CSISO2022JP2
+</LI><LI>
+CP50221,ISO-2022-JP-MS
+</LI><LI>
+CN-GB,EUC-CN,EUCCN,GB2312,CSGB2312
+</LI><LI>
+GBK
+</LI><LI>
+CP936,MS936,WINDOWS-936
+</LI><LI>
+GB18030
+</LI><LI>
+ISO-2022-CN,CSISO2022CN
+</LI><LI>
+ISO-2022-CN-EXT
+</LI><LI>
+HZ,HZ-GB-2312
+</LI><LI>
+EUC-TW,EUCTW,CSEUCTW
+</LI><LI>
+BIG-5,BIG-FIVE,BIG5,BIGFIVE,CN-BIG5,CSBIG5
+</LI><LI>
+CP950
+</LI><LI>
+BIG5-HKSCS:1999
+</LI><LI>
+BIG5-HKSCS:2001
+</LI><LI>
+BIG5-HKSCS:2004
+</LI><LI>
+BIG5-HKSCS,BIG5-HKSCS:2008,BIG5HKSCS
+</LI><LI>
+EUC-KR,EUCKR,CSEUCKR
+</LI><LI>
+CP949,UHC
+</LI><LI>
+CP1361,JOHAB
+</LI><LI>
+ISO-2022-KR,CSISO2022KR
+</LI><LI>
+CP856
+</LI><LI>
+CP922
+</LI><LI>
+CP943
+</LI><LI>
+CP1046
+</LI><LI>
+CP1124
+</LI><LI>
+CP1129
+</LI><LI>
+CP1161,IBM-1161,IBM1161,CSIBM1161
+</LI><LI>
+CP1162,IBM-1162,IBM1162,CSIBM1162
+</LI><LI>
+CP1163,IBM-1163,IBM1163,CSIBM1163
+</LI><LI>
+DEC-KANJI
+</LI><LI>
+DEC-HANYU
+</LI><LI>
+437,CP437,IBM437,CSPC8CODEPAGE437
+</LI><LI>
+CP737
+</LI><LI>
+CP775,IBM775,CSPC775BALTIC
+</LI><LI>
+852,CP852,IBM852,CSPCP852
+</LI><LI>
+CP853
+</LI><LI>
+855,CP855,IBM855,CSIBM855
+</LI><LI>
+857,CP857,IBM857,CSIBM857
+</LI><LI>
+CP858
+</LI><LI>
+860,CP860,IBM860,CSIBM860
+</LI><LI>
+861,CP-IS,CP861,IBM861,CSIBM861
+</LI><LI>
+863,CP863,IBM863,CSIBM863
+</LI><LI>
+CP864,IBM864,CSIBM864
+</LI><LI>
+865,CP865,IBM865,CSIBM865
+</LI><LI>
+869,CP-GR,CP869,IBM869,CSIBM869
+</LI><LI>
+CP1125
+</LI><LI>
+EUC-JIS-2004,EUC-JISX0213
+</LI><LI>
+SHIFT_JIS-2004,SHIFT_JISX0213
+</LI><LI>
+ISO-2022-JP-2004,ISO-2022-JP-3
+</LI><LI>
+BIG5-2003
+</LI><LI>
+ISO-IR-230,TDS565
+</LI><LI>
+ATARI,ATARIST
+</LI><LI>
+RISCOS-LATIN1
+</UL>
+</div>
+<ul>
+<LI>11 properties<UL>
+<li class="WLM">property <A href="string-textconvertermbs-property.html">ErrorCode</A> as Integer</li>
+<li class="WLM">property <A href="string-textconvertermbs-property.html#2">ErrorMessage</A> as String</li>
+<li class="WLM">property <A href="string-textconvertermbs-property.html#3">Ignore</A> as Boolean</li>
+<li class="WLM">property <A href="string-textconvertermbs-property.html#4">Input</A> as String</li>
+<li class="WLM">property <A href="string-textconvertermbs-property.html#5">InputData</A> as MemoryBlock</li>
+<li class="WLM">property <A href="string-textconvertermbs-property.html#6">InputEncoding</A> as String</li>
+<li class="WLM">property <A href="string-textconvertermbs-property.html#7">InputPosition</A> as Integer</li>
+<li class="WLM">property <A href="string-textconvertermbs-property.html#8">Output</A> as String</li>
+<li class="WLM">property <A href="string-textconvertermbs-property.html#9">OutputEncoding</A> as String</li>
+<li class="WLM">property <A href="string-textconvertermbs-property.html#10">OutputLength</A> as Integer</li>
+<li class="WLM">property <A href="string-textconvertermbs-property.html#11">Translit</A> as Boolean</li>
+</UL></LI>
+<li class="WLM">shared property <A href="string-textconvertermbs-shared-property.html">LibVersion</A> as Integer</li>
+<LI>2 methods<UL>
+<li class="WLM">method <A href="string-textconvertermbs-method.html">Constructor</A></li>
+<li class="WLM">method <A href="string-textconvertermbs-method.html#2">Convert</A></li>
+</UL></LI>
+<LI>3 shared methods<UL>
+<li class="WLM">shared method <A href="string-textconvertermbs-shared-method.html">Canonicalize</A>(name as String) as String</li>
+<li class="WLM">shared method <A href="string-textconvertermbs-shared-method.html#2">EncodingNames</A>(Mode as Integer = 0) as String()</li>
+<li class="WLM">shared method <A href="string-textconvertermbs-shared-method.html#3">LoadIconvLibrary</A>(path as String, byref Error as String) as boolean</li>
+</UL></LI>
+</ul>
+<p>This class has no sub classes.</p>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2020-09-22/News_from_the_MBS_Xojo_Plugins/monkeybreadsoftware_blog_xojo">News from the MBS Xojo Plugins Version 20.4</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2020-09-11/MBS_Xojo_Plugins_version_204pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 20.4pr9</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2019-09-17/MonkeyBread_Software_Releases_/monkeybreadsoftware_blog_xojo">MonkeyBread Software Releases the MBS Xojo Plugins in version 19.4</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2019-03-12/MonkeyBread_Software_Releases_/monkeybreadsoftware_blog_xojo">MonkeyBread Software Releases the MBS Xojo Plugins in version 19.1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2019-02-18/MBS_Xojo_Plugins_version_191pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 19.1pr3</a></li>
+</ul>
+<h4>Xojo Developer Magazine</h4>
+<ul>
+<li><a href="http://www.xdevmag.com/browse/17.5/">17.5, page 37: What&#39;s New in the MBS Plugins, With the Plugins growing every year, here are new capabilities you may have missed by Stefanie Juchmes</a></li>
+<li><a href="http://www.xdevmag.com/browse/17.3/">17.3, page 11: News</a></li>
+</ul>
+<h4>Videos</h4>
+<ul>
+<li><a href="https://www.monkeybreadsoftware.de/xojo/video/MBSPluginsMiami.shtml">Presentation from Xojo Developer Conference 2019 in Miami.</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbstoolsplugin.html">MBS Tools Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-textarea.html">TextArea</a>
+ &nbsp; - &nbsp; 
+<a href="class-textencoding.html">TextEncoding</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-textconvertermbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

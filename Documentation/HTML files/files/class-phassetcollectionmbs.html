@@ -1,0 +1,448 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - PHAssetCollectionMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="PHAssetCollectionMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">PHAssetCollectionMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>PHAssetCollectionMBS class</H3>
+<P>Super class: <A href="class-phcollectionmbs.html">PHCollectionMBS</A></p>
+<div class="M">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-photos.html" translate="no">Photos</A></td>
+<td class=grau><a href="plugins-mbsmac64bitplugin.html">MBS Mac64bit Plugin</a></td>
+<td class=grau><a href="newinversion202.shtml" class=version>20.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>Desktop & iOS</td>
+</tr>
+</table>
+<B>Function:</B> 
+A representation of a Photos asset grouping, such as a moment, user-created album, or smart album.<BR>
+<B>Notes:</B> 
+<BR>
+In the Photos framework, collection objects (including asset collections) do not directly reference their member objects, and there are no other objects that directly reference collection objects. To retrieve the members of an asset collection, fetch them with a PHAsset class method such as fetchAssetsInAssetCollection. To find asset collections, use one of the methods listed in Fetching Asset Collections.<BR>
+<BR>
+Important<BR>
+Accessing or modifying the Photos library requires explicit authorization from the user. The first time you call one of the methods listed in Fetching Asset Collections, Photos automatically prompts the user for authorization. (Alternatively, you can use the <A href="class-phphotolibrarymbs.html">PHPhotoLibraryMBS</A>.requestAuthorization method to prompt the user at a time of your choosing.)<BR>
+<BR>
+Your app&rsquo;s Info.plist file must provide a value for the NSPhotoLibraryUsageDescription key that explains to the user why your app is requesting Photos access. Apps linked on or after iOS 10.0 will crash if this key is not present.<BR>
+<BR>
+Like assets and collection lists, asset collections are immutable. To create, rename, or delete asset collections, or to add, remove, or rearrange members in an asset collection, create a <A href="class-phassetcollectionchangerequestmbs.html">PHAssetCollectionChangeRequestMBS</A> object within a photo library change block. For details on using change requests and change blocks to update the photo library, see <A href="class-phphotolibrarymbs.html">PHPhotoLibraryMBS</A>.<BR>
+Subclass of the <A href="class-phcollectionmbs.html">PHCollectionMBS</A> class.<BR>
+</div>
+<ul>
+<LI>8 properties<UL>
+<li class="M">property <A href="photos-phassetcollectionmbs-property.html">approximateLocation</A> as Variant</li>
+<li class="M">property <A href="photos-phassetcollectionmbs-property.html#2">assetCollectionSubtype</A> as Integer</li>
+<li class="M">property <A href="photos-phassetcollectionmbs-property.html#3">assetCollectionType</A> as Integer</li>
+<li class="M">property <A href="photos-phassetcollectionmbs-property.html#4">endDate</A> as Date</li>
+<li class="M">property <A href="photos-phassetcollectionmbs-property.html#5">endDateTime</A> as DateTime</li>
+<li class="M">property <A href="photos-phassetcollectionmbs-property.html#6">estimatedAssetCount</A> as Integer</li>
+<li class="M">property <A href="photos-phassetcollectionmbs-property.html#7">startDate</A> as Date</li>
+<li class="M">property <A href="photos-phassetcollectionmbs-property.html#8">startDateTime</A> as DateTime</li>
+</UL></LI>
+<LI>2 methods<UL>
+<li class="M">method <A href="photos-phassetcollectionmbs-method.html">Constructor</A></li>
+<li class="M">method <A href="photos-phassetcollectionmbs-method.html#2">localizedLocationNames</A> as String()</li>
+</UL></LI>
+<LI>7 shared methods<UL>
+<li class="M">shared method <A href="photos-phassetcollectionmbs-shared-method.html">available</A> as boolean</li>
+<li class="M">shared method <A href="photos-phassetcollectionmbs-shared-method.html#2">fetchAssetCollectionsContainingAsset</A>(asset as <A href="class-phassetmbs.html">PHAssetMBS</A>, type as Integer, options as <A href="class-phfetchoptionsmbs.html">PHFetchOptionsMBS</A> = nil) as <A href="class-phfetchresultmbs.html">PHFetchResultMBS</A></li>
+<li class="M">shared method <A href="photos-phassetcollectionmbs-shared-method.html#3">fetchAssetCollectionsWithALAssetGroupURLs</A>(assetGroupURLs() as string, options as <A href="class-phfetchoptionsmbs.html">PHFetchOptionsMBS</A> = nil) as <A href="class-phfetchresultmbs.html">PHFetchResultMBS</A></li>
+<li class="M">shared method <A href="photos-phassetcollectionmbs-shared-method.html#4">fetchAssetCollectionsWithLocalIdentifiers</A>(identifiers() as string, options as <A href="class-phfetchoptionsmbs.html">PHFetchOptionsMBS</A> = nil) as <A href="class-phfetchresultmbs.html">PHFetchResultMBS</A></li>
+<li class="M">shared method <A href="photos-phassetcollectionmbs-shared-method.html#5">fetchAssetCollectionsWithType</A>(type as Integer, subType as integer, options as <A href="class-phfetchoptionsmbs.html">PHFetchOptionsMBS</A> = nil) as <A href="class-phfetchresultmbs.html">PHFetchResultMBS</A></li>
+<li class="M">shared method <A href="photos-phassetcollectionmbs-shared-method.html#6">transientAssetCollectionWithAssetFetchResult</A>(fetchResult as <A href="class-phassetmbs.html">PHAssetMBS</A>, title as string) as PHAssetCollectionMBS</li>
+<li class="M">shared method <A href="photos-phassetcollectionmbs-shared-method.html#7">transientAssetCollectionWithAssets</A>(assets() as <A href="class-phassetmbs.html">PHAssetMBS</A>, title as string) as PHAssetCollectionMBS</li>
+</UL></LI>
+<LI>28 constants<UL>
+</UL></LI>
+</ul>
+<h3 lang="en">SubTypes</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html">SubtypeAlbumCloudShared </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 101</td>
+<td bgcolor="#DDDDDD" valign=top>
+An iCloud Shared Photo Stream.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#2">SubtypeAlbumImported </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 6</td>
+<td bgcolor="#DDDDDD" valign=top>
+An album imported from a camera or external storage.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#3">SubtypeAlbumMyPhotoStream </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 100</td>
+<td bgcolor="#DDDDDD" valign=top>
+The user&rsquo;s personal iCloud Photo Stream.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#4">SubtypeAlbumRegular </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+An album created in the Photos app.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#5">SubtypeAlbumSyncedAlbum </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 5</td>
+<td bgcolor="#DDDDDD" valign=top>
+An album synced to the device from iPhoto.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#6">SubtypeAlbumSyncedEvent </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+An Event synced to the device from iPhoto.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#7">SubtypeAlbumSyncedFaces </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 4</td>
+<td bgcolor="#DDDDDD" valign=top>
+A Faces group synced to the device from iPhoto.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#8">SubtypeAny </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> -1</td>
+<td bgcolor="#DDDDDD" valign=top>
+A bit mask representing all possible subtypes.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#9">SubtypeSmartAlbumAllHidden </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 205</td>
+<td bgcolor="#DDDDDD" valign=top>
+A smart album that groups all assets hidden from the Moments view in the Photos app.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#10">SubtypeSmartAlbumAnimated </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 214</td>
+<td bgcolor="#DDDDDD" valign=top>
+A smart album that groups all image animation assets.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#11">SubtypeSmartAlbumBursts </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 207</td>
+<td bgcolor="#DDDDDD" valign=top>
+A smart album that groups all burst photo sequences in the photo library.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#12">SubtypeSmartAlbumDepthEffect </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 212</td>
+<td bgcolor="#DDDDDD" valign=top>
+A smart album that groups all images captured using the Depth Effect camera mode on compatible devices.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#13">SubtypeSmartAlbumFavorites </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 203</td>
+<td bgcolor="#DDDDDD" valign=top>
+A smart album that groups all assets that the user has marked as favorites.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#14">SubtypeSmartAlbumGeneric </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 200</td>
+<td bgcolor="#DDDDDD" valign=top>
+A smart album of no more specific subtype.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#15">SubtypeSmartAlbumLivePhotos </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 213</td>
+<td bgcolor="#DDDDDD" valign=top>
+A smart album that groups all Live Photo assets.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#16">SubtypeSmartAlbumLongExposures </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 215</td>
+<td bgcolor="#DDDDDD" valign=top>
+A smart album that groups all Live Photo assets where the Long Exposure variation is enabled.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#17">SubtypeSmartAlbumPanoramas </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 201</td>
+<td bgcolor="#DDDDDD" valign=top>
+A smart album that groups all panorama photos in the photo library.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#18">SubtypeSmartAlbumRecentlyAdded </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 206</td>
+<td bgcolor="#DDDDDD" valign=top>
+A smart album that groups assets that were recently added to the photo library.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#19">SubtypeSmartAlbumScreenshots </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 211</td>
+<td bgcolor="#DDDDDD" valign=top>
+A smart album that groups all images captured using the device&rsquo;s screenshot function.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#20">SubtypeSmartAlbumSelfPortraits </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 210</td>
+<td bgcolor="#DDDDDD" valign=top>
+A smart album that groups all photos and videos captured using the device&rsquo;s front-facing camera.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#21">SubtypeSmartAlbumSlomoVideos </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 208</td>
+<td bgcolor="#DDDDDD" valign=top>
+A smart album that groups all Slow-Mo videos in the photo library.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#22">SubtypeSmartAlbumTimelapses </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 204</td>
+<td bgcolor="#DDDDDD" valign=top>
+A smart album that groups all time-lapse videos in the photo library.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#23">SubtypeSmartAlbumUnableToUpload </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 216</td>
+<td bgcolor="#DDDDDD" valign=top>
+Unable to upload album.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#24">SubtypeSmartAlbumUserLibrary </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 209</td>
+<td bgcolor="#DDDDDD" valign=top>
+A smart album that groups all assets that originate in the user&rsquo;s own library (as opposed to assets from iCloud Shared Albums).<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#25">SubtypeSmartAlbumVideos </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 202</td>
+<td bgcolor="#DDDDDD" valign=top>
+A smart album that groups all video assets in the photo library.<BR>
+</td>
+</tr>
+</table>
+<h3 lang="en">Types</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#26">TypeAlbum </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+An album in the Photos app.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#27">TypeMoment</a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+A moment in the Photos app. Deprecated by Apple.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phassetcollectionmbs-const.html#28">TypeSmartAlbum </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+A smart album whose contents update dynamically.<BR>
+</td>
+</tr>
+</table>
+<h4>Super class <A href="class-phcollectionmbs.html">PHCollectionMBS</A></h4>
+<ul>
+<LI>3 properties<UL>
+<li class="M">property <A href="photos-phcollectionmbs-property.html">canContainAssets</A> as Boolean</li>
+<li class="M">property <A href="photos-phcollectionmbs-property.html#2">canContainCollections</A> as Boolean</li>
+<li class="M">property <A href="photos-phcollectionmbs-property.html#3">localizedTitle</A> as String</li>
+</UL></LI>
+<LI>2 methods<UL>
+<li class="M">method <A href="photos-phcollectionmbs-method.html">canPerformEditOperation</A>(anOperation as Integer) as Boolean</li>
+<li class="M">method <A href="photos-phcollectionmbs-method.html#2">Constructor</A></li>
+</UL></LI>
+<LI>3 shared methods<UL>
+<li class="M">shared method <A href="photos-phcollectionmbs-shared-method.html">available</A> as boolean</li>
+<li class="M">shared method <A href="photos-phcollectionmbs-shared-method.html#2">fetchCollectionsInCollectionList</A>(collectionList as <A href="class-phcollectionlistmbs.html">PHCollectionListMBS</A>, options as <A href="class-phfetchoptionsmbs.html">PHFetchOptionsMBS</A> = nil) as <A href="class-phfetchresultmbs.html">PHFetchResultMBS</A></li>
+<li class="M">shared method <A href="photos-phcollectionmbs-shared-method.html#3">fetchTopLevelUserCollections</A>(options as <A href="class-phfetchoptionsmbs.html">PHFetchOptionsMBS</A> = nil) as <A href="class-phfetchresultmbs.html">PHFetchResultMBS</A></li>
+</UL></LI>
+<LI>7 constants<UL>
+</UL></LI>
+</ul>
+<h3 lang="en">Edit Operations</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phcollectionmbs-const.html">EditOperationAddContent </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+The collection supports adding items that already exist elsewhere in the photo library.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phcollectionmbs-const.html#2">EditOperationCreateContent </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 4</td>
+<td bgcolor="#DDDDDD" valign=top>
+The collection supports creating new items.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phcollectionmbs-const.html#3">EditOperationDelete </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 6</td>
+<td bgcolor="#DDDDDD" valign=top>
+The collection itself can be deleted.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phcollectionmbs-const.html#4">EditOperationDeleteContent </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+The collection supports deleting the items it contains.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phcollectionmbs-const.html#5">EditOperationRearrangeContent </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 5</td>
+<td bgcolor="#DDDDDD" valign=top>
+The collection supports reordering the arrangement of items it contains.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phcollectionmbs-const.html#6">EditOperationRemoveContent </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+The collection supports removing the items it contains.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="photos-phcollectionmbs-const.html#7">EditOperationRename </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 7</td>
+<td bgcolor="#DDDDDD" valign=top>
+The collection itself can be renamed.<BR>
+</td>
+</tr>
+</table>
+<h4>Super class <A href="class-phobjectmbs.html">PHObjectMBS</A></h4>
+<ul>
+<LI>2 properties<UL>
+<li class="M">property <A href="photos-phobjectmbs-property.html">Handle</A> as Integer</li>
+<li class="M">property <A href="photos-phobjectmbs-property.html#2">localIdentifier</A> as String</li>
+</UL></LI>
+<LI>2 methods<UL>
+<li class="M">method <A href="photos-phobjectmbs-method.html">Constructor</A> &nbsp; <b style="color: #8B0000"> Private </b></li>
+<li class="M">method <A href="photos-phobjectmbs-method.html#2">copy</A> as <A href="class-phobjectmbs.html">PHObjectMBS</A></li>
+</UL></LI>
+<li class="M">shared method <A href="photos-phobjectmbs-shared-method.html">available</A> as boolean</li>
+</ul>
+<h4>Sub classes:</h4><ul>
+<li class="M"><A href="class-phprojectmbs.html">class PHProjectMBS</A>
+</li>
+</ul>
+<h4>Some methods using this class:</h4><ul>
+<li class="M"><A href="photos-phassetcollectionchangerequestmbs-shared-method.html#2" translate="no">PHAssetCollectionChangeRequestMBS.changeRequestForAssetCollection</A>(assetCollection as PHAssetCollectionMBS) as <A href="class-phassetcollectionchangerequestmbs.html">PHAssetCollectionChangeRequestMBS</A></li>
+<li class="M"><A href="photos-phassetcollectionchangerequestmbs-shared-method.html#3" translate="no">PHAssetCollectionChangeRequestMBS.changeRequestForAssetCollection</A>(assetCollection as PHAssetCollectionMBS, assets as <A href="class-phfetchresultmbs.html">PHFetchResultMBS</A>) as <A href="class-phassetcollectionchangerequestmbs.html">PHAssetCollectionChangeRequestMBS</A></li>
+<li class="M"><A href="photos-phassetmbs-shared-method.html#3" translate="no">PHAssetMBS.fetchAssetsInAssetCollection</A>(assetCollection as PHAssetCollectionMBS, options as <A href="class-phfetchoptionsmbs.html">PHFetchOptionsMBS</A> = nil) as <A href="class-phfetchresultmbs.html">PHFetchResultMBS</A></li>
+<li class="M"><A href="photos-phassetmbs-shared-method.html#7" translate="no">PHAssetMBS.fetchKeyAssetsInAssetCollection</A>(assetCollection as PHAssetCollectionMBS, options as <A href="class-phfetchoptionsmbs.html">PHFetchOptionsMBS</A> = nil) as <A href="class-phfetchresultmbs.html">PHFetchResultMBS</A></li>
+</ul>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-mac64bit-photos-photos.html">/Mac64bit/Photos/Photos</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2020-05-18/Show_Live_Photos_in_your_Xojo_/monkeybreadsoftware_blog_xojo">Show Live Photos in your Xojo application</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmac64bitplugin.html">MBS Mac64bit Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-phassetcollectionchangerequestmbs.html">PHAssetCollectionChangeRequestMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-phassetcreationrequestmbs.html">PHAssetCreationRequestMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-phassetcollectionmbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

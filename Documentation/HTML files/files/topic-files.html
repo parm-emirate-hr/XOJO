@@ -1,0 +1,852 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Files</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Files, Functions and classes for handling files and volumes.">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Files</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>Files</H3>
+<P>Functions and classes for handling files and volumes.</P>
+<ul>
+<li>Screenshots <ul>
+<li class="WLM"><A href="screenshot-quicklook1jpg.html">QuickLook1.jpg</A></li>
+<li class="WLM"><A href="screenshot-quicklook2jpg.html">QuickLook2.jpg</A></li>
+</ul></li>
+<li>Globals <ul>
+<li class="WM"><A href="global-exchangefilesmbs.html">ExchangeFilesMBS</A>(first as folderitem, second as folderitem) as Integer</li>
+<li class="M"><A href="global-folderitemtopathmbs.html">FolderItemToPathMBS</A>(file as folderitem) as string</li>
+<li class="W"><A href="global-getdrivetypembs.html">GetDriveTypeMBS</A>(path as string) as Integer</li>
+<li class="WLM"><A href="global-mountmbs.html">MountMBS</A>(URL as String, Dest as string = "", Username as String, Password as String, Interactive as boolean = false, Prompt as boolean = false, byref ErrorCode as Integer, Threaded as boolean = false) as String</li>
+<li class="WM"><A href="global-mountpathmbs.html">MountPathMBS</A>(Path as String) as String</li>
+<li class="WM"><A href="global-mountpathmbs.html#2">MountPathMBS</A>(Volume as FolderItem) as String</li>
+<li class="WLM"><A href="global-newfolderitemfromabsolutepathmbs.html">NewFolderItemFromAbsolutePathMBS</A>(AbsolutePath as string) as FolderItem</li>
+<li class="M"><A href="global-newfolderitemmbs.html">NewFolderItemMBS</A>(vRefNum as Integer, parID as Integer, name as String) as FolderItem</li>
+<li class="M"><A href="global-newvolumefolderitemmbs.html">NewVolumeFolderItemMBS</A>(vRefNum as Integer) as FolderItem</li>
+<li class="M"><A href="global-pathtofolderitemmbs.html">PathToFolderItemMBS</A>(path as string) as folderitem</li>
+<li class="WLM"><A href="global-setcurrentworkingdirectorymbs.html">SetCurrentWorkingDirectoryMBS</A>(path as folderitem) as boolean</li>
+<li class="WLM"><A href="global-unmountmbs.html">UnmountMBS</A>(Path as String, force as boolean = false) as Boolean</li>
+<li class="WLM"><A href="global-unmountmbs.html#2">UnmountMBS</A>(Volume as FolderItem, force as boolean = false) as Boolean</li>
+<li class="M"><A href="global-volresolveidmbs.html">VolResolveIDMBS</A>(volume as FolderItem, id as Integer) as FolderItem</li>
+<li class="M"><A href="global-volresolveidmbs.html#2">VolResolveIDMBS</A>(vRefNum as Integer, id as Integer) as FolderItem</li>
+<li class="WLM"><A href="global-volumefreesizepathmbs.html">VolumeFreeSizePathMBS</A>(Path as String) as Int64</li>
+<li class="WLM"><A href="global-volumesizepathmbs.html">VolumeSizePathMBS</A>(Path as String) as Int64</li>
+<li class="W"><A href="global-windowsejectvolumembs.html">WindowsEjectVolumeMBS</A>(driveLetter as string, byref status as Integer) as boolean</li>
+</ul></li>
+<li>Classes <ul>
+<li class="M"><B><A href="class-aclentrymbs.html">class ACLEntryMBS</A></B><ul>
+<li class="M">method <A href="files-aclentrymbs-method.html">Constructor</A></li>
+<li class="M">method <A href="files-aclentrymbs-method.html#2">Copy</A>(dest as <A href="class-aclentrymbs.html">ACLEntryMBS</A>)</li>
+<li class="M">shared method <A href="files-aclentrymbs-shared-method.html">GIDtoUUID</A>(GID as Integer) as memoryblock</li>
+<li class="M">shared method <A href="files-aclentrymbs-shared-method.html#2">GroupFromGID</A>(GID as Integer) as string</li>
+<li class="M">method <A href="files-aclentrymbs-method.html#4">MaximalPermsetMask</A> as UInt64</li>
+<li class="M">shared method <A href="files-aclentrymbs-shared-method.html#3">UIDtoUUID</A>(UID as Integer) as memoryblock</li>
+<li class="M">shared method <A href="files-aclentrymbs-shared-method.html#4">UserFromUID</A>(UID as Integer) as string</li>
+<li class="M">shared method <A href="files-aclentrymbs-shared-method.html#5">UUIDtoID</A>(UUID as memoryblock, byref ID as Integer, byref Type as Integer) as boolean</li>
+<li class="M">property <A href="files-aclentrymbs-property.html">Handle</A> as Integer</li>
+<li class="M">property <A href="files-aclentrymbs-property.html#2">Lasterror</A> as Integer</li>
+<li class="M">property <A href="files-aclentrymbs-property.html#3">Parent</A> as Variant</li>
+<li class="M">property <A href="files-aclentrymbs-method.html#3">FlagSet</A> as <A href="class-aclflagsetmbs.html">ACLFlagSetMBS</A></li>
+<li class="M">property <A href="files-aclentrymbs-method.html#5">PermSet</A> as <A href="class-aclpermsetmbs.html">ACLPermSetMBS</A></li>
+<li class="M">property <A href="files-aclentrymbs-method.html#6">PermSetMask</A> as UInt64</li>
+<li class="M">property <A href="files-aclentrymbs-method.html#7">Qualifier</A> as Memoryblock</li>
+<li class="M">property <A href="files-aclentrymbs-method.html#8">TagType</A> as Integer</li>
+<li class="M">const <A href="files-aclentrymbs-const.html">kACLExtendedAllow</A> = 1</li>
+<li class="M">const <A href="files-aclentrymbs-const.html#2">kACLExtendedDeny</A> = 2</li>
+<li class="M">const <A href="files-aclentrymbs-const.html#3">kACLUndefinedTag</A> = 0</li>
+</ul></li>
+<li class="M"><B><A href="class-aclflagsetmbs.html">class ACLFlagSetMBS</A></B><ul>
+<li class="M">method <A href="files-aclflagsetmbs-method.html">Add</A>(flag as Integer)</li>
+<li class="M">method <A href="files-aclflagsetmbs-method.html#2">Clear</A></li>
+<li class="M">method <A href="files-aclflagsetmbs-method.html#3">Constructor</A></li>
+<li class="M">method <A href="files-aclflagsetmbs-method.html#4">Delete</A>(flag as Integer)</li>
+<li class="M">method <A href="files-aclflagsetmbs-method.html#5">HasFlag</A>(flag as Integer) as Boolean</li>
+<li class="M">property <A href="files-aclflagsetmbs-property.html">Handle</A> as Integer</li>
+<li class="M">property <A href="files-aclflagsetmbs-property.html#2">Lasterror</A> as Integer</li>
+<li class="M">property <A href="files-aclflagsetmbs-property.html#3">Parent</A> as Variant</li>
+<li class="M">const <A href="files-aclflagsetmbs-const.html">kACLEntryDirectoryInherit</A> = 64</li>
+<li class="M">const <A href="files-aclflagsetmbs-const.html#2">kACLEntryFileInherit</A> = 32</li>
+<li class="M">const <A href="files-aclflagsetmbs-const.html#3">kACLEntryInherited</A> = 16</li>
+<li class="M">const <A href="files-aclflagsetmbs-const.html#4">kACLEntryLimitInherit</A> = 128</li>
+<li class="M">const <A href="files-aclflagsetmbs-const.html#5">kACLEntryOnlyInherit</A> = 256</li>
+<li class="M">const <A href="files-aclflagsetmbs-const.html#6">kACLFlagDeferInherit</A> = 1</li>
+<li class="M">const <A href="files-aclflagsetmbs-const.html#7">kACLFlagNoInherit</A> = 131072</li>
+</ul></li>
+<li class="M"><B><A href="class-aclpermsetmbs.html">class ACLPermSetMBS</A></B><ul>
+<li class="M">method <A href="files-aclpermsetmbs-method.html">Add</A>(perm as Integer)</li>
+<li class="M">method <A href="files-aclpermsetmbs-method.html#2">Clear</A></li>
+<li class="M">method <A href="files-aclpermsetmbs-method.html#3">Constructor</A></li>
+<li class="M">method <A href="files-aclpermsetmbs-method.html#4">Delete</A>(perm as Integer)</li>
+<li class="M">method <A href="files-aclpermsetmbs-method.html#5">HasPerm</A>(perm as Integer) as Boolean</li>
+<li class="M">property <A href="files-aclpermsetmbs-property.html">Handle</A> as Integer</li>
+<li class="M">property <A href="files-aclpermsetmbs-property.html#2">Lasterror</A> as Integer</li>
+<li class="M">property <A href="files-aclpermsetmbs-property.html#3">Parent</A> as Variant</li>
+<li class="M">const <A href="files-aclpermsetmbs-const.html">kACLAddFile</A> = 4</li>
+<li class="M">const <A href="files-aclpermsetmbs-const.html#2">kACLAddSubDirectory</A> = 32</li>
+<li class="M">const <A href="files-aclpermsetmbs-const.html#3">kACLAppendData</A> = 32</li>
+<li class="M">const <A href="files-aclpermsetmbs-const.html#4">kACLChangeOwner</A> = 8192</li>
+<li class="M">const <A href="files-aclpermsetmbs-const.html#5">kACLDelete</A> = 16</li>
+<li class="M">const <A href="files-aclpermsetmbs-const.html#6">kACLDeleteChild</A> = 64</li>
+<li class="M">const <A href="files-aclpermsetmbs-const.html#7">kACLExecute</A> = 8</li>
+<li class="M">const <A href="files-aclpermsetmbs-const.html#8">kACLListDirectory</A> = 2</li>
+<li class="M">const <A href="files-aclpermsetmbs-const.html#9">kACLMaxEntries</A> = 128</li>
+<li class="M">const <A href="files-aclpermsetmbs-const.html#10">kACLReadAttributes</A> = 128</li>
+<li class="M">const <A href="files-aclpermsetmbs-const.html#11">kACLReadData</A> = 2</li>
+<li class="M">const <A href="files-aclpermsetmbs-const.html#12">kACLReadExtraAttributes</A> = 512</li>
+<li class="M">const <A href="files-aclpermsetmbs-const.html#13">kACLReadSecurity</A> = 2048</li>
+<li class="M">const <A href="files-aclpermsetmbs-const.html#14">kACLSearch</A> = 8</li>
+<li class="M">const <A href="files-aclpermsetmbs-const.html#15">kACLWriteAttributes</A> = 256</li>
+<li class="M">const <A href="files-aclpermsetmbs-const.html#16">kACLWriteData</A> = 4</li>
+<li class="M">const <A href="files-aclpermsetmbs-const.html#17">kACLWriteExtraAttributes</A> = 1024</li>
+<li class="M">const <A href="files-aclpermsetmbs-const.html#18">kACLWriteSecurity</A> = 4096</li>
+</ul></li>
+<li class="M"><B><A href="class-aclrightmbs.html">class ACLRightMBS</A></B><ul>
+<li class="M">method <A href="files-aclrightmbs-method.html">Constructor</A>(count as Integer)</li>
+<li class="M">method <A href="files-aclrightmbs-method.html#2">Constructor</A>(text as string)</li>
+<li class="M">method <A href="files-aclrightmbs-method.html#3">CopyData</A>(Native as boolean = false) as String</li>
+<li class="M">method <A href="files-aclrightmbs-method.html#4">CreateEntry</A> as <A href="class-aclentrymbs.html">ACLEntryMBS</A></li>
+<li class="M">method <A href="files-aclrightmbs-method.html#5">CreateEntry</A>(entryIndex as Integer, tag_type as Integer = 1) as <A href="class-aclentrymbs.html">ACLEntryMBS</A></li>
+<li class="M">method <A href="files-aclrightmbs-method.html#6">DeleteEntry</A>(entry as <A href="class-aclentrymbs.html">ACLEntryMBS</A>)</li>
+<li class="M">method <A href="files-aclrightmbs-method.html#7">Duplicate</A> as <A href="class-aclrightmbs.html">ACLRightMBS</A></li>
+<li class="M">method <A href="files-aclrightmbs-method.html#8">Entries</A> as <A href="class-aclentrymbs.html">ACLEntryMBS</A>()</li>
+<li class="M">method <A href="files-aclrightmbs-method.html#9">Entry</A>(entryIndex as Integer) as <A href="class-aclentrymbs.html">ACLEntryMBS</A></li>
+<li class="M">shared method <A href="files-aclrightmbs-shared-method.html">NewACL</A>(count as Integer) as <A href="class-aclrightmbs.html">ACLRightMBS</A></li>
+<li class="M">shared method <A href="files-aclrightmbs-shared-method.html#2">NewACLFromExternal</A>(data as string, native as boolean = false) as <A href="class-aclrightmbs.html">ACLRightMBS</A></li>
+<li class="M">shared method <A href="files-aclrightmbs-shared-method.html#3">NewACLFromFile</A>(file as folderitem, type as Integer) as <A href="class-aclrightmbs.html">ACLRightMBS</A></li>
+<li class="M">shared method <A href="files-aclrightmbs-shared-method.html#4">NewACLFromFile</A>(path as string, type as Integer) as <A href="class-aclrightmbs.html">ACLRightMBS</A></li>
+<li class="M">shared method <A href="files-aclrightmbs-shared-method.html#5">NewACLFromFilePointer</A>(FilePointer as Integer) as <A href="class-aclrightmbs.html">ACLRightMBS</A></li>
+<li class="M">shared method <A href="files-aclrightmbs-shared-method.html#6">NewACLFromFilePointer</A>(FilePointer as Integer, type as Integer) as <A href="class-aclrightmbs.html">ACLRightMBS</A></li>
+<li class="M">shared method <A href="files-aclrightmbs-shared-method.html#7">NewACLFromLink</A>(path as string, type as Integer) as <A href="class-aclrightmbs.html">ACLRightMBS</A></li>
+<li class="M">shared method <A href="files-aclrightmbs-shared-method.html#8">NewACLFromText</A>(text as string) as <A href="class-aclrightmbs.html">ACLRightMBS</A></li>
+<li class="M">method <A href="files-aclrightmbs-method.html#11">SetFile</A>(Path as string, type as Integer) as boolean</li>
+<li class="M">method <A href="files-aclrightmbs-method.html#12">SetFilePointer</A>(FilePointer as Integer) as boolean</li>
+<li class="M">method <A href="files-aclrightmbs-method.html#13">SetFilePointer</A>(FilePointer as Integer, type as Integer) as boolean</li>
+<li class="M">method <A href="files-aclrightmbs-method.html#14">SetLink</A>(Path as string, type as Integer) as boolean</li>
+<li class="M">method <A href="files-aclrightmbs-method.html#15">Size</A> as Int64</li>
+<li class="M">method <A href="files-aclrightmbs-method.html#16">Text</A> as String</li>
+<li class="M">method <A href="files-aclrightmbs-method.html#17">Valid</A> as boolean</li>
+<li class="M">method <A href="files-aclrightmbs-method.html#18">ValidFile</A>(Path as string, type as Integer) as boolean</li>
+<li class="M">method <A href="files-aclrightmbs-method.html#19">ValidFilePointer</A>(FilePointer as Integer, type as Integer) as boolean</li>
+<li class="M">property <A href="files-aclrightmbs-property.html">Handle</A> as Integer</li>
+<li class="M">property <A href="files-aclrightmbs-property.html#2">Lasterror</A> as Integer</li>
+<li class="M">property <A href="files-aclrightmbs-method.html#10">FlagSet</A> as <A href="class-aclflagsetmbs.html">ACLFlagSetMBS</A></li>
+<li class="M">const <A href="files-aclrightmbs-const.html">kACLFirstEntry</A> = 0</li>
+<li class="M">const <A href="files-aclrightmbs-const.html#2">kACLLastEntry</A> = -2</li>
+<li class="M">const <A href="files-aclrightmbs-const.html#3">kACLNextEntry</A> = -1</li>
+<li class="M">const <A href="files-aclrightmbs-const.html#4">kACLTypeAccess</A> = 0</li>
+<li class="M">const <A href="files-aclrightmbs-const.html#5">kACLTypeAFS</A> = 2</li>
+<li class="M">const <A href="files-aclrightmbs-const.html#6">kACLTypeCODA</A> = 3</li>
+<li class="M">const <A href="files-aclrightmbs-const.html#7">kACLTypeDefault</A> = 1</li>
+<li class="M">const <A href="files-aclrightmbs-const.html#8">kACLTypeExtended</A> = 256</li>
+<li class="M">const <A href="files-aclrightmbs-const.html#9">kACLTypeNTFS</A> = 4</li>
+<li class="M">const <A href="files-aclrightmbs-const.html#10">kACLTypeNWFS</A> = 5</li>
+</ul></li>
+<li class="M"><B><A href="class-copyfilembs.html">class CopyFileMBS</A></B><ul>
+<li class="M">method <A href="files-copyfilembs-method.html">CopyFile</A>(From as FolderItem, Dest as FolderItem, flags as Integer) as Integer</li>
+<li class="M">method <A href="files-copyfilembs-method.html#2">CopyFile</A>(From as String, Dest as String, flags as Integer) as Integer</li>
+<li class="M">shared method <A href="files-copyfilembs-shared-method.html">ErrorMessage</A>(error as Integer) as String</li>
+<li class="M">property <A href="files-copyfilembs-property.html">BytesCopied</A> as Int64</li>
+<li class="M">property <A href="files-copyfilembs-property.html#2">WasCloned</A> as Boolean</li>
+<li class="M">property <A href="files-copyfilembs-property.html#3">XAttrName</A> as String</li>
+<li class="M">property <A href="files-copyfilembs-property.html#4">YieldTicks</A> as Integer</li>
+<li class="M">event <A href="files-copyfilembs-event.html">Progress</A>(What as Integer, Stage as Integer, Source as String, Dest as String) as Integer</li>
+<li class="M">const <A href="files-copyfilembs-const.html">kFlagsACL</A> = 1</li>
+<li class="M">const <A href="files-copyfilembs-const.html#2">kFlagsAll</A> = 15</li>
+<li class="M">const <A href="files-copyfilembs-const.html#3">kFlagsCheck</A> = &h10000</li>
+<li class="M">const <A href="files-copyfilembs-const.html#4">kFlagsClone</A> = &h1000000</li>
+<li class="M">const <A href="files-copyfilembs-const.html#5">kFlagsCloneForce</A> = &h2000000</li>
+<li class="M">const <A href="files-copyfilembs-const.html#6">kFlagsData</A> = 8</li>
+<li class="M">const <A href="files-copyfilembs-const.html#7">kFlagsDataSparse</A> = &h8000000</li>
+<li class="M">const <A href="files-copyfilembs-const.html#8">kFlagsExcl</A> = &h20000</li>
+<li class="M">const <A href="files-copyfilembs-const.html#9">kFlagsMetaData</A> = 7</li>
+<li class="M">const <A href="files-copyfilembs-const.html#10">kFlagsMove</A> = &h100000</li>
+<li class="M">const <A href="files-copyfilembs-const.html#11">kFlagsNoFollow</A> = &hC00000</li>
+<li class="M">const <A href="files-copyfilembs-const.html#12">kFlagsNoFollowDest</A> = &h80000</li>
+<li class="M">const <A href="files-copyfilembs-const.html#13">kFlagsNoFollowSource</A> = &h40000</li>
+<li class="M">const <A href="files-copyfilembs-const.html#14">kFlagsPack</A> = &h400000</li>
+<li class="M">const <A href="files-copyfilembs-const.html#15">kFlagsRecursive</A> = &h8000</li>
+<li class="M">const <A href="files-copyfilembs-const.html#16">kFlagsRunInPlace</A> = &h4000000</li>
+<li class="M">const <A href="files-copyfilembs-const.html#17">kFlagsSecurity</A> = 3</li>
+<li class="M">const <A href="files-copyfilembs-const.html#18">kFlagsStat</A> = 2</li>
+<li class="M">const <A href="files-copyfilembs-const.html#19">kFlagsUnlink</A> = &h200000</li>
+<li class="M">const <A href="files-copyfilembs-const.html#20">kFlagsUnpack</A> = &h800000</li>
+<li class="M">const <A href="files-copyfilembs-const.html#21">kFlagsVerbose</A> = &h40000000</li>
+<li class="M">const <A href="files-copyfilembs-const.html#22">kFlagsXAttr</A> = 4</li>
+<li class="M">const <A href="files-copyfilembs-const.html#23">kReturnContinue</A> = 0</li>
+<li class="M">const <A href="files-copyfilembs-const.html#24">kReturnQuit</A> = 2</li>
+<li class="M">const <A href="files-copyfilembs-const.html#25">kReturnSkip</A> = 1</li>
+<li class="M">const <A href="files-copyfilembs-const.html#26">kStageError</A> = 3</li>
+<li class="M">const <A href="files-copyfilembs-const.html#27">kStageFinish</A> = 2</li>
+<li class="M">const <A href="files-copyfilembs-const.html#28">kStageProgress</A> = 4</li>
+<li class="M">const <A href="files-copyfilembs-const.html#29">kStageStart</A> = 1</li>
+<li class="M">const <A href="files-copyfilembs-const1.html">kWhatCopyData</A> = 4</li>
+<li class="M">const <A href="files-copyfilembs-const1.html#2">kWhatCopyXAttr</A> = 5</li>
+<li class="M">const <A href="files-copyfilembs-const1.html#3">kWhatRecurseDir</A> = 2</li>
+<li class="M">const <A href="files-copyfilembs-const1.html#4">kWhatRecurseDirCleanup</A> = 3</li>
+<li class="M">const <A href="files-copyfilembs-const1.html#5">kWhatRecurseError</A> = 0</li>
+<li class="M">const <A href="files-copyfilembs-const1.html#6">kWhatRecurseFile</A> = 1</li>
+</ul></li>
+<li class="M"><B><A href="class-dadiskmbs.html">class DADiskMBS</A></B><ul>
+<li class="M">method <A href="files-dadiskmbs-method.html">BSDName</A> as string</li>
+<li class="M">method <A href="files-dadiskmbs-method.html#2">Constructor</A></li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html">CreateFromBSDName</A>(session as <A href="class-dasessionmbs.html">DASessionMBS</A>, name as string) as <A href="class-dadiskmbs.html">DADiskMBS</A></li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#2">CreateFromVolume</A>(session as <A href="class-dasessionmbs.html">DASessionMBS</A>, volume as folderitem) as <A href="class-dadiskmbs.html">DADiskMBS</A></li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#3">CreateFromVolumePath</A>(session as <A href="class-dasessionmbs.html">DASessionMBS</A>, path as string) as <A href="class-dadiskmbs.html">DADiskMBS</A></li>
+<li class="M">method <A href="files-dadiskmbs-method.html#3">Description</A> as dictionary</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#4">kDADiskDescriptionBusNameKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#5">kDADiskDescriptionBusPathKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#6">kDADiskDescriptionDeviceGUIDKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#7">kDADiskDescriptionDeviceInternalKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#8">kDADiskDescriptionDeviceModelKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#9">kDADiskDescriptionDevicePathKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#10">kDADiskDescriptionDeviceProtocolKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#11">kDADiskDescriptionDeviceRevisionKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#12">kDADiskDescriptionDeviceUnitKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#13">kDADiskDescriptionDeviceVendorKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#14">kDADiskDescriptionMediaBlockSizeKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#15">kDADiskDescriptionMediaBSDMajorKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#16">kDADiskDescriptionMediaBSDMinorKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#17">kDADiskDescriptionMediaBSDNameKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#18">kDADiskDescriptionMediaBSDUnitKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#19">kDADiskDescriptionMediaContentKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#20">kDADiskDescriptionMediaEjectableKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#21">kDADiskDescriptionMediaIconKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#22">kDADiskDescriptionMediaKindKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#23">kDADiskDescriptionMediaLeafKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#24">kDADiskDescriptionMediaNameKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#25">kDADiskDescriptionMediaPathKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#26">kDADiskDescriptionMediaRemovableKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#27">kDADiskDescriptionMediaSizeKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#28">kDADiskDescriptionMediaTypeKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method.html#29">kDADiskDescriptionMediaUUIDKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method1.html">kDADiskDescriptionMediaWholeKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method1.html#2">kDADiskDescriptionMediaWritableKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method1.html#3">kDADiskDescriptionVolumeKindKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method1.html#4">kDADiskDescriptionVolumeMountableKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method1.html#5">kDADiskDescriptionVolumeNameKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method1.html#6">kDADiskDescriptionVolumeNetworkKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method1.html#7">kDADiskDescriptionVolumePathKey</A> as string</li>
+<li class="M">shared method <A href="files-dadiskmbs-shared-method1.html#8">kDADiskDescriptionVolumeUUIDKey</A> as string</li>
+<li class="M">method <A href="files-dadiskmbs-method.html#4">Options</A> as Integer</li>
+<li class="M">method <A href="files-dadiskmbs-method.html#5">SetOptions</A>(options as Integer, value as boolean) as Integer</li>
+<li class="M">method <A href="files-dadiskmbs-method.html#6">WholeDisk</A> as <A href="class-dadiskmbs.html">DADiskMBS</A></li>
+<li class="M">property <A href="files-dadiskmbs-property.html">Handle</A> as Integer</li>
+</ul></li>
+<li class="M"><B><A href="class-dadissentermbs.html">class DADissenterMBS</A></B><ul>
+<li class="M">method <A href="files-dadissentermbs-method.html">Constructor</A>(status as Integer, s as string)</li>
+<li class="M">property <A href="files-dadissentermbs-property.html">Handle</A> as Integer</li>
+<li class="M">property <A href="files-dadissentermbs-property.html#2">Status</A> as Integer</li>
+<li class="M">property <A href="files-dadissentermbs-property.html#3">StatusString</A> as String</li>
+<li class="M">const <A href="files-dadissentermbs-const.html">kDAReturnBadArgument</A> = &hF8DA0003</li>
+<li class="M">const <A href="files-dadissentermbs-const.html#2">kDAReturnBusy</A> = &hF8DA0002</li>
+<li class="M">const <A href="files-dadissentermbs-const.html#3">kDAReturnError</A> = &hF8DA0001</li>
+<li class="M">const <A href="files-dadissentermbs-const.html#4">kDAReturnExclusiveAccess</A> = &hF8DA0004</li>
+<li class="M">const <A href="files-dadissentermbs-const.html#5">kDAReturnNoResources</A> = &hF8DA0005</li>
+<li class="M">const <A href="files-dadissentermbs-const.html#6">kDAReturnNotFound</A> = &hF8DA0006</li>
+<li class="M">const <A href="files-dadissentermbs-const.html#7">kDAReturnNotMounted</A> = &hF8DA0007</li>
+<li class="M">const <A href="files-dadissentermbs-const.html#8">kDAReturnNotPermitted</A> = &hF8DA0008</li>
+<li class="M">const <A href="files-dadissentermbs-const.html#9">kDAReturnNotPrivileged</A> = &hF8DA0009</li>
+<li class="M">const <A href="files-dadissentermbs-const.html#10">kDAReturnNotReady</A> = &hF8DA000A</li>
+<li class="M">const <A href="files-dadissentermbs-const.html#11">kDAReturnNotWritable</A> = &hF8DA000B</li>
+<li class="M">const <A href="files-dadissentermbs-const.html#12">kDAReturnSuccess</A> = 0</li>
+<li class="M">const <A href="files-dadissentermbs-const.html#13">kDAReturnUnsupported</A> = &hF8DA000C</li>
+</ul></li>
+<li class="M"><B><A href="class-darwinchmodmbs.html">class DarwinChmodMBS</A></B><ul>
+<li class="M">method <A href="files-darwinchmodmbs-method.html">chflags</A>(path as string, flags as Integer) as Integer</li>
+<li class="M">method <A href="files-darwinchmodmbs-method.html#2">chmod</A>(path as string, mode as Integer) as Integer</li>
+<li class="M">method <A href="files-darwinchmodmbs-method.html#3">chown</A>(path as string, uid as Integer, gid as Integer) as Integer</li>
+<li class="M">method <A href="files-darwinchmodmbs-method.html#4">error</A> as Integer</li>
+<li class="M">method <A href="files-darwinchmodmbs-method.html#5">lstat</A>(path as string) as Integer</li>
+<li class="M">method <A href="files-darwinchmodmbs-method.html#6">stat</A>(path as string) as Integer</li>
+<li class="M">property <A href="files-darwinchmodmbs-property.html">blocks</A> as Double</li>
+<li class="M">property <A href="files-darwinchmodmbs-property.html#2">blocksize</A> as Integer</li>
+<li class="M">property <A href="files-darwinchmodmbs-property.html#3">dev</A> as Integer</li>
+<li class="M">property <A href="files-darwinchmodmbs-property.html#4">flags</A> as Integer</li>
+<li class="M">property <A href="files-darwinchmodmbs-property.html#5">gen</A> as Integer</li>
+<li class="M">property <A href="files-darwinchmodmbs-property.html#6">gid</A> as Integer</li>
+<li class="M">property <A href="files-darwinchmodmbs-property.html#7">ino</A> as Integer</li>
+<li class="M">property <A href="files-darwinchmodmbs-property.html#8">mode</A> as Integer</li>
+<li class="M">property <A href="files-darwinchmodmbs-property.html#9">nlink</A> as Integer</li>
+<li class="M">property <A href="files-darwinchmodmbs-property.html#10">rdev</A> as Integer</li>
+<li class="M">property <A href="files-darwinchmodmbs-property.html#11">size</A> as Double</li>
+<li class="M">property <A href="files-darwinchmodmbs-property.html#12">uid</A> as Integer</li>
+</ul></li>
+<li class="M"><B><A href="class-darwinifstatinterfacembs.html">class DarwinIFStatInterfaceMBS</A></B><ul>
+<li class="M">property <A href="files-darwinifstatinterfacembs-property.html">Baudrate</A> as UInt32</li>
+<li class="M">property <A href="files-darwinifstatinterfacembs-property.html#2">Collisions</A> as UInt64</li>
+<li class="M">property <A href="files-darwinifstatinterfacembs-property.html#3">InputBytes</A> as UInt64</li>
+<li class="M">property <A href="files-darwinifstatinterfacembs-property.html#4">InputErrors</A> as UInt64</li>
+<li class="M">property <A href="files-darwinifstatinterfacembs-property.html#5">InputMulticasts</A> as UInt64</li>
+<li class="M">property <A href="files-darwinifstatinterfacembs-property.html#6">InputPackets</A> as UInt64</li>
+<li class="M">property <A href="files-darwinifstatinterfacembs-property.html#7">MTU</A> as UInt32</li>
+<li class="M">property <A href="files-darwinifstatinterfacembs-property.html#8">Name</A> as String</li>
+<li class="M">property <A href="files-darwinifstatinterfacembs-property.html#9">OutputBytes</A> as UInt64</li>
+<li class="M">property <A href="files-darwinifstatinterfacembs-property.html#10">OutputErrors</A> as UInt64</li>
+<li class="M">property <A href="files-darwinifstatinterfacembs-property.html#11">OutputMulticasts</A> as UInt64</li>
+<li class="M">property <A href="files-darwinifstatinterfacembs-property.html#12">OutputPackets</A> as UInt64</li>
+<li class="M">property <A href="files-darwinifstatinterfacembs-property.html#13">PhysicalType</A> as Integer</li>
+<li class="M">property <A href="files-darwinifstatinterfacembs-property.html#14">Type</A> as Integer</li>
+</ul></li>
+<li class="M"><B><A href="class-darwinifstatmbs.html">class DarwinIFStatMBS</A></B><ul>
+<li class="M">method <A href="files-darwinifstatmbs-method.html">Item</A>(index as Integer) as <A href="class-darwinifstatinterfacembs.html">DarwinIFStatInterfaceMBS</A></li>
+<li class="M">method <A href="files-darwinifstatmbs-method.html#2">Update</A> as boolean</li>
+<li class="M">property <A href="files-darwinifstatmbs-property.html">Count</A> as Integer</li>
+</ul></li>
+<li class="M"><B><A href="class-dasessionmbs.html">class DASessionMBS</A></B><ul>
+<li class="M">method <A href="files-dasessionmbs-method.html">Constructor</A></li>
+<li class="M">method <A href="files-dasessionmbs-method.html#2">Eject</A>(disk as <A href="class-dadiskmbs.html">DADiskMBS</A>, options as Integer = 0)</li>
+<li class="M">method <A href="files-dasessionmbs-method.html#3">IsClaimed</A>(disk as <A href="class-dadiskmbs.html">DADiskMBS</A>) as boolean</li>
+<li class="M">method <A href="files-dasessionmbs-method.html#4">Mount</A>(disk as <A href="class-dadiskmbs.html">DADiskMBS</A>, path as string, options as Integer = 0)</li>
+<li class="M">method <A href="files-dasessionmbs-method.html#5">MountWithArguments</A>(disk as <A href="class-dadiskmbs.html">DADiskMBS</A>, path as string, arguments() as string, options as Integer = 0)</li>
+<li class="M">method <A href="files-dasessionmbs-method.html#6">Rename</A>(disk as <A href="class-dadiskmbs.html">DADiskMBS</A>, name as string, options as Integer = 0)</li>
+<li class="M">method <A href="files-dasessionmbs-method.html#7">Unclaim</A>(disk as <A href="class-dadiskmbs.html">DADiskMBS</A>)</li>
+<li class="M">method <A href="files-dasessionmbs-method.html#8">Unmount</A>(disk as <A href="class-dadiskmbs.html">DADiskMBS</A>, options as Integer = 0)</li>
+<li class="M">property <A href="files-dasessionmbs-property.html">Handle</A> as Integer</li>
+<li class="M">event <A href="files-dasessionmbs-event.html">Appeared</A>(disk as <A href="class-dadiskmbs.html">DADiskMBS</A>)</li>
+<li class="M">event <A href="files-dasessionmbs-event.html#2">DescriptionChanged</A>(disk as <A href="class-dadiskmbs.html">DADiskMBS</A>, keys() as string)</li>
+<li class="M">event <A href="files-dasessionmbs-event.html#3">Disappeared</A>(disk as <A href="class-dadiskmbs.html">DADiskMBS</A>)</li>
+<li class="M">event <A href="files-dasessionmbs-event.html#4">Ejected</A>(disk as <A href="class-dadiskmbs.html">DADiskMBS</A>, dissenter as <A href="class-dadissentermbs.html">DADissenterMBS</A>)</li>
+<li class="M">event <A href="files-dasessionmbs-event.html#5">Mounted</A>(disk as <A href="class-dadiskmbs.html">DADiskMBS</A>, dissenter as <A href="class-dadissentermbs.html">DADissenterMBS</A>)</li>
+<li class="M">event <A href="files-dasessionmbs-event.html#6">Peek</A>(disk as <A href="class-dadiskmbs.html">DADiskMBS</A>)</li>
+<li class="M">event <A href="files-dasessionmbs-event.html#7">Renamed</A>(disk as <A href="class-dadiskmbs.html">DADiskMBS</A>, dissenter as <A href="class-dadissentermbs.html">DADissenterMBS</A>)</li>
+<li class="M">event <A href="files-dasessionmbs-event.html#8">Unmounted</A>(disk as <A href="class-dadiskmbs.html">DADiskMBS</A>, dissenter as <A href="class-dadissentermbs.html">DADissenterMBS</A>)</li>
+<li class="M">const <A href="files-dasessionmbs-const.html">kDADiskClaimOptionDefault</A> = 0</li>
+<li class="M">const <A href="files-dasessionmbs-const.html#2">kDADiskEjectOptionDefault</A> = 0</li>
+<li class="M">const <A href="files-dasessionmbs-const.html#3">kDADiskMountOptionDefault</A> = 0</li>
+<li class="M">const <A href="files-dasessionmbs-const.html#4">kDADiskMountOptionWhole</A> = 1</li>
+<li class="M">const <A href="files-dasessionmbs-const.html#5">kDADiskOptionDefault</A> = 0</li>
+<li class="M">const <A href="files-dasessionmbs-const.html#6">kDADiskOptionEjectUponLogout</A> = 1</li>
+<li class="M">const <A href="files-dasessionmbs-const.html#7">kDADiskOptionMountAutomatic</A> = 16</li>
+<li class="M">const <A href="files-dasessionmbs-const.html#8">kDADiskOptionMountAutomaticNoDefer</A> = 32</li>
+<li class="M">const <A href="files-dasessionmbs-const.html#9">kDADiskOptionPrivate</A> = 256</li>
+<li class="M">const <A href="files-dasessionmbs-const.html#10">kDADiskRenameOptionDefault</A> = 0</li>
+<li class="M">const <A href="files-dasessionmbs-const.html#11">kDADiskUnmountOptionDefault</A> = 0</li>
+<li class="M">const <A href="files-dasessionmbs-const.html#12">kDADiskUnmountOptionForce</A> = &h00080000</li>
+<li class="M">const <A href="files-dasessionmbs-const.html#13">kDADiskUnmountOptionWhole</A> = 0</li>
+</ul></li>
+<li class="WLM"><B><A href="class-directorysizembs.html">class DirectorySizeMBS</A></B><ul>
+<li class="WLM">method <A href="files-directorysizembs-method.html">Add</A>(d as <A href="class-directorysizembs.html">DirectorySizeMBS</A>)</li>
+<li class="WLM">method <A href="files-directorysizembs-method.html#2">close</A></li>
+<li class="WLM">method <A href="files-directorysizembs-method.html#3">Constructor</A></li>
+<li class="WLM">method <A href="files-directorysizembs-method.html#4">Update</A>(folder as folderitem, recursive as boolean, ticks as Integer) as boolean</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html">Cancel</A> as Boolean</li>
+<li class="W">property <A href="files-directorysizembs-property.html#2">CompressedSize</A> as UInt64</li>
+<li class="M">property <A href="files-directorysizembs-property.html#3">CountBundlesAsItem</A> as Boolean</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html#4">Directory</A> as FolderItem</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html#5">FilesCount</A> as UInt64</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html#6">FolderCount</A> as UInt64</li>
+<li class="W">property <A href="files-directorysizembs-property.html#7">HiddenCompressedSize</A> as UInt64</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html#8">HiddenFilesCount</A> as Integer</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html#9">HiddenFolderCount</A> as Integer</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html#10">HiddenItemCount</A> as UInt64</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html#11">HiddenLogicalDataForkSize</A> as UInt64</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html#12">HiddenLogicalResourceForkSize</A> as UInt64</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html#13">HiddenLogicalTotalSize</A> as UInt64</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html#14">HiddenPhysicalDataForkSize</A> as UInt64</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html#15">HiddenPhysicalResourceForkSize</A> as UInt64</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html#16">HiddenPhysicalTotalSize</A> as UInt64</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html#17">IgnoreHiddenFolderContent</A> as Boolean</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html#18">ItemCount</A> as UInt64</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html#19">LogicalDataForkSize</A> as UInt64</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html#20">LogicalResourceForkSize</A> as UInt64</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html#21">LogicalTotalSize</A> as UInt64</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html#22">PhysicalDataForkSize</A> as UInt64</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html#23">PhysicalResourceForkSize</A> as UInt64</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html#24">PhysicalTotalSize</A> as UInt64</li>
+<li class="W">property <A href="files-directorysizembs-property.html#25">QueryCompressedSizes</A> as Boolean</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html#26">RecursionLimit</A> as Integer</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html#27">RecursionMaxLevel</A> as Integer</li>
+<li class="W">property <A href="files-directorysizembs-property.html#28">VisibleCompressedSize</A> as UInt64</li>
+<li class="WLM">property <A href="files-directorysizembs-property.html#29">VisibleFilesCount</A> as Integer</li>
+<li class="WLM">property <A href="files-directorysizembs-property1.html">VisibleFolderCount</A> as Integer</li>
+<li class="WLM">property <A href="files-directorysizembs-property1.html#2">VisibleItemCount</A> as UInt64</li>
+<li class="WLM">property <A href="files-directorysizembs-property1.html#3">VisibleLogicalDataForkSize</A> as UInt64</li>
+<li class="WLM">property <A href="files-directorysizembs-property1.html#4">VisibleLogicalResourceForkSize</A> as UInt64</li>
+<li class="WLM">property <A href="files-directorysizembs-property1.html#5">VisibleLogicalTotalSize</A> as UInt64</li>
+<li class="WLM">property <A href="files-directorysizembs-property1.html#6">VisiblePhysicalDataForkSize</A> as UInt64</li>
+<li class="WLM">property <A href="files-directorysizembs-property1.html#7">VisiblePhysicalResourceForkSize</A> as UInt64</li>
+<li class="WLM">property <A href="files-directorysizembs-property1.html#8">VisiblePhysicalTotalSize</A> as UInt64</li>
+<li class="WLM">property <A href="files-directorysizembs-property1.html#9">YieldTicks</A> as Integer</li>
+</ul></li>
+<li class="WLM"><B><A href="class-filelistmbs.html">class FileListMBS</A></B><ul>
+<li class="M">method <A href="files-filelistmbs-method.html">AttributeModificationDate</A>(index as Integer) as Double</li>
+<li class="WM">method <A href="files-filelistmbs-method.html#2">AttributeModificationDate</A>(index as Integer, UTC as boolean) as Date</li>
+<li class="WLM">method <A href="files-filelistmbs-method.html#3">AttributeModificationDateTime</A>(index as integer, UTC as boolean) as DateTime</li>
+<li class="M">method <A href="files-filelistmbs-method.html#4">BackupDate</A>(index as Integer) as Double</li>
+<li class="WM">method <A href="files-filelistmbs-method.html#5">BackupDate</A>(index as Integer, UTC as boolean) as Date</li>
+<li class="WLM">method <A href="files-filelistmbs-method.html#6">BackupDateTime</A>(index as integer, UTC as boolean) as DateTime</li>
+<li class="M">method <A href="files-filelistmbs-method.html#7">CFURL</A>(index as integer) as Variant</li>
+<li class="WLM">method <A href="files-filelistmbs-method.html#8">Close</A></li>
+<li class="LM">method <A href="files-filelistmbs-method.html#9">Constructor</A></li>
+<li class="WLM">method <A href="files-filelistmbs-method.html#10">Constructor</A>(filelist as <A href="class-filelistmbs.html">FileListMBS</A>, index as Integer, WinFilter as string = "", SkipMode as Integer = 0)</li>
+<li class="WLM">method <A href="files-filelistmbs-method.html#11">Constructor</A>(folder as folderitem, WinFilter as string = "", SkipMode as Integer = 0)</li>
+<li class="WLM">method <A href="files-filelistmbs-method.html#12">Constructor</A>(Path as String, WinFilter as string = "", SkipMode as Integer = 0)</li>
+<li class="WM">method <A href="files-filelistmbs-method.html#13">CreationDate</A>(index as Integer) as Double</li>
+<li class="WM">method <A href="files-filelistmbs-method.html#14">CreationDate</A>(index as Integer, UTC as boolean) as Date</li>
+<li class="WLM">method <A href="files-filelistmbs-method.html#15">CreationDateTime</A>(index as integer, UTC as boolean) as DateTime</li>
+<li class="WLM">method <A href="files-filelistmbs-method.html#17">Directory</A>(index as Integer) as boolean</li>
+<li class="WLM">method <A href="files-filelistmbs-method.html#18">DisplayName</A>(index as Integer) as string</li>
+<li class="WLM">method <A href="files-filelistmbs-method.html#19">FinderFlags</A>(index as Integer) as Integer</li>
+<li class="WM">method <A href="files-filelistmbs-method.html#22">IsBundle</A>(index as Integer) as Boolean</li>
+<li class="LM">method <A href="files-filelistmbs-method.html#23">IsHardLinked</A>(index as Integer) as boolean</li>
+<li class="WLM">method <A href="files-filelistmbs-method.html#24">Item</A>(index as Integer) as folderitem</li>
+<li class="WLM">method <A href="files-filelistmbs-method.html#25">ItemPath</A>(index as Integer) as string</li>
+<li class="WLM">method <A href="files-filelistmbs-method.html#26">LastAccessDate</A>(index as Integer) as Double</li>
+<li class="WLM">method <A href="files-filelistmbs-method.html#27">LastAccessDate</A>(index as Integer, UTC as boolean) as Date</li>
+<li class="WLM">method <A href="files-filelistmbs-method.html#28">LastAccessDateTime</A>(index as integer, UTC as boolean) as DateTime</li>
+<li class="WLM">method <A href="files-filelistmbs-method.html#29">LogicalDataLength</A>(index as Integer) as Int64</li>
+<li class="WLM">method <A href="files-filelistmbs-method1.html">LogicalResourceLength</A>(index as Integer) as Int64</li>
+<li class="WLM">method <A href="files-filelistmbs-method1.html#2">ModificationDate</A>(index as Integer) as Double</li>
+<li class="WLM">method <A href="files-filelistmbs-method1.html#3">ModificationDate</A>(index as Integer, UTC as boolean) as Date</li>
+<li class="WLM">method <A href="files-filelistmbs-method1.html#4">ModificationDateTime</A>(index as integer, UTC as boolean) as DateTime</li>
+<li class="WLM">method <A href="files-filelistmbs-method1.html#5">Name</A>(index as Integer) as string</li>
+<li class="LM">method <A href="files-filelistmbs-method1.html#6">NodeID</A>(index as Integer) as Int64</li>
+<li class="LM">method <A href="files-filelistmbs-method1.html#7">ParentDirectoryID</A>(index as Integer) as Int64</li>
+<li class="WLM">method <A href="files-filelistmbs-method1.html#8">PhysicalDataLength</A>(index as Integer) as Int64</li>
+<li class="WLM">method <A href="files-filelistmbs-method1.html#9">PhysicalResourceLength</A>(index as Integer) as Int64</li>
+<li class="WLM">method <A href="files-filelistmbs-method1.html#10">SortByCreationDate</A></li>
+<li class="WLM">method <A href="files-filelistmbs-method1.html#11">SortByFileName</A></li>
+<li class="WLM">method <A href="files-filelistmbs-method1.html#12">SortByModificationDate</A></li>
+<li class="WLM">method <A href="files-filelistmbs-method1.html#13">TrueItem</A>(index as Integer) as folderitem</li>
+<li class="WLM">method <A href="files-filelistmbs-method1.html#15">Visible</A>(index as Integer) as boolean</li>
+<li class="WM">method <A href="files-filelistmbs-method1.html#16">WinFileAttributes</A>(index as Integer) as Integer</li>
+<li class="WLM">shared property <A href="files-filelistmbs-shared-property.html">Cancel</A> as Boolean</li>
+<li class="WLM">property <A href="files-filelistmbs-property.html">Count</A> as Integer</li>
+<li class="WLM">property <A href="files-filelistmbs-property.html#2">Folder</A> as FolderItem</li>
+<li class="WLM">property <A href="files-filelistmbs-property.html#3">OK</A> as Boolean</li>
+<li class="WLM">property <A href="files-filelistmbs-property.html#4">Path</A> as String</li>
+<li class="WLM">shared property <A href="files-filelistmbs-shared-property.html#2">Threaded</A> as Boolean</li>
+<li class="WLM">property <A href="files-filelistmbs-property.html#5">TotalLogicalDataLength</A> as Int64</li>
+<li class="WLM">property <A href="files-filelistmbs-property.html#6">TotalLogicalResourceLength</A> as Int64</li>
+<li class="WLM">property <A href="files-filelistmbs-property.html#7">TotalPhysicalDataLength</A> as Int64</li>
+<li class="WLM">property <A href="files-filelistmbs-property.html#8">TotalPhysicalResourceLength</A> as Int64</li>
+<li class="WLM">shared property <A href="files-filelistmbs-shared-property.html#3">YieldTicks</A> as Integer</li>
+<li class="WLM">const <A href="files-filelistmbs-const.html">SkipFiles</A> = 1</li>
+<li class="WLM">const <A href="files-filelistmbs-const.html#2">SkipFolders</A> = 2</li>
+<li class="WLM">const <A href="files-filelistmbs-const.html#3">SkipHidden</A> = 12</li>
+<li class="WLM">const <A href="files-filelistmbs-const.html#4">SkipHiddenFiles</A> = 4</li>
+<li class="WLM">const <A href="files-filelistmbs-const.html#5">SkipHiddenFolders</A> = 8</li>
+<li class="WLM">const <A href="files-filelistmbs-const.html#6">SkipNone</A> = 0</li>
+</ul></li>
+<li class="M"><B><A href="class-finderselectionmbs.html">class FinderSelectionMBS</A></B><ul>
+<li class="M">method <A href="files-finderselectionmbs-method.html">CountItems</A> as Integer</li>
+<li class="M">method <A href="files-finderselectionmbs-method.html#2">GetSelection</A></li>
+<li class="M">method <A href="files-finderselectionmbs-method.html#3">Item</A>(index as Integer) as folderitem</li>
+<li class="M">property <A href="files-finderselectionmbs-property.html">LastError</A> as Integer</li>
+</ul></li>
+<li class="WLM"><B><A href="class-largebinarystreammbs.html">class LargeBinaryStreamMBS</A></B><ul>
+<li class="M">method <A href="files-largebinarystreammbs-method.html">Allocate</A>(count as int64, flags as Integer) as int64</li>
+<li class="WLM">method <A href="files-largebinarystreammbs-method.html#2">close</A></li>
+<li class="WLM">shared method <A href="files-largebinarystreammbs-shared-method.html">Create</A>(file as folderitem, MacType as string, MacCreator as string) as <A href="class-largebinarystreammbs.html">LargeBinaryStreamMBS</A></li>
+<li class="WLM">shared method <A href="files-largebinarystreammbs-shared-method.html#2">Create</A>(path as string, MacType as string, MacCreator as string, WinShareMode as Integer = 0) as <A href="class-largebinarystreammbs.html">LargeBinaryStreamMBS</A></li>
+<li class="M">shared method <A href="files-largebinarystreammbs-shared-method.html#3">CreateResStream</A>(file as folderitem, MacType as string, MacCreator as string) as <A href="class-resstreammbs.html">ResStreamMBS</A></li>
+<li class="M">shared method <A href="files-largebinarystreammbs-shared-method.html#4">CreateResStream</A>(path as string, MacType as string, MacCreator as string) as <A href="class-resstreammbs.html">ResStreamMBS</A></li>
+<li class="M">shared method <A href="files-largebinarystreammbs-shared-method.html#5">DeleteDataFork</A>(file as folderitem)</li>
+<li class="M">shared method <A href="files-largebinarystreammbs-shared-method.html#6">DeleteResourceFork</A>(file as folderitem)</li>
+<li class="LM">method <A href="files-largebinarystreammbs-method.html#3">Flush</A></li>
+<li class="WLM">method <A href="files-largebinarystreammbs-method.html#4">LockFileExclusive</A> as boolean</li>
+<li class="WLM">shared method <A href="files-largebinarystreammbs-shared-method.html#7">Open</A>(file as folderitem, write as Boolean) as <A href="class-largebinarystreammbs.html">LargeBinaryStreamMBS</A></li>
+<li class="WLM">shared method <A href="files-largebinarystreammbs-shared-method.html#8">Open</A>(path as string, write as Boolean, WinShareMode as Integer = 0) as <A href="class-largebinarystreammbs.html">LargeBinaryStreamMBS</A></li>
+<li class="M">shared method <A href="files-largebinarystreammbs-shared-method.html#9">OpenAsResStream</A>(file as folderitem, write as Boolean) as <A href="class-resstreammbs.html">ResStreamMBS</A></li>
+<li class="M">shared method <A href="files-largebinarystreammbs-shared-method.html#10">OpenAsResStream</A>(path as string, write as Boolean) as <A href="class-resstreammbs.html">ResStreamMBS</A></li>
+<li class="WLM">method <A href="files-largebinarystreammbs-method.html#5">QueryDiskGeometry</A>(byref Cylinders as Int64, byref MediaType as Integer, byref TracksPerCylinder as Integer, byref SectorsPerTrack as Integer, byref BytesPerSector as Integer) as boolean</li>
+<li class="WLM">method <A href="files-largebinarystreammbs-method.html#6">Read</A>(count as Integer) as string</li>
+<li class="WLM">method <A href="files-largebinarystreammbs-method.html#7">ReadBlock</A>(count as Integer) as memoryblock</li>
+<li class="WLM">method <A href="files-largebinarystreammbs-method.html#8">Readbyte</A> as Integer</li>
+<li class="WLM">method <A href="files-largebinarystreammbs-method.html#9">ReadLong</A> as Integer</li>
+<li class="WLM">method <A href="files-largebinarystreammbs-method.html#10">ReadShort</A> as Integer</li>
+<li class="WLM">method <A href="files-largebinarystreammbs-method.html#11">UnlockFileExclusive</A> as boolean</li>
+<li class="W">shared method <A href="files-largebinarystreammbs-shared-method.html#11">WinCreateStream</A>(file as folderitem, StreamName as String, WinShareMode as Integer = 0) as <A href="class-largebinarystreammbs.html">LargeBinaryStreamMBS</A></li>
+<li class="W">shared method <A href="files-largebinarystreammbs-shared-method.html#12">WinDeleteStream</A>(file as folderitem, StreamName as String) as boolean</li>
+<li class="W">shared method <A href="files-largebinarystreammbs-shared-method.html#13">WinOpenStream</A>(file as folderitem, StreamName as String, write as Boolean, WinShareMode as Integer = 0) as <A href="class-largebinarystreammbs.html">LargeBinaryStreamMBS</A></li>
+<li class="WLM">method <A href="files-largebinarystreammbs-method.html#12">Write</A>(data as string)</li>
+<li class="WLM">method <A href="files-largebinarystreammbs-method.html#13">WriteBlock</A>(data as memoryblock,count as Integer)</li>
+<li class="WLM">method <A href="files-largebinarystreammbs-method.html#14">WriteByte</A>(data as Integer)</li>
+<li class="WLM">method <A href="files-largebinarystreammbs-method.html#15">WriteLong</A>(data as Integer)</li>
+<li class="WLM">method <A href="files-largebinarystreammbs-method.html#16">WriteShort</A>(data as Integer)</li>
+<li class="WLM">property <A href="files-largebinarystreammbs-property.html">CanWrite</A> as boolean</li>
+<li class="WLM">property <A href="files-largebinarystreammbs-property.html#2">EOF</A> as boolean</li>
+<li class="WLM">property <A href="files-largebinarystreammbs-property.html#3">Lasterror</A> as Integer</li>
+<li class="WLM">property <A href="files-largebinarystreammbs-property.html#4">Length</A> as Int64</li>
+<li class="WLM">property <A href="files-largebinarystreammbs-property.html#5">LittleEndian</A> as boolean</li>
+<li class="WLM">property <A href="files-largebinarystreammbs-property.html#6">Position</A> as Int64</li>
+<li class="M">property <A href="files-largebinarystreammbs-property.html#7">Yield</A> as Boolean</li>
+</ul></li>
+<li class="M"><B><A href="class-macfileoperationmbs.html">class MacFileOperationMBS</A></B><ul>
+<li class="M">method <A href="files-macfileoperationmbs-method.html">Cancel</A></li>
+<li class="M">method <A href="files-macfileoperationmbs-method.html#2">CopyObject</A>(Item as folderitem, DestinationFolder as folderitem, DestinationName as string, Options as Integer, statusChangeInterval as Double)</li>
+<li class="M">shared method <A href="files-macfileoperationmbs-shared-method.html">CopyObjectSync</A>(SourceItem as folderitem, DestinationFolder as folderitem, DestinationName as string, byref Result as folderitem, Options as Integer) as Integer</li>
+<li class="M">method <A href="files-macfileoperationmbs-method.html#3">MoveObject</A>(Item as folderitem, DestinationFolder as folderitem, DestinationName as string, Options as Integer, statusChangeInterval as Double)</li>
+<li class="M">shared method <A href="files-macfileoperationmbs-shared-method.html#2">MoveObjectSync</A>(SourceItem as folderitem, DestinationFolder as folderitem, DestinationName as string, byref Result as folderitem, Options as Integer) as Integer</li>
+<li class="M">method <A href="files-macfileoperationmbs-method.html#4">MoveObjectToTrash</A>(Item as folderitem, Options as Integer, statusChangeInterval as Double)</li>
+<li class="M">shared method <A href="files-macfileoperationmbs-shared-method.html#3">MoveObjectToTrashSync</A>(SourceItem as folderitem, byref Result as folderitem, Options as Integer) as Integer</li>
+<li class="M">method <A href="files-macfileoperationmbs-method.html#5">Status</A> as <A href="class-macfileoperationstatusmbs.html">MacFileOperationStatusMBS</A></li>
+<li class="M">property <A href="files-macfileoperationmbs-property.html">Handle</A> as Integer</li>
+<li class="M">property <A href="files-macfileoperationmbs-property.html#2">LastError</A> as Integer</li>
+<li class="M">event <A href="files-macfileoperationmbs-event.html">StatusChanged</A>(status as <A href="class-macfileoperationstatusmbs.html">MacFileOperationStatusMBS</A>)</li>
+<li class="M">const <A href="files-macfileoperationmbs-const.html">kFSFileOperationDefaultOptions</A>=0</li>
+<li class="M">const <A href="files-macfileoperationmbs-const.html#2">kFSFileOperationDoNotMoveAcrossVolumes</A>=4</li>
+<li class="M">const <A href="files-macfileoperationmbs-const.html#3">kFSFileOperationOverwrite</A>=1</li>
+<li class="M">const <A href="files-macfileoperationmbs-const.html#4">kFSFileOperationSkipPreflight</A>=8</li>
+<li class="M">const <A href="files-macfileoperationmbs-const.html#5">kFSFileOperationSkipSourcePermissionErrors</A>=2</li>
+<li class="M">const <A href="files-macfileoperationmbs-const.html#6">kFSOperationStageComplete</A>=3</li>
+<li class="M">const <A href="files-macfileoperationmbs-const.html#7">kFSOperationStagePreflighting</A>=1</li>
+<li class="M">const <A href="files-macfileoperationmbs-const.html#8">kFSOperationStageRunning</A>=2</li>
+<li class="M">const <A href="files-macfileoperationmbs-const.html#9">kFSOperationStageUndefined</A>=0</li>
+</ul></li>
+<li class="M"><B><A href="class-macfileoperationstatusmbs.html">class MacFileOperationStatusMBS</A></B><ul>
+<li class="M">property <A href="files-macfileoperationstatusmbs-property.html">BytesComplete</A> as Int64</li>
+<li class="M">property <A href="files-macfileoperationstatusmbs-property.html#2">BytesRemaining</A> as Int64</li>
+<li class="M">property <A href="files-macfileoperationstatusmbs-property.html#3">CurrentItem</A> as FolderItem</li>
+<li class="M">property <A href="files-macfileoperationstatusmbs-property.html#4">Dictionary</A> as Dictionary</li>
+<li class="M">property <A href="files-macfileoperationstatusmbs-property.html#5">Error</A> as Integer</li>
+<li class="M">property <A href="files-macfileoperationstatusmbs-property.html#6">Handle</A> as Integer</li>
+<li class="M">property <A href="files-macfileoperationstatusmbs-property.html#7">ObjectsComplete</A> as Int64</li>
+<li class="M">property <A href="files-macfileoperationstatusmbs-property.html#8">ObjectsRemaining</A> as Int64</li>
+<li class="M">property <A href="files-macfileoperationstatusmbs-property.html#9">Stage</A> as Integer</li>
+<li class="M">property <A href="files-macfileoperationstatusmbs-property.html#10">Throughput</A> as Int64</li>
+<li class="M">property <A href="files-macfileoperationstatusmbs-property.html#11">TotalBytes</A> as Int64</li>
+<li class="M">property <A href="files-macfileoperationstatusmbs-property.html#12">TotalObjects</A> as Int64</li>
+<li class="M">property <A href="files-macfileoperationstatusmbs-property.html#13">TotalUserVisibleObjects</A> as Int64</li>
+<li class="M">property <A href="files-macfileoperationstatusmbs-property.html#14">UserVisibleObjectsComplete</A> as Int64</li>
+<li class="M">property <A href="files-macfileoperationstatusmbs-property.html#15">UserVisibleObjectsRemaining</A> as Int64</li>
+</ul></li>
+<li class="M"><B><A href="class-macquarantinepropertiesmbs.html">class MacQuarantinePropertiesMBS</A></B><ul>
+<li class="M">property <A href="files-macquarantinepropertiesmbs-property.html">AgentBundleIdentifier</A> as String</li>
+<li class="M">property <A href="files-macquarantinepropertiesmbs-property.html#2">AgentName</A> as String</li>
+<li class="M">property <A href="files-macquarantinepropertiesmbs-property.html#3">DataURL</A> as String</li>
+<li class="M">property <A href="files-macquarantinepropertiesmbs-property.html#4">DateTime</A> as DateTime</li>
+<li class="M">property <A href="files-macquarantinepropertiesmbs-property.html#5">Dic</A> as Variant</li>
+<li class="M">property <A href="files-macquarantinepropertiesmbs-property.html#6">OriginURL</A> as String</li>
+<li class="M">property <A href="files-macquarantinepropertiesmbs-property.html#7">TimeStamp</A> as Date</li>
+<li class="M">property <A href="files-macquarantinepropertiesmbs-property.html#8">Type</A> as String</li>
+<li class="M">const <A href="files-macquarantinepropertiesmbs-const.html">kTypeCalendarEventAttachment</A> = "LSQuarantineTypeCalendarEventAttachment"</li>
+<li class="M">const <A href="files-macquarantinepropertiesmbs-const.html#2">kTypeEmailAttachment</A> = "LSQuarantineTypeEmailAttachment"</li>
+<li class="M">const <A href="files-macquarantinepropertiesmbs-const.html#3">kTypeInstantMessageAttachment</A> = "LSQuarantineTypeInstantMessageAttachment"</li>
+<li class="M">const <A href="files-macquarantinepropertiesmbs-const.html#4">kTypeOtherAttachment</A> = "LSQuarantineTypeOtherAttachment"</li>
+<li class="M">const <A href="files-macquarantinepropertiesmbs-const.html#5">kTypeOtherDownload</A> = "LSQuarantineTypeOtherDownload"</li>
+<li class="M">const <A href="files-macquarantinepropertiesmbs-const.html#6">kTypeWebDownload</A> = "LSQuarantineTypeWebDownload"</li>
+</ul></li>
+<li class="M"><B><A href="class-netfsmountmbs.html">class NetFSMountMBS</A></B><ul>
+<li class="M">method <A href="files-netfsmountmbs-method.html">Cancel</A></li>
+<li class="M">method <A href="files-netfsmountmbs-method.html#2">MountURLAsync</A>(URL as String, MountPath as String = "", User as String = "", Password as String = "", OpenOptions as Dictionary = nil, MountOptions as Dictionary = nil) as Integer</li>
+<li class="M">method <A href="files-netfsmountmbs-method.html#3">MountURLSync</A>(URL as String, MountPath as String = "", User as String = "", Password as String = "", OpenOptions as Dictionary = nil, MountOptions as Dictionary = nil, byref MountPoints() as String) as Integer</li>
+<li class="M">shared method <A href="files-netfsmountmbs-shared-method.html">URLForRemountingVolume</A>(path as String) as String</li>
+<li class="M">shared method <A href="files-netfsmountmbs-shared-method.html#2">URLForRemountingVolume</A>(vol as FolderItem) as String</li>
+<li class="M">shared method <A href="files-netfsmountmbs-shared-method.html#3">URLProbe</A>(hostname as String) as String</li>
+<li class="M">property <A href="files-netfsmountmbs-property.html">Handle</A> as Integer</li>
+<li class="M">property <A href="files-netfsmountmbs-property.html#2">Lasterror</A> as Integer</li>
+<li class="M">event <A href="files-netfsmountmbs-event.html">MountURLAsyncCompleted</A>(status as Integer, URL as String, mountpoints() as String)</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html">kErrorAccountRestricted</A> = -5999</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html#2">kErrorMissingMountpoint</A> = 2</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html#3">kErrorNoAuthMethodSupported</A> = -5997</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html#4">kErrorNoProtocolVersionSupported</A> = -5996</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html#5">kErrorNoSharesAvailable</A> = -5998</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html#6">kErrorPasswordNeedsChange</A> = -5045</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html#7">kErrorPasswordPolicy</A> = -5046</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html#8">kErrorUserCanceled</A> = -128</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html#9">kMountFlagsReadOnly</A> = 1</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html#10">kNAUIOptionAllowUI</A> = "AllowUI"</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html#11">kNAUIOptionForceUI</A> = "ForceUI"</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html#12">kNAUIOptionKey</A> = "UIOption"</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html#13">kNAUIOptionNoUI</A> = "NoUI"</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html#14">kNetAuthErrorAlreadyClosed</A> = -6005</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html#15">kNetAuthErrorGuestNotSupported</A> = -6004</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html#16">kNetAuthErrorInternal</A> = -6600</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html#17">kNetAuthErrorMountFailed</A> = -6602</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html#18">kNetAuthErrorNoSharesAvailable</A> = -6003</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html#19">kNetFSAllowLoopbackKey</A> = "AllowLoopback"</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html#20">kNetFSAllowSubMountsKey</A> = "AllowSubMounts"</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html#21">kNetFSMountAtMountDirKey</A> = "MountAtMountDir"</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html#22">kNetFSMountFlagsKey</A> = "MountFlags"</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html#23">kNetFSSoftMountKey</A> = "SoftMount"</li>
+<li class="M">const <A href="files-netfsmountmbs-const.html#24">kNetFSUseGuestKey</A> = "Guest"</li>
+</ul></li>
+<li class="M"><B><A href="class-permissionsmbs.html">class PermissionsMBS</A></B><ul>
+<li class="M">method <A href="files-permissionsmbs-method.html">SetPermissions</A>(OldWay as boolean) as Integer</li>
+<li class="M">property <A href="files-permissionsmbs-property.html">Access</A> as Integer</li>
+<li class="M">property <A href="files-permissionsmbs-property.html#2">GroupID</A> as Integer</li>
+<li class="M">property <A href="files-permissionsmbs-property.html#3">Mode</A> as Integer</li>
+<li class="M">property <A href="files-permissionsmbs-property.html#4">UserID</A> as Integer</li>
+</ul></li>
+<li class="M"><B><A href="class-resourceforkmbs.html">class ResourceForkMBS</A></B><ul>
+<li class="M">method <A href="files-resourceforkmbs-method.html">AddResource</A>(Data as Memoryblock, ResourceType as String, ID as Integer, Name as String)</li>
+<li class="M">method <A href="files-resourceforkmbs-method.html#2">AddResource</A>(Data as String, ResourceType as String, ID as Integer, Name as String)</li>
+<li class="M">method <A href="files-resourceforkmbs-method.html#3">Close</A></li>
+<li class="M">method <A href="files-resourceforkmbs-method.html#4">Constructor</A></li>
+<li class="M">shared method <A href="files-resourceforkmbs-shared-method.html">Create</A>(file as folderitem, UseDataFork as boolean = false) as <A href="class-resourceforkmbs.html">ResourceForkMBS</A></li>
+<li class="M">method <A href="files-resourceforkmbs-method.html#5">GetIndResource</A>(ResourceType as String, index as Integer) As String</li>
+<li class="M">method <A href="files-resourceforkmbs-method.html#6">GetNamedResource</A>(ResourceType as String, Name as String) As String</li>
+<li class="M">method <A href="files-resourceforkmbs-method.html#7">GetResource</A>(ResourceType as String, ID as Integer) As String</li>
+<li class="M">method <A href="files-resourceforkmbs-method.html#8">GetResourceMemory</A>(ResourceType as String, ID as Integer) As Memoryblock</li>
+<li class="M">shared method <A href="files-resourceforkmbs-shared-method.html#2">Open</A>(file as folderitem, Write as boolean, UseDataFork as boolean = false) as <A href="class-resourceforkmbs.html">ResourceForkMBS</A></li>
+<li class="M">method <A href="files-resourceforkmbs-method.html#9">RemoveResource</A>(ResourceType as String, ID as Integer)</li>
+<li class="M">method <A href="files-resourceforkmbs-method.html#11">ResourceCount</A>(ResourceType as String) as Integer</li>
+<li class="M">method <A href="files-resourceforkmbs-method.html#12">ResourceID</A>(ResourceType as String, index as Integer) as Integer</li>
+<li class="M">method <A href="files-resourceforkmbs-method.html#14">ResourceName</A>(ResourceType as String, index as Integer) As String</li>
+<li class="M">method <A href="files-resourceforkmbs-method.html#18">ResourceSizeOnDisk</A>(ResourceType as String, ID as Integer) as Integer</li>
+<li class="M">method <A href="files-resourceforkmbs-method.html#20">ResourceType</A>(index as Integer) As String</li>
+<li class="M">method <A href="files-resourceforkmbs-method.html#21">UniqueID</A>(ResourceType as String) as Integer</li>
+<li class="M">property <A href="files-resourceforkmbs-property.html">Handle</A> as Integer</li>
+<li class="M">property <A href="files-resourceforkmbs-property.html#2">LastError</A> as Integer</li>
+<li class="M">property <A href="files-resourceforkmbs-property.html#3">Modified</A> as Boolean</li>
+<li class="M">property <A href="files-resourceforkmbs-property.html#4">TypeCount</A> as Integer</li>
+<li class="M">property <A href="files-resourceforkmbs-property.html#5">Writable</A> as Boolean</li>
+<li class="M">property <A href="files-resourceforkmbs-method.html#10">ResourceAttributes</A>(ResourceType as String, ID as Integer) as Integer</li>
+<li class="M">property <A href="files-resourceforkmbs-method.html#13">ResourceLocked</A>(ResourceType as String, ID as Integer) as boolean</li>
+<li class="M">property <A href="files-resourceforkmbs-method.html#15">ResourcePreload</A>(ResourceType as String, ID as Integer) as boolean</li>
+<li class="M">property <A href="files-resourceforkmbs-method.html#16">ResourceProtected</A>(ResourceType as String, ID as Integer) as boolean</li>
+<li class="M">property <A href="files-resourceforkmbs-method.html#17">ResourcePurgeable</A>(ResourceType as String, ID as Integer) as boolean</li>
+<li class="M">property <A href="files-resourceforkmbs-method.html#19">ResourceSysHeap</A>(ResourceType as String, ID as Integer) as boolean</li>
+</ul></li>
+<li class="M"><B><A href="class-resstreammbs.html">class ResStreamMBS</A></B><ul>
+</ul></li>
+<li class="WLM"><B><A href="class-stdinmbs.html">class StdinMBS</A></B><ul>
+<li class="W">shared method <A href="files-stdinmbs-shared-method.html">AttachConsole</A>(ProcessID as Integer = -1) as Integer</li>
+<li class="LM">shared method <A href="files-stdinmbs-shared-method.html#2">Flush</A></li>
+<li class="W">shared method <A href="files-stdinmbs-shared-method.html#3">FreeConsole</A> as Integer</li>
+<li class="LM">shared method <A href="files-stdinmbs-shared-method.html#4">GetCharacter</A> as Integer</li>
+<li class="WLM">shared method <A href="files-stdinmbs-shared-method.html#5">Read</A>(count as Integer) as string</li>
+<li class="WLM">shared method <A href="files-stdinmbs-shared-method.html#6">ReadDouble</A>(byref value as Double) as Integer</li>
+<li class="WLM">shared method <A href="files-stdinmbs-shared-method.html#7">ReadInteger</A>(byref value as Integer) as Integer</li>
+<li class="WLM">shared method <A href="files-stdinmbs-shared-method.html#8">ReadString</A>(byref value as string) as Integer</li>
+<li class="WLM">shared property <A href="files-stdinmbs-shared-property.html">Echo</A> as Boolean</li>
+<li class="LM">shared property <A href="files-stdinmbs-shared-property.html#2">IsReady</A> as boolean</li>
+</ul></li>
+<li class="WLM"><B><A href="class-stdoutmbs.html">class StdoutMBS</A></B><ul>
+<li class="W">shared method <A href="files-stdoutmbs-shared-method.html">AttachConsole</A>(ProcessID as Integer = -1) as Integer</li>
+<li class="LM">shared method <A href="files-stdoutmbs-shared-method.html#2">Flush</A></li>
+<li class="W">shared method <A href="files-stdoutmbs-shared-method.html#3">FreeConsole</A> as Integer</li>
+<li class="WLM">shared method <A href="files-stdoutmbs-shared-method.html#4">Write</A>(data as string)</li>
+</ul></li>
+<li class="M"><B><A href="class-volumeinformationmbs.html">class VolumeInformationMBS</A></B><ul>
+<li class="M">method <A href="files-volumeinformationmbs-method.html">Constructor</A></li>
+<li class="M">property <A href="files-volumeinformationmbs-property.html">Blocksize</A> as Integer</li>
+<li class="M">property <A href="files-volumeinformationmbs-property.html#2">DataForkClumpSize</A> as Integer</li>
+<li class="M">property <A href="files-volumeinformationmbs-property.html#3">DefaultVolume</A> as boolean</li>
+<li class="M">property <A href="files-volumeinformationmbs-property.html#4">DriveNumber</A> as Integer</li>
+<li class="M">property <A href="files-volumeinformationmbs-property.html#5">DriverRefNum</A> as Integer</li>
+<li class="M">property <A href="files-volumeinformationmbs-property.html#6">FileCount</A> as Integer</li>
+<li class="M">property <A href="files-volumeinformationmbs-property.html#7">FilesOpen</A> as boolean</li>
+<li class="M">property <A href="files-volumeinformationmbs-property.html#8">FileSystemID</A> as Integer</li>
+<li class="M">property <A href="files-volumeinformationmbs-property.html#9">FolderCount</A> as Integer</li>
+<li class="M">property <A href="files-volumeinformationmbs-property.html#10">freeBlocks</A> as Int64</li>
+<li class="M">property <A href="files-volumeinformationmbs-property.html#11">Freebytes</A> as Int64</li>
+<li class="M">property <A href="files-volumeinformationmbs-property.html#12">HardwareLocked</A> as boolean</li>
+<li class="M">property <A href="files-volumeinformationmbs-property.html#13">LimitedInformation</A> as boolean</li>
+<li class="M">property <A href="files-volumeinformationmbs-property.html#14">Name</A> as String</li>
+<li class="M">property <A href="files-volumeinformationmbs-property.html#15">NextAllocation</A> as Integer</li>
+<li class="M">property <A href="files-volumeinformationmbs-property.html#16">NextCatalogID</A> as Integer</li>
+<li class="M">property <A href="files-volumeinformationmbs-property.html#17">ResourceForkClumpSize</A> as Integer</li>
+<li class="M">property <A href="files-volumeinformationmbs-property.html#18">Root</A> as FolderItem</li>
+<li class="M">property <A href="files-volumeinformationmbs-property.html#19">RootFSRef</A> as memoryblock</li>
+<li class="M">property <A href="files-volumeinformationmbs-property.html#20">Signature</A> as Integer</li>
+<li class="M">property <A href="files-volumeinformationmbs-property.html#21">SoftwareLocked</A> as boolean</li>
+<li class="M">property <A href="files-volumeinformationmbs-property.html#22">Totalblocks</A> as Int64</li>
+<li class="M">property <A href="files-volumeinformationmbs-property.html#23">Totalbytes</A> as Int64</li>
+</ul></li>
+<li class="W"><B><A href="class-windowsdiskchangembs.html">class WindowsDiskChangeMBS</A></B><ul>
+<li class="W">method <A href="files-windowsdiskchangembs-method.html">Constructor</A></li>
+<li class="W">property <A href="files-windowsdiskchangembs-property.html">Valid</A> as Boolean</li>
+<li class="W">event <A href="files-windowsdiskchangembs-event.html">DriveAdded</A>(Path as string)</li>
+<li class="W">event <A href="files-windowsdiskchangembs-event.html#2">DriveRemoved</A>(Path as string)</li>
+<li class="W">event <A href="files-windowsdiskchangembs-event.html#3">MediaInserted</A>(Path as string)</li>
+<li class="W">event <A href="files-windowsdiskchangembs-event.html#4">MediaRemoved</A>(Path as string)</li>
+</ul></li>
+<li class="W"><B><A href="class-windowsdrivenotificationmbs.html">class WindowsDriveNotificationMBS</A></B><ul>
+<li class="W">event <A href="files-windowsdrivenotificationmbs-event.html">DeviceArrival</A>(Path as string)</li>
+<li class="W">event <A href="files-windowsdrivenotificationmbs-event.html#2">DeviceRemoved</A>(Path as string)</li>
+</ul></li>
+<li class="W"><B><A href="class-windowsvolumeinformationmbs.html">class WindowsVolumeInformationMBS</A></B><ul>
+<li class="W">method <A href="files-windowsvolumeinformationmbs-method.html">Constructor</A></li>
+<li class="W">method <A href="files-windowsvolumeinformationmbs-method.html#2">Constructor</A>(path as string)</li>
+<li class="W">property <A href="files-windowsvolumeinformationmbs-property.html">CaseIsPreserved</A> as boolean</li>
+<li class="W">property <A href="files-windowsvolumeinformationmbs-property.html#2">CaseSensitive</A> as boolean</li>
+<li class="W">property <A href="files-windowsvolumeinformationmbs-property.html#3">FileSystemName</A> as string</li>
+<li class="W">property <A href="files-windowsvolumeinformationmbs-property.html#4">IsCompressedVolume</A> as boolean</li>
+<li class="W">property <A href="files-windowsvolumeinformationmbs-property.html#5">MaxNameLength</A> as Integer</li>
+<li class="W">property <A href="files-windowsvolumeinformationmbs-property.html#6">Name</A> as string</li>
+<li class="W">property <A href="files-windowsvolumeinformationmbs-property.html#7">Path</A> as string</li>
+<li class="W">property <A href="files-windowsvolumeinformationmbs-property.html#8">Serial</A> as Integer</li>
+<li class="W">property <A href="files-windowsvolumeinformationmbs-property.html#9">SupportsFileCompression</A> as boolean</li>
+<li class="W">property <A href="files-windowsvolumeinformationmbs-property.html#10">SupportsFileEncryption</A> as boolean</li>
+<li class="W">property <A href="files-windowsvolumeinformationmbs-property.html#11">SupportsUnicodeFilenames</A> as boolean</li>
+<li class="W">property <A href="files-windowsvolumeinformationmbs-property.html#12">Valid</A> as boolean</li>
+</ul></li>
+</ul></li>
+<li>Class Extensions <ul>
+<li class="WLM"><B><A href="class-folderitem.html">class FolderItem</A></B><ul>
+<li class="WLM">method <A href="files-folderitem-method.html">AbsolutePath</A> as string</li>
+<li class="WLM">method <A href="folderitem-absolutepathmbs.html#2">AbsolutePathMBS</A> as string</li>
+<li class="M">method <A href="folderitem-backupisitemexcludedmbs.html#11">BackupIsItemExcludedMBS</A>(byref excludeByPath as boolean) as boolean</li>
+<li class="M">method <A href="folderitem-backupsetitemexcludedmbs.html#13">BackupSetItemExcludedMBS</A>(exclude as boolean, excludeByPath as boolean) as Integer</li>
+<li class="WLM">method <A href="folderitem-calculatedirectorysizembs.html#14">CalculateDirectorySizeMBS</A>(recursive as boolean = false, ticks as Integer = 0, QueryCompressedSizes as boolean = false, RecursionLimit as Integer = -1) as <A href="class-directorysizembs.html">DirectorySizeMBS</A></li>
+<li class="WLM">method <A href="folderitem-compressedfilelengthmbs.html#16">CompressedFileLengthMBS</A> as int64</li>
+<li class="WLM">method <A href="folderitem-createlargebinarystreammbs.html#18">CreateLargeBinaryStreamMBS</A>(MacType as string, MacCreator as string) as <A href="class-largebinarystreammbs.html">LargeBinaryStreamMBS</A></li>
+<li class="M">method <A href="folderitem-createresstreammbs.html#19">CreateResStreamMBS</A>(MacType as string, MacCreator as string) as <A href="class-resstreammbs.html">ResStreamMBS</A></li>
+<li class="M">method <A href="folderitem-creatorappmbs.html#22">CreatorAppMBS</A> as FolderItem</li>
+<li class="M">method <A href="folderitem-creatorappmbs.html#23">CreatorAppMBS</A>(creatorCode as String) as FolderItem</li>
+<li class="M">method <A href="folderitem-darwinmediaclassmbs.html#24">DarwinMediaClassMBS</A> as string</li>
+<li class="M">method <A href="folderitem-darwinmediainfombs.html#25">DarwinMediaInfoMBS</A> as <A href="class-cfdictionarymbs.html">CFDictionaryMBS</A></li>
+<li class="M">method <A href="folderitem-darwinvolumenamembs.html#26">DarwinVolumeNameMBS</A> as string</li>
+<li class="M">method <A href="folderitem-deletedataforkmbs.html#27">DeleteDataForkMBS</A></li>
+<li class="M">method <A href="folderitem-deleteresourceforkmbs.html#28">DeleteResourceForkMBS</A></li>
+<li class="WLM">method <A href="folderitem-displaypathmbs.html#29">DisplayPathMBS</A>(delimiter as string = "/") as string</li>
+<li class="M">method <A href="folderitem-ejectvolumembs.html">EjectVolumeMBS</A>(force as boolean, byref dissenterPID as Integer) as Integer</li>
+<li class="WLM">method <A href="folderitem-filesmbs.html#2">FilesMBS</A> as FolderItem()</li>
+<li class="M">method <A href="folderitem-flushvolumembs.html#4">FlushVolumeMBS</A> as Integer</li>
+<li class="WLM">method <A href="folderitem-foldersmbs.html#5">FoldersMBS</A> as FolderItem()</li>
+<li class="M">method <A href="folderitem-getfileflagsmbs.html#6">GetFileFlagsMBS</A> as Integer</li>
+<li class="M">method <A href="folderitem-getfolderflagsmbs.html#7">GetFolderFlagsMBS</A> as Integer</li>
+<li class="M">method <A href="folderitem-getvolumerefmbs.html#8">GetVolumeRefMBS</A> as Integer</li>
+<li class="W">method <A href="folderitem-iscompressedfilembs.html#9">IsCompressedFileMBS</A> as Boolean</li>
+<li class="M">method <A href="folderitem-isejectablevolumembs.html#10">IsEjectableVolumeMBS</A> as Boolean</li>
+<li class="W">method <A href="folderitem-isencryptedfilembs.html#11">IsEncryptedFileMBS</A> as Boolean</li>
+<li class="WLM">method <A href="folderitem-isfiledataforkopenreadwritembs.html#12">IsFileDataForkOpenReadWriteMBS</A> as boolean</li>
+<li class="WLM">method <A href="folderitem-isfileresourceforkopenreadwritembs.html#13">IsFileResourceForkOpenReadWriteMBS</A> as boolean</li>
+<li class="M">method <A href="folderitem-isonremotevolumembs.html#14">IsOnRemoteVolumeMBS</A> as Boolean</li>
+<li class="WLM">method <A href="folderitem-itemsmbs.html#15">ItemsMBS</A> as FolderItem()</li>
+<li class="WM">method <A href="folderitem-kindmbs.html#16">KindMBS</A> as string</li>
+<li class="WM">method <A href="folderitem-launchmbs.html#17">LaunchMBS</A>(inFront as Boolean) as Boolean</li>
+<li class="WLM">method <A href="folderitem-logicalfiledatalengthmbs.html#18">LogicalFileDataLengthMBS</A> as int64</li>
+<li class="WLM">method <A href="folderitem-logicalfilereslengthmbs.html#19">LogicalFileResLengthMBS</A> as int64</li>
+<li class="WLM">method <A href="folderitem-logicalfiletotallengthmbs.html#20">LogicalFileTotalLengthMBS</A> as int64</li>
+<li class="W">method <A href="folderitem-longpathmbs.html#21">LongPathMBS</A> as string</li>
+<li class="M">method <A href="folderitem-maccopyobjectmbs.html#22">MacCopyObjectMBS</A>(DestinationFolder as folderitem, DestinationName as string, byref Result as folderitem, Options as Integer) as Integer</li>
+<li class="M">method <A href="folderitem-macishardlinkedmbs.html#23">MacIsHardLinkedMBS</A> as boolean</li>
+<li class="M">method <A href="folderitem-macmoveobjectmbs.html#24">MacMoveObjectMBS</A>(DestinationFolder as folderitem, DestinationName as string, byref Result as folderitem, Options as Integer) as Integer</li>
+<li class="M">method <A href="folderitem-macmoveobjecttotrashmbs.html#25">MacMoveObjectToTrashMBS</A>(byref Result as folderitem, Options as Integer) as Integer</li>
+<li class="M">method <A href="folderitem-macnodeidmbs.html#26">MacNodeIDMBS</A> as UInt64</li>
+<li class="M">method <A href="folderitem-macparentdirectoryidmbs.html#27">MacParentDirectoryIDMBS</A> as UInt64</li>
+<li class="M">method <A href="folderitem-macresolvenodeidmbs.html#29">MacResolveNodeIDMBS</A>(NodeID as UInt64) as folderitem</li>
+<li class="WLM">method <A href="folderitem-nameextensionmbs.html#2">NameExtensionMBS</A> as string</li>
+<li class="WLM">method <A href="folderitem-namewithoutextensionmbs.html#3">NameWithoutExtensionMBS</A> as string</li>
+<li class="WLM">method <A href="files-folderitem-method2.html#4">NativePath</A> as string</li>
+<li class="WLM">method <A href="folderitem-openaslargebinarystreammbs.html#5">OpenAsLargeBinaryStreamMBS</A>(write as Boolean) as <A href="class-largebinarystreammbs.html">LargeBinaryStreamMBS</A></li>
+<li class="M">method <A href="folderitem-openasresstreammbs.html#6">OpenAsResStreamMBS</A>(write as Boolean) as <A href="class-resstreammbs.html">ResStreamMBS</A></li>
+<li class="WM">method <A href="folderitem-openwithappmbs.html#7">OpenWithAppMBS</A>(TheApplication as FolderItem, inFront as Boolean) as Boolean</li>
+<li class="WLM">method <A href="folderitem-parentvolumembs.html#8">ParentVolumeMBS</A> as folderitem</li>
+<li class="M">method <A href="folderitem-permissionsmbs.html#9">PermissionsMBS</A>(OldWay as boolean) as <A href="class-permissionsmbs.html">PermissionsMBS</A></li>
+<li class="WLM">method <A href="folderitem-physicalfiledatalengthmbs.html#10">PhysicalFileDataLengthMBS</A> as int64</li>
+<li class="WLM">method <A href="folderitem-physicalfilereslengthmbs.html#11">PhysicalFileResLengthMBS</A> as int64</li>
+<li class="WLM">method <A href="folderitem-physicalfiletotallengthmbs.html#12">PhysicalFileTotalLengthMBS</A> as int64</li>
+<li class="WLM">method <A href="folderitem-readfilembs.html#13">ReadFileMBS</A>(byref data as MemoryBlock, offset As Integer = 0, byteCount As Integer = -1) as boolean</li>
+<li class="WLM">method <A href="folderitem-readfilembs.html#14">ReadFileMBS</A>(byref data as string, offset As Integer = 0, byteCount As Integer = -1) as boolean</li>
+<li class="M">method <A href="folderitem-setfileflagsmbs.html#15">SetFileFlagsMBS</A>(flags as Integer) as Integer</li>
+<li class="M">method <A href="folderitem-setfolderflagsmbs.html#16">SetFolderFlagsMBS</A>(flags as Integer) as Integer</li>
+<li class="M">method <A href="folderitem-settagnamesmbs.html#17">SetTagNamesMBS</A>(tags() as string) as Integer</li>
+<li class="M">method <A href="folderitem-settagnamesmbs.html#18">SetTagNamesMBS</A>(tags() as string, byref e as <A href="class-cferrormbs.html">CFErrorMBS</A>) as Integer</li>
+<li class="W">method <A href="folderitem-shortpathmbs.html#19">ShortPathMBS</A> as string</li>
+<li class="WLM">method <A href="folderitem-sortedfilesmbs.html#20">SortedFilesMBS</A>(followAlias as Boolean = false, SortByDisplayName as boolean = false, VisibleOnly as boolean = false) as FolderItem()</li>
+<li class="WLM">method <A href="folderitem-sortedfoldersmbs.html#21">SortedFoldersMBS</A>(followAlias as Boolean = false, SortByDisplayName as boolean = false, VisibleOnly as boolean = false) as FolderItem()</li>
+<li class="WLM">method <A href="folderitem-sorteditemsmbs.html#22">SortedItemsMBS</A>(followAlias as Boolean = false, SortByDisplayName as boolean = false, VisibleOnly as boolean = false) as FolderItem()</li>
+<li class="M">method <A href="folderitem-tagnamesmbs.html#23">TagNamesMBS</A> as string()</li>
+<li class="M">method <A href="folderitem-tagnamesmbs.html#24">TagNamesMBS</A>(byref e as <A href="class-cferrormbs.html">CFErrorMBS</A>) as string()</li>
+<li class="WLM">method <A href="folderitem-truefilesmbs.html#25">TrueFilesMBS</A> as FolderItem()</li>
+<li class="WLM">method <A href="folderitem-truefoldersmbs.html#26">TrueFoldersMBS</A> as FolderItem()</li>
+<li class="WLM">method <A href="folderitem-trueitemsmbs.html#27">TrueItemsMBS</A> as FolderItem()</li>
+<li class="WLM">method <A href="folderitem-unixpathmbs.html#28">UnixpathMBS</A> as string</li>
+<li class="M">method <A href="folderitem-unmountvolumembs.html#29">UnMountVolumeMBS</A>(force as boolean = false) as Integer</li>
+<li class="M">method <A href="folderitem-unmountvolumembs.html#30">UnMountVolumeMBS</A>(force as boolean, byref dissenterPID as Integer) as Integer</li>
+<li class="M">method <A href="folderitem-volgetfolderitemidmbs.html">VolGetFolderItemIDMBS</A>(createFileIDs as Boolean = true) as Integer</li>
+<li class="WLM">method <A href="folderitem-volumefreesizembs.html#2">VolumeFreeSizeMBS</A> as Int64</li>
+<li class="M">method <A href="folderitem-volumeinformationmbs.html#2">VolumeInformationMBS</A> as <A href="class-volumeinformationmbs.html">VolumeInformationMBS</A></li>
+<li class="WLM">method <A href="folderitem-volumesizembs.html#4">VolumeSizeMBS</A> as Int64</li>
+<li class="M">method <A href="folderitem-volumesupportshugefilesmbs.html#3">VolumeSupportsHugeFilesMBS</A> as Integer</li>
+<li class="M">method <A href="folderitem-volumeuuidmbs.html#4">VolumeUUIDMBS</A> as string</li>
+<li class="W">method <A href="folderitem-winthumbnailmbs.html#5">WinThumbnailMBS</A>(preferredSize as Integer = 512) as picture</li>
+<li class="WLM">method <A href="folderitem-writefilembs.html#6">WriteFileMBS</A>(data as MemoryBlock) as boolean</li>
+<li class="WLM">method <A href="folderitem-writefilembs.html#7">WriteFileMBS</A>(data as string) as boolean</li>
+</ul></li>
+</ul></li>
+<li>Modules <ul>
+<li class="LM"><B><A href="module-extendedattributesmbs.html">module ExtendedAttributesMBS</A></B><ul>
+<li class="LM">method <A href="files-extendedattributesmbs-method.html">Available</A> as boolean</li>
+<li class="M">method <A href="files-extendedattributesmbs-method.html#2">GetAttribute</A>(path as folderitem, name as string, options as Integer = 0) as Variant</li>
+<li class="M">method <A href="files-extendedattributesmbs-method.html#3">GetAttribute</A>(path as string, name as string, options as Integer = 0) as Variant</li>
+<li class="LM">method <A href="files-extendedattributesmbs-method.html#4">GetRawAttribute</A>(path as folderitem, name as string, options as Integer = 0) as memoryblock</li>
+<li class="LM">method <A href="files-extendedattributesmbs-method.html#5">GetRawAttribute</A>(path as string, name as string, options as Integer = 0) as memoryblock</li>
+<li class="LM">method <A href="files-extendedattributesmbs-method.html#6">LastError</A> as Integer</li>
+<li class="LM">method <A href="files-extendedattributesmbs-method.html#7">LastErrorMessage</A> as string</li>
+<li class="LM">method <A href="files-extendedattributesmbs-method.html#8">ListAttributes</A>(path as folderitem, Options as Integer = 0) as string()</li>
+<li class="LM">method <A href="files-extendedattributesmbs-method.html#9">ListAttributes</A>(path as string, Options as Integer = 0) as string()</li>
+<li class="LM">method <A href="files-extendedattributesmbs-method.html#10">RemoveAttribute</A>(path as folderitem, name as string, options as Integer = 0) as boolean</li>
+<li class="LM">method <A href="files-extendedattributesmbs-method.html#11">RemoveAttribute</A>(path as string, name as string, options as Integer = 0) as boolean</li>
+<li class="M">method <A href="files-extendedattributesmbs-method.html#12">SetAttribute</A>(path as folderitem, name as string, data as Variant, options as Integer = 0) as boolean</li>
+<li class="M">method <A href="files-extendedattributesmbs-method.html#13">SetAttribute</A>(path as string, name as string, data as Variant, options as Integer = 0) as boolean</li>
+<li class="LM">method <A href="files-extendedattributesmbs-method.html#14">SetRawAttribute</A>(path as folderitem, name as string, data as memoryblock, options as Integer = 0) as boolean</li>
+<li class="LM">method <A href="files-extendedattributesmbs-method.html#15">SetRawAttribute</A>(path as string, name as string, data as memoryblock, options as Integer = 0) as boolean</li>
+<li class="M">const <A href="files-extendedattributesmbs-const.html">kAttributeNameFinderComment</A> = &quot;com.apple.metadata:kMDItemFinderComment&quot;</li>
+<li class="M">const <A href="files-extendedattributesmbs-const.html#2">kAttributeNameFinderInfo</A> = &quot;com.apple.FinderInfo&quot;</li>
+<li class="M">const <A href="files-extendedattributesmbs-const.html#3">kAttributeNameResourceFork</A> = &quot;com.apple.ResourceFork&quot;</li>
+<li class="LM">const <A href="files-extendedattributesmbs-const.html#4">kCreate</A> = 2</li>
+<li class="LM">const <A href="files-extendedattributesmbs-const.html#5">kNoDefault</A> = 16</li>
+<li class="LM">const <A href="files-extendedattributesmbs-const.html#6">kNoFollow</A> = 1</li>
+<li class="LM">const <A href="files-extendedattributesmbs-const.html#7">kNoSecurity</A> = 8</li>
+<li class="LM">const <A href="files-extendedattributesmbs-const.html#8">kReplace</A> = 4</li>
+<li class="M">const <A href="files-extendedattributesmbs-const.html#9">kShowCompression</A> = 32</li>
+</ul></li>
+<li class="W"><B><A href="module-windowsjunctionmbs.html">module WindowsJunctionMBS</A></B><ul>
+<li class="W">method <A href="files-windowsjunctionmbs-method.html">CreateHardLink</A>(NewFile as folderitem, TargetFile as folderitem) as boolean</li>
+<li class="W">method <A href="files-windowsjunctionmbs-method.html#2">CreateJunction</A>(JunctionDir as folderitem, TargetDir as folderitem) as boolean</li>
+<li class="W">method <A href="files-windowsjunctionmbs-method.html#3">CreateSymbolicLink</A>(NewFile as folderitem, TargetFile as folderitem) as boolean</li>
+<li class="W">method <A href="files-windowsjunctionmbs-method.html#4">CreateSymbolicLink</A>(NewFile as folderitem, TargetFile as string, TargetIsDirectory as Boolean) as boolean</li>
+<li class="W">method <A href="files-windowsjunctionmbs-method.html#5">DeleteJunction</A>(JunctionDir as folderitem) as boolean</li>
+<li class="W">method <A href="files-windowsjunctionmbs-method.html#6">GetJunctionTarget</A>(JunctionDir as folderitem) as string</li>
+<li class="W">method <A href="files-windowsjunctionmbs-method.html#7">HardLinksForFile</A>(path as string) as string()</li>
+<li class="W">method <A href="files-windowsjunctionmbs-method.html#8">IsDirectoryJunction</A>(JunctionDir as folderitem) as boolean</li>
+<li class="W">method <A href="files-windowsjunctionmbs-method.html#9">Lasterror</A> as Integer</li>
+</ul></li>
+</ul></li>
+<li>Blog Entries
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2014-01-03/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 14.0pr1</a></li>
+</ul></li>
+</ul>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmaccfplugin.html">MBS MacCF Plugin</a>, <a href="plugins-mbsmacclassicplugin.html">MBS MacClassic Plugin</a>, <a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a>, <a href="plugins-mbsmacosxplugin.html">MBS MacOSX Plugin</a>, <a href="plugins-mbsutilplugin.html">MBS Util Plugin</a>, <a href="plugins-mbswinplugin.html">MBS Win Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=topic-files">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

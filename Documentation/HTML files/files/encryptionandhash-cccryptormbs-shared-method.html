@@ -1,0 +1,221 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - CCCryptorMBS shared methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="CCCryptorMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">CCCryptorMBS shared methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-cccryptormbs.html">CCCryptorMBS</a> class.  </p>
+<div class="M">
+<b><a href="class-cccryptormbs.html">CCCryptorMBS</a>.<A name="1">Crypt(Operation as Integer, Algorithm as Integer, Options as Integer, key as Ptr, KeyLength as UInt64, IV as Ptr, DataIn as Ptr, DataInLength as UInt64, DataOut as Ptr, DataOutAvailable as UInt64, byref DataOutMoved as UInt64) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-encryptionandhash.html" translate="no">Encryption and Hash</A></td>
+<td class=grau><a href="plugins-mbsmacosxplugin.html">MBS MacOSX Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Stateless, one-shot encrypt or decrypt operation. <BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> KeyString <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = <span style="color: #6600FE;">&quot;Hello12312345678&quot;</span><br /><span style="color: #0000FF;">dim</span> InputString <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = <span style="color: #6600FE;">&quot;Hello World!1234&quot;</span><br /><br /><span style="color: #0000FF;">dim</span> InputMemory <span style="color: #0000FF;">as</span> MemoryBlock = InputString<br /><span style="color: #0000FF;">dim</span> KeyMemory <span style="color: #0000FF;">as</span> MemoryBlock = KeyString<br /><span style="color: #0000FF;">dim</span> IV <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">ptr</span> = <span style="color: #0000FF;">nil</span> <span style="color: #800000;">// default to zeros</span><br /><span style="color: #0000FF;">dim</span> OutputMemory <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> MemoryBlock(<span style="color: #336698;">100</span>)<br /><span style="color: #0000FF;">dim</span> Size <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">UInt64</span> = <span style="color: #336698;">0</span><br /><br /><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = <A href="class-cccryptormbs.html">CCCryptorMBS</A>.Crypt(<A href="class-cccryptormbs.html">CCCryptorMBS</A>.kCCEncrypt, <A href="class-cccryptormbs.html">CCCryptorMBS</A>.kCCAlgorithmAES128, <span style="color: #336698;">0</span>, KeyMemory, KeyMemory.size, IV, InputMemory, InputMemory.size, OutputMemory, OutputMemory.size, size)<br /><br /><span style="color: #0000FF;">if</span> e = <A href="class-cccryptormbs.html">CCCryptorMBS</A>.kCCSuccess <span style="color: #0000FF;">then</span><br />  <span style="color: #0000FF;">dim</span> result <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = OutputMemory.StringValue(<span style="color: #336698;">0</span>, size)<br />  MsgBox <A href="global-encodingtohexmbs.html">EncodingToHexMBS</A>(result)<br /><span style="color: #0000FF;">else</span><br />  MsgBox <span style="color: #6600FE;">&quot;Error: &quot;</span>+str(e)<br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+This basically performs a sequence of Constructor, Update, Final and Destructor.<BR>
+<BR>
+Parameters:<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Operation</TD><TD valign="top">Defines the basic operation: kCCEncrypt or kCCDecrypt.</TD></TR>
+<TR><TD valign="top">Algorithm</TD><TD valign="top">Defines the encryption algorithm.</TD></TR>
+<TR><TD valign="top">Options</TD><TD valign="top">A word of flags defining options. See kCCOption constants.</TD></TR>
+<TR><TD valign="top">Key</TD><TD valign="top">Raw key material, length keyLength bytes. </TD></TR>
+<TR><TD valign="top">keyLength</TD><TD valign="top">Length of key material. Must be appropriate for the select algorithm. Some algorithms may provide for varying key lengths.</TD></TR>
+<TR><TD valign="top">IV</TD><TD valign="top">Initialization vector, optional. Used for Cipher Block Chaining (CBC) mode. If present, must be the same length as the selected algorithm&#39;s block size. If CBC mode is selected (by the absence of any mode bits in the options flags) and no IV is present, a nil (all zeroes) IV will be used. This is  ignored if ECB mode is used or if a stream cipher algorithm is selected. </TD></TR>
+<TR><TD valign="top">dataIn</TD><TD valign="top">Data to encrypt or decrypt, length dataInLength bytes. </TD></TR>
+<TR><TD valign="top">dataInLength</TD><TD valign="top">Length of data to encrypt or decrypt.</TD></TR>
+<TR><TD valign="top">dataOut</TD><TD valign="top">Result is written here. Allocated by caller. Encryption and decryption can be performed &quot;in-place&quot;, with the same buffer used for input and output. </TD></TR>
+<TR><TD valign="top">dataOutAvailable</TD><TD valign="top">The size of the dataOut buffer in bytes.  </TD></TR>
+<TR><TD valign="top">dataOutMoved</TD><TD valign="top">On successful return, the number of bytes written to dataOut. If kCCBufferTooSmall is returned as a result of insufficient buffer space being provided, the required buffer space is returned here. </TD></TR>
+</TABLE>
+<BR>
+Possible errors in lasterror:<BR>
+kCCBufferTooSmall indicates insufficent space in the dataOut buffer. In this case, the dataOutMoved parameter will indicate the size of the buffer needed to complete the operation. The operation can be retried with minimal runtime penalty. <BR>
+kCCAlignmentError indicates that dataInLength was not properly aligned. This can only be returned for block ciphers, and then only when decrypting or when encrypting with block with padding disabled. <BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">kCCDecodeError</TD><TD valign="top">Indicates improperly formatted ciphertext or a &quot;wrong key&quot; error; occurs only during decrypt operations. </TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="encryptionandhash-cccryptormbs-shared-method.html#2">Crypt(Operation as Integer, Algorithm as Integer, Options as Integer, key as string, IV as Ptr, DataIn as string, byref DataOut as string) as Integer</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-cccryptormbs.html">CCCryptorMBS</a>.<A name="2">Crypt(Operation as Integer, Algorithm as Integer, Options as Integer, key as string, IV as Ptr, DataIn as string, byref DataOut as string) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-encryptionandhash.html" translate="no">Encryption and Hash</A></td>
+<td class=grau><a href="plugins-mbsmacosxplugin.html">MBS MacOSX Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Stateless, one-shot encrypt or decrypt operation. <BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> KeyString <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = <span style="color: #6600FE;">&quot;Hello12312345678&quot;</span><br /><span style="color: #0000FF;">dim</span> InputString <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = <span style="color: #6600FE;">&quot;Hello World!1234&quot;</span><br /><span style="color: #0000FF;">dim</span> IV <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">ptr</span> = <span style="color: #0000FF;">nil</span> <span style="color: #800000;">// default to zeros</span><br /><span style="color: #0000FF;">dim</span> Output <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span> = <span style="color: #6600FE;">&quot;&quot;</span><br /><br /><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = <A href="class-cccryptormbs.html">CCCryptorMBS</A>.Crypt(<A href="class-cccryptormbs.html">CCCryptorMBS</A>.kCCEncrypt, <A href="class-cccryptormbs.html">CCCryptorMBS</A>.kCCAlgorithmAES128, <span style="color: #336698;">0</span>, KeyString, IV, InputString, Output)<br /><br /><span style="color: #0000FF;">if</span> e = <A href="class-cccryptormbs.html">CCCryptorMBS</A>.kCCSuccess <span style="color: #0000FF;">then</span><br />  MsgBox <A href="global-encodingtohexmbs.html">EncodingToHexMBS</A>(Output)<br /><span style="color: #0000FF;">else</span><br />  MsgBox <span style="color: #6600FE;">&quot;Error: &quot;</span>+str(e)<br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+This basically performs a sequence of Constructor, Update, Final and Destructor. This is the convenience function for Xojo with using strings instead of data pointers.<BR>
+<BR>
+Parameters:<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Operation</TD><TD valign="top">Defines the basic operation: kCCEncrypt or kCCDecrypt.</TD></TR>
+<TR><TD valign="top">Algorithm</TD><TD valign="top">Defines the encryption algorithm.</TD></TR>
+<TR><TD valign="top">Options</TD><TD valign="top">A word of flags defining options. See kCCOption constants.</TD></TR>
+<TR><TD valign="top">Key</TD><TD valign="top">Raw Key.</TD></TR>
+<TR><TD valign="top">IV</TD><TD valign="top">Initialization vector, optional. Used for Cipher Block Chaining (CBC) mode. If present, must be the same length as the selected algorithm&#39;s block size. If CBC mode is selected (by the absence of any mode bits in the options flags) and no IV is present, a nil (all zeroes) IV will be used. This is  ignored if ECB mode is used or if a stream cipher algorithm is selected. </TD></TR>
+<TR><TD valign="top">dataIn</TD><TD valign="top">Data to encrypt or decrypt.</TD></TR>
+<TR><TD valign="top">dataOut</TD><TD valign="top">Result is written here. </TD></TR>
+</TABLE>
+<BR>
+Possible errors in lasterror:<BR>
+kCCBufferTooSmall indicates insufficent space in the dataOut buffer. In this case, the dataOutMoved parameter will indicate the size of the buffer needed to complete the operation. The operation can be retried with minimal runtime penalty. <BR>
+kCCAlignmentError indicates that dataInLength was not properly aligned. This can only be returned for block ciphers, and then only when decrypting or when encrypting with block with padding disabled. <BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">kCCDecodeError</TD><TD valign="top">Indicates improperly formatted ciphertext or a &quot;wrong key&quot; error; occurs only during decrypt operations. </TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="encryptionandhash-cccryptormbs-shared-method.html">Crypt(Operation as Integer, Algorithm as Integer, Options as Integer, key as Ptr, KeyLength as UInt64, IV as Ptr, DataIn as Ptr, DataInLength as UInt64, DataOut as Ptr, DataOutAvailable as UInt64, byref DataOutMoved as UInt64) as Integer</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-cccryptormbs.html">CCCryptorMBS</a>.<A name="3">RandomGenerateBytes(data as MemoryBlock) as integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>shared method</td>
+<td class=grau><A href="topic-encryptionandhash.html" translate="no">Encryption and Hash</A></td>
+<td class=grau><a href="plugins-mbsmacosxplugin.html">MBS MacOSX Plugin</a></td>
+<td class=grau><a href="newinversion214.shtml" class=version>21.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return random bytes in a buffer allocated by the caller.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">Dim</span> m <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">New</span> MemoryBlock(<span style="color: #336698;">16</span>)<br /><br /><span style="color: #0000FF;">Dim</span> r <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">Integer</span> = <A href="class-cccryptormbs.html">CCCryptorMBS</A>.RandomGenerateBytes(m)<br /><br /><span style="color: #0000FF;">If</span> r = <A href="class-cccryptormbs.html">CCCryptorMBS</A>.kCCSuccess <span style="color: #0000FF;">Then</span><br />  MessageBox EncodeHex(m)<br /><span style="color: #0000FF;">Else</span><br />  MessageBox <span style="color: #6600FE;">&quot;Error &quot;</span> + Str(r)<br /><span style="color: #0000FF;">End</span> <span style="color: #0000FF;">If</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+The PRNG returns cryptographically strong random bits suitable for use as cryptographic keys, IVs, nonces etc.<BR>
+<BR>
+Return kCCSuccess on success.<BR>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmacosxplugin.html">MBS MacOSX Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=encryptionandhash-cccryptormbs-shared-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,806 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /CURL/Send Email/MassEmailer</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /CURL/Send Email/MassEmailer</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/CURL/Send Email/MassEmailer</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS CURL Plugin, MBS Util Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /CURL/Send Email/MassEmailer<BR>
+This example is the version from Wed, 3rd Jan 2023.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;MassEmailer.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;L&ouml;schen&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;Beenden&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#7F0000;text-style:italic">&#39;Register</span> <span style="color:#7F0000;text-style:italic">MBS</span> <span style="color:#7F0000;text-style:italic">Plugins</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">&lt;--</span> <span style="color:#7F0000;text-style:italic">change</span>
+			<span style="color:#7F0000;text-style:italic">&#39;BugReporter.init</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">have</span> <span style="color:#7F0000;text-style:italic">MBS</span> <span style="color:#7F0000;text-style:italic">Bugreporter</span> <span style="color:#7F0000;text-style:italic">Kit</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> UnhandledException(error <span style="color:#0000FF;font-weight: bold">As</span> RuntimeException) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#7F0000;text-style:italic">&#39;return</span> <span style="color:#7F0000;text-style:italic">BugReporter.UnhandledException(error)</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MassEmailWindow <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control InputEmails <span style="color:#0000FF;font-weight: bold">Inherits</span> TextArea</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance InputEmails <span style="color:#0000FF;font-weight: bold">Inherits</span> TextArea</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control SubjectLine <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance SubjectLine <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText2 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText2 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText3 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText3 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				send
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText4 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText4 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control InputFrom <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance InputFrom <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control status <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance status <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> CellBackgroundPaint(g <span style="color:#0000FF;font-weight: bold">As</span> Graphics, row <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, column <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> row &lt; <span style="color:#0000FF;font-weight: bold">me</span>.ListCount <span style="color:#0000FF;font-weight: bold">and</span> row &lt;&gt; <span style="color:#0000FF;font-weight: bold">me</span>.ListIndex <span style="color:#0000FF;font-weight: bold">then</span>
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> error <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Boolean</span> = <span style="color:#0000FF;font-weight: bold">me</span>.CellTag(row, column)
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> error <span style="color:#0000FF;font-weight: bold">then</span>
+						
+						g.ForeColor = &amp;c<span style="color:#FF0000">FF</span><span style="color:#00FF00">CC</span><span style="color:#0000FF">CC</span>
+						g.FillRect <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, g.Width, g.Height
+						
+						<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control InputBCC <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance InputBCC <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText5 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText5 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CheckDebug <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CheckDebug <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+				<span style="color:#0000FF;font-weight: bold">me</span>.Value=DebugBuild
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StartTimer <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StartTimer <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> r <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = RunningCount
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> r &gt; <span style="color:#326598">10</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> s <span style="color:#0000FF;font-weight: bold">as</span> MyCURL <span style="color:#0000FF;font-weight: bold">in</span> curls
+					<span style="color:#0000FF;font-weight: bold">if</span> s.Started = <span style="color:#0000FF;font-weight: bold">false</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						s.SendMail
+						<span style="color:#0000FF;font-weight: bold">Return</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">next</span>
+				
+				log <span style="color:#6500FE">&quot;All</span> <span style="color:#6500FE">SMTP</span> <span style="color:#6500FE">Sockets</span> <span style="color:#6500FE">started.&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Mode = <span style="color:#326598">0</span>
+				bar.Value = bar.Maximum
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CheckDelay <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CheckDelay <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control AttachButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance AttachButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = GetOpenFolderItem(<span style="color:#6500FE">&quot;&quot;</span>)
+				
+				<span style="color:#0000FF;font-weight: bold">redim</span> files(-<span style="color:#326598">1</span>)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> f&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					files.Append f
+					Filename.text = f.name
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					Filename.text = <span style="color:#6500FE">&quot;&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Filename <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Filename <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control bar <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressBar</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance bar <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressBar</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control BarTimer <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance BarTimer <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> count <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = UBound(curls)+<span style="color:#326598">1</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> Finished <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span>
+				
+				<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> s <span style="color:#0000FF;font-weight: bold">as</span> MyCURL <span style="color:#0000FF;font-weight: bold">in</span> curls
+					<span style="color:#0000FF;font-weight: bold">if</span> s.Finished <span style="color:#0000FF;font-weight: bold">then</span>
+						Finished = Finished + <span style="color:#326598">1</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">next</span>
+				
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> count = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> bar.Maximum&lt;&gt;<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						bar.Maximum = <span style="color:#326598">1</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> bar.Value&lt;&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						bar.Value = <span style="color:#326598">0</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> bar.Maximum&lt;&gt;count <span style="color:#0000FF;font-weight: bold">then</span>
+						bar.Maximum = count
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> bar.Value&lt;&gt;Finished <span style="color:#0000FF;font-weight: bold">then</span>
+						bar.Value = Finished
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control TabPanel1 <span style="color:#0000FF;font-weight: bold">Inherits</span> TabPanel</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance TabPanel1 <span style="color:#0000FF;font-weight: bold">Inherits</span> TabPanel</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PlainTextField <span style="color:#0000FF;font-weight: bold">Inherits</span> TextArea</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PlainTextField <span style="color:#0000FF;font-weight: bold">Inherits</span> TextArea</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control HTMLTextField <span style="color:#0000FF;font-weight: bold">Inherits</span> TextArea</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance HTMLTextField <span style="color:#0000FF;font-weight: bold">Inherits</span> TextArea</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CURLTimer <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CURLTimer <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				CurlMulti.Perform
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton2 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton2 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				StartTimer.mode = <span style="color:#326598">0</span>
+				CURLTimer.Mode = <span style="color:#326598">0</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> CurlMulti &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">redim</span> CurlMulti.queue(-<span style="color:#326598">1</span>)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PasteButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PasteButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> Clipboard
+				<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = c.Text
+				s = ReplaceLineEndings(s, EndOfLine)
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> lines() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = split(s, EndOfLine)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> lines.Ubound &gt; <span style="color:#326598">2</span> <span style="color:#0000FF;font-weight: bold">and</span> lines(<span style="color:#326598">1</span>).trim &lt;&gt; <span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">nothing</span>
+					
+					PlainTextField.Text = s
+					
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					
+					SubjectLine.Text = lines(<span style="color:#326598">0</span>)
+					
+					lines.Remove <span style="color:#326598">0</span>
+					lines.Remove <span style="color:#326598">0</span>
+					
+					PlainTextField.Text = Join(lines, EndOfLine)
+					
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> CancelClose(appQuitting <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> s <span style="color:#0000FF;font-weight: bold">as</span> MyCURL <span style="color:#0000FF;font-weight: bold">in</span> curls
+				<span style="color:#0000FF;font-weight: bold">if</span> s.Started = <span style="color:#0000FF;font-weight: bold">false</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					MsgBox <span style="color:#6500FE">&quot;Da</span> <span style="color:#6500FE">wird</span> <span style="color:#6500FE">noch</span> <span style="color:#6500FE">gesendet.&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Close()
+			<span style="color:#0000FF;font-weight: bold">if</span> t&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				t.Close
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> date
+			<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = d.SQLDateTime.ReplaceAll(<span style="color:#6500FE">&quot;:&quot;</span>, <span style="color:#6500FE">&quot;-&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> FolderItem(<span style="color:#6500FE">&quot;MassEmail</span> <span style="color:#6500FE">log</span> <span style="color:#6500FE">&quot;</span>+s+<span style="color:#6500FE">&quot;.txt&quot;</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> f.Exists <span style="color:#0000FF;font-weight: bold">then</span>
+				t=f.AppendToTextFile
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				t=f.CreateTextFile
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			
+			
+			CurlMulti = <span style="color:#0000FF;font-weight: bold">new</span> MyCURLMulti
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> ConvertToASCII(s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">Return</span> ConvertEncoding(s,encodings.ASCII)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> ConvertToISO(s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			s=ConvertEncoding(s,encodings.ISOLatin1)
+			
+			
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> s
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> ConvertToQuotedPrintable(s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">Return</span> EncodeQuotedPrintable(s)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Finished()
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> c <span style="color:#0000FF;font-weight: bold">as</span> MyCURL <span style="color:#0000FF;font-weight: bold">in</span> curls
+				<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> c.started <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			log <span style="color:#6500FE">&quot;All</span> <span style="color:#6500FE">finished&quot;</span>
+			CURLTimer.Mode = <span style="color:#326598">0</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> Emails() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> FEmails() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> c <span style="color:#0000FF;font-weight: bold">as</span> MyCURL <span style="color:#0000FF;font-weight: bold">in</span> curls
+				emails.Append c.EmailLine
+				<span style="color:#0000FF;font-weight: bold">if</span> c.Failed <span style="color:#0000FF;font-weight: bold">then</span>
+					FEmails.Append c.EmailLine
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			InputEmails.Text = Join(femails, EndOfLine)
+			
+			<span style="color:#0000FF;font-weight: bold">redim</span> curls(-<span style="color:#326598">1</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> RunningCount() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span>
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> c <span style="color:#0000FF;font-weight: bold">as</span> MyCURL <span style="color:#0000FF;font-weight: bold">in</span> curls
+				<span style="color:#0000FF;font-weight: bold">if</span> c.Finished <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">Continue</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> c.started <span style="color:#0000FF;font-weight: bold">then</span>
+					n = n + <span style="color:#326598">1</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> n
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> log(s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, error <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Boolean</span> = <span style="color:#0000FF;font-weight: bold">false</span>)
+			<span style="color:#0000FF;font-weight: bold">try</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> t &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					t.WriteLine s
+					t.Flush
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+			<span style="color:#0000FF;font-weight: bold">catch</span> io <span style="color:#0000FF;font-weight: bold">as</span> IOException
+				status.AddRow <span style="color:#6500FE">&quot;IOException</span> <span style="color:#6500FE">in</span> <span style="color:#6500FE">writing</span> <span style="color:#6500FE">log!&quot;</span>
+				t = <span style="color:#0000FF;font-weight: bold">nil</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">try</span>
+			
+			status.AddRow s
+			status.CellTag(status.LastIndex, <span style="color:#326598">0</span>) = error
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> send()
+			<span style="color:#0000FF;font-weight: bold">dim</span> InputText <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = InputEmails.Text.trim
+			<span style="color:#0000FF;font-weight: bold">if</span> InputText = <span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">email</span> <span style="color:#7F0000;text-style:italic">recipient</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">testing</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> tab <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = encodings.utf8.chr(<span style="color:#326598">9</span>)
+				
+				InputText = <span style="color:#6500FE">&quot;zivi@me.com&quot;</span>+tab+<span style="color:#6500FE">&quot;Your</span> <span style="color:#6500FE">Name&quot;</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">&lt;--</span> <span style="color:#7F0000;text-style:italic">change</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> EmailAddresses(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = split(ReplaceLineEndings(InputText, EndOfLine),EndOfLine)
+			<span style="color:#0000FF;font-weight: bold">dim</span> r <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> random
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> t=<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				MsgBox <span style="color:#6500FE">&quot;no</span> <span style="color:#6500FE">log</span> <span style="color:#6500FE">file?&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">redim</span> curls(-<span style="color:#326598">1</span>)
+			EmailAddresses.Shuffle
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> count <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> EmailAddressesUbound <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = UBound(EmailAddresses)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> EmailAddressesUbound &gt; <span style="color:#326598">3</span> <span style="color:#0000FF;font-weight: bold">and</span> CheckDebug.Value <span style="color:#0000FF;font-weight: bold">then</span>
+				MsgBox <span style="color:#6500FE">&quot;Don&#39;t</span> <span style="color:#6500FE">debug</span> <span style="color:#6500FE">send</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">so</span> <span style="color:#6500FE">many</span> <span style="color:#6500FE">emails.&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> ia <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> EmailAddressesUbound
+				
+				count = count + <span style="color:#326598">1</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> CurrentEmailAddress <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = EmailAddresses(ia)
+				
+				CurrentEmailAddress = trim(CurrentEmailAddress)
+				<span style="color:#0000FF;font-weight: bold">if</span> len(CurrentEmailAddress)&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> BodyPlainText <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = PlainTextField.text
+					<span style="color:#0000FF;font-weight: bold">dim</span> HTMLText <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = HTMLTextField.text
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> len(HTMLText)&gt;<span style="color:#326598">3</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						HTMLText = EncodingToHTMLMBS(HTMLText, <span style="color:#326598">1</span>)
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> emailaddress <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = NthField(CurrentEmailAddress,chr(<span style="color:#326598">9</span>),<span style="color:#326598">1</span>)
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> CheckDebug.Value <span style="color:#0000FF;font-weight: bold">then</span>
+						emailaddress = <span style="color:#6500FE">&quot;zivi@mac.com&quot;</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">&lt;--</span> <span style="color:#7F0000;text-style:italic">change</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> name <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = NthField(CurrentEmailAddress,chr(<span style="color:#326598">9</span>),<span style="color:#326598">2</span>)
+					<span style="color:#0000FF;font-weight: bold">dim</span> text <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = NthField(CurrentEmailAddress,chr(<span style="color:#326598">9</span>),<span style="color:#326598">3</span>)
+					<span style="color:#0000FF;font-weight: bold">dim</span> EmailID <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = NthField(CurrentEmailAddress,chr(<span style="color:#326598">9</span>),<span style="color:#326598">4</span>)
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> name = <span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">and</span> instr(BodyPlainText, <span style="color:#6500FE">&quot;%name&quot;</span>)&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						MsgBox <span style="color:#6500FE">&quot;%name</span> <span style="color:#6500FE">found,</span> <span style="color:#6500FE">but</span> <span style="color:#6500FE">no</span> <span style="color:#6500FE">Names!&quot;</span>
+						<span style="color:#0000FF;font-weight: bold">Return</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> text = <span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">and</span> instr(BodyPlainText, <span style="color:#6500FE">&quot;%text&quot;</span>)&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						MsgBox <span style="color:#6500FE">&quot;%text</span> <span style="color:#6500FE">found,</span> <span style="color:#6500FE">but</span> <span style="color:#6500FE">not</span> <span style="color:#6500FE">texts!&quot;</span>
+						<span style="color:#0000FF;font-weight: bold">Return</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> name = <span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">and</span> instr(HTMLText, <span style="color:#6500FE">&quot;%name&quot;</span>)&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						MsgBox <span style="color:#6500FE">&quot;%name</span> <span style="color:#6500FE">found,</span> <span style="color:#6500FE">but</span> <span style="color:#6500FE">no</span> <span style="color:#6500FE">names!&quot;</span>
+						<span style="color:#0000FF;font-weight: bold">Return</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> text = <span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">and</span> instr(HTMLText, <span style="color:#6500FE">&quot;%text&quot;</span>)&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						MsgBox <span style="color:#6500FE">&quot;%text</span> <span style="color:#6500FE">found,</span> <span style="color:#6500FE">but</span> <span style="color:#6500FE">no</span> <span style="color:#6500FE">texts!&quot;</span>
+						<span style="color:#0000FF;font-weight: bold">Return</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> len(EmailID)&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						BodyPlainText = ReplaceAll(BodyPlainText, <span style="color:#6500FE">&quot;**EmailID**&quot;</span>, EmailID)
+						HTMLText = ReplaceAll(HTMLText, <span style="color:#6500FE">&quot;**EmailID**&quot;</span>, EncodingToHTMLMBS(EmailID))
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					<span style="color:#0000FF;font-weight: bold">if</span> len(text)&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						BodyPlainText = ReplaceAll(BodyPlainText, <span style="color:#6500FE">&quot;%text%&quot;</span>, text)
+						HTMLText = ReplaceAll(HTMLText, <span style="color:#6500FE">&quot;%text%&quot;</span>, EncodingToHTMLMBS(text))
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					<span style="color:#0000FF;font-weight: bold">if</span> len(name)&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						BodyPlainText=ReplaceAll(BodyPlainText, <span style="color:#6500FE">&quot;%name%&quot;</span>, name)
+						HTMLText = ReplaceAll(HTMLText, <span style="color:#6500FE">&quot;%name%&quot;</span>, EncodingToHTMLMBS(name))
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> Subject <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = SubjectLine.text
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> len(text)&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						Subject=ReplaceAll(Subject, <span style="color:#6500FE">&quot;%text%&quot;</span>, text)
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					<span style="color:#0000FF;font-weight: bold">if</span> len(name)&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						Subject=ReplaceAll(Subject, <span style="color:#6500FE">&quot;%name%&quot;</span>, name)
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> from <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = InputFrom.text
+					
+					BodyPlainText = ReplaceLineEndings(BodyPlainText, EndOfLine.windows)
+					HTMLText = ReplaceLineEndings(HTMLText, EndOfLine.windows)
+					
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> email <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> CURLEmailMBS
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> BodyPlainText.len &gt; <span style="color:#326598">3</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						email.PlainText = BodyPlainText
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					<span style="color:#0000FF;font-weight: bold">if</span> HTMLText.len &gt; <span style="color:#326598">3</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						email.HTMLText = HTMLText
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					
+					email.SMTPUsername = <span style="color:#6500FE">&quot;xxx&quot;</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">&lt;--</span> <span style="color:#7F0000;text-style:italic">change</span>
+					email.SMTPServer   = <span style="color:#6500FE">&quot;sslout.df.eu&quot;</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">&lt;--</span> <span style="color:#7F0000;text-style:italic">change</span>
+					email.SMTPPassword = <span style="color:#6500FE">&quot;xxx&quot;</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">&lt;--</span> <span style="color:#7F0000;text-style:italic">change</span>
+					email.Subject = subject
+					
+					
+					
+					email.SetFrom from, <span style="color:#6500FE">&quot;Your</span> <span style="color:#6500FE">Name&quot;</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">&lt;--</span> <span style="color:#7F0000;text-style:italic">change</span>
+					
+					email.AddHeader <span style="color:#6500FE">&quot;X-Mailer:</span> <span style="color:#6500FE">MBS</span> <span style="color:#6500FE">Emailer&quot;</span>
+					email.AddTo emailaddress, name
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> BCC <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = InputBCC.text.trim
+					<span style="color:#0000FF;font-weight: bold">if</span> BCC.len&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						email.AddBCC BCC, <span style="color:#6500FE">&quot;Your</span> <span style="color:#6500FE">Name&quot;</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">&lt;--</span> <span style="color:#7F0000;text-style:italic">change</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					
+					<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> file <span style="color:#0000FF;font-weight: bold">as</span> FolderItem <span style="color:#0000FF;font-weight: bold">in</span> files
+						<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BinaryStream = BinaryStream.Open(file)
+						<span style="color:#0000FF;font-weight: bold">dim</span> data <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = b.Read(b.Length)
+						
+						email.AddAttachment data, file.Name
+					<span style="color:#0000FF;font-weight: bold">next</span>
+					
+					
+					
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> curl <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MyCURL
+					curl.OptionBufferSize = <span style="color:#326598">16</span>*<span style="color:#326598">1024</span>
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> curl.SetupEmail(email) <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ok</span>
+					<span style="color:#0000FF;font-weight: bold">else</span>
+						<span style="color:#0000FF;font-weight: bold">dim</span> curlLasterror <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = curl.Lasterror
+						Break <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">problem?</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					curl.email = email
+					curl.YieldTime = <span style="color:#0000FF;font-weight: bold">true</span>
+					curl.OptionVerbose = <span style="color:#0000FF;font-weight: bold">true</span>
+					curl.CollectOutputData = <span style="color:#0000FF;font-weight: bold">true</span>
+					curl.CollectDebugMessages = <span style="color:#0000FF;font-weight: bold">true</span>
+					curl.OptionPort = <span style="color:#326598">587</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">&lt;--</span> <span style="color:#7F0000;text-style:italic">change</span>
+					curl.OptionSSLVerifyHost = <span style="color:#326598">2</span>
+					curl.OptionSSLVerifyPeer = <span style="color:#326598">1</span>
+					<span style="color:#0000FF">#if</span> RBVersion &gt;= <span style="color:#326598">2013</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						curl.OptionCAInfo = SpecialFolder.Preferences.Child(<span style="color:#6500FE">&quot;sslout.df.eu.cer&quot;</span>).NativePath <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">&lt;--</span> <span style="color:#7F0000;text-style:italic">change</span>
+					<span style="color:#0000FF">#else</span>
+						curl.OptionCAInfo = SpecialFolder.Preferences.Child(<span style="color:#6500FE">&quot;sslout.df.eu.cer&quot;</span>).UnixpathMBS <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">&lt;--</span> <span style="color:#7F0000;text-style:italic">change</span>
+					<span style="color:#0000FF">#endif</span>
+					curl.OptionUseSSL = curl.kFTPSSL_ALL
+					curl.OptionSSLVersion = curl.kSSLVersionTLSv12
+					curl.destEmail = emailaddress
+					curl.EmailLine = CurrentEmailAddress
+					curl.CurlMulti = CurlMulti
+					curl.Started = <span style="color:#0000FF;font-weight: bold">false</span>
+					curl.failed = <span style="color:#0000FF;font-weight: bold">false</span>
+					
+					curls.append curl
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> CheckDelay.Value <span style="color:#0000FF;font-weight: bold">then</span>
+						curl.sendMail
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			
+			
+			log str(count)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">sockets...&quot;</span>
+			StartTimer.Mode = <span style="color:#326598">2</span>
+			CURLTimer.Mode = <span style="color:#326598">2</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> CurlMulti <span style="color:#0000FF;font-weight: bold">As</span> MyCURLMulti</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> curls() <span style="color:#0000FF;font-weight: bold">As</span> MyCURL</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> failed <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> files() <span style="color:#0000FF;font-weight: bold">As</span> FolderItem</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> t <span style="color:#0000FF;font-weight: bold">As</span> TextOutputStream</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;Ablage&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Bearbeiten&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;R&uuml;ckg&auml;ngig&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;&amp;Ausschneiden&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Kopieren&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Einf&uuml;gen&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;&amp;Alles</span> <span style="color:#6500FE">ausw&auml;hlen&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	SetRetina</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> SetRetina</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyCURL <span style="color:#0000FF;font-weight: bold">Inherits</span> CURLSMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> sendMail()
+			MassEmailWindow.CURLTimer.Mode = <span style="color:#326598">2</span>
+			
+			started = <span style="color:#0000FF;font-weight: bold">true</span>
+			
+			CurlMulti.add(<span style="color:#0000FF;font-weight: bold">me</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> CurlMulti <span style="color:#0000FF;font-weight: bold">As</span> MyCURLMulti</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> EmailLine <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Failed <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Finished <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> SecondTry <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> TriedAgain <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> destEmail <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> email <span style="color:#0000FF;font-weight: bold">As</span> CURLEmailMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> started <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyCURLMulti <span style="color:#0000FF;font-weight: bold">Inherits</span> CURLSMultiMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> TransferFinished(curl <span style="color:#0000FF;font-weight: bold">as</span> CURLSMBS, result <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, RemainingFinishedTransfers <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> mycurl <span style="color:#0000FF;font-weight: bold">as</span> MyCURL = MyCURL(curl)
+			
+			mycurl.Finished = <span style="color:#0000FF;font-weight: bold">true</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> result = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				WriteEmailSent mycurl.destEmail
+				MassEmailWindow.log mycurl.destEmail+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">sent.&quot;</span>
+				
+				
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				
+				MassEmailWindow.log <span style="color:#6500FE">&quot;Error</span> <span style="color:#6500FE">&quot;</span>+str(result)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">for</span> <span style="color:#6500FE">&quot;</span>+mycurl.destEmail, <span style="color:#0000FF;font-weight: bold">true</span>
+				mycurl.failed = <span style="color:#0000FF;font-weight: bold">true</span>
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">try</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> DebugMessages <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = curl.DebugMessages
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> CURLLog = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> date
+					<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = d.SQLDateTime.ReplaceAll(<span style="color:#6500FE">&quot;:&quot;</span>, <span style="color:#6500FE">&quot;-&quot;</span>)
+					<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = GetFolderItem(<span style="color:#6500FE">&quot;curl</span> <span style="color:#6500FE">&quot;</span> + s + <span style="color:#6500FE">&quot;.log&quot;</span>)
+					CURLLog = TextOutputStream.Append(f)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> CURLLog &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					DebugMessages = ReplaceLineEndings(DebugMessages, EndOfLine)
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> date
+					CURLLog.WriteLine d.SQLDateTime
+					CURLLog.WriteLine DebugMessages
+					CURLLog.WriteLine
+					CURLLog.Flush
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				
+			<span style="color:#0000FF;font-weight: bold">catch</span> io <span style="color:#0000FF;font-weight: bold">as</span> IOException
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+				Break
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">try</span>
+			
+			
+			counter = counter - <span style="color:#326598">1</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> UBound(queue) &gt;= <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> c <span style="color:#0000FF;font-weight: bold">as</span> MyCURL = queue.Pop
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> <span style="color:#0000FF;font-weight: bold">me</span>.AddCURL(C) <span style="color:#0000FF;font-weight: bold">then</span>
+					Break
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">me</span>.counter = <span style="color:#0000FF;font-weight: bold">me</span>.counter + <span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> TransfersFinished()
+			MassEmailWindow.Finished
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Add(c <span style="color:#0000FF;font-weight: bold">as</span> MyCURL)
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">me</span>.Counter &lt; <span style="color:#326598">4</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> <span style="color:#0000FF;font-weight: bold">me</span>.AddCURL(C) <span style="color:#0000FF;font-weight: bold">then</span>
+					Break
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">me</span>.counter = <span style="color:#0000FF;font-weight: bold">me</span>.counter + <span style="color:#326598">1</span>
+				
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				queue.Append c
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> WriteEmailSent(email <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			<span style="color:#0000FF;font-weight: bold">if</span> EmailsSentLogFile = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> date
+				<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = d.SQLDateTime.ReplaceAll(<span style="color:#6500FE">&quot;:&quot;</span>, <span style="color:#6500FE">&quot;-&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = GetFolderItem(<span style="color:#6500FE">&quot;EmailsSent</span> <span style="color:#6500FE">&quot;</span> + s + <span style="color:#6500FE">&quot;.txt&quot;</span>)
+				EmailsSentLogFile = TextOutputStream.Append(f)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> EmailsSentLogFile &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				EmailsSentLogFile.WriteLine email
+				EmailsSentLogFile.Flush
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> CURLLog <span style="color:#0000FF;font-weight: bold">As</span> TextOutputStream</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Counter <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> EmailsSentLogFile <span style="color:#0000FF;font-weight: bold">As</span> TextOutputStream</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> queue() <span style="color:#0000FF;font-weight: bold">As</span> MyCURL</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> EmailToSend</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-curl-sendemail-imapupload.html">/CURL/Send Email/IMAP Upload</A></li>
+<li><A href="example-curl-sendemail-olderexamples-curlssendemail.html">/CURL/Send Email/older examples/CURLS send email</A></li>
+<li><A href="example-curl-sendemail-olderexamples-curlssendemailwithimages.html">/CURL/Send Email/older examples/CURLS send email with images</A></li>
+<li><A href="example-curl-sendemail-olderexamples-curlssendemailwithssl.html">/CURL/Send Email/older examples/CURLS send email with SSL</A></li>
+<li><A href="example-curl-sendemail-sendemail.html">/CURL/Send Email/Send email</A></li>
+<li><A href="example-curl-sendemail-sendemailinbackgroundasync.html">/CURL/Send Email/Send Email in Background async</A></li>
+<li><A href="example-curl-sendemail-sendemailinweb.html">/CURL/Send Email/Send email in web</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-curl-sendemail-massemailer">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

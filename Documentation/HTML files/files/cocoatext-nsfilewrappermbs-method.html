@@ -1,0 +1,510 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - NSFileWrapperMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="NSFileWrapperMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">NSFileWrapperMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-nsfilewrappermbs.html">NSFileWrapperMBS</a> class.  </p>
+<div class="M">
+<b><a href="class-nsfilewrappermbs.html">NSFileWrapperMBS</a>.<A name="1">addFileWrapper(child as <A href="class-nsfilewrappermbs.html">NSFileWrapperMBS</A>) as String</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoatext.html" translate="no">Cocoa Text</A></td>
+<td class=grau><a href="plugins-mbsmacbaseplugin.html">MBS MacBase Plugin</a></td>
+<td class=grau><a href="newinversion160.shtml" class=version>16.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Adds a child file wrapper to the receiver, which must be a directory file wrapper.<BR>
+<B>Notes:</B> 
+<BR>
+child: File wrapper to add to the directory.<BR>
+<BR>
+Returns Dictionary key used to store fileWrapper in the directory&rsquo;s list of file wrappers. The dictionary key is a unique filename, which is the same as the passed-in file wrapper&#39;s preferred filename unless that name is already in use as a key in the directory&rsquo;s dictionary of children. See Working with Directory Wrappers in File System Programming Guide for more information about the file-wrapper list structure.<BR>
+<BR>
+Use this method to add an existing file wrapper as a child of a directory file wrapper. If the file wrapper does not have a preferred filename, set the preferredFilename property to give it one before calling addFileWrapper. To create a new file wrapper and add it to a directory, use the addRegularFileWithContents method.<BR>
+<BR>
+Special Considerations<BR>
+This method raises NSInternalInconsistencyException if the receiver is not a directory file wrapper.<BR>
+This method raises NSInvalidArgumentException if the child file wrapper doesn&rsquo;t have a preferred name.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilewrappermbs.html">NSFileWrapperMBS</a>.<A name="2">addRegularFileWithContents(Data as MemoryBlock, preferredFilename as string) as String</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoatext.html" translate="no">Cocoa Text</A></td>
+<td class=grau><a href="plugins-mbsmacbaseplugin.html">MBS MacBase Plugin</a></td>
+<td class=grau><a href="newinversion160.shtml" class=version>16.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a regular-file file wrapper with the given contents and adds it to the receiver, which must be a directory file wrapper.<BR>
+<B>Notes:</B> 
+<BR>
+data: Contents for the new regular-file file wrapper.<BR>
+filename: Preferred filename for the new regular-file file wrapper.<BR>
+<BR>
+Returns Dictionary key used to store the new file wrapper in the directory&rsquo;s list of file wrappers. The dictionary key is a unique filename, which is the same as the passed-in file wrapper&#39;s preferred filename unless that name is already in use as a key in the directory&#39;s dictionary of children. See Working with Directory Wrappers in File System Programming Guide for more information about the file-wrapper list structure.<BR>
+<BR>
+This is a convenience method. The default implementation allocates a new file wrapper, initializes it with initRegularFileWithContents, set its preferredFilename property, adds it to the directory with addFileWrapper, and returns what addFileWrapper returned.<BR>
+<BR>
+This method raises NSInternalInconsistencyException if the receiver is not a directory file wrapper.<BR>
+This method raises NSInvalidArgumentException if you pass nil or an empty value for filename.<BR>
+<BR>
+Available in OS X v10.0 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilewrappermbs.html">NSFileWrapperMBS</a>.<A name="3">Constructor</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoatext.html" translate="no">Cocoa Text</A></td>
+<td class=grau><a href="plugins-mbsmacbaseplugin.html">MBS MacBase Plugin</a></td>
+<td class=grau><a href="newinversion150.shtml" class=version>15.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The constructor.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilewrappermbs.html">NSFileWrapperMBS</a>.<A name="4">keyForFileWrapper(child as <A href="class-nsfilewrappermbs.html">NSFileWrapperMBS</A>) as String</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoatext.html" translate="no">Cocoa Text</A></td>
+<td class=grau><a href="plugins-mbsmacbaseplugin.html">MBS MacBase Plugin</a></td>
+<td class=grau><a href="newinversion160.shtml" class=version>16.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns the dictionary key used by a directory to identify a given file wrapper.<BR>
+<B>Notes:</B> 
+<BR>
+child: The child file wrapper for which you want the key.<BR>
+<BR>
+Returns Dictionary key used to store the file wrapper in the directory&rsquo;s list of file wrappers. The dictionary key is a unique filename, which may not be the same as the passed-in file wrapper&#39;s preferred filename if more than one file wrapper in the directory&#39;s dictionary of children has the same preferred filename. See Working with Directory Wrappers in File System Programming Guide for more information about the file-wrapper list structure. Returns nil if the file wrapper specified in child is not a child of the directory.<BR>
+<BR>
+Special Considerations<BR>
+This method raises NSInternalInconsistencyException if the receiver is not a directory file wrapper.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilewrappermbs.html">NSFileWrapperMBS</a>.<A name="5">matchesContentsOfFile(File as FolderItem) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoatext.html" translate="no">Cocoa Text</A></td>
+<td class=grau><a href="plugins-mbsmacbaseplugin.html">MBS MacBase Plugin</a></td>
+<td class=grau><a href="newinversion160.shtml" class=version>16.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Indicates whether the contents of a file wrapper matches a directory, regular file, or symbolic link on disk.<BR>
+<B>Notes:</B> 
+<BR>
+file: FolderItem of the file-system node with which to compare the file wrapper.<BR>
+<BR>
+Returns true when the contents of the file wrapper match the contents of url, false otherwise.<BR>
+<BR>
+The contents of files are not compared; matching of regular files is based on file modification dates. For a directory, children are compared against the files in the directory, recursively.<BR>
+<BR>
+Because children of directory file wrappers are not read immediately by the initWithURL:options:error: method unless the NSFileWrapperReadingImmediate reading option is used, even a newly-created directory file wrapper might not have the same contents as the directory on disk. You can use this method to determine whether the file wrapper&#39;s contents in memory need to be updated.<BR>
+<BR>
+If the file wrapper needs updating, use the readFromURL:options:error: method with the NSFileWrapperReadingImmediate reading option.<BR>
+<BR>
+This table describes which attributes of the file wrapper and file-system node are compared to determine whether the file wrapper matches the node on disk:<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">File-wrapper type</TD><TD valign="top">Comparison determinants</TD></TR>
+<TR><TD valign="top">Regular file</TD><TD valign="top">Modification date and access permissions.</TD></TR>
+<TR><TD valign="top">Directory</TD><TD valign="top">Children (recursive).</TD></TR>
+<TR><TD valign="top">Symbolic link</TD><TD valign="top">Destination pathname.</TD></TR>
+</TABLE>
+<BR>
+Available in OS X v10.6 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilewrappermbs.html">NSFileWrapperMBS</a>.<A name="6">matchesContentsOfURL(URL as String) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoatext.html" translate="no">Cocoa Text</A></td>
+<td class=grau><a href="plugins-mbsmacbaseplugin.html">MBS MacBase Plugin</a></td>
+<td class=grau><a href="newinversion160.shtml" class=version>16.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Indicates whether the contents of a file wrapper matches a directory, regular file, or symbolic link on disk.<BR>
+<B>Notes:</B> 
+<BR>
+url: URL of the file-system node with which to compare the file wrapper.<BR>
+<BR>
+Returns true when the contents of the file wrapper match the contents of url, false otherwise.<BR>
+<BR>
+The contents of files are not compared; matching of regular files is based on file modification dates. For a directory, children are compared against the files in the directory, recursively.<BR>
+<BR>
+Because children of directory file wrappers are not read immediately by the initWithURL:options:error: method unless the NSFileWrapperReadingImmediate reading option is used, even a newly-created directory file wrapper might not have the same contents as the directory on disk. You can use this method to determine whether the file wrapper&#39;s contents in memory need to be updated.<BR>
+<BR>
+If the file wrapper needs updating, use the readFromURL:options:error: method with the NSFileWrapperReadingImmediate reading option.<BR>
+<BR>
+This table describes which attributes of the file wrapper and file-system node are compared to determine whether the file wrapper matches the node on disk:<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">File-wrapper type</TD><TD valign="top">Comparison determinants</TD></TR>
+<TR><TD valign="top">Regular file</TD><TD valign="top">Modification date and access permissions.</TD></TR>
+<TR><TD valign="top">Directory</TD><TD valign="top">Children (recursive).</TD></TR>
+<TR><TD valign="top">Symbolic link</TD><TD valign="top">Destination pathname.</TD></TR>
+</TABLE>
+<BR>
+Available in OS X v10.6 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilewrappermbs.html">NSFileWrapperMBS</a>.<A name="7">readFromFile(File as FolderItem, Options as Integer = 0, byref Error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoatext.html" translate="no">Cocoa Text</A></td>
+<td class=grau><a href="plugins-mbsmacbaseplugin.html">MBS MacBase Plugin</a></td>
+<td class=grau><a href="newinversion160.shtml" class=version>16.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Recursively rereads the entire contents of a file wrapper from the specified location on disk.<BR>
+<B>Notes:</B> 
+<BR>
+File: FolderItem of the file-system node corresponding to the file wrapper.<BR>
+options: Option flags for reading the node located at url. <BR>
+Error: If an error occurs, upon return contains an NSError object that describes the problem. <BR>
+<BR>
+Returns true if successful. If not successful, returns false after setting outError to an <A href="class-nserrormbs.html">NSErrorMBS</A> object that describes the reason why the file wrapper could not be reread.<BR>
+<BR>
+When reading a directory, children are added and removed as necessary to match the file system.<BR>
+Available in OS X v10.6 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilewrappermbs.html">NSFileWrapperMBS</a>.<A name="8">readFromURL(URL as String, Options as Integer = 0, byref Error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoatext.html" translate="no">Cocoa Text</A></td>
+<td class=grau><a href="plugins-mbsmacbaseplugin.html">MBS MacBase Plugin</a></td>
+<td class=grau><a href="newinversion160.shtml" class=version>16.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Recursively rereads the entire contents of a file wrapper from the specified location on disk.<BR>
+<B>Notes:</B> 
+<BR>
+url: URL of the file-system node corresponding to the file wrapper.<BR>
+options: Option flags for reading the node located at url. <BR>
+Error: If an error occurs, upon return contains an NSError object that describes the problem. <BR>
+<BR>
+Returns true if successful. If not successful, returns false after setting outError to an <A href="class-nserrormbs.html">NSErrorMBS</A> object that describes the reason why the file wrapper could not be reread.<BR>
+<BR>
+When reading a directory, children are added and removed as necessary to match the file system.<BR>
+Available in OS X v10.6 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilewrappermbs.html">NSFileWrapperMBS</a>.<A name="9">removeFileWrapper(child as <A href="class-nsfilewrappermbs.html">NSFileWrapperMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoatext.html" translate="no">Cocoa Text</A></td>
+<td class=grau><a href="plugins-mbsmacbaseplugin.html">MBS MacBase Plugin</a></td>
+<td class=grau><a href="newinversion160.shtml" class=version>16.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Removes a child file wrapper from the receiver, which must be a directory file wrapper.<BR>
+<B>Notes:</B> 
+This method raises NSInternalInconsistencyException if the receiver is not a directory file wrapper.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilewrappermbs.html">NSFileWrapperMBS</a>.<A name="10">writeToFile(File as FolderItem, Options as Integer = 0, originalContentsURL as FolderItem = nil, byref Error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoatext.html" translate="no">Cocoa Text</A></td>
+<td class=grau><a href="plugins-mbsmacbaseplugin.html">MBS MacBase Plugin</a></td>
+<td class=grau><a href="newinversion160.shtml" class=version>16.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Recursively writes the entire contents of a file wrapper to a given file-system URL.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #800000;">// get styled text from htmlviewer</span><br /><span style="color: #0000FF;">dim</span> w <span style="color: #0000FF;">as</span> WebViewMBS = HTMLViewer1.WebViewMBS<br /><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> WebFrameMBS = w.mainFrame<br /><span style="color: #0000FF;">dim</span> v <span style="color: #0000FF;">as</span> WebFrameViewMBS = f.frameView<br /><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> WebDocumentViewMBS = v.documentView<br /><span style="color: #0000FF;">dim</span> n <span style="color: #0000FF;">as</span> <A href="class-nsattributedstringmbs.html">NSAttributedStringMBS</A> = d.attributedString<br /><br /><br /><span style="color: #800000;">// package it</span><br /><span style="color: #0000FF;">dim</span> da <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> Dictionary<br />da.Value(n.NSDocumentTypeDocumentAttribute) = n.NSRTFDTextDocumentType<br /><br /><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <A href="class-nserrormbs.html">NSErrorMBS</A><br /><span style="color: #0000FF;">dim</span> fw <span style="color: #0000FF;">as</span> <A href="class-nsfilewrappermbs.html">NSFileWrapperMBS</A> = n.fileWrapperFromRange(<span style="color: #336698;">0</span>, n.Length, da, e)<br /><span style="color: #0000FF;">if</span> e &lt;&gt; <span style="color: #0000FF;">nil</span> <span style="color: #0000FF;">then</span><br />  MsgBox e.LocalizedDescription<br />  <span style="color: #0000FF;">Return</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br /><br /><span style="color: #800000;">// write to disk</span><br /><span style="color: #0000FF;">dim</span> file <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test.rtfd&quot;</span>)<br /><span style="color: #0000FF;">if</span> fw.writeToFile(file, e) <span style="color: #0000FF;">then</span><br />  MsgBox <span style="color: #6600FE;">&quot;OK&quot;</span><br /><span style="color: #0000FF;">else</span><br />  MsgBox e.LocalizedDescription<br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+File: FolderItem of the file-system node to which the file wrapper&rsquo;s contents are written.<BR>
+options: Option flags for writing to the node located at url. <BR>
+originalContentsURL: The location of a previous revision of the contents being written. The default implementation of this method attempts to avoid unnecessary I/O by writing hard links to regular files instead of actually writing out their contents when the contents have not changed. The child file wrappers must return accurate values when its filename property is accessed for this to work. Use the NSFileWrapperWritingWithNameUpdating writing option to increase the likelihood of that. Specify nil for this parameter if there is no earlier version of the contents or if you want to ensure that all the contents are written to files.<BR>
+Error: If an error occurs, upon return contains an NSError object that describes the problem. <BR>
+<BR>
+Returns true when the write operation is successful. If not successful, returns false after setting outError to an NSError object that describes the reason why the file wrapper&rsquo;s contents could not be written.<BR>
+<BR>
+Available in OS X v10.6 and later.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsfilewrappermbs.html">NSFileWrapperMBS</a>.<A name="11">writeToURL(URL as String, Options as Integer = 0, originalContentsURL as String = &quot;&quot;, byref Error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoatext.html" translate="no">Cocoa Text</A></td>
+<td class=grau><a href="plugins-mbsmacbaseplugin.html">MBS MacBase Plugin</a></td>
+<td class=grau><a href="newinversion160.shtml" class=version>16.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Recursively writes the entire contents of a file wrapper to a given file-system URL.<BR>
+<B>Notes:</B> 
+<BR>
+url: URL of the file-system node to which the file wrapper&rsquo;s contents are written.<BR>
+options: Option flags for writing to the node located at url. <BR>
+originalContentsURL: The location of a previous revision of the contents being written. The default implementation of this method attempts to avoid unnecessary I/O by writing hard links to regular files instead of actually writing out their contents when the contents have not changed. The child file wrappers must return accurate values when its filename property is accessed for this to work. Use the NSFileWrapperWritingWithNameUpdating writing option to increase the likelihood of that. Specify nil for this parameter if there is no earlier version of the contents or if you want to ensure that all the contents are written to files.<BR>
+Error: If an error occurs, upon return contains an NSError object that describes the problem. <BR>
+<BR>
+Returns true when the write operation is successful. If not successful, returns false after setting outError to an NSError object that describes the reason why the file wrapper&rsquo;s contents could not be written.<BR>
+<BR>
+Available in OS X v10.6 and later.<BR>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmacbaseplugin.html">MBS MacBase Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=cocoatext-nsfilewrappermbs-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

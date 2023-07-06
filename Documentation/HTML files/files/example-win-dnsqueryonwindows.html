@@ -1,0 +1,399 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Win/DNS Query on Windows</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Win/DNS Query on Windows</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Win/DNS Query on Windows</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS Util Plugin, MBS Win Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Win/DNS Query on Windows<BR>
+This example is the version from Sun, 17th Mar 2012.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;DNS</span> <span style="color:#6500FE">Query</span> <span style="color:#6500FE">on</span> <span style="color:#6500FE">Windows.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;L&ouml;schen&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;Beenden&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Window1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> ExpandRow(row <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+				<span style="color:#0000FF;font-weight: bold">dim</span> v <span style="color:#0000FF;font-weight: bold">as</span> Variant = <span style="color:#0000FF;font-weight: bold">me</span>.RowTag(row)
+				<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> v <span style="color:#0000FF;font-weight: bold">isa</span> WindowsDNSRecordMBS <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> w <span style="color:#0000FF;font-weight: bold">as</span> WindowsDNSRecordMBS = WindowsDNSRecordMBS(v)
+					
+					
+					
+					
+					List.AddRow <span style="color:#6500FE">&quot;Name:</span> <span style="color:#6500FE">&quot;</span>+w.Name
+					List.AddRow <span style="color:#6500FE">&quot;Type:</span> <span style="color:#6500FE">&quot;</span>+str(w.type)
+					List.AddRow <span style="color:#6500FE">&quot;DataLength:</span> <span style="color:#6500FE">&quot;</span>+str(w.DataLength)
+					
+					<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">case</span> w.Section
+					<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kSectionQuestion
+						s = <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">SectionQuestion&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kSectionAnswer
+						s = <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">SectionAnswer&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kSectionAuthority
+						s = <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">SectionAuthority&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kSectionAddtional
+						s = <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">SectionAddtional&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">else</span>
+						s = <span style="color:#6500FE">&quot;&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+					
+					List.AddRow <span style="color:#6500FE">&quot;Section:</span> <span style="color:#6500FE">&quot;</span>+str(w.Section)+s
+					
+					<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">case</span> w.Section
+					<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kCharSetUnknown
+						s = <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">CharSetUnknown&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kCharSetUnicode
+						s = <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">CharSetUnicode&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kCharSetUtf8
+						s = <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">CharSetUtf8&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kCharSetAnsi
+						s = <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">CharSetAnsi&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">else</span>
+						s = <span style="color:#6500FE">&quot;&quot;</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+					
+					List.AddRow <span style="color:#6500FE">&quot;CharSet:</span> <span style="color:#6500FE">&quot;</span>+str(w.CharSet)+s
+					
+					add w.A
+					add w.AAAA
+					add w.SOA
+					add w.NS
+					add w.CNAME
+					add w.MB
+					add w.MD
+					add w.MF
+					add w.MG
+					add w.MR
+					add w.MINFO
+					add w.RP
+					add w.MX
+					add w.AFSDB
+					add w.RT
+					add w.HINFO
+					add w.ISDN
+					add w.TXT
+					add w.X25
+					add w.Null
+					
+					
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control EditField1 <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance EditField1 <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				run
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Add(r <span style="color:#0000FF;font-weight: bold">as</span> WindowsDNSRecordAAAAMBS)
+			<span style="color:#0000FF;font-weight: bold">if</span> r&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				List.AddRow <span style="color:#6500FE">&quot;Address&quot;</span>,r.Address
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Add(r <span style="color:#0000FF;font-weight: bold">as</span> WindowsDNSRecordAMBS)
+			<span style="color:#0000FF;font-weight: bold">if</span> r&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				List.AddRow <span style="color:#6500FE">&quot;Address&quot;</span>,r.Address
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Add(w <span style="color:#0000FF;font-weight: bold">as</span> WindowsDNSRecordMBS)
+			<span style="color:#0000FF;font-weight: bold">if</span> w&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				List.AddFolder GetTypeName(w.Type)
+				List.RowTag(List.LastIndex)=w
+				List.Expanded(List.LastIndex)=<span style="color:#0000FF;font-weight: bold">true</span>
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Add(r <span style="color:#0000FF;font-weight: bold">as</span> WindowsDNSRecordMInfoMBS)
+			<span style="color:#0000FF;font-weight: bold">if</span> r&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				List.AddRow <span style="color:#6500FE">&quot;NameMailbox&quot;</span>,r.NameMailbox
+				List.AddRow <span style="color:#6500FE">&quot;NameErrorsMailbox&quot;</span>,r.NameErrorsMailbox
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Add(r <span style="color:#0000FF;font-weight: bold">as</span> WindowsDNSRecordMXMBS)
+			<span style="color:#0000FF;font-weight: bold">if</span> r&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				List.AddRow <span style="color:#6500FE">&quot;NameExchange&quot;</span>,r.NameExchange
+				List.AddRow <span style="color:#6500FE">&quot;Preference&quot;</span>,str(r.Preference)
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Add(r <span style="color:#0000FF;font-weight: bold">as</span> WindowsDNSRecordNullMBS)
+			<span style="color:#0000FF;font-weight: bold">if</span> r&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				List.AddRow <span style="color:#6500FE">&quot;ByteCount&quot;</span>,str(r.ByteCount)
+				List.AddRow <span style="color:#6500FE">&quot;Data&quot;</span>, ReplaceNonPrintableCharactersMBS(r.Data,asc(<span style="color:#6500FE">&quot;.&quot;</span>))
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Add(r <span style="color:#0000FF;font-weight: bold">as</span> WindowsDNSRecordPTRMBS)
+			<span style="color:#0000FF;font-weight: bold">if</span> r&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				List.AddRow <span style="color:#6500FE">&quot;NameHost&quot;</span>,r.NameHost
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Add(r <span style="color:#0000FF;font-weight: bold">as</span> WindowsDNSRecordSOAMBS)
+			<span style="color:#0000FF;font-weight: bold">if</span> r&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				List.AddRow <span style="color:#6500FE">&quot;NamePrimaryServer&quot;</span>, r.NamePrimaryServer
+				List.AddRow <span style="color:#6500FE">&quot;NameAdministrator&quot;</span>, r.NameAdministrator
+				List.AddRow <span style="color:#6500FE">&quot;SerialNo&quot;</span>, str(r.SerialNo)
+				List.AddRow <span style="color:#6500FE">&quot;Refresh&quot;</span>, str(r.Refresh)
+				List.AddRow <span style="color:#6500FE">&quot;Retry&quot;</span>, str(r.Retry)
+				List.AddRow <span style="color:#6500FE">&quot;Expire&quot;</span>, str(r.Expire)
+				List.AddRow <span style="color:#6500FE">&quot;DefaultTTL&quot;</span>, str(r.DefaultTTL)
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Add(r <span style="color:#0000FF;font-weight: bold">as</span> WindowsDNSRecordTXTMBS)
+			<span style="color:#0000FF;font-weight: bold">if</span> r&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				List.AddRow <span style="color:#6500FE">&quot;StringCount&quot;</span>, STR(r.StringCount)
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> a() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = r.Strings
+				<span style="color:#0000FF;font-weight: bold">dim</span> c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = r.StringCount-<span style="color:#326598">1</span>
+				<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> c
+					List.AddRow <span style="color:#6500FE">&quot;String(&quot;</span>+str(i)+<span style="color:#6500FE">&quot;)&quot;</span>, a(i)
+				<span style="color:#0000FF;font-weight: bold">next</span>
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> GetTypeName(n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">case</span> n
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeA
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;A&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeNS
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;NS&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeMD
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;MD&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeMF
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;MF&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeCNAME
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;CNAME&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeSOA
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;SOA&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeMB
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;MB&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeMG
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;MG&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeMR
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;MR&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeNULL
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;NULL&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeWKS
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;WKS&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypePTR
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;PTR&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeHINFO
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;HINFO&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeMINFO
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;MINFO&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeMX
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;MX&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeTEXT
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;TEXT&quot;</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span>  <span style="color:#7F0000;text-style:italic">RFC</span> <span style="color:#7F0000;text-style:italic">1183</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeRP
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;RP&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeAFSDB
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;AFSDB&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeX25
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;X25&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeISDN
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;ISDN&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeRT
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;RT&quot;</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span>  <span style="color:#7F0000;text-style:italic">RFC</span> <span style="color:#7F0000;text-style:italic">1348</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeNSAP
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;NSAP&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeNSAPPTR
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;NSAPPTR&quot;</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span>  <span style="color:#7F0000;text-style:italic">RFC</span> <span style="color:#7F0000;text-style:italic">2065</span>    <span style="color:#7F0000;text-style:italic">(DNS</span> <span style="color:#7F0000;text-style:italic">security)</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeSIG
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;SIG&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeKEY
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;KEY&quot;</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span>  <span style="color:#7F0000;text-style:italic">RFC</span> <span style="color:#7F0000;text-style:italic">1664</span>    <span style="color:#7F0000;text-style:italic">(X.400</span> <span style="color:#7F0000;text-style:italic">mail)</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypePX
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;PX&quot;</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span>  <span style="color:#7F0000;text-style:italic">RFC</span> <span style="color:#7F0000;text-style:italic">1712</span>    <span style="color:#7F0000;text-style:italic">(Geographic</span> <span style="color:#7F0000;text-style:italic">position)</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeGPOS
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;GPOS&quot;</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span>  <span style="color:#7F0000;text-style:italic">RFC</span> <span style="color:#7F0000;text-style:italic">1886</span>    <span style="color:#7F0000;text-style:italic">(IPv6</span> <span style="color:#7F0000;text-style:italic">Address)</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeAAAA
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;AAAA&quot;</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span>  <span style="color:#7F0000;text-style:italic">RFC</span> <span style="color:#7F0000;text-style:italic">1876</span>    <span style="color:#7F0000;text-style:italic">(Geographic</span> <span style="color:#7F0000;text-style:italic">location)</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeLOC
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;LOC&quot;</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span>  <span style="color:#7F0000;text-style:italic">RFC</span> <span style="color:#7F0000;text-style:italic">2065</span>    <span style="color:#7F0000;text-style:italic">(Secure</span> <span style="color:#7F0000;text-style:italic">negative</span> <span style="color:#7F0000;text-style:italic">response)</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeNXT
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;NXT&quot;</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span>  <span style="color:#7F0000;text-style:italic">RFC</span> <span style="color:#7F0000;text-style:italic">2052</span>    <span style="color:#7F0000;text-style:italic">(Service</span> <span style="color:#7F0000;text-style:italic">location)</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeSRV
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;SRV&quot;</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span>  <span style="color:#7F0000;text-style:italic">ATM</span> <span style="color:#7F0000;text-style:italic">Standard</span> <span style="color:#7F0000;text-style:italic">something-or-another</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeATMA
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;ATMA&quot;</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span>
+				<span style="color:#7F0000;text-style:italic">//</span>  <span style="color:#7F0000;text-style:italic">Query</span> <span style="color:#7F0000;text-style:italic">only</span> <span style="color:#7F0000;text-style:italic">types</span> <span style="color:#7F0000;text-style:italic">(1035,</span> <span style="color:#7F0000;text-style:italic">1995)</span>
+				<span style="color:#7F0000;text-style:italic">//</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeTKEY
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;TKEY&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeTSIG
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;TSIG&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeIXFR
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;IXFR&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeAXFR
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;AXFR&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeMAILB
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;MAILB&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeMAILA
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;MAILA&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeALL
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;ALL&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeANY
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;ANY&quot;</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span>
+				<span style="color:#7F0000;text-style:italic">//</span>  <span style="color:#7F0000;text-style:italic">Temp</span> <span style="color:#7F0000;text-style:italic">Microsoft</span> <span style="color:#7F0000;text-style:italic">types</span> <span style="color:#7F0000;text-style:italic">--</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">until</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">IANA</span> <span style="color:#7F0000;text-style:italic">approval</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">real</span> <span style="color:#7F0000;text-style:italic">type</span>
+				<span style="color:#7F0000;text-style:italic">//</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeWINS
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;WINS&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeWINSR
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;WINSR&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">case</span> WindowsDNSRecordMBS.kDNSTypeNBSTAT
+				<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#6500FE">&quot;NBSTAT&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> str(n)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> run()
+			List.DeleteAllRows
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> w <span style="color:#0000FF;font-weight: bold">as</span> WindowsDNSRecordMBS = WindowsDNSRecordMBS.Query(EditField1.text, WindowsDNSRecordMBS.kDNSTypeALL, WindowsDNSRecordMBS.kDNSQueryStandard)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> w&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				Add w
+				<span style="color:#0000FF;font-weight: bold">while</span> w.NextRecord&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span>
+					w = w.NextRecord
+					
+					add w
+				<span style="color:#0000FF;font-weight: bold">wend</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				beep
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;Ablage&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Bearbeiten&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;R&uuml;ckg&auml;ngig&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;&amp;Ausschneiden&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Kopieren&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Einf&uuml;gen&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;&amp;Alles</span> <span style="color:#6500FE">ausw&auml;hlen&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Module</span> Util</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> AddRow(<span style="color:#0000FF;font-weight: bold">extends</span> l <span style="color:#0000FF;font-weight: bold">as</span> listbox, s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			l.AddRow s
+			l.Cell(l.LastIndex,<span style="color:#326598">1</span>)=n
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Module</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbswinplugin.html">MBS Win Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-win-dnsqueryonwindows">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

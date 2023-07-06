@@ -1,0 +1,346 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /DynaPDF/DynaPDF Graphics/DynaPDF GraphicsPath</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /DynaPDF/DynaPDF Graphics/DynaPDF GraphicsPath</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/DynaPDF/DynaPDF Graphics/DynaPDF GraphicsPath</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS DynaPDF Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /DynaPDF/DynaPDF Graphics/DynaPDF GraphicsPath<BR>
+This example is the version from Mon, 17th Jan 2021.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;DynaPDF</span> <span style="color:#6500FE">GraphicsPath.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">add</span> <span style="color:#7F0000;text-style:italic">license</span> <span style="color:#7F0000;text-style:italic">key</span> <span style="color:#7F0000;text-style:italic">here</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MainWindow <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">Dim</span> g <span style="color:#0000FF;font-weight: bold">As</span> Graphics=OpenPrinterDialog
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> g=<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				draw g
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton2 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton2 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">Dim</span> pdf <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> MyDynapdfMBS
+				<span style="color:#0000FF;font-weight: bold">Dim</span> f1 <span style="color:#0000FF;font-weight: bold">As</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;DynaPDF</span> <span style="color:#6500FE">Graphics.pdf&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">Dim</span> f2 <span style="color:#0000FF;font-weight: bold">As</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;DynaPDF</span> <span style="color:#6500FE">Graphics.png&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">Dim</span> f3 <span style="color:#0000FF;font-weight: bold">As</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;DynaPDF</span> <span style="color:#6500FE">Graphics</span> <span style="color:#6500FE">Rendered.png&quot;</span>)
+				
+				<span style="color:#7F0000;text-style:italic">&#39;pdf.SetLicenseKey</span> <span style="color:#7F0000;text-style:italic">&quot;Starter&quot;</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">For</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">example</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">Starter,</span> <span style="color:#7F0000;text-style:italic">Lite,</span> <span style="color:#7F0000;text-style:italic">Pro</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">Enterprise</span> <span style="color:#7F0000;text-style:italic">License</span>
+				
+				<span style="color:#0000FF;font-weight: bold">If</span> <span style="color:#0000FF;font-weight: bold">Not</span> pdf.CreateNewPDF(f1) <span style="color:#0000FF;font-weight: bold">Then</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">Call</span> pdf.Append
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> g <span style="color:#0000FF;font-weight: bold">as</span> Graphics = pdf.PageGraphics
+				
+				draw g, pdf
+				
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">debugging,</span> <span style="color:#7F0000;text-style:italic">show</span> <span style="color:#7F0000;text-style:italic">temp</span> <span style="color:#7F0000;text-style:italic">picture</span>
+				<span style="color:#0000FF;font-weight: bold">Dim</span> p <span style="color:#0000FF;font-weight: bold">As</span> Picture = pdf.PageGraphicsPicture
+				p.Save(f2, p.SaveAsPNG)
+				
+				
+				<span style="color:#0000FF;font-weight: bold">Call</span> pdf.EndPage
+				
+				<span style="color:#0000FF;font-weight: bold">If</span> pdf.HasPro <span style="color:#0000FF;font-weight: bold">Then</span>
+					<span style="color:#0000FF;font-weight: bold">Call</span> pdf.RenderPageToImage(<span style="color:#326598">1</span>, f3, <span style="color:#326598">150</span>, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, pdf.krfDefault, pdf.kpxfRGB, pdf.kcfFlate, pdf.kifmPNG)
+				<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+				
+				<span style="color:#0000FF;font-weight: bold">Call</span> pdf.CloseFile
+				
+				
+				
+				
+				f1.Launch <span style="color:#0000FF;font-weight: bold">True</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Canvas1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Canvas</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Canvas1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Canvas</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Paint(g <span style="color:#0000FF;font-weight: bold">As</span> Graphics, areas() <span style="color:#0000FF;font-weight: bold">As</span> REALbasic.Rect)
+				draw g
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> draw(g <span style="color:#0000FF;font-weight: bold">as</span> graphics, pdf <span style="color:#0000FF;font-weight: bold">as</span> DynaPDFMBS = <span style="color:#0000FF;font-weight: bold">nil</span>)
+			<span style="color:#0000FF;font-weight: bold">Const</span> Pi = <span style="color:#006532">3.14159</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> pi2 <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = pi * <span style="color:#006532">2.0</span>
+			
+			Var gp <span style="color:#0000FF;font-weight: bold">As</span> DynapdfGraphicsPathMBS
+			g.DrawingColor = &amp;c<span style="color:#FF0000">FF</span><span style="color:#00FF00">00</span><span style="color:#0000FF">00</span>
+			g.PenSize = <span style="color:#326598">5</span>
+			g.PenHeight = <span style="color:#326598">5</span>
+			g.PenWidth = <span style="color:#326598">5</span>
+			
+			Title = Str(g.PenWidth)+<span style="color:#6500FE">&quot;x&quot;</span>+Str(g.PenHeight)
+			<span style="color:#7F0000;text-style:italic">&#39;g.DrawLine</span> <span style="color:#7F0000;text-style:italic">0,</span> <span style="color:#7F0000;text-style:italic">0,</span> <span style="color:#7F0000;text-style:italic">100,</span> <span style="color:#7F0000;text-style:italic">100</span>
+			g.PenSize = <span style="color:#326598">1</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">arc</span>
+			g.AntiAlias = <span style="color:#0000FF;font-weight: bold">True</span>
+			g.PenSize = <span style="color:#326598">3</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> r <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">40</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> n <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">0</span>
+			<span style="color:#0000FF;font-weight: bold">For</span> w <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">To</span> <span style="color:#326598">350</span> <span style="color:#0000FF;font-weight: bold">Step</span> <span style="color:#326598">10</span>
+				
+				<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">Case</span> n <span style="color:#0000FF;font-weight: bold">Mod</span> <span style="color:#326598">4</span>
+				<span style="color:#0000FF;font-weight: bold">Case</span> <span style="color:#326598">0</span>
+					g.DrawingColor = &amp;c<span style="color:#FF0000">FF</span><span style="color:#00FF00">00</span><span style="color:#0000FF">00</span>
+				<span style="color:#0000FF;font-weight: bold">Case</span> <span style="color:#326598">1</span>
+					g.DrawingColor = &amp;c<span style="color:#FF0000">00</span><span style="color:#00FF00">FF</span><span style="color:#0000FF">00</span>
+				<span style="color:#0000FF;font-weight: bold">Case</span> <span style="color:#326598">2</span>
+					g.DrawingColor = &amp;c<span style="color:#FF0000">00</span><span style="color:#00FF00">00</span><span style="color:#0000FF">FF</span>
+				<span style="color:#0000FF;font-weight: bold">Case</span> <span style="color:#326598">3</span>
+					g.DrawingColor = &amp;c<span style="color:#FF0000">FF</span><span style="color:#00FF00">00</span><span style="color:#0000FF">FF</span>
+				<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+				n = n + <span style="color:#326598">1</span>
+				
+				<span style="color:#0000FF;font-weight: bold">Dim</span> w0 <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = w
+				
+				<span style="color:#0000FF;font-weight: bold">Dim</span> w1 <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> =  w0       / <span style="color:#006532">180.0</span> * pi
+				<span style="color:#0000FF;font-weight: bold">Dim</span> w2 <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = (w0+<span style="color:#006532">10.0</span>) / <span style="color:#006532">180.0</span> * pi
+				<span style="color:#0000FF;font-weight: bold">Dim</span> clockwise <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span> = <span style="color:#0000FF;font-weight: bold">False</span>
+				
+				<span style="color:#0000FF;font-weight: bold">If</span> pdf &lt;&gt; <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+					<span style="color:#7F0000;text-style:italic">&#39;w1</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">Convrt(w1)</span>
+					<span style="color:#7F0000;text-style:italic">&#39;w2</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">Convrt(w2)</span>
+					
+					<span style="color:#7F0000;text-style:italic">&#39;w1</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">pi2</span> <span style="color:#7F0000;text-style:italic">-</span> <span style="color:#7F0000;text-style:italic">w1</span>
+					<span style="color:#7F0000;text-style:italic">&#39;w2</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">pi2</span> <span style="color:#7F0000;text-style:italic">-</span> <span style="color:#7F0000;text-style:italic">w2</span>
+					<span style="color:#7F0000;text-style:italic">&#39;clockwise</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">True</span>
+				<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+				
+				gp = <span style="color:#0000FF;font-weight: bold">New</span> DynapdfGraphicsPathMBS
+				gp.AddArc(<span style="color:#326598">200</span>, <span style="color:#326598">200</span>, r, w1, w2, clockwise)
+				g.DrawPath gp
+				
+				r = r + <span style="color:#326598">1</span>
+				
+			<span style="color:#0000FF;font-weight: bold">Next</span>
+			
+			
+			g.DrawingColor = &amp;c<span style="color:#FF0000">00</span><span style="color:#00FF00">FF</span><span style="color:#0000FF">FF</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> w1 <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = <span style="color:#326598">0</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> w2 <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = pi/<span style="color:#326598">2</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> clockwise <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span> = <span style="color:#0000FF;font-weight: bold">False</span>
+			
+			gp = <span style="color:#0000FF;font-weight: bold">New</span> DynapdfGraphicsPathMBS
+			gp.AddArc(<span style="color:#326598">200</span>, <span style="color:#326598">200</span>, <span style="color:#326598">80</span>, w1, w2, clockwise)
+			g.DrawPath gp
+			
+			
+			Var curve <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> DynapdfGraphicsPathMBS
+			curve.MoveToPoint(<span style="color:#326598">320</span>, <span style="color:#326598">200</span>+<span style="color:#326598">20</span>)
+			curve.AddCurveToPoint(<span style="color:#326598">320</span>, <span style="color:#326598">200</span>+<span style="color:#326598">100</span>, <span style="color:#326598">500</span>, <span style="color:#326598">200</span>+<span style="color:#326598">100</span>, <span style="color:#326598">500</span>, <span style="color:#326598">200</span>+<span style="color:#326598">20</span>)
+			g.DrawingColor = &amp;c<span style="color:#FF0000">00</span><span style="color:#00FF00">FF</span><span style="color:#0000FF">00</span>
+			g.DrawPath(curve)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Draw</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">fluffy</span> <span style="color:#7F0000;text-style:italic">white</span> <span style="color:#7F0000;text-style:italic">cloud</span>
+			Var cloud <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> DynapdfGraphicsPathMBS
+			cloud.MoveToPoint(<span style="color:#326598">270</span>, <span style="color:#326598">80</span>)
+			cloud.AddCurveToPoint(<span style="color:#326598">230</span>, <span style="color:#326598">100</span>, <span style="color:#326598">230</span>, <span style="color:#326598">150</span>, <span style="color:#326598">330</span>, <span style="color:#326598">150</span>)
+			cloud.AddCurveToPoint(<span style="color:#326598">350</span>, <span style="color:#326598">180</span>, <span style="color:#326598">420</span>, <span style="color:#326598">180</span>, <span style="color:#326598">440</span>, <span style="color:#326598">150</span>)
+			cloud.AddCurveToPoint(<span style="color:#326598">520</span>, <span style="color:#326598">150</span>, <span style="color:#326598">520</span>, <span style="color:#326598">120</span>, <span style="color:#326598">490</span>, <span style="color:#326598">100</span>)
+			cloud.AddCurveToPoint(<span style="color:#326598">530</span>,  <span style="color:#326598">40</span>, <span style="color:#326598">470</span>,  <span style="color:#326598">30</span>, <span style="color:#326598">440</span>,  <span style="color:#326598">50</span>)
+			cloud.AddCurveToPoint(<span style="color:#326598">420</span>,   <span style="color:#326598">5</span>, <span style="color:#326598">350</span>,  <span style="color:#326598">20</span>, <span style="color:#326598">350</span>,  <span style="color:#326598">50</span>)
+			cloud.AddCurveToPoint(<span style="color:#326598">300</span>,   <span style="color:#326598">5</span>, <span style="color:#326598">250</span>,  <span style="color:#326598">20</span>, <span style="color:#326598">270</span>,  <span style="color:#326598">80</span>)
+			
+			g.DrawingColor = &amp;c<span style="color:#FF0000">00</span><span style="color:#00FF00">00</span><span style="color:#0000FF">FF</span>
+			g.PenSize = <span style="color:#326598">5</span>
+			g.DrawPath(cloud)
+			
+			
+			Var p <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> DynapdfGraphicsPathMBS
+			p.MoveToPoint(<span style="color:#326598">10</span>, <span style="color:#326598">5</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Start</span> <span style="color:#7F0000;text-style:italic">location</span>
+			p.AddLineToPoint(<span style="color:#326598">40</span>, <span style="color:#326598">40</span>)
+			p.AddLineToPoint(<span style="color:#326598">5</span>, <span style="color:#326598">60</span>)
+			
+			g.DrawingColor = &amp;c<span style="color:#FF0000">00</span><span style="color:#00FF00">00</span><span style="color:#0000FF">FF</span>
+			g.DrawPath(p, <span style="color:#0000FF;font-weight: bold">True</span>)
+			
+			
+			Var qCurve <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> DynapdfGraphicsPathMBS
+			qCurve.MoveToPoint(<span style="color:#326598">38</span>, <span style="color:#326598">100</span>)
+			qCurve.AddQuadraticCurveToPoint(<span style="color:#326598">138</span>, <span style="color:#326598">0</span>, <span style="color:#326598">238</span>, <span style="color:#326598">100</span>)
+			
+			g.DrawingColor = &amp;c<span style="color:#FF0000">00</span><span style="color:#00FF00">FF</span><span style="color:#0000FF">00</span>
+			g.PenSize = <span style="color:#326598">10</span>
+			g.DrawPath(qCurve)
+			
+			Var rect <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> DynapdfGraphicsPathMBS
+			rect.AddRectangle(<span style="color:#326598">300</span>+<span style="color:#326598">10</span>, <span style="color:#326598">300</span>+<span style="color:#326598">10</span>, <span style="color:#326598">100</span>, <span style="color:#326598">150</span>)
+			g.DrawingColor = &amp;c<span style="color:#FF0000">FF</span><span style="color:#00FF00">00</span><span style="color:#0000FF">00</span>
+			g.DrawPath(rect)
+			
+			rect = <span style="color:#0000FF;font-weight: bold">New</span> DynapdfGraphicsPathMBS
+			rect.AddRoundRectangle(<span style="color:#326598">10</span>, <span style="color:#326598">300</span>+<span style="color:#326598">10</span>, <span style="color:#326598">100</span>, <span style="color:#326598">150</span>, <span style="color:#326598">10</span>, <span style="color:#326598">10</span>)
+			g.DrawPath(rect)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyDynaPDFMBS <span style="color:#0000FF;font-weight: bold">Inherits</span> DynaPDFMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> Error(ErrorCode <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, ErrorMessage <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, ErrorType <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">output</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">messages</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">console:</span>
+			System.DebugLog str(ErrorCode)+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+ErrorMessage
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">dialog:</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">New</span> MessageDialog <span style="color:#7F0000;text-style:italic">//declare</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">MessageDialog</span> <span style="color:#7F0000;text-style:italic">object</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> MessageDialogButton <span style="color:#7F0000;text-style:italic">//for</span> <span style="color:#7F0000;text-style:italic">handling</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">result</span>
+			
+			d.icon=MessageDialog.GraphicCaution <span style="color:#7F0000;text-style:italic">//display</span> <span style="color:#7F0000;text-style:italic">warning</span> <span style="color:#7F0000;text-style:italic">icon</span>
+			d.ActionButton.Caption=<span style="color:#6500FE">&quot;Continue&quot;</span>
+			d.CancelButton.Visible=<span style="color:#0000FF;font-weight: bold">True</span>    <span style="color:#7F0000;text-style:italic">//show</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Cancel</span> <span style="color:#7F0000;text-style:italic">button</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">warning</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">error?</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> BitAnd(ErrorType, <span style="color:#0000FF;font-weight: bold">me</span>.kE_WARNING) = <span style="color:#0000FF;font-weight: bold">me</span>.kE_WARNING <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">user</span> <span style="color:#7F0000;text-style:italic">decided</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">ignore,</span> <span style="color:#7F0000;text-style:italic">we&#39;ll</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> IgnoreWarnings <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span>
+				
+				d.Message=<span style="color:#6500FE">&quot;A</span> <span style="color:#6500FE">warning</span> <span style="color:#6500FE">occurred</span> <span style="color:#6500FE">while</span> <span style="color:#6500FE">processing</span> <span style="color:#6500FE">your</span> <span style="color:#6500FE">PDF</span> <span style="color:#6500FE">code.&quot;</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">third</span> <span style="color:#7F0000;text-style:italic">button</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">warnings</span>
+				d.AlternateActionButton.Caption = <span style="color:#6500FE">&quot;Ignore</span> <span style="color:#6500FE">warnings&quot;</span>
+				d.AlternateActionButton.Visible = <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				d.Message=<span style="color:#6500FE">&quot;An</span> <span style="color:#6500FE">error</span> <span style="color:#6500FE">occurred</span> <span style="color:#6500FE">while</span> <span style="color:#6500FE">processing</span> <span style="color:#6500FE">your</span> <span style="color:#6500FE">PDF</span> <span style="color:#6500FE">code.&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			d.Explanation = str(ErrorCode)+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+ErrorMessage
+			
+			b=d.ShowModal <span style="color:#7F0000;text-style:italic">//display</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">dialog</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">Case</span> b <span style="color:#7F0000;text-style:italic">//determine</span> <span style="color:#7F0000;text-style:italic">which</span> <span style="color:#7F0000;text-style:italic">button</span> <span style="color:#7F0000;text-style:italic">was</span> <span style="color:#7F0000;text-style:italic">pressed.</span>
+			<span style="color:#0000FF;font-weight: bold">Case</span> d.ActionButton
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+			<span style="color:#0000FF;font-weight: bold">Case</span> d.AlternateActionButton
+				IgnoreWarnings = <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+			<span style="color:#0000FF;font-weight: bold">Case</span> d.CancelButton
+				<span style="color:#0000FF;font-weight: bold">Return</span> -<span style="color:#326598">1</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">stop</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">select</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> PageBreak(LastPosX <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>, LastPosY <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>, PageBreak <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">boolean</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			PageBreak = <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">Return</span> -<span style="color:#326598">1</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">stop</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> IgnoreWarnings <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> PageBreak <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-dynapdf-dynapdfgraphics-dynapdfgraphicsdesktop.html">/DynaPDF/DynaPDF Graphics/DynaPDF Graphics Desktop</A></li>
+<li><A href="example-dynapdf-dynapdfgraphics-reporting-listoforderswithbackground.html">/DynaPDF/DynaPDF Graphics/Reporting/List Of Orders with Background</A></li>
+<li><A href="example-dynapdf-dynapdfgraphics-reporting-listofproducts.html">/DynaPDF/DynaPDF Graphics/Reporting/List Of Products</A></li>
+<li><A href="example-dynapdf-dynapdfgraphics-reporting-listboxreport.html">/DynaPDF/DynaPDF Graphics/Reporting/ListBoxReport</A></li>
+<li><A href="example-dynapdf-dynapdfgraphics-vectorgraphicsalignments.html">/DynaPDF/DynaPDF Graphics/VectorGraphics Alignments</A></li>
+<li><A href="example-dynapdf-dynapdfmakros.html">/DynaPDF/DynaPDF Makros</A></li>
+<li><A href="example-dynapdf-dynapdfmerge2to1.html">/DynaPDF/DynaPDF Merge 2 to 1</A></li>
+<li><A href="example-dynapdf-dynapdftransparencycolortest.html">/DynaPDF/DynaPDF Transparency Color Test</A></li>
+<li><A href="example-dynapdf-dynapdftransparentimages-dynapdftransparentimages.html">/DynaPDF/DynaPDF transparent images/DynaPDF transparent images</A></li>
+<li><A href="example-dynapdf-dynapdftransparentimages-dynapdftransparentimagesconsole.html">/DynaPDF/DynaPDF transparent images/DynaPDF transparent images console</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-dynapdf-dynapdfgraphics-dynapdfgraphicspath">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

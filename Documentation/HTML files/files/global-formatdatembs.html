@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Locale: FormatDateMBS</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Locale">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Locale: FormatDateMBS</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="WLM">
+<b><A name="1">FormatDateMBS(format as string, value as date, locale as string = &quot;&quot;) as string</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>global method</td>
+<td class=grau><A href="topic-currencydateandtimeformat.html" translate="no">Currency, Date and Time Format</A></td>
+<td class=grau><a href="plugins-mbsutilplugin.html">MBS Util Plugin</a></td>
+<td class=grau><a href="newinversion132.shtml" class=version>13.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+Formats a date with C time formatting functions.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #800000;">// for Mac, Windows and Linux we usually have different locale names</span><br /><span style="color: #0000FF;">dim</span> fr <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span><br /><span style="color: #0000FF;">#if</span> TargetMacOS <span style="color: #0000FF;">then</span><br />  fr = <span style="color: #6600FE;">&quot;fr_FR&quot;</span><br />#elseif TargetWin32 <span style="color: #0000FF;">then</span><br />  fr = <span style="color: #6600FE;">&quot;fra&quot;</span><br />#elseif TargetLinux<br />  fr = <span style="color: #6600FE;">&quot;fr_FR.UTF8&quot;</span><br /><span style="color: #0000FF;">#else</span><br />  ?<br /><span style="color: #0000FF;">#endif</span><br /><br /><span style="color: #0000FF;">dim</span> d <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> date<br />MsgBox FormatDateMBS(<span style="color: #6600FE;">&quot;%x %X&quot;</span>, d, fr)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+locale is the name of the locale to use. You can pass empty string to use default/current locale.<BR>
+Format is a format string like for strftime command in C.<BR>
+<BR>
+The format specification is a string and may contain special character sequences called conversion specifications, each of which is introduced by a &#39;%&#39; character and terminated by some other character known as a conversion specifier character. All other character sequences are ordinary character sequences.<BR>
+<BR>
+The characters of ordinary character sequences (including the null byte) are copied verbatim from format to s. However, the characters of conversion specifications are replaced as follows:<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">%a</TD><TD valign="top">The abbreviated weekday name according to the current locale.</TD></TR>
+<TR><TD valign="top">%A</TD><TD valign="top">The full weekday name according to the current locale.</TD></TR>
+<TR><TD valign="top">%b</TD><TD valign="top">The abbreviated month name according to the current locale.</TD></TR>
+<TR><TD valign="top">%B</TD><TD valign="top">The full month name according to the current locale.</TD></TR>
+<TR><TD valign="top">%c</TD><TD valign="top">The preferred date and time representation for the current locale.</TD></TR>
+<TR><TD valign="top">%C</TD><TD valign="top">The century number (year/100) as a 2-digit integer. (SU)</TD></TR>
+<TR><TD valign="top">%d</TD><TD valign="top">The day of the month as a decimal number (range 01 to 31).</TD></TR>
+<TR><TD valign="top">%D</TD><TD valign="top">Equivalent to %m/%d/%y. (Yecch-for Americans only. Americans should note that in other countries %d/%m/%y is rather common. This means that in international context this format is ambiguous and should not be used.) (SU)</TD></TR>
+<TR><TD valign="top">%e</TD><TD valign="top">Like %d, the day of the month as a decimal number, but a leading zero is replaced by a space. (SU)</TD></TR>
+<TR><TD valign="top">%E</TD><TD valign="top">Modifier: use alternative format, see below. (SU)</TD></TR>
+<TR><TD valign="top">%F</TD><TD valign="top">Equivalent to %Y-%m-%d (the ISO 8601 date format). (C99)</TD></TR>
+<TR><TD valign="top">%G</TD><TD valign="top">The ISO 8601 week-based year (see NOTES) with century as a decimal number. The 4-digit year corresponding to the ISO week number (see %V). This has the same format and value as %Y, except that if the ISO week number belongs to the previous or next year, that year is used instead. (TZ)</TD></TR>
+<TR><TD valign="top">%g</TD><TD valign="top">Like %G, but without century, that is, with a 2-digit year (00-99). (TZ)</TD></TR>
+<TR><TD valign="top">%h</TD><TD valign="top">Equivalent to %b. (SU)</TD></TR>
+<TR><TD valign="top">%H</TD><TD valign="top">The hour as a decimal number using a 24-hour clock (range 00 to 23).</TD></TR>
+<TR><TD valign="top">%I</TD><TD valign="top">The hour as a decimal number using a 12-hour clock (range 01 to 12).</TD></TR>
+<TR><TD valign="top">%j</TD><TD valign="top">The day of the year as a decimal number (range 001 to 366).</TD></TR>
+<TR><TD valign="top">%k</TD><TD valign="top">The hour (24-hour clock) as a decimal number (range 0 to 23); single digits are preceded by a blank. (See also %H.) (TZ)</TD></TR>
+<TR><TD valign="top">%l</TD><TD valign="top">The hour (12-hour clock) as a decimal number (range 1 to 12); single digits are preceded by a blank. (See also %I.) (TZ)</TD></TR>
+<TR><TD valign="top">%m</TD><TD valign="top">The month as a decimal number (range 01 to 12).</TD></TR>
+<TR><TD valign="top">%M</TD><TD valign="top">The minute as a decimal number (range 00 to 59).</TD></TR>
+<TR><TD valign="top">%n</TD><TD valign="top">A newline character. (SU)</TD></TR>
+<TR><TD valign="top">%O</TD><TD valign="top">Modifier: use alternative format, see below. (SU)</TD></TR>
+<TR><TD valign="top">%p</TD><TD valign="top">Either &quot;AM&quot; or &quot;PM&quot; according to the given time value, or the corresponding strings for the current locale. Noon is treated as &quot;PM&quot; and midnight as &quot;AM&quot;.</TD></TR>
+<TR><TD valign="top">%P</TD><TD valign="top">Like %p but in lowercase: &quot;am&quot; or &quot;pm&quot; or a corresponding string for the current locale. (GNU)</TD></TR>
+<TR><TD valign="top">%r</TD><TD valign="top">The time in a.m. or p.m. notation. In the POSIX locale this is equivalent to %I:%M:%S %p. (SU)</TD></TR>
+<TR><TD valign="top">%R</TD><TD valign="top">The time in 24-hour notation (%H:%M). (SU) For a version including the seconds, see %T below.</TD></TR>
+<TR><TD valign="top">%s</TD><TD valign="top">The number of seconds since the Epoch, 1970-01-01 00:00:00 +0000 (UTC). (TZ)</TD></TR>
+<TR><TD valign="top">%S</TD><TD valign="top">The second as a decimal number (range 00 to 60). (The range is up to 60 to allow for occasional leap seconds.)</TD></TR>
+<TR><TD valign="top">%t</TD><TD valign="top">A tab character. (SU)</TD></TR>
+<TR><TD valign="top">%T</TD><TD valign="top">The time in 24-hour notation (%H:%M:%S). (SU)</TD></TR>
+<TR><TD valign="top">%u</TD><TD valign="top">The day of the week as a decimal, range 1 to 7, Monday being 1. See also %w. (SU)</TD></TR>
+<TR><TD valign="top">%U</TD><TD valign="top">The week number of the current year as a decimal number, range 00 to 53, starting with the first Sunday as the first day of week 01. See also %V and %W.</TD></TR>
+<TR><TD valign="top">%V</TD><TD valign="top">The ISO 8601 week number (see NOTES) of the current year as a decimal number, range 01 to 53, where week 1 is the first week that has at least 4 days in the new year. See also %U and %W. (SU)</TD></TR>
+<TR><TD valign="top">%w</TD><TD valign="top">The day of the week as a decimal, range 0 to 6, Sunday being 0. See also %u.</TD></TR>
+<TR><TD valign="top">%W</TD><TD valign="top">The week number of the current year as a decimal number, range 00 to 53, starting with the first Monday as the first day of week 01.</TD></TR>
+<TR><TD valign="top">%x</TD><TD valign="top">The preferred date representation for the current locale without the time.</TD></TR>
+<TR><TD valign="top">%X</TD><TD valign="top">The preferred time representation for the current locale without the date.</TD></TR>
+<TR><TD valign="top">%y</TD><TD valign="top">The year as a decimal number without a century (range 00 to 99).</TD></TR>
+<TR><TD valign="top">%Y</TD><TD valign="top">The year as a decimal number including the century.</TD></TR>
+<TR><TD valign="top">%z</TD><TD valign="top">The +hhmm or -hhmm numeric timezone (that is, the hour and minute offset from UTC). (SU)</TD></TR>
+<TR><TD valign="top">%Z</TD><TD valign="top">The timezone or name or abbreviation.</TD></TR>
+<TR><TD valign="top">%+</TD><TD valign="top">The date and time in date(1) format. (TZ) (Not supported in glibc2.)</TD></TR>
+<TR><TD valign="top">%%</TD><TD valign="top">A literal &#39;%&#39; character.</TD></TR>
+</TABLE>
+<BR>
+Some conversion specifications can be modified by preceding the conversion specifier character by the E or O modifier to indicate that an alternative format should be used. If the alternative format or specification does not exist for the current locale, the behavior will be as if the unmodified conversion specification were used. (SU) The Single UNIX Specification mentions %Ec, %EC, %Ex, %EX, %Ey, %EY, %Od, %Oe, %OH, %OI, %Om, %OM, %OS, %Ou, %OU, %OV, %Ow, %OW, %Oy, where the effect of the O modifier is to use alternative numeric symbols (say, roman numerals), and that of the E modifier is to use a locale-dependent alternative representation.<BR>
+<h4>Some examples using this global method:</h4>
+<ul translate="no">
+<li><A href="example-util-formatdatembs.html">/Util/FormatDateMBS</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2019-10-02/MBS_Xojo_Plugins_version_195pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 19.5pr1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2017-07-10/MBS_Xojo_Plugins_version_173pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 17.3pr5</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2017-03-14/MonkeyBread_Software_Releases_/monkeybreadsoftware_blog_xojo">MonkeyBread Software Releases the MBS Xojo Plugins in version 17.1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2014-04-02/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 14.2pr1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2013-05-26/Introducing_FormatDateMBS_func/monkeybreadsoftware_blog_xojo">Introducing FormatDateMBS function</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2013-05-25/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 13.2pr1</a></li>
+</ul>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsutilplugin.html">MBS Util Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=global-formatdatembs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

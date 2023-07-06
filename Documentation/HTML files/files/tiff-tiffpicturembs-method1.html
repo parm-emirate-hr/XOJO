@@ -1,0 +1,1286 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - TiffPictureMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="TiffPictureMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">TiffPictureMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-tiffpicturembs.html">TiffPictureMBS</a> class.  </p>
+<p>
+<a href="tiff-tiffpicturembs-method.html">Previous items</a>
+ 
+<a href="tiff-tiffpicturembs-method2.html">Next items</a>
+</p>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="1">GetFieldString(Tag as Integer, byref value as string) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion84.shtml" class=version>8.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Reads the value associated with the given tag id.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> t <span style="color: #0000FF;">as</span> <A href="class-tiffpicturembs.html">TiffPictureMBS</A><br /><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> FolderItem<br /><span style="color: #0000FF;">dim</span> s <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span><br /><br />f=SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test.tif&quot;</span>)<br />t=f.<A href="folderitem-openastiffmbs.html">OpenAsTiffMBS</A><br /><br /><span style="color: #0000FF;">const</span> TIFFTAG_SOFTWARE=305<br /><br /><span style="color: #0000FF;">if</span> t.GetFieldString(TIFFTAG_SOFTWARE, s) <span style="color: #0000FF;">then</span><br />  MsgBox <span style="color: #6600FE;">&quot;TIFFTAG_SOFTWARE&quot;</span>+EndOfLine+s<br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br /><br /><span style="color: #0000FF;">const</span> TIFFTAG_HOSTCOMPUTER=316<br /><br /><span style="color: #0000FF;">if</span> t.GetFieldString(TIFFTAG_HOSTCOMPUTER, s) <span style="color: #0000FF;">then</span><br />  MsgBox <span style="color: #6600FE;">&quot;TIFFTAG_SOFTWARE&quot;</span>+EndOfLine+s<br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br /><br /><span style="color: #0000FF;">const</span> TIFFTAG_IMAGEDESCRIPTION=270<br /><br /><span style="color: #0000FF;">if</span> t.GetFieldString(TIFFTAG_IMAGEDESCRIPTION, s) <span style="color: #0000FF;">then</span><br />  MsgBox <span style="color: #6600FE;">&quot;TIFFTAG_IMAGEDESCRIPTION&quot;</span>+EndOfLine+s<br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br /><br /><span style="color: #0000FF;">const</span> TIFFTAG_MAKE=271<br /><br /><span style="color: #0000FF;">if</span> t.GetFieldString(TIFFTAG_MAKE, s) <span style="color: #0000FF;">then</span><br />  MsgBox <span style="color: #6600FE;">&quot;TIFFTAG_MAKE&quot;</span>+EndOfLine+s<br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br /><br /><span style="color: #0000FF;">const</span> TIFFTAG_ARTIST=315<br /><br /><span style="color: #0000FF;">if</span> t.GetFieldString(TIFFTAG_ARTIST, s) <span style="color: #0000FF;">then</span><br />  MsgBox <span style="color: #6600FE;">&quot;TIFFTAG_ARTIST&quot;</span>+EndOfLine+s<br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Please look for Tag values in the tiff specification.<BR>
+Returns true on success. May return a default value.<BR>
+Please make sure to use the correct setter depending on data type associated with the tag.<BR>
+The string is returned with ascii encoding. You may need to define a different encoding is this is not correct.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-images-tiff-customtifftags.html">/Images/Tiff/Custom Tiff Tags</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="2">GetXMP as string</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion73.shtml" class=version>7.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns the xmp metadata package stored in the tiff file.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> FolderItem<br /><span style="color: #0000FF;">dim</span> t <span style="color: #0000FF;">as</span> <A href="class-tiffpicturembs.html">TiffPictureMBS</A><br /><span style="color: #0000FF;">dim</span> s <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span><br /><br />f=SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test.tif&quot;</span>)<br /><br />t=f.<A href="folderitem-openastiffmbs.html">OpenAsTiffMBS</A><br /><br />s=t.GetXMP<br /><br />MsgBox left(s,<span style="color: #336698;">500</span>)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+Returns &quot;&quot; on any error.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="3">ImageCount as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion43.shtml" class=version>4.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns the number of images in the TIFF file.<BR>
+<B>Notes:</B> 
+Returns 0 on any error.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="4">ImageIndex as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion43.shtml" class=version>4.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The current image index.<BR>
+<B>Notes:</B> 
+0 based.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="5">IsLastImage as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion43.shtml" class=version>4.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Whether the current picture is the last picture.<BR>
+<B>Notes:</B> 
+Useful if you walk through all pictures using NextImage.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="6">MirrorVertical(output as <A href="class-tiffpicturembs.html">TiffPictureMBS</A>) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion71.shtml" class=version>7.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Mirrors the current picture to another tiff object.<BR>
+<B>Notes:</B> 
+<BR>
+You may be able to pass the current tiff file as the output one if you have it open for read and write.<BR>
+Returns true on success and false on failure.<BR>
+Works for any color depth or color mode.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="7">NextImage as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion43.shtml" class=version>4.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Loads the next image in the TIFF file.<BR>
+<B>Notes:</B> 
+Returns true on success and false on any error.<BR>
+<p>See also:<ul>
+<li><A href="tiff-tiffpicturembs-method1.html#8">NextImage(HeaderOnly as boolean) as boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="8">NextImage(HeaderOnly as boolean) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion43.shtml" class=version>4.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Reads the next image.<BR>
+<B>Notes:</B> 
+If HeaderOnly is false the current picture is read into the pict&amp;mask properties.<BR>
+<p>See also:<ul>
+<li><A href="tiff-tiffpicturembs-method1.html#7">NextImage as boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="9">Open(file as folderitem) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion42.shtml" class=version>4.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Opens a tiff file for readonly access.<BR>
+<B>Notes:</B> 
+<BR>
+You need to use the ReadRGB method or the Scanline property to get data from this file.<BR>
+Returns true on success.<BR>
+<p>See also:<ul>
+<li><A href="tiff-tiffpicturembs-method1.html#10">Open(file as folderitem, Mode as string) as boolean</A></li>
+<li><A href="tiff-tiffpicturembs-method1.html#11">Open(Path as String, Mode as string) as boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="10">Open(file as folderitem, Mode as string) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion53.shtml" class=version>5.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Opens a tiff file for read/write access.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> file <span style="color: #0000FF;">as</span> folderitem = SpecialFolder.desktop.child(<span style="color: #6600FE;">&quot;test.tif&quot;</span>)<br /><span style="color: #0000FF;">dim</span> st <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> MyTiff<br /><br /><span style="color: #800000;">// open for appending</span><br /><span style="color: #0000FF;">if</span> <span style="color: #0000FF;">not</span> st.Open(file,<span style="color: #6600FE;">&quot;r+&quot;</span>) <span style="color: #0000FF;">then</span><br />  MsgBox <span style="color: #6600FE;">&quot;Open Tiff failed!&quot;</span><br /><span style="color: #0000FF;">else</span><br />  <span style="color: #800000;">// change one setting</span><br />  st.Copyright = <span style="color: #6600FE;">&quot;Hello World&quot;</span><br />  <br />  <span style="color: #800000;">// and save</span><br />  <span style="color: #0000FF;">call</span> st.SaveImage<br />  st.Close<br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Same as the other Open method, but you can pass a mode string to the library.<BR>
+<BR>
+The open mode parameter can include the following flags in addition to the &quot;r&quot; (Read), &quot;w&quot; (Write), and &quot;a&quot; (Append) flags. Note however that option flags must follow the read-write-append specification.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">l</TD><TD valign="top">When creating a new file force information be written with Little-Endian byte order (but see below). By default the library will create new files using the native CPU byte order.</TD></TR>
+<TR><TD valign="top">b</TD><TD valign="top">When creating a new file force information be written with Big-Endian byte order (but see below). By default the library will create new files using the native CPU byte order.</TD></TR>
+<TR><TD valign="top">L</TD><TD valign="top">Force image data that is read or written to be treated with bits filled from Least Significant Bit (LSB) to Most Significant Bit (MSB). Note that this is the opposite to the way the library has worked from its inception.</TD></TR>
+<TR><TD valign="top">B</TD><TD valign="top">Force image data that is read or written to be treated with bits filled from Most Significant Bit (MSB) to Least Significant Bit (LSB); this is the default.</TD></TR>
+<TR><TD valign="top">H</TD><TD valign="top">Force image data that is read or written to be treated with bits filled in the same order as the native CPU.</TD></TR>
+<TR><TD valign="top">M</TD><TD valign="top">Enable the use of memory-mapped files for images opened read-only. If the underlying system does not support memory-mapped files or if the specific image being opened cannot be memory-mapped then the library will fallback to using the normal system interface for reading information. By default the library will attempt to use memory-mapped files.</TD></TR>
+<TR><TD valign="top">m</TD><TD valign="top">Disable the use of memory-mapped files.</TD></TR>
+<TR><TD valign="top">C</TD><TD valign="top">Enable the use of &quot;strip chopping&quot; when reading images that are comprised of a single strip or tile of uncompressed data. Strip chopping is a mechanism by which the library will automatically convert the single-strip image to multiple strips, each of which has about 8 Kilobytes of data. This facility can be useful in reducing the amount of memory used to read an image because the library normally reads each strip in its entirety. Strip chopping does however alter the apparent contents of the image because when an image is divided into multiple strips it looks as though the underlying file contains multiple separate strips. Finally, note that default handling of strip chopping is a compile-time configuration parameter. The default behaviour, for backwards compatibility, is to enable strip chopping.</TD></TR>
+<TR><TD valign="top">c</TD><TD valign="top">Disable the use of strip chopping when reading images.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="tiff-tiffpicturembs-method1.html#9">Open(file as folderitem) as boolean</A></li>
+<li><A href="tiff-tiffpicturembs-method1.html#11">Open(Path as String, Mode as string) as boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="11">Open(Path as String, Mode as string) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion195.shtml" class=version>19.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Opens a tiff file for read/write access.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">Dim</span> t <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">New</span> <A href="class-tiffpicturembs.html">TiffPictureMBS</A><br /><br /><span style="color: #800000;">// try with path</span><br /><span style="color: #0000FF;">Dim</span> f <span style="color: #0000FF;">As</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test.tif&quot;</span>)<br /><span style="color: #0000FF;">Dim</span> p <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">String</span> = f.NativePath<br /><br /><span style="color: #0000FF;">If</span> t.Open(p, <span style="color: #6600FE;">&quot;r&quot;</span>) <span style="color: #0000FF;">Then</span><br />  <br />  <span style="color: #0000FF;">If</span> t.ReadRGB <span style="color: #0000FF;">Then</span><br />    <br />    window1.Backdrop = t.Pict<br />    <br />  <span style="color: #0000FF;">End</span> <span style="color: #0000FF;">If</span><br /><span style="color: #0000FF;">End</span> <span style="color: #0000FF;">If</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Same as the other Open method, but you can pass a mode and path as string to the library.<BR>
+<BR>
+The open mode parameter can include the following flags in addition to the &quot;r&quot; (Read), &quot;w&quot; (Write), and &quot;a&quot; (Append) flags. Note however that option flags must follow the read-write-append specification.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">l</TD><TD valign="top">When creating a new file force information be written with Little-Endian byte order (but see below). By default the library will create new files using the native CPU byte order.</TD></TR>
+<TR><TD valign="top">b</TD><TD valign="top">When creating a new file force information be written with Big-Endian byte order (but see below). By default the library will create new files using the native CPU byte order.</TD></TR>
+<TR><TD valign="top">L</TD><TD valign="top">Force image data that is read or written to be treated with bits filled from Least Significant Bit (LSB) to Most Significant Bit (MSB). Note that this is the opposite to the way the library has worked from its inception.</TD></TR>
+<TR><TD valign="top">B</TD><TD valign="top">Force image data that is read or written to be treated with bits filled from Most Significant Bit (MSB) to Least Significant Bit (LSB); this is the default.</TD></TR>
+<TR><TD valign="top">H</TD><TD valign="top">Force image data that is read or written to be treated with bits filled in the same order as the native CPU.</TD></TR>
+<TR><TD valign="top">M</TD><TD valign="top">Enable the use of memory-mapped files for images opened read-only. If the underlying system does not support memory-mapped files or if the specific image being opened cannot be memory-mapped then the library will fallback to using the normal system interface for reading information. By default the library will attempt to use memory-mapped files.</TD></TR>
+<TR><TD valign="top">m</TD><TD valign="top">Disable the use of memory-mapped files.</TD></TR>
+<TR><TD valign="top">C</TD><TD valign="top">Enable the use of &quot;strip chopping&quot; when reading images that are comprised of a single strip or tile of uncompressed data. Strip chopping is a mechanism by which the library will automatically convert the single-strip image to multiple strips, each of which has about 8 Kilobytes of data. This facility can be useful in reducing the amount of memory used to read an image because the library normally reads each strip in its entirety. Strip chopping does however alter the apparent contents of the image because when an image is divided into multiple strips it looks as though the underlying file contains multiple separate strips. Finally, note that default handling of strip chopping is a compile-time configuration parameter. The default behaviour, for backwards compatibility, is to enable strip chopping.</TD></TR>
+<TR><TD valign="top">c</TD><TD valign="top">Disable the use of strip chopping when reading images.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="tiff-tiffpicturembs-method1.html#9">Open(file as folderitem) as boolean</A></li>
+<li><A href="tiff-tiffpicturembs-method1.html#10">Open(file as folderitem, Mode as string) as boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="12">OpenString(data as string) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion52.shtml" class=version>5.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Opens a tiff image located in a binary string.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">Function</span> TiffStringToPicture(data <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span>) <span style="color: #0000FF;">As</span> picture<br />  <span style="color: #0000FF;">dim</span> t <span style="color: #0000FF;">as</span> MyTiffPictureMBS<br />  <br />  t=new MyTiffPictureMBS<br />  <br />  <span style="color: #0000FF;">if</span> t.OpenString(data) <span style="color: #0000FF;">then</span><br />    <span style="color: #0000FF;">if</span> t.ReadRGB <span style="color: #0000FF;">then</span><br />      <span style="color: #0000FF;">return</span> t.Pict<br />      <span style="color: #800000;">// you could add the mask here.</span><br />    <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br />  <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br />  <br />  <span style="color: #0000FF;">Return</span> <span style="color: #0000FF;">nil</span> <span style="color: #800000;">// failed</span><br /><span style="color: #0000FF;">End</span> <span style="color: #0000FF;">Function</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Same as the Open() function, but memory based. You can now use functions like Scanline(), ReadSW() or ReadRGB() to get the picture data.<BR>
+<BR>
+Returns true on success.<BR>
+The Warning and Error events may show you reasons why it does not work.<BR>
+The string you pass is saved in the data property of the class for later use.<BR>
+<BR>
+You can and should use this function to write yourself a TiffStringToPicture function.<BR>
+<p>See also:<ul>
+<li><A href="tiff-tiffpicturembs-method1.html#13">OpenString(data as string, Mode as string) as boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="13">OpenString(data as string, Mode as string) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion53.shtml" class=version>5.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Opens a tiff image located in a binary string.<BR>
+<B>Notes:</B> 
+Same as the other OpenString method, but you can pass a mode string to the library.<BR>
+<p>See also:<ul>
+<li><A href="tiff-tiffpicturembs-method1.html#12">OpenString(data as string) as boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="14">RawStripSize(strip as UInt32) as UInt64</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion135.shtml" class=version>13.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns the number of bytes in a raw strip (i.e. not decoded).<BR>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="15">ReadBW as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion43.shtml" class=version>4.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Reads the current picture in BW mode.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> FolderItem<br /><span style="color: #0000FF;">dim</span> p <span style="color: #0000FF;">as</span> Picture<br /><span style="color: #0000FF;">dim</span> t <span style="color: #0000FF;">as</span> <A href="class-tiffpicturembs.html">TiffPictureMBS</A><br /><br />f=SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;Multipage fax.tif&quot;</span>)<br />t=f.<A href="folderitem-openastiffmbs.html">OpenAsTiffMBS</A>(<span style="color: #0000FF;">true</span>)<br /><br /><span style="color: #0000FF;">if</span> t.ReadBW <span style="color: #0000FF;">then</span><br />  title=str(t.ImageCount)<br />  <br />  p=t.pict<br />  Title=str(p.Depth)<br />  Canvas1.Backdrop=p<br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Returns true on success and false on any error.<BR>
+Only if the current picture is a 1bit black&amp;white picture, a new picture is created in the pict property and the data is copied inside.<BR>
+<BR>
+Data in the TIFF file must be in 1 bit BW mode. Else use ReadRGB which does a lot of converting.<BR>
+<BR>
+This method uses the YieldTicks property and may yield time to other threads.<BR>
+<p>See also:<ul>
+<li><A href="tiff-tiffpicturembs-method1.html#16">ReadBW(left as Integer, top as Integer, width as Integer, height as Integer) as boolean</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-images-tiff-tiffspeedtest.html">/Images/Tiff/Tiff Speed Test</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="16">ReadBW(left as Integer, top as Integer, width as Integer, height as Integer) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Reads the current picture in BW mode.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> FolderItem<br /><span style="color: #0000FF;">dim</span> p <span style="color: #0000FF;">as</span> Picture<br /><span style="color: #0000FF;">dim</span> t <span style="color: #0000FF;">as</span> <A href="class-tiffpicturembs.html">TiffPictureMBS</A><br /><br />f=SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;Multipage fax.tif&quot;</span>)<br />t=f.<A href="folderitem-openastiffmbs.html">OpenAsTiffMBS</A>(<span style="color: #0000FF;">true</span>)<br /><br /><span style="color: #0000FF;">if</span> t.ReadBW(<span style="color: #336698;">0</span>,<span style="color: #336698;">0</span>,t.width/<span style="color: #336698;">2</span>,t.height/<span style="color: #336698;">2</span>) <span style="color: #0000FF;">then</span><br />  title=str(t.ImageCount)<br />  <br />  p=t.pict<br />  Title=str(p.Depth)<br />  Canvas1.Backdrop=p<br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Returns true on success and false on any error.<BR>
+Only if the current picture is a 1bit black&amp;white picture, a new picture is created in the pict property and the data is copied inside.<BR>
+<BR>
+Data in the TIFF file must be in 1 bit BW mode. Else use ReadRGB which does a lot of converting.<BR>
+<BR>
+This method uses the YieldTicks property and may yield time to other threads.<BR>
+<p>See also:<ul>
+<li><A href="tiff-tiffpicturembs-method1.html#15">ReadBW as boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="17">ReadEncodedStrip(strip as UInt32, byref data as Memoryblock) as UInt32</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion135.shtml" class=version>13.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Read and decode a strip of data from an open TIFF file.<BR>
+<B>Notes:</B> 
+<BR>
+Read the specified strip of data and place up to size bytes of decompressed information in the (user supplied) data buffer.<BR>
+<BR>
+The value of strip is a &quot;raw strip number&quot;. That is, the caller must take into account whether or not the data are organized in separate planes (PlanarConfiguration=2). To read a full strip of data the data buffer should typically be at least as large as the number returned by StripSize. <BR>
+The library attempts to hide bit- and byte-ordering differences between the image and the native machine by converting data to the native machine order. Bit reversal is done if the FillOrder tag is opposite to the native machine bit order. 16- and 32-bit samples are automatically byte-swapped if the file was written with a byte order opposite to the native machine byte order,<BR>
+<BR>
+Returns the actual number of bytes of data that were placed in buf is returned; ReadEncodedStrip returns -1 if an error was encountered.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="18">ReadEncodedTile(tile as UInt32, byref data as Memoryblock) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion135.shtml" class=version>13.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Read and decode a tile of data from an open TIFF file.<BR>
+<B>Notes:</B> 
+<BR>
+Read the specified tile of data and place up to size bytes of decompressed information in the (user supplied) data buffer.<BR>
+<BR>
+The value of tile is a &quot;raw tile number&quot;. That is, the caller must take into account whether or not the data are organized in separate planes (PlanarConfiguration=2). ComputeTile automatically does this when converting an (x,y,z,sample) coordinate quadruple to a tile number. To read a full tile of data the data buffer should be at least as large as the value returned by TileSize.<BR>
+<BR>
+The library attempts to hide bit- and byte-ordering differences between the image and the native machine by converting data to the native machine order. Bit reversal is done if the FillOrder tag is opposite to the native machine bit order. 16- and 32-bit samples are automatically byte-swapped if the file was written with a byte order opposite to the native machine byte order,<BR>
+<BR>
+Returns the actual number of bytes of data that were placed in buf is returned; ReadEncodedTile returns &minus;1 if an error was encountered.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="19">ReadPreviewBW as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion92.shtml" class=version>9.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Reads the current picture in BW mode as a preview.<BR>
+<B>Notes:</B> 
+<BR>
+This method is faster than ReadBW, because it reads only every 8th line and every 8th pixel in each row. So the picture you get is much smaller, but may be enough for a preview.<BR>
+<BR>
+Returns true on success and false on any error.<BR>
+Only if the current picture is a 1bit black&amp;white picture, a new picture is created in the pict property and the data is copied inside.<BR>
+<BR>
+Data in the TIFF file must be in 1 bit BW mode. Else use ReadRGB which does a lot of converting.<BR>
+<BR>
+This method uses the YieldTicks property and may yield time to other threads.<BR>
+<p>See also:<ul>
+<li><A href="tiff-tiffpicturembs-method1.html#20">ReadPreviewBW(left as Integer, top as Integer, width as Integer, height as Integer) as boolean</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-images-tiff-tiffspeedtest.html">/Images/Tiff/Tiff Speed Test</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="20">ReadPreviewBW(left as Integer, top as Integer, width as Integer, height as Integer) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion92.shtml" class=version>9.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Reads the current picture in BW mode as a preview.<BR>
+<B>Notes:</B> 
+<BR>
+This method is faster than ReadBW, because it reads only every 8th line and every 8th pixel in each row. So the picture you get is much smaller, but may be enough for a preview.<BR>
+<BR>
+Returns true on success and false on any error.<BR>
+Only if the current picture is a 1bit black&amp;white picture, a new picture is created in the pict property and the data is copied inside.<BR>
+<BR>
+Data in the TIFF file must be in 1 bit BW mode. Else use ReadRGB which does a lot of converting.<BR>
+<BR>
+This method uses the YieldTicks property and may yield time to other threads.<BR>
+<p>See also:<ul>
+<li><A href="tiff-tiffpicturembs-method1.html#19">ReadPreviewBW as boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="21">ReadPreviewRGB(ReduceFactor as Integer) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion92.shtml" class=version>9.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Reads a CMYK or RGB picture and stores it in the pict and name properties.<BR>
+<B>Notes:</B> 
+<BR>
+This method is faster than ReadRGB, because it reads only every ReduceFactorth line and every ReduceFactorth pixel in each row. So the picture you get is much smaller, but may be enough for a preview.<BR>
+<BR>
+Returns true on success.<BR>
+ReadRGB does converting on the picture data if needed so you can read CMYK, RGB, BW and other image data using this function.<BR>
+<BR>
+This function works with most Tiff formats, but has problems with some like 16 bit CMYK.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-images-jpeg-quicklygeneratepreviewsforjpegandtiff.html">/Images/JPEG/Quickly generate previews for JPEG and Tiff</A></li>
+<li><A href="example-images-tiff-quicklygeneratepreviewsforjpegandtiff.html">/Images/Tiff/Quickly generate previews for JPEG and Tiff</A></li>
+<li><A href="example-images-tiff-tiffspeedtest.html">/Images/Tiff/Tiff Speed Test</A></li>
+<li><A href="example-maccg-coreimage-quicklygeneratepreviewsforjpegandtiff.html">/MacCG/CoreImage/Quickly generate previews for JPEG and Tiff</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="22">ReadRawStrip(strip as UInt32, byref data as Memoryblock) as UInt32</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion135.shtml" class=version>13.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return the undecoded contents of a strip of data from an open TIFF file.<BR>
+<B>Notes:</B> 
+<BR>
+Read the contents of the specified strip into the (user supplied) data buffer. Note that the value of strip is a &quot;raw strip number&quot;. That is, the caller must take into account whether or not the data is organized in separate planes (PlanarConfiguration=2). To read a full strip of data the data buffer should typically be at least as large as the number returned by StripSize.<BR>
+<BR>
+Returns the actual number of bytes of data that were placed in buf is returned; ReadEncodedStrip returns -1 if an error was encountered.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="23">ReadRawTile(tile as UInt32, byref data as Memoryblock) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion135.shtml" class=version>13.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return an undecoded tile of data from an open TIFF file.<BR>
+<B>Notes:</B> 
+<BR>
+<BR>
+Read the contents of the specified tile into the (user supplied) data buffer. Note that the value of tile is a &quot;raw tile number&quot;. That is, the caller must take into account whether or not the data is organized in separate planes (PlanarConfiguration=2). ComputeTile automatically does this when converting an (x,y,z,sample) coordinate quadruple to a tile number. To read a full tile of data the data buffer should typically be at least as large as the value returned by TileSize.<BR>
+<BR>
+Returns the actual number of bytes of data that were placed in buf is returned; ReadEncodedTile returns &minus;1 if an error was encountered.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="24">ReadRGB as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion42.shtml" class=version>4.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Reads a CMYK or RGB picture and stores it in the pict and name properties.<BR>
+<B>Notes:</B> 
+<BR>
+Returns true on success.<BR>
+ReadRGB does converting on the picture data if needed so you can read CMYK, RGB, BW and other image data using this function.<BR>
+<BR>
+This function works with most Tiff formats, but has problems with some like 16 bit CMYK.<BR>
+<p>See also:<ul>
+<li><A href="tiff-tiffpicturembs-method1.html#25">ReadRGB(byref ErrorMessage as string, Dest as MemoryBlock = nil) as memoryblock</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-images-jpeg-quicklygeneratepreviewsforjpegandtiff.html">/Images/JPEG/Quickly generate previews for JPEG and Tiff</A></li>
+<li><A href="example-images-largepicture-tiffloadandsave.html">/Images/LargePicture/Tiff Load and Save</A></li>
+<li><A href="example-images-lcms2-convertimagetosrgbjpeg.html">/Images/LCMS2/Convert image to sRGB JPEG</A></li>
+<li><A href="example-images-tiff-bigtifftest.html">/Images/Tiff/BigTiff Test</A></li>
+<li><A href="example-images-tiff-quicklygeneratepreviewsforjpegandtiff.html">/Images/Tiff/Quickly generate previews for JPEG and Tiff</A></li>
+<li><A href="example-images-tiff-tiffpictureinfo.html">/Images/Tiff/TIFF Picture Info</A></li>
+<li><A href="example-images-tiff-tiffspeedtest.html">/Images/Tiff/Tiff Speed Test</A></li>
+<li><A href="example-maccg-coreimage-quicklygeneratepreviewsforjpegandtiff.html">/MacCG/CoreImage/Quickly generate previews for JPEG and Tiff</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="25">ReadRGB(byref ErrorMessage as string, Dest as MemoryBlock = nil) as memoryblock</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion90.shtml" class=version>9.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Reads the image into a memoryblock as RGB.<BR>
+<B>Notes:</B> 
+<BR>
+The Scanline() array gives you the raw uncompressed data. But this method decodes the data into a RGBA image.<BR>
+<BR>
+The Memoryblock has the size of 4*width*height. Each pixel has one byte for red, one byte for green, one byte for blue and one byte for alpha. If no alpha is in the file, all pixels have the same alpha of 255.<BR>
+<BR>
+If the decompression fails the function returns nil. (e.g. out of memory).<BR>
+If the decoding fails, you also get an error message.<BR>
+<BR>
+This function works with most Tiff formats, but has problems with some like 16 bit CMYK.<BR>
+<BR>
+If dest is not nil and big enough, the plugin will use it and return it on success. This can avoid additional memory allocations which can cost CPU time (especially to clear the bytes).<BR>
+<p>See also:<ul>
+<li><A href="tiff-tiffpicturembs-method1.html#24">ReadRGB as boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="26">ReadRGBMemoryBegin(byref ErrorMessage as string) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion105.shtml" class=version>10.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Starts a RGBA reader for the given TIFF picture.<BR>
+<B>Notes:</B> 
+<BR>
+Like ReadRGB, but with ReadRGBMemoryBegin, ReadRGBMemoryEnd and ReadRGBMemoryStep you can read the RGBA data in portions.<BR>
+<BR>
+The Memoryblock returned by ReadRGBMemoryStep has the size of 4*width*height. Each pixel has one byte for red, one byte for green, one byte for blue and one byte for alpha. If no alpha is in the file, all pixels have the same alpha of 255.<BR>
+<BR>
+If the decompression fails the function returns false. (e.g. out of memory).<BR>
+If the decoding fails, you also get an error message.<BR>
+<BR>
+This function works with most Tiff formats, but has problems with some like 16 bit CMYK.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="27">ReadRGBMemoryEnd</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion105.shtml" class=version>10.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Cleans up the internal data structures created by ReadRGBMemoryBegin.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="28">ReadRGBMemoryStep(x as Integer, y as Integer, width as Integer, height as Integer, Dest as MemoryBlock = nil) as memoryblock</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion105.shtml" class=version>10.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Reads the image into a memoryblock as RGBA.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> t <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-tiffpicturembs.html">TiffPictureMBS</A><br /><span style="color: #0000FF;">dim</span> f <span style="color: #0000FF;">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color: #6600FE;">&quot;test.tif&quot;</span>)<br /><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span><br /><br /><span style="color: #0000FF;">if</span> t.Open(f) <span style="color: #0000FF;">then</span><br />  <span style="color: #0000FF;">if</span> t.ReadRGBMemoryBegin(e) <span style="color: #0000FF;">then</span><br />    <br />    <span style="color: #0000FF;">dim</span> w <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = t.Width<br />    <span style="color: #0000FF;">dim</span> h <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = t.Height<br />    <br />    <span style="color: #0000FF;">dim</span> p <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-picturembs.html">PictureMBS</A>(w, h, <A href="class-picturembs.html">PictureMBS</A>.ImageFormatRGB)<br />    <br />    <span style="color: #0000FF;">for</span> y <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = <span style="color: #336698;">0</span> <span style="color: #0000FF;">to</span> h-<span style="color: #336698;">1</span> <span style="color: #0000FF;">step</span> <span style="color: #336698;">100</span><br />      <br />      <span style="color: #0000FF;">dim</span> m <span style="color: #0000FF;">as</span> MemoryBlock = t.ReadRGBMemoryStep(<span style="color: #336698;">0</span>, y, w, <span style="color: #336698;">100</span>)<br />      <br />      <span style="color: #0000FF;">for</span> i <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = <span style="color: #336698;">0</span> <span style="color: #0000FF;">to</span> <span style="color: #336698;">99</span><br />        p.RowInFormat(i+y, <A href="class-picturembs.html">PictureMBS</A>.ImageFormatRGBA)=m<br />      <span style="color: #0000FF;">next</span><br />      <br />    <span style="color: #0000FF;">next</span><br />    <br />    t.ReadRGBMemoryEnd<br />    Backdrop = p.copypicture(<span style="color: #336698;">0</span>,<span style="color: #336698;">0</span>,<span style="color: #336698;">1000</span>,<span style="color: #336698;">1000</span>) <span style="color: #800000;">// display a portion</span><br />  <span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span><br />  <br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+As you see in the example, you can use this method to easily read huge TIFF files into a <A href="class-picturembs.html">PictureMBS</A> object.<BR>
+<BR>
+If the decompression fails the function returns nil. (e.g. out of memory).<BR>
+Please make sure that the range in x and y, width and height is right.<BR>
+<BR>
+If dest is not nil and big enough, the plugin will use it and return it on success. This can avoid additional memory allocations which can cost CPU time (especially to clear the bytes).<BR>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="29">ReadWithLUT(ColorLookupTable() as color) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion98.shtml" class=version>9.8</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Reads the current picture with a Color Lookup Table.<BR>
+<B>Notes:</B> 
+<BR>
+Returns true on success and false on any error.<BR>
+Works with 8, 16 amd 32 bits per sample. And with 1 or 3 samples per pixels (Gray or RGB). The lookup table has 256 entries for 8 bit and 65536 entries for 16/32 bit.<BR>
+This method uses the YieldTicks property and may yield time to other threads.<BR>
+<p>See also:<ul>
+<li><A href="tiff-tiffpicturembs-method1.html#30">ReadWithLUT(ColorLookupTable() as color, left as Integer, top as Integer, width as Integer, height as Integer) as boolean</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-images-tiff-tiffwithlut.html">/Images/Tiff/tiff with LUT</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-tiffpicturembs.html">TiffPictureMBS</a>.<A name="30">ReadWithLUT(ColorLookupTable() as color, left as Integer, top as Integer, width as Integer, height as Integer) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-tiff.html" translate="no">TIFF</A></td>
+<td class=grau><a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a></td>
+<td class=grau><a href="newinversion98.shtml" class=version>9.8</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Reads the current picture with a Color Lookup Table.<BR>
+<B>Notes:</B> 
+<BR>
+Returns true on success and false on any error.<BR>
+Works with 8, 16 amd 32 bits per sample. And with 1 or 3 samples per pixels (Gray or RGB). The lookup table has 256 entries for 8 bit and 65536 entries for 16/32 bit.<BR>
+This method uses the YieldTicks property and may yield time to other threads.<BR>
+<p>See also:<ul>
+<li><A href="tiff-tiffpicturembs-method1.html#29">ReadWithLUT(ColorLookupTable() as color) as boolean</A></li>
+</ul></p>
+</div>
+<p>
+<a href="tiff-tiffpicturembs-method.html">Previous items</a>
+ 
+<a href="tiff-tiffpicturembs-method2.html">Next items</a>
+</p>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=tiff-tiffpicturembs-method1">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

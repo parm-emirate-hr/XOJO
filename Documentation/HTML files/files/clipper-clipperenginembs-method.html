@@ -1,0 +1,668 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - ClipperEngineMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="ClipperEngineMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">ClipperEngineMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-clipperenginembs.html">ClipperEngineMBS</a> class.  </p>
+<div class="WLM">
+<b><a href="class-clipperenginembs.html">ClipperEngineMBS</a>.<A name="1">AddPath(path as <A href="class-clipperpathmbs.html">ClipperPathMBS</A>, PolyType as <A href="module-clippermbs.html">ClipperMBS</A>.PolyType, Closed as Boolean) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-clipper.html" translate="no">Clipper</A></td>
+<td class=grau><a href="plugins-mbstoolsplugin.html">MBS Tools Plugin</a></td>
+<td class=grau><a href="newinversion180.shtml" class=version>18.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Any number of subject and clip paths can be added to a clipping task, either individually via the AddPath() method, or as groups via the AddPaths() method, or even using both methods.<BR>
+<B>Notes:</B> 
+<BR>
+&#39;Subject&#39; paths may be either open (lines) or closed (polygons) or even a mixture of both, but &#39;clipping&#39; paths must always be closed. Clipper allows polygons to clip both lines and other polygons, but doesn&#39;t allow lines to clip either lines or polygons.<BR>
+<BR>
+With closed paths, orientation should conform with the filling rule that will be passed via Clippper&#39;s Execute method.<BR>
+<BR>
+Path Coordinate range:<BR>
+Path coordinates must be between &plusmn; &amp;h3FFFFFFFFFFFFFFF (&plusmn; 4.6e+18), otherwise a range error will be thrown when attempting to add the path to the Clipper object. If coordinates can be kept between &plusmn; 0x3FFFFFFF (&plusmn; 1.0e+9), a modest increase in performance (approx. 15-20%) over the larger range can be achieved by avoiding large integer math. <BR>
+<BR>
+Return Value:<BR>
+The function will return false if the path is invalid for clipping. A path is invalid for clipping when:<BR>
+<UL><LI>
+it has less than 2 vertices
+</LI><LI>
+it has 2 vertices but is not an open path
+</LI><LI>
+the vertices are all co-linear and it is not an open path
+</LI></UL>
+<BR>
+Returns true on success.<BR>
+<p>See also:<ul>
+<li><A href="clipper-clipperenginembs-method.html#2">AddPath(path as ClipperPathMBS, PolyType as Integer, Closed as Boolean) as Boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-clipperenginembs.html">ClipperEngineMBS</a>.<A name="2">AddPath(path as <A href="class-clipperpathmbs.html">ClipperPathMBS</A>, PolyType as Integer, Closed as Boolean) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-clipper.html" translate="no">Clipper</A></td>
+<td class=grau><a href="plugins-mbstoolsplugin.html">MBS Tools Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Any number of subject and clip paths can be added to a clipping task, either individually via the AddPath() method, or as groups via the AddPaths() method, or even using both methods.<BR>
+<p>See also:<ul>
+<li><A href="clipper-clipperenginembs-method.html">AddPath(path as ClipperPathMBS, PolyType as ClipperMBS.PolyType, Closed as Boolean) as Boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-clipperenginembs.html">ClipperEngineMBS</a>.<A name="3">AddPaths(paths as <A href="class-clipperpathsmbs.html">ClipperPathsMBS</A>, PolyType as <A href="module-clippermbs.html">ClipperMBS</A>.PolyType, Closed as Boolean) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-clipper.html" translate="no">Clipper</A></td>
+<td class=grau><a href="plugins-mbstoolsplugin.html">MBS Tools Plugin</a></td>
+<td class=grau><a href="newinversion180.shtml" class=version>18.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Any number of subject and clip paths can be added to a clipping task, either individually via the AddPath() method, or as groups via the AddPaths() method, or even using both methods.<BR>
+<B>Notes:</B> 
+<BR>
+&#39;Subject&#39; paths may be either open (lines) or closed (polygons) or even a mixture of both, but &#39;clipping&#39; paths must always be closed. Clipper allows polygons to clip both lines and other polygons, but doesn&#39;t allow lines to clip either lines or polygons.<BR>
+<BR>
+With closed paths, orientation should conform with the filling rule that will be passed via Clippper&#39;s Execute method.<BR>
+<BR>
+Path Coordinate range:<BR>
+Path coordinates must be between &plusmn; &amp;h3FFFFFFFFFFFFFFF (&plusmn; 4.6e+18), otherwise a range error will be thrown when attempting to add the path to the Clipper object. If coordinates can be kept between &plusmn; 0x3FFFFFFF (&plusmn; 1.0e+9), a modest increase in performance (approx. 15-20%) over the larger range can be achieved by avoiding large integer math.<BR>
+<BR>
+<BR>
+Return Value:<BR>
+The function will return false if the path is invalid for clipping. A path is invalid for clipping when:<BR>
+<UL><LI>
+it has less than 2 vertices
+</LI><LI>
+it has 2 vertices but is not an open path
+</LI><LI>
+the vertices are all co-linear and it is not an open path
+</LI></UL>
+<BR>
+Returns true on success.<BR>
+<p>See also:<ul>
+<li><A href="clipper-clipperenginembs-method.html#4">AddPaths(paths as ClipperPathsMBS, PolyType as Integer, Closed as Boolean) as Boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-clipperenginembs.html">ClipperEngineMBS</a>.<A name="4">AddPaths(paths as <A href="class-clipperpathsmbs.html">ClipperPathsMBS</A>, PolyType as Integer, Closed as Boolean) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-clipper.html" translate="no">Clipper</A></td>
+<td class=grau><a href="plugins-mbstoolsplugin.html">MBS Tools Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Any number of subject and clip paths can be added to a clipping task, either individually via the AddPath() method, or as groups via the AddPaths() method, or even using both methods.<BR>
+<p>See also:<ul>
+<li><A href="clipper-clipperenginembs-method.html#3">AddPaths(paths as ClipperPathsMBS, PolyType as ClipperMBS.PolyType, Closed as Boolean) as Boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-clipperenginembs.html">ClipperEngineMBS</a>.<A name="5">Clear</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-clipper.html" translate="no">Clipper</A></td>
+<td class=grau><a href="plugins-mbstoolsplugin.html">MBS Tools Plugin</a></td>
+<td class=grau><a href="newinversion180.shtml" class=version>18.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The Clear method removes any existing subject and clip polygons allowing the Clipper object to be reused for clipping operations on different polygon sets.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-clipperenginembs.html">ClipperEngineMBS</a>.<A name="6">Constructor(initOptions as integer = 0)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-clipper.html" translate="no">Clipper</A></td>
+<td class=grau><a href="plugins-mbstoolsplugin.html">MBS Tools Plugin</a></td>
+<td class=grau><a href="newinversion180.shtml" class=version>18.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The Clipper constructor creates an instance of the Clipper class. <BR>
+<B>Notes:</B> 
+<BR>
+One or more InitOptions may be passed as a parameter to set the corresponding properties. (These properties can still be set or reset after construction.)<BR>
+<BR>
+Options:<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">ReverseSolution</TD><TD valign="top">1</TD></TR>
+<TR><TD valign="top">StrictlySimple</TD><TD valign="top">2</TD></TR>
+<TR><TD valign="top">PreserveCollinear</TD><TD valign="top">4</TD></TR>
+</TABLE>
+</div>
+<div class="WLM">
+<b><a href="class-clipperenginembs.html">ClipperEngineMBS</a>.<A name="7">Execute(clipType as <A href="module-clippermbs.html">ClipperMBS</A>.ClipType, byref solution as <A href="class-clipperpathsmbs.html">ClipperPathsMBS</A>, fillType as <A href="module-clippermbs.html">ClipperMBS</A>.PolyFillType) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-clipper.html" translate="no">Clipper</A></td>
+<td class=grau><a href="plugins-mbstoolsplugin.html">MBS Tools Plugin</a></td>
+<td class=grau><a href="newinversion180.shtml" class=version>18.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Executes the clipper engine.<BR>
+<p>See also:<ul>
+<li><A href="clipper-clipperenginembs-method.html#8">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPathsMBS, subjFillType as ClipperMBS.PolyFillType, clipFillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#9">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPolyTreeMBS, fillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#10">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPolyTreeMBS, subjFillType as ClipperMBS.PolyFillType, clipFillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#11">Execute(clipType as Integer, byref solution as ClipperPathsMBS, fillType as Integer) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#12">Execute(clipType as Integer, byref solution as ClipperPathsMBS, subjFillType as Integer, clipFillType as Integer) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#13">Execute(clipType as Integer, byref solution as ClipperPolyTreeMBS, fillType as Integer) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#14">Execute(clipType as Integer, byref solution as ClipperPolyTreeMBS, subjFillType as Integer, clipFillType as Integer) as Boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-clipperenginembs.html">ClipperEngineMBS</a>.<A name="8">Execute(clipType as <A href="module-clippermbs.html">ClipperMBS</A>.ClipType, byref solution as <A href="class-clipperpathsmbs.html">ClipperPathsMBS</A>, subjFillType as <A href="module-clippermbs.html">ClipperMBS</A>.PolyFillType, clipFillType as <A href="module-clippermbs.html">ClipperMBS</A>.PolyFillType) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-clipper.html" translate="no">Clipper</A></td>
+<td class=grau><a href="plugins-mbstoolsplugin.html">MBS Tools Plugin</a></td>
+<td class=grau><a href="newinversion180.shtml" class=version>18.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Executes the clipper engine.<BR>
+<p>See also:<ul>
+<li><A href="clipper-clipperenginembs-method.html#7">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPathsMBS, fillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#9">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPolyTreeMBS, fillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#10">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPolyTreeMBS, subjFillType as ClipperMBS.PolyFillType, clipFillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#11">Execute(clipType as Integer, byref solution as ClipperPathsMBS, fillType as Integer) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#12">Execute(clipType as Integer, byref solution as ClipperPathsMBS, subjFillType as Integer, clipFillType as Integer) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#13">Execute(clipType as Integer, byref solution as ClipperPolyTreeMBS, fillType as Integer) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#14">Execute(clipType as Integer, byref solution as ClipperPolyTreeMBS, subjFillType as Integer, clipFillType as Integer) as Boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-clipperenginembs.html">ClipperEngineMBS</a>.<A name="9">Execute(clipType as <A href="module-clippermbs.html">ClipperMBS</A>.ClipType, byref solution as <A href="class-clipperpolytreembs.html">ClipperPolyTreeMBS</A>, fillType as <A href="module-clippermbs.html">ClipperMBS</A>.PolyFillType) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-clipper.html" translate="no">Clipper</A></td>
+<td class=grau><a href="plugins-mbstoolsplugin.html">MBS Tools Plugin</a></td>
+<td class=grau><a href="newinversion180.shtml" class=version>18.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Executes the clipper engine.<BR>
+<p>See also:<ul>
+<li><A href="clipper-clipperenginembs-method.html#7">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPathsMBS, fillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#8">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPathsMBS, subjFillType as ClipperMBS.PolyFillType, clipFillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#10">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPolyTreeMBS, subjFillType as ClipperMBS.PolyFillType, clipFillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#11">Execute(clipType as Integer, byref solution as ClipperPathsMBS, fillType as Integer) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#12">Execute(clipType as Integer, byref solution as ClipperPathsMBS, subjFillType as Integer, clipFillType as Integer) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#13">Execute(clipType as Integer, byref solution as ClipperPolyTreeMBS, fillType as Integer) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#14">Execute(clipType as Integer, byref solution as ClipperPolyTreeMBS, subjFillType as Integer, clipFillType as Integer) as Boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-clipperenginembs.html">ClipperEngineMBS</a>.<A name="10">Execute(clipType as <A href="module-clippermbs.html">ClipperMBS</A>.ClipType, byref solution as <A href="class-clipperpolytreembs.html">ClipperPolyTreeMBS</A>, subjFillType as <A href="module-clippermbs.html">ClipperMBS</A>.PolyFillType, clipFillType as <A href="module-clippermbs.html">ClipperMBS</A>.PolyFillType) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-clipper.html" translate="no">Clipper</A></td>
+<td class=grau><a href="plugins-mbstoolsplugin.html">MBS Tools Plugin</a></td>
+<td class=grau><a href="newinversion180.shtml" class=version>18.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Executes the clipper engine.<BR>
+<p>See also:<ul>
+<li><A href="clipper-clipperenginembs-method.html#7">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPathsMBS, fillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#8">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPathsMBS, subjFillType as ClipperMBS.PolyFillType, clipFillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#9">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPolyTreeMBS, fillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#11">Execute(clipType as Integer, byref solution as ClipperPathsMBS, fillType as Integer) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#12">Execute(clipType as Integer, byref solution as ClipperPathsMBS, subjFillType as Integer, clipFillType as Integer) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#13">Execute(clipType as Integer, byref solution as ClipperPolyTreeMBS, fillType as Integer) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#14">Execute(clipType as Integer, byref solution as ClipperPolyTreeMBS, subjFillType as Integer, clipFillType as Integer) as Boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-clipperenginembs.html">ClipperEngineMBS</a>.<A name="11">Execute(clipType as Integer, byref solution as <A href="class-clipperpathsmbs.html">ClipperPathsMBS</A>, fillType as Integer) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-clipper.html" translate="no">Clipper</A></td>
+<td class=grau><a href="plugins-mbstoolsplugin.html">MBS Tools Plugin</a></td>
+<td class=grau><a href="newinversion180.shtml" class=version>18.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Executes the clipper engine.<BR>
+<B>Notes:</B> 
+<BR>
+Once subject and clip paths have been assigned (via AddPath and/or AddPaths), Execute can then perform the clipping operation (intersection, union, difference or XOR) specified by the clipType parameter.<BR>
+<BR>
+The solution parameter can be either a Paths or PolyTree. The Paths is simpler than the PolyTree. Because of this it is quicker to populate and hence clipping performance is a little better (it&#39;s roughly 10% faster). However, the PolyTree class provides more information about the returned paths which may be important to users. Firstly, the PolyTree class preserves nested parent-child polygon relationships (ie outer polygons owning/containing holes and holes owning/containing other outer polygons etc). Also, only the PolyTree class can differentiate between open and closed paths since each PolyNode has an IsOpen property. (The Path structure has no member indicating whether it&#39;s open or closed.) For this reason, when open paths are passed to a Clipper object, the user must use a PolyTree object as the solution parameter, otherwise an exception will be raised.<BR>
+<BR>
+When a PolyTree object is used in a clipping operation on open paths, two ancilliary functions have been provided to quickly separate out open and closed paths from the solution - <A href="module-clippermbs.html">ClipperMBS</A>.OpenPathsFromPolyTree and <A href="module-clippermbs.html">ClipperMBS</A>.ClosedPathsFromPolyTree. PolyTreeToPaths is also available to convert path data to a Paths structure (irrespective of whether they&#39;re open or closed).<BR>
+<BR>
+There are several things to note about the solution paths returned:<BR>
+<UL><LI>
+they aren&#39;t in any specific order
+</LI><LI>
+they should never overlap or be self-intersecting (but see notes on rounding)
+</LI><LI>
+holes will be oriented opposite outer polygons
+</LI><LI>
+the solution fill type can be considered either EvenOdd or NonZero since it will comply with either filling rule
+</LI><LI>
+polygons may rarely share a common edge (though this is now very rare as of version 6)
+</LI></UL>
+<BR>
+The subjFillType and clipFillType parameters define the polygon fill rule to be applied to the polygons (ie closed paths) in the subject and clip paths respectively. (It&#39;s usual though obviously not essential that both sets of polygons use the same fill rule.)<BR>
+<BR>
+Execute can be called multiple times without reassigning subject and clip polygons (ie when different clipping operations are required on the same polygon sets).<BR>
+<p>See also:<ul>
+<li><A href="clipper-clipperenginembs-method.html#7">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPathsMBS, fillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#8">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPathsMBS, subjFillType as ClipperMBS.PolyFillType, clipFillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#9">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPolyTreeMBS, fillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#10">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPolyTreeMBS, subjFillType as ClipperMBS.PolyFillType, clipFillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#12">Execute(clipType as Integer, byref solution as ClipperPathsMBS, subjFillType as Integer, clipFillType as Integer) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#13">Execute(clipType as Integer, byref solution as ClipperPolyTreeMBS, fillType as Integer) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#14">Execute(clipType as Integer, byref solution as ClipperPolyTreeMBS, subjFillType as Integer, clipFillType as Integer) as Boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-clipperenginembs.html">ClipperEngineMBS</a>.<A name="12">Execute(clipType as Integer, byref solution as <A href="class-clipperpathsmbs.html">ClipperPathsMBS</A>, subjFillType as Integer, clipFillType as Integer) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-clipper.html" translate="no">Clipper</A></td>
+<td class=grau><a href="plugins-mbstoolsplugin.html">MBS Tools Plugin</a></td>
+<td class=grau><a href="newinversion180.shtml" class=version>18.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Executes the clipper engine.<BR>
+<p>See also:<ul>
+<li><A href="clipper-clipperenginembs-method.html#7">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPathsMBS, fillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#8">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPathsMBS, subjFillType as ClipperMBS.PolyFillType, clipFillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#9">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPolyTreeMBS, fillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#10">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPolyTreeMBS, subjFillType as ClipperMBS.PolyFillType, clipFillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#11">Execute(clipType as Integer, byref solution as ClipperPathsMBS, fillType as Integer) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#13">Execute(clipType as Integer, byref solution as ClipperPolyTreeMBS, fillType as Integer) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#14">Execute(clipType as Integer, byref solution as ClipperPolyTreeMBS, subjFillType as Integer, clipFillType as Integer) as Boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-clipperenginembs.html">ClipperEngineMBS</a>.<A name="13">Execute(clipType as Integer, byref solution as <A href="class-clipperpolytreembs.html">ClipperPolyTreeMBS</A>, fillType as Integer) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-clipper.html" translate="no">Clipper</A></td>
+<td class=grau><a href="plugins-mbstoolsplugin.html">MBS Tools Plugin</a></td>
+<td class=grau><a href="newinversion180.shtml" class=version>18.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Executes the clipper engine.<BR>
+<p>See also:<ul>
+<li><A href="clipper-clipperenginembs-method.html#7">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPathsMBS, fillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#8">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPathsMBS, subjFillType as ClipperMBS.PolyFillType, clipFillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#9">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPolyTreeMBS, fillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#10">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPolyTreeMBS, subjFillType as ClipperMBS.PolyFillType, clipFillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#11">Execute(clipType as Integer, byref solution as ClipperPathsMBS, fillType as Integer) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#12">Execute(clipType as Integer, byref solution as ClipperPathsMBS, subjFillType as Integer, clipFillType as Integer) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#14">Execute(clipType as Integer, byref solution as ClipperPolyTreeMBS, subjFillType as Integer, clipFillType as Integer) as Boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-clipperenginembs.html">ClipperEngineMBS</a>.<A name="14">Execute(clipType as Integer, byref solution as <A href="class-clipperpolytreembs.html">ClipperPolyTreeMBS</A>, subjFillType as Integer, clipFillType as Integer) as Boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-clipper.html" translate="no">Clipper</A></td>
+<td class=grau><a href="plugins-mbstoolsplugin.html">MBS Tools Plugin</a></td>
+<td class=grau><a href="newinversion180.shtml" class=version>18.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Executes the clipper engine.<BR>
+<p>See also:<ul>
+<li><A href="clipper-clipperenginembs-method.html#7">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPathsMBS, fillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#8">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPathsMBS, subjFillType as ClipperMBS.PolyFillType, clipFillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#9">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPolyTreeMBS, fillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#10">Execute(clipType as ClipperMBS.ClipType, byref solution as ClipperPolyTreeMBS, subjFillType as ClipperMBS.PolyFillType, clipFillType as ClipperMBS.PolyFillType) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#11">Execute(clipType as Integer, byref solution as ClipperPathsMBS, fillType as Integer) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#12">Execute(clipType as Integer, byref solution as ClipperPathsMBS, subjFillType as Integer, clipFillType as Integer) as Boolean</A></li>
+<li><A href="clipper-clipperenginembs-method.html#13">Execute(clipType as Integer, byref solution as ClipperPolyTreeMBS, fillType as Integer) as Boolean</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-clipperenginembs.html">ClipperEngineMBS</a>.<A name="15">GetBounds(byref left as integer, byref top as integer, byref right as integer, byref bottom as integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-clipper.html" translate="no">Clipper</A></td>
+<td class=grau><a href="plugins-mbstoolsplugin.html">MBS Tools Plugin</a></td>
+<td class=grau><a href="newinversion180.shtml" class=version>18.0</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+This method returns the axis-aligned bounding rectangle of all polygons that have been added to the Clipper object.<BR>
+<B>Notes:</B> 
+This call is more efficient than querying all bounds properties.<BR>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbstoolsplugin.html">MBS Tools Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=clipper-clipperenginembs-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

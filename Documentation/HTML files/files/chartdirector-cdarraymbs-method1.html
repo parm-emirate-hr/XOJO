@@ -1,0 +1,1343 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - CDArrayMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="CDArrayMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">CDArrayMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-cdarraymbs.html">CDArrayMBS</a> class.  </p>
+<p>
+<a href="chartdirector-cdarraymbs-method.html">Previous items</a>
+ 
+<a href="chartdirector-cdarraymbs-method2.html">Next items</a>
+</p>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="1">movCorr(interval as Integer, value() as Double)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Replaces each element of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object by the moving correlation with another array or with itself.<BR>
+<B>Notes:</B> 
+<BR>
+The interval parameter specifies the window size for computing moving correlation. The moving correlation is computed as the correlation coefficient between the <A href="class-cdarraymbs.html">CDArrayMBS</A> object and the other array, where only the current element and the previous (interval - 1) elements are considered in the computation.<BR>
+<BR>
+If the other array is not provided, it is assumed to be the sequence of numbers 0, 1, 2, 3, 4.... This is equivalent to checking if the elements of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object is linear.<BR>
+<BR>
+No moving correlation can be computed for the first (interval - 1) elements, because there are insufficient previous elements. So the first (interval - 1) elements will be replaced with kNoValue.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">interval</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The window size.b</TD><TD valign="top">[Empty_Array]</TD><TD valign="top">The array to be correlated with the <A href="class-cdarraymbs.html">CDArrayMBS</A> object. If this argument is an empty array, the sequence of numbers 0, 1, 2, 3, 4 .... will be used instead.</TD></TR>
+</TABLE>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="2">movMax(interval as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Replaces each element of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object by its moving maximum.<BR>
+<B>Notes:</B> 
+<BR>
+The interval parameter specifies the window size for computing moving average. The moving average is computed as the maximum of the current element with the previous (interval - 1) elements. No moving maximum can be computed for the first (interval - 1) elements, because there are insufficient previous elements. So the first (interval - 1) elements will be replaced with kNoValue.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">interval</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The window size.</TD></TR>
+</TABLE>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="3">movMed(interval as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Replaces each element of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object by its moving median.<BR>
+<B>Notes:</B> 
+<BR>
+The interval parameter specifies the window size for computing moving average. The moving average is computed as the median of the current element with the previous (interval - 1) elements. No moving median can be computed for the first (interval - 1) elements, because there are insufficient previous elements. So the first (interval - 1) elements will be replaced with kNoValue.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">interval</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The window size.</TD></TR>
+</TABLE>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="4">movMin(interval as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Replaces each element of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object by its moving minimum.<BR>
+<B>Notes:</B> 
+<BR>
+The interval parameter specifies the window size for computing moving average. The moving average is computed as the minimum of the current element with the previous (interval - 1) elements. No moving minimum can be computed for the first (interval - 1) elements, because there are insufficient previous elements. So the first (interval - 1) elements will be replaced with kNoValue.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">interval</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The window size.</TD></TR>
+</TABLE>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="5">movPercentile(interval as Integer, percentile as Double)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Replaces each element of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object by its moving percentile.<BR>
+<B>Notes:</B> 
+<BR>
+The interval parameter specifies the window size for computing moving average. The moving average is computed as the percentile of the current element with the previous (interval - 1) elements. No moving percentile can be computed for the first (interval - 1) elements, because there are insufficient previous elements. So the first (interval - 1) elements will be replaced with kNoValue.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">interval</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The window size.</TD></TR>
+<TR><TD valign="top">percentile</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The percentile to be computed. It should be between 0 - 100.</TD></TR>
+</TABLE>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="6">movStdDev(interval as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Replaces each element of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object by its moving standard deviation.<BR>
+<B>Notes:</B> 
+<BR>
+The interval parameter specifies the window size for computing moving average. The moving average is computed as the standard deviation of the current element with the previous (interval - 1) elements. No moving standard deviation can be computed for the first (interval - 1) elements, because there are insufficient previous elements. So the first (interval - 1) elements will be replaced with kNoValue.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">interval</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The window size.</TD></TR>
+</TABLE>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="7">mulArray(value as <A href="class-cdarraymbs.html">CDArrayMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion163.shtml" class=version>16.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Multiplies an array to the <A href="class-cdarraymbs.html">CDArrayMBS</A> object.<BR>
+<B>Notes:</B> 
+<BR>
+The array will be multiplied by multiplying each array element with the corresponding element of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">Values</TD><TD valign="top">(Mandatory)</TD><TD valign="top">A <A href="class-cdarraymbs.html">CDArrayMBS</A> with numbers to be multiplied to the <A href="class-cdarraymbs.html">CDArrayMBS</A> object.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdarraymbs-method1.html#8">mulArray(value() as Double)</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="8">mulArray(value() as Double)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Multiplies an array to the <A href="class-cdarraymbs.html">CDArrayMBS</A> object.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> src(-<span style="color: #336698;">1</span>) <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Double</span> = <span style="color: #0000FF;">Array</span>( <span style="color: #006633;">63.1</span>, <span style="color: #006633;">10.15</span>, <span style="color: #006633;">6.15</span>, <span style="color: #006633;">2.88</span> )<br /><span style="color: #0000FF;">dim</span> data <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">New</span> <A href="class-cdarraymbs.html">CDArrayMBS</A>(<span style="color: #0000FF;">array</span>(<span style="color: #006633;">2.0</span>, <span style="color: #006633;">2.0</span>, <span style="color: #006633;">2.0</span>, <span style="color: #006633;">2.0</span>))<br /><br />data.mulArray( src )<br /><br /><span style="color: #0000FF;">dim</span> lines(-<span style="color: #336698;">1</span>) <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span><br /><br />lines.Append str(data.count)+<span style="color: #6600FE;">&quot; values:&quot;</span><br />lines.Append <span style="color: #6600FE;">&quot;&quot;</span><br />lines.Append str(Data.getvalue(<span style="color: #336698;">0</span>))<br />lines.Append str(Data.getvalue(<span style="color: #336698;">1</span>))<br />lines.Append str(Data.getvalue(<span style="color: #336698;">2</span>))<br />lines.Append str(Data.getvalue(<span style="color: #336698;">3</span>))<br /><br />MsgBox Join(lines,EndOfLine)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+The array will be multiplied by multiplying each array element with the corresponding element of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">b</TD><TD valign="top">(Mandatory)</TD><TD valign="top">An array of numbers to be multiplied to the <A href="class-cdarraymbs.html">CDArrayMBS</A> object.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdarraymbs-method1.html#7">mulArray(value as CDArrayMBS)</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="9">mulValue(value as Double)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Multiplies a number to every element of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> data <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">New</span> <A href="class-cdarraymbs.html">CDArrayMBS</A>(<span style="color: #0000FF;">array</span>(<span style="color: #006633;">1.0</span>, <span style="color: #006633;">2.0</span>, <span style="color: #006633;">3.0</span>, <span style="color: #006633;">4.0</span>))<br /><br />data.mulValue(<span style="color: #336698;">5</span>)<br /><br /><span style="color: #0000FF;">dim</span> lines(-<span style="color: #336698;">1</span>) <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">string</span><br /><br />lines.Append str(data.count)+<span style="color: #6600FE;">&quot; values:&quot;</span><br />lines.Append <span style="color: #6600FE;">&quot;&quot;</span><br />lines.Append str(Data.getvalue(<span style="color: #336698;">0</span>))<br />lines.Append str(Data.getvalue(<span style="color: #336698;">1</span>))<br />lines.Append str(Data.getvalue(<span style="color: #336698;">2</span>))<br />lines.Append str(Data.getvalue(<span style="color: #336698;">3</span>))<br /><br />MsgBox Join(lines,EndOfLine)</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">b</TD><TD valign="top">(Mandatory)</TD><TD valign="top">A number to be multiplied to every element of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object.</TD></TR>
+</TABLE>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-chartdirector-pareto.html">/ChartDirector/pareto</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="10">percentile(p as Double) as double</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Gets the required percentile value of the elements of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object.<BR>
+<B>Notes:</B> 
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">p</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The percentile to get. It should be between 0 - 100.</TD></TR>
+</TABLE>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="11">rate(offset as Integer = 1)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Divides each element of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object by an earlier element in the same <A href="class-cdarraymbs.html">CDArrayMBS</A> object.<BR>
+<B>Notes:</B> 
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">offset</TD><TD valign="top">1</TD><TD valign="top">The difference in position between an element and the earlier element to divide it.</TD></TR>
+</TABLE>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="12">replace(a as Double, b as Double)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Finds elements that are equal to a given value and replace it with another value.<BR>
+<B>Notes:</B> 
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">a</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The value to be replaced.</TD></TR>
+<TR><TD valign="top">b</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The replacing value.</TD></TR>
+</TABLE>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="13">result as memoryblock</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Gets the content of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object as a memoryblock.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="14">selectEQZ</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Selects the elements of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object by checking if the elements of the given decisionArray is equal to zero.<BR>
+<B>Notes:</B> 
+<BR>
+The selected elements will be left unchanged. The remaining elements will be replaced by the given fillValue.<BR>
+<BR>
+If the decisionArray is empty, the <A href="class-cdarraymbs.html">CDArrayMBS</A> object itself will function as the decision array.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">decisionArray</TD><TD valign="top">[Empty_Array]</TD><TD valign="top">An array of numbers used to decide whether the corresponding elements in the <A href="class-cdarraymbs.html">CDArrayMBS</A> object is selected or not.</TD></TR>
+<TR><TD valign="top">fillValue</TD><TD valign="top">0</TD><TD valign="top">The value used to replace the elements that are not selected.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdarraymbs-method1.html#15">selectEQZ(decisionArray() as Double, fillValue as Double = 0)</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="15">selectEQZ(decisionArray() as Double, fillValue as Double = 0)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Selects the elements of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object by checking if the elements of the given decisionArray is equal to zero.<BR>
+<B>Notes:</B> 
+<BR>
+The selected elements will be left unchanged. The remaining elements will be replaced by the given fillValue.<BR>
+<BR>
+If the decisionArray is empty, the <A href="class-cdarraymbs.html">CDArrayMBS</A> object itself will function as the decision array.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">decisionArray</TD><TD valign="top">[Empty_Array]</TD><TD valign="top">An array of numbers used to decide whether the corresponding elements in the <A href="class-cdarraymbs.html">CDArrayMBS</A> object is selected or not.</TD></TR>
+<TR><TD valign="top">fillValue</TD><TD valign="top">0</TD><TD valign="top">The value used to replace the elements that are not selected.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdarraymbs-method1.html#14">selectEQZ</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="16">selectGEZ</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Selects the elements of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object by checking if the elements of the given decisionArray is greater than or equal to zero.<BR>
+<B>Notes:</B> 
+<BR>
+If the decisionArray is empty, the <A href="class-cdarraymbs.html">CDArrayMBS</A> object itself will function as the decision array.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">decisionArray</TD><TD valign="top">[Empty_Array]</TD><TD valign="top">An array of numbers used to decide whether the corresponding elements in the <A href="class-cdarraymbs.html">CDArrayMBS</A> object is selected or not.</TD></TR>
+<TR><TD valign="top">fillValue</TD><TD valign="top">0</TD><TD valign="top">The value used to replace the elements that are not selected.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdarraymbs-method1.html#17">selectGEZ(decisionArray() as Double, fillValue as Double = 0)</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="17">selectGEZ(decisionArray() as Double, fillValue as Double = 0)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Selects the elements of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object by checking if the elements of the given decisionArray is greater than or equal to zero.<BR>
+<B>Notes:</B> 
+<BR>
+If the decisionArray is empty, the <A href="class-cdarraymbs.html">CDArrayMBS</A> object itself will function as the decision array.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">decisionArray</TD><TD valign="top">[Empty_Array]</TD><TD valign="top">An array of numbers used to decide whether the corresponding elements in the <A href="class-cdarraymbs.html">CDArrayMBS</A> object is selected or not.</TD></TR>
+<TR><TD valign="top">fillValue</TD><TD valign="top">0</TD><TD valign="top">The value used to replace the elements that are not selected.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdarraymbs-method1.html#16">selectGEZ</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="18">selectGTZ</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Selects the elements of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object by checking if the elements of the given decisionArray is greater than zero.<BR>
+<B>Notes:</B> 
+<BR>
+The selected elements will be left unchanged. The remaining elements will be replaced by the given fillValue.<BR>
+<BR>
+If the decisionArray is empty, the <A href="class-cdarraymbs.html">CDArrayMBS</A> object itself will function as the decision array.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">decisionArray</TD><TD valign="top">[Empty_Array]</TD><TD valign="top">An array of numbers used to decide whether the corresponding elements in the <A href="class-cdarraymbs.html">CDArrayMBS</A> object is selected or not.</TD></TR>
+<TR><TD valign="top">fillValue</TD><TD valign="top">0</TD><TD valign="top">The value used to replace the elements that are not selected.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdarraymbs-method1.html#19">selectGTZ(decisionArray() as Double, fillValue as Double = 0)</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="19">selectGTZ(decisionArray() as Double, fillValue as Double = 0)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Selects the elements of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object by checking if the elements of the given decisionArray is greater than zero.<BR>
+<B>Notes:</B> 
+<BR>
+The selected elements will be left unchanged. The remaining elements will be replaced by the given fillValue.<BR>
+<BR>
+If the decisionArray is empty, the <A href="class-cdarraymbs.html">CDArrayMBS</A> object itself will function as the decision array.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">decisionArray</TD><TD valign="top">[Empty_Array]</TD><TD valign="top">An array of numbers used to decide whether the corresponding elements in the <A href="class-cdarraymbs.html">CDArrayMBS</A> object is selected or not.</TD></TR>
+<TR><TD valign="top">fillValue</TD><TD valign="top">0</TD><TD valign="top">The value used to replace the elements that are not selected.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdarraymbs-method1.html#18">selectGTZ</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="20">selectLEZ</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Selects the elements of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object by checking if the elements of the given decisionArray is less than or equal to zero.<BR>
+<B>Notes:</B> 
+<BR>
+The selected elements will be left unchanged. The remaining elements will be replaced by the given fillValue.<BR>
+<BR>
+If the decisionArray is empty, the <A href="class-cdarraymbs.html">CDArrayMBS</A> object itself will function as the decision array.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">decisionArray</TD><TD valign="top">[Empty_Array]</TD><TD valign="top">An array of numbers used to decide whether the corresponding elements in the <A href="class-cdarraymbs.html">CDArrayMBS</A> object is selected or not.</TD></TR>
+<TR><TD valign="top">fillValue</TD><TD valign="top">0</TD><TD valign="top">The value used to replace the elements that are not selected.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdarraymbs-method1.html#21">selectLEZ(decisionArray() as Double, fillValue as Double = 0)</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="21">selectLEZ(decisionArray() as Double, fillValue as Double = 0)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Selects the elements of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object by checking if the elements of the given decisionArray is less than or equal to zero.<BR>
+<B>Notes:</B> 
+<BR>
+The selected elements will be left unchanged. The remaining elements will be replaced by the given fillValue.<BR>
+<BR>
+If the decisionArray is empty, the <A href="class-cdarraymbs.html">CDArrayMBS</A> object itself will function as the decision array.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">decisionArray</TD><TD valign="top">[Empty_Array]</TD><TD valign="top">An array of numbers used to decide whether the corresponding elements in the <A href="class-cdarraymbs.html">CDArrayMBS</A> object is selected or not.</TD></TR>
+<TR><TD valign="top">fillValue</TD><TD valign="top">0</TD><TD valign="top">The value used to replace the elements that are not selected.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdarraymbs-method1.html#20">selectLEZ</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="22">selectLTZ</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Selects the elements of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object by checking if the elements of the given decisionArray is less than zero.<BR>
+<B>Notes:</B> 
+<BR>
+The selected elements will be left unchanged. The remaining elements will be replaced by the given fillValue.<BR>
+<BR>
+If the decisionArray is empty, the <A href="class-cdarraymbs.html">CDArrayMBS</A> object itself will function as the decision array.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">decisionArray</TD><TD valign="top">[Empty_Array]</TD><TD valign="top">An array of numbers used to decide whether the corresponding elements in the <A href="class-cdarraymbs.html">CDArrayMBS</A> object is selected or not.</TD></TR>
+<TR><TD valign="top">fillValue</TD><TD valign="top">0</TD><TD valign="top">The value used to replace the elements that are not selected.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdarraymbs-method1.html#23">selectLTZ(decisionArray() as Double, fillValue as Double = 0)</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="23">selectLTZ(decisionArray() as Double, fillValue as Double = 0)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Selects the elements of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object by checking if the elements of the given decisionArray is less than zero.<BR>
+<B>Notes:</B> 
+<BR>
+The selected elements will be left unchanged. The remaining elements will be replaced by the given fillValue.<BR>
+<BR>
+If the decisionArray is empty, the <A href="class-cdarraymbs.html">CDArrayMBS</A> object itself will function as the decision array.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">decisionArray</TD><TD valign="top">[Empty_Array]</TD><TD valign="top">An array of numbers used to decide whether the corresponding elements in the <A href="class-cdarraymbs.html">CDArrayMBS</A> object is selected or not.</TD></TR>
+<TR><TD valign="top">fillValue</TD><TD valign="top">0</TD><TD valign="top">The value used to replace the elements that are not selected.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdarraymbs-method1.html#22">selectLTZ</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="24">selectNEZ</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The selected elements will be left unchanged. The remaining elements will be replaced by the given fillValue.<BR>
+<B>Notes:</B> 
+<BR>
+If the decisionArray is empty, the <A href="class-cdarraymbs.html">CDArrayMBS</A> object itself will function as the decision array.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">decisionArray</TD><TD valign="top">[Empty_Array]</TD><TD valign="top">An array of numbers used to decide whether the corresponding elements in the <A href="class-cdarraymbs.html">CDArrayMBS</A> object is selected or not.</TD></TR>
+<TR><TD valign="top">fillValue</TD><TD valign="top">0</TD><TD valign="top">The value used to replace the elements that are not selected.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdarraymbs-method1.html#25">selectNEZ(decisionArray() as Double, fillValue as Double = 0)</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="25">selectNEZ(decisionArray() as Double, fillValue as Double = 0)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The selected elements will be left unchanged. The remaining elements will be replaced by the given fillValue.<BR>
+<B>Notes:</B> 
+<BR>
+If the decisionArray is empty, the <A href="class-cdarraymbs.html">CDArrayMBS</A> object itself will function as the decision array.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">decisionArray</TD><TD valign="top">[Empty_Array]</TD><TD valign="top">An array of numbers used to decide whether the corresponding elements in the <A href="class-cdarraymbs.html">CDArrayMBS</A> object is selected or not.</TD></TR>
+<TR><TD valign="top">fillValue</TD><TD valign="top">0</TD><TD valign="top">The value used to replace the elements that are not selected.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdarraymbs-method1.html#24">selectNEZ</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="26">selectRegularSpacing(majorTickStep as Integer, minorTickStep as Integer = 0, initialMargin as Integer = 0)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Selects an evenly spaced subset of elements of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object.<BR>
+<B>Notes:</B> 
+<BR>
+The primary purpose of this method is to select the regularly spaced elements as ticks on an enumerated axis.<BR>
+<BR>
+For example, if the majorTickStep is 10, and minorTickStep is 5, this method will select one out of 10 elements as major tick elements, and one of out of 5 elements as minor tick elements.<BR>
+<BR>
+Major tick elements will remain intact. The remaining minor ticks elements will have their values replaced with MinorTickOnly. Non-selected elements will have their values replaced with kNoValue, so they will not appear on the axis. The resulting array can be used directly in Axis.setLabels.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">majorTickStep</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The spacing between major ticks.</TD></TR>
+<TR><TD valign="top">minorTickStep</TD><TD valign="top">0</TD><TD valign="top">The spacing between minor ticks. The default value of 0 means no minor tick will be used.</TD></TR>
+<TR><TD valign="top">initialMargin</TD><TD valign="top">0</TD><TD valign="top">The position of the first tick.</TD></TR>
+</TABLE>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="27">selectStartOfDay(majorTickStep as Integer = 1, initialMargin as Double = 10800.0)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Selects the elements of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object that represents a different day from the previous element.<BR>
+<B>Notes:</B> 
+<BR>
+This method assumes the elements of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object are dates/times.<BR>
+<BR>
+The primary purpose of this method is to select the appropriate elements as ticks on an enumerated axis.<BR>
+<BR>
+Suppose you want to plot a variable against time. The x-values of the data points will be an array of dates/times. If an enumerated x-axis is used (see <BR>
+Axis.setLabels), there will be a tick at every data point, which may be too dense if there are too many data points.<BR>
+<BR>
+This method can be used to reduce the ticks to one tick per day (or one tick per multiple days). This is by selecting the dates/times in the data array only if it is not the same day as the previous element in the array. The selected elements will be left unchanged, while the elements not select will be replaced by kNoValue. The resulting array can be used directly in Axis.setLabels.<BR>
+<BR>
+For the first data point, there is no previous data point to compare, so it is handled differently. The first data point will be selected if it is near the beginning of the day it represents. By default, near means within 3 hours (10800 seconds). This is configurable using the initialMargin argument.<BR>
+<BR>
+Note that if the data points does not have data in a certain time range, no element can be selected in that time range, and so there will be no tick for that time range. This is appropriate for many chart types, such as finance charts, in which missing time ranges (non-trading hours, holidays, etc) are traditionally skipped.<BR>
+<BR>
+However, if the data points may contain missing time ranges, but the ticks cannot be skipped, it may be more appropriate to use a non-enumerated x-axis by using Layer.setXData and Axis.setDateScale.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">majorTickStep</TD><TD valign="top">1</TD><TD valign="top">The tick step. The default value of 1 means one tick per day. A value of n means one tick per n days.</TD></TR>
+<TR><TD valign="top">initialMargin</TD><TD valign="top">10800</TD><TD valign="top">The margin for the first data point. The first data point will be selected if it is within initialMargin number of seconds from beginning of the day it represents. The default is 3 hours (10800 seconds).</TD></TR>
+</TABLE>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="28">selectStartOfHour(majorTickStep as Integer = 1, initialMargin as Double = 300.0)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Selects the elements of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object that represents a different hour from the previous element.<BR>
+<B>Notes:</B> 
+<BR>
+This method assumes the elements of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object are dates/times.<BR>
+<BR>
+The primary purpose of this method is to select the appropriate elements as ticks on an enumerated axis.<BR>
+<BR>
+Suppose you want to plot a variable against time. The x-values of the data points will be an array of dates/times. If an enumerated x-axis is used (see <BR>
+Axis.setLabels), there will be a tick at every data point, which may be too dense if there are too many data points.<BR>
+<BR>
+This method can be used to reduce the ticks to one tick per hour (or one tick per multiple hours). This is by selecting the dates/times in the data array only if it is not the same hour as the previous element in the array. The selected elements will be left unchanged, while the elements not select will be replaced by kNoValue. The resulting array can be used directly in Axis.setLabels2.<BR>
+<BR>
+For the first data point, there is no previous data point to compare, so it is handled differently. The first data point will be selected if it is near the beginning of the hour it represents. By default, near means within 300 seconds. This is configurable using the initialMargin argument.<BR>
+<BR>
+Note that if the data points does not have data in a certain time range, no element can be selected in that time range, and so there will be no tick for that time range. This is appropriate for many chart types, such as finance charts, in which missing time ranges (non-trading hours, holidays, etc) are traditionally skipped.<BR>
+<BR>
+However, if the data points may contain missing time ranges, but the ticks cannot be skipped, it may be more appropriate to use a non-enumerated x-axis by using Layer.setXData and Axis.setDateScale.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">majorTickStep</TD><TD valign="top">1</TD><TD valign="top">The tick step. The default value of 1 means one tick per hour. A value of n means one tick per n hours.</TD></TR>
+<TR><TD valign="top">initialMargin</TD><TD valign="top">300</TD><TD valign="top">The margin for the first data point. The first data point will be selected if it is within initialMargin number of seconds from beginning of the hour it represents. The default is 300 seconds.</TD></TR>
+</TABLE>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="29">selectStartOfMinute(majorTickStep as Integer = 1, initialMargin as Double = 5.0)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion151.shtml" class=version>15.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Selects the elements of the array that represents a different minute from the previous element.<BR>
+<B>Notes:</B> 
+<BR>
+This method assumes the elements of the ArrayMath object are dates/times.<BR>
+<BR>
+The primary purpose of this method is to select the appropriate elements as ticks on an enumerated axis.<BR>
+<BR>
+Suppose you want to plot a variable against time. The x-values of the data points will be an array of dates/times. If an enumerated x-axis is used (see <A href="class-cdaxismbs.html">CDAxisMBS</A>.setLabels), there will be a tick at every data point, which may be too dense if there are too many data points.<BR>
+<BR>
+This method can be used to reduce the ticks to one tick per minute (or one tick per multiple minutes). This is by selecting the dates/times in the data array only if it is not the same minute as the previous element in the array. The selected elements will be left unchanged, while the elements not select will be replaced by kNoValue. The resulting array can be used directly in <A href="class-cdaxismbs.html">CDAxisMBS</A>.setLabels2.<BR>
+<BR>
+For the first data point, there is no previous data point to compare, so it is handled differently. The first data point will be selected if it is near the beginning of the minute it represents. By default, near means within 5 seconds. This is configurable using the initialMargin argument.<BR>
+<BR>
+Note that if the data points does not have data in a certain time range, no element can be selected in that time range, and so there will be no tick for that time range. This is appropriate for many chart types, such as finance charts, in which missing time ranges (non-trading hours, holidays, etc) are traditionally skipped.<BR>
+<BR>
+However, if the data points may contain missing time ranges, but the ticks cannot be skipped, it may be more appropriate to use a non-enumerated x-axis by using <A href="class-cdlayermbs.html">CDLayerMBS</A>.setXData and <A href="class-cdaxismbs.html">CDAxisMBS</A>.setDateScale3 (or <A href="class-cdaxismbs.html">CDAxisMBS</A>.setDateScale or <A href="class-cdaxismbs.html">CDAxisMBS</A>.setDateScale2).<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Argument</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">majorTickStep</TD><TD valign="top">1</TD><TD valign="top">The tick step. A value of n means one tick per n minutes.</TD></TR>
+<TR><TD valign="top">initialMargin</TD><TD valign="top">5</TD><TD valign="top">The margin for the first data point. The first data point will be selected if it is within initialMargin number of seconds from beginning of the minute it represents. The default is 5 seconds.</TD></TR>
+</TABLE>
+</div>
+<div class="WLM">
+<b><a href="class-cdarraymbs.html">CDArrayMBS</a>.<A name="30">selectStartOfMonth(majorTickStep as Integer = 1, initialMargin as Double = 432000.0)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Selects the elements of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object that represents a different month from the previous element.<BR>
+<B>Notes:</B> 
+<BR>
+This method assumes the elements of the <A href="class-cdarraymbs.html">CDArrayMBS</A> object are dates/times.<BR>
+<BR>
+The primary purpose of this method is to select the appropriate elements as ticks on an enumerated axis.<BR>
+<BR>
+Suppose you want to plot a variable against time. The x-values of the data points will be an array of dates/times. If an enumerated x-axis is used (see <BR>
+Axis.setLabels), there will be a tick at every data point, which may be too dense if there are too many data points.<BR>
+<BR>
+This method can be used to reduce the ticks to one tick per month (or one tick per multiple months). This is by selecting the dates/times in the data array only if it is not the same month as the previous element in the array. The selected elements will be left unchanged, while the elements not select will be replaced by kNoValue. The resulting array can be used directly in <BR>
+Axis.setLabels.<BR>
+<BR>
+For the first data point, there is no previous data point to compare, so it is handled differently. The first data point will be selected if it is near the beginning of the month it represents. By default, near means within 5 days (432000 seconds). This is configurable using the initialMargin argument.<BR>
+<BR>
+Note that if the data points does not have data in a certain time range, no element can be selected in that time range, and so there will be no tick for that time range. This is appropriate for many chart types, such as finance charts, in which missing time ranges (non-trading hours, holidays, etc) are traditionally skipped.<BR>
+<BR>
+However, if the data points may contain missing time ranges, but the ticks cannot be skipped, it may be more appropriate to use a non-enumerated x-axis by using Layer.setXData and Axis.setDateScale.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Parameter</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">majorTickStep</TD><TD valign="top">1</TD><TD valign="top">The tick step. The default value of 1 means one tick per month. A value of n means one tick per n months.</TD></TR>
+<TR><TD valign="top">initialMargin</TD><TD valign="top">432000</TD><TD valign="top">The margin for the first data point. The first data point will be selected if it is within initialMargin number of seconds from beginning of the month it represents. The default is 5 days (432000 seconds).</TD></TR>
+</TABLE>
+</div>
+<p>
+<a href="chartdirector-cdarraymbs-method.html">Previous items</a>
+ 
+<a href="chartdirector-cdarraymbs-method2.html">Next items</a>
+</p>
+<p>The items on this page are in the following plugins: <a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=chartdirector-cdarraymbs-method1">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

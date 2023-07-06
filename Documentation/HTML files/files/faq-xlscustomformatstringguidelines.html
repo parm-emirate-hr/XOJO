@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - FAQ</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="FAQ: XLS: Custom format string guidelines">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">FAQ</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="M">
+<b>FAQ.<A name="1">XLS: Custom format string guidelines</A></b><br>
+<B>Answer:</B> 
+You have to download the source code and compile a static version of the library.<BR>
+<B>Notes:</B> 
+<BR>
+Up to four sections of format codes can be specified. The format codes, separated by semicolons, define the formats for positive numbers, negative numbers, zero values, and text, in that order. If only two sections are specified, the first is used for positive numbers and zeros, and the second is used for negative numbers. If only one section is specified, it is used for all numbers. Four sections example:<BR>
+<BR>
+ #,###.00_);[Red](#,###.00);0.00;&quot;sales &quot;@<BR>
+<BR>
+The following table describes the different symbols that are available for use in custom number formats.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Symbol</TD><TD valign="top">Description and result</TD></TR>
+<TR><TD valign="top">0</TD><TD valign="top">Digit placeholder. For example, if the value 8.9 is to be displayed as 8.90, use the format #.00</TD></TR>
+<TR><TD valign="top"> #</TD><TD valign="top">Digit placeholder. This symbol follows the same rules as the 0 symbol. However, the application shall not display extra zeros when the number typed has fewer digits on either side of the decimal than there are # symbols in the format. For example, if the custom format is #.##, and 8.9 is in the cell, the number 8.9 is displayed.</TD></TR>
+<TR><TD valign="top">?</TD><TD valign="top">Digit placeholder. This symbol follows the same rules as the 0 symbol. However, the application shall put a space for insignificant zeros on either side of the decimal point so that decimal points are aligned in the column. For example, the custom format 0.0? aligns the decimal points for the numbers 8.9 and 88.99 in a column.</TD></TR>
+<TR><TD valign="top">. (period)</TD><TD valign="top">Decimal point.</TD></TR>
+<TR><TD valign="top">%</TD><TD valign="top">Percentage. If the cell contains a number between 0 and 1, and the custom format 0% is used, the application shall multiply the number by 100 and adds the percentage symbol in the cell.</TD></TR>
+<TR><TD valign="top">, (comma)</TD><TD valign="top">Thousands separator. The application shall separate thousands by commas if the format contains a comma that is enclosed by number signs (#) or by zeros. A comma that follows a placeholder scales the number by one thousand. For example, if the format is #.0,, and the cell value is 12,200,000 then the number 12.2 is displayed.</TD></TR>
+<TR><TD valign="top">E- E+ e- e+</TD><TD valign="top">Scientific format. The application shall display a number to the right of the &quot;E&quot; symbol that corresponds to the number of places that the decimal point was moved. For example, if the format is 0.00E+00, and the value 12,200,000 is in the cell, the number 1.22E+07 is displayed. If the number format is #0.0E+0, then the number 12.2E+6 is displayed.</TD></TR>
+<TR><TD valign="top">$-+/():space</TD><TD valign="top">Displays the symbol. If it is desired to display a character that differs from one of these symbols, precede the character with a backslash (\). Alternatively, enclose the character in quotation marks. For example, if the number format is (000), and the value 12 is in the cell, the number (012) is displayed.</TD></TR>
+<TR><TD valign="top">\</TD><TD valign="top">Display the next character in the format. The application shall not display the backslash. For example, if the number format is 0\!, and the value 3 is in the cell, the value 3! is displayed.</TD></TR>
+<TR><TD valign="top">*</TD><TD valign="top">Repeat the next character in the format enough times to fill the column to its current width. There shall not be more than one asterisk in one section of the format. If more than one asterisk appears in one section of the format, all but the last asterisk shall be ignored. For example, if the number format is 0*x, and the value 3 is in the cell, the value 3xxxxxx is displayed. The number of x characters that are displayed in the cell varies based on the width of the column.</TD></TR>
+<TR><TD valign="top">_ (underline)</TD><TD valign="top">Skip the width of the next character. This is useful for lining up negative and positive values in different cells of the same column. For example, the number format _(0.0_);(0.0) aligns the numbers 2.3 and -4.5 in the column even though the negative number is enclosed by parentheses.</TD></TR>
+<TR><TD valign="top">&quot;text&quot;</TD><TD valign="top">Display whatever text is inside the quotation marks. For example, the format 0.00 &quot;dollars&quot; displays 1.23 dollars when the value 1.23 is in the cell.</TD></TR>
+<TR><TD valign="top">@</TD><TD valign="top">Text placeholder. If text is typed in the cell, the text from the cell is placed in the format where the at symbol (@) appears. For example, if the number format is &quot;Bob &quot;@&quot; Smith&quot; (including quotation marks), and the value &quot;John&quot; is in the cell, the value Bob John Smith is displayed.</TD></TR>
+</TABLE>
+<BR>
+Specify colors<BR>
+<BR>
+To set the text color for a section of the format, type the name of one of the following eight colors in square brackets in the section. The color code must be the first item in the section.<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">[Black]</TD><TD valign="top">[Green]</TD><TD valign="top">[White]</TD><TD valign="top">[Blue]</TD><TD valign="top">[Magenta]</TD><TD valign="top">[Yellow]</TD><TD valign="top">[Cyan]</TD><TD valign="top">[Red]</TD></TR>
+</TABLE>
+Instead of using the name of the color, the color index can be used, like this [Color3] for Red. Valid numeric indexes for color range from 1 to 56, which reference by index to the legacy color palette.<BR>
+Specify conditions<BR>
+<BR>
+To set number formats that will be applied only if a number meets a specified condition, enclose the condition in square brackets. The condition consists of a comparison operator and a value. Comparison operators include: = Equal to; &gt; Greater than; &lt; Less than; &gt;= Greater than or equal to, &lt;= Less than or equal to, and &lt;&gt; Not equal to. For example, the following format displays numbers that are less than or equal to 100 in a red font and numbers that are greater than 100 in a blue font.<BR>
+[Red][&lt;=100];[Blue][&gt;100]<BR>
+If the cell value does not meet any of the criteria, then pound signs (&quot;#&quot;) are displayed across the width of the cell.<BR>
+Dates and times<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">To display</TD><TD valign="top">As</TD><TD valign="top">Use this code</TD></TR>
+<TR><TD valign="top">Months</TD><TD valign="top">1-12</TD><TD valign="top">m</TD></TR>
+<TR><TD valign="top">Months</TD><TD valign="top">01-12</TD><TD valign="top">mm</TD></TR>
+<TR><TD valign="top">Months</TD><TD valign="top">Jan-Dec</TD><TD valign="top">mmm</TD></TR>
+<TR><TD valign="top">Months</TD><TD valign="top">January-December</TD><TD valign="top">mmmm</TD></TR>
+<TR><TD valign="top">Months</TD><TD valign="top">J-D</TD><TD valign="top">mmmmm</TD></TR>
+<TR><TD valign="top">Days</TD><TD valign="top">1-31</TD><TD valign="top">d</TD></TR>
+<TR><TD valign="top">Days</TD><TD valign="top">01-31</TD><TD valign="top">dd</TD></TR>
+<TR><TD valign="top">Days</TD><TD valign="top">Sun-Sat</TD><TD valign="top">ddd</TD></TR>
+<TR><TD valign="top">Days</TD><TD valign="top">Sunday-Saturday</TD><TD valign="top">dddd</TD></TR>
+<TR><TD valign="top">Years</TD><TD valign="top">00-99</TD><TD valign="top">yy</TD></TR>
+<TR><TD valign="top">Years</TD><TD valign="top">1900-9999</TD><TD valign="top">yyyy</TD></TR>
+<TR><TD valign="top">Hours</TD><TD valign="top">0-23</TD><TD valign="top">h</TD></TR>
+<TR><TD valign="top">Hours</TD><TD valign="top">00-23</TD><TD valign="top">hh</TD></TR>
+<TR><TD valign="top">Minutes</TD><TD valign="top">0-59</TD><TD valign="top">m</TD></TR>
+<TR><TD valign="top">Minutes</TD><TD valign="top">00-59</TD><TD valign="top">mm</TD></TR>
+<TR><TD valign="top">Seconds</TD><TD valign="top">0-59</TD><TD valign="top">s</TD></TR>
+<TR><TD valign="top">Seconds</TD><TD valign="top">00-59</TD><TD valign="top">ss</TD></TR>
+<TR><TD valign="top">Time</TD><TD valign="top">4 AM</TD><TD valign="top">h AM/PM</TD></TR>
+<TR><TD valign="top">Time</TD><TD valign="top">4:36 PM</TD><TD valign="top">h:mm AM/PM</TD></TR>
+<TR><TD valign="top">Time</TD><TD valign="top">4:36:03 P</TD><TD valign="top">h:mm:ss A/P</TD></TR>
+<TR><TD valign="top">Time</TD><TD valign="top">4:36:03.75</TD><TD valign="top">h:mm:ss.00</TD></TR>
+<TR><TD valign="top">Elapsed time</TD><TD valign="top">1:02</TD><TD valign="top">[h]:mm</TD></TR>
+<TR><TD valign="top">Elapsed time</TD><TD valign="top">62:16</TD><TD valign="top">[mm]:ss</TD></TR>
+<TR><TD valign="top">Elapsed time</TD><TD valign="top">3735.80</TD><TD valign="top">[ss].00</TD></TR>
+</TABLE>
+Examples<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">To display</TD><TD valign="top">As</TD><TD valign="top">Use this code</TD></TR>
+<TR><TD valign="top">1234.59</TD><TD valign="top">1234.6</TD><TD valign="top">####.#</TD></TR>
+<TR><TD valign="top">8.9</TD><TD valign="top">8.900</TD><TD valign="top">#.000</TD></TR>
+<TR><TD valign="top">.631</TD><TD valign="top">0.6</TD><TD valign="top">0.#</TD></TR>
+<TR><TD valign="top">12</TD><TD valign="top">12.0</TD><TD valign="top">#.0#</TD></TR>
+<TR><TD valign="top">1234.568</TD><TD valign="top">1234.57</TD><TD valign="top">#.0#</TD></TR>
+<TR><TD valign="top">44.398</TD><TD valign="top">44.398</TD><TD valign="top">???.???</TD></TR>
+<TR><TD valign="top">102.65</TD><TD valign="top">102.65</TD><TD valign="top">???.???</TD></TR>
+<TR><TD valign="top">2.8</TD><TD valign="top">2.8</TD><TD valign="top">???.???</TD></TR>
+<TR><TD valign="top">5.25</TD><TD valign="top">5 1/4</TD><TD valign="top"># ??/??</TD></TR>
+<TR><TD valign="top">5.3</TD><TD valign="top">5 3/10</TD><TD valign="top"># ??/??</TD></TR>
+<TR><TD valign="top">12000</TD><TD valign="top">12,000</TD><TD valign="top">#,###</TD></TR>
+<TR><TD valign="top">12000</TD><TD valign="top">12</TD><TD valign="top">#,</TD></TR>
+<TR><TD valign="top">12400000</TD><TD valign="top">12.4</TD><TD valign="top">0.0,,</TD></TR>
+</TABLE>
+</div>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=faq-xlscustomformatstringguidelines">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,592 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - CLMemMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="CLMemMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">CLMemMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-clmemmbs.html">CLMemMBS</a> class.  </p>
+<div class="M">
+<b><a href="class-clmemmbs.html">CLMemMBS</a>.<A name="1">Constructor(Context as <A href="class-clcontextmbs.html">CLContextMBS</A>, Flags as UInt64, ImageFormat as <A href="class-climageformatmbs.html">CLImageFormatMBS</A>, Width as Integer, Height as Integer, Depth as Integer, RowPitch as Integer, SlicePitch as Integer, HostPtr as Memoryblock = nil)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a 3D image object.<BR>
+<B>Notes:</B> 
+<BR>
+context: A valid OpenCL context on which the image object is to be created.<BR>
+flags: A bit-field that is used to specify allocation and usage information about the image memory object being created. See kMemory* constants.<BR>
+ImageFormat: the image format properties of the image to be allocated. <BR>
+Width, Height: The width and height of the image in pixels. These must be values greater than or equal to 1.<BR>
+Depth: The depth of the image in pixels. This must be a value greater than 1.<BR>
+RowPitch: The scan-line pitch in bytes. This must be 0 if HostPtr is nil and can be either 0 or greater than or equal to Width * size of element in bytes if HostPtr is not nil. If HostPtr is not nil and RowPitch is equal to 0, RowPitch is calculated as Width * size of element in bytes. If RowPitch is not 0, it must be a multiple of the image element size in bytes.<BR>
+SlicePitch: The size in bytes of each 2D slice in the 3D image. This must be 0 if HostPtr is nil and can be either 0 or greater than or equal to RowPitch * Height if HostPtr is not nil. If HostPtr is not nil and SlicePitch equal to 0, SlicePitch is calculated as RowPitch * Height. If SlicePitch is not 0, it must be a multiple of the RowPitch.<BR>
+HostPtr: A pointer to the image data that may already be allocated by the application. The size of the buffer that HostPtr points to must be greater than or equal to SlicePitch * image_depth. The size of each element in bytes must be a power of 2. The image data specified by HostPtr is stored as a linear sequence of adjacent 2D slices. Each 2D slice is a linear sequence of adjacent scanlines. Each scanline is a linear sequence of image elements.<BR>
+<BR>
+Lasterror is set.<BR>
+<p>See also:<ul>
+<li><A href="opencl-clmemmbs-method.html#2">Constructor(Context as CLContextMBS, Flags as UInt64, ImageFormat as CLImageFormatMBS, Width as Integer, Height as Integer, RowPitch as Integer, HostPtr as Memoryblock = nil)</A></li>
+<li><A href="opencl-clmemmbs-method.html#3">Constructor(Context as CLContextMBS, Flags as UInt64, Size as Integer, HostPtr as Memoryblock = nil)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-clmemmbs.html">CLMemMBS</a>.<A name="2">Constructor(Context as <A href="class-clcontextmbs.html">CLContextMBS</A>, Flags as UInt64, ImageFormat as <A href="class-climageformatmbs.html">CLImageFormatMBS</A>, Width as Integer, Height as Integer, RowPitch as Integer, HostPtr as Memoryblock = nil)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a 2D image object.<BR>
+<B>Notes:</B> 
+<BR>
+context: A valid OpenCL context on which the image object is to be created.<BR>
+flags: A bit-field that is used to specify allocation and usage information about the image memory object being created. See kMemory* constants.<BR>
+ImageFormat: The format properties of the image to be allocated. <BR>
+Width and Height: The width and height of the image in pixels. These must be values greater than or equal to 1.<BR>
+RowPitch: The scan-line pitch in bytes. This must be 0 if HostPtr is nil and can be either 0 or greater than or equal to Width * size of element in bytes if HostPtr is not nil. If HostPtr is not nil and RowPitch is equal to 0, RowPitch is calculated as Width * size of element in bytes. If RowPitch is not 0, it must be a multiple of the image element size in bytes.<BR>
+HostPtr: A pointer to the image data that may already be allocated by the application. The size of the buffer that HostPtr points to must be greater than or equal to RowPitch * Height. The size of each element in bytes must be a power of 2. The image data specified by HostPtr is stored as a linear sequence of adjacent scanlines. Each scanline is stored as a linear sequence of image elements.<BR>
+<BR>
+Lasterror is set.<BR>
+<p>See also:<ul>
+<li><A href="opencl-clmemmbs-method.html">Constructor(Context as CLContextMBS, Flags as UInt64, ImageFormat as CLImageFormatMBS, Width as Integer, Height as Integer, Depth as Integer, RowPitch as Integer, SlicePitch as Integer, HostPtr as Memoryblock = nil)</A></li>
+<li><A href="opencl-clmemmbs-method.html#3">Constructor(Context as CLContextMBS, Flags as UInt64, Size as Integer, HostPtr as Memoryblock = nil)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-clmemmbs.html">CLMemMBS</a>.<A name="3">Constructor(Context as <A href="class-clcontextmbs.html">CLContextMBS</A>, Flags as UInt64, Size as Integer, HostPtr as Memoryblock = nil)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Creates a new buffer object.<BR>
+<B>Notes:</B> 
+<BR>
+context: A valid OpenCL context used to create the buffer object.<BR>
+flags: A bit-field that is used to specify allocation and usage information such as the memory arena that should be used to allocate the buffer object and how it will be used. The following table describes the possible values for flags:<BR>
+size: The size in bytes of the buffer memory object to be allocated.<BR>
+HostPtr: A memoryblock that may already be allocated by the application. The size of the buffer that HostPtr points to must be greater than or equal to the size bytes.<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Flags</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">kMemoryReadWrite</TD><TD valign="top">This flag specifies that the memory object will be read and written by a kernel. This is the default.</TD></TR>
+<TR><TD valign="top">kMemoryWriteOnly</TD><TD valign="top">This flags specifies that the memory object will be written but not read by a kernel. Reading from a buffer or image object created with kMemoryWriteOnly inside a kernel is undefined.</TD></TR>
+<TR><TD valign="top">kMemoryReadOnly</TD><TD valign="top">This flag specifies that the memory object is a read-only memory object when used inside a kernel. Writing to a buffer or image object created with kMemoryReadOnly inside a kernel is undefined.</TD></TR>
+<TR><TD valign="top">kMemoryUseHostPtr</TD><TD valign="top">This flag is valid only if HostPtr is not nil. If specified, it indicates that the application wants the OpenCL implementation to use memory referenced by HostPtr as the storage bits for the memory object. OpenCL implementations are allowed to cache the buffer contents pointed to by HostPtr in device memory. This cached copy can be used when kernels are executed on a device. The result of OpenCL commands that operate on multiple buffer objects created with the same HostPtr or overlapping host regions is considered to be undefined.</TD></TR>
+<TR><TD valign="top">kMemoryAllocHostPtr</TD><TD valign="top">This flag specifies that the application wants the OpenCL implementation to allocate memory from host accessible memory. kMemoryAllocHostPtr and kMemoryUseHostPtr are mutually exclusive.</TD></TR>
+<TR><TD valign="top">kMemoryCopyHostPtr</TD><TD valign="top">This flag is valid only if HostPtr is not nil. If specified, it indicates that the application wants the OpenCL implementation to allocate memory for the memory object and copy the data from memory referenced by HostPtr. kMemoryCopyHostPtr and kMemoryUseHostPtr are mutually exclusive. kMemoryCopyHostPtr can be used with kMemoryAllocHostPtr to initialize the contents of the cl_mem object allocated using host-accessible (e.g. PCIe) memory.</TD></TR>
+</TABLE>
+<BR>
+Lasterror is set.<BR>
+<p>See also:<ul>
+<li><A href="opencl-clmemmbs-method.html">Constructor(Context as CLContextMBS, Flags as UInt64, ImageFormat as CLImageFormatMBS, Width as Integer, Height as Integer, Depth as Integer, RowPitch as Integer, SlicePitch as Integer, HostPtr as Memoryblock = nil)</A></li>
+<li><A href="opencl-clmemmbs-method.html#2">Constructor(Context as CLContextMBS, Flags as UInt64, ImageFormat as CLImageFormatMBS, Width as Integer, Height as Integer, RowPitch as Integer, HostPtr as Memoryblock = nil)</A></li>
+</ul></p>
+</div>
+<div class="M">
+<b><a href="class-clmemmbs.html">CLMemMBS</a>.<A name="4">Context as <A href="class-clcontextmbs.html">CLContextMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return context specified when memory object is created.<BR>
+<B>Notes:</B> 
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-clmemmbs.html">CLMemMBS</a>.<A name="5">Flags as UInt64</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return the flags argument value specified with Constructor.<BR>
+<B>Notes:</B> 
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-clmemmbs.html">CLMemMBS</a>.<A name="6">ImageDepth as UInt64</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return depth of the image in pixels. <BR>
+<B>Notes:</B> 
+<BR>
+For a 2D image, depth equals 0.<BR>
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-clmemmbs.html">CLMemMBS</a>.<A name="7">ImageElementSize as UInt64</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return size of each element of the image memory object given by image. <BR>
+<B>Notes:</B> 
+<BR>
+An element is made up of n channels. The value of n is given with image format descriptor.<BR>
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-clmemmbs.html">CLMemMBS</a>.<A name="8">ImageFormat as <A href="class-climageformatmbs.html">CLImageFormatMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return image format descriptor.<BR>
+<B>Notes:</B> 
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-clmemmbs.html">CLMemMBS</a>.<A name="9">ImageHeight as UInt64</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return height of image in pixels.<BR>
+<B>Notes:</B> 
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-clmemmbs.html">CLMemMBS</a>.<A name="10">ImageRowPitch as UInt64</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return size in bytes of a row of elements of the image object given by image.<BR>
+<B>Notes:</B> 
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-clmemmbs.html">CLMemMBS</a>.<A name="11">ImageSlicePitch as UInt64</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return size in bytes of a 2D slice for the 3D image object given by image. <BR>
+<B>Notes:</B> 
+<BR>
+For a 2D image object this value will be 0.<BR>
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-clmemmbs.html">CLMemMBS</a>.<A name="12">ImageWidth as UInt64</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return width of image in pixels.<BR>
+<B>Notes:</B> 
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-clmemmbs.html">CLMemMBS</a>.<A name="13">ReferenceCount as UInt32</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return memory object reference count. <BR>
+<B>Notes:</B> 
+<BR>
+The reference count returned should be considered immediately stale. It is unsuitable for general use in applications. This feature is provided for identifying memory leaks.<BR>
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-clmemmbs.html">CLMemMBS</a>.<A name="14">Size as UInt64</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Return actual size of memory object in bytes.<BR>
+<B>Notes:</B> 
+Lasterror is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-clmemmbs.html">CLMemMBS</a>.<A name="15">Type as UInt32</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-opencl.html" translate="no">OpenCL</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns the memory type.<BR>
+<B>Notes:</B> 
+<BR>
+Either normal buffer, image 2D or image 3D.<BR>
+Lasterror is set.<BR>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=opencl-clmemmbs-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

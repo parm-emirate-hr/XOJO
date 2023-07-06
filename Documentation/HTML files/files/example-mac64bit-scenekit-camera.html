@@ -1,0 +1,222 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Mac64bit/SceneKit/Camera</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Mac64bit/SceneKit/Camera</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Mac64bit/SceneKit/Camera</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS Mac64bit Plugin, MBS MacBase Plugin, MBS MacCG Plugin, MBS Main Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Mac64bit/SceneKit/Camera<BR>
+This example is the version from Tue, 4th May 2020.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Camera.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Window1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Mapp <span style="color:#0000FF;font-weight: bold">Inherits</span> SCNControlMBS</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Mapp <span style="color:#0000FF;font-weight: bold">Inherits</span> SCNControlMBS</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+				MyView = <span style="color:#0000FF;font-weight: bold">Me</span>.View
+				MyScene = <span style="color:#0000FF;font-weight: bold">New</span> SCNSceneMBS
+				MyView.scene = MyScene
+				myView.autoenablesDefaultLighting = <span style="color:#0000FF;font-weight: bold">True</span>
+				
+				MyCamera = <span style="color:#0000FF;font-weight: bold">New</span> SCNCameraMBS
+				CameraNode = <span style="color:#0000FF;font-weight: bold">New</span> SCNNodeMBS
+				CameraNode.Camera = MyCamera
+				CameraNode.Position = <span style="color:#0000FF;font-weight: bold">New</span> SCNVector3MBS(<span style="color:#326598">0</span>, <span style="color:#326598">0</span>, <span style="color:#326598">7</span>)
+				
+				MyCamera.zNear = <span style="color:#006532">0.7</span>
+				MyCamera.zFar = <span style="color:#326598">23</span>
+				
+				myview.pointOfView = CameraNode
+				
+				MyView.allowsCameraControl = <span style="color:#0000FF;font-weight: bold">True</span>
+				myView.backgroundColor = NSColorMBS.blackColor
+				Rotate90Degree
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Top <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Top <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Point</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">view</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">top</span>
+				
+				CameraNode.Position = <span style="color:#0000FF;font-weight: bold">New</span> SCNVector3MBS(<span style="color:#326598">0</span>, <span style="color:#326598">7</span>, <span style="color:#326598">0</span>)
+				CameraNode.EulerAngles = <span style="color:#0000FF;font-weight: bold">New</span> SCNVector3MBS(<span style="color:#006532">4.71239</span>, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>)
+				myview.pointOfView = CameraNode
+				myview.play
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control left <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance left <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Point</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">view</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">left</span> <span style="color:#7F0000;text-style:italic">side</span>
+				CameraNode.Position = <span style="color:#0000FF;font-weight: bold">New</span> SCNVector3MBS(<span style="color:#326598">7</span>, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>)
+				CameraNode.EulerAngles = <span style="color:#0000FF;font-weight: bold">New</span> SCNVector3MBS(<span style="color:#326598">0</span>, <span style="color:#006532">1.5708</span>, <span style="color:#326598">0</span>)
+				myview.pointOfView = CameraNode
+				myview.play
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control right <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance right <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Point</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">view</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">right</span> <span style="color:#7F0000;text-style:italic">side</span>
+				CameraNode.Position = <span style="color:#0000FF;font-weight: bold">New</span> SCNVector3MBS(-<span style="color:#326598">7</span>, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>)
+				CameraNode.EulerAngles = <span style="color:#0000FF;font-weight: bold">New</span> SCNVector3MBS(<span style="color:#326598">0</span>, <span style="color:#006532">4.71239</span>, <span style="color:#326598">0</span>)
+				myview.pointOfView = CameraNode
+				
+				myview.play
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Front <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Front <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Point</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">view</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">front</span>
+				CameraNode.Position = <span style="color:#0000FF;font-weight: bold">New</span> SCNVector3MBS(<span style="color:#326598">0</span>, <span style="color:#326598">0</span>, <span style="color:#326598">7</span>)
+				CameraNode.EulerAngles = <span style="color:#0000FF;font-weight: bold">New</span> SCNVector3MBS(<span style="color:#326598">0</span>, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>)
+				myview.pointOfView = CameraNode
+				myview.play
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CameraControlCheck <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CameraControlCheck <span style="color:#0000FF;font-weight: bold">Inherits</span> CheckBox</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				MyView.allowsCameraControl = <span style="color:#0000FF;font-weight: bold">Me</span>.value
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Rotate90Degree()
+			<span style="color:#7F0000;text-style:italic">//Add</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Node</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Scene</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> NodeOneGeometry <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> SCNPyramidMBS(<span style="color:#326598">1</span>, <span style="color:#326598">1</span>, <span style="color:#326598">1</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> NodeOne <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> SCNNodeMBS(NodeOneGeometry)
+			NodeOneGeometry.firstMaterial.diffuse.contents = NSColorMBS.purpleColor
+			NodeOne.Position = <span style="color:#0000FF;font-weight: bold">New</span> SCNVector3MBS(<span style="color:#326598">0</span>, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>)
+			MyScene.rootNode.addChildNode(NodeOne)
+			
+			
+			<span style="color:#7F0000;text-style:italic">//The</span> <span style="color:#7F0000;text-style:italic">angle</span> <span style="color:#7F0000;text-style:italic">must</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">given</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">radians</span>
+			<span style="color:#7F0000;text-style:italic">//Convert:</span> <span style="color:#7F0000;text-style:italic">angleDegree*(Pi/180)</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> angleDegree <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = <span style="color:#326598">90</span>
+			<span style="color:#0000FF;font-weight: bold">Const</span> Pi = <span style="color:#006532">3.14159265358979323846264338327950</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> angleRad <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span>
+			angleRad = angleDegree * (Pi / <span style="color:#326598">180</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//create</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">movements</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> rotate90 <span style="color:#0000FF;font-weight: bold">As</span> SCNActionMBS = SCNActionMBS.rotateBy(angleRad, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, <span style="color:#326598">2</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> moveBy <span style="color:#0000FF;font-weight: bold">As</span> SCNActionMBS = SCNActionMBS.moveBy(<span style="color:#326598">1</span>, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, <span style="color:#326598">1</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> pos <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> SCNVector3MBS(<span style="color:#326598">0</span>, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> moveTo <span style="color:#0000FF;font-weight: bold">As</span> SCNActionMBS = SCNActionMBS.moveTo(pos, <span style="color:#326598">1</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> sequence <span style="color:#0000FF;font-weight: bold">As</span> SCNActionMBS = SCNActionMBS.sequence(<span style="color:#0000FF;font-weight: bold">Array</span> (rotate90, moveBy, moveTo))
+			<span style="color:#0000FF;font-weight: bold">Dim</span> repeat <span style="color:#0000FF;font-weight: bold">As</span> SCNActionMBS = SCNActionMBS.repeatActionForever(sequence)
+			NodeOne.runAction(repeat)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> CameraNode <span style="color:#0000FF;font-weight: bold">As</span> SCNNodeMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> MyCamera <span style="color:#0000FF;font-weight: bold">As</span> SCNCameraMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> MyScene <span style="color:#0000FF;font-weight: bold">As</span> SCNSceneMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> MyView <span style="color:#0000FF;font-weight: bold">As</span> SCNViewMBS</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MainMenuBar</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator2 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-mac64bit-scenekit-camerawithfixelements.html">/Mac64bit/SceneKit/Camera with fix elements</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmac64bitplugin.html">MBS Mac64bit Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-mac64bit-scenekit-camera">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

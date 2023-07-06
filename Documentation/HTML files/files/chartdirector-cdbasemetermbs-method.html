@@ -1,0 +1,944 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - CDBaseMeterMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="CDBaseMeterMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">CDBaseMeterMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-cdbasemetermbs.html">CDBaseMeterMBS</a> class.  </p>
+<div class="WLM">
+<b><a href="class-cdbasemetermbs.html">CDBaseMeterMBS</a>.<A name="1">addColorScale(colorStops() as Double, startPos as Integer = -2147483647, startWidth as Integer = -2147483647, endPos as Integer = -2147483647, endWidth as Integer = -2147483647, edgeColor as Integer = -1)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion151.shtml" class=version>15.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Adds a color scale to the meter.<BR>
+<B>Notes:</B> 
+<BR>
+A color scale is similar to a meter scale. Instead of using labels to denote the values, a color scale uses different colors for different values. The colors can vary continuously or in discrete steps. The width of the color scale can also vary based on the value. There can be multiple more than one color scale in a meter.<BR>
+<BR>
+A color scale is defined with an array of numbers. For a continuous color scale, each pair of numbers represents a value and its associated color. For example, to define a continuous color scale in which 0 is blue (0000FF), 50 is yellow (FFFF00) and 100 is red (FF0000), the numbers should be:<BR>
+<BR>
+0.0, &amp;h0000ff, 50.0, &amp;hffff00, 100.0, &amp;hff0000<BR>
+<BR>
+For a step color scale, the number of colors would be one less than the number of values. For example, to define a step color scale in which 0 to 50 is red (FF0000), and 50 to 100 is green (00FF00), the numbers will be:<BR>
+<BR>
+0.0, &amp;hff000, 50.0, &amp;h00ff00, 100.0<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Argument</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">colorStops</TD><TD valign="top">(Mandatory)</TD><TD valign="top">An array of numbers alternating between values and colors. If the number count is even, the array will define a continuous color scale, otherwise it will define a step color scale.</TD></TR>
+<TR><TD valign="top">startPos</TD><TD valign="top">-&amp;h7fffffff</TD><TD valign="top">The position of the starting point of the color scale. For an angular meter, the position refers to the radius, and the default is the meter scale radius (see AngularMeter.setMeter). For a linear meter, the position refers to the x or y coordinate depending on whether the meter is vertical or horizontal, and the default is the leftX or topY coordinate of the meter scale (see LinearMeter.setMeter).</TD></TR>
+<TR><TD valign="top">startWidth</TD><TD valign="top">-&amp;h7fffffff</TD><TD valign="top">The width at the starting point of the color scale. A positive value means the width is in the direction of increasing &quot;position&quot;, while a negative value means decreasing &quot;position&quot;. Please refer to the description of startPos on the meaning of &quot;position&quot; for various types of meters. The default is the length of the major tick (see BaseMeter.setTickLength).</TD></TR>
+<TR><TD valign="top">endPos</TD><TD valign="top">-&amp;h7fffffff</TD><TD valign="top">The position of the ending point of the color scale. Please refer to the description of startPos above on how the position parameter is interpreted. The default is for the ending position to be equal to the starting position.</TD></TR>
+<TR><TD valign="top">endWidth</TD><TD valign="top">-&amp;h7fffffff</TD><TD valign="top">The width at the ending point of the color scale. Please refer to the description of startWidth above on how the width parameter is interpreted. The default is for the ending width to be equal to the starting width.</TD></TR>
+<TR><TD valign="top">edgeColor</TD><TD valign="top">-1</TD><TD valign="top">The edge color of the color scale. The default is to have no edge.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdbasemetermbs-method.html#2">addColorScale(colorStops() as Double, startPos as Integer, startWidth as Integer, endPos as Integer, endWidth as Integer, edgeColor as color)</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdbasemetermbs.html">CDBaseMeterMBS</a>.<A name="2">addColorScale(colorStops() as Double, startPos as Integer, startWidth as Integer, endPos as Integer, endWidth as Integer, edgeColor as color)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion151.shtml" class=version>15.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Adds a color scale to the meter.<BR>
+<B>Notes:</B> 
+<BR>
+A color scale is similar to a meter scale. Instead of using labels to denote the values, a color scale uses different colors for different values. The colors can vary continuously or in discrete steps. The width of the color scale can also vary based on the value. There can be multiple more than one color scale in a meter.<BR>
+<BR>
+A color scale is defined with an array of numbers. For a continuous color scale, each pair of numbers represents a value and its associated color. For example, to define a continuous color scale in which 0 is blue (0000FF), 50 is yellow (FFFF00) and 100 is red (FF0000), the numbers should be:<BR>
+<BR>
+0.0, &amp;h0000ff, 50.0, &amp;hffff00, 100.0, &amp;hff0000<BR>
+<BR>
+For a step color scale, the number of colors would be one less than the number of values. For example, to define a step color scale in which 0 to 50 is red (FF0000), and 50 to 100 is green (00FF00), the numbers will be:<BR>
+<BR>
+0.0, &amp;hff000, 50.0, &amp;h00ff00, 100.0<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Argument</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">colorStops</TD><TD valign="top">(Mandatory)</TD><TD valign="top">An array of numbers alternating between values and colors. If the number count is even, the array will define a continuous color scale, otherwise it will define a step color scale.</TD></TR>
+<TR><TD valign="top">startPos</TD><TD valign="top">-&amp;h7fffffff</TD><TD valign="top">The position of the starting point of the color scale. For an angular meter, the position refers to the radius, and the default is the meter scale radius (see AngularMeter.setMeter). For a linear meter, the position refers to the x or y coordinate depending on whether the meter is vertical or horizontal, and the default is the leftX or topY coordinate of the meter scale (see LinearMeter.setMeter).</TD></TR>
+<TR><TD valign="top">startWidth</TD><TD valign="top">-&amp;h7fffffff</TD><TD valign="top">The width at the starting point of the color scale. A positive value means the width is in the direction of increasing &quot;position&quot;, while a negative value means decreasing &quot;position&quot;. Please refer to the description of startPos on the meaning of &quot;position&quot; for various types of meters. The default is the length of the major tick (see BaseMeter.setTickLength).</TD></TR>
+<TR><TD valign="top">endPos</TD><TD valign="top">-&amp;h7fffffff</TD><TD valign="top">The position of the ending point of the color scale. Please refer to the description of startPos above on how the position parameter is interpreted. The default is for the ending position to be equal to the starting position.</TD></TR>
+<TR><TD valign="top">endWidth</TD><TD valign="top">-&amp;h7fffffff</TD><TD valign="top">The width at the ending point of the color scale. Please refer to the description of startWidth above on how the width parameter is interpreted. The default is for the ending width to be equal to the starting width.</TD></TR>
+<TR><TD valign="top">edgeColor</TD><TD valign="top">-1</TD><TD valign="top">The edge color of the color scale. The default is to have no edge.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdbasemetermbs-method.html">addColorScale(colorStops() as Double, startPos as Integer = -2147483647, startWidth as Integer = -2147483647, endPos as Integer = -2147483647, endWidth as Integer = -2147483647, edgeColor as Integer = -1)</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdbasemetermbs.html">CDBaseMeterMBS</a>.<A name="3">addLabel(v as Double, label as string)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Adds a label to a specific position on the meter scale.<BR>
+<B>Notes:</B> 
+<BR>
+By default, all labels will be associated major ticks on the scale. To associate a label with a minor tick instead , use &#39;-&#39; as the first character of the label. To associate a label with a micro tick instead, use &#39;:&#39; as the first character of the label. To draw the label without any tick at all, use &#39;~&#39; as the first character of the label.<BR>
+<BR>
+Leading &#39;-&#39;, &#39;~&#39; or &#39;:&#39; characters are tick specification characters and will not appear on the labels. They just specify the the tick style to be associated with the labels. If you want have a label that actually begins these characters, add &#39;\&#39; as the first character as the escape character.<BR>
+<BR>
+In some cases, it may be desirable to skip some labels. If you want to draw a major, minor or micro tick without any label, use &#39; &#39; (a space character), &#39;-&#39; or &#39;:&#39; as the only character in the label text. If you want leave a label position empty without a tick or a label, use an empty string.<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Argument</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">pos</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The position to add the label to in meter scale unit.</TD></TR>
+<TR><TD valign="top">label</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The label to add to the meter scale.</TD></TR>
+</TABLE>
+</div>
+<div class="WLM">
+<b><a href="class-cdbasemetermbs.html">CDBaseMeterMBS</a>.<A name="4">addPointer(value as Double, fillColor as color, edgeColor as color) as <A href="class-cdmeterpointermbs.html">CDMeterPointerMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Same as the other addPointer method, but uses color instead of integer data type for passing color values.<BR>
+<p>See also:<ul>
+<li><A href="chartdirector-cdbasemetermbs-method.html#5">addPointer(value as Double, fillColor as Integer = &hffff0001, edgeColor as Integer = -1) as CDMeterPointerMBS</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdbasemetermbs.html">CDBaseMeterMBS</a>.<A name="5">addPointer(value as Double, fillColor as Integer = &amp;hffff0001, edgeColor as Integer = -1) as <A href="class-cdmeterpointermbs.html">CDMeterPointerMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Adds a pointer to the meter.<BR>
+<B>Notes:</B> 
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Argument</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">value</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The value that the pointer will point to.</TD></TR>
+<TR><TD valign="top">fillColor</TD><TD valign="top">LineColor</TD><TD valign="top">The fill color of the pointer.</TD></TR>
+<TR><TD valign="top">edgeColor</TD><TD valign="top">-1</TD><TD valign="top">The edge color of the pointer. The default value of -1 means the edge color is the same as the fill color.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdbasemetermbs-method.html#4">addPointer(value as Double, fillColor as color, edgeColor as color) as CDMeterPointerMBS</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdbasemetermbs.html">CDBaseMeterMBS</a>.<A name="6">getCoor(v as Double) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Gets the geometric coordinates given the data value.<BR>
+<B>Notes:</B> 
+<BR>
+For an angular meter, this method returns the angular position of the pointer for the given data value in degrees. The angle is measure in the clockwise direction, with 0 being the upward pointing direction.<BR>
+<BR>
+For a linear meter, this method returns the linear pixel offset of the pointer for the given data value.<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Argument</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">v</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The input data value.</TD></TR>
+</TABLE>
+Return Value<BR>
+The geometric representation of the data value, which is an angle in degrees for an angular meter, and a linear pixel offset for a linear meter.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-cdbasemetermbs.html">CDBaseMeterMBS</a>.<A name="7">getLabel(v as Double) as string</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Gets the label at the specified position on the meter scale.<BR>
+<B>Notes:</B> 
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Argument</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">i</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The position specified as a value on the meter scale.</TD></TR>
+</TABLE>
+Return Value<BR>
+Returns the label at the specified position, or a null string if there is no label at that position.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-cdbasemetermbs.html">CDBaseMeterMBS</a>.<A name="8">getTicks as <A href="class-cdarraymbs.html">CDArrayMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns the positions of all ticks as values on the meter scale.<BR>
+<B>Notes:</B> 
+<BR>
+Return Value<BR>
+All array of numbers representing the positions of the ticks as values on the meter scale.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-cdbasemetermbs.html">CDBaseMeterMBS</a>.<A name="9">setLabelFormat(mainLabelFormat as string)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Sets the format of the labels computed by ChartDirector.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <A href="class-cdbasemetermbs.html">CDBaseMeterMBS</A><br /><br /><span style="color: #800000;">// you can use label formats like this:</span><br /><br />c.setLabelFormat(<span style="color: #6600FE;">&quot;&lt;*block,halign=left*&gt;&lt;*font=timesbi.ttf,size=12,underline=1*&gt;{label}&lt;*/font*&gt;&lt;*br*&gt;US$ {value}K ({percent}%)&quot;</span>)<br /><br /><span style="color: #800000;">// we can reduce that to this:</span><br /><br />c.setLabelFormat(<span style="color: #6600FE;">&quot;{label} {value} {percent}%&quot;</span>)<br /><br /><span style="color: #800000;">// and it shows 3 numbers. With |1 after the variable name, we define the decimals after dot:</span><br /><br />c.setLabelFormat(<span style="color: #6600FE;">&quot;{label} {value|1} {percent|1}%&quot;</span>)<br /><br /><span style="color: #800000;">// and</span><br /><br />c.setLabelFormat(<span style="color: #6600FE;">&quot;{label} {value|1.,} {percent|1.,}%&quot;</span>)<br /><br /><span style="color: #800000;">// uses dot for thousands and comma for decimal separator.</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+The method is mainly used when BaseMeter.setScale is used, in which case the label values are not directly specified but are computed by ChartDirector. For example, a format string of &quot;{value|2}&quot; will format the values with 2 decimal places.<BR>
+<BR>
+Please refer to Parameter Substitution and Formatting on all available format parameters.<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Argument</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">formatString</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The format string.</TD></TR>
+</TABLE>
+</div>
+<div class="WLM">
+<b><a href="class-cdbasemetermbs.html">CDBaseMeterMBS</a>.<A name="10">setLabelPos(labelInside as boolean, labelOffset as Integer = 0)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Sets the positions of the meter scale labels.<BR>
+<B>Notes:</B> 
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Argument</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">labelInside</TD><TD valign="top">(Mandatory)</TD><TD valign="top">A true value means that the labels are on the &#39;inward&#39; side of the meter scale. A false value means the labels are on the &#39;outward&#39; side of the meter scale.</TD></TR>
+</TABLE>
+<BR>
+For an angular meter, the default is for the labels on the &#39;inward&#39; side. For a linear meter, the default is for the labels on the &#39;outward&#39; side.<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">labelOffset</TD><TD valign="top">0</TD><TD valign="top">The offset, in pixels, of the labels position relative to the standard position. If the major tick is at the same side as the label, the standard starting position of the label is at the end point of the major tick. Otherwise, the standard starting position is on the meter scale.</TD></TR>
+</TABLE>
+<BR>
+A positive labelOffset means the labels should move more towards the &#39;inward&#39; or &#39;outward&#39; side, depending on the first parameter. A negative labelOffset means moving the labels towards the opposite direction.<BR>
+</div>
+<div class="WLM">
+<b><a href="class-cdbasemetermbs.html">CDBaseMeterMBS</a>.<A name="11">setLabelStyle(font as string = &quot;&quot;, fontsize as Double = -1, fontcolor as Integer = &amp;hffff0002, fontAngle as Double = 0) as <A href="class-cdtextboxmbs.html">CDTextBoxMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Sets the font style used to for the meter labels.<BR>
+<B>Notes:</B> 
+<BR>
+See Font Specification for details on various font attributes.<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Argument</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">font</TD><TD valign="top">&quot;bold&quot;</TD><TD valign="top">The font used to draw the labels.</TD></TR>
+<TR><TD valign="top">fontSize</TD><TD valign="top">-1</TD><TD valign="top">The font size used to draw the labels in points. A value of -1 means the font size is not changed. The default font size is 10 points for angular meters, and 8 points for linear meters.</TD></TR>
+<TR><TD valign="top">fontColor</TD><TD valign="top">TextColor</TD><TD valign="top">The color used to draw the labels.</TD></TR>
+<TR><TD valign="top">fontAngle</TD><TD valign="top">0</TD><TD valign="top">The rotation angle of the labels.</TD></TR>
+</TABLE>
+Return Value<BR>
+A TextBox object representing the prototype of the obj. This may be used to fine-tune the appearance of the obj.<BR>
+<BR>
+See font specification here:<BR>
+<a href="http://www.monkeybreadsoftware.net/faq-chartdirectorfontspecification.shtml" target=_blank>http://www.monkeybreadsoftware.net/faq-chartdirectorfontspecification.shtml</a><BR>
+<p>See also:<ul>
+<li><A href="chartdirector-cdbasemetermbs-method.html#12">setLabelStyle(font as string, fontsize as Double, fontcolor as color, fontAngle as Double = 0) as CDTextBoxMBS</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdbasemetermbs.html">CDBaseMeterMBS</a>.<A name="12">setLabelStyle(font as string, fontsize as Double, fontcolor as color, fontAngle as Double = 0) as <A href="class-cdtextboxmbs.html">CDTextBoxMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Same as the other setLabelStyle method, but uses color instead of integer data type for passing color values.<BR>
+<p>See also:<ul>
+<li><A href="chartdirector-cdbasemetermbs-method.html#11">setLabelStyle(font as string = "", fontsize as Double = -1, fontcolor as Integer = &hffff0002, fontAngle as Double = 0) as CDTextBoxMBS</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdbasemetermbs.html">CDBaseMeterMBS</a>.<A name="13">setLineWidth(axisWidth as Integer, majorTickWidth as Integer = 1, minorTickWidth as Integer = 1, microTickWidth as Integer = 1)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Sets the line widths of the scale line and the ticks on the meter.<BR>
+<B>Notes:</B> 
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Argument</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">axisWidth</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The line width for drawing the meter scale line in pixels. For an angular meter, the default is 1 pixel. For a linear meter, the default is 2 pixels.</TD></TR>
+<TR><TD valign="top">majorTickWidth</TD><TD valign="top">1</TD><TD valign="top">The line width of the major ticks in pixels. For a linear meter, if this method is not called, the initial major tick width is set to 2 pixels.</TD></TR>
+<TR><TD valign="top">minorTickWidth</TD><TD valign="top">1</TD><TD valign="top">The line width of the minor ticks in pixels.</TD></TR>
+<TR><TD valign="top">microTickWidth</TD><TD valign="top">1</TD><TD valign="top">The line width of the micro ticks in pixels.</TD></TR>
+</TABLE>
+</div>
+<div class="WLM">
+<b><a href="class-cdbasemetermbs.html">CDBaseMeterMBS</a>.<A name="14">setMeterColors(axisColor as color, labelColor as color, tickColor as color)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Same as the other setMeterColors method, but uses color instead of integer data type for passing color values.<BR>
+<p>See also:<ul>
+<li><A href="chartdirector-cdbasemetermbs-method.html#15">setMeterColors(axisColor as Integer, labelColor as Integer = -1, tickColor as Integer = -1)</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdbasemetermbs.html">CDBaseMeterMBS</a>.<A name="15">setMeterColors(axisColor as Integer, labelColor as Integer = -1, tickColor as Integer = -1)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Sets the colors of the meter scale line, scale label and tick.<BR>
+<B>Notes:</B> 
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Argument</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">axisColor</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The color for drawing the meter scale line. The default is LineColor.</TD></TR>
+<TR><TD valign="top">labelColor</TD><TD valign="top">-1</TD><TD valign="top">The color for drawing the scale labels. Passing -1 in this argument means the label color is not changed. The default label color is TextColor.</TD></TR>
+<TR><TD valign="top">tickColor</TD><TD valign="top">-1</TD><TD valign="top">The color for drawing the ticks. Passing -1 in this argument means the tick color is not changed. The default tick color is LineColor.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdbasemetermbs-method.html#14">setMeterColors(axisColor as color, labelColor as color, tickColor as color)</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdbasemetermbs.html">CDBaseMeterMBS</a>.<A name="16">setScale(lowerLimit as Double, upperLimit as Double, labels() as Double, formatstring as string = &quot;&quot;)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Sets the meter to use the given scale with the given numeric labels and tick positions.<BR>
+<B>Notes:</B> 
+<BR>
+ChartDirector will distribute the labels evenly on the scale. By default, all labels are associated with major ticks. If you want certain positions to show a minor or micro ticks only, use MinorTickOnly or MicroTickOnly as the label values for those positions.<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Argument</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">lowerLimit</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The lower limit of the meter scale.</TD></TR>
+<TR><TD valign="top">upperLimit</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The upper limit of the meter scale.</TD></TR>
+<TR><TD valign="top">labels</TD><TD valign="top">(Mandatory)</TD><TD valign="top">An array of numbers to be used as the labels on the meter scale.</TD></TR>
+<TR><TD valign="top">formatString</TD><TD valign="top">&quot;&quot;</TD><TD valign="top">The format string for formatting the numbers. An empty string means the format will be automatically determined.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdbasemetermbs-method.html#17">setScale(lowerLimit as Double, upperLimit as Double, labels() as string)</A></li>
+<li><A href="chartdirector-cdbasemetermbs-method.html#18">setScale(lowerLimit as Double, upperLimit as Double, majorTickInc as Double = 0, minorTickInc as Double = 0, microTickInc as Double = 0)</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdbasemetermbs.html">CDBaseMeterMBS</a>.<A name="17">setScale(lowerLimit as Double, upperLimit as Double, labels() as string)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Sets the meter to use the given scale with the given text labels and tick positions.<BR>
+<B>Notes:</B> 
+<BR>
+ChartDirector will distribute the labels evenly on the scale. By default, all labels are associated with major ticks. These can be modified by using &#39;-&#39;, &#39;~&#39; or &#39;:&#39; as the first character. Please refer to BaseMeter.addLabel for details.<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Argument</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">lowerLimit</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The lower limit of the meter scale.</TD></TR>
+<TR><TD valign="top">upperLimit</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The upper limit of the meter scale.</TD></TR>
+<TR><TD valign="top">labels</TD><TD valign="top">(Mandatory)</TD><TD valign="top">An array of text strings to be used as the labels on the meter scale.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdbasemetermbs-method.html#16">setScale(lowerLimit as Double, upperLimit as Double, labels() as Double, formatstring as string = "")</A></li>
+<li><A href="chartdirector-cdbasemetermbs-method.html#18">setScale(lowerLimit as Double, upperLimit as Double, majorTickInc as Double = 0, minorTickInc as Double = 0, microTickInc as Double = 0)</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdbasemetermbs.html">CDBaseMeterMBS</a>.<A name="18">setScale(lowerLimit as Double, upperLimit as Double, majorTickInc as Double = 0, minorTickInc as Double = 0, microTickInc as Double = 0)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Sets the meter to use the given scale.<BR>
+<B>Notes:</B> 
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Argument</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">lowerLimit</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The lower limit of the meter scale.</TD></TR>
+<TR><TD valign="top">upperLimit</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The upper limit of the meter scale.</TD></TR>
+<TR><TD valign="top">majorTickInc</TD><TD valign="top">0</TD><TD valign="top">The interval between major ticks. For example, a value of 10 means a major tick every 10 units in the meter scale. Each major tick will have an associated label for the value at the tick. A value of 0 disables major ticks.</TD></TR>
+<TR><TD valign="top">minorTickInc</TD><TD valign="top">0</TD><TD valign="top">The interval between minor ticks. For example, a value of 5 means a minor tick every 5 units in the meter scale. A value of 0 disables minor ticks.</TD></TR>
+<TR><TD valign="top">microTickInc</TD><TD valign="top">0</TD><TD valign="top">The interval between minor ticks. For example, a value of 1 means a minor tick every 1 units in the meter scale. A value of 0 disables micro ticks.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdbasemetermbs-method.html#16">setScale(lowerLimit as Double, upperLimit as Double, labels() as Double, formatstring as string = "")</A></li>
+<li><A href="chartdirector-cdbasemetermbs-method.html#17">setScale(lowerLimit as Double, upperLimit as Double, labels() as string)</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdbasemetermbs.html">CDBaseMeterMBS</a>.<A name="19">setTickLength(majorLen as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Set the lengths of the ticks.<BR>
+<B>Notes:</B> 
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Argument</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">majorLen</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The length of the major ticks in pixels. A positive value means the tick is at the &#39;outward&#39; direction of the meter. A negative value means the tick is at the &#39;inward&#39; direction.</TD></TR>
+</TABLE>
+<BR>
+For an angular meter, the default is -10 (10 pixels at the inward direction). For a horizontal linear meter, the default is the same height as the meter scale region in the inward direction. For a vertical linear meter, the default is the same width as the meter scale region in the inward direction.<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">minorLen</TD><TD valign="top">-7fffffff</TD><TD valign="top">The length of the minor ticks in pixels. The default is 60% of the length of the major ticks.</TD></TR>
+<TR><TD valign="top">microLen</TD><TD valign="top">-7fffffff</TD><TD valign="top">The length of the micro ticks in pixels. The default is 50% of the length of the minor ticks.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdbasemetermbs-method.html#20">setTickLength(majorLen as Integer, minorLen as Integer)</A></li>
+<li><A href="chartdirector-cdbasemetermbs-method.html#21">setTickLength(majorLen as Integer, minorLen as Integer, microLen as Integer)</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdbasemetermbs.html">CDBaseMeterMBS</a>.<A name="20">setTickLength(majorLen as Integer, minorLen as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Set the lengths of the ticks.<BR>
+<B>Notes:</B> 
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Argument</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">majorLen</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The length of the major ticks in pixels. A positive value means the tick is at the &#39;outward&#39; direction of the meter. A negative value means the tick is at the &#39;inward&#39; direction.</TD></TR>
+</TABLE>
+<BR>
+For an angular meter, the default is -10 (10 pixels at the inward direction). For a horizontal linear meter, the default is the same height as the meter scale region in the inward direction. For a vertical linear meter, the default is the same width as the meter scale region in the inward direction.<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">minorLen</TD><TD valign="top">-7fffffff</TD><TD valign="top">The length of the minor ticks in pixels. The default is 60% of the length of the major ticks.</TD></TR>
+<TR><TD valign="top">microLen</TD><TD valign="top">-7fffffff</TD><TD valign="top">The length of the micro ticks in pixels. The default is 50% of the length of the minor ticks.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdbasemetermbs-method.html#19">setTickLength(majorLen as Integer)</A></li>
+<li><A href="chartdirector-cdbasemetermbs-method.html#21">setTickLength(majorLen as Integer, minorLen as Integer, microLen as Integer)</A></li>
+</ul></p>
+</div>
+<div class="WLM">
+<b><a href="class-cdbasemetermbs.html">CDBaseMeterMBS</a>.<A name="21">setTickLength(majorLen as Integer, minorLen as Integer, microLen as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-chartdirector.html" translate="no">ChartDirector</A></td>
+<td class=grau><a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a></td>
+<td class=grau><a href="newinversion82.shtml" class=version>8.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Set the lengths of the ticks.<BR>
+<B>Notes:</B> 
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">Argument</TD><TD valign="top">Default</TD><TD valign="top">Description</TD></TR>
+<TR><TD valign="top">majorLen</TD><TD valign="top">(Mandatory)</TD><TD valign="top">The length of the major ticks in pixels. A positive value means the tick is at the &#39;outward&#39; direction of the meter. A negative value means the tick is at the &#39;inward&#39; direction.</TD></TR>
+</TABLE>
+<BR>
+For an angular meter, the default is -10 (10 pixels at the inward direction). For a horizontal linear meter, the default is the same height as the meter scale region in the inward direction. For a vertical linear meter, the default is the same width as the meter scale region in the inward direction.<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">minorLen</TD><TD valign="top">-7fffffff</TD><TD valign="top">The length of the minor ticks in pixels. The default is 60% of the length of the major ticks.</TD></TR>
+<TR><TD valign="top">microLen</TD><TD valign="top">-7fffffff</TD><TD valign="top">The length of the micro ticks in pixels. The default is 50% of the length of the minor ticks.</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="chartdirector-cdbasemetermbs-method.html#19">setTickLength(majorLen as Integer)</A></li>
+<li><A href="chartdirector-cdbasemetermbs-method.html#20">setTickLength(majorLen as Integer, minorLen as Integer)</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=chartdirector-cdbasemetermbs-method">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

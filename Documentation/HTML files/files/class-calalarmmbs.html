@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - CalAlarmMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="CalAlarmMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">CalAlarmMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>CalAlarmMBS class &nbsp; <b style="color: #8B0000"> Deprecated </b></H3>
+<div class="M">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-calendar.html" translate="no">Calendar</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion77.shtml" class=version>7.7</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+The class for an Alarm in iCal.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #800000;">// start a connection to the calendar database</span><br /><span style="color: #0000FF;">dim</span> s <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-calcalendarstorembs.html">CalCalendarStoreMBS</A><br /><br /><span style="color: #800000;">// needed for the error details</span><br /><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <A href="class-nserrormbs.html">NSErrorMBS</A><br /><br /><span style="color: #800000;">// create a new calendar</span><br /><span style="color: #0000FF;">dim</span> c <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> <A href="class-caleventmbs.html">CalEventMBS</A><br /><br /><span style="color: #0000FF;">dim</span> StartDate <span style="color: #0000FF;">as</span> date = <span style="color: #0000FF;">new</span> date<br />StartDate.day = StartDate.day +<span style="color: #336698;">1</span> <span style="color: #800000;">// start tomorrow</span><br /><br /><span style="color: #0000FF;">dim</span> calendars() <span style="color: #0000FF;">as</span> <A href="class-calcalendarmbs.html">CalCalendarMBS</A> = s.calendars<br /><br /><span style="color: #800000;">// set properties</span><br />c.Title=<span style="color: #6600FE;">&quot;new Event&quot;</span><br />c.startDate=StartDate<br />c.calendar=calendars(<span style="color: #336698;">0</span>) <span style="color: #800000;">// add to first calendar</span><br /><br /><span style="color: #0000FF;">dim</span> EndDate <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> date(StartDate) <span style="color: #800000;">// one hour after start</span><br />EndDate.hour = EndDate.hour + <span style="color: #336698;">1</span><br />c.endDate=EndDate<br /><br /><span style="color: #0000FF;">dim</span> a <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">new</span> CalAlarmMBS <span style="color: #800000;">// Send email one hour earlier</span><br />a.action = a.CalAlarmActionEmail<br />a.relativeTrigger = -<span style="color: #336698;">3600</span><br />a.emailAddress=<span style="color: #6600FE;">&quot;some@email.address&quot;</span><br /><br />c.addAlarm a <span style="color: #800000;">// attach an alarm</span><br /><br /><span style="color: #800000;">// save event</span><br /><span style="color: #0000FF;">call</span> s.saveEvent(c,s.CalSpanAllEvents, e)<br /><span style="color: #0000FF;">if</span> e&lt;&gt;nil <span style="color: #0000FF;">then</span><br />  MsgBox e.localizedDescription<br /><span style="color: #0000FF;">else</span><br />  MsgBox <span style="color: #6600FE;">&quot;New event was created.&quot;</span><br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<DIV style="width: 300px; float: right; margin: 3pt; padding: 3pt; background-color: #FEE; border-width: 3pt;">
+This item is deprecated and should no longer be used. 
+You can use <A href="class-ekalarmmbs.html">EKAlarmMBS</A> instead.
+</DIV>
+<B>Notes:</B> 
+Requires Mac OS X 10.5 to work.<BR>
+</div>
+<ul>
+<LI>8 properties<UL>
+<li class="M">property <A href="calendar-calalarmmbs-property.html">absoluteTrigger</A> as date</li>
+<li class="M">property <A href="calendar-calalarmmbs-property.html#2">acknowledged</A> as date</li>
+<li class="M">property <A href="calendar-calalarmmbs-property.html#3">action</A> as String</li>
+<li class="M">property <A href="calendar-calalarmmbs-property.html#4">emailAddress</A> as String</li>
+<li class="M">property <A href="calendar-calalarmmbs-property.html#5">relatedTo</A> as String</li>
+<li class="M">property <A href="calendar-calalarmmbs-property.html#6">relativeTrigger</A> as Double</li>
+<li class="M">property <A href="calendar-calalarmmbs-property.html#7">sound</A> as String</li>
+<li class="M">property <A href="calendar-calalarmmbs-property.html#8">url</A> as string</li>
+</UL></LI>
+<LI>2 methods<UL>
+<li class="M">method <A href="calendar-calalarmmbs-method.html">Constructor</A></li>
+<li class="M">method <A href="calendar-calalarmmbs-method.html#2">triggerDateRelativeTo</A>(currentdate as date) as date</li>
+</UL></LI>
+<LI>4 constants<UL>
+</UL></LI>
+</ul>
+<h3 lang="en">Alarm Action Constants</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="calendar-calalarmmbs-const.html">CalAlarmActionDisplay</a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right>&quot;DISPLAY&quot;</td>
+<td bgcolor="#DDDDDD" valign=top>
+Display the event.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="calendar-calalarmmbs-const.html#2">CalAlarmActionEmail</a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right>&quot;EMAIL&quot;</td>
+<td bgcolor="#DDDDDD" valign=top>
+Send an email.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="calendar-calalarmmbs-const.html#3">CalAlarmActionProcedure</a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right>&quot;PROCEDURE&quot;</td>
+<td bgcolor="#DDDDDD" valign=top>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="calendar-calalarmmbs-const.html#4">CalAlarmActionSound</a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right>&quot;AUDIO&quot;</td>
+<td bgcolor="#DDDDDD" valign=top>
+Play a sound.<BR>
+</td>
+</tr>
+</table>
+<p>This class has no sub classes.</p>
+<h4>Some methods using this class:</h4><ul>
+<li class="M"><A href="calendar-calcalendaritemmbs-method.html" translate="no">CalCalendarItemMBS.addAlarm</A>(alarm as CalAlarmMBS)</li>
+<li class="M"><A href="calendar-calcalendaritemmbs-method.html#2" translate="no">CalCalendarItemMBS.addAlarms</A>(alarms() as CalAlarmMBS)</li>
+<li class="M"><A href="calendar-calcalendaritemmbs-method.html#3" translate="no">CalCalendarItemMBS.alarms</A> as CalAlarmMBS()</li>
+<li class="M"><A href="calendar-calcalendaritemmbs-method.html#7" translate="no">CalCalendarItemMBS.removeAlarm</A>(alarm as CalAlarmMBS)</li>
+<li class="M"><A href="calendar-calcalendaritemmbs-method.html#8" translate="no">CalCalendarItemMBS.removeAlarms</A>(alarms() as CalAlarmMBS)</li>
+<li class="M"><A href="calendar-calcalendaritemmbs-method.html#9" translate="no">CalCalendarItemMBS.setalarms</A>(alarms() as CalAlarmMBS)</li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-bzip2filembs.html">BZip2FileMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-calattendeembs.html">CalAttendeeMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-calalarmmbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

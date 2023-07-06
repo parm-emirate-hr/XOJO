@@ -1,0 +1,391 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Network/Raw Socket/Raw Socket for UDP Protocol</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Network/Raw Socket/Raw Socket for UDP Protocol</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Network/Raw Socket/Raw Socket for UDP Protocol</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS Network Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Network/Raw Socket/Raw Socket for UDP Protocol<BR>
+This example is the version from Sun, 23th Sep 2017.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Raw</span> <span style="color:#6500FE">Socket</span> <span style="color:#6500FE">for</span> <span style="color:#6500FE">UDP</span> <span style="color:#6500FE">Protocol.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MainWindow <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control iMessage <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance iMessage <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> TextChange()
+				SendButton.Enabled = <span style="color:#0000FF;font-weight: bold">me</span>.text.len &gt; <span style="color:#326598">0</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label2 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label2 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control iIP <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance iIP <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label3 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label3 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control iPort <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance iPort <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control SendButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance SendButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> Flags <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> r <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">port</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> port <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = val(iPort.Text)
+				<span style="color:#0000FF;font-weight: bold">if</span> port &lt;= <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">or</span> port &gt;= <span style="color:#326598">65535</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					break
+					MsgBox <span style="color:#6500FE">&quot;Wrong</span> <span style="color:#6500FE">port:</span> <span style="color:#6500FE">&quot;</span>+iPort.Text
+					<span style="color:#0000FF;font-weight: bold">Return</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">dest</span> <span style="color:#7F0000;text-style:italic">address</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">UDP</span> <span style="color:#7F0000;text-style:italic">protocol</span> <span style="color:#7F0000;text-style:italic">header:</span>
+				<span style="color:#7F0000;text-style:italic">&#39;struct</span> <span style="color:#7F0000;text-style:italic">udp_header</span>
+				<span style="color:#7F0000;text-style:italic">&#39;{</span>
+				<span style="color:#7F0000;text-style:italic">&#39;u_int32_t</span> <span style="color:#7F0000;text-style:italic">source_address;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;u_int32_t</span> <span style="color:#7F0000;text-style:italic">dest_address;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;u_int8_t</span> <span style="color:#7F0000;text-style:italic">placeholder;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;u_int8_t</span> <span style="color:#7F0000;text-style:italic">protocol;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;u_int16_t</span> <span style="color:#7F0000;text-style:italic">udp_length;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;};</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">IP</span> <span style="color:#7F0000;text-style:italic">Header</span>
+				<span style="color:#7F0000;text-style:italic">&#39;struct</span> <span style="color:#7F0000;text-style:italic">iphdr</span> <span style="color:#7F0000;text-style:italic">{</span>
+				<span style="color:#7F0000;text-style:italic">&#39;__u8</span>    <span style="color:#7F0000;text-style:italic">ihl:4,version:4;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;__u8</span>    <span style="color:#7F0000;text-style:italic">tos;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;__be16</span>    <span style="color:#7F0000;text-style:italic">tot_len;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;__be16</span>    <span style="color:#7F0000;text-style:italic">id;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;__be16</span>    <span style="color:#7F0000;text-style:italic">frag_off;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;__u8</span>    <span style="color:#7F0000;text-style:italic">ttl;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;__u8</span>    <span style="color:#7F0000;text-style:italic">protocol;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;__sum16</span>    <span style="color:#7F0000;text-style:italic">check;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;__be32</span>    <span style="color:#7F0000;text-style:italic">saddr;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;__be32</span>    <span style="color:#7F0000;text-style:italic">daddr;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;/*The</span> <span style="color:#7F0000;text-style:italic">options</span> <span style="color:#7F0000;text-style:italic">start</span> <span style="color:#7F0000;text-style:italic">here.</span> <span style="color:#7F0000;text-style:italic">*/</span>
+				<span style="color:#7F0000;text-style:italic">&#39;};</span>
+				<span style="color:#7F0000;text-style:italic">&#39;struct</span> <span style="color:#7F0000;text-style:italic">udphdr</span>
+				<span style="color:#7F0000;text-style:italic">&#39;{</span>
+				<span style="color:#7F0000;text-style:italic">&#39;u_int16_t</span> <span style="color:#7F0000;text-style:italic">uh_sport;</span>        <span style="color:#7F0000;text-style:italic">/*</span> <span style="color:#7F0000;text-style:italic">source</span> <span style="color:#7F0000;text-style:italic">port</span> <span style="color:#7F0000;text-style:italic">*/</span>
+				<span style="color:#7F0000;text-style:italic">&#39;u_int16_t</span> <span style="color:#7F0000;text-style:italic">uh_dport;</span>        <span style="color:#7F0000;text-style:italic">/*</span> <span style="color:#7F0000;text-style:italic">destination</span> <span style="color:#7F0000;text-style:italic">port</span> <span style="color:#7F0000;text-style:italic">*/</span>
+				<span style="color:#7F0000;text-style:italic">&#39;u_int16_t</span> <span style="color:#7F0000;text-style:italic">uh_ulen;</span>        <span style="color:#7F0000;text-style:italic">/*</span> <span style="color:#7F0000;text-style:italic">udp</span> <span style="color:#7F0000;text-style:italic">length</span> <span style="color:#7F0000;text-style:italic">*/</span>
+				<span style="color:#7F0000;text-style:italic">&#39;u_int16_t</span> <span style="color:#7F0000;text-style:italic">uh_sum;</span>        <span style="color:#7F0000;text-style:italic">/*</span> <span style="color:#7F0000;text-style:italic">udp</span> <span style="color:#7F0000;text-style:italic">checksum</span> <span style="color:#7F0000;text-style:italic">*/</span>
+				<span style="color:#7F0000;text-style:italic">&#39;};</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">message</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = <span style="color:#6500FE">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ConvertEncoding(iMessage.Text,</span> <span style="color:#7F0000;text-style:italic">encodings.UTF8)</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> data <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock = m
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">allocate</span> <span style="color:#7F0000;text-style:italic">memory</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> udph <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MemoryBlock(<span style="color:#326598">8</span>)
+				<span style="color:#0000FF;font-weight: bold">dim</span> iph  <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MemoryBlock(<span style="color:#326598">20</span>)
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">convert</span> <span style="color:#7F0000;text-style:italic">IPv4</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">text</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">numeric</span> <span style="color:#7F0000;text-style:italic">value</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> DestIP   <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Uint32</span> = RAWSocketMBS.inet_addr(iIP.Text)
+				<span style="color:#0000FF;font-weight: bold">dim</span> SourceIP <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Uint32</span> = RAWSocketMBS.inet_addr(<span style="color:#6500FE">&quot;127.0.0.1&quot;</span>)
+				System.DebugLog <span style="color:#6500FE">&quot;DestIP:</span> <span style="color:#6500FE">&amp;h&quot;</span>+hex(DestIP)
+				System.DebugLog <span style="color:#6500FE">&quot;SourceIP:</span> <span style="color:#6500FE">&amp;h&quot;</span>+hex(SourceIP)
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">create</span> <span style="color:#7F0000;text-style:italic">destination</span> <span style="color:#7F0000;text-style:italic">address</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">OS.</span> <span style="color:#7F0000;text-style:italic">This</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">Mac!</span> <span style="color:#7F0000;text-style:italic">Windows</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">Linux</span> <span style="color:#7F0000;text-style:italic">have</span> <span style="color:#7F0000;text-style:italic">different</span> <span style="color:#7F0000;text-style:italic">structures</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> dest <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MemoryBlock(<span style="color:#326598">16</span>)
+				<span style="color:#0000FF">#if</span> TargetMacOS
+					dest.UInt8Value(<span style="color:#326598">0</span>)  = dest.size
+					dest.UInt8Value(<span style="color:#326598">1</span>)  = RAWSocketMBS.AddressFamilyINet
+					dest.UInt16Value(<span style="color:#326598">2</span>) = RAWSocketMBS.htons(port)
+					dest.UInt32Value(<span style="color:#326598">4</span>) = DestIP
+				<span style="color:#0000FF">#else</span>
+					dest.UInt8Value(<span style="color:#326598">0</span>)  = RAWSocketMBS.AddressFamilyINet
+					dest.UInt16Value(<span style="color:#326598">2</span>) = RAWSocketMBS.htons(port)
+					dest.UInt32Value(<span style="color:#326598">4</span>) = DestIP
+				<span style="color:#0000FF">#endif</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> TotalLength <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = (iph.size + data.size + udph.size)
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Fill</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">IP</span> <span style="color:#7F0000;text-style:italic">Header</span>
+				iph.UInt8Value(<span style="color:#326598">0</span>)   = <span style="color:#326598">&amp;h45</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">version</span> <span style="color:#7F0000;text-style:italic">(4)</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">Header</span> <span style="color:#7F0000;text-style:italic">length</span> <span style="color:#7F0000;text-style:italic">(5*4</span> <span style="color:#7F0000;text-style:italic">bytes)</span>
+				iph.UInt8Value(<span style="color:#326598">1</span>)   = <span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">tos</span>
+				iph.UInt16Value(<span style="color:#326598">2</span>)  = TotalLength <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">total</span> <span style="color:#7F0000;text-style:italic">length</span>
+				iph.UInt16Value(<span style="color:#326598">4</span>)  = RAWSocketMBS.htons(<span style="color:#326598">54321</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">packet</span> <span style="color:#7F0000;text-style:italic">ID</span>
+				iph.UInt16Value(<span style="color:#326598">6</span>)  = RAWSocketMBS.htons(<span style="color:#326598">0</span>)
+				iph.UInt8Value(<span style="color:#326598">8</span>)   = <span style="color:#326598">255</span>
+				iph.UInt8Value(<span style="color:#326598">9</span>)   = RAWSocketMBS.ProtocolUDP <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">17</span>
+				iph.UInt16Value(<span style="color:#326598">10</span>) = <span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">0</span> <span style="color:#7F0000;text-style:italic">before</span> <span style="color:#7F0000;text-style:italic">calculating</span> <span style="color:#7F0000;text-style:italic">checksum</span>
+				iph.UInt32Value(<span style="color:#326598">12</span>) = SourceIP
+				iph.UInt32Value(<span style="color:#326598">16</span>) = DestIP
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">IP</span> <span style="color:#7F0000;text-style:italic">checksum</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> ipData <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock = iph + udph + data
+				iph.UInt16Value(<span style="color:#326598">10</span>) = RAWSocketMBS.CalcChecksum(ipData, ipData.size)
+				System.DebugLog <span style="color:#6500FE">&quot;checksum</span> <span style="color:#6500FE">ip:</span> <span style="color:#6500FE">&amp;h&quot;</span>+ hex(iph.UInt16Value(<span style="color:#326598">10</span>))
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">UDP</span> <span style="color:#7F0000;text-style:italic">header</span>
+				udph.UInt16Value(<span style="color:#326598">0</span>) = RAWSocketMBS.htons(port) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">source</span> <span style="color:#7F0000;text-style:italic">port</span>
+				udph.UInt16Value(<span style="color:#326598">2</span>) = RAWSocketMBS.htons(port) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">dest</span> <span style="color:#7F0000;text-style:italic">port</span>
+				udph.UInt16Value(<span style="color:#326598">4</span>) = RAWSocketMBS.htons(udph.size+data.size) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">UDP</span> <span style="color:#7F0000;text-style:italic">header</span> <span style="color:#7F0000;text-style:italic">size</span> <span style="color:#7F0000;text-style:italic">+</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">size</span>
+				udph.UInt16Value(<span style="color:#326598">6</span>) = <span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">leave</span> <span style="color:#7F0000;text-style:italic">checksum</span> <span style="color:#7F0000;text-style:italic">0</span> <span style="color:#7F0000;text-style:italic">now,</span> <span style="color:#7F0000;text-style:italic">filled</span> <span style="color:#7F0000;text-style:italic">later</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">pseudo</span> <span style="color:#7F0000;text-style:italic">header</span>
+				
+				<span style="color:#0000FF">#if</span> <span style="color:#0000FF;font-weight: bold">true</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Checksum</span> <span style="color:#7F0000;text-style:italic">optional</span>
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Now</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">UDP</span> <span style="color:#7F0000;text-style:italic">checksum</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">pseudo</span> <span style="color:#7F0000;text-style:italic">header</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> psh <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MemoryBlock(<span style="color:#326598">12</span>)
+					psh.UInt32Value(<span style="color:#326598">0</span>)  = SourceIP
+					psh.UInt32Value(<span style="color:#326598">4</span>)  = DestIP
+					psh.UInt8Value(<span style="color:#326598">8</span>)   = <span style="color:#326598">0</span>
+					psh.UInt8Value(<span style="color:#326598">9</span>)   = RAWSocketMBS.ProtocolUDP
+					psh.UInt16Value(<span style="color:#326598">10</span>) = RAWSocketMBS.htons(udph.size + data.size)
+					
+					<span style="color:#0000FF;font-weight: bold">dim</span> pseudogram <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock = psh + udph + data
+					udph.UInt16Value(<span style="color:#326598">6</span>) = RAWSocketMBS.CalcChecksum(pseudogram, pseudogram.size)
+					System.DebugLog <span style="color:#6500FE">&quot;checksum</span> <span style="color:#6500FE">udp:</span> <span style="color:#6500FE">&amp;h&quot;</span>+ hex(udph.UInt16Value(<span style="color:#326598">6</span>))
+				<span style="color:#0000FF">#endif</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> DataToSend <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock = iph + udph + data
+				System.DebugLog <span style="color:#6500FE">&quot;DataToSend:</span> <span style="color:#6500FE">&quot;</span>+str(DataToSend.size)
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">send</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> dsock &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					r = dsock.SendTo(DataToSend, DataToSend.size, Flags, dest, dest.size)
+					
+					System.DebugLog <span style="color:#6500FE">&quot;SendTo:</span> <span style="color:#6500FE">&quot;</span>+str(r)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+str(dsock.Lasterror)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				iMessage.Text = <span style="color:#6500FE">&quot;&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Close()
+			ssock = <span style="color:#0000FF;font-weight: bold">nil</span>
+			dsock = <span style="color:#0000FF;font-weight: bold">nil</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">example</span> <span style="color:#7F0000;text-style:italic">must</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">run</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">root</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">allowed</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">truely</span> <span style="color:#7F0000;text-style:italic">RAW</span> <span style="color:#7F0000;text-style:italic">Socket</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Second,</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">app</span> <span style="color:#7F0000;text-style:italic">does</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">work.</span> <span style="color:#7F0000;text-style:italic">It</span> <span style="color:#7F0000;text-style:italic">does</span> <span style="color:#7F0000;text-style:italic">send,</span> <span style="color:#7F0000;text-style:italic">but</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">don&#39;t</span> <span style="color:#7F0000;text-style:italic">see</span> <span style="color:#7F0000;text-style:italic">results</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">window.</span>
+			
+			ChecksumTest
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Create</span> <span style="color:#7F0000;text-style:italic">RAW</span> <span style="color:#7F0000;text-style:italic">Socket</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">send</span> <span style="color:#7F0000;text-style:italic">UDP</span> <span style="color:#7F0000;text-style:italic">ourselves</span>
+			dsock = <span style="color:#0000FF;font-weight: bold">new</span> RAWSocketMBS(RAWSocketMBS.AddressFamilyINet, RAWSocketMBS.SocketTypeRaw, RAWSocketMBS.ProtocolRaw)
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Create</span> <span style="color:#7F0000;text-style:italic">UDP</span> <span style="color:#7F0000;text-style:italic">socket</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">receive</span> <span style="color:#7F0000;text-style:italic">packets</span>
+			ssock = <span style="color:#0000FF;font-weight: bold">new</span> MyRawSocket(RAWSocketMBS.AddressFamilyINet, RAWSocketMBS.SocketTypeDatagram, RAWSocketMBS.ProtocolUDP)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> ssock.Lasterror &lt;&gt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">or</span> ssock.Handle = -<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				MsgBox <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">create</span> <span style="color:#6500FE">normal</span> <span style="color:#6500FE">UDP</span> <span style="color:#6500FE">socket&quot;</span>+EndOfLine+EndOfLine+<span style="color:#6500FE">&quot;Error</span> <span style="color:#6500FE">&quot;</span>+str(ssock.Lasterror)
+				quit
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">test</span> <span style="color:#7F0000;text-style:italic">receive,</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">bind</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">any</span> <span style="color:#7F0000;text-style:italic">address</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">given</span> <span style="color:#7F0000;text-style:italic">port</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">convert</span> <span style="color:#7F0000;text-style:italic">IPv4</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">text</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">numeric</span> <span style="color:#7F0000;text-style:italic">value</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> IP <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Uint32</span> = <span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">IPv4</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">create</span> <span style="color:#7F0000;text-style:italic">destination</span> <span style="color:#7F0000;text-style:italic">address.</span> <span style="color:#7F0000;text-style:italic">This</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">Mac!</span> <span style="color:#7F0000;text-style:italic">Windows</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">Linux</span> <span style="color:#7F0000;text-style:italic">have</span> <span style="color:#7F0000;text-style:italic">different</span> <span style="color:#7F0000;text-style:italic">structures</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> dest <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MemoryBlock(<span style="color:#326598">16</span>)
+			<span style="color:#0000FF">#if</span> TargetMacOS <span style="color:#0000FF;font-weight: bold">then</span>
+				dest.UInt8Value(<span style="color:#326598">0</span>) = dest.size
+				dest.UInt8Value(<span style="color:#326598">1</span>) = RAWSocketMBS.AddressFamilyINet
+				dest.UInt16Value(<span style="color:#326598">2</span>) = RAWSocketMBS.htons(<span style="color:#326598">12345</span>)
+				dest.UInt32Value(<span style="color:#326598">4</span>) = IP
+			<span style="color:#0000FF">#else</span>
+				dest.UInt8Value(<span style="color:#326598">0</span>) = RAWSocketMBS.AddressFamilyINet
+				dest.UInt16Value(<span style="color:#326598">2</span>) = RAWSocketMBS.htons(<span style="color:#326598">12345</span>)
+				dest.UInt32Value(<span style="color:#326598">4</span>) = IP
+			<span style="color:#0000FF">#endif</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> ssock.Bind(dest, dest.size) <span style="color:#0000FF;font-weight: bold">then</span>
+				log <span style="color:#6500FE">&quot;Bind</span> <span style="color:#6500FE">OK&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				log <span style="color:#6500FE">&quot;Bind:</span> <span style="color:#6500FE">&quot;</span>+str(ssock.Lasterror)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			
+			
+			<span style="color:#0000FF;font-weight: bold">Exception</span> r <span style="color:#0000FF;font-weight: bold">as</span> UnsupportedOperationException
+			MsgBox <span style="color:#6500FE">&quot;Must</span> <span style="color:#6500FE">be</span> <span style="color:#6500FE">run</span> <span style="color:#6500FE">as</span> <span style="color:#6500FE">root!&quot;</span>+EndOfLine+EndOfLine+r.message
+			quit
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Shared</span> <span style="color:#0000FF;font-weight: bold">Sub</span> ChecksumTest()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">some</span> <span style="color:#7F0000;text-style:italic">test</span> <span style="color:#7F0000;text-style:italic">packet</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = decodehex(<span style="color:#6500FE">&quot;4500003c1c4640004006b1e6ac100a63ac100a0c&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock = s
+			
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> checksum <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = m.UInt16Value(<span style="color:#326598">10</span>)
+			m.UInt16Value(<span style="color:#326598">10</span>) = <span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">calculation</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> calc <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = RAWSocketMBS.CalcChecksum(m, m.size)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> checksum &lt;&gt; calc <span style="color:#0000FF;font-weight: bold">then</span>
+				Break <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">plugin</span> <span style="color:#7F0000;text-style:italic">broken?</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> log(s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			List.AddRow s
+			list.ScrollPosition = list.ScrollPosition + <span style="color:#326598">1</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> dsock <span style="color:#0000FF;font-weight: bold">As</span> RAWSocketMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> ssock <span style="color:#0000FF;font-weight: bold">As</span> MyRawSocket</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MainMenuBar</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator2 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyRawSocket <span style="color:#0000FF;font-weight: bold">Inherits</span> RAWSocketMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> DataAvailable()
+			log CurrentMethodName
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">simply</span> <span style="color:#7F0000;text-style:italic">log</span> <span style="color:#7F0000;text-style:italic">what</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">read</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">false</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">ReadAll</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock = <span style="color:#0000FF;font-weight: bold">me</span>.ReadAll
+				<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = DefineEncoding(m, encodings.UTF8)
+				log s
+				
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">ReadDatagram</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> DatagramMBS = <span style="color:#0000FF;font-weight: bold">me</span>.ReadDatagram
+				<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = DefineEncoding(d.Data, encodings.UTF8)
+				log <span style="color:#6500FE">&quot;Received:</span> <span style="color:#6500FE">&quot;</span>+s
+				log <span style="color:#6500FE">&quot;from</span> <span style="color:#6500FE">&quot;</span>+d.Address+<span style="color:#6500FE">&quot;:&quot;</span>+str(d.Port)
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Error()
+			log CurrentMethodName
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> SendComplete()
+			log CurrentMethodName
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> log(s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			MainWindow.log s
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-network-rawsocket-rawsocketaccept.html">/Network/Raw Socket/RawSocket accept</A></li>
+<li><A href="example-network-rawsocket-unixsocketdoingudp.html">/Network/Raw Socket/Unix Socket doing UDP</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsnetworkplugin.html">MBS Network Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-network-rawsocket-rawsocketforudpprotocol">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

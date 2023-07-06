@@ -1,0 +1,432 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Main/MBS Help Search/MBS Help Search</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Main/MBS Help Search/MBS Help Search</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Main/MBS Help Search/MBS Help Search</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS Util Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Main/MBS Help Search/MBS Help Search<BR>
+This example is the version from Thu, 6th Apr 2016.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;MBS</span> <span style="color:#6500FE">Help</span> <span style="color:#6500FE">Search.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MainWindow <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control iSearch <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance iSearch <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> TextChange()
+				SearchButton.Enabled=<span style="color:#0000FF;font-weight: bold">me</span>.text&lt;&gt;<span style="color:#6500FE">&quot;&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control SearchButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance SearchButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> j,n,i,c,cc,m,k,b <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> file
+				<span style="color:#0000FF;font-weight: bold">dim</span> a(<span style="color:#326598">0</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+				
+				s=iSearch.text
+				cc=CountFields(s,<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>)-<span style="color:#326598">1</span>
+				<span style="color:#0000FF;font-weight: bold">redim</span> a(cc)
+				<span style="color:#0000FF;font-weight: bold">for</span> i=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> cc
+					a(i)=NthField(s,<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>,i+<span style="color:#326598">1</span>)
+				<span style="color:#0000FF;font-weight: bold">next</span>
+				
+				ListBox1.DeleteAllRows
+				c=UBound(w.files)
+				<span style="color:#0000FF;font-weight: bold">for</span> n=<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> c
+					f=w.files(n)
+					
+					s=f.text
+					<span style="color:#0000FF;font-weight: bold">if</span> s&lt;&gt;<span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						m=<span style="color:#326598">0</span>
+						b=<span style="color:#326598">0</span>
+						<span style="color:#0000FF;font-weight: bold">for</span> j=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> cc
+							k=CountFields(s,a(j))
+							<span style="color:#0000FF;font-weight: bold">if</span> k&gt;<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">then</span>
+								b=b+<span style="color:#326598">1</span>
+							<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+							m=m+k-<span style="color:#326598">1</span>
+						<span style="color:#0000FF;font-weight: bold">next</span>
+						
+						<span style="color:#0000FF;font-weight: bold">if</span> b&gt;cc <span style="color:#0000FF;font-weight: bold">then</span>
+							ListBox1.AddRow f.titel
+							s=str(m)
+							<span style="color:#0000FF;font-weight: bold">while</span> len(s)&lt;<span style="color:#326598">5</span>
+								s=<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>+s
+							<span style="color:#0000FF;font-weight: bold">wend</span>
+							ListBox1.cell(ListBox1.LastIndex,<span style="color:#326598">1</span>)=s
+							ListBox1.Cell(ListBox1.LastIndex,<span style="color:#326598">2</span>)=str(n)
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					NextLoop:
+				<span style="color:#0000FF;font-weight: bold">next</span>
+				
+				ListBox1.SortedColumn=<span style="color:#326598">1</span>
+				ListBox1.ColumnSortDirection(<span style="color:#326598">1</span>)=<span style="color:#326598">2</span>
+				ListBox1.Sort
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control ListBox1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance ListBox1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Change()
+				<span style="color:#0000FF;font-weight: bold">dim</span> id <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">me</span>.ListIndex&lt;&gt;-<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					
+					id=val(ListBox1.Cell(ListBox1.ListIndex,<span style="color:#326598">2</span>))
+					<span style="color:#0000FF;font-weight: bold">if</span> id&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						w.files(id).file.launch
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> DoubleClick()
+				<span style="color:#0000FF;font-weight: bold">dim</span> id <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+				
+				id=val(ListBox1.Cell(ListBox1.ListIndex,<span style="color:#326598">2</span>))
+				<span style="color:#0000FF;font-weight: bold">if</span> id&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					w.files(id).file.launch
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+				ListBox1.ColumnAlignment(<span style="color:#326598">1</span>)=<span style="color:#326598">3</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control ProgressMessage <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance ProgressMessage <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control ProgressDisplay <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressBar</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance ProgressDisplay <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressBar</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			w=<span style="color:#0000FF;font-weight: bold">new</span> Workthread
+			w.run
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> w <span style="color:#0000FF;font-weight: bold">As</span> workthread</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar Menu</div>
+<div class="RB_Code">		MenuItem UntitledMenu3 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem UntitledMenu2 = <span style="color:#6500FE">&quot;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;Quit&quot;</span></div>
+<div class="RB_Code">		MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cut&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;Clear&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Workthread <span style="color:#0000FF;font-weight: bold">Inherits</span> Thread</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Run()
+			MainWindow.ProgressDisplay.Maximum=<span style="color:#326598">0</span>
+			MainWindow.ProgressDisplay.Value=<span style="color:#326598">0</span>
+			MainWindow.ProgressMessage.text=<span style="color:#6500FE">&quot;Reading</span> <span style="color:#6500FE">directory...&quot;</span>
+			
+			ReadDirectory
+			
+			MainWindow.ProgressDisplay.Maximum=UBound(files)
+			MainWindow.ProgressDisplay.Value=<span style="color:#326598">0</span>
+			MainWindow.ProgressMessage.text=<span style="color:#6500FE">&quot;Reading</span> <span style="color:#6500FE">files...&quot;</span>
+			
+			ReadFiles
+			
+			MainWindow.ProgressMessage.text=<span style="color:#6500FE">&quot;Loaded</span> <span style="color:#6500FE">&quot;</span>+str(ubound(files))+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">files...&quot;</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> FindFile(name <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>) <span style="color:#0000FF;font-weight: bold">As</span> FolderItem
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Look</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">file</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">parent</span> <span style="color:#7F0000;text-style:italic">folders</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">executable</span> <span style="color:#7F0000;text-style:italic">on</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> parent <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = app.ExecutableFile.Parent
+			
+			<span style="color:#0000FF;font-weight: bold">while</span> parent&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> file <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = parent.Child(name)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> file&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">and</span> file.Exists <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> file
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				parent = parent.Parent
+			<span style="color:#0000FF;font-weight: bold">wend</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> ReadDirectory()
+			<span style="color:#0000FF;font-weight: bold">dim</span> dir <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+			<span style="color:#0000FF;font-weight: bold">dim</span> file <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> file
+			<span style="color:#0000FF;font-weight: bold">dim</span> i,c <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			
+			dir=FindFile(<span style="color:#6500FE">&quot;HTML</span> <span style="color:#6500FE">files&quot;</span>)
+			dir=dir.Child(<span style="color:#6500FE">&quot;files&quot;</span>)
+			c=dir.Count
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> i=<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> c
+				file=dir.item(i)
+				<span style="color:#0000FF;font-weight: bold">if</span> file&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">and</span> Right(file.name,<span style="color:#326598">5</span>)=<span style="color:#6500FE">&quot;.html&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					f=<span style="color:#0000FF;font-weight: bold">new</span> file
+					f.file=file
+					files.Append f
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Exception</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> ReadFiles()
+			<span style="color:#0000FF;font-weight: bold">dim</span> p <span style="color:#0000FF;font-weight: bold">as</span> ProgressBar
+			<span style="color:#0000FF;font-weight: bold">dim</span> i,c,n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> file
+			
+			p=MainWindow.ProgressDisplay
+			
+			c=UBound(files)
+			n=<span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">for</span> i=c <span style="color:#0000FF;font-weight: bold">downto</span> <span style="color:#326598">1</span>
+				f=files(i)
+				
+				p.Value=n
+				f.process
+				n=n+<span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			p.Value=n
+			
+			<span style="color:#0000FF;font-weight: bold">Exception</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> files(<span style="color:#326598">0</span>) <span style="color:#0000FF;font-weight: bold">As</span> file</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> File</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> FindTitel(s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> p1,p2 <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> p,l <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			
+			<span style="color:#0000FF;font-weight: bold">const</span> titlestart=<span style="color:#6500FE">&quot;&lt;TITLE&gt;&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> titleend=<span style="color:#6500FE">&quot;&lt;/TITLE&gt;&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> mbs=<span style="color:#6500FE">&quot;Monkeybread</span> <span style="color:#6500FE">Realbasic</span> <span style="color:#6500FE">plugin</span> <span style="color:#6500FE">-</span> <span style="color:#6500FE">&quot;</span>
+			
+			p1=instr(s,titlestart)
+			p2=instr(s,titleend)
+			
+			l=p2-p1-len(mbs)-len(titlestart)
+			p=p1+len(titlestart)+len(mbs)
+			t=mid(s,p,l)
+			<span style="color:#0000FF;font-weight: bold">Return</span> t
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> HasIndex() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+			<span style="color:#0000FF;font-weight: bold">dim</span> dir <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> TextInputStream
+			
+			dir=HelpIndexFolder
+			
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> dir&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">and</span> dir.Exists <span style="color:#0000FF;font-weight: bold">then</span>
+				f=dir.Child(file.Name)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> f&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">and</span> f.Exists <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">if</span> f.ModificationDate.TotalSeconds&gt;=file.ModificationDate.TotalSeconds <span style="color:#0000FF;font-weight: bold">then</span>
+						
+						t=f.OpenAsTextFile
+						
+						titel=t.ReadLine(Encodings.UTF8)
+						text=t.ReadAll(Encodings.utf8)
+						<span style="color:#0000FF;font-weight: bold">if</span> text&lt;&gt;<span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+							<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Exception</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Protected</span> <span style="color:#0000FF;font-weight: bold">Function</span> HelpIndexFolder() <span style="color:#0000FF;font-weight: bold">As</span> folderitem
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> folderitem
+			
+			f=CreateCachedDataFolderMBS(-<span style="color:#326598">32763</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> f=<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				f=CreateApplicationSupportFolderMBS(-<span style="color:#326598">32763</span>)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> f=<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Last</span> <span style="color:#7F0000;text-style:italic">way</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">Windows/Linux</span>
+				f=SpecialFolder.ApplicationData
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			f=f.Child(<span style="color:#6500FE">&quot;MBS</span> <span style="color:#6500FE">Help</span> <span style="color:#6500FE">Search&quot;</span>)
+			f.CreateAsFolder
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> f
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> RemoveLinks(s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> p <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			
+			p=instr(s,<span style="color:#6500FE">&quot;&lt;!--</span> <span style="color:#6500FE">Ende</span> <span style="color:#6500FE">Content--&gt;&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">if</span> p&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				s=left(s,p-<span style="color:#326598">1</span>)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">const</span> start=<span style="color:#6500FE">&quot;&lt;!--</span> <span style="color:#6500FE">Start</span> <span style="color:#6500FE">Content</span> <span style="color:#6500FE">--&gt;&quot;</span>
+			p=instr(s,start)
+			<span style="color:#0000FF;font-weight: bold">if</span> p&gt;<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				s=mid(s,p+len(start))
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> s
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> WriteIndex()
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+			<span style="color:#0000FF;font-weight: bold">dim</span> dir <span style="color:#0000FF;font-weight: bold">as</span> FolderItem
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> TextOutputStream
+			
+			dir=HelpIndexFolder
+			
+			f=dir.Child(file.Name)
+			
+			t=f.CreateTextFile
+			t.WriteLine titel.ConvertEncoding(Encodings.UTF8)
+			t.Write text.ConvertEncoding(Encodings.UTF8)
+			t.Close
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> name() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">Return</span> file.Name
+			
+			<span style="color:#0000FF;font-weight: bold">Exception</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> process()
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BinaryStream
+			<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> hasindex <span style="color:#0000FF;font-weight: bold">then</span>
+				b=file.OpenAsBinaryFile(<span style="color:#0000FF;font-weight: bold">false</span>)
+				
+				s=b.Read(b.Length, Encodings.ASCII)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> s&lt;&gt;<span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					titel=FindTitel(s)
+					s=RemoveLinks(s)
+					s=RemoveHTMLTagsMBS(s)
+					s=DecodingFromHTMLMBS(s)
+					s=ConvertEncoding(s,Encodings.UTF8)
+					s=Shorten(s)
+					<span style="color:#0000FF;font-weight: bold">if</span> s&lt;&gt;<span style="color:#6500FE">&quot;&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						text=s
+						WriteIndex
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> file <span style="color:#0000FF;font-weight: bold">As</span> folderitem</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> text <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> titel <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">You</span> <span style="color:#7F0000;text-style:italic">should</span> <span style="color:#7F0000;text-style:italic">add</span> <span style="color:#7F0000;text-style:italic">your</span> <span style="color:#7F0000;text-style:italic">own</span> <span style="color:#7F0000;text-style:italic">registration</span> <span style="color:#7F0000;text-style:italic">here,</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">want.</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">only</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">indexing</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">registration</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">needed,</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">don&#39;t</span> <span style="color:#7F0000;text-style:italic">need</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">later</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">lookup</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Module</span> Util</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> Shorten(s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			s=ReplaceAll(s,Encodings.UTF8.chr(<span style="color:#326598">13</span>),<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>)
+			s=ReplaceAll(s,Encodings.UTF8.chr(<span style="color:#326598">10</span>),<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>)
+			s=ReplaceAll(s,Encodings.UTF8.chr(<span style="color:#326598">9</span>),<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>)
+			s=ReplaceAll(s,Encodings.UTF8.chr(<span style="color:#326598">160</span>),<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&quot;</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> s
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Module</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-main-mbspluginlister-mbspluginlister.html">/Main/MBS Plugin Lister/MBS Plugin Lister</A></li>
+<li><A href="example-main-mbspluginmanager-mbspluginmanager.html">/Main/MBS Plugin Manager/MBS Plugin Manager</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmainplugin.html">MBS Main Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-main-mbshelpsearch-mbshelpsearch">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

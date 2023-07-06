@@ -1,0 +1,374 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Mac64bit/SceneKit/SceneKit Hanoi</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Mac64bit/SceneKit/SceneKit Hanoi</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Mac64bit/SceneKit/SceneKit Hanoi</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS Mac64bit Plugin, MBS MacBase Plugin, MBS MacCG Plugin, MBS Main Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Mac64bit/SceneKit/SceneKit Hanoi<BR>
+This example is the version from Mon, 3rd Feb 2019.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;SceneKit</span> <span style="color:#6500FE">Hanoi.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#0000FF">#if</span> Target64Bit <span style="color:#0000FF;font-weight: bold">and</span> TargetMacOS <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">okay</span>
+				
+			<span style="color:#0000FF">#else</span>
+				
+				MsgBox <span style="color:#6500FE">&quot;Please</span> <span style="color:#6500FE">switch</span> <span style="color:#6500FE">project</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">64-bit</span> <span style="color:#6500FE">and</span> <span style="color:#6500FE">run</span> <span style="color:#6500FE">on</span> <span style="color:#6500FE">MacOS.&quot;</span>
+				
+			<span style="color:#0000FF">#endif</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MainWindow <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control MyControl <span style="color:#0000FF;font-weight: bold">Inherits</span> SCNControlMBS</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance MyControl <span style="color:#0000FF;font-weight: bold">Inherits</span> SCNControlMBS</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+				MyView = <span style="color:#0000FF;font-weight: bold">me</span>.View
+				
+				MyScene = <span style="color:#0000FF;font-weight: bold">new</span> SCNSceneMBS
+				
+				MyView.scene = MyScene
+				MyView.backgroundColor = NSColorMBS.blackColor
+				MyView.autoenablesDefaultLighting = <span style="color:#0000FF;font-weight: bold">true</span>
+				Myview.allowsCameraControl = <span style="color:#0000FF;font-weight: bold">true</span>
+				
+				
+				rootNode = MyScene.rootNode
+				
+				
+				createBoard
+				createPegs
+				createDisks
+				
+				Solve
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">play</span> <span style="color:#7F0000;text-style:italic">mode,</span> <span style="color:#7F0000;text-style:italic">so</span> <span style="color:#7F0000;text-style:italic">animations</span> <span style="color:#7F0000;text-style:italic">don&#39;t</span> <span style="color:#7F0000;text-style:italic">stop</span>
+				MyView.play
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Solve()
+			solver = <span style="color:#0000FF;font-weight: bold">new</span> HanoiSolver(numberOfDisks)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">make</span> <span style="color:#7F0000;text-style:italic">some</span> <span style="color:#7F0000;text-style:italic">variables</span> <span style="color:#7F0000;text-style:italic">accessible</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">solver</span>
+			solver.pegsNodes = pegs
+			solver.disks = disks
+			solver.pegHeight = pegHeight
+			solver.boardHeight = boardHeight
+			solver.diskHeight = diskHeight
+			
+			solver.computeMoves
+			solver.recursiveAnimation(<span style="color:#326598">0</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> createBoard()
+			boardWidth  = diskRadius * <span style="color:#006532">6.0</span> + boardPadding
+			boardLength = diskRadius * <span style="color:#006532">2.0</span> + boardPadding
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> boardColor <span style="color:#0000FF;font-weight: bold">as</span> NSColorMBS = NSColorMBS.brownColor()
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> boardGeometry <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> SCNBoxMBS( boardWidth, boardHeight, boardLength, <span style="color:#006532">0.1</span>)
+			boardGeometry.firstMaterial.diffuse.contents = NSColorMBS.brownColor()
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> boardNode <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> SCNNodeMBS(boardGeometry)
+			
+			rootNode.addChildNode(boardNode)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> createDisks()
+			<span style="color:#0000FF;font-weight: bold">dim</span> firstPeg <span style="color:#0000FF;font-weight: bold">as</span> SCNNodeMBS = pegs(<span style="color:#326598">0</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> y <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = (boardHeight / <span style="color:#006532">2.0</span> + diskHeight / <span style="color:#006532">2.0</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> radius <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = diskRadius
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> numberOfDisks-<span style="color:#326598">1</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> tube <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> SCNTubeMBS(pegRadius, radius, diskHeight)
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> hue <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = (i) / (numberOfDisks)
+				<span style="color:#0000FF;font-weight: bold">dim</span> <span style="color:#0000FF;font-weight: bold">color</span> <span style="color:#0000FF;font-weight: bold">as</span> NSColorMBS = NSColorMBS.colorWithHSV(hue, <span style="color:#006532">1.0</span>, <span style="color:#006532">1.0</span>, <span style="color:#006532">1.0</span>)
+				tube.firstMaterial.diffuse.contents = <span style="color:#0000FF;font-weight: bold">color</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> tubeNode <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> SCNNodeMBS(tube)
+				
+				tubeNode.position = SCNVector3MBS.Vector( firstPeg.position.x, y, <span style="color:#326598">0</span>)
+				
+				rootNode.addChildNode(tubeNode)
+				disks.append(tubeNode)
+				
+				y = y + (diskHeight)
+				radius = radius - <span style="color:#006532">0.1</span>
+				
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> createPegs()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Create</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">3</span> <span style="color:#7F0000;text-style:italic">Pegs</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">board</span>
+			
+			pegHeight = (numberOfDisks + <span style="color:#326598">1</span>) * diskHeight
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> x <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = (-boardWidth / <span style="color:#006532">2.0</span> + boardPadding / <span style="color:#006532">2.0</span> + diskRadius)
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">2</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> cylinder <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> SCNCylinderMBS(pegRadius, pegHeight)
+				<span style="color:#0000FF;font-weight: bold">dim</span> cylinderNode <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> SCNNodeMBS(cylinder)
+				cylinder.firstMaterial.diffuse.contents = NSColorMBS.brownColor()
+				
+				cylinderNode.position = <span style="color:#0000FF;font-weight: bold">new</span> SCNVector3MBS(x, (pegHeight / <span style="color:#006532">2.0</span> + boardHeight / <span style="color:#006532">2.0</span>), <span style="color:#006532">0.0</span>)
+				
+				rootNode.addChildNode(cylinderNode)
+				pegs.append(cylinderNode)
+				
+				x = x + (diskRadius * <span style="color:#326598">2</span>)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Note">		Note <span style="color:#6500FE">&quot;Note&quot;</span>
+<div class="RB_Comment">			 Based on code found in the tutorial
+			
+			 Introduction To SceneKit ‚Äì Part 3
+			
+			
+			https://www.weheartswift.com/introduction-scenekit-part-3/</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> MyScene <span style="color:#0000FF;font-weight: bold">As</span> SCNSceneMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> MyView <span style="color:#0000FF;font-weight: bold">As</span> SCNViewMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> boardHeight <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = <span style="color:#006532">0.2</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> boardLength <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">double</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> boardPadding <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = <span style="color:#006532">0.8</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> boardWidth <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> diskHeight <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = <span style="color:#006532">0.2</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> diskRadius <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">double</span> = <span style="color:#006532">1.0</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> disks() <span style="color:#0000FF;font-weight: bold">As</span> SCNNodeMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> numberOfDisks <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">5</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> pegHeight <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = <span style="color:#006532">0.0</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> pegRadius <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span> = <span style="color:#006532">0.1</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> pegs() <span style="color:#0000FF;font-weight: bold">As</span> SCNNodeMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> rootNode <span style="color:#0000FF;font-weight: bold">As</span> SCNNodeMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> solver <span style="color:#0000FF;font-weight: bold">As</span> HanoiSolver</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MainMenuBar</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator2 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> HanoiMove</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(diskIndex <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, destinationPegIndex <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, destinationDiskCount <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			<span style="color:#0000FF;font-weight: bold">self</span>.diskIndex = diskIndex
+			<span style="color:#0000FF;font-weight: bold">self</span>.destinationDiskCount = destinationDiskCount
+			<span style="color:#0000FF;font-weight: bold">self</span>.destinationPegIndex = destinationPegIndex
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> destinationDiskCount <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> destinationPegIndex <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> diskIndex <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> HanoiSolver</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(numberOfDisks <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			<span style="color:#0000FF;font-weight: bold">self</span>.numberOfDisks = numberOfDisks
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> numberOfDisks-<span style="color:#326598">1</span>
+				<span style="color:#0000FF;font-weight: bold">self</span>.leftPeg.append(i)
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			
+			pegs.Append leftPeg
+			pegs.Append middlePeg
+			pegs.Append rightPeg
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> animationFromMove(move <span style="color:#0000FF;font-weight: bold">as</span> HanoiMove) <span style="color:#0000FF;font-weight: bold">As</span> SCNActionMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> duration <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = <span style="color:#006532">0.3</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> node <span style="color:#0000FF;font-weight: bold">as</span> SCNNodeMBS = disks(move.diskIndex)
+			<span style="color:#0000FF;font-weight: bold">dim</span> destination <span style="color:#0000FF;font-weight: bold">as</span> SCNNodeMBS = pegsNodes(move.destinationPegIndex)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Move</span> <span style="color:#7F0000;text-style:italic">To</span> <span style="color:#7F0000;text-style:italic">Top</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> topPosition <span style="color:#0000FF;font-weight: bold">as</span> SCNVector3MBS = node.position
+			topPosition.y = (pegHeight + diskHeight * <span style="color:#006532">4.0</span>)
+			
+			duration = normalizedDuration(node.position, topPosition)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> moveUp <span style="color:#0000FF;font-weight: bold">as</span> SCNActionMBS = SCNActionMBS.moveTo(topPosition, duration)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Move</span> <span style="color:#7F0000;text-style:italic">Sideways</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> sidePosition <span style="color:#0000FF;font-weight: bold">as</span> SCNVector3MBS = destination.position
+			sidePosition.y = topPosition.y
+			
+			duration = normalizedDuration(topPosition, sidePosition)
+			<span style="color:#0000FF;font-weight: bold">dim</span> moveSide <span style="color:#0000FF;font-weight: bold">as</span> SCNActionMBS = SCNActionMBS.moveTo(sidePosition, duration)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Move</span> <span style="color:#7F0000;text-style:italic">To</span> <span style="color:#7F0000;text-style:italic">Bottom</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> bottomPosition <span style="color:#0000FF;font-weight: bold">as</span> SCNVector3MBS = sidePosition
+			bottomPosition.y = (boardHeight / <span style="color:#006532">2.0</span> + diskHeight / <span style="color:#006532">2.0</span>) + (move.destinationDiskCount) * (diskHeight)
+			
+			duration = normalizedDuration(sidePosition, bottomPosition)
+			<span style="color:#0000FF;font-weight: bold">dim</span> moveDown <span style="color:#0000FF;font-weight: bold">as</span> SCNActionMBS = SCNActionMBS.moveTo(bottomPosition, duration)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> sequence <span style="color:#0000FF;font-weight: bold">as</span> SCNActionMBS = SCNActionMBS.sequence(<span style="color:#0000FF;font-weight: bold">array</span>(moveUp, moveSide, moveDown))
+			
+			
+			<span style="color:#0000FF;font-weight: bold">return</span> sequence
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> computeMoves()
+			<span style="color:#0000FF;font-weight: bold">redim</span> moves(-<span style="color:#326598">1</span>)
+			
+			hanoi(numberOfDisks, <span style="color:#326598">0</span>, <span style="color:#326598">1</span>, <span style="color:#326598">2</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Shared</span> <span style="color:#0000FF;font-weight: bold">Function</span> distanceBetweenVectors(v1 <span style="color:#0000FF;font-weight: bold">as</span> SCNVector3MBS, v2 <span style="color:#0000FF;font-weight: bold">as</span> SCNVector3MBS) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span>
+			<span style="color:#0000FF;font-weight: bold">return</span> lengthOfVector(SCNVector3MBS.Vector( v1.x - v2.x, v1.y - v2.y, v1.z - v2.z))
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> hanoi(numberOfDisks <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, from_ <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, using_ <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, to_ <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			<span style="color:#0000FF;font-weight: bold">if</span> numberOfDisks = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				move(from_, to_)
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				hanoi(numberOfDisks - <span style="color:#326598">1</span>, from_, to_, using_)
+				move(from_, to_)
+				hanoi(numberOfDisks - <span style="color:#326598">1</span>, using_, from_, to_)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Shared</span> <span style="color:#0000FF;font-weight: bold">Function</span> lengthOfVector(v <span style="color:#0000FF;font-weight: bold">as</span> SCNVector3MBS) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">double</span>
+			<span style="color:#0000FF;font-weight: bold">return</span> sqrt(pow(v.x,<span style="color:#006532">2.0</span>) + pow(v.y,<span style="color:#006532">2.0</span>) + pow(v.z,<span style="color:#006532">2.0</span>))
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> move(from_ <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, to_ <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> disk <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = popDisk(from_)
+			<span style="color:#0000FF;font-weight: bold">dim</span> diskIndex <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = disk
+			<span style="color:#0000FF;font-weight: bold">dim</span> peg() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = pegs(to_)
+			<span style="color:#0000FF;font-weight: bold">dim</span> destinationDiskCount <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = peg.Ubound+<span style="color:#326598">1</span>
+			
+			pushDisk(disk, to_)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> move <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> HanoiMove(diskIndex, to_, destinationDiskCount)
+			moves.append(move)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> normalizedDuration(startPosition <span style="color:#0000FF;font-weight: bold">as</span> SCNVector3MBS, endPosition <span style="color:#0000FF;font-weight: bold">as</span> SCNVector3MBS) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> referenceLength <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = distanceBetweenVectors(pegsNodes(<span style="color:#326598">0</span>).position, pegsNodes(<span style="color:#326598">2</span>).position)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> length  <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = distanceBetweenVectors(startPosition, endPosition)
+			
+			<span style="color:#0000FF;font-weight: bold">return</span> <span style="color:#326598">1</span> * (length / referenceLength)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> popDisk(peg <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> p() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = pegs(peg)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> u <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = p.Ubound
+			<span style="color:#0000FF;font-weight: bold">dim</span> n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = p(u)
+			
+			p.Remove u
+			<span style="color:#0000FF;font-weight: bold">return</span> n
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> pushDisk(disk <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, peg <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> n() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = pegs(peg)
+			n.Append disk
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> recursiveAnimation(index <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> move <span style="color:#0000FF;font-weight: bold">as</span> HanoiMove = moves(index)
+			<span style="color:#0000FF;font-weight: bold">dim</span> node <span style="color:#0000FF;font-weight: bold">as</span> SCNNodeMBS = disks(move.diskIndex)
+			<span style="color:#0000FF;font-weight: bold">dim</span> animation <span style="color:#0000FF;font-weight: bold">as</span> SCNActionMBS = animationFromMove(move)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> tag <span style="color:#0000FF;font-weight: bold">as</span> Variant = index
+			node.runAction(animation, WeakAddressOf runActionCompleted, tag)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> runActionCompleted(node <span style="color:#0000FF;font-weight: bold">as</span> SCNNodeMBS, action <span style="color:#0000FF;font-weight: bold">as</span> SCNActionMBS, key <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, tag <span style="color:#0000FF;font-weight: bold">as</span> variant)
+			<span style="color:#0000FF;font-weight: bold">dim</span> index <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = tag
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> index &lt; moves.Ubound <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">self</span>.recursiveAnimation(index + <span style="color:#326598">1</span>)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> boardHeight <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">double</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> diskHeight <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> disks() <span style="color:#0000FF;font-weight: bold">As</span> SCNNodeMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> leftPeg() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> middlePeg() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> moves() <span style="color:#0000FF;font-weight: bold">As</span> HanoiMove</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> numberOfDisks <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> pegHeight <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Double</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> pegs() <span style="color:#0000FF;font-weight: bold">As</span> Variant</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> pegsNodes() <span style="color:#0000FF;font-weight: bold">As</span> SCNNodeMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> rightPeg() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-mac64bit-scenekit-scenekitexample.html">/Mac64bit/SceneKit/SceneKit Example</A></li>
+<li><A href="example-mac64bit-scenekit-scenekitimages.html">/Mac64bit/SceneKit/SceneKit Images</A></li>
+<li><A href="example-mac64bit-scenekit-scenekitios.html">/Mac64bit/SceneKit/SceneKit iOS</A></li>
+<li><A href="example-mac64bit-scenekit-scenekitprimitives.html">/Mac64bit/SceneKit/SceneKit Primitives</A></li>
+<li><A href="example-mac64bit-scenekit-scenekitspheres.html">/Mac64bit/SceneKit/SceneKit Spheres</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmac64bitplugin.html">MBS Mac64bit Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-mac64bit-scenekit-scenekithanoi">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

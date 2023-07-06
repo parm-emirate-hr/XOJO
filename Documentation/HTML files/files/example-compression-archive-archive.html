@@ -1,0 +1,267 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Compression/Archive/archive</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Compression/Archive/archive</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Compression/Archive/archive</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS Main Plugin, MBS Compression Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Compression/Archive/archive<BR>
+This example is the version from Mon, 16th Dec 2018.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;archive.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			CreateTestFiles
+			
+			CreateArchive SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;test&quot;</span>), SpecialFolder.Desktop.child(<span style="color:#6500FE">&quot;test.tar&quot;</span>), ArchiveWriterMBS.kFilterNone, ArchiveWriterMBS.kFormatTar
+			CreateArchive SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;test&quot;</span>), SpecialFolder.Desktop.child(<span style="color:#6500FE">&quot;test.tbz&quot;</span>), ArchiveWriterMBS.kFilterBZip2, ArchiveWriterMBS.kFormatTar
+			CreateArchive SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;test&quot;</span>), SpecialFolder.Desktop.child(<span style="color:#6500FE">&quot;test.tgz&quot;</span>), ArchiveWriterMBS.kFilterGZip, ArchiveWriterMBS.kFormatTar
+			
+			CreateArchive SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;test&quot;</span>), SpecialFolder.Desktop.child(<span style="color:#6500FE">&quot;test.uncompressed.zip&quot;</span>), ArchiveWriterMBS.kFilterNone, ArchiveWriterMBS.kFormatZip, <span style="color:#326598">1</span>
+			CreateArchive SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;test&quot;</span>), SpecialFolder.Desktop.child(<span style="color:#6500FE">&quot;test.zip&quot;</span>), ArchiveWriterMBS.kFilterNone, ArchiveWriterMBS.kFormatZip, <span style="color:#326598">2</span>
+			
+			CreateArchive SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;test&quot;</span>), SpecialFolder.Desktop.child(<span style="color:#6500FE">&quot;test.7z&quot;</span>), ArchiveWriterMBS.kFilterNone, ArchiveWriterMBS.kFormat7Zip
+			
+			log <span style="color:#6500FE">&quot;done&quot;</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> CreateArchive(item <span style="color:#0000FF;font-weight: bold">as</span> FolderItem, destFile <span style="color:#0000FF;font-weight: bold">as</span> FolderItem, Filter <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, Format <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, ZipLevel <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> flags <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span>
+			
+			flags = BitwiseOr(flags, ArchiveReaderMBS.kExtractTime)
+			flags = BitwiseOr(flags, ArchiveReaderMBS.kExtractPermission)
+			flags = BitwiseOr(flags, ArchiveReaderMBS.kExtractACL)
+			flags = BitwiseOr(flags, ArchiveReaderMBS.kExtractFileFlags)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> aw <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> ArchiveWriterMBS
+			
+			aw.AddFilter filter
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> aw.Lasterror &lt;&gt; aw.kArchiveOK <span style="color:#0000FF;font-weight: bold">then</span>
+				log <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">set</span> <span style="color:#6500FE">filter</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">error</span> <span style="color:#6500FE">&quot;</span>+str(aw.Lasterror)+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+aw.ErrorString
+				<span style="color:#0000FF;font-weight: bold">exit</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			aw.SetFormat Format
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> aw.Lasterror &lt;&gt; aw.kArchiveOK <span style="color:#0000FF;font-weight: bold">then</span>
+				log <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">set</span> <span style="color:#6500FE">format</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">error</span> <span style="color:#6500FE">&quot;</span>+str(aw.Lasterror)+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+aw.ErrorString
+				<span style="color:#0000FF;font-weight: bold">exit</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			
+			
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">case</span> ZipLevel
+			<span style="color:#0000FF;font-weight: bold">case</span> <span style="color:#326598">1</span>
+				aw.ZipSetCompressionStore
+			<span style="color:#0000FF;font-weight: bold">case</span> <span style="color:#326598">2</span>
+				aw.ZipSetCompressionDeflate
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+			
+			log <span style="color:#6500FE">&quot;Create</span> <span style="color:#6500FE">&quot;</span>+destFile.name
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> aw.CreateFile(destFile) <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				log <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">create</span> <span style="color:#6500FE">file:</span> <span style="color:#6500FE">&quot;</span>+aw.ErrorString
+				
+				<span style="color:#0000FF;font-weight: bold">return</span>
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> aw.SetCurrentWorkingDirectory(item.parent) <span style="color:#0000FF;font-weight: bold">then</span>
+				log <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">set</span> <span style="color:#6500FE">working</span> <span style="color:#6500FE">directory.&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> disk <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> ArchiveReadDiskMBS
+			
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">not</span> disk.Open(item.name) <span style="color:#0000FF;font-weight: bold">then</span>
+				log <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">set</span> <span style="color:#6500FE">item</span> <span style="color:#6500FE">for</span> <span style="color:#6500FE">compress.&quot;</span>
+				<span style="color:#0000FF;font-weight: bold">return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">do</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> entry <span style="color:#0000FF;font-weight: bold">as</span> ArchiveEntryMBS = disk.NextHeader
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> disk.Lasterror = disk.kArchiveEOF <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">exit</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> disk.Lasterror &lt;&gt; disk.kArchiveOK <span style="color:#0000FF;font-weight: bold">then</span>
+					log <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">get</span> <span style="color:#6500FE">next</span> <span style="color:#6500FE">item</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">error</span> <span style="color:#6500FE">&quot;</span>+str(disk.Lasterror)+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+disk.ErrorString
+					<span style="color:#0000FF;font-weight: bold">exit</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> entry = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					break
+					<span style="color:#0000FF;font-weight: bold">exit</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> PathName <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = entry.PathName
+				<span style="color:#0000FF;font-weight: bold">dim</span> FileName <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = NthField(PathName, <span style="color:#6500FE">&quot;/&quot;</span>, CountFields(PathName,<span style="color:#6500FE">&quot;/&quot;</span>))
+				<span style="color:#0000FF;font-weight: bold">if</span> left(FileName,<span style="color:#326598">1</span>) = <span style="color:#6500FE">&quot;.&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Continue</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">skip</span>
+				
+				disk.Descend
+				
+				log <span style="color:#6500FE">&quot;add</span> <span style="color:#6500FE">&quot;</span>+PathName
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">make</span> <span style="color:#7F0000;text-style:italic">flat</span> <span style="color:#7F0000;text-style:italic">archive</span>
+				<span style="color:#7F0000;text-style:italic">&#39;entry.PathName</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">filename</span>
+				aw.WriteHeader entry
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> aw.Lasterror &lt;&gt; aw.kArchiveOK <span style="color:#0000FF;font-weight: bold">then</span>
+					log <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">write</span> <span style="color:#6500FE">header</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">error</span> <span style="color:#6500FE">&quot;</span>+str(aw.Lasterror)+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+aw.ErrorString
+					<span style="color:#0000FF;font-weight: bold">exit</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> size <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">int64</span> = aw.WriteData(disk)
+				log str(size)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">bytes&quot;</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">optional</span> <span style="color:#7F0000;text-style:italic">close</span> <span style="color:#7F0000;text-style:italic">each</span> <span style="color:#7F0000;text-style:italic">item.</span>
+				<span style="color:#7F0000;text-style:italic">&#39;aw.FinishEntry</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> aw.Lasterror &lt;&gt; aw.kArchiveOK <span style="color:#0000FF;font-weight: bold">then</span>
+					log <span style="color:#6500FE">&quot;Failed</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">finish</span> <span style="color:#6500FE">entry</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">error</span> <span style="color:#6500FE">&quot;</span>+str(aw.Lasterror)+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+disk.ErrorString
+					<span style="color:#0000FF;font-weight: bold">exit</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+			<span style="color:#0000FF;font-weight: bold">loop</span>
+			
+			
+			
+			aw.Close
+			disk.Close
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> CreateTestFiles()
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;test&quot;</span>)
+			
+			f.CreateAsFolder
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">write</span> <span style="color:#7F0000;text-style:italic">test</span> <span style="color:#7F0000;text-style:italic">file</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> TextOutputStream = TextOutputStream.Create(f.Child(<span style="color:#6500FE">&quot;test.txt&quot;</span>))
+			
+			t.WriteLine <span style="color:#6500FE">&quot;Hello</span> <span style="color:#6500FE">World&quot;</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">write</span> <span style="color:#7F0000;text-style:italic">two</span> <span style="color:#7F0000;text-style:italic">files</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">logos</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> p <span style="color:#0000FF;font-weight: bold">as</span> Picture = LogoMBS(<span style="color:#326598">500</span>)
+			p.Save(f.Child(<span style="color:#6500FE">&quot;mbs.jpg&quot;</span>), p.SaveAsJPEG)
+			
+			p.Save(f.Child(<span style="color:#6500FE">&quot;logo.jpg&quot;</span>), p.SaveAsJPEG)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">write</span> <span style="color:#7F0000;text-style:italic">second</span> <span style="color:#7F0000;text-style:italic">text</span> <span style="color:#7F0000;text-style:italic">file</span>
+			t = TextOutputStream.Create(f.Child(<span style="color:#6500FE">&quot;other.txt&quot;</span>))
+			
+			t.WriteLine <span style="color:#6500FE">&quot;Just</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">test&quot;</span>
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">write</span> <span style="color:#7F0000;text-style:italic">10</span> <span style="color:#7F0000;text-style:italic">MB</span> <span style="color:#7F0000;text-style:italic">file</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">zeros,</span> <span style="color:#7F0000;text-style:italic">good</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">compress</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> BinaryStream = BinaryStream.Create(f.Child(<span style="color:#6500FE">&quot;zeros.txt&quot;</span>), <span style="color:#0000FF;font-weight: bold">true</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MemoryBlock(<span style="color:#326598">1024</span>*<span style="color:#326598">1024</span>*<span style="color:#326598">10</span>)
+			
+			b.Write m
+			
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> subfolder <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = f.Child(<span style="color:#6500FE">&quot;sub</span> <span style="color:#6500FE">folder&quot;</span>)
+			
+			subfolder.CreateAsFolder
+			p.Save(subfolder.Child(<span style="color:#6500FE">&quot;logo2.jpg&quot;</span>), p.SaveAsJPEG)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> ExtractArchive(ArchiveFile <span style="color:#0000FF;font-weight: bold">as</span> FolderItem, Dest <span style="color:#0000FF;font-weight: bold">as</span> FolderItem)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> LogWindow <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MainMenuBar</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator2 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Module</span> LogModule</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> log(s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			LogWindow.list.addrow s
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Module</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbscompressionplugin.html">MBS Compression Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-compression-archive-archive">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

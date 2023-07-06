@@ -1,0 +1,324 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - AVAssetMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="AVAssetMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">AVAssetMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>AVAssetMBS class</H3>
+<div class="M">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-avfoundation.html" translate="no">AVFoundation</A></td>
+<td class=grau><a href="plugins-mbsavfoundationplugin.html">MBS AVFoundation Plugin</a></td>
+<td class=grau><a href="newinversion132.shtml" class=version>13.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+AVAsset is an abstract class to represent timed audiovisual media such as videos and sounds. <BR>
+<B>Notes:</B> 
+<BR>
+Each asset contains a collection of tracks that are intended to be presented or processed together, each of a uniform media type, including but not limited to audio, video, text, closed captions, and subtitles.<BR>
+<BR>
+An AVAsset object defines the collective properties of the tracks that comprise the asset. (You can access the instances of AVAssetTrack representing tracks of the collection, so you can examine each of these independently if you need to.) You often instantiate an asset using a concrete subclass of AVAsset; for example, you can initialize an instance of AVURLAsset using an URL that refers to an audiovisual media file, such as a QuickTime movie file or an MP3 files (amongst other types). You can also instantiate an asset using other concrete subclasses that extend the basic model for audiovisual media in useful ways, as AVComposition does for temporal editing. To assemble audiovisual constructs from one or more source assets, you can insert assets into instances of AVMutableComposition.<BR>
+<BR>
+You often instantiate an asset using AVURLAsset&mdash;a concrete subclass of AVAsset&mdash;with URLs that refer to audiovisual media resources, such as streams (including HTTP live streams), QuickTime movie files, MP3 files, and files of other types. You can also instantiate an asset using other concrete subclasses that extend the basic model for audiovisual media in useful ways, as AVComposition does for temporal editing.<BR>
+<BR>
+Properties of assets as a whole are defined by AVAsset. Additionally, references to instances of AVAssetTrack representing tracks of the collection can be obtained, so that each of these can be examined independently.<BR>
+<BR>
+Because of the nature of timed audiovisual media, upon successful initialization of an asset some or all of the values for its keys may not be immediately available. The value of any key can be requested at any time, and asset will always return its value synchronously, although it may have to block the calling thread in order to do so. In order to avoid blocking, you can register your interest in particular keys and to become notified when their values become available. For further details, see AVAsynchronousKeyValueLoading.<BR>
+<BR>
+To play an instance of AVAsset, initialize an instance of AVPlayerItem with it, use the player item tem to set up its presentation state (such as whether only a limited timeRange of the asset should be played, etc.), and provide the player item to an AVPlayer object according to whether the items is to be played by itself or together with a collection of other items.<BR>
+<BR>
+You can insert AVAsset objects can also be inserted into an AVMutableComposition object in order to assemble audiovisual constructs from one or more source assets.<BR>
+<BR>
+Subclassing Notes<BR>
+It is not currently possible to subclass AVAsset to handle streaming protocols or file formats that are not supported by the framework.<BR>
+This is an abstract class. You can&#39;t create an instance, but you can get one from various plugin functions.<BR>
+</div>
+<ul>
+<LI>13 properties<UL>
+<li class="M">property <A href="avfoundation-avassetmbs-property.html">ClassName</A> as String</li>
+<li class="M">property <A href="avfoundation-avassetmbs-property.html#2">creationDate</A> as <A href="class-avmetadataitemmbs.html">AVMetadataItemMBS</A></li>
+<li class="M">property <A href="avfoundation-avassetmbs-property.html#3">Handle</A> as Integer</li>
+<li class="M">property <A href="avfoundation-avassetmbs-property.html#4">hasProtectedContent</A> as boolean</li>
+<li class="M">property <A href="avfoundation-avassetmbs-property.html#5">isComposable</A> as boolean</li>
+<li class="M">property <A href="avfoundation-avassetmbs-property.html#6">isExportable</A> as boolean</li>
+<li class="M">property <A href="avfoundation-avassetmbs-property.html#7">isPlayable</A> as boolean</li>
+<li class="M">property <A href="avfoundation-avassetmbs-property.html#8">isReadable</A> as boolean</li>
+<li class="M">property <A href="avfoundation-avassetmbs-property.html#9">lyrics</A> as string</li>
+<li class="M">property <A href="avfoundation-avassetmbs-property.html#10">preferredRate</A> as Double</li>
+<li class="M">property <A href="avfoundation-avassetmbs-property.html#11">preferredVolume</A> as Double</li>
+<li class="M">property <A href="avfoundation-avassetmbs-property.html#12">providesPreciseDurationAndTiming</A> as boolean</li>
+<li class="M">property <A href="avfoundation-avassetmbs-property.html#13">referenceRestrictions</A> as Integer</li>
+</UL></LI>
+<LI>26 methods<UL>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html">availableChapterLocales</A> as <A href="class-nslocalembs.html">NSLocaleMBS</A>()</li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#2">availableMediaCharacteristicsWithMediaSelectionOptions</A> as string()</li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#3">availableMetadataFormats</A> as string()</li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#4">cancelLoading</A></li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#5">chapterMetadataGroupsBestMatchingPreferredLanguages</A> as <A href="class-avtimedmetadatagroupmbs.html">AVTimedMetadataGroupMBS</A>()</li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#6">chapterMetadataGroupsBestMatchingPreferredLanguages</A>(preferredLanguages() as string) as <A href="class-avtimedmetadatagroupmbs.html">AVTimedMetadataGroupMBS</A>()</li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#7">chapterMetadataGroupsWithTitleLocale</A>(locale as <A href="class-nslocalembs.html">NSLocaleMBS</A>, commonKeys() as string) as <A href="class-avtimedmetadatagroupmbs.html">AVTimedMetadataGroupMBS</A>()</li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#8">commonMetadata</A> as <A href="class-avmetadataitemmbs.html">AVMetadataItemMBS</A>()</li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#9">Constructor</A> &nbsp; <b style="color: #8B0000"> Private </b></li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#10">copy</A> as AVAssetMBS</li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#11">duration</A> as <A href="class-cmtimembs.html">CMTimeMBS</A></li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#12">loadValuesAsynchronouslyForKeys</A>(keys() as string, tag as Variant = nil)</li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#13">mediaSelectionGroupForMediaCharacteristic</A>(mediaCharacteristic as string) as <A href="class-avmediaselectiongroupmbs.html">AVMediaSelectionGroupMBS</A></li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#14">metadata</A> as <A href="class-avmetadataitemmbs.html">AVMetadataItemMBS</A>()</li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#15">metadataForFormat</A>(Format as string) as <A href="class-avmetadataitemmbs.html">AVMetadataItemMBS</A>()</li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#16">naturalSize</A> as <A href="class-cgsizembs.html">CGSizeMBS</A></li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#17">preferredTransform</A> as <A href="class-cgaffinetransformmbs.html">CGAffineTransformMBS</A></li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#18">readTimeCodeObjects</A> as <A href="class-avtimecodembs.html">AVTimeCodeMBS</A>()</li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#19">readTimeCodes</A> as String()</li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#20">statusOfValueForKey</A>(key as string, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as Integer</li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#21">trackGroups</A> as <A href="class-avassettrackgroupmbs.html">AVAssetTrackGroupMBS</A>()</li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#22">tracks</A> as <A href="class-avassettrackmbs.html">AVAssetTrackMBS</A>()</li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#23">tracksWithMediaCharacteristic</A>(mediaCharacteristic as string) as <A href="class-avassettrackmbs.html">AVAssetTrackMBS</A>()</li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#24">tracksWithMediaType</A>(mediaType as string) as <A href="class-avassettrackmbs.html">AVAssetTrackMBS</A>()</li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#25">trackWithTrackID</A>(PersistentTrackID as Integer) as <A href="class-avassettrackmbs.html">AVAssetTrackMBS</A></li>
+<li class="M">method <A href="avfoundation-avassetmbs-method.html#26">unusedTrackID</A> as Integer</li>
+</UL></LI>
+<LI>5 shared methods<UL>
+<li class="M">shared method <A href="avfoundation-avassetmbs-shared-method.html">assetWithData</A>(Data as MemoryBlock, Options as Dictionary = nil) as AVAssetMBS</li>
+<li class="M">shared method <A href="avfoundation-avassetmbs-shared-method.html#2">assetWithData</A>(Data as String, Options as Dictionary = nil) as AVAssetMBS</li>
+<li class="M">shared method <A href="avfoundation-avassetmbs-shared-method.html#3">assetWithFile</A>(file as folderitem) as AVAssetMBS</li>
+<li class="M">shared method <A href="avfoundation-avassetmbs-shared-method.html#4">assetWithURL</A>(URL as string) as AVAssetMBS</li>
+<li class="M">shared method <A href="avfoundation-avassetmbs-shared-method.html#5">available</A> as boolean</li>
+</UL></LI>
+<LI>11 constants<UL>
+</UL></LI>
+</ul>
+<h3 lang="en">Reference Restriction Modes</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-avassetmbs-const.html">AVAssetReferenceRestrictionForbidAll </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;hFFFF</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates that only references to media data stored within the asset&#39;s container file should be allowed.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-avassetmbs-const.html#2">AVAssetReferenceRestrictionForbidCrossSiteReference </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 4</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates that references from a remote asset to remote media data stored at a different site should not be followed.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-avassetmbs-const.html#3">AVAssetReferenceRestrictionForbidLocalReferenceToLocal </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 8</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates that references from a local asset to local media data stored outside the asset&#39;s container file should not be followed.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-avassetmbs-const.html#4">AVAssetReferenceRestrictionForbidLocalReferenceToRemote </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates that references from a local asset to remote media data should not be followed.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-avassetmbs-const.html#5">AVAssetReferenceRestrictionForbidNone </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 0</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates that all types of references should be followed.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-avassetmbs-const.html#6">AVAssetReferenceRestrictionForbidRemoteReferenceToLocal </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates that references from a remote asset (for example, referenced via http URL) to local media data (for example, stored in a local file) should not be followed.<BR>
+</td>
+</tr>
+</table>
+<h3 lang="en">Load Status Constants</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-avassetmbs-const.html#7">AVKeyValueStatusCancelled </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 4</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates that the attempt to load the property was cancelled.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-avassetmbs-const.html#8">AVKeyValueStatusFailed </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates that the attempt to load the property failed.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-avassetmbs-const.html#9">AVKeyValueStatusLoaded </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates that the property is ready for use.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-avassetmbs-const.html#10">AVKeyValueStatusLoading </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates that the property is not fully loaded.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="avfoundation-avassetmbs-const.html#11">AVKeyValueStatusUnknown </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 0</td>
+<td bgcolor="#DDDDDD" valign=top>
+Indicates that the property status is unknown.<BR>
+</td>
+</tr>
+</table>
+<h4>Sub classes:</h4><ul>
+<li class="M"><A href="class-avcompositionmbs.html">class AVCompositionMBS</A>
+<ul>
+<li class="M"><A href="class-avmutablecompositionmbs.html">class AVMutableCompositionMBS</A>
+</li>
+</ul>
+</li>
+<li class="M"><A href="class-avmoviembs.html">class AVMovieMBS</A>
+<ul>
+<li class="M"><A href="class-avfragmentedmoviembs.html">class AVFragmentedMovieMBS</A>
+</li>
+<li class="M"><A href="class-avmutablemoviembs.html">class AVMutableMovieMBS</A>
+</li>
+</ul>
+</li>
+<li class="M"><A href="class-avurlassetmbs.html">class AVURLAssetMBS</A>
+</li>
+</ul>
+<h4>Some methods using this class:</h4><ul>
+<li class="M"><A href="avfoundation-avassetexportsessionmbs-method.html#2" translate="no">AVAssetExportSessionMBS.Constructor</A>(asset as AVAssetMBS, presetName as string)</li>
+<li class="M"><A href="avfoundation-avassetexportsessionmbs-shared-method.html#25" translate="no">AVAssetExportSessionMBS.exportPresetsCompatibleWithAsset</A>(asset as AVAssetMBS) as string()</li>
+<li class="M"><A href="avfoundation-avassetexportsessionmbs-shared-method.html#26" translate="no">AVAssetExportSessionMBS.exportSessionWithAsset</A>(asset as AVAssetMBS, presetName as string) as <A href="class-avassetexportsessionmbs.html">AVAssetExportSessionMBS</A></li>
+<li class="M"><A href="avfoundation-avassetimagegeneratormbs-shared-method.html" translate="no">AVAssetImageGeneratorMBS.assetImageGeneratorWithAsset</A>(asset as AVAssetMBS) as <A href="class-avassetimagegeneratormbs.html">AVAssetImageGeneratorMBS</A></li>
+<li class="M"><A href="avfoundation-avassetreadermbs-method.html#5" translate="no">AVAssetReaderMBS.Constructor</A>(item as AVAssetMBS, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>)</li>
+<li class="M"><A href="avfoundation-avmutablecompositionmbs-method.html#3" translate="no">AVMutableCompositionMBS.appendTimeRange</A>(timeRange as <A href="class-cmtimerangembs.html">CMTimeRangeMBS</A>, asset as AVAssetMBS, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as boolean</li>
+<li class="M"><A href="avfoundation-avmutablecompositionmbs-method.html#6" translate="no">AVMutableCompositionMBS.insert</A>(asset as AVAssetMBS, startTime as <A href="class-cmtimembs.html">CMTimeMBS</A>, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as boolean</li>
+<li class="M"><A href="avfoundation-avmutablecompositionmbs-method.html#8" translate="no">AVMutableCompositionMBS.insertTimeRange</A>(timeRange as <A href="class-cmtimerangembs.html">CMTimeRangeMBS</A>, asset as AVAssetMBS, startTime as <A href="class-cmtimembs.html">CMTimeMBS</A>, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as boolean</li>
+<li class="M"><A href="avfoundation-avvideocompositionmbs-method.html#6" translate="no">AVVideoCompositionMBS.isValidForAsset</A>(asset as AVAssetMBS, timerange as <A href="class-cmtimerangembs.html">CMTimeRangeMBS</A>) as boolean</li>
+<li class="M"><A href="movieplayer-avassetmbs.html" translate="no">MoviePlayer.AVAssetMBS</A> as AVAssetMBS</li>
+</ul>
+<h4>Some properties using for this class:</h4><ul>
+<li class="M"><A href="avfoundation-avassetexportsessionmbs-property.html" translate="no">AVAssetExportSessionMBS.asset</A> as AVAssetMBS</li>
+<li class="M"><A href="avfoundation-avassetimagegeneratormbs-property.html#3" translate="no">AVAssetImageGeneratorMBS.asset</A> as AVAssetMBS</li>
+<li class="M"><A href="avfoundation-avassettrackmbs-property.html" translate="no">AVAssetTrackMBS.asset</A> as AVAssetMBS</li>
+<li class="M"><A href="avfoundation-avplayeritemmbs-property.html" translate="no">AVPlayerItemMBS.asset</A> as AVAssetMBS</li>
+<li class="M"><A href="avfoundation-sdavassetexportsessionmbs-property.html" translate="no">SDAVAssetExportSessionMBS.asset</A> as AVAssetMBS</li>
+</ul>
+<h4>Some events using this class:</h4><ul>
+<li class="M"><A href="avfoundation-avfoundationmbs-event.html#24">AVFoundationMBS.determineCompatibilityOfExportPresetCompleted</A>(presetName as string, asset as AVAssetMBS, outputFileType as string, compatible as boolean, tag as Variant)</li>
+<li class="M"><A href="avfoundation-avfoundationmbs-event1.html#26">AVFoundationMBS.videoCompositionShouldContinueValidatingAfterFindingInvalidTrackIDInInstruction</A>(videoComposition as <A href="class-avvideocompositionmbs.html">AVVideoCompositionMBS</A>, videoCompositionInstruction as <A href="class-avvideocompositioninstructionmbs.html">AVVideoCompositionInstructionMBS</A>, layerInstruction as <A href="class-avvideocompositionlayerinstructionmbs.html">AVVideoCompositionLayerInstructionMBS</A>, asset as AVAssetMBS) as boolean</li>
+</ul>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-avfoundation-avassetexportsessionmbstest.html">/AVFoundation/AVAssetExportSessionMBS test</A></li>
+<li class=""><A href="example-avfoundation-avassetexportsessionmbstestbatch.html">/AVFoundation/AVAssetExportSessionMBS test batch</A></li>
+<li class=""><A href="example-avfoundation-donutvideoplayer.html">/AVFoundation/Donut Video Player</A></li>
+<li class=""><A href="example-avfoundation-donutvideoplayeroverlay.html">/AVFoundation/Donut Video Player Overlay</A></li>
+<li class=""><A href="example-avfoundation-generatethumbnails.html">/AVFoundation/Generate Thumbnails</A></li>
+<li class=""><A href="example-avfoundation-mergeandcropvideos.html">/AVFoundation/Merge and Crop Videos</A></li>
+<li class=""><A href="example-avfoundation-sdavassetexportsessionmbstest.html">/AVFoundation/SDAVAssetExportSessionMBS test</A></li>
+<li class=""><A href="example-avfoundation-simpleplayer.html">/AVFoundation/Simple Player</A></li>
+<li class=""><A href="example-avfoundation-thumbnailsync.html">/AVFoundation/Thumbnail sync</A></li>
+<li class=""><A href="example-avfoundation-transparentplayer.html">/AVFoundation/Transparent Player</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2017-11-28/MonkeyBread_Software_Releases_/monkeybreadsoftware_blog_xojo">MonkeyBread Software Releases the MBS Xojo Plugins in version 17.5</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2017-11-23/MBS_Xojo_Plugins_version_175pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 17.5pr9</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2016-12-12/MBS_Xojo__Real_Studio_plug-ins/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio plug-ins in version 16.5</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2016-11-08/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 16.5pr6</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2016-10-25/Automated_video_editing_with_X/monkeybreadsoftware_blog_xojo">Automated video editing with Xojo</a></li>
+</ul>
+<h4>Xojo Developer Magazine</h4>
+<ul>
+<li><a href="http://www.xdevmag.com/browse/16.1/">16.1, page 9: News</a></li>
+<li><a href="http://www.xdevmag.com/browse/12.2/">12.2, page 45: Moving to AVFoundation, Leaving QuickTime behind by Christian Schmitz</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsavfoundationplugin.html">MBS AVFoundation Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-avassetimagegeneratormbs.html">AVAssetImageGeneratorMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-avassetreaderaudiomixoutputmbs.html">AVAssetReaderAudioMixOutputMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-avassetmbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

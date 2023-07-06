@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Win/WMI/WMI Process CPU usage</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Win/WMI/WMI Process CPU usage</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Win/WMI/WMI Process CPU usage</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS Win Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Win/WMI/WMI Process CPU usage<BR>
+This example is the version from Fri, 12th Aug 2021.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;WMI</span> <span style="color:#6500FE">Process</span> <span style="color:#6500FE">CPU</span> <span style="color:#6500FE">usage.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">required</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">Windows</span> <span style="color:#7F0000;text-style:italic">8.1</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">later</span>
+			<span style="color:#0000FF;font-weight: bold">Call</span> WindowsWMIMBS.InitSecurity(<span style="color:#0000FF;font-weight: bold">False</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Window1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kColumnName = <span style="color:#326598">1</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kColumnPMemory = <span style="color:#326598">2</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kColumnTime = <span style="color:#326598">4</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kColumnVMemory = <span style="color:#326598">3</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance List <span style="color:#0000FF;font-weight: bold">Inherits</span> Listbox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control UpdateTimer <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance UpdateTimer <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				update
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			w=<span style="color:#0000FF;font-weight: bold">new</span> WindowsWMIMBS
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> w.ConnectServer(<span style="color:#6500FE">&quot;root\cimv2&quot;</span>) <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">&#39;MsgBox</span> <span style="color:#7F0000;text-style:italic">&quot;Connected&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				MsgBox <span style="color:#6500FE">&quot;ConnectServer:</span> <span style="color:#6500FE">fail&quot;</span>+EndOfLine+<span style="color:#6500FE">&quot;Lasterror:</span> <span style="color:#6500FE">&quot;</span>+str(w.Lasterror)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			
+			list.ColumnAlignment(kColumnPMemory) = List.AlignRight
+			list.ColumnAlignment(kColumnVMemory) = List.AlignRight
+			list.ColumnAlignment(kColumnTime) = List.AlignRight
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> RowForID(ID <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, name <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> u <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = List.ListCount-<span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> u
+				<span style="color:#0000FF;font-weight: bold">if</span> list.RowTag(i) = ID <span style="color:#0000FF;font-weight: bold">and</span> list.cell(i, kColumnName) = name <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> i
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> -<span style="color:#326598">1</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> formatMemory(n <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">int64</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> n &lt; <span style="color:#326598">2</span>* <span style="color:#326598">1024</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> str(n)
+			<span style="color:#0000FF;font-weight: bold">elseif</span> n &lt; <span style="color:#326598">2</span> * <span style="color:#326598">1024</span> * <span style="color:#326598">1024</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">return</span> str(n \ <span style="color:#326598">1024</span>)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">KB&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				<span style="color:#0000FF;font-weight: bold">return</span> str(n \ <span style="color:#326598">1024</span> \ <span style="color:#326598">1024</span>)+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">MB&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> update()
+			<span style="color:#0000FF;font-weight: bold">if</span> w.query(<span style="color:#6500FE">&quot;WQL&quot;</span>, <span style="color:#6500FE">&quot;SELECT</span> <span style="color:#6500FE">IDProcess,</span> <span style="color:#6500FE">Name,</span> <span style="color:#6500FE">VirtualBytes,</span> <span style="color:#6500FE">PrivateBytes,</span> <span style="color:#6500FE">PercentProcessorTime</span> <span style="color:#6500FE">FROM</span> <span style="color:#6500FE">Win32_PerfRawData_PerfProc_Process&quot;</span>) <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> stats() <span style="color:#0000FF;font-weight: bold">as</span> Stats
+				<span style="color:#0000FF;font-weight: bold">dim</span> TotalPercentProcessorTime <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Int64</span>
+				
+				<span style="color:#0000FF;font-weight: bold">while</span> w.NextItem
+					<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> stats
+					s.name = w.getProperty(<span style="color:#6500FE">&quot;Name&quot;</span>)
+					s.ID = w.GetPropertyInteger(<span style="color:#6500FE">&quot;IDProcess&quot;</span>)
+					s.VirtualBytes = w.GetPropertyInt64(<span style="color:#6500FE">&quot;VirtualBytes&quot;</span>)
+					s.PrivateBytes = w.GetPropertyInt64(<span style="color:#6500FE">&quot;PrivateBytes&quot;</span>)
+					s.PercentProcessorTime = w.GetPropertyInt64(<span style="color:#6500FE">&quot;PercentProcessorTime&quot;</span>)
+					
+					stats.Append s
+					<span style="color:#0000FF;font-weight: bold">if</span> s.Name = <span style="color:#6500FE">&quot;_total&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						TotalPercentProcessorTime = s.PercentProcessorTime
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">wend</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> deltaTotalPercentProcessorTime <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">int64</span> = LastTotalPercentProcessorTime - TotalPercentProcessorTime
+				
+				<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> s <span style="color:#0000FF;font-weight: bold">as</span> stats <span style="color:#0000FF;font-weight: bold">in</span> stats
+					<span style="color:#0000FF;font-weight: bold">dim</span> row <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = RowForID(s.ID, s.name)
+					<span style="color:#0000FF;font-weight: bold">if</span> row = -<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						
+						list.AddRow str(s.ID), <span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#6500FE">&quot;&quot;</span>
+						row = list.LastIndex
+						list.RowTag(row) = s.ID
+						list.CellTag(row, kColumnTime) = s.PercentProcessorTime
+						
+					<span style="color:#0000FF;font-weight: bold">else</span>
+						
+						<span style="color:#0000FF;font-weight: bold">dim</span> p <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">int64</span> = list.CellTag(row, kColumnTime)
+						<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">int64</span> = s.PercentProcessorTime-p
+						
+						list.cell(row, kColumnTime) = format(d / DeltaTotalPercentProcessorTime,<span style="color:#6500FE">&quot;0.0%&quot;</span>)
+						list.CellTag(row, kColumnTime) = s.PercentProcessorTime
+						
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+					list.Cell(row, kColumnName) = s.name
+					list.cell(row, kColumnPMemory) = formatMemory(s.PrivateBytes)
+					list.cell(row, kColumnVMemory) = formatMemory(s.VirtualBytes)
+					
+				<span style="color:#0000FF;font-weight: bold">next</span>
+				
+				LastTotalPercentProcessorTime = TotalPercentProcessorTime
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				MsgBox <span style="color:#6500FE">&quot;query:</span> <span style="color:#6500FE">fail&quot;</span>+EndOfLine+<span style="color:#6500FE">&quot;Lasterror:</span> <span style="color:#6500FE">&quot;</span>+str(w.Lasterror)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> LastTotalPercentProcessorTime <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">INt64</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> w <span style="color:#0000FF;font-weight: bold">As</span> WindowsWMIMBS</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MainMenuBar</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator2 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Stats</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> ID <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Name <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> PercentProcessorTime <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Int64</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> PrivateBytes <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Int64</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> VirtualBytes <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Int64</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-win-wmi-wmifileevents.html">/Win/WMI/WMI File Events</A></li>
+<li><A href="example-win-wmi-wmihddinfo.html">/Win/WMI/WMI HDD Info</A></li>
+<li><A href="example-win-wmi-wminetworktest.html">/Win/WMI/WMI Network Test</A></li>
+<li><A href="example-win-wmi-wmiprocesscreationevents.html">/Win/WMI/WMI Process Creation Events</A></li>
+<li><A href="example-win-wmi-wmiprocesscreationeventsviaremote.html">/Win/WMI/WMI Process Creation Events via Remote</A></li>
+<li><A href="example-win-wmi-wmiprocessor.html">/Win/WMI/WMI Processor</A></li>
+<li><A href="example-win-wmi-wmiquery.html">/Win/WMI/WMI Query</A></li>
+<li><A href="example-win-wmi-wmirecentwindowsevents.html">/Win/WMI/WMI Recent Windows Events</A></li>
+<li><A href="example-win-wmi-wmirecentwindowseventsweb.html">/Win/WMI/WMI Recent Windows Events Web</A></li>
+<li><A href="example-win-wmi-wmiwirelesslansignalstrength.html">/Win/WMI/WMI Wireless LAN Signal Strength</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbswinplugin.html">MBS Win Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-win-wmi-wmiprocesscpuusage">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

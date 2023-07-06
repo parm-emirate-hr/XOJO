@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Delay: DelayMBS</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Delay">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Delay: DelayMBS</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="WLM">
+<b><A name="1">DelayMBS(time as Double)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>global method</td>
+<td class=grau><A href="topic-system.html" translate="no">System</A></td>
+<td class=grau><a href="plugins-mbsutilplugin.html">MBS Util Plugin</a></td>
+<td class=grau><a href="newinversion.shtml" class=version></a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Stopps the application for the given time.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;">DelayMBS <span style="color: #006633;">1.5</span> <span style="color: #800000;">// wait one and a half seconds</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+The application should take nearly 0% CPU Power till time has gone.<BR>
+If you need more options like blocking other RB threads, check the DelayMBS method with mode parameter.<BR>
+<BR>
+Another example from Kirk Clendinning:<BR>
+<BR>
+Property: lastupdate as Integer<BR>
+<BR>
+Sub YieldProcessorTime(periodticks as Integer, widthmilliseconds as Integer)<BR>
+   // use the Monkeybread Software delay to yeild time for a screen update<BR>
+   // every period*ticks for a pulse width of width milliseconds<BR>
+   <BR>
+   if ticks&gt;lastupdate+periodTicks then<BR>
+      delayMBS widthmilliseconds/1000<BR>
+      lastupdate=ticks<BR>
+   end if<BR>
+<BR>
+exception err<BR>
+   ExceptionReport(err, &quot;Utils:Methods:YieldProcessorTime&quot;)<BR>
+end sub<BR>
+<BR>
+YieldProcessorTime(15, 20) gives me a delay of 20ms every 250ms.  But, <BR>
+since the delayMBS yields time more efficiently than using a RB thread, this turns out to be a much more effective way to update progress bars etc.<BR>
+I don&#39;t need the delay per se, but since RB still hasn&#39;t written a good yield function (that I know of) your delayMSB works instead.<BR>
+<BR>
+Please use optional mode flags with DelayDontWaitNextEvent when using on thread.<BR>
+<BR>
+Using DelayMBS on Web Applications can cause problems as the server is paused than for all clients, a really bad thing.<BR>
+<p>See also:<ul>
+<li><A href="global-delaymbs.html#2">DelayMBS(time as Double, mode as Integer)</A></li>
+</ul></p>
+<h4>Some examples using this global method:</h4>
+<ul translate="no">
+<li><A href="example-maccf-carbonevents-carboneventstest.html">/MacCF/Carbon Events/Carbon Events Test</A></li>
+<li><A href="example-macclassic-speech-speechrecorder.html">/MacClassic/Speech/Speech recorder</A></li>
+<li><A href="example-maccocoa-nsstatusitem-logintimeinmenubar.html">/MacCocoa/NSStatusItem/Logintime in menubar</A></li>
+<li><A href="example-maccocoa-nsstatusitem-nameinmenubar.html">/MacCocoa/NSStatusItem/Name in menu bar</A></li>
+<li><A href="example-maccocoa-nsstatusitem-statusitemwithpopover.html">/MacCocoa/NSStatusItem/Statusitem with PopOver</A></li>
+<li><A href="example-maccocoa-nsstatusitem-statusitemwithsliderinmenubar.html">/MacCocoa/NSStatusItem/Statusitem with slider in menubar</A></li>
+<li><A href="example-maccocoa-nsstatusitem-statusitemwithtextfieldinmenubar.html">/MacCocoa/NSStatusItem/Statusitem with textfield in menubar</A></li>
+<li><A href="example-macframeworks-fsevents-fseventsonbootdeviceconsole.html">/MacFrameworks/FSEvents/FSEvents on Boot Device Console</A></li>
+<li><A href="example-phidgets-oldphidgetclasses-phidgetmanager.html">/Phidgets/Old Phidget Classes/Phidget Manager</A></li>
+<li><A href="example-util-threads-delaymbsthreadtest.html">/Util/Threads/DelayMBS Thread Test</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><A name="2">DelayMBS(time as Double, mode as Integer)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>global method</td>
+<td class=grau><A href="topic-system.html" translate="no">System</A></td>
+<td class=grau><a href="plugins-mbsutilplugin.html">MBS Util Plugin</a></td>
+<td class=grau><a href="newinversion64.shtml" class=version>6.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Stopps the application for the given time.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;">DelayMBS <span style="color: #006633;">1.5</span>, <span style="color: #336698;">0</span> <span style="color: #800000;">// wait one and a half seconds</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Like DelayMBS with one parameter but additional mode parameter:<BR>
+<BR>
+combine the following constants:<BR>
+<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">const DelayDontMPYield = 1</TD><TD valign="top">// Don&#39;t give additional time for other OS threads</TD></TR>
+<TR><TD valign="top">const DelayDontRBYield = 2</TD><TD valign="top">// Don&#39;t give Xojo time for other Xojo threads</TD></TR>
+<TR><TD valign="top">const DelayDontThreadYield = 4</TD><TD valign="top">// Don&#39;t give addition time for other OS threads</TD></TR>
+<TR><TD valign="top">const DelayDontQuickTimeYield = 8</TD><TD valign="top">// Don&#39;t give time for QuickTime Movieplayer</TD></TR>
+<TR><TD valign="top">const DelayDontWait = 16</TD><TD valign="top">// Don&#39;t give CPU time for other OS threads</TD></TR>
+<TR><TD valign="top">const DelayDontWaitNextEvent = 32</TD><TD valign="top">// Don&#39;t give CPU time to handle events on Mac OS X to avoid beachball cursor</TD></TR>
+<TR><TD valign="top">const DelayDontSleep = 64</TD><TD valign="top">// Don&#39;t give CPU time for other OS threads (Windows)</TD></TR>
+</TABLE>
+<BR>
+Using DelayDontWaitNextEvent may show the beach ball cursor, but will have the OpenDocument event working as other AppleEvents. Please use DelayDontWaitNextEvent option for running on threads.<BR>
+<BR>
+Using DelayMBS on Web Applications can cause problems as the server is paused than for all clients, a really bad thing.<BR>
+<p>See also:<ul>
+<li><A href="global-delaymbs.html">DelayMBS(time as Double)</A></li>
+</ul></p>
+<h4>Some examples using this global method:</h4>
+<ul translate="no">
+<li><A href="example-maccocoa-nsstatusitem-logintimeinmenubar.html">/MacCocoa/NSStatusItem/Logintime in menubar</A></li>
+<li><A href="example-maccocoa-nsstatusitem-nameinmenubar.html">/MacCocoa/NSStatusItem/Name in menu bar</A></li>
+<li><A href="example-maccocoa-nsstatusitem-statusitemwithtextfieldinmenubar.html">/MacCocoa/NSStatusItem/Statusitem with textfield in menubar</A></li>
+<li><A href="example-network-bonjour-bonjourconsole.html">/Network/Bonjour/Bonjour Console</A></li>
+<li><A href="example-phidgets-oldphidgetclasses-phidgetmotorcontroltestwithevents.html">/Phidgets/Old Phidget Classes/PhidgetMotorControl Test with Events</A></li>
+<li><A href="example-util-delay.html">/Util/Delay</A></li>
+<li><A href="example-util-makeforegroundprocess.html">/Util/Make Foreground Process</A></li>
+<li><A href="example-util-restartapponmac.html">/Util/Restart App on Mac</A></li>
+<li><A href="example-util-threads-delaymbsthreadtest.html">/Util/Threads/DelayMBS Thread Test</A></li>
+<li><A href="example-vlc-thumbnailergui.html">/VLC/Thumbnailer GUI</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2022-02-01/MBS_Xojo_Plugins_version_221pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 22.1pr1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2016-01-26/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 16.0pr8</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2013-09-23/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 13.4pr5</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2013-09-16/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 13.4pr4</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2013-03-10/MBS_Real_Studio_Plugins_versio/monkeybreadsoftware_blog_xojo">MBS Real Studio Plugins, version 13.1pr7</a></li>
+</ul>
+<h4>Xojo Developer Magazine</h4>
+<ul>
+<li><a href="http://www.xdevmag.com/browse/19.2/">19.2, page 33: Shake It!, Shake any window to show an incorrect entry... on any platform, without plugins or declares! by Markus Winter</a></li>
+</ul>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsutilplugin.html">MBS Util Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=global-delaymbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

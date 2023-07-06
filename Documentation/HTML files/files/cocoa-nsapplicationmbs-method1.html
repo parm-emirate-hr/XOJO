@@ -1,0 +1,596 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - NSApplicationMBS methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="NSApplicationMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">NSApplicationMBS methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-nsapplicationmbs.html">NSApplicationMBS</a> class.  </p>
+<p>
+<a href="cocoa-nsapplicationmbs-method.html">Previous items</a>
+ 
+</p>
+<div class="M">
+<b><a href="class-nsapplicationmbs.html">NSApplicationMBS</a>.<A name="1">runModalForWindow(win as <A href="class-nswindowmbs.html">NSWindowMBS</A>) as Integer</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoa.html" translate="no">Cocoa</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion182.shtml" class=version>18.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Starts a modal event loop for the specified window.<BR>
+<B>Notes:</B> 
+<BR>
+win: The window to be displayed modally. If it is not already visible, the window is centered on the screen using the value in its center method and made visible and key. If it is already visible, it is simply made key.<BR>
+<BR>
+Returns an integer indicating the reason that this method returned. <BR>
+<BR>
+This method runs a modal event loop for the specified window synchronously. It displays the specified window, makes it key, starts the run loop, and processes events for that window. (You do not need to show the window yourself.) While the app is in that loop, it does not respond to any other events (including mouse, keyboard, or window-close events) unless they are associated with the window. It also does not perform any tasks (such as firing timers) that are not associated with the modal run loop. In other words, this method consumes only enough CPU time to process events and dispatch them to the action methods associated with the modal window.<BR>
+<BR>
+You can exit the modal loop by calling the stopModal, stopModalWithCode, or abortModal methods from your modal window code. If you use the stopModalWithCode method to stop the modal event loop, this method returns the argument passed to stopModalWithCode. If you use stopModal instead, this method returns the constant NSModalResponseStop (-1000). If you use abortModal, this method returns the constant NSModalResponseAbort (-1001).<BR>
+</div>
+<div class="M">
+<b><a href="class-nsapplicationmbs.html">NSApplicationMBS</a>.<A name="2">runPageLayout</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoa.html" translate="no">Cocoa</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion124.shtml" class=version>12.4</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Displays the app&#39;s page layout panel, an instance of NSPageLayout.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><A href="class-nsapplicationmbs.html">NSApplicationMBS</A>.sharedApplication.runPageLayout</span>
+</pre>
+</div>
+<B>Notes:</B> 
+If the NSPageLayout instance does not exist, this method creates one. This method is typically invoked when the user chooses Page Setup from the application&#39;s FIle menu.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsapplicationmbs.html">NSApplicationMBS</a>.<A name="3">sendEvent(theEvent as <A href="class-nseventmbs.html">NSEventMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoa.html" translate="no">Cocoa</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Dispatches an event to other objects.<BR>
+<B>Notes:</B> 
+<BR>
+You rarely invoke sendEvent directly, although you might want to override this method to perform some action on every event. sendEvent messages are sent from the main event loop (the run method). sendEvent is the method that dispatches events to the appropriate responders&mdash;NSApp handles application events, the NSWindow object indicated in the event record handles window-related events, and mouse and key events are forwarded to the appropriate NSWindow object for further dispatching.<BR>
+<BR>
+If you need to override sendEvent method, please call MBS support.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsapplicationmbs.html">NSApplicationMBS</a>.<A name="4">showHelp</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoa.html" translate="no">Cocoa</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion165.shtml" class=version>16.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Shows help.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><A href="class-nsapplicationmbs.html">NSApplicationMBS</A>.sharedApplication.showHelp</span>
+</pre>
+</div>
+<B>Notes:</B> 
+If your project is properly registered, and the necessary keys have been set in the property list, this method launches Help Viewer and displays the first page of your app&rsquo;s help book.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsapplicationmbs.html">NSApplicationMBS</a>.<A name="5">startDictation</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoa.html" translate="no">Cocoa</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion131.shtml" class=version>13.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Starts dictation.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><A href="class-nsapplicationmbs.html">NSApplicationMBS</A>.sharedApplication.startDictation</span>
+</pre>
+</div>
+<B>Notes:</B> 
+For Mac OS X 10.8.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-macosx-startdictationonmacosx108.html">/MacOSX/Start Dictation on Mac OS X 10.8</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-nsapplicationmbs.html">NSApplicationMBS</a>.<A name="6">stopDictation</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoa.html" translate="no">Cocoa</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion131.shtml" class=version>13.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Stops dictation.<BR>
+<B>Notes:</B> 
+For Mac OS X 10.8.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsapplicationmbs.html">NSApplicationMBS</a>.<A name="7">terminate</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoa.html" translate="no">Cocoa</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Terminates the receiver.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><A href="class-nsapplicationmbs.html">NSApplicationMBS</A>.sharedApplication.terminate</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+This method is typically invoked when the user chooses Quit or Exit from the application&#39;s menu.<BR>
+<BR>
+When invoked, this method performs several steps to process the termination request. First, it asks the application&#39;s document controller (if one exists) to save any unsaved changes in its documents. During this process, the document controller can cancel termination in response to input from the user. If the document controller does not cancel the operation, this method then calls the delegate&#39;s applicationShouldTerminate method. If applicationShouldTerminate returns NSTerminateCancel, the termination process is aborted and control is handed back to the main event loop. If the method returns NSTerminateLater, the application runs its run loop in the NSModalPanelRunLoopMode mode until the replyToApplicationShouldTerminate method is called with the value true or false. If the applicationShouldTerminate method returns NSTerminateNow, this method posts a NSApplicationWillTerminateNotification notification to the default notification center.<BR>
+<BR>
+Do not bother to put final cleanup code in your application&#39;s main() function&mdash;it will never be executed. If cleanup is necessary, perform that cleanup in the delegate&#39;s applicationWillTerminate method.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsapplicationmbs.html">NSApplicationMBS</a>.<A name="8">unhide</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoa.html" translate="no">Cocoa</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Restores hidden windows to the screen and makes the receiver active.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><A href="class-nsapplicationmbs.html">NSApplicationMBS</A>.sharedApplication.unhide</span>
+</pre>
+</div>
+</div>
+<div class="M">
+<b><a href="class-nsapplicationmbs.html">NSApplicationMBS</a>.<A name="9">unhideAllApplications</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoa.html" translate="no">Cocoa</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Unhides all applications, including the receiver.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><A href="class-nsapplicationmbs.html">NSApplicationMBS</A>.sharedApplication.unhideAllApplications</span>
+</pre>
+</div>
+<B>Notes:</B> 
+This action causes each application to order its windows to the front, which could obscure the currently active window in the active application.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsapplicationmbs.html">NSApplicationMBS</a>.<A name="10">unhideWithoutActivation</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoa.html" translate="no">Cocoa</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Restores hidden windows without activating their owner (the receiver).<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><A href="class-nsapplicationmbs.html">NSApplicationMBS</A>.sharedApplication.unhideWithoutActivation</span>
+</pre>
+</div>
+<B>Notes:</B> 
+When this method begins, it posts an NSApplicationWillUnhideNotification to the default notification center. If it completes successfully, it posts an NSApplicationDidUnhideNotification.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsapplicationmbs.html">NSApplicationMBS</a>.<A name="11">updateWindows</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoa.html" translate="no">Cocoa</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion132.shtml" class=version>13.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Sends an update message to each onscreen window.<BR>
+<B>Notes:</B> 
+<BR>
+This method is invoked automatically in the main event loop after each event when running in NSDefaultRunLoopMode or NSModalRunLoopMode. This method is not invoked automatically when running in NSEventTrackingRunLoopMode.<BR>
+<BR>
+When this method begins, it posts an NSApplicationWillUpdateNotification to the default notification center. When it successfully completes, it posts an NSApplicationDidUpdateNotification.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsapplicationmbs.html">NSApplicationMBS</a>.<A name="12">updateWindowsItem(win as <A href="class-nswindowmbs.html">NSWindowMBS</A>)</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoa.html" translate="no">Cocoa</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion111.shtml" class=version>11.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Updates the Window menu item for a given window to reflect the edited status of that window.<BR>
+<B>Notes:</B> 
+<BR>
+win: The window whose menu item is to be updated.<BR>
+<BR>
+You rarely need to invoke this method because it is invoked automatically when the edit status of an NSWindow object is set.<BR>
+</div>
+<div class="M">
+<b><a href="class-nsapplicationmbs.html">NSApplicationMBS</a>.<A name="13">windows as <A href="class-nswindowmbs.html">NSWindowMBS</A>()</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoa.html" translate="no">Cocoa</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns an array containing the receiver&#39;s window objects.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #800000;">// show all window titles in message boxes</span><br /><span style="color: #0000FF;">for</span> <span style="color: #0000FF;">each</span> w <span style="color: #0000FF;">as</span> <A href="class-nswindowmbs.html">NSWindowMBS</A> <span style="color: #0000FF;">in</span> <A href="class-nsapplicationmbs.html">NSApplicationMBS</A>.sharedApplication.windows<br />  MsgBox w.Title<br /><span style="color: #0000FF;">next</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+Returns an array of NSWindow objects. This array includes both onscreen and offscreen windows.<BR>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-maccocoa-lionpersistence.html">/MacCocoa/Lion Persistence</A></li>
+</ul>
+</div>
+<div class="M">
+<b><a href="class-nsapplicationmbs.html">NSApplicationMBS</a>.<A name="14">windowWithWindowNumber(windowNumber as Integer) as <A href="class-nswindowmbs.html">NSWindowMBS</A></A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-cocoa.html" translate="no">Cocoa</A></td>
+<td class=grau><a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a></td>
+<td class=grau><a href="newinversion112.shtml" class=version>11.2</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop only</td>
+</tr>
+</table>
+<B>Function:</B> 
+Returns the window corresponding to the specified window number.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> w <span style="color: #0000FF;">as</span> window = window1<br />w.Title = <span style="color: #6600FE;">&quot;This is our test window&quot;</span><br /><br /><span style="color: #800000;">// get a window ID somewhere</span><br /><span style="color: #0000FF;">dim</span> WindowID <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span> = <A href="module-cgwindowmbs.html">CGWindowMBS</A>.GetWindowID(w)<br /><br /><span style="color: #800000;">// now find back the window</span><br /><span style="color: #0000FF;">dim</span> n <span style="color: #0000FF;">as</span> <A href="class-nswindowmbs.html">NSWindowMBS</A> = <A href="class-nsapplicationmbs.html">NSApplicationMBS</A>.sharedApplication.windowWithWindowNumber(windowid)<br /><br />MsgBox n.Title</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+windowNumber: The unique window number associated with the desired NSWindow object.<BR>
+<BR>
+Returns the desired window object or nil if the window could not be found.<BR>
+</div>
+<p>
+<a href="cocoa-nsapplicationmbs-method.html">Previous items</a>
+ 
+</p>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=cocoa-nsapplicationmbs-method1">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

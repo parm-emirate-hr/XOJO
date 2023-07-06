@@ -1,0 +1,426 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /MacCocoa/Dynamic FileOpenDialog</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /MacCocoa/Dynamic FileOpenDialog</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/MacCocoa/Dynamic FileOpenDialog</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS MacOSX Plugin, MBS MacBase Plugin, MBS MacControls Plugin, MBS MacCocoa Plugin, MBS Util Plugin, MBS Main Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /MacCocoa/Dynamic FileOpenDialog<BR>
+This example is the version from Mon, 6th Nov 2022.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Dynamic</span> <span style="color:#6500FE">FileOpenDialog.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> main <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control TestBtn <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance TestBtn <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = typesFld.Text
+				<span style="color:#0000FF;font-weight: bold">if</span> AllTypesCB.Value <span style="color:#0000FF;font-weight: bold">Then</span> s = <span style="color:#6500FE">&quot;&quot;</span>
+				
+				ShowDocOpenDlg s, <span style="color:#6500FE">&quot;AddDocument&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control OpenFiles <span style="color:#0000FF;font-weight: bold">Inherits</span> FileOpenPanel</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance OpenFiles(<span style="color:#326598">0</span>) <span style="color:#0000FF;font-weight: bold">Inherits</span> FileOpenPanel</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control typesFld <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance typesFld <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control AllTypesCB <span style="color:#0000FF;font-weight: bold">Inherits</span> Checkbox</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance AllTypesCB <span style="color:#0000FF;font-weight: bold">Inherits</span> Checkbox</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> DataChanged(src <span style="color:#0000FF;font-weight: bold">As</span> Notifier)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Part</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Receiver</span> <span style="color:#7F0000;text-style:italic">interface.</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> src &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> v <span style="color:#0000FF;font-weight: bold">As</span> Variant = src.Data
+				<span style="color:#0000FF;font-weight: bold">if</span> v <span style="color:#0000FF;font-weight: bold">isa</span> OpenPanelResults <span style="color:#0000FF;font-weight: bold">Then</span>
+					<span style="color:#0000FF;font-weight: bold">dim</span> result <span style="color:#0000FF;font-weight: bold">As</span> OpenPanelResults = v
+					<span style="color:#0000FF;font-weight: bold">if</span> result.CallingMethod = <span style="color:#6500FE">&quot;AddDocument&quot;</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+						HandleAddDocuments result.files
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> HandleAddDocuments(files() <span style="color:#0000FF;font-weight: bold">As</span> FolderItem)
+			<span style="color:#0000FF;font-weight: bold">dim</span> u <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = UBound(files)
+			<span style="color:#0000FF;font-weight: bold">if</span> u = -<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				MsgBox <span style="color:#6500FE">&quot;You</span> <span style="color:#6500FE">cancelled</span> <span style="color:#6500FE">the</span> <span style="color:#6500FE">file</span> <span style="color:#6500FE">open</span> <span style="color:#6500FE">dialog&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">Else</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = <span style="color:#6500FE">&quot;You</span> <span style="color:#6500FE">chose:&quot;</span> + EndOfLine + EndOfLine
+				
+				<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> u
+					<span style="color:#0000FF;font-weight: bold">if</span> files(i) &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">Then</span> s = s + files(i).DisplayName + EndOfLine
+				<span style="color:#0000FF;font-weight: bold">next</span>
+				
+				MsgBox s
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> ShowDocOpenDlg(apptypes <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>, callingMethod <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> types() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = FileOpenPanel.OSTypeStrToArray(apptypes)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> UBound(types) = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">and</span> types(<span style="color:#326598">0</span>) = <span style="color:#6500FE">&quot;&#39;&#39;&quot;</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				types.Remove <span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">pass</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">empty</span> <span style="color:#7F0000;text-style:italic">array</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			OpenDialog = <span style="color:#0000FF;font-weight: bold">new</span> OpenFiles(<span style="color:#0000FF;font-weight: bold">nil</span>, <span style="color:#6500FE">&quot;&quot;</span>, types, callingMethod, <span style="color:#0000FF;font-weight: bold">True</span>, <span style="color:#0000FF;font-weight: bold">True</span>, <span style="color:#0000FF;font-weight: bold">self</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> TestFileTypeConversion()
+			<span style="color:#0000FF;font-weight: bold">const</span> characters = <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> cnt <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = Len(characters)
+			<span style="color:#0000FF;font-weight: bold">const</span> arrLen = <span style="color:#326598">100000</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> r <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">new</span> Random
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> i <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> arr(arrLen) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			<span style="color:#0000FF;font-weight: bold">for</span> i = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> arrLen
+				<span style="color:#0000FF;font-weight: bold">dim</span> type <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+				<span style="color:#0000FF;font-weight: bold">for</span> n <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">4</span>
+					type = type + Mid(characters, r.InRange(<span style="color:#326598">1</span>, cnt), <span style="color:#326598">1</span>)
+				<span style="color:#0000FF;font-weight: bold">next</span>
+				
+				arr(i) = type
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> mTics <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = ticks
+			<span style="color:#7F0000;text-style:italic">&#39;#pragma</span> <span style="color:#7F0000;text-style:italic">DisableAutoWaitCursor</span>
+			<span style="color:#0000FF">#pragma</span> DisableBackgroundTasks
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> i = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> arrLen
+				arr(i) = NSOpenPanelMBS.FileTypeForHFSType(arr(i))
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			mTics = Ticks - mTics
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> fTics <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = Ticks
+			arr = FileOpenPanel.OSTypeArrayToHFSArray(arr)
+			fTics = Ticks - fTics
+			
+			MsgBox <span style="color:#6500FE">&quot;NSOpenPanelMBS.FileTypeForHFSType:&quot;</span> + str(mTics) + EndOfLine + _
+					<span style="color:#6500FE">&quot;FileOpenPanel.OSTypeArrayToHFSArray:</span> <span style="color:#6500FE">&quot;</span> + str(fTics)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> OpenDialog <span style="color:#0000FF;font-weight: bold">As</span> FileOpenPanel</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> FileOpenPanel <span style="color:#0000FF;font-weight: bold">Inherits</span> NSOpenPanelMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kAddToFavesIdentifier = <span style="color:#6500FE">&quot;AddToFavorites&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kShowAllTypesIdentifier = <span style="color:#6500FE">&quot;ShowAllTypes&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kShowInvisiblesIdentifier = <span style="color:#6500FE">&quot;ShowInvisibles&quot;</span></div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> savePanelDidEnd(ReturnCode <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> files() <span style="color:#0000FF;font-weight: bold">As</span> FolderItem
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> ReturnCode &gt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#0000FF;font-weight: bold">me</span>.FilesCount
+					<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">me</span>.Files(i) &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">Then</span> files.Append <span style="color:#0000FF;font-weight: bold">me</span>.Files(i)
+				<span style="color:#0000FF;font-weight: bold">next</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Results = <span style="color:#0000FF;font-weight: bold">new</span> OpenPanelResults(<span style="color:#0000FF;font-weight: bold">me</span>.CallerMethod, files)
+			NotifyAll
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> shouldShowFilename(path <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, item <span style="color:#0000FF;font-weight: bold">as</span> folderitem) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">boolean</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> AllFileTypes <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> item.Directory <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">special</span> <span style="color:#7F0000;text-style:italic">handling</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">folders</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> l <span style="color:#0000FF;font-weight: bold">as</span> LaunchServicesItemInfoMBS
+				l=item.LaunchServicesItemInfoMBS(<span style="color:#326598">4</span>) <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">check</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">bundled</span> <span style="color:#7F0000;text-style:italic">files</span> <span style="color:#7F0000;text-style:italic">like</span> <span style="color:#7F0000;text-style:italic">Pages</span> <span style="color:#7F0000;text-style:italic">documents</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> l=<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> l.IsPackage=<span style="color:#0000FF;font-weight: bold">False</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			
+			t=item.NameExtensionMBS
+			<span style="color:#0000FF;font-weight: bold">For</span> <span style="color:#0000FF;font-weight: bold">Each</span> s <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> <span style="color:#0000FF;font-weight: bold">In</span> FileTypes
+				<span style="color:#0000FF;font-weight: bold">If</span> StrComp(s,t,<span style="color:#326598">0</span>)=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">True</span>
+			<span style="color:#0000FF;font-weight: bold">Next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> AddNotifier(recv <span style="color:#0000FF;font-weight: bold">As</span> Receiver)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Part</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Notifier</span> <span style="color:#7F0000;text-style:italic">interface.</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> Receivers.IndexOf(recv) = -<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				Receivers.Append recv
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> AddShowAllFileTypesCheckbox()
+			AssureAccessoryView
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> AccView &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				ShowAllTypesCheckbox = <span style="color:#0000FF;font-weight: bold">new</span> OpenFileButton(<span style="color:#326598">0</span>, <span style="color:#326598">10</span>, <span style="color:#326598">126</span>, <span style="color:#326598">20</span>, kShowAllTypesIdentifier, <span style="color:#6500FE">&quot;Show</span> <span style="color:#6500FE">all</span> <span style="color:#6500FE">file</span> <span style="color:#6500FE">types&quot;</span>, <span style="color:#0000FF;font-weight: bold">me</span>)
+				ShowAllTypesCheckbox.setButtonType NSButtonMBS.NSSwitchButton
+				
+				AccView.addSubview ShowAllTypesCheckbox
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> AddShowInvisiblesCheckbox()
+			AssureAccessoryView
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> AccView &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				ShowInvisiblesCheckView = <span style="color:#0000FF;font-weight: bold">new</span> OpenFileButton(<span style="color:#326598">140</span>, <span style="color:#326598">10</span>, <span style="color:#326598">132</span>, <span style="color:#326598">20</span>, kShowInvisiblesIdentifier, <span style="color:#6500FE">&quot;Show</span> <span style="color:#6500FE">invisible</span> <span style="color:#6500FE">files&quot;</span>, <span style="color:#0000FF;font-weight: bold">me</span>)
+				ShowInvisiblesCheckView.setButtonType NSButtonMBS.NSSwitchButton
+				
+				AccView.addSubview ShowInvisiblesCheckView
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Private</span> <span style="color:#0000FF;font-weight: bold">Sub</span> AssureAccessoryView()
+			<span style="color:#0000FF;font-weight: bold">if</span> AccView = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				AccView = <span style="color:#0000FF;font-weight: bold">new</span> NSViewMBS(<span style="color:#326598">0</span>, <span style="color:#326598">0</span>, <span style="color:#326598">460</span>, <span style="color:#326598">40</span>)
+				<span style="color:#0000FF;font-weight: bold">me</span>.accessoryView = <span style="color:#0000FF;font-weight: bold">me</span>.AccView
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(initialFolder <span style="color:#0000FF;font-weight: bold">As</span> FolderItem, hilitedFile <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>, fileTypes() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>, callingMethod <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>, allowInvisibles <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>, multipleSelection <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>, parentWindow <span style="color:#0000FF;font-weight: bold">As</span> Window)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Use</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">constructor</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">choosing</span> <span style="color:#7F0000;text-style:italic">files</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Super</span>.Constructor
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.CallerMethod = callingMethod
+			<span style="color:#0000FF;font-weight: bold">me</span>.FileTypes = FileTypes
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.allowsMultipleSelection = multipleSelection
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> parentWindow <span style="color:#0000FF;font-weight: bold">isa</span> Receiver <span style="color:#0000FF;font-weight: bold">Then</span> AddNotifier(Receiver(parentWindow))
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> allowInvisibles <span style="color:#0000FF;font-weight: bold">Then</span>
+				AddShowInvisiblesCheckbox
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> Ubound(fileTypes) &gt;= <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				AddShowAllFileTypesCheckbox
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">&#39;me.canChooseDirectories</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">False</span>
+			<span style="color:#7F0000;text-style:italic">&#39;me.canChooseFiles</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">True</span>
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.beginSheetForDirectory(initialFolder, hilitedFile, <span style="color:#0000FF;font-weight: bold">nil</span>, parentWindow)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> Data() <span style="color:#0000FF;font-weight: bold">As</span> Variant
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Part</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Notifier</span> <span style="color:#7F0000;text-style:italic">interface.</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">me</span>.Results
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> DataChanged(src <span style="color:#0000FF;font-weight: bold">As</span> Notifier)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">handles</span> <span style="color:#7F0000;text-style:italic">results</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">OpenFileButtons</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> command <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = src.Data
+			
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">Case</span> command
+			<span style="color:#0000FF;font-weight: bold">Case</span> kShowAllTypesIdentifier
+				<span style="color:#0000FF;font-weight: bold">dim</span> btnValue <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				btnValue = ShowAllTypesCheckbox.state
+				AllFileTypes=btnValue=<span style="color:#326598">1</span>
+				<span style="color:#0000FF;font-weight: bold">super</span>.validateVisibleColumns
+				
+			<span style="color:#0000FF;font-weight: bold">Case</span> kShowInvisiblesIdentifier
+				<span style="color:#0000FF;font-weight: bold">me</span>.showsHiddenFiles = ShowInvisiblesCheckView.state = <span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+			
+			<span style="color:#7F0000;text-style:italic">&#39;validateVisibleColumns</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> NotifyAll()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Part</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Notifier</span> <span style="color:#7F0000;text-style:italic">interface.</span>
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> UBound(<span style="color:#0000FF;font-weight: bold">me</span>.Receivers)
+				<span style="color:#0000FF;font-weight: bold">me</span>.Receivers(i).DataChanged <span style="color:#0000FF;font-weight: bold">me</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Shared</span> <span style="color:#0000FF;font-weight: bold">Function</span> OSTypeArrayToHFSArray(osTypes() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>()
+			<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = <span style="color:#6500FE">&quot;&#39;&quot;</span> + Join(OSTypes, <span style="color:#6500FE">&quot;&#39;,&#39;&quot;</span>) + <span style="color:#6500FE">&quot;&#39;&quot;</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> Split(s, <span style="color:#6500FE">&quot;,&quot;</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Shared</span> <span style="color:#0000FF;font-weight: bold">Function</span> OSTypeStrToArray(osTypes <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>()
+			<span style="color:#0000FF;font-weight: bold">return</span> Split(OSTypes, <span style="color:#6500FE">&quot;,&quot;</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Shared</span> <span style="color:#0000FF;font-weight: bold">Function</span> OSTypeStrToHFSArray(osTypes <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>()
+			<span style="color:#0000FF;font-weight: bold">dim</span> arr() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = Split(OSTypes, <span style="color:#6500FE">&quot;,&quot;</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = <span style="color:#6500FE">&quot;&#39;&quot;</span> + Join(arr, <span style="color:#6500FE">&quot;&#39;,&#39;&quot;</span>) + <span style="color:#6500FE">&quot;&#39;&quot;</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> Split(s, <span style="color:#6500FE">&quot;,&quot;</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> RemoveNotifier(rcv <span style="color:#0000FF;font-weight: bold">As</span> Receiver)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Part</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Notifier</span> <span style="color:#7F0000;text-style:italic">interface.</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> n <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#0000FF;font-weight: bold">me</span>.Receivers.IndexOf(rcv)
+			<span style="color:#0000FF;font-weight: bold">if</span> n &gt; -<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">Then</span> <span style="color:#0000FF;font-weight: bold">me</span>.Receivers.Remove n
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> AccView <span style="color:#0000FF;font-weight: bold">As</span> NSViewMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> AllFileTypes <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">boolean</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> CallerMethod <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> FileTypes() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">string</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> Receivers() <span style="color:#0000FF;font-weight: bold">As</span> Receiver</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> Results <span style="color:#0000FF;font-weight: bold">As</span> OpenPanelResults</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> ShowAllTypesCheckbox <span style="color:#0000FF;font-weight: bold">As</span> OpenFileButton</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> ShowInvisiblesCheckView <span style="color:#0000FF;font-weight: bold">As</span> OpenFileButton</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> OpenPanelResults</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(caller <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>, f() <span style="color:#0000FF;font-weight: bold">As</span> FolderItem)
+			<span style="color:#0000FF;font-weight: bold">me</span>.CallingMethod = caller
+			<span style="color:#0000FF;font-weight: bold">me</span>.files = f
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> CallingMethod <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> files() <span style="color:#0000FF;font-weight: bold">As</span> FolderItem</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> OpenFileButton <span style="color:#0000FF;font-weight: bold">Inherits</span> NSButtonMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+			NotifyAll
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> AddNotifier(recv <span style="color:#0000FF;font-weight: bold">As</span> Receiver)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Part</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Notifier</span> <span style="color:#7F0000;text-style:italic">interface.</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">me</span>.Receivers.IndexOf(recv) = -<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Receivers.Append recv
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> Constructor(left <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>, top <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>, width <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>, height <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>, cmd <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>, caption <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>, r <span style="color:#0000FF;font-weight: bold">As</span> Receiver)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Constructor(left</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">double,</span> <span style="color:#7F0000;text-style:italic">top</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">double,</span> <span style="color:#7F0000;text-style:italic">width</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">double,</span> <span style="color:#7F0000;text-style:italic">height</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">double)</span> <span style="color:#7F0000;text-style:italic">--</span> <span style="color:#7F0000;text-style:italic">From</span> <span style="color:#7F0000;text-style:italic">NSViewMBS</span>
+			<span style="color:#0000FF;font-weight: bold">Super</span>.Constructor(left, top, width, height)
+			<span style="color:#0000FF;font-weight: bold">me</span>.Command = cmd
+			<span style="color:#0000FF;font-weight: bold">me</span>.Title = caption
+			AddNotifier r
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> Data() <span style="color:#0000FF;font-weight: bold">As</span> Variant
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Part</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Notifier</span> <span style="color:#7F0000;text-style:italic">interface.</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">me</span>.Command
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> NotifyAll()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Part</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Notifier</span> <span style="color:#7F0000;text-style:italic">interface.</span>
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> UBound(<span style="color:#0000FF;font-weight: bold">me</span>.Receivers)
+				<span style="color:#0000FF;font-weight: bold">me</span>.Receivers(i).DataChanged <span style="color:#0000FF;font-weight: bold">me</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> RemoveNotifier(rcv <span style="color:#0000FF;font-weight: bold">As</span> Receiver)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Part</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Notifier</span> <span style="color:#7F0000;text-style:italic">interface.</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> n <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#0000FF;font-weight: bold">me</span>.Receivers.IndexOf(rcv)
+			<span style="color:#0000FF;font-weight: bold">if</span> n &gt; -<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Receivers.Remove n
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> Command <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Private</span> Receivers() <span style="color:#0000FF;font-weight: bold">As</span> Receiver</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Interface</span> Notifier</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> AddNotifier(recv <span style="color:#0000FF;font-weight: bold">As</span> Receiver)</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> Data() <span style="color:#0000FF;font-weight: bold">As</span> Variant</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> NotifyAll()</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> RemoveNotifier(rcv <span style="color:#0000FF;font-weight: bold">As</span> Receiver)</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Interface</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Interface</span> Receiver</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> DataChanged(src <span style="color:#0000FF;font-weight: bold">As</span> Notifier)</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Interface</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmaccocoaplugin.html">MBS MacCocoa Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-maccocoa-dynamicfileopendialog">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

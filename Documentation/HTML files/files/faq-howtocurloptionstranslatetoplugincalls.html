@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - FAQ</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="FAQ: How to CURL Options translate to Plugin Calls?">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">FAQ</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="WLM">
+<b>FAQ.<A name="1">How to CURL Options translate to Plugin Calls?</A></b><br>
+<B>Answer:</B> 
+Below a few tips on how to translate command line CURL calls to plugin calls.<BR>
+<B>Notes:</B> 
+<BR>
+curl -vX PUT http://localhost:5984/appserials/78569238475/DocumentRegister.docx?rev=3-25634563456 --data-binary @DocumentRegister.docx -H &quot;Content-Type: application/msword&quot;<BR>
+<BR>
+<UL><LI>
+The option -v means verbose. You can use OptionVerbose and listen for messages in the DebugMessage event.
+</LI><LI>
+The option -X PUT means we want to do a HTTP PUT Request. So set OptionPut to true. Also you will want to set OptionUpload to true as you upload data.
+</LI><LI>
+We have the URL which you put into OptionURL property.
+</LI><LI>
+The --data-binary option tells CURL to pass the given data. With the @ before the data, it is intrepreted as a file name, so the data is read from the given file. You&#39;ll need to open this file and pass data with the Read event as needed. (See CURLS ftp file upload example project)
+</LI><LI>
+The last option -H specifies an additional header for the upload. Pas this additional header with the SetOptionHTTPHeader method.
+</LI></UL>
+<BR>
+curl -X  PUT http://127.0.0.1:5984/appserials/f2f4e540bf8bb60f61cfcd4328001c59 -d &#39;{&quot;type&quot;:&quot;Product&quot;,&quot;description&quot;:&quot;Application Serial&quot;,&quot;acronym&quot;:&quot;AppSerial&quot;,&quot;dateAdded&quot;:&quot;2011-03-21 14:57:36&quot;}&#39;<BR>
+<BR>
+<UL><LI>
+Option -X PUT like above.
+</LI><LI>
+Pass the URL again in OptionURL
+</LI><LI>
+This time data is passed in command line for CURL. You&#39;d put this data in the quotes into a string and make it available in the Read event. (See CURLS ftp upload example project)
+</UL>
+</div>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=faq-howtocurloptionstranslatetoplugincalls">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

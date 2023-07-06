@@ -1,0 +1,942 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Picture methods</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Picture">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Picture methods</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<p>Back to <A href="class-picture.html">Picture</a> class.  </p>
+<div class="WM">
+<b><a href="class-picture.html">Picture</a>.<A name="1">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-graphicspictures.html" translate="no">Graphics &amp; Pictures</A></td>
+<td class=grau><a href="plugins-mbspictureplugin.html">MBS Picture Plugin</a></td>
+<td class=grau><a href="newinversion87.shtml" class=version>8.7</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Copies pixels from one picture into another picture with some options.<BR>
+<B>Notes:</B> 
+<BR>
+Returns true on success and false on failure.<BR>
+<BR>
+This function has 4 behaviors depending on the parameters:<BR>
+<BR>
+1. If mask is nil and no ForeColour and MaskColour values are passed, the pixels a copied to the destination picture.<BR>
+<BR>
+2. But if there is a mask, the pixels are copied with applying the mask.<BR>
+<BR>
+3. If the mask color is not defined, the the pixels are filled with the fore color applying the mask.<BR>
+<BR>
+4. As the last variation the pixels are copied and the forecolor, the mask color or black is used with the image as the mask. If UseColours parameter is false black is used for this.<BR>
+<BR>
+Parameters:<BR>
+Image: the source picture, must not be nil.<BR>
+Mask: the mask picture, can be nil.<BR>
+DestX: destination position<BR>
+DestY: destination position<BR>
+SourceX: source position<BR>
+SourceY: source position<BR>
+Width: width of the area to copy<BR>
+Height: height of the area to copy<BR>
+UseColours: whether to use the mask colour.<BR>
+ForeColour: the fore colour, optional, can be integer or color<BR>
+MaskColour: the mask color, optional, can be integer or color<BR>
+<BR>
+This function is 5 times in the plugin defined to implement having the last two parameters optional and either integer or color. You can pass a negative number for MaskColour or ForeColour to disable this parameter.<BR>
+<BR>
+The destination image (self) can be either 24 bit or 32 bit.<BR>
+<p>See also:<ul>
+<li><A href="picture-combinembs.html#2">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#3">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color, MaskColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#4">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#5">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer, MaskColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#6">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean) as boolean</A></li>
+<li><A href="picture-combinembs.html#7">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#8">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color, MaskColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#9">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#10">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer, MaskColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#11">CombineMBS(Mode as Integer, SecondPicture As Picture, X as Integer = 0, Y as Integer = 0, Width as Integer = 0, Height as Integer = 0) as picture</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-picture-picturecombine.html">/Picture/Picture Combine</A></li>
+<li><A href="example-picture-picturecombinetest.html">/Picture/Picture Combine Test</A></li>
+<li><A href="example-picture-picturedifference.html">/Picture/Picture Difference</A></li>
+<li><A href="example-picture-picturecombinembs.html">/Picture/Picture.CombineMBS</A></li>
+</ul>
+</div>
+<div class="WM">
+<b><a href="class-picture.html">Picture</a>.<A name="2">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-graphicspictures.html" translate="no">Graphics &amp; Pictures</A></td>
+<td class=grau><a href="plugins-mbspictureplugin.html">MBS Picture Plugin</a></td>
+<td class=grau><a href="newinversion87.shtml" class=version>8.7</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Copies pixels from one picture into another picture with some options.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> DestImage <span style="color: #0000FF;">As</span> Picture<br /><span style="color: #0000FF;">dim</span> Image <span style="color: #0000FF;">As</span> Picture<br /><span style="color: #0000FF;">dim</span> Mask <span style="color: #0000FF;">As</span> Picture<br /><span style="color: #0000FF;">dim</span> DestX <span style="color: #0000FF;">as</span> Integer=100<br /><span style="color: #0000FF;">dim</span> DestY <span style="color: #0000FF;">as</span> Integer=100<br /><span style="color: #0000FF;">dim</span> SourceX <span style="color: #0000FF;">as</span> Integer=0<br /><span style="color: #0000FF;">dim</span> SourceY <span style="color: #0000FF;">as</span> Integer=0<br /><span style="color: #0000FF;">dim</span> Width <span style="color: #0000FF;">as</span> Integer=500<br /><span style="color: #0000FF;">dim</span> Height <span style="color: #0000FF;">as</span> Integer=500<br /><span style="color: #0000FF;">dim</span> UseColours <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Boolean</span> = <span style="color: #0000FF;">true</span><br /><span style="color: #0000FF;">dim</span> ForeColour <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">color</span> = &amp;c<span style="color: #FF0000;">FF</span><span style="color: #00BB00;">00</span><span style="color: #0000FF;">00</span><br /><br />image=<A href="global-logombs.html">LogoMBS</A>(<span style="color: #336698;">500</span>)<br />Mask=nil<br />DestImage=New Picture(<span style="color: #336698;">700</span>,<span style="color: #336698;">700</span>,<span style="color: #336698;">32</span>)<br /><br /><span style="color: #0000FF;">if</span> DestImage.CombineMBS(image,Mask,DestX,DestY,SourceX,SourceY,Width,Height,UseColours,ForeColour) <span style="color: #0000FF;">then</span><br />  window1.Backdrop=DestImage<br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Returns true on success and false on failure.<BR>
+<BR>
+This function has 4 behaviors depending on the parameters:<BR>
+<BR>
+1. If mask is nil and no ForeColour and MaskColour values are passed, the pixels a copied to the destination picture.<BR>
+<BR>
+2. But if there is a mask, the pixels are copied with applying the mask.<BR>
+<BR>
+3. If the mask color is not defined, the the pixels are filled with the fore color applying the mask.<BR>
+<BR>
+4. As the last variation the pixels are copied and the forecolor, the mask color or black is used with the image as the mask. If UseColours parameter is false black is used for this.<BR>
+<BR>
+Parameters:<BR>
+Image: the source picture, must not be nil.<BR>
+Mask: the mask picture, can be nil.<BR>
+DestX: destination position<BR>
+DestY: destination position<BR>
+SourceX: source position<BR>
+SourceY: source position<BR>
+Width: width of the area to copy<BR>
+Height: height of the area to copy<BR>
+UseColours: whether to use the mask colour.<BR>
+ForeColour: the fore colour, optional, can be integer or color<BR>
+MaskColour: the mask color, optional, can be integer or color<BR>
+<BR>
+This function is 5 times in the plugin defined to implement having the last two parameters optional and either integer or color. You can pass a negative number for MaskColour or ForeColour to disable this parameter.<BR>
+<BR>
+The destination image (self) can be either 24 bit or 32 bit.<BR>
+<p>See also:<ul>
+<li><A href="picture-combinembs.html">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean) as boolean</A></li>
+<li><A href="picture-combinembs.html#3">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color, MaskColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#4">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#5">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer, MaskColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#6">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean) as boolean</A></li>
+<li><A href="picture-combinembs.html#7">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#8">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color, MaskColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#9">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#10">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer, MaskColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#11">CombineMBS(Mode as Integer, SecondPicture As Picture, X as Integer = 0, Y as Integer = 0, Width as Integer = 0, Height as Integer = 0) as picture</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-picture-picturecombine.html">/Picture/Picture Combine</A></li>
+<li><A href="example-picture-picturecombinetest.html">/Picture/Picture Combine Test</A></li>
+<li><A href="example-picture-picturedifference.html">/Picture/Picture Difference</A></li>
+<li><A href="example-picture-picturecombinembs.html">/Picture/Picture.CombineMBS</A></li>
+</ul>
+</div>
+<div class="WM">
+<b><a href="class-picture.html">Picture</a>.<A name="3">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color, MaskColour As color) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-graphicspictures.html" translate="no">Graphics &amp; Pictures</A></td>
+<td class=grau><a href="plugins-mbspictureplugin.html">MBS Picture Plugin</a></td>
+<td class=grau><a href="newinversion87.shtml" class=version>8.7</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Copies pixels from one picture into another picture with some options.<BR>
+<B>Notes:</B> 
+<BR>
+Returns true on success and false on failure.<BR>
+<BR>
+This function has 4 behaviors depending on the parameters:<BR>
+<BR>
+1. If mask is nil and no ForeColour and MaskColour values are passed, the pixels a copied to the destination picture.<BR>
+<BR>
+2. But if there is a mask, the pixels are copied with applying the mask.<BR>
+<BR>
+3. If the mask color is not defined, the the pixels are filled with the fore color applying the mask.<BR>
+<BR>
+4. As the last variation the pixels are copied and the forecolor, the mask color or black is used with the image as the mask. If UseColours parameter is false black is used for this.<BR>
+<BR>
+Parameters:<BR>
+Image: the source picture, must not be nil.<BR>
+Mask: the mask picture, can be nil.<BR>
+DestX: destination position<BR>
+DestY: destination position<BR>
+SourceX: source position<BR>
+SourceY: source position<BR>
+Width: width of the area to copy<BR>
+Height: height of the area to copy<BR>
+UseColours: whether to use the mask colour.<BR>
+ForeColour: the fore colour, optional, can be integer or color<BR>
+MaskColour: the mask color, optional, can be integer or color<BR>
+<BR>
+This function is 5 times in the plugin defined to implement having the last two parameters optional and either integer or color. You can pass a negative number for MaskColour or ForeColour to disable this parameter.<BR>
+<BR>
+The destination image (self) can be either 24 bit or 32 bit.<BR>
+<p>See also:<ul>
+<li><A href="picture-combinembs.html">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean) as boolean</A></li>
+<li><A href="picture-combinembs.html#2">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#4">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#5">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer, MaskColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#6">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean) as boolean</A></li>
+<li><A href="picture-combinembs.html#7">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#8">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color, MaskColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#9">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#10">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer, MaskColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#11">CombineMBS(Mode as Integer, SecondPicture As Picture, X as Integer = 0, Y as Integer = 0, Width as Integer = 0, Height as Integer = 0) as picture</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-picture-picturecombine.html">/Picture/Picture Combine</A></li>
+<li><A href="example-picture-picturecombinetest.html">/Picture/Picture Combine Test</A></li>
+<li><A href="example-picture-picturedifference.html">/Picture/Picture Difference</A></li>
+<li><A href="example-picture-picturecombinembs.html">/Picture/Picture.CombineMBS</A></li>
+</ul>
+</div>
+<div class="WM">
+<b><a href="class-picture.html">Picture</a>.<A name="4">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-graphicspictures.html" translate="no">Graphics &amp; Pictures</A></td>
+<td class=grau><a href="plugins-mbspictureplugin.html">MBS Picture Plugin</a></td>
+<td class=grau><a href="newinversion87.shtml" class=version>8.7</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Copies pixels from one picture into another picture with some options.<BR>
+<B>Notes:</B> 
+<BR>
+Returns true on success and false on failure.<BR>
+<BR>
+This function has 4 behaviors depending on the parameters:<BR>
+<BR>
+1. If mask is nil and no ForeColour and MaskColour values are passed, the pixels a copied to the destination picture.<BR>
+<BR>
+2. But if there is a mask, the pixels are copied with applying the mask.<BR>
+<BR>
+3. If the mask color is not defined, the the pixels are filled with the fore color applying the mask.<BR>
+<BR>
+4. As the last variation the pixels are copied and the forecolor, the mask color or black is used with the image as the mask. If UseColours parameter is false black is used for this.<BR>
+<BR>
+Parameters:<BR>
+Image: the source picture, must not be nil.<BR>
+Mask: the mask picture, can be nil.<BR>
+DestX: destination position<BR>
+DestY: destination position<BR>
+SourceX: source position<BR>
+SourceY: source position<BR>
+Width: width of the area to copy<BR>
+Height: height of the area to copy<BR>
+UseColours: whether to use the mask colour.<BR>
+ForeColour: the fore colour, optional, can be integer or color<BR>
+MaskColour: the mask color, optional, can be integer or color<BR>
+<BR>
+This function is 5 times in the plugin defined to implement having the last two parameters optional and either integer or color. You can pass a negative number for MaskColour or ForeColour to disable this parameter.<BR>
+<BR>
+The destination image (self) can be either 24 bit or 32 bit.<BR>
+<p>See also:<ul>
+<li><A href="picture-combinembs.html">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean) as boolean</A></li>
+<li><A href="picture-combinembs.html#2">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#3">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color, MaskColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#5">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer, MaskColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#6">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean) as boolean</A></li>
+<li><A href="picture-combinembs.html#7">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#8">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color, MaskColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#9">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#10">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer, MaskColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#11">CombineMBS(Mode as Integer, SecondPicture As Picture, X as Integer = 0, Y as Integer = 0, Width as Integer = 0, Height as Integer = 0) as picture</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-picture-picturecombine.html">/Picture/Picture Combine</A></li>
+<li><A href="example-picture-picturecombinetest.html">/Picture/Picture Combine Test</A></li>
+<li><A href="example-picture-picturedifference.html">/Picture/Picture Difference</A></li>
+<li><A href="example-picture-picturecombinembs.html">/Picture/Picture.CombineMBS</A></li>
+</ul>
+</div>
+<div class="WM">
+<b><a href="class-picture.html">Picture</a>.<A name="5">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer, MaskColour as Integer) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-graphicspictures.html" translate="no">Graphics &amp; Pictures</A></td>
+<td class=grau><a href="plugins-mbspictureplugin.html">MBS Picture Plugin</a></td>
+<td class=grau><a href="newinversion87.shtml" class=version>8.7</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Copies pixels from one picture into another picture with some options.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> DestImage <span style="color: #0000FF;">As</span> Picture<br /><span style="color: #0000FF;">dim</span> Image <span style="color: #0000FF;">As</span> Picture<br /><span style="color: #0000FF;">dim</span> Mask <span style="color: #0000FF;">As</span> Picture<br /><span style="color: #0000FF;">dim</span> DestX <span style="color: #0000FF;">as</span> Integer=100<br /><span style="color: #0000FF;">dim</span> DestY <span style="color: #0000FF;">as</span> Integer=100<br /><span style="color: #0000FF;">dim</span> SourceX <span style="color: #0000FF;">as</span> Integer=0<br /><span style="color: #0000FF;">dim</span> SourceY <span style="color: #0000FF;">as</span> Integer=0<br /><span style="color: #0000FF;">dim</span> Width <span style="color: #0000FF;">as</span> Integer=500<br /><span style="color: #0000FF;">dim</span> Height <span style="color: #0000FF;">as</span> Integer=500<br /><br />image=<A href="global-logombs.html">LogoMBS</A>(<span style="color: #336698;">500</span>)<br />Mask=nil<br />DestImage=New Picture(<span style="color: #336698;">700</span>,<span style="color: #336698;">700</span>,<span style="color: #336698;">32</span>)<br /><br /><span style="color: #0000FF;">if</span> DestImage.CombineMBS(image,Mask,DestX,DestY,SourceX,SourceY,Width,Height,<span style="color: #0000FF;">true</span>,<span style="color: #336698;">&amp;h777777</span>,<span style="color: #336698;">&amp;h777777</span>) <span style="color: #0000FF;">then</span><br />  window1.Backdrop=DestImage<br /><span style="color: #0000FF;">end</span> <span style="color: #0000FF;">if</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Returns true on success and false on failure.<BR>
+<BR>
+This function has 4 behaviors depending on the parameters:<BR>
+<BR>
+1. If mask is nil and no ForeColour and MaskColour values are passed, the pixels a copied to the destination picture.<BR>
+<BR>
+2. But if there is a mask, the pixels are copied with applying the mask.<BR>
+<BR>
+3. If the mask color is not defined, the the pixels are filled with the fore color applying the mask.<BR>
+<BR>
+4. As the last variation the pixels are copied and the forecolor, the mask color or black is used with the image as the mask. If UseColours parameter is false black is used for this.<BR>
+<BR>
+Parameters:<BR>
+Image: the source picture, must not be nil.<BR>
+Mask: the mask picture, can be nil.<BR>
+DestX: destination position<BR>
+DestY: destination position<BR>
+SourceX: source position<BR>
+SourceY: source position<BR>
+Width: width of the area to copy<BR>
+Height: height of the area to copy<BR>
+UseColours: whether to use the mask colour.<BR>
+ForeColour: the fore colour, optional, can be integer or color<BR>
+MaskColour: the mask color, optional, can be integer or color<BR>
+<BR>
+This function is 5 times in the plugin defined to implement having the last two parameters optional and either integer or color. You can pass a negative number for MaskColour or ForeColour to disable this parameter.<BR>
+<BR>
+The destination image (self) can be either 24 bit or 32 bit.<BR>
+<p>See also:<ul>
+<li><A href="picture-combinembs.html">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean) as boolean</A></li>
+<li><A href="picture-combinembs.html#2">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#3">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color, MaskColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#4">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#6">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean) as boolean</A></li>
+<li><A href="picture-combinembs.html#7">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#8">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color, MaskColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#9">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#10">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer, MaskColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#11">CombineMBS(Mode as Integer, SecondPicture As Picture, X as Integer = 0, Y as Integer = 0, Width as Integer = 0, Height as Integer = 0) as picture</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-picture-picturecombine.html">/Picture/Picture Combine</A></li>
+<li><A href="example-picture-picturecombinetest.html">/Picture/Picture Combine Test</A></li>
+<li><A href="example-picture-picturedifference.html">/Picture/Picture Difference</A></li>
+<li><A href="example-picture-picturecombinembs.html">/Picture/Picture.CombineMBS</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-picture.html">Picture</a>.<A name="6">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-graphicspictures.html" translate="no">Graphics &amp; Pictures</A></td>
+<td class=grau><a href="plugins-mbspictureplugin.html">MBS Picture Plugin</a></td>
+<td class=grau><a href="newinversion95.shtml" class=version>9.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Copies pixels from one picture into another picture with some options.<BR>
+<B>Notes:</B> 
+<BR>
+Returns true on success and false on failure.<BR>
+<BR>
+This function has 4 behaviors depending on the parameters:<BR>
+<BR>
+1. If mask is nil and no ForeColour and MaskColour values are passed, the pixels a copied to the destination picture.<BR>
+<BR>
+2. But if there is a mask, the pixels are copied with applying the mask.<BR>
+<BR>
+3. If the mask color is not defined, the the pixels are filled with the fore color applying the mask.<BR>
+<BR>
+4. As the last variation the pixels are copied and the forecolor, the mask color or black is used with the image as the mask. If UseColours parameter is false black is used for this.<BR>
+<BR>
+Parameters:<BR>
+Image: the source picture, must not be nil.<BR>
+PreMultipliedSource: Optional parameter. If true the image must be premultiplied. Default is false.<BR>
+Mask: the mask picture, can be nil.<BR>
+DestX: destination position<BR>
+DestY: destination position<BR>
+SourceX: source position<BR>
+SourceY: source position<BR>
+Width: width of the area to copy<BR>
+Height: height of the area to copy<BR>
+UseColours: whether to use the mask colour.<BR>
+ForeColour: the fore colour, optional, can be integer or color<BR>
+MaskColour: the mask color, optional, can be integer or color<BR>
+<BR>
+This function is 5 times in the plugin defined to implement having the last two parameters optional and either integer or color. You can pass a negative number for MaskColour or ForeColour to disable this parameter.<BR>
+<BR>
+The destination image (self) can be either 24 bit or 32 bit.<BR>
+<p>See also:<ul>
+<li><A href="picture-combinembs.html">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean) as boolean</A></li>
+<li><A href="picture-combinembs.html#2">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#3">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color, MaskColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#4">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#5">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer, MaskColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#7">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#8">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color, MaskColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#9">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#10">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer, MaskColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#11">CombineMBS(Mode as Integer, SecondPicture As Picture, X as Integer = 0, Y as Integer = 0, Width as Integer = 0, Height as Integer = 0) as picture</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-picture-picturecombine.html">/Picture/Picture Combine</A></li>
+<li><A href="example-picture-picturecombinetest.html">/Picture/Picture Combine Test</A></li>
+<li><A href="example-picture-picturedifference.html">/Picture/Picture Difference</A></li>
+<li><A href="example-picture-picturecombinembs.html">/Picture/Picture.CombineMBS</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-picture.html">Picture</a>.<A name="7">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-graphicspictures.html" translate="no">Graphics &amp; Pictures</A></td>
+<td class=grau><a href="plugins-mbspictureplugin.html">MBS Picture Plugin</a></td>
+<td class=grau><a href="newinversion95.shtml" class=version>9.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Copies pixels from one picture into another picture with some options.<BR>
+<B>Notes:</B> 
+<BR>
+Returns true on success and false on failure.<BR>
+<BR>
+This function has 4 behaviors depending on the parameters:<BR>
+<BR>
+1. If mask is nil and no ForeColour and MaskColour values are passed, the pixels a copied to the destination picture.<BR>
+<BR>
+2. But if there is a mask, the pixels are copied with applying the mask.<BR>
+<BR>
+3. If the mask color is not defined, the the pixels are filled with the fore color applying the mask.<BR>
+<BR>
+4. As the last variation the pixels are copied and the forecolor, the mask color or black is used with the image as the mask. If UseColours parameter is false black is used for this.<BR>
+<BR>
+Parameters:<BR>
+Image: the source picture, must not be nil.<BR>
+PreMultipliedSource: Optional parameter. If true the image must be premultiplied. Default is false.<BR>
+Mask: the mask picture, can be nil.<BR>
+DestX: destination position<BR>
+DestY: destination position<BR>
+SourceX: source position<BR>
+SourceY: source position<BR>
+Width: width of the area to copy<BR>
+Height: height of the area to copy<BR>
+UseColours: whether to use the mask colour.<BR>
+ForeColour: the fore colour, optional, can be integer or color<BR>
+MaskColour: the mask color, optional, can be integer or color<BR>
+<BR>
+This function is 5 times in the plugin defined to implement having the last two parameters optional and either integer or color. You can pass a negative number for MaskColour or ForeColour to disable this parameter.<BR>
+<BR>
+The destination image (self) can be either 24 bit or 32 bit.<BR>
+<p>See also:<ul>
+<li><A href="picture-combinembs.html">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean) as boolean</A></li>
+<li><A href="picture-combinembs.html#2">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#3">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color, MaskColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#4">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#5">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer, MaskColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#6">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean) as boolean</A></li>
+<li><A href="picture-combinembs.html#8">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color, MaskColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#9">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#10">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer, MaskColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#11">CombineMBS(Mode as Integer, SecondPicture As Picture, X as Integer = 0, Y as Integer = 0, Width as Integer = 0, Height as Integer = 0) as picture</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-picture-picturecombine.html">/Picture/Picture Combine</A></li>
+<li><A href="example-picture-picturecombinetest.html">/Picture/Picture Combine Test</A></li>
+<li><A href="example-picture-picturedifference.html">/Picture/Picture Difference</A></li>
+<li><A href="example-picture-picturecombinembs.html">/Picture/Picture.CombineMBS</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-picture.html">Picture</a>.<A name="8">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color, MaskColour As color) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-graphicspictures.html" translate="no">Graphics &amp; Pictures</A></td>
+<td class=grau><a href="plugins-mbspictureplugin.html">MBS Picture Plugin</a></td>
+<td class=grau><a href="newinversion95.shtml" class=version>9.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Copies pixels from one picture into another picture with some options.<BR>
+<B>Notes:</B> 
+<BR>
+Returns true on success and false on failure.<BR>
+<BR>
+This function has 4 behaviors depending on the parameters:<BR>
+<BR>
+1. If mask is nil and no ForeColour and MaskColour values are passed, the pixels a copied to the destination picture.<BR>
+<BR>
+2. But if there is a mask, the pixels are copied with applying the mask.<BR>
+<BR>
+3. If the mask color is not defined, the the pixels are filled with the fore color applying the mask.<BR>
+<BR>
+4. As the last variation the pixels are copied and the forecolor, the mask color or black is used with the image as the mask. If UseColours parameter is false black is used for this.<BR>
+<BR>
+Parameters:<BR>
+Image: the source picture, must not be nil.<BR>
+PreMultipliedSource: Optional parameter. If true the image must be premultiplied. Default is false.<BR>
+Mask: the mask picture, can be nil.<BR>
+DestX: destination position<BR>
+DestY: destination position<BR>
+SourceX: source position<BR>
+SourceY: source position<BR>
+Width: width of the area to copy<BR>
+Height: height of the area to copy<BR>
+UseColours: whether to use the mask colour.<BR>
+ForeColour: the fore colour, optional, can be integer or color<BR>
+MaskColour: the mask color, optional, can be integer or color<BR>
+<BR>
+This function is 5 times in the plugin defined to implement having the last two parameters optional and either integer or color. You can pass a negative number for MaskColour or ForeColour to disable this parameter.<BR>
+<BR>
+The destination image (self) can be either 24 bit or 32 bit.<BR>
+<p>See also:<ul>
+<li><A href="picture-combinembs.html">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean) as boolean</A></li>
+<li><A href="picture-combinembs.html#2">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#3">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color, MaskColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#4">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#5">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer, MaskColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#6">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean) as boolean</A></li>
+<li><A href="picture-combinembs.html#7">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#9">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#10">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer, MaskColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#11">CombineMBS(Mode as Integer, SecondPicture As Picture, X as Integer = 0, Y as Integer = 0, Width as Integer = 0, Height as Integer = 0) as picture</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-picture-picturecombine.html">/Picture/Picture Combine</A></li>
+<li><A href="example-picture-picturecombinetest.html">/Picture/Picture Combine Test</A></li>
+<li><A href="example-picture-picturedifference.html">/Picture/Picture Difference</A></li>
+<li><A href="example-picture-picturecombinembs.html">/Picture/Picture.CombineMBS</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-picture.html">Picture</a>.<A name="9">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-graphicspictures.html" translate="no">Graphics &amp; Pictures</A></td>
+<td class=grau><a href="plugins-mbspictureplugin.html">MBS Picture Plugin</a></td>
+<td class=grau><a href="newinversion95.shtml" class=version>9.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Copies pixels from one picture into another picture with some options.<BR>
+<B>Notes:</B> 
+<BR>
+Returns true on success and false on failure.<BR>
+<BR>
+This function has 4 behaviors depending on the parameters:<BR>
+<BR>
+1. If mask is nil and no ForeColour and MaskColour values are passed, the pixels a copied to the destination picture.<BR>
+<BR>
+2. But if there is a mask, the pixels are copied with applying the mask.<BR>
+<BR>
+3. If the mask color is not defined, the the pixels are filled with the fore color applying the mask.<BR>
+<BR>
+4. As the last variation the pixels are copied and the forecolor, the mask color or black is used with the image as the mask. If UseColours parameter is false black is used for this.<BR>
+<BR>
+Parameters:<BR>
+Image: the source picture, must not be nil.<BR>
+PreMultipliedSource: Optional parameter. If true the image must be premultiplied. Default is false.<BR>
+Mask: the mask picture, can be nil.<BR>
+DestX: destination position<BR>
+DestY: destination position<BR>
+SourceX: source position<BR>
+SourceY: source position<BR>
+Width: width of the area to copy<BR>
+Height: height of the area to copy<BR>
+UseColours: whether to use the mask colour.<BR>
+ForeColour: the fore colour, optional, can be integer or color<BR>
+MaskColour: the mask color, optional, can be integer or color<BR>
+<BR>
+This function is 5 times in the plugin defined to implement having the last two parameters optional and either integer or color. You can pass a negative number for MaskColour or ForeColour to disable this parameter.<BR>
+<BR>
+The destination image (self) can be either 24 bit or 32 bit.<BR>
+<p>See also:<ul>
+<li><A href="picture-combinembs.html">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean) as boolean</A></li>
+<li><A href="picture-combinembs.html#2">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#3">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color, MaskColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#4">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#5">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer, MaskColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#6">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean) as boolean</A></li>
+<li><A href="picture-combinembs.html#7">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#8">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color, MaskColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#10">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer, MaskColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#11">CombineMBS(Mode as Integer, SecondPicture As Picture, X as Integer = 0, Y as Integer = 0, Width as Integer = 0, Height as Integer = 0) as picture</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-picture-picturecombine.html">/Picture/Picture Combine</A></li>
+<li><A href="example-picture-picturecombinetest.html">/Picture/Picture Combine Test</A></li>
+<li><A href="example-picture-picturedifference.html">/Picture/Picture Difference</A></li>
+<li><A href="example-picture-picturecombinembs.html">/Picture/Picture.CombineMBS</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-picture.html">Picture</a>.<A name="10">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer, MaskColour as Integer) as boolean</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-graphicspictures.html" translate="no">Graphics &amp; Pictures</A></td>
+<td class=grau><a href="plugins-mbspictureplugin.html">MBS Picture Plugin</a></td>
+<td class=grau><a href="newinversion95.shtml" class=version>9.5</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Copies pixels from one picture into another picture with some options.<BR>
+<B>Notes:</B> 
+<BR>
+Returns true on success and false on failure.<BR>
+<BR>
+This function has 4 behaviors depending on the parameters:<BR>
+<BR>
+1. If mask is nil and no ForeColour and MaskColour values are passed, the pixels a copied to the destination picture.<BR>
+<BR>
+2. But if there is a mask, the pixels are copied with applying the mask.<BR>
+<BR>
+3. If the mask color is not defined, the the pixels are filled with the fore color applying the mask.<BR>
+<BR>
+4. As the last variation the pixels are copied and the forecolor, the mask color or black is used with the image as the mask. If UseColours parameter is false black is used for this.<BR>
+<BR>
+Parameters:<BR>
+Image: the source picture, must not be nil.<BR>
+PreMultipliedSource: Optional parameter. If true the image must be premultiplied. Default is false.<BR>
+Mask: the mask picture, can be nil.<BR>
+DestX: destination position<BR>
+DestY: destination position<BR>
+SourceX: source position<BR>
+SourceY: source position<BR>
+Width: width of the area to copy<BR>
+Height: height of the area to copy<BR>
+UseColours: whether to use the mask colour.<BR>
+ForeColour: the fore colour, optional, can be integer or color<BR>
+MaskColour: the mask color, optional, can be integer or color<BR>
+<BR>
+This function is 5 times in the plugin defined to implement having the last two parameters optional and either integer or color. You can pass a negative number for MaskColour or ForeColour to disable this parameter.<BR>
+<BR>
+The destination image (self) can be either 24 bit or 32 bit.<BR>
+<p>See also:<ul>
+<li><A href="picture-combinembs.html">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean) as boolean</A></li>
+<li><A href="picture-combinembs.html#2">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#3">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color, MaskColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#4">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#5">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer, MaskColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#6">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean) as boolean</A></li>
+<li><A href="picture-combinembs.html#7">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#8">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color, MaskColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#9">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#11">CombineMBS(Mode as Integer, SecondPicture As Picture, X as Integer = 0, Y as Integer = 0, Width as Integer = 0, Height as Integer = 0) as picture</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-picture-picturecombine.html">/Picture/Picture Combine</A></li>
+<li><A href="example-picture-picturecombinetest.html">/Picture/Picture Combine Test</A></li>
+<li><A href="example-picture-picturedifference.html">/Picture/Picture Difference</A></li>
+<li><A href="example-picture-picturecombinembs.html">/Picture/Picture.CombineMBS</A></li>
+</ul>
+</div>
+<div class="WLM">
+<b><a href="class-picture.html">Picture</a>.<A name="11">CombineMBS(Mode as Integer, SecondPicture As Picture, X as Integer = 0, Y as Integer = 0, Width as Integer = 0, Height as Integer = 0) as picture</A></b><br>
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>method</td>
+<td class=grau><A href="topic-graphicspictures.html" translate="no">Graphics &amp; Pictures</A></td>
+<td class=grau><a href="plugins-mbspictureplugin.html">MBS Picture Plugin</a></td>
+<td class=grau><a href="newinversion143.shtml" class=version>14.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+Combines pixels of two images with the given mode.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> pic <span style="color: #0000FF;">as</span> picture <span style="color: #800000;">// some picture</span><br /><span style="color: #0000FF;">dim</span> other <span style="color: #0000FF;">as</span> picture <span style="color: #800000;">// some other picture</span><br /><span style="color: #0000FF;">dim</span> result <span style="color: #0000FF;">as</span> picture = pic.CombineMBS(<span style="color: #336698;">1</span>, other)<br /><br /><span style="color: #800000;">// effects are made like this. If you have a suggestion for a new effect,</span><br /><span style="color: #800000;">// send your suggestion to MBS support:</span><br /><span style="color: #0000FF;">Function</span> Combine(x <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span>, y <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span>) <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">Integer</span><br />  <span style="color: #0000FF;">Return</span> BitwiseXor(x,y)<br /><span style="color: #0000FF;">End</span> <span style="color: #0000FF;">Function</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Each pixel is sent through an operation for each channel.<BR>
+X, Y, Width and Height can limit effect of a certain portion of the source image.<BR>
+<BR>
+Modes:<BR>
+<TABLE cellpadding=3 border=0>
+<TR><TD valign="top">1</TD><TD valign="top">Bitwise XOR</TD></TR>
+<TR><TD valign="top">2</TD><TD valign="top">Bitwise OR</TD></TR>
+<TR><TD valign="top">3</TD><TD valign="top">Bitwise AND</TD></TR>
+<TR><TD valign="top">4</TD><TD valign="top">Min</TD></TR>
+<TR><TD valign="top">5</TD><TD valign="top">Max</TD></TR>
+<TR><TD valign="top">6</TD><TD valign="top">AddPin (add with limit)</TD></TR>
+<TR><TD valign="top">7</TD><TD valign="top">AddOver (add with overflow)</TD></TR>
+<TR><TD valign="top">8</TD><TD valign="top">Difference</TD></TR>
+<TR><TD valign="top">9</TD><TD valign="top">Difference squared (with limit 255)</TD></TR>
+<TR><TD valign="top">10</TD><TD valign="top">Sub Pin (sub with limit)</TD></TR>
+</TABLE>
+<p>See also:<ul>
+<li><A href="picture-combinembs.html">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean) as boolean</A></li>
+<li><A href="picture-combinembs.html#2">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#3">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color, MaskColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#4">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#5">CombineMBS(Image As Picture, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer, MaskColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#6">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean) as boolean</A></li>
+<li><A href="picture-combinembs.html#7">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#8">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour As color, MaskColour As color) as boolean</A></li>
+<li><A href="picture-combinembs.html#9">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer) as boolean</A></li>
+<li><A href="picture-combinembs.html#10">CombineMBS(Image As Picture, PreMultipliedSource as boolean, Mask As Picture, DestX as Integer, DestY as Integer, SourceX as Integer, SourceY as Integer, Width as Integer, Height as Integer, UseColours As Boolean, ForeColour as Integer, MaskColour as Integer) as boolean</A></li>
+</ul></p>
+<h4>Some examples using this method:</h4>
+<ul translate="no">
+<li><A href="example-picture-picturecombine.html">/Picture/Picture Combine</A></li>
+<li><A href="example-picture-picturecombinetest.html">/Picture/Picture Combine Test</A></li>
+<li><A href="example-picture-picturedifference.html">/Picture/Picture Difference</A></li>
+<li><A href="example-picture-picturecombinembs.html">/Picture/Picture.CombineMBS</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2014-07-02/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 14.3pr1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2012-12-02/MBS_Real_Studio_Plugins_versio/monkeybreadsoftware_blog_xojo">MBS Real Studio Plugins, version 12.5pr13</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2009-08-11/MBS_REALbasic_plug-ins_version/monkeybreadsoftware_blog_xojo">MBS REALbasic plug-ins version 9.5</a></li>
+</ul>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbspictureplugin.html">MBS Picture Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=Picture-combinembs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

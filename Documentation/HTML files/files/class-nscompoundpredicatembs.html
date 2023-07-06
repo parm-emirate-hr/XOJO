@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - NSCompoundPredicateMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="NSCompoundPredicateMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">NSCompoundPredicateMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>NSCompoundPredicateMBS class</H3>
+<P>Super class: <A href="class-nspredicatembs.html">NSPredicateMBS</A></p>
+<div class="M">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+NSCompoundPredicate is a subclass of NSPredicate used to represent logical &quot;gate&quot; operations (AND/OR/NOT) and comparison operations.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+<span style="color: #000000;"><span style="color: #0000FF;">dim</span> n1 <span style="color: #0000FF;">as</span> <A href="class-nspredicatembs.html">NSPredicateMBS</A> = <A href="class-nspredicatembs.html">NSPredicateMBS</A>.predicateWithValue(<span style="color: #0000FF;">true</span>)<br /><span style="color: #0000FF;">dim</span> n2 <span style="color: #0000FF;">as</span> <A href="class-nspredicatembs.html">NSPredicateMBS</A> = <A href="class-nspredicatembs.html">NSPredicateMBS</A>.predicateWithValue(<span style="color: #0000FF;">false</span>)<br /><br /><span style="color: #0000FF;">dim</span> n <span style="color: #0000FF;">as</span> <A href="class-nspredicatembs.html">NSPredicateMBS</A> = NSCompoundPredicateMBS.orPredicateWithSubpredicates(<span style="color: #0000FF;">array</span>(n1,n2))<br />MsgBox n.predicateFormat</span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+Comparison operations are based on two expressions, as represented by instances of the NSExpression class. Expressions are created for constant values, key paths, and so on.<BR>
+<BR>
+In Mac OS X v10.5 and later and in iOS, you can use NSCompoundPredicate to create an AND or OR compound predicate (but not a NOT compound predicate) using an array with 0, 1, or more elements:<BR>
+<BR>
+<UL><LI>
+An AND predicate with no subpredicates evaluates to TRUE.
+</LI><LI>
+An OR predicate with no subpredicates evaluates to FALSE.
+</LI><LI>
+A compound predicate with one or more subpredicates evaluates to the truth of its subpredicates.
+</LI></UL>
+Subclass of the <A href="class-nspredicatembs.html">NSPredicateMBS</A> class.<BR>
+</div>
+<ul>
+<LI>3 methods<UL>
+<li class="M">method <A href="icloud-nscompoundpredicatembs-method.html">compoundPredicateType</A> as Integer</li>
+<li class="M">method <A href="icloud-nscompoundpredicatembs-method.html#2">Constructor</A>(type as Integer, predicates() as <A href="class-nspredicatembs.html">NSPredicateMBS</A>)</li>
+<li class="M">method <A href="icloud-nscompoundpredicatembs-method.html#3">subpredicates</A> as <A href="class-nspredicatembs.html">NSPredicateMBS</A>()</li>
+</UL></LI>
+<LI>3 shared methods<UL>
+<li class="M">shared method <A href="icloud-nscompoundpredicatembs-shared-method.html">andPredicateWithSubpredicates</A>(predicates() as <A href="class-nspredicatembs.html">NSPredicateMBS</A>) as <A href="class-nspredicatembs.html">NSPredicateMBS</A></li>
+<li class="M">shared method <A href="icloud-nscompoundpredicatembs-shared-method.html#2">notPredicateWithSubpredicate</A>(predicate as <A href="class-nspredicatembs.html">NSPredicateMBS</A>) as <A href="class-nspredicatembs.html">NSPredicateMBS</A></li>
+<li class="M">shared method <A href="icloud-nscompoundpredicatembs-shared-method.html#3">orPredicateWithSubpredicates</A>(predicates() as <A href="class-nspredicatembs.html">NSPredicateMBS</A>) as <A href="class-nspredicatembs.html">NSPredicateMBS</A></li>
+</UL></LI>
+<LI>3 constants<UL>
+</UL></LI>
+</ul>
+<h3 lang="en">Compound Predicate Types</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="icloud-nscompoundpredicatembs-const.html">kAnd </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+A logical AND predicate.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="icloud-nscompoundpredicatembs-const.html#2">kNot </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 0</td>
+<td bgcolor="#DDDDDD" valign=top>
+A logical NOT predicate.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="icloud-nscompoundpredicatembs-const.html#3">kOR </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+A logical OR predicate.<BR>
+</td>
+</tr>
+</table>
+<h4>Super class <A href="class-nspredicatembs.html">NSPredicateMBS</A></h4>
+<ul>
+<li class="M">property <A href="icloud-nspredicatembs-property.html">Handle</A> as Integer</li>
+<LI>6 methods<UL>
+<li class="M">method <A href="icloud-nspredicatembs-method.html">Constructor</A>(predicateFormat as string)</li>
+<li class="M">method <A href="icloud-nspredicatembs-method.html#2">Constructor</A>(predicateFormat as string, arguments() as Variant)</li>
+<li class="M">method <A href="icloud-nspredicatembs-method.html#3">Constructor</A>(value as boolean)</li>
+<li class="M">method <A href="icloud-nspredicatembs-method.html#4">description</A> as string</li>
+<li class="M">method <A href="icloud-nspredicatembs-method.html#5">predicateFormat</A> as string</li>
+<li class="M">method <A href="icloud-nspredicatembs-method.html#6">Print</A></li>
+</UL></LI>
+<LI>3 shared methods<UL>
+<li class="M">shared method <A href="icloud-nspredicatembs-shared-method.html">predicateWithFormat</A>(predicateFormat as string) as <A href="class-nspredicatembs.html">NSPredicateMBS</A></li>
+<li class="M">shared method <A href="icloud-nspredicatembs-shared-method.html#2">predicateWithFormat</A>(predicateFormat as string, arguments() as Variant) as <A href="class-nspredicatembs.html">NSPredicateMBS</A></li>
+<li class="M">shared method <A href="icloud-nspredicatembs-shared-method.html#3">predicateWithValue</A>(value as boolean) as <A href="class-nspredicatembs.html">NSPredicateMBS</A></li>
+</UL></LI>
+</ul>
+<p>This class has no sub classes.</p>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-mac64bit-contacts-contactsdisplayperson.html">/Mac64bit/Contacts/Contacts Display Person</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2011-10-29/More_notes/monkeybreadsoftware_blog_xojo">More notes</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2011-10-24/MBS_Real_Studio_Plugins_versio/monkeybreadsoftware_blog_xojo">MBS Real Studio Plugins, version 11.3pr10</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-nscomparisonpredicatembs.html">NSComparisonPredicateMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-nscontrolmbs.html">NSControlMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-nscompoundpredicatembs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

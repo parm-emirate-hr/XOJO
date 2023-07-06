@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - NSPredicateMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="NSPredicateMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">NSPredicateMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>NSPredicateMBS class</H3>
+<div class="M">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-icloud.html" translate="no">iCloud</A></td>
+<td class=grau><a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a></td>
+<td class=grau><a href="newinversion113.shtml" class=version>11.3</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+The NSPredicate class is used to define logical conditions used to constrain a search either for a fetch or for in-memory filtering.<BR>
+<B>Notes:</B> 
+<BR>
+You use predicates to represent logical conditions, used for describing objects in persistent stores and in-memory filtering of objects. Although it is common to create predicates directly from instances of NSComparisonPredicate, NSCompoundPredicate, and NSExpression, you often create predicates from a format string which is parsed by the class methods on NSPredicate. Examples of predicate format strings include:<BR>
+<BR>
+<UL><LI>
+Simple comparisons, such as grade == &quot;7&quot; or firstName like &quot;Shaffiq&quot;
+</LI><LI>
+Case and diacritic insensitive lookups, such as name contains[cd] &quot;itroen&quot;
+</LI><LI>
+Logical operations, such as (firstName like &quot;Mark&quot;) OR (lastName like &quot;Adderley&quot;)
+</LI><LI>
+In Mac OS X v10.5 and later, you can create &#128;&#156;between&#128;&#157; predicates such as date between {$YESTERDAY, $TOMORROW}.
+</LI></UL>
+<BR>
+You can create predicates for relationships, such as:<BR>
+<BR>
+<UL><LI>
+group.name like &quot;work*&quot;
+</LI><LI>
+ALL children.age &gt; 12
+</LI><LI>
+ANY children.age &gt; 12
+</LI></UL>
+<BR>
+You can create predicates for operations, such as @sum.items.price &lt; 1000. For a complete syntax reference, refer to the Predicate Programming Guide:<BR>
+<a href="http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/Predicates/predicates.html#//apple_ref/doc/uid/TP40001789" target=_blank>http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/Predicates/predicates.html#//apple_ref/doc/uid/TP40001789</a><BR>
+</div>
+<ul>
+<li class="M">property <A href="icloud-nspredicatembs-property.html">Handle</A> as Integer</li>
+<LI>6 methods<UL>
+<li class="M">method <A href="icloud-nspredicatembs-method.html">Constructor</A>(predicateFormat as string)</li>
+<li class="M">method <A href="icloud-nspredicatembs-method.html#2">Constructor</A>(predicateFormat as string, arguments() as Variant)</li>
+<li class="M">method <A href="icloud-nspredicatembs-method.html#3">Constructor</A>(value as boolean)</li>
+<li class="M">method <A href="icloud-nspredicatembs-method.html#4">description</A> as string</li>
+<li class="M">method <A href="icloud-nspredicatembs-method.html#5">predicateFormat</A> as string</li>
+<li class="M">method <A href="icloud-nspredicatembs-method.html#6">Print</A></li>
+</UL></LI>
+<LI>3 shared methods<UL>
+<li class="M">shared method <A href="icloud-nspredicatembs-shared-method.html">predicateWithFormat</A>(predicateFormat as string) as NSPredicateMBS</li>
+<li class="M">shared method <A href="icloud-nspredicatembs-shared-method.html#2">predicateWithFormat</A>(predicateFormat as string, arguments() as Variant) as NSPredicateMBS</li>
+<li class="M">shared method <A href="icloud-nspredicatembs-shared-method.html#3">predicateWithValue</A>(value as boolean) as NSPredicateMBS</li>
+</UL></LI>
+</ul>
+<h4>Sub classes:</h4><ul>
+<li class="M"><A href="class-nscomparisonpredicatembs.html">class NSComparisonPredicateMBS</A>
+</li>
+<li class="M"><A href="class-nscompoundpredicatembs.html">class NSCompoundPredicateMBS</A>
+</li>
+</ul>
+<h4>Some methods using this class:</h4><ul>
+<li class="M"><A href="contacts-cncontactstorembs-method.html#4" translate="no">CNContactStoreMBS.containersMatchingPredicate</A>(predicate as NSPredicateMBS, byref error as <A href="class-nserrormbs.html">NSErrorMBS</A>) as <A href="class-cncontainermbs.html">CNContainerMBS</A>()</li>
+<li class="M"><A href="contacts-cngroupmbs-shared-method.html#6" translate="no">CNGroupMBS.predicateForSubgroupsInGroupWithIdentifier</A>(contactIdentifier as String) as NSPredicateMBS</li>
+<li class="M"><A href="calendar-ekeventstorembs-method.html#12" translate="no">EKEventStoreMBS.enumerateEventsMatchingPredicate</A>(predicate as NSPredicateMBS, tag as Variant = nil)</li>
+<li class="M"><A href="calendar-ekeventstorembs-method.html#17" translate="no">EKEventStoreMBS.fetchRemindersMatchingPredicate</A>(predicate as NSPredicateMBS, tag as Variant = nil) as <A href="class-ekfetchrequestmbs.html">EKFetchRequestMBS</A></li>
+<li class="M"><A href="calendar-ekeventstorembs-method.html#21" translate="no">EKEventStoreMBS.predicateForCompletedRemindersWithCompletionDate</A>(startDate as dateTime, endDate as dateTime) as NSPredicateMBS</li>
+<li class="M"><A href="calendar-ekeventstorembs-method.html#23" translate="no">EKEventStoreMBS.predicateForEvents</A>(startDate as date, endDate as date) as NSPredicateMBS</li>
+<li class="M"><A href="calendar-ekeventstorembs-method.html#24" translate="no">EKEventStoreMBS.predicateForEvents</A>(startDate as date, endDate as date, calendars() as <A href="class-ekcalendarmbs.html">EKCalendarMBS</A>) as NSPredicateMBS</li>
+<li class="M"><A href="calendar-ekeventstorembs-method.html#27" translate="no">EKEventStoreMBS.predicateForIncompleteRemindersWithDueDate</A>(startDate as date, endDate as date) as NSPredicateMBS</li>
+<li class="M"><A href="calendar-ekeventstorembs-method.html#29" translate="no">EKEventStoreMBS.predicateForIncompleteRemindersWithDueDate</A>(startDate as dateTime, endDate as dateTime) as NSPredicateMBS</li>
+<li class="M"><A href="icloud-nscompoundpredicatembs-method.html#3" translate="no">NSCompoundPredicateMBS.subpredicates</A> as NSPredicateMBS()</li>
+</ul>
+<h4>Some properties using for this class:</h4><ul>
+<li class="M"><A href="cloudkit-ckquerymbs-property.html#2" translate="no">CKQueryMBS.predicate</A> as NSPredicateMBS</li>
+<li class="M"><A href="cloudkit-ckquerysubscriptionmbs-property.html" translate="no">CKQuerySubscriptionMBS.predicate</A> as NSPredicateMBS</li>
+<li class="M"><A href="cloudkit-cksubscriptionmbs-property.html#3" translate="no">CKSubscriptionMBS.predicate</A> as NSPredicateMBS</li>
+<li class="M"><A href="contacts-cncontactfetchrequestmbs-property.html#3" translate="no">CNContactFetchRequestMBS.predicate</A> as NSPredicateMBS</li>
+<li class="I"><A href="contacts-cncontactpickerviewcontrollermbs-property.html#2" translate="no">CNContactPickerViewControllerMBS.predicateForEnablingContact</A> as NSPredicateMBS</li>
+<li class="I"><A href="contacts-cncontactpickerviewcontrollermbs-property.html#3" translate="no">CNContactPickerViewControllerMBS.predicateForSelectionOfContact</A> as NSPredicateMBS</li>
+<li class="I"><A href="contacts-cncontactpickerviewcontrollermbs-property.html#4" translate="no">CNContactPickerViewControllerMBS.predicateForSelectionOfProperty</A> as NSPredicateMBS</li>
+<li class="M"><A href="calendar-ekparticipantmbs-property.html" translate="no">EKParticipantMBS.contactPredicate</A> as NSPredicateMBS</li>
+<li class="M"><A href="photos-phfetchoptionsmbs-property.html#6" translate="no">PHFetchOptionsMBS.predicate</A> as NSPredicateMBS</li>
+<li class="M"><A href="icloud-nsmetadataquerymbs-method.html#12" translate="no">NSMetadataQueryMBS.predicate</A> as NSPredicateMBS</li>
+</ul>
+<h4>Some events using this class:</h4><ul>
+<li class="M"><A href="calendar-ekeventstorembs-event.html#2">EKEventStoreMBS.enumerateEventsMatchingPredicateUpdate</A>(e as <A href="class-ekeventmbs.html">EKEventMBS</A>, byref stop as boolean, predicate as NSPredicateMBS, tag as Variant)</li>
+<li class="M"><A href="calendar-ekeventstorembs-event.html#3">EKEventStoreMBS.eventsMatchingPredicateAsyncCompleted</A>(events() as <A href="class-ekeventmbs.html">EKEventMBS</A>, predicate as NSPredicateMBS, tag as Variant)</li>
+<li class="M"><A href="calendar-ekeventstorembs-event.html#4">EKEventStoreMBS.fetchRemindersMatchingPredicateCompleted</A>(reminders() as <A href="class-ekremindermbs.html">EKReminderMBS</A>, predicate as NSPredicateMBS, tag as Variant)</li>
+</ul>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-mac64bit-contacts-contactsdisplayperson.html">/Mac64bit/Contacts/Contacts Display Person</A></li>
+<li class=""><A href="example-mac64bit-eventkit-eventkit.html">/Mac64bit/EventKit/EventKit</A></li>
+<li class=""><A href="example-maccloud-icloudexample-icloudexample.html">/MacCloud/iCloud Example/iCloud Example</A></li>
+<li class=""><A href="example-maccloud-nsmetadataquerytest.html">/MacCloud/NSMetadataquery test</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2012-02-20/MBS_Real_Studio_Plugins_versio/monkeybreadsoftware_blog_xojo">MBS Real Studio Plugins, version 12.1pr5</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2011-10-29/More_notes/monkeybreadsoftware_blog_xojo">More notes</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2011-10-24/MBS_Real_Studio_Plugins_versio/monkeybreadsoftware_blog_xojo">MBS Real Studio Plugins, version 11.3pr10</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmaccloudplugin.html">MBS MacCloud Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-nspopupbuttonmbs.html">NSPopUpButtonMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-nsprintermbs.html">NSPrinterMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-nspredicatembs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

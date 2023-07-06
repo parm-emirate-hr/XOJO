@@ -1,0 +1,790 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Encryption and Hash</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Encryption and Hash, Encryption, decryption and hash functions.">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Encryption and Hash</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>Encryption and Hash</H3>
+<P>Encryption, decryption and hash functions.</P>
+<ul>
+<li>Globals <ul>
+<li class="WLM"><A href="global-adler32memorymbs.html">Adler32MemoryMBS</A>(adler as UInt32, buf as memoryblock, offset as Integer, length as Integer) as UInt32</li>
+<li class="WLM"><A href="global-adler32stringmbs.html">Adler32StringMBS</A>(adler as UInt32, buf as string) as UInt32</li>
+<li class="WLM"><A href="global-calculatecrc16memorymbs.html">CalculateCRC16MemoryMBS</A>(data as MemoryBlock, Start as UInt16 = 65535, Polynomial as UInt16 = &h1021, FinalXOR as UInt16 = 0, ReflectInput as boolean = false, ReflectOutput as boolean = false) as UInt16</li>
+<li class="WLM"><A href="global-calculatecrc16stringmbs.html">CalculateCRC16StringMBS</A>(data as string, Start as UInt16 = 65535, Polynomial as UInt16 = &h1021, FinalXOR as UInt16 = 0, ReflectInput as boolean = false, ReflectOutput as boolean = false) as UInt16</li>
+<li class="WLMI"><A href="global-calculatetotpmbs.html">CalculateTOTPMBS</A>(Key as String, timeNow as UInt64, timeStart as UInt64, timeStep as UInt64, digitCount as Integer, DecodeBase32 as Boolean = false) as UInt32</li>
+<li class="WLM"><A href="global-crc16mbs.html">CRC16MBS</A>(data as string) as UInt16</li>
+<li class="WLM"><A href="global-crc32memorymbs.html">CRC32MemoryMBS</A>(crc as UInt32, buf as memoryblock, offset as Integer, length as Integer) as UInt32</li>
+<li class="WLM"><A href="global-crc32stringmbs.html">CRC32StringMBS</A>(crc as UInt32, buf as string) as UInt32</li>
+<li class="WLM"><A href="global-crc32inmemcontmbs.html">CRC_32InMemContMBS</A>(address as Ptr, length as Integer, prevCRC as UInt32) as UInt32</li>
+<li class="WLM"><A href="global-crc32inmemmbs.html">CRC_32InMemMBS</A>(address as Ptr, length as Integer) as UInt32</li>
+<li class="WLM"><A href="global-crc32ofstrcontmbs.html">CRC_32OfStrContMBS</A>(s as String, prevCRC as UInt32) as UInt32</li>
+<li class="WLM"><A href="global-crc32ofstrmbs.html">CRC_32OfStrMBS</A>(s as String) as UInt32</li>
+<li class="WLM"><A href="global-crcccittinmemcontmbs.html">CRC_CCITTInMemContMBS</A>(address as Ptr, length as Integer, prevCRC as UInt32) as UInt32</li>
+<li class="WLM"><A href="global-crcccittinmemmbs.html">CRC_CCITTInMemMBS</A>(address as Ptr, length as Integer) as UInt32</li>
+<li class="WLM"><A href="global-crcccittofstrcontmbs.html">CRC_CCITTOfStrContMBS</A>(s as String, prevCRC as UInt32) as UInt32</li>
+<li class="WLM"><A href="global-crcccittofstrmbs.html">CRC_CCITTOfStrMBS</A>(s as String) as UInt32</li>
+<li class="WLM"><A href="global-crcdilloninmemmbs.html">CRC_DillonInMemMBS</A>(bitWidth as Integer, address as Ptr, length as Integer) as String</li>
+<li class="WLM"><A href="global-crcdillonofstrmbs.html">CRC_DillonOfStrMBS</A>(bitWidth as Integer, s as String) as String</li>
+<li class="WLM"><A href="global-crcdillonuint64inmemmbs.html">CRC_DillonUInt64InMemMBS</A>(bitWidth as Integer, address as Ptr, length as Integer) as UInt64</li>
+<li class="WLM"><A href="global-crcdillonuint64mbs.html">CRC_DillonUInt64MBS</A>(extends mem as memoryblock, bitWidth as Integer, offset as Integer, numBytes as Integer) as UInt64</li>
+<li class="WLM"><A href="global-crcdillonuint64ofstrmbs.html">CRC_DillonUInt64OfStrMBS</A>(bitWidth as Integer, s as String) as UInt64</li>
+<li class="WLMI"><A href="global-currentunixtimembs.html">CurrentUnixTimeMBS</A> as UInt64</li>
+<li class="WLM"><A href="global-gethash32mbs.html">GetHash32MBS</A>(s as string) as UInt32</li>
+<li class="WLM"><A href="global-md5mbs.html">MD5MBS</A>(data as memoryblock) as string</li>
+<li class="WLM"><A href="global-md5mbs.html#2">MD5MBS</A>(data as string) as string</li>
+<li class="WLM"><A href="global-md5stringmbs.html">MD5StringMBS</A>(data as memoryblock) as string</li>
+<li class="WLM"><A href="global-md5stringmbs.html#2">MD5StringMBS</A>(data as string) as string</li>
+<li class="WLM"><A href="global-modbuscalculatertumessagecrcmbs.html">ModBusCalculateRTUMessageCRCMBS</A>(data as string) as UInt16</li>
+<li class="WLM"><A href="global-validateuuidmbs.html">ValidateUUIDMBS</A>(UUID as string, mode as Integer = 0, requiredVersion as Integer = 0) as string</li>
+</ul></li>
+<li>Classes <ul>
+<li class="WLM"><B><A href="class-argon2mbs.html">class Argon2MBS</A></B><ul>
+<li class="WLM">method <A href="encryptionandhash-argon2mbs-method.html">Calc</A>(type as Integer = 0) as String</li>
+<li class="WLM">method <A href="encryptionandhash-argon2mbs-method.html#2">Constructor</A></li>
+<li class="WLM">method <A href="encryptionandhash-argon2mbs-method.html#3">Destructor</A></li>
+<li class="WLM">method <A href="encryptionandhash-argon2mbs-method.html#4">Verify</A>(Hash as String, type as Integer = 0) as boolean</li>
+<li class="WLM">property <A href="encryptionandhash-argon2mbs-property.html">AssociatedData</A> as String</li>
+<li class="WLM">property <A href="encryptionandhash-argon2mbs-property.html#2">Cost</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-argon2mbs-property.html#3">Flags</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-argon2mbs-property.html#4">Lanes</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-argon2mbs-property.html#5">LastError</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-argon2mbs-property.html#6">LastErrorMessage</A> as String</li>
+<li class="WLM">property <A href="encryptionandhash-argon2mbs-property.html#7">MemoryCost</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-argon2mbs-property.html#8">OutputLength</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-argon2mbs-property.html#9">Password</A> as String</li>
+<li class="WLM">property <A href="encryptionandhash-argon2mbs-property.html#10">Salt</A> as String</li>
+<li class="WLM">property <A href="encryptionandhash-argon2mbs-property.html#11">Secret</A> as String</li>
+<li class="WLM">property <A href="encryptionandhash-argon2mbs-property.html#12">Threads</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-argon2mbs-property.html#13">Version</A> as Integer</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html">kErrorAdPtrMismatch</A> = -21</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#2">kErrorAdTooLong</A> = -9</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#3">kErrorAdTooShort</A> = -8</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#4">kErrorAllocateMemoryCbkNull</A> = -24</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#5">kErrorDecodingFail</A> = -32</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#6">kErrorDecodingLengthFail</A> = -34</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#7">kErrorEncodingFail</A> = -31</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#8">kErrorFreeMemoryCbkNull</A> = -23</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#9">kErrorIncorrectParameter</A> = -25</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#10">kErrorIncorrectType</A> = -26</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#11">kErrorLanesTooFew</A> = -16</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#12">kErrorLanesTooMany</A> = -17</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#13">kErrorMemoryAllocationError</A> = -22</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#14">kErrorMemoryTooLittle</A> = -14</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#15">kErrorMemoryTooMuch</A> = -15</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#16">kErrorMissingArgs</A> = -30</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#17">kErrorOk</A> = 0</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#18">kErrorOutPtrMismatch</A> = -27</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#19">kErrorOutputPtrNull</A> = -1</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#20">kErrorOutputTooLong</A> = -3</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#21">kErrorOutputTooShort</A> = -2</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#22">kErrorPwdPtrMismatch</A> = -18</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#23">kErrorPwdTooLong</A> = -5</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#24">kErrorPwdTooShort</A> = -4</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#25">kErrorSaltPtrMismatch</A> = -19</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#26">kErrorSaltTooLong</A> = -7</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#27">kErrorSaltTooShort</A> = -6</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#28">kErrorSecretPtrMismatch</A> = -20</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const.html#29">kErrorSecretTooLong</A> = -11</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html">kErrorSecretTooShort</A> = -10</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#2">kErrorThreadFail</A> = -33</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#3">kErrorThreadsTooFew</A> = -28</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#4">kErrorThreadsTooMany</A> = -29</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#5">kErrorTimeTooLarge</A> = -13</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#6">kErrorTimeTooSmall</A> = -12</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#7">kErrorVerifyMismatch</A> = -35</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#8">kFlagClearMemory</A> = 4</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#9">kFlagClearPassword</A> = 1</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#10">kFlagClearSecret</A> = 2</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#11">kFlagDefault</A>= 4</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#12">kMaxAssociatedDataLength</A> = &hFFFFFFFF</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#13">kMaxLanes</A> = &hFFFFFF</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#14">kMaxMemory</A> = &hFFFFFFFF</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#15">kMaxOutputLength</A> = &hFFFFFFFF</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#16">kMaxPasswordLength</A> = &hFFFFFFFF</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#17">kMaxSaltLength</A> = &hFFFFFFFF</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#18">kMaxSecretLength</A> = &hFFFFFFFF</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#19">kMaxThreads</A> = &hFFFFFF</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#20">kMaxTime</A> = &hFFFFFFFF</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#21">kMinAssociatedDataLength</A> = 0</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#22">kMinLanes</A> = 1</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#23">kMinMemory</A> = 8</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#24">kMinOutputLength</A> = 4</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#25">kMinPasswordLength</A> = 0</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#26">kMinSaltLength</A> = 0</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#27">kMinSecretLength</A> = 0</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#28">kMinThreads</A> = 1</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#29">kMinTime</A> = 1</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const1.html#30">kSyncPoints</A> = 4</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const2.html">kTypeD</A> = 0</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const2.html#2">kTypeI</A> = 1</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const2.html#3">kVersion10</A> = &h10</li>
+<li class="WLM">const <A href="encryptionandhash-argon2mbs-const2.html#4">kVersion13</A> = &h13</li>
+</ul></li>
+<li class="WLM"><B><A href="class-blowfishmbs.html">class BlowfishMBS</A></B><ul>
+<li class="WLM">method <A href="encryptionandhash-blowfishmbs-method.html">Decrypt</A>(iodata as memoryblock)</li>
+<li class="WLM">shared method <A href="encryptionandhash-blowfishmbs-shared-method.html">Decrypt</A>(key as string, data as string) as string</li>
+<li class="WLM">method <A href="encryptionandhash-blowfishmbs-method.html#2">DecryptCBC</A>(data as string, byref temp as memoryblock) as string</li>
+<li class="WLM">method <A href="encryptionandhash-blowfishmbs-method.html#3">DecryptCBC</A>(idata as memoryblock, odata as memoryblock, offset as Integer, length as Integer, ivec as memoryblock)</li>
+<li class="WLM">method <A href="encryptionandhash-blowfishmbs-method.html#4">DecryptCFB64</A>(data as string, byref temp as memoryblock) as string</li>
+<li class="WLM">method <A href="encryptionandhash-blowfishmbs-method.html#5">DecryptCFB64</A>(idata as memoryblock, odata as memoryblock, offset as Integer, length as Integer, ivec as memoryblock, byref num as Integer)</li>
+<li class="WLM">method <A href="encryptionandhash-blowfishmbs-method.html#6">DecryptECB</A>(data as string) as string</li>
+<li class="WLM">method <A href="encryptionandhash-blowfishmbs-method.html#7">DecryptECB</A>(idata as memoryblock, odata as memoryblock, offset as Integer)</li>
+<li class="WLM">method <A href="encryptionandhash-blowfishmbs-method.html#8">DecryptOFB64</A>(data as string, byref temp as memoryblock) as string</li>
+<li class="WLM">method <A href="encryptionandhash-blowfishmbs-method.html#9">DecryptOFB64</A>(idata as memoryblock, odata as memoryblock, offset as Integer, length as Integer, ivec as memoryblock, byref num as Integer)</li>
+<li class="WLM">method <A href="encryptionandhash-blowfishmbs-method.html#10">Encrypt</A>(iodata as memoryblock)</li>
+<li class="WLM">shared method <A href="encryptionandhash-blowfishmbs-shared-method.html#2">Encrypt</A>(key as string, data as string) as string</li>
+<li class="WLM">method <A href="encryptionandhash-blowfishmbs-method.html#11">EncryptCBC</A>(data as string, byref temp as memoryblock) as string</li>
+<li class="WLM">method <A href="encryptionandhash-blowfishmbs-method.html#12">EncryptCBC</A>(idata as memoryblock, odata as memoryblock, offset as Integer, length as Integer, ivec as memoryblock)</li>
+<li class="WLM">method <A href="encryptionandhash-blowfishmbs-method.html#13">EncryptCFB64</A>(data as string, byref temp as memoryblock) as string</li>
+<li class="WLM">method <A href="encryptionandhash-blowfishmbs-method.html#14">EncryptCFB64</A>(idata as memoryblock, odata as memoryblock, offset as Integer, length as Integer, ivec as memoryblock, byref num as Integer)</li>
+<li class="WLM">method <A href="encryptionandhash-blowfishmbs-method.html#15">EncryptECB</A>(data as string) as string</li>
+<li class="WLM">method <A href="encryptionandhash-blowfishmbs-method.html#16">EncryptECB</A>(idata as memoryblock, odata as memoryblock, offset as Integer)</li>
+<li class="WLM">method <A href="encryptionandhash-blowfishmbs-method.html#17">EncryptOFB64</A>(data as string, byref temp as memoryblock) as string</li>
+<li class="WLM">method <A href="encryptionandhash-blowfishmbs-method.html#18">EncryptOFB64</A>(idata as memoryblock, odata as memoryblock, offset as Integer, length as Integer, ivec as memoryblock, byref num as Integer)</li>
+<li class="WLM">method <A href="encryptionandhash-blowfishmbs-method.html#19">SetKey</A>(key as string)</li>
+</ul></li>
+<li class="M"><B><A href="class-cccryptormbs.html">class CCCryptorMBS</A></B><ul>
+<li class="M">method <A href="encryptionandhash-cccryptormbs-method.html">Constructor</A>(operation as Integer, Algorithm as Integer, options as Integer, key as Ptr, keyLength as UInt64, iv as Ptr = nil)</li>
+<li class="M">method <A href="encryptionandhash-cccryptormbs-method.html#2">Constructor</A>(operation as Integer, Algorithm as Integer, options as Integer, key as String, iv as Ptr = nil)</li>
+<li class="M">shared method <A href="encryptionandhash-cccryptormbs-shared-method.html">Crypt</A>(Operation as Integer, Algorithm as Integer, Options as Integer, key as Ptr, KeyLength as UInt64, IV as Ptr, DataIn as Ptr, DataInLength as UInt64, DataOut as Ptr, DataOutAvailable as UInt64, byref DataOutMoved as UInt64) as Integer</li>
+<li class="M">shared method <A href="encryptionandhash-cccryptormbs-shared-method.html#2">Crypt</A>(Operation as Integer, Algorithm as Integer, Options as Integer, key as string, IV as Ptr, DataIn as string, byref DataOut as string) as Integer</li>
+<li class="M">method <A href="encryptionandhash-cccryptormbs-method.html#3">Final</A>(DataOut as Ptr, dataOutAvailable as UInt64, byref dataOutMoved as UInt64)</li>
+<li class="M">method <A href="encryptionandhash-cccryptormbs-method.html#4">GetOutputLength</A>(inputLength as UInt64, Final as Boolean = true) as UInt64</li>
+<li class="M">shared method <A href="encryptionandhash-cccryptormbs-shared-method.html#3">RandomGenerateBytes</A>(data as MemoryBlock) as integer</li>
+<li class="M">method <A href="encryptionandhash-cccryptormbs-method.html#5">Reset</A>(iv as Ptr = nil)</li>
+<li class="M">method <A href="encryptionandhash-cccryptormbs-method.html#6">Update</A>(dataIn as Ptr, dataInLength as UInt64, dataOut as Ptr, dataOutAvailable as UInt64, byref dataOutMoved as UInt64)</li>
+<li class="M">method <A href="encryptionandhash-cccryptormbs-method.html#7">Update</A>(dataIn as String, dataOut as Ptr, dataOutAvailable as UInt64, byref dataOutMoved as UInt64)</li>
+<li class="M">property <A href="encryptionandhash-cccryptormbs-property.html">Handle</A> as Integer</li>
+<li class="M">property <A href="encryptionandhash-cccryptormbs-property.html#2">Lasterror</A> as Integer</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html">kCCAlgorithm3DES</A> = 2</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#2">kCCAlgorithmAES128</A> = 0</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#3">kCCAlgorithmBlowfish</A> = 6</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#4">kCCAlgorithmCAST</A> = 3</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#5">kCCAlgorithmDES</A> = 1</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#6">kCCAlgorithmRC2</A> = 5</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#7">kCCAlgorithmRC4</A> = 4</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#8">kCCAlignmentError</A> = -4303</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#9">kCCBlockSize3DES</A> = 8</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#10">kCCBlockSizeAES128</A> = 16</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#11">kCCBlockSizeBlowfish</A> = 8</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#12">kCCBlockSizeCAST</A> = 8</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#13">kCCBlockSizeDES</A> = 8</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#14">kCCBlockSizeRC2</A> = 8</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#15">kCCBufferTooSmall</A> = -4301</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#16">kCCCallSequenceError</A> = -4309</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#17">kCCDecodeError</A> = -4304</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#18">kCCDecrypt</A> = 1</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#19">kCCEncrypt</A> = 0</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#20">kCCInvalidKey</A> = -4311</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#21">kCCKeySize3DES</A> = 24</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#22">kCCKeySizeAES128</A> = 16</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#23">kCCKeySizeAES192</A> = 24</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#24">kCCKeySizeAES256</A> = 32</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#25">kCCKeySizeDES</A> = 8</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#26">kCCKeySizeError</A> = -4310</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#27">kCCKeySizeMaxBlowfish</A> = 56</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#28">kCCKeySizeMaxCAST</A> = 16</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const.html#29">kCCKeySizeMaxRC2</A> = 128</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const1.html">kCCKeySizeMaxRC4</A> = 512</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const1.html#2">kCCKeySizeMinBlowfish</A> = 8</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const1.html#3">kCCKeySizeMinCAST</A> = 5</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const1.html#4">kCCKeySizeMinRC2</A> = 1</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const1.html#5">kCCKeySizeMinRC4</A> = 1</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const1.html#6">kCCMemoryFailure</A> = -4302</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const1.html#7">kCCOptionCBCMode</A> = 0</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const1.html#8">kCCOptionECBMode</A> = 2</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const1.html#9">kCCOptionPKCS7Padding</A> = 1</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const1.html#10">kCCOverflow</A> = -4306</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const1.html#11">kCCParamError</A> = -4300</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const1.html#12">kCCRNGFailure</A> = -4307</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const1.html#13">kCCSuccess</A> = 0</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const1.html#14">kCCUnimplemented</A> = -4305</li>
+<li class="M">const <A href="encryptionandhash-cccryptormbs-const1.html#15">kCCUnspecifiedError</A> = -4308</li>
+</ul></li>
+<li class="M"><B><A href="class-cchmacmbs.html">class CCHMacMBS</A></B><ul>
+<li class="M">method <A href="encryptionandhash-cchmacmbs-method.html">Constructor</A>(algorithm as Integer, key as memoryblock)</li>
+<li class="M">method <A href="encryptionandhash-cchmacmbs-method.html#2">Constructor</A>(algorithm as Integer, key as Ptr, keyLength as UInt64)</li>
+<li class="M">method <A href="encryptionandhash-cchmacmbs-method.html#3">Constructor</A>(algorithm as Integer, key as string)</li>
+<li class="M">method <A href="encryptionandhash-cchmacmbs-method.html#4">Final</A>(macOut as Ptr)</li>
+<li class="M">method <A href="encryptionandhash-cchmacmbs-method.html#5">Finalize</A> as Memoryblock</li>
+<li class="M">shared method <A href="encryptionandhash-cchmacmbs-shared-method.html">Hmac</A>(algorithm as Integer, key as Ptr, keyLength as Integer, data as Ptr, dataLength as Integer, MacOut as Ptr)</li>
+<li class="M">shared method <A href="encryptionandhash-cchmacmbs-shared-method.html#2">Hmac</A>(algorithm as Integer, key as String, data as String) as String</li>
+<li class="M">method <A href="encryptionandhash-cchmacmbs-method.html#6">Update</A>(data as memoryblock)</li>
+<li class="M">method <A href="encryptionandhash-cchmacmbs-method.html#7">Update</A>(data as Ptr, dataLength as UInt64)</li>
+<li class="M">method <A href="encryptionandhash-cchmacmbs-method.html#8">Update</A>(data as string)</li>
+<li class="M">property <A href="encryptionandhash-cchmacmbs-property.html">Algorithm</A> as Integer</li>
+<li class="M">const <A href="encryptionandhash-cchmacmbs-const.html">kCCHmacAlgMD5</A> = 1</li>
+<li class="M">const <A href="encryptionandhash-cchmacmbs-const.html#2">kCCHmacAlgSHA1</A> = 0</li>
+<li class="M">const <A href="encryptionandhash-cchmacmbs-const.html#3">kCCHmacAlgSHA224</A> = 5</li>
+<li class="M">const <A href="encryptionandhash-cchmacmbs-const.html#4">kCCHmacAlgSHA256</A> = 2</li>
+<li class="M">const <A href="encryptionandhash-cchmacmbs-const.html#5">kCCHmacAlgSHA384</A> = 3</li>
+<li class="M">const <A href="encryptionandhash-cchmacmbs-const.html#6">kCCHmacAlgSHA512</A> = 4</li>
+<li class="M">const <A href="encryptionandhash-cchmacmbs-const.html#7">kCCMD5DigestLength</A> = 16</li>
+<li class="M">const <A href="encryptionandhash-cchmacmbs-const.html#8">kCCSHA1DigestLength</A> = 20</li>
+</ul></li>
+<li class="M"><B><A href="class-ccmd2mbs.html">class CCMD2MBS</A></B><ul>
+<li class="M">method <A href="encryptionandhash-ccmd2mbs-method.html">Constructor</A></li>
+<li class="M">method <A href="encryptionandhash-ccmd2mbs-method.html#2">Finalize</A> as Memoryblock</li>
+<li class="M">shared method <A href="encryptionandhash-ccmd2mbs-shared-method.html">MD2</A>(data as Ptr, dataLength as Integer) as Memoryblock</li>
+<li class="M">shared method <A href="encryptionandhash-ccmd2mbs-shared-method.html#2">MD2</A>(data as String) as Memoryblock</li>
+<li class="M">method <A href="encryptionandhash-ccmd2mbs-method.html#3">Update</A>(data as Ptr, dataLength as UInt64)</li>
+<li class="M">method <A href="encryptionandhash-ccmd2mbs-method.html#4">Update</A>(data as string)</li>
+</ul></li>
+<li class="M"><B><A href="class-ccmd4mbs.html">class CCMD4MBS</A></B><ul>
+<li class="M">method <A href="encryptionandhash-ccmd4mbs-method.html">Constructor</A></li>
+<li class="M">method <A href="encryptionandhash-ccmd4mbs-method.html#2">Finalize</A> as Memoryblock</li>
+<li class="M">shared method <A href="encryptionandhash-ccmd4mbs-shared-method.html">MD4</A>(data as Ptr, dataLength as Integer) as Memoryblock</li>
+<li class="M">shared method <A href="encryptionandhash-ccmd4mbs-shared-method.html#2">MD4</A>(data as String) as Memoryblock</li>
+<li class="M">method <A href="encryptionandhash-ccmd4mbs-method.html#3">Update</A>(data as Ptr, dataLength as UInt64)</li>
+<li class="M">method <A href="encryptionandhash-ccmd4mbs-method.html#4">Update</A>(data as string)</li>
+</ul></li>
+<li class="M"><B><A href="class-ccmd5mbs.html">class CCMD5MBS</A></B><ul>
+<li class="M">method <A href="encryptionandhash-ccmd5mbs-method.html">Constructor</A></li>
+<li class="M">method <A href="encryptionandhash-ccmd5mbs-method.html#2">Finalize</A> as Memoryblock</li>
+<li class="M">shared method <A href="encryptionandhash-ccmd5mbs-shared-method.html">MD5</A>(data as Ptr, dataLength as Integer) as Memoryblock</li>
+<li class="M">shared method <A href="encryptionandhash-ccmd5mbs-shared-method.html#2">MD5</A>(data as String) as Memoryblock</li>
+<li class="M">method <A href="encryptionandhash-ccmd5mbs-method.html#3">Update</A>(data as Ptr, dataLength as UInt64)</li>
+<li class="M">method <A href="encryptionandhash-ccmd5mbs-method.html#4">Update</A>(data as string)</li>
+</ul></li>
+<li class="M"><B><A href="class-ccsha1mbs.html">class CCSHA1MBS</A></B><ul>
+<li class="M">method <A href="encryptionandhash-ccsha1mbs-method.html">Constructor</A></li>
+<li class="M">method <A href="encryptionandhash-ccsha1mbs-method.html#2">Finalize</A> as Memoryblock</li>
+<li class="M">shared method <A href="encryptionandhash-ccsha1mbs-shared-method.html">SHA1</A>(data as Ptr, dataLength as Integer) as Memoryblock</li>
+<li class="M">shared method <A href="encryptionandhash-ccsha1mbs-shared-method.html#2">SHA1</A>(data as String) as Memoryblock</li>
+<li class="M">method <A href="encryptionandhash-ccsha1mbs-method.html#3">Update</A>(data as Ptr, dataLength as UInt64)</li>
+<li class="M">method <A href="encryptionandhash-ccsha1mbs-method.html#4">Update</A>(data as string)</li>
+</ul></li>
+<li class="M"><B><A href="class-ccsha224mbs.html">class CCSHA224MBS</A></B><ul>
+<li class="M">method <A href="encryptionandhash-ccsha224mbs-method.html">Constructor</A></li>
+<li class="M">method <A href="encryptionandhash-ccsha224mbs-method.html#2">Finalize</A> as Memoryblock</li>
+<li class="M">shared method <A href="encryptionandhash-ccsha224mbs-shared-method.html">SHA224</A>(data as Ptr, dataLength as Integer) as Memoryblock</li>
+<li class="M">shared method <A href="encryptionandhash-ccsha224mbs-shared-method.html#2">SHA224</A>(data as String) as Memoryblock</li>
+<li class="M">method <A href="encryptionandhash-ccsha224mbs-method.html#3">Update</A>(data as Ptr, dataLength as UInt64)</li>
+<li class="M">method <A href="encryptionandhash-ccsha224mbs-method.html#4">Update</A>(data as string)</li>
+</ul></li>
+<li class="M"><B><A href="class-ccsha256mbs.html">class CCSHA256MBS</A></B><ul>
+<li class="M">method <A href="encryptionandhash-ccsha256mbs-method.html">Constructor</A></li>
+<li class="M">method <A href="encryptionandhash-ccsha256mbs-method.html#2">Finalize</A> as Memoryblock</li>
+<li class="M">shared method <A href="encryptionandhash-ccsha256mbs-shared-method.html">SHA256</A>(data as Ptr, dataLength as Integer) as Memoryblock</li>
+<li class="M">shared method <A href="encryptionandhash-ccsha256mbs-shared-method.html#2">SHA256</A>(data as String) as Memoryblock</li>
+<li class="M">method <A href="encryptionandhash-ccsha256mbs-method.html#3">Update</A>(data as Ptr, dataLength as UInt64)</li>
+<li class="M">method <A href="encryptionandhash-ccsha256mbs-method.html#4">Update</A>(data as string)</li>
+</ul></li>
+<li class="M"><B><A href="class-ccsha384mbs.html">class CCSHA384MBS</A></B><ul>
+<li class="M">method <A href="encryptionandhash-ccsha384mbs-method.html">Constructor</A></li>
+<li class="M">method <A href="encryptionandhash-ccsha384mbs-method.html#2">Finalize</A> as Memoryblock</li>
+<li class="M">shared method <A href="encryptionandhash-ccsha384mbs-shared-method.html">SHA384</A>(data as Ptr, dataLength as Integer) as Memoryblock</li>
+<li class="M">shared method <A href="encryptionandhash-ccsha384mbs-shared-method.html#2">SHA384</A>(data as String) as Memoryblock</li>
+<li class="M">method <A href="encryptionandhash-ccsha384mbs-method.html#3">Update</A>(data as Ptr, dataLength as UInt64)</li>
+<li class="M">method <A href="encryptionandhash-ccsha384mbs-method.html#4">Update</A>(data as string)</li>
+</ul></li>
+<li class="M"><B><A href="class-ccsha512mbs.html">class CCSHA512MBS</A></B><ul>
+<li class="M">method <A href="encryptionandhash-ccsha512mbs-method.html">Constructor</A></li>
+<li class="M">method <A href="encryptionandhash-ccsha512mbs-method.html#2">Finalize</A> as Memoryblock</li>
+<li class="M">shared method <A href="encryptionandhash-ccsha512mbs-shared-method.html">SHA512</A>(data as Ptr, dataLength as Integer) as Memoryblock</li>
+<li class="M">shared method <A href="encryptionandhash-ccsha512mbs-shared-method.html#2">SHA512</A>(data as String) as Memoryblock</li>
+<li class="M">method <A href="encryptionandhash-ccsha512mbs-method.html#3">Update</A>(data as Ptr, dataLength as UInt64)</li>
+<li class="M">method <A href="encryptionandhash-ccsha512mbs-method.html#4">Update</A>(data as string)</li>
+</ul></li>
+<li class="WLM"><B><A href="class-ciphermbs.html">class CipherMBS</A></B><ul>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html">aes_128_cbc</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#2">aes_128_ccm</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#3">aes_128_cfb1</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#4">aes_128_cfb128</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#5">aes_128_cfb8</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#6">aes_128_ctr</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#7">aes_128_ecb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#8">aes_128_gcm</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#9">aes_128_ofb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#10">aes_128_xts</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#11">aes_192_cbc</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#12">aes_192_ccm</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#13">aes_192_cfb1</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#14">aes_192_cfb128</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#15">aes_192_cfb8</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#16">aes_192_ctr</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#17">aes_192_ecb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#18">aes_192_gcm</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#19">aes_192_ofb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#20">aes_256_cbc</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#21">aes_256_ccm</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#22">aes_256_cfb1</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#23">aes_256_cfb128</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#24">aes_256_cfb8</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#25">aes_256_ctr</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#26">aes_256_ecb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#27">aes_256_gcm</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#28">aes_256_ofb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method.html#29">aes_256_xts</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html">bf_cbc</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#2">bf_cfb64</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#3">bf_ecb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#4">bf_ofb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#5">BytesToKey</A>(cipher as <A href="class-ciphermbs.html">CipherMBS</A>, digest as <A href="class-digestmbs.html">DigestMBS</A>, Salt as MemoryBlock, InputKey as Memoryblock, IterationCount as Integer, byref OutputKey as memoryblock, byref IV as memoryblock) as boolean</li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#6">camellia_128_cbc</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#7">camellia_128_cfb1</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#8">camellia_128_cfb128</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#9">camellia_128_cfb8</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#10">camellia_128_ecb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#11">camellia_128_ofb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#12">camellia_192_cbc</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#13">camellia_192_cfb1</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#14">camellia_192_cfb128</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#15">camellia_192_cfb8</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#16">camellia_192_ecb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#17">camellia_192_ofb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#18">camellia_256_cbc</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#19">camellia_256_cfb1</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#20">camellia_256_cfb128</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#21">camellia_256_cfb8</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#22">camellia_256_ecb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#23">camellia_256_ofb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#24">cast5_cbc</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#25">cast5_cfb64</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#26">cast5_ecb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#27">cast5_ofb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#28">CipherByName</A>(name as string) as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">method <A href="encryptionandhash-ciphermbs-method.html">CipherInit</A>(key as memoryblock, IV as memoryblock, Encrypt as boolean) as Boolean</li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#29">CipherNames</A> as String()</li>
+<li class="WLM">method <A href="encryptionandhash-ciphermbs-method.html#2">Clear</A></li>
+<li class="WLM">method <A href="encryptionandhash-ciphermbs-method.html#3">Constructor</A></li>
+<li class="WLM">method <A href="encryptionandhash-ciphermbs-method.html#4">DecryptInit</A>(key as memoryblock, IV as memoryblock = nil) as Boolean</li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method1.html#30">desx_cbc</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html">des_cbc</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#2">des_cfb1</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#3">des_cfb64</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#4">des_cfb8</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#5">des_ecb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#6">des_ede</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#7">des_ede3</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#8">des_ede3_cbc</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#9">des_ede3_cfb1</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#10">des_ede3_cfb64</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#11">des_ede3_cfb8</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#12">des_ede3_ecb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#13">des_ede3_ofb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#14">des_ede_cbc</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#15">des_ede_cfb64</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#16">des_ede_ecb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#17">des_ede_ofb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#18">des_ofb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">method <A href="encryptionandhash-ciphermbs-method.html#5">EncryptInit</A>(key as memoryblock, IV as memoryblock = nil) as Boolean</li>
+<li class="WLM">method <A href="encryptionandhash-ciphermbs-method.html#6">FinalizeAsMemory</A> as memoryblock</li>
+<li class="WLM">method <A href="encryptionandhash-ciphermbs-method.html#7">FinalizeAsString</A> as String</li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#19">idea_cbc</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#20">idea_cfb64</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#21">idea_ecb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#22">idea_ofb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#23">MaxBlockLength</A> as Integer</li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#24">MaxIVLength</A> as Integer</li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#25">MaxKeyLength</A> as Integer</li>
+<li class="WLM">method <A href="encryptionandhash-ciphermbs-method.html#8">ProcessFile</A>(InputFile as FolderItem, OutputFile as FolderItem) as boolean</li>
+<li class="WLM">method <A href="encryptionandhash-ciphermbs-method.html#9">ProcessMemory</A>(data as memoryblock) as MemoryBlock</li>
+<li class="WLM">method <A href="encryptionandhash-ciphermbs-method.html#10">ProcessString</A>(data as String) as string</li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#26">rc2_40_cbc</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#27">rc2_64_cbc</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#28">rc2_cbc</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#29">rc2_cfb64</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method2.html#30">rc2_ecb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method3.html">rc2_ofb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method3.html#2">rc4</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method3.html#3">rc4_40</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method3.html#4">rc4_hmac_md5</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method3.html#5">rc5_32_12_16_cbc</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method3.html#6">rc5_32_12_16_cfb64</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method3.html#7">rc5_32_12_16_ecb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method3.html#8">rc5_32_12_16_ofb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method3.html#9">seed_cbc</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method3.html#10">seed_cfb128</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method3.html#11">seed_ecb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ciphermbs-shared-method3.html#12">seed_ofb</A> as <A href="class-ciphermbs.html">CipherMBS</A></li>
+<li class="WLM">method <A href="encryptionandhash-ciphermbs-method.html#11">SetPadding</A>(padding as boolean)</li>
+<li class="WLM">property <A href="encryptionandhash-ciphermbs-property.html">BlockSize</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-ciphermbs-property.html#2">Encrypting</A> as Boolean</li>
+<li class="WLM">property <A href="encryptionandhash-ciphermbs-property.html#3">Flags</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-ciphermbs-property.html#4">IVLength</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-ciphermbs-property.html#5">KeyLength</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-ciphermbs-property.html#6">Mode</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-ciphermbs-property.html#7">Name</A> as String</li>
+<li class="WLM">property <A href="encryptionandhash-ciphermbs-property.html#8">Padding</A> as Boolean</li>
+<li class="WLM">property <A href="encryptionandhash-ciphermbs-property.html#9">RC2KeyBits</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-ciphermbs-property.html#10">RC5Rounds</A> as Integer</li>
+</ul></li>
+<li class="WLM"><B><A href="class-digestmbs.html">class DigestMBS</A></B><ul>
+<li class="WLM">method <A href="encryptionandhash-digestmbs-method.html">Clear</A></li>
+<li class="WLM">method <A href="encryptionandhash-digestmbs-method.html#2">Constructor</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-digestmbs-shared-method.html">DigestByName</A>(name as string) as <A href="class-digestmbs.html">DigestMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-digestmbs-shared-method.html#2">DigestNames</A> as String()</li>
+<li class="WLM">method <A href="encryptionandhash-digestmbs-method.html#3">Final</A> as memoryblock</li>
+<li class="WLM">method <A href="encryptionandhash-digestmbs-method.html#4">FinalText</A> as String</li>
+<li class="WLM">shared method <A href="encryptionandhash-digestmbs-shared-method.html#3">MD5</A> as <A href="class-digestmbs.html">DigestMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-digestmbs-shared-method.html#4">MDC2</A> as <A href="class-digestmbs.html">DigestMBS</A></li>
+<li class="WLM">method <A href="encryptionandhash-digestmbs-method.html#5">Process</A>(data as memoryblock)</li>
+<li class="WLM">method <A href="encryptionandhash-digestmbs-method.html#6">Process</A>(data as string)</li>
+<li class="WLM">method <A href="encryptionandhash-digestmbs-method.html#7">Process</A>(file as FolderItem) as boolean</li>
+<li class="WLM">shared method <A href="encryptionandhash-digestmbs-shared-method.html#5">RipeMD160</A> as <A href="class-digestmbs.html">DigestMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-digestmbs-shared-method.html#6">SHA1</A> as <A href="class-digestmbs.html">DigestMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-digestmbs-shared-method.html#7">SHA224</A> as <A href="class-digestmbs.html">DigestMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-digestmbs-shared-method.html#8">SHA256</A> as <A href="class-digestmbs.html">DigestMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-digestmbs-shared-method.html#9">SHA384</A> as <A href="class-digestmbs.html">DigestMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-digestmbs-shared-method.html#10">SHA3_224</A> as <A href="class-digestmbs.html">DigestMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-digestmbs-shared-method.html#11">SHA3_256</A> as <A href="class-digestmbs.html">DigestMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-digestmbs-shared-method.html#12">SHA3_384</A> as <A href="class-digestmbs.html">DigestMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-digestmbs-shared-method.html#13">SHA3_512</A> as <A href="class-digestmbs.html">DigestMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-digestmbs-shared-method.html#14">SHA512</A> as <A href="class-digestmbs.html">DigestMBS</A></li>
+<li class="WLM">property <A href="encryptionandhash-digestmbs-property.html">BlockSize</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-digestmbs-property.html#2">Name</A> as String</li>
+<li class="WLM">property <A href="encryptionandhash-digestmbs-property.html#3">Size</A> as Integer</li>
+</ul></li>
+<li class="WLM"><B><A href="class-ecdhembs.html">class ECDHEMBS</A></B><ul>
+<li class="WLM">method <A href="encryptionandhash-ecdhembs-method.html">Constructor</A>(CurveID as Integer)</li>
+<li class="WLM">method <A href="encryptionandhash-ecdhembs-method.html#2">DeriveSecretKey</A>(peerKey as string) as string</li>
+<li class="WLM">method <A href="encryptionandhash-ecdhembs-method.html#3">Destructor</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-ecdhembs-shared-method.html">LastError</A> as String</li>
+<li class="WLM">method <A href="encryptionandhash-ecdhembs-method.html#4">PublicKey</A> as string</li>
+<li class="WLM">property <A href="encryptionandhash-ecdhembs-property.html">CurveID</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-ecdhembs-property.html#2">CurveIDName</A> as String</li>
+<li class="WLM">property <A href="encryptionandhash-ecdhembs-property.html#3">ParamsInfo</A> as String</li>
+<li class="WLM">property <A href="encryptionandhash-ecdhembs-property.html#4">PeerKeyInfo</A> as String</li>
+<li class="WLM">property <A href="encryptionandhash-ecdhembs-property.html#5">PrivateKeyInfo</A> as String</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html">NID_secp112r1</A> = 704</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#2">NID_secp112r2</A> = 705</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#3">NID_secp128r1</A> = 706</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#4">NID_secp128r2</A> = 707</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#5">NID_secp160k1</A> = 708</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#6">NID_secp160r1</A> = 709</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#7">NID_secp160r2</A> = 710</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#8">NID_secp192k1</A> = 711</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#9">NID_secp224k1</A> = 712</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#10">NID_secp224r1</A> = 713</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#11">NID_secp256k1</A> = 714</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#12">NID_secp384r1</A> = 715</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#13">NID_secp521r1</A> = 716</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#14">NID_sect113r1</A> = 717</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#15">NID_sect113r2</A> = 718</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#16">NID_sect131r1</A> = 719</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#17">NID_sect131r2</A> = 720</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#18">NID_sect163k1</A> = 721</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#19">NID_sect163r1</A> = 722</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#20">NID_sect163r2</A> = 723</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#21">NID_sect193r1</A> = 724</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#22">NID_sect193r2</A> = 725</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#23">NID_sect233k1</A> = 726</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#24">NID_sect233r1</A> = 727</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#25">NID_sect239k1</A> = 728</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#26">NID_sect283k1</A> = 729</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#27">NID_sect283r1</A> = 730</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#28">NID_sect409k1</A> = 731</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const.html#29">NID_sect409r1</A> = 732</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html">NID_sect571k1</A> = 733</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#2">NID_sect571r1</A> = 734</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#3">NID_wap_wsg_idm_ecid_wtls1</A> = 735</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#4">NID_wap_wsg_idm_ecid_wtls10</A> = 743</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#5">NID_wap_wsg_idm_ecid_wtls11</A> = 744</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#6">NID_wap_wsg_idm_ecid_wtls12</A> = 745</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#7">NID_wap_wsg_idm_ecid_wtls3</A> = 736</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#8">NID_wap_wsg_idm_ecid_wtls4</A> = 737</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#9">NID_wap_wsg_idm_ecid_wtls5</A> = 738</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#10">NID_wap_wsg_idm_ecid_wtls7</A> = 740</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#11">NID_wap_wsg_idm_ecid_wtls8</A> = 741</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#12">NID_wap_wsg_idm_ecid_wtls9</A> = 742</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#13">NID_X9_62_c2pnb163v1</A> = 684</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#14">NID_X9_62_c2pnb163v2</A> = 685</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#15">NID_X9_62_c2pnb163v3</A> = 686</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#16">NID_X9_62_c2pnb176v1</A> = 687</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#17">NID_X9_62_c2pnb208w1</A> = 693</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#18">NID_X9_62_c2pnb272w1</A> = 699</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#19">NID_X9_62_c2pnb304w1</A> = 700</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#20">NID_X9_62_c2pnb368w1</A> = 702</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#21">NID_X9_62_c2tnb191v1</A> = 688</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#22">NID_X9_62_c2tnb191v2</A> = 689</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#23">NID_X9_62_c2tnb191v3</A> = 690</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#24">NID_X9_62_c2tnb239v1</A> = 694</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#25">NID_X9_62_c2tnb239v2</A> = 695</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#26">NID_X9_62_c2tnb239v3</A> = 696</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#27">NID_X9_62_c2tnb359v1</A> = 701</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#28">NID_X9_62_c2tnb431r1</A> = 703</li>
+<li class="WLM">const <A href="encryptionandhash-ecdhembs-const1.html#29">NID_X9_62_prime256v1</A> = 415</li>
+</ul></li>
+<li class="WLM"><B><A href="class-eckeymbs.html">class ECKeyMBS</A></B><ul>
+<li class="WLM">shared method <A href="encryptionandhash-eckeymbs-shared-method.html">BuiltInCurves</A> as Dictionary</li>
+<li class="WLM">method <A href="encryptionandhash-eckeymbs-method.html">Constructor</A></li>
+<li class="WLM">method <A href="encryptionandhash-eckeymbs-method.html#2">Copy</A> as <A href="class-eckeymbs.html">ECKeyMBS</A></li>
+<li class="WLM">method <A href="encryptionandhash-eckeymbs-method.html#3">Generate</A> as Boolean</li>
+<li class="WLM">method <A href="encryptionandhash-eckeymbs-method.html#4">GetPrivateKey</A>(Hex as Boolean) as String</li>
+<li class="WLM">method <A href="encryptionandhash-eckeymbs-method.html#5">GetPublicKey</A>(byref x as String, byref y as String, Hex as Boolean) as Boolean</li>
+<li class="WLM">method <A href="encryptionandhash-eckeymbs-method.html#6">GetPublicKeyPoint</A> as String</li>
+<li class="WLM">shared method <A href="encryptionandhash-eckeymbs-shared-method.html#2">KeyByCurveName</A>(CurveID as Integer, Generate as Boolean = true) as <A href="class-eckeymbs.html">ECKeyMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-eckeymbs-shared-method.html#3">OpenPrivateKey</A>(Data as String) as <A href="class-eckeymbs.html">ECKeyMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-eckeymbs-shared-method.html#4">OpenPublicKey</A>(Data as String, CurveID as Integer) as <A href="class-eckeymbs.html">ECKeyMBS</A></li>
+<li class="WLM">method <A href="encryptionandhash-eckeymbs-method.html#7">PrivateKey</A> as String</li>
+<li class="WLM">method <A href="encryptionandhash-eckeymbs-method.html#8">PublicKey</A> as String</li>
+<li class="WLM">method <A href="encryptionandhash-eckeymbs-method.html#9">SetPrivateKey</A>(Value as String, Hex as Boolean) as Boolean</li>
+<li class="WLM">method <A href="encryptionandhash-eckeymbs-method.html#10">SetPublicKey</A>(x as String, y as String, Hex as Boolean) as Boolean</li>
+<li class="WLM">method <A href="encryptionandhash-eckeymbs-method.html#11">SetPublicKeyPoint</A>(Value as String) as Boolean</li>
+<li class="WLM">method <A href="encryptionandhash-eckeymbs-method.html#12">Sign</A>(Data as String) as String</li>
+<li class="WLM">method <A href="encryptionandhash-eckeymbs-method.html#13">Verify</A>(SignatureData as String, Data as String) as Boolean</li>
+<li class="WLM">property <A href="encryptionandhash-eckeymbs-property.html">CanSign</A> as Boolean</li>
+<li class="WLM">property <A href="encryptionandhash-eckeymbs-property.html#2">Description</A> as String</li>
+<li class="WLM">property <A href="encryptionandhash-eckeymbs-property.html#3">Flags</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-eckeymbs-property.html#4">Size</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-eckeymbs-property.html#5">Valid</A> as Boolean</li>
+</ul></li>
+<li class="WLM"><B><A href="class-md5digestmbs.html">class MD5DigestMBS</A></B><ul>
+<li class="WLM">method <A href="encryptionandhash-md5digestmbs-method.html">clear</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-md5digestmbs-shared-method.html">HashFile</A>(file as FolderItem, Hex as boolean = true) as string</li>
+<li class="WLM">shared method <A href="encryptionandhash-md5digestmbs-shared-method.html#2">HMAC</A>(key as string, data as string) as string</li>
+<li class="WLM">shared method <A href="encryptionandhash-md5digestmbs-shared-method.html#3">MD5</A>(data as memoryblock) as string</li>
+<li class="WLM">shared method <A href="encryptionandhash-md5digestmbs-shared-method.html#4">MD5</A>(data as string) as string</li>
+<li class="WLM">shared method <A href="encryptionandhash-md5digestmbs-shared-method.html#5">MD5String</A>(data as memoryblock) as string</li>
+<li class="WLM">shared method <A href="encryptionandhash-md5digestmbs-shared-method.html#6">MD5String</A>(data as string) as string</li>
+<li class="WLM">method <A href="encryptionandhash-md5digestmbs-method.html#2">Process</A>(data as memoryblock)</li>
+<li class="WLM">method <A href="encryptionandhash-md5digestmbs-method.html#3">Process</A>(Data as string)</li>
+<li class="WLM">property <A href="encryptionandhash-md5digestmbs-property.html">Value</A> as string</li>
+</ul></li>
+<li class="WLM"><B><A href="class-opensslexceptionmbs.html">class OpenSSLExceptionMBS</A></B><ul>
+</ul></li>
+<li class="WLM"><B><A href="class-pkeymbs.html">class PKeyMBS</A></B><ul>
+<li class="WLM">method <A href="encryptionandhash-pkeymbs-method.html">Constructor</A></li>
+<li class="WLM">method <A href="encryptionandhash-pkeymbs-method.html#2">Copy</A> as <A href="class-pkeymbs.html">PKeyMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-pkeymbs-shared-method.html">Open</A>(Data as MemoryBlock) as <A href="class-pkeymbs.html">PKeyMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-pkeymbs-shared-method.html#2">Open</A>(Data as String) as <A href="class-pkeymbs.html">PKeyMBS</A></li>
+<li class="WLM">method <A href="encryptionandhash-pkeymbs-method.html#3">PrivateKeyData</A> as String</li>
+<li class="WLM">method <A href="encryptionandhash-pkeymbs-method.html#4">PublicKeyData</A> as String</li>
+<li class="WLM">property <A href="encryptionandhash-pkeymbs-property.html">Bits</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-pkeymbs-property.html#2">DescriptionParams</A> as String</li>
+<li class="WLM">property <A href="encryptionandhash-pkeymbs-property.html#3">DescriptionPrivateKey</A> as String</li>
+<li class="WLM">property <A href="encryptionandhash-pkeymbs-property.html#4">DescriptionPublicKey</A> as String</li>
+<li class="WLM">property <A href="encryptionandhash-pkeymbs-property.html#5">Handle</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-pkeymbs-property.html#6">ID</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-pkeymbs-property.html#7">PrivateKey</A> as String</li>
+<li class="WLM">property <A href="encryptionandhash-pkeymbs-property.html#8">PublicKey</A> as String</li>
+<li class="WLM">property <A href="encryptionandhash-pkeymbs-property.html#9">Size</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-pkeymbs-property.html#10">Type</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-pkeymbs-property.html#11">TypeString</A> as String</li>
+</ul></li>
+<li class="WLM"><B><A href="class-rc4mbs.html">class RC4MBS</A></B><ul>
+<li class="WLM">method <A href="encryptionandhash-rc4mbs-method.html">Constructor</A>(key as MemoryBlock)</li>
+<li class="WLM">method <A href="encryptionandhash-rc4mbs-method.html#2">Constructor</A>(key as string)</li>
+<li class="WLM">method <A href="encryptionandhash-rc4mbs-method.html#3">Crypt</A>(data as Memoryblock) as Memoryblock</li>
+<li class="WLM">method <A href="encryptionandhash-rc4mbs-method.html#4">Crypt</A>(data as string) as string</li>
+</ul></li>
+<li class="WLM"><B><A href="class-rc5mbs.html">class RC5MBS</A></B><ul>
+<li class="WLM">method <A href="encryptionandhash-rc5mbs-method.html">Constructor</A>(key as MemoryBlock, rounds as Integer = 16)</li>
+<li class="WLM">method <A href="encryptionandhash-rc5mbs-method.html#2">Constructor</A>(key as string, rounds as Integer = 16)</li>
+<li class="WLM">method <A href="encryptionandhash-rc5mbs-method.html#3">decrypt</A>(data as Memoryblock) as Memoryblock</li>
+<li class="WLM">method <A href="encryptionandhash-rc5mbs-method.html#4">decrypt</A>(data as string) as string</li>
+<li class="WLM">method <A href="encryptionandhash-rc5mbs-method.html#5">decryptCBC</A>(data as Memoryblock, iv as memoryblock = nil) as Memoryblock</li>
+<li class="WLM">method <A href="encryptionandhash-rc5mbs-method.html#6">decryptCBC</A>(data as string, iv as memoryblock = nil) as string</li>
+<li class="WLM">method <A href="encryptionandhash-rc5mbs-method.html#7">decryptCFB64</A>(data as Memoryblock, iv as memoryblock, byref num as Integer) as Memoryblock</li>
+<li class="WLM">method <A href="encryptionandhash-rc5mbs-method.html#8">decryptCFB64</A>(data as string, iv as memoryblock, byref num as Integer) as string</li>
+<li class="WLM">method <A href="encryptionandhash-rc5mbs-method.html#9">encrypt</A>(data as Memoryblock) as Memoryblock</li>
+<li class="WLM">method <A href="encryptionandhash-rc5mbs-method.html#10">encrypt</A>(data as string) as string</li>
+<li class="WLM">method <A href="encryptionandhash-rc5mbs-method.html#11">encryptCBC</A>(data as Memoryblock, iv as memoryblock = nil) as Memoryblock</li>
+<li class="WLM">method <A href="encryptionandhash-rc5mbs-method.html#12">encryptCBC</A>(data as string, iv as memoryblock = nil) as string</li>
+<li class="WLM">method <A href="encryptionandhash-rc5mbs-method.html#13">encryptCFB64</A>(data as Memoryblock, iv as memoryblock, byref num as Integer) as Memoryblock</li>
+<li class="WLM">method <A href="encryptionandhash-rc5mbs-method.html#14">encryptCFB64</A>(data as string, iv as memoryblock, byref num as Integer) as string</li>
+<li class="WLM">method <A href="encryptionandhash-rc5mbs-method.html#15">encryptOFB64</A>(data as Memoryblock, iv as memoryblock, byref num as Integer) as Memoryblock</li>
+<li class="WLM">method <A href="encryptionandhash-rc5mbs-method.html#16">encryptOFB64</A>(data as string, iv as memoryblock, byref num as Integer) as string</li>
+</ul></li>
+<li class="WLM"><B><A href="class-sha1mbs.html">class SHA1MBS</A></B><ul>
+<li class="WLM">method <A href="encryptionandhash-sha1mbs-method.html">Add</A>(data as string)</li>
+<li class="WLM">shared method <A href="encryptionandhash-sha1mbs-shared-method.html">Hash</A>(data as string) as string</li>
+<li class="WLM">shared method <A href="encryptionandhash-sha1mbs-shared-method.html#2">HashFile</A>(file as FolderItem, Hex as boolean = true) as string</li>
+<li class="WLM">shared method <A href="encryptionandhash-sha1mbs-shared-method.html#3">HashText</A>(data as string) as string</li>
+<li class="WLM">shared method <A href="encryptionandhash-sha1mbs-shared-method.html#4">HMAC</A>(key as string, data as string) as string</li>
+<li class="WLM">method <A href="encryptionandhash-sha1mbs-method.html#2">Reset</A></li>
+<li class="WLM">method <A href="encryptionandhash-sha1mbs-method.html#3">Result</A> as string</li>
+<li class="WLM">method <A href="encryptionandhash-sha1mbs-method.html#4">ResultText</A> as string</li>
+</ul></li>
+<li class="WLM"><B><A href="class-sha256mbs.html">class SHA256MBS</A></B><ul>
+<li class="WLM">method <A href="encryptionandhash-sha256mbs-method.html">Add</A>(data as string)</li>
+<li class="WLM">shared method <A href="encryptionandhash-sha256mbs-shared-method.html">Hash</A>(data as string) as string</li>
+<li class="WLM">shared method <A href="encryptionandhash-sha256mbs-shared-method.html#2">HashFile</A>(file as FolderItem, Hex as boolean = true) as string</li>
+<li class="WLM">shared method <A href="encryptionandhash-sha256mbs-shared-method.html#3">HashText</A>(data as string) as string</li>
+<li class="WLM">shared method <A href="encryptionandhash-sha256mbs-shared-method.html#4">HMAC</A>(key as string, data as string) as string</li>
+<li class="WLM">method <A href="encryptionandhash-sha256mbs-method.html#2">Reset</A></li>
+<li class="WLM">method <A href="encryptionandhash-sha256mbs-method.html#3">Result</A> as string</li>
+<li class="WLM">method <A href="encryptionandhash-sha256mbs-method.html#4">ResultText</A> as string</li>
+</ul></li>
+<li class="WLM"><B><A href="class-sha3mbs.html">class SHA3MBS</A></B><ul>
+<li class="WLM">method <A href="encryptionandhash-sha3mbs-method.html">Add</A>(data as memoryblock)</li>
+<li class="WLM">method <A href="encryptionandhash-sha3mbs-method.html#2">Add</A>(data as string)</li>
+<li class="WLM">method <A href="encryptionandhash-sha3mbs-method.html#3">Constructor</A>(Rate as UInt32, capacity as UInt32)</li>
+<li class="WLM">shared method <A href="encryptionandhash-sha3mbs-shared-method.html">Hash</A>(data as string, Rate as UInt32, capacity as UInt32, outputLength as Integer) as string</li>
+<li class="WLM">shared method <A href="encryptionandhash-sha3mbs-shared-method.html#2">HashText</A>(data as string, Rate as UInt32, capacity as UInt32, outputLength as Integer) as string</li>
+<li class="WLM">method <A href="encryptionandhash-sha3mbs-method.html#4">Reset</A>(Rate as UInt32, capacity as UInt32)</li>
+<li class="WLM">method <A href="encryptionandhash-sha3mbs-method.html#5">Result</A>(outputLength as Integer) as string</li>
+<li class="WLM">method <A href="encryptionandhash-sha3mbs-method.html#6">ResultText</A>(outputLength as Integer) as string</li>
+</ul></li>
+<li class="WLM"><B><A href="class-sha512mbs.html">class SHA512MBS</A></B><ul>
+<li class="WLM">method <A href="encryptionandhash-sha512mbs-method.html">Add</A>(data as string)</li>
+<li class="WLM">shared method <A href="encryptionandhash-sha512mbs-shared-method.html">Hash</A>(data as string) as string</li>
+<li class="WLM">shared method <A href="encryptionandhash-sha512mbs-shared-method.html#2">HashFile</A>(file as FolderItem, Hex as boolean = true) as string</li>
+<li class="WLM">shared method <A href="encryptionandhash-sha512mbs-shared-method.html#3">HashText</A>(data as string) as string</li>
+<li class="WLM">shared method <A href="encryptionandhash-sha512mbs-shared-method.html#4">HMAC</A>(key as string, data as string) as string</li>
+<li class="WLM">method <A href="encryptionandhash-sha512mbs-method.html#2">Reset</A></li>
+<li class="WLM">method <A href="encryptionandhash-sha512mbs-method.html#3">Result</A> as string</li>
+<li class="WLM">method <A href="encryptionandhash-sha512mbs-method.html#4">ResultText</A> as string</li>
+</ul></li>
+<li class="WLM"><B><A href="class-uuidmbs.html">class UUIDMBS</A></B><ul>
+<li class="WLM">shared method <A href="encryptionandhash-uuidmbs-shared-method.html">randomUUID</A> as <A href="class-uuidmbs.html">UUIDMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-uuidmbs-shared-method.html#2">UUID</A> as <A href="class-uuidmbs.html">UUIDMBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-uuidmbs-shared-method.html#3">Validate</A>(UUID as string, mode as Integer = 0, requiredVersion as Integer = 0) as string</li>
+<li class="WLM">method <A href="encryptionandhash-uuidmbs-method.html">ValueFormattedString</A>(WithBrackets as Boolean = true) as String</li>
+<li class="WLM">method <A href="encryptionandhash-uuidmbs-method.html#2">ValueHexString</A> as String</li>
+<li class="WLM">method <A href="encryptionandhash-uuidmbs-method.html#3">ValueMemory</A> as Memoryblock</li>
+<li class="WLM">method <A href="encryptionandhash-uuidmbs-method.html#4">ValueString</A> as String</li>
+<li class="WLM">property <A href="encryptionandhash-uuidmbs-property.html">Lasterror</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-uuidmbs-property.html#2">Valid</A> as Boolean</li>
+</ul></li>
+<li class="WLM"><B><A href="class-x509mbs.html">class X509MBS</A></B><ul>
+<li class="WLM">shared method <A href="encryptionandhash-x509mbs-shared-method.html">CheckCertificates</A>(rootCertificates() as <A href="class-x509mbs.html">X509MBS</A>, certificate as <A href="class-x509mbs.html">X509MBS</A>, intermediates() as <A href="class-x509mbs.html">X509MBS</A> = nil) as Boolean</li>
+<li class="WLM">method <A href="encryptionandhash-x509mbs-method.html">Constructor</A></li>
+<li class="WLM">method <A href="encryptionandhash-x509mbs-method.html#2">Copy</A> as <A href="class-x509mbs.html">X509MBS</A></li>
+<li class="WLM">method <A href="encryptionandhash-x509mbs-method.html#3">Data</A> as String</li>
+<li class="WLM">shared method <A href="encryptionandhash-x509mbs-shared-method.html#2">Open</A>(Data as MemoryBlock) as <A href="class-x509mbs.html">X509MBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-x509mbs-shared-method.html#3">Open</A>(Data as String) as <A href="class-x509mbs.html">X509MBS</A></li>
+<li class="WLM">shared method <A href="encryptionandhash-x509mbs-shared-method.html#4">ReadFromPkcs12</A>(Data as String, Pass as String, byref PKey as <A href="class-pkeymbs.html">PKeyMBS</A>, byref Cert as <A href="class-x509mbs.html">X509MBS</A>, byref certs() as <A href="class-x509mbs.html">X509MBS</A>) as Boolean</li>
+<li class="WLM">shared method <A href="encryptionandhash-x509mbs-shared-method.html#5">ReadFromPkcs7</A>(Data as String, Pass as String, byref certs() as <A href="class-x509mbs.html">X509MBS</A>) as Boolean</li>
+<li class="WLM">method <A href="encryptionandhash-x509mbs-method.html#4">Verify</A>(PublicKey as <A href="class-pkeymbs.html">PKeyMBS</A>) as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-x509mbs-property.html">Description</A> as String</li>
+<li class="WLM">property <A href="encryptionandhash-x509mbs-property.html#2">Handle</A> as Integer</li>
+<li class="WLM">property <A href="encryptionandhash-x509mbs-property.html#3">IssuerName</A> as Dictionary</li>
+<li class="WLM">property <A href="encryptionandhash-x509mbs-property.html#4">Name</A> as String</li>
+<li class="WLM">property <A href="encryptionandhash-x509mbs-property.html#5">PublicKey</A> as <A href="class-pkeymbs.html">PKeyMBS</A></li>
+<li class="WLM">property <A href="encryptionandhash-x509mbs-property.html#6">SerialNumber</A> as String</li>
+<li class="WLM">property <A href="encryptionandhash-x509mbs-property.html#7">SubjectName</A> as Dictionary</li>
+<li class="WLM">property <A href="encryptionandhash-x509mbs-property.html#8">ValidNotAfter</A> as Date</li>
+<li class="WLM">property <A href="encryptionandhash-x509mbs-property.html#9">ValidNotAfterDateTime</A> as DateTime</li>
+<li class="WLM">property <A href="encryptionandhash-x509mbs-property.html#10">ValidNotBefore</A> as Date</li>
+<li class="WLM">property <A href="encryptionandhash-x509mbs-property.html#11">ValidNotBeforeDateTime</A> as DateTime</li>
+<li class="WLM">property <A href="encryptionandhash-x509mbs-property.html#12">Version</A> as Integer</li>
+</ul></li>
+</ul></li>
+<li>Class Extensions <ul>
+<li class="WLM"><B><A href="class-memoryblock.html">class Memoryblock</A></B><ul>
+<li class="WLM">method <A href="memoryblock-crc_32contmbs.html">CRC_32ContMBS</A>(offset as Integer, numBytes as Integer, prevCRC as UInt32) as UInt32</li>
+<li class="WLM">method <A href="memoryblock-crc_32mbs.html#2">CRC_32MBS</A>(offset as Integer, numBytes as Integer) as UInt32</li>
+<li class="WLM">method <A href="memoryblock-crc_ccittcontmbs.html#3">CRC_CCITTContMBS</A>(offset as Integer, numBytes as Integer, prevCRC as UInt32) as UInt32</li>
+<li class="WLM">method <A href="memoryblock-crc_ccittmbs.html#4">CRC_CCITTMBS</A>(offset as Integer, numBytes as Integer) as UInt32</li>
+<li class="WLM">method <A href="memoryblock-crc_dillonmbs.html#5">CRC_DillonMBS</A>(bitWidth as Integer, offset as Integer, numBytes as Integer) as String</li>
+</ul></li>
+</ul></li>
+<li>Modules <ul>
+<li class="WLM"><B><A href="module-bcryptmbs.html">module BCryptMBS</A></B><ul>
+<li class="WLM">method <A href="encryptionandhash-bcryptmbs-method.html">BCrypt</A>(Pass as String, Salt as String) as String</li>
+<li class="WLM">method <A href="encryptionandhash-bcryptmbs-method.html#2">BCryptSalt</A>(Rounds as Integer) as String</li>
+<li class="WLM">method <A href="encryptionandhash-bcryptmbs-method.html#3">Verify</A>(Pass as String, Hash as String) as Boolean</li>
+</ul></li>
+<li class="WLM"><B><A href="module-opensslmbs.html">module OpenSSLMBS</A></B><ul>
+<li class="WLM">method <A href="encryptionandhash-opensslmbs-method.html">ErrorString</A>(ErrorCode as Integer) as string</li>
+<li class="WLM">method <A href="encryptionandhash-opensslmbs-method.html#2">GeneratePrivateKey</A>(Bits as Integer = 4096, Exp as Integer = 65537, Password as string = "", Algorithm as string = "") as string</li>
+<li class="WLM">method <A href="encryptionandhash-opensslmbs-method.html#3">GetPublicKey</A>(PrivateKey as String, PrivateKeyPassword as string = "") as string</li>
+<li class="WLM">method <A href="encryptionandhash-opensslmbs-method.html#4">OpenSSLVersion</A> as String</li>
+<li class="WLM">method <A href="encryptionandhash-opensslmbs-method.html#5">PKCS7Sign</A>(flags as Integer, InputData as string, SignKey as string, PrivateKey as String, PrivateKeyPassword as string, intermediaCertsData() as string, OutputBinary as boolean) as string</li>
+<li class="WLM">method <A href="encryptionandhash-opensslmbs-method.html#6">PKCS7SignData</A>(Certificate as <A href="class-x509mbs.html">X509MBS</A>, PrivateKey as <A href="class-pkeymbs.html">PKeyMBS</A>, certs() as <A href="class-x509mbs.html">X509MBS</A> = nil, data as string, flags as Integer = 0) as string</li>
+<li class="WLM">method <A href="encryptionandhash-opensslmbs-method.html#7">PKCS7SignedData</A>(DataP7M as String) as String</li>
+<li class="WLM">method <A href="encryptionandhash-opensslmbs-method.html#8">RandomBytes</A>(count as Integer) as MemoryBlock</li>
+<li class="WLM">method <A href="encryptionandhash-opensslmbs-method.html#9">RandomBytesString</A>(count as Integer) as String</li>
+<li class="WLM">method <A href="encryptionandhash-opensslmbs-method.html#10">RSAPrivateDecrypt</A>(data as string, PrivateKey as string, padding as Integer = 1, Password as string = "") as String</li>
+<li class="WLM">method <A href="encryptionandhash-opensslmbs-method.html#11">RSAPrivateEncrypt</A>(data as string, PrivateKey as string, padding as Integer = 1, Password as string = "") as String</li>
+<li class="WLM">method <A href="encryptionandhash-opensslmbs-method.html#12">RSAPublicDecrypt</A>(data as string, PublicKey as string, padding as Integer = 1, Password as string = "") as String</li>
+<li class="WLM">method <A href="encryptionandhash-opensslmbs-method.html#13">RSAPublicEncrypt</A>(data as string, PublicKey as string, padding as Integer = 1, Password as string = "") as String</li>
+<li class="WLM">method <A href="encryptionandhash-opensslmbs-method.html#14">SignData</A>(data as string, key as string, Password as string = "") as string</li>
+<li class="WLM">method <A href="encryptionandhash-opensslmbs-method.html#15">SignData</A>(data as string, key as string, Password as string = "", Algorithm as Integer) as string</li>
+<li class="WLM">method <A href="encryptionandhash-opensslmbs-method.html#16">SMimePKCS7Decrypt</A>(InputData as string, Certificate as <A href="class-x509mbs.html">X509MBS</A>, SignKey as <A href="class-pkeymbs.html">PKeyMBS</A>) as String</li>
+<li class="WLM">method <A href="encryptionandhash-opensslmbs-method.html#17">SMimePKCS7Encrypt</A>(InputData as string, Certificate as <A href="class-x509mbs.html">X509MBS</A>) as String</li>
+<li class="WLM">method <A href="encryptionandhash-opensslmbs-method.html#18">SMimePKCS7Sign</A>(InputData as string, Certificate as <A href="class-x509mbs.html">X509MBS</A>, SignKey as <A href="class-pkeymbs.html">PKeyMBS</A>) as String</li>
+<li class="WLM">method <A href="encryptionandhash-opensslmbs-method.html#19">SMimePKCS7Verify</A>(InputData as string, Certificate as <A href="class-x509mbs.html">X509MBS</A>) as String</li>
+<li class="WLM">method <A href="encryptionandhash-opensslmbs-method.html#20">VerifyData</A>(data as string, Signature as string, Key as string, Password as string = "") as boolean</li>
+<li class="WLM">method <A href="encryptionandhash-opensslmbs-method.html#21">VerifyData</A>(data as string, Signature as string, Key as string, Password as string = "", Algorithm as Integer) as boolean</li>
+<li class="WLM">const <A href="encryptionandhash-opensslmbs-const.html">kAlgorithmSHA1</A> = 1</li>
+<li class="WLM">const <A href="encryptionandhash-opensslmbs-const.html#2">kAlgorithmSHA224</A> = 2</li>
+<li class="WLM">const <A href="encryptionandhash-opensslmbs-const.html#3">kAlgorithmSHA256</A> = 3</li>
+<li class="WLM">const <A href="encryptionandhash-opensslmbs-const.html#4">kAlgorithmSHA384</A> = 4</li>
+<li class="WLM">const <A href="encryptionandhash-opensslmbs-const.html#5">kAlgorithmSHA512</A> = 5</li>
+<li class="WLM">const <A href="encryptionandhash-opensslmbs-const.html#6">kPaddingNone</A> = 3</li>
+<li class="WLM">const <A href="encryptionandhash-opensslmbs-const.html#7">kPaddingPKCS1</A> = 1</li>
+<li class="WLM">const <A href="encryptionandhash-opensslmbs-const.html#8">kPaddingPKCS1OAEP</A> = 4</li>
+<li class="WLM">const <A href="encryptionandhash-opensslmbs-const.html#9">kPaddingSSLv23</A> = 2</li>
+<li class="WLM">const <A href="encryptionandhash-opensslmbs-const.html#10">kPaddingX931</A> = 5</li>
+</ul></li>
+<li class="M"><B><A href="module-passsignermbs.html">module PassSignerMBS</A></B><ul>
+<li class="M">method <A href="encryptionandhash-passsignermbs-method.html">signPass</A>(Pass as folderitem, CertSuffix as String, Output as folderitem, Zip as boolean = true) as boolean</li>
+<li class="M">method <A href="encryptionandhash-passsignermbs-method.html#2">verifyPassSignature</A>(pass as folderitem) as Boolean</li>
+</ul></li>
+<li class="WLM"><B><A href="module-twofishmbs.html">module TwofishMBS</A></B><ul>
+<li class="WLM">method <A href="encryptionandhash-twofishmbs-method.html">DecryptCBC</A>(Key as MemoryBlock, InputData as MemoryBlock, IV as MemoryBlock) as MemoryBlock</li>
+<li class="WLM">method <A href="encryptionandhash-twofishmbs-method.html#2">DecryptCBC</A>(Key as String, InputData as String, IV as String) as String</li>
+<li class="WLM">method <A href="encryptionandhash-twofishmbs-method.html#3">DecryptECB</A>(Key as MemoryBlock, InputData as MemoryBlock) as MemoryBlock</li>
+<li class="WLM">method <A href="encryptionandhash-twofishmbs-method.html#4">DecryptECB</A>(Key as String, InputData as String) as String</li>
+<li class="WLM">method <A href="encryptionandhash-twofishmbs-method.html#5">EncryptCBC</A>(Key as MemoryBlock, InputData as MemoryBlock, IV as MemoryBlock) as MemoryBlock</li>
+<li class="WLM">method <A href="encryptionandhash-twofishmbs-method.html#6">EncryptCBC</A>(Key as String, InputData as String, IV as String) as String</li>
+<li class="WLM">method <A href="encryptionandhash-twofishmbs-method.html#7">EncryptECB</A>(Key as MemoryBlock, InputData as MemoryBlock) as MemoryBlock</li>
+<li class="WLM">method <A href="encryptionandhash-twofishmbs-method.html#8">EncryptECB</A>(Key as String, InputData as String) as String</li>
+</ul></li>
+</ul></li>
+<li>Blog Entries
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2022-01-06/MBS_Xojo_Plugins_version_220pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 22.0pr6</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2013-12-08/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 13.5pr10</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2013-10-08/MBS_Xojo__Real_Studio_plug-ins/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio plug-ins in version 13.4</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2013-09-23/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 13.4pr5</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2013-09-05/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 13.4pr3</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2013-05-08/MonkeyBread_Software_Releases_/monkeybreadsoftware_blog_xojo">MonkeyBread Software Releases the MBS Real Studio plug-ins in version 13.1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2012-11-02/Encryption_Interoperability/monkeybreadsoftware_blog_xojo">Encryption Interoperability</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2012-01-16/MBS_Real_Studio_Plugins_versio/monkeybreadsoftware_blog_xojo">MBS Real Studio Plugins, version 12.0fc1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2009-07-02/MBS_REALbasic_plug-ins_version/monkeybreadsoftware_blog_xojo">MBS REALbasic plug-ins version 9.4</a></li>
+</ul></li>
+</ul>
+<p>The items on this page are in the following plugins: <a href="plugins-mbscompressionplugin.html">MBS Compression Plugin</a>, <a href="plugins-mbsencryptionplugin.html">MBS Encryption Plugin</a>, <a href="plugins-mbsmacextrasplugin.html">MBS MacExtras Plugin</a>, <a href="plugins-mbsmacosxplugin.html">MBS MacOSX Plugin</a>, <a href="plugins-mbsutilplugin.html">MBS Util Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=topic-encryptionandhash">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

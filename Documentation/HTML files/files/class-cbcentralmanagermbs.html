@@ -1,0 +1,555 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - CBCentralManagerMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="CBCentralManagerMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">CBCentralManagerMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>CBCentralManagerMBS class</H3>
+<P>Super class: <A href="class-cbmanagermbs.html">CBManagerMBS</A></p>
+<div class="M">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-bluetooth.html" translate="no">Bluetooth</A></td>
+<td class=grau><a href="plugins-mbsbluetoothplugin.html">MBS Bluetooth Plugin</a></td>
+<td class=grau><a href="newinversion181.shtml" class=version>18.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+CBCentralManager objects are used to manage discovered or connected remote peripheral devices (represented by CBPeripheral objects), including scanning for, discovering, and connecting to advertising peripherals.<BR>
+<B>Notes:</B> 
+<BR>
+Before you call CBCentralManager methods, the state of the central manager object must be powered on, as indicated by the CBCentralManagerStatePoweredOn constant. This state indicates that the central device (your iPhone or iPad, for instance) supports Bluetooth low energy and that Bluetooth is on and available to use.<BR>
+<BR>
+Please build as 64-bit as 32-bit is no longer supported well by Apple.<BR>
+Subclass of the <A href="class-cbmanagermbs.html">CBManagerMBS</A> class.<BR>
+</div>
+<ul>
+<LI>6 events<UL>
+<li class="M">event <A href="bluetooth-cbcentralmanagermbs-event.html">DidConnectPeripheral</A>(peripheral as <A href="class-cbperipheralmbs.html">CBPeripheralMBS</A>)</li>
+<li class="M">event <A href="bluetooth-cbcentralmanagermbs-event.html#2">DidDisconnectPeripheral</A>(peripheral as <A href="class-cbperipheralmbs.html">CBPeripheralMBS</A>, error as <A href="class-nserrormbs.html">NSErrorMBS</A>)</li>
+<li class="M">event <A href="bluetooth-cbcentralmanagermbs-event.html#3">DidDiscoverPeripheral</A>(peripheral as <A href="class-cbperipheralmbs.html">CBPeripheralMBS</A>, advertisementData as Dictionary, RSSI as String)</li>
+<li class="M">event <A href="bluetooth-cbcentralmanagermbs-event.html#4">DidFailToConnectPeripheral</A>(peripheral as <A href="class-cbperipheralmbs.html">CBPeripheralMBS</A>, error as <A href="class-nserrormbs.html">NSErrorMBS</A>)</li>
+<li class="M">event <A href="bluetooth-cbcentralmanagermbs-event.html#5">DidUpdateState</A></li>
+<li class="M">event <A href="bluetooth-cbcentralmanagermbs-event.html#6">WillRestoreState</A>(dict as dictionary)</li>
+</UL></LI>
+<li class="M">property <A href="bluetooth-cbcentralmanagermbs-property.html">isScanning</A> as Boolean</li>
+<LI>8 methods<UL>
+<li class="M">method <A href="bluetooth-cbcentralmanagermbs-method.html">cancelPeripheralConnection</A>(Peripheral as <A href="class-cbperipheralmbs.html">CBPeripheralMBS</A>)</li>
+<li class="M">method <A href="bluetooth-cbcentralmanagermbs-method.html#2">connectPeripheral</A>(peripheral as <A href="class-cbperipheralmbs.html">CBPeripheralMBS</A>, options as Dictionary = nil)</li>
+<li class="M">method <A href="bluetooth-cbcentralmanagermbs-method.html#3">Constructor</A>(options as dictionary = nil)</li>
+<li class="M">method <A href="bluetooth-cbcentralmanagermbs-method.html#4">Destructor</A></li>
+<li class="M">method <A href="bluetooth-cbcentralmanagermbs-method.html#5">retrieveConnectedPeripheralsWithServices</A>(serviceUUIDs() as <A href="class-cbuuidmbs.html">CBUUIDMBS</A>) as <A href="class-cbperipheralmbs.html">CBPeripheralMBS</A>()</li>
+<li class="M">method <A href="bluetooth-cbcentralmanagermbs-method.html#6">retrievePeripheralsWithIdentifiers</A>(identifiers() as <A href="class-nsuuidmbs.html">NSUUIDMBS</A>) as <A href="class-cbperipheralmbs.html">CBPeripheralMBS</A>()</li>
+<li class="M">method <A href="bluetooth-cbcentralmanagermbs-method.html#7">scanForPeripheralsWithServices</A>(serviceUUIDs() as <A href="class-cbuuidmbs.html">CBUUIDMBS</A> = nil, options as Dictionary = nil)</li>
+<li class="M">method <A href="bluetooth-cbcentralmanagermbs-method.html#8">stopScan</A></li>
+</UL></LI>
+<LI>13 shared methods<UL>
+<li class="M">shared method <A href="bluetooth-cbcentralmanagermbs-shared-method.html">Available</A> as boolean</li>
+<li class="M">shared method <A href="bluetooth-cbcentralmanagermbs-shared-method.html#2">CBATTErrorDomain</A> as String</li>
+<li class="M">shared method <A href="bluetooth-cbcentralmanagermbs-shared-method.html#3">CBCentralManagerOptionRestoreIdentifierKey</A> as String</li>
+<li class="M">shared method <A href="bluetooth-cbcentralmanagermbs-shared-method.html#4">CBCentralManagerOptionShowPowerAlertKey</A> as String</li>
+<li class="M">shared method <A href="bluetooth-cbcentralmanagermbs-shared-method.html#5">CBCentralManagerRestoredStatePeripheralsKey</A> as String</li>
+<li class="M">shared method <A href="bluetooth-cbcentralmanagermbs-shared-method.html#6">CBCentralManagerRestoredStateScanOptionsKey</A> as String</li>
+<li class="M">shared method <A href="bluetooth-cbcentralmanagermbs-shared-method.html#7">CBCentralManagerRestoredStateScanServicesKey</A> as String</li>
+<li class="M">shared method <A href="bluetooth-cbcentralmanagermbs-shared-method.html#8">CBCentralManagerScanOptionAllowDuplicatesKey</A> as String</li>
+<li class="M">shared method <A href="bluetooth-cbcentralmanagermbs-shared-method.html#9">CBCentralManagerScanOptionSolicitedServiceUUIDsKey</A> as String</li>
+<li class="M">shared method <A href="bluetooth-cbcentralmanagermbs-shared-method.html#10">CBConnectPeripheralOptionNotifyOnConnectionKey</A> as String</li>
+<li class="M">shared method <A href="bluetooth-cbcentralmanagermbs-shared-method.html#11">CBConnectPeripheralOptionNotifyOnDisconnectionKey</A> as String</li>
+<li class="M">shared method <A href="bluetooth-cbcentralmanagermbs-shared-method.html#12">CBConnectPeripheralOptionNotifyOnNotificationKey</A> as String</li>
+<li class="M">shared method <A href="bluetooth-cbcentralmanagermbs-shared-method.html#13">CBErrorDomain</A> as String</li>
+</UL></LI>
+<LI>41 constants<UL>
+</UL></LI>
+</ul>
+<h3 lang="en">Att Errors</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html">CBATTErrorAttributeNotFound </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h0A</td>
+<td bgcolor="#DDDDDD" valign=top>
+The attribute is not found within the specified attribute handle range.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#2">CBATTErrorAttributeNotLong </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h0B</td>
+<td bgcolor="#DDDDDD" valign=top>
+The attribute cannot be read or written using the ATT read blob request.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#3">CBATTErrorInsufficientAuthentication </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 5</td>
+<td bgcolor="#DDDDDD" valign=top>
+The attribute requires authentication before its value can be read or written.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#4">CBATTErrorInsufficientAuthorization </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 8</td>
+<td bgcolor="#DDDDDD" valign=top>
+The attribute requires authorization before its value can be read or written.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#5">CBATTErrorInsufficientEncryption </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h0F</td>
+<td bgcolor="#DDDDDD" valign=top>
+The attribute requires encryption before its value can be read or written.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#6">CBATTErrorInsufficientEncryptionKeySize </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h0C</td>
+<td bgcolor="#DDDDDD" valign=top>
+The encryption key size used for encrypting this link is insufficient.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#7">CBATTErrorInsufficientResources </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h11</td>
+<td bgcolor="#DDDDDD" valign=top>
+Resources are insufficient to complete the ATT request.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#8">CBATTErrorInvalidAttributeValueLength </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h0D</td>
+<td bgcolor="#DDDDDD" valign=top>
+The length of the attribute&rsquo;s value is invalid for the intended operation.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#9">CBATTErrorInvalidHandle </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+The attribute handle is invalid on this peripheral.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#10">CBATTErrorInvalidOffset </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 7</td>
+<td bgcolor="#DDDDDD" valign=top>
+The specified offset value was past the end of the attribute&rsquo;s value.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#11">CBATTErrorInvalidPdu </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 4</td>
+<td bgcolor="#DDDDDD" valign=top>
+The attribute Protocol Data Unit (PDU) or &ldquo;message&rdquo; is invalid.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#12">CBATTErrorPrepareQueueFull </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 9</td>
+<td bgcolor="#DDDDDD" valign=top>
+The prepare queue is full, because too many prepare write requests have been queued.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#13">CBATTErrorReadNotPermitted </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+The attribute&rsquo;s value cannot be read.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#14">CBATTErrorRequestNotSupported </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 6</td>
+<td bgcolor="#DDDDDD" valign=top>
+The attribute server does not support the request received by the client.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#15">CBATTErrorSuccess </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 0</td>
+<td bgcolor="#DDDDDD" valign=top>
+The ATT command or request successfully completed.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#16">CBATTErrorUnlikelyError </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h0E</td>
+<td bgcolor="#DDDDDD" valign=top>
+The ATT request has encountered an unlikely error and therefore could not be completed.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#17">CBATTErrorUnsupportedGroupType </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> &amp;h10</td>
+<td bgcolor="#DDDDDD" valign=top>
+The attribute type is not a supported grouping attribute as defined by a higher-layer specification.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#18">CBATTErrorWriteNotPermitted </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+The attribute&rsquo;s value cannot be written.<BR>
+</td>
+</tr>
+</table>
+<h3 lang="en">States</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#19">CBCentralManagerStatePoweredOff </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 4</td>
+<td bgcolor="#DDDDDD" valign=top>
+Bluetooth is currently powered off.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#20">CBCentralManagerStatePoweredOn </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 5</td>
+<td bgcolor="#DDDDDD" valign=top>
+Bluetooth is currently powered on and is available to use.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#21">CBCentralManagerStateResetting </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+The connection with the system service was momentarily lost; an update is imminent.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#22">CBCentralManagerStateUnauthorized </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+The app is not authorized to use the Bluetooth low energy peripheral/server role.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#23">CBCentralManagerStateUnknown </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 0</td>
+<td bgcolor="#DDDDDD" valign=top>
+The current state of the peripheral manager is unknown; an update is imminent.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#24">CBCentralManagerStateUnsupported </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+The platform doesn&#39;t support the Bluetooth low energy peripheral/server role.<BR>
+</td>
+</tr>
+</table>
+<h3 lang="en">Errors</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#25">CBErrorAlreadyAdvertising </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 9</td>
+<td bgcolor="#DDDDDD" valign=top>
+The peripheral is already advertising.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#26">CBErrorConnectionFailed </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 10</td>
+<td bgcolor="#DDDDDD" valign=top>
+The connection failed.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#27">CBErrorConnectionLimitReached </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 11</td>
+<td bgcolor="#DDDDDD" valign=top>
+The device already has the maximum number of connections.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#28">CBErrorConnectionTimeout </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 6</td>
+<td bgcolor="#DDDDDD" valign=top>
+The connection timed out.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const.html#29">CBErrorEncryptionTimedOut </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 15</td>
+<td bgcolor="#DDDDDD" valign=top>
+Timeout in encryption.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const1.html">CBErrorInvalidHandle </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+The specified attribute handle is invalid.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const1.html#2">CBErrorInvalidParameters </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+The specified parameters are invalid.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const1.html#3">CBErrorNotConnected </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+The device is not currently connected.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const1.html#4">CBErrorOperationCancelled </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 5</td>
+<td bgcolor="#DDDDDD" valign=top>
+The operation is canceled.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const1.html#5">CBErrorOperationNotSupported </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 13</td>
+<td bgcolor="#DDDDDD" valign=top>
+Operation not supported.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const1.html#6">CBErrorOutOfSpace </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 4</td>
+<td bgcolor="#DDDDDD" valign=top>
+The device has run out of space to complete the intended operation.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const1.html#7">CBErrorPeerRemovedPairingInformation </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 14</td>
+<td bgcolor="#DDDDDD" valign=top>
+Peer removed pairing information, e.g. pairing was reset on the other device. <BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const1.html#8">CBErrorPeripheralDisconnected </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 7</td>
+<td bgcolor="#DDDDDD" valign=top>
+The peripheral disconnected.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const1.html#9">CBErrorTooManyLEPairedDevices </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 16</td>
+<td bgcolor="#DDDDDD" valign=top>
+Too many paired devices for Bluetooth LE.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const1.html#10">CBErrorUnknown </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 0</td>
+<td bgcolor="#DDDDDD" valign=top>
+An unknown error occurred.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const1.html#11">CBErrorUnkownDevice </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 12</td>
+<td bgcolor="#DDDDDD" valign=top>
+Unknown device.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbcentralmanagermbs-const1.html#12">CBErrorUUIDNotAllowed </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 8</td>
+<td bgcolor="#DDDDDD" valign=top>
+The specified UUID is not permitted.<BR>
+</td>
+</tr>
+</table>
+<h4>Super class <A href="class-cbmanagermbs.html">CBManagerMBS</A></h4>
+<ul>
+<LI>3 properties<UL>
+<li class="M">property <A href="bluetooth-cbmanagermbs-property.html">authorization</A> as Integer</li>
+<li class="M">property <A href="bluetooth-cbmanagermbs-property.html#2">Handle</A> as Integer</li>
+<li class="M">property <A href="bluetooth-cbmanagermbs-property.html#3">State</A> as Integer</li>
+</UL></LI>
+<li class="M">method <A href="bluetooth-cbmanagermbs-method.html">Constructor</A> &nbsp; <b style="color: #8B0000"> Private </b></li>
+<li class="M">shared method <A href="bluetooth-cbmanagermbs-shared-method.html">Available</A> as boolean</li>
+<LI>10 constants<UL>
+</UL></LI>
+</ul>
+<h3 lang="en">Authorization States</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbmanagermbs-const.html">kAuthorizationStatusAuthorized </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+This app is authorized to share data using Bluetooth services while in the background state.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbmanagermbs-const.html#2">kAuthorizationStatusDenied </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+The user explicitly denied this app from sharing data using Bluetooth services while in the background state.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbmanagermbs-const.html#3">kAuthorizationStatusNotDetermined </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 0</td>
+<td bgcolor="#DDDDDD" valign=top>
+The user has not yet made a choice regarding whether this app can share data using Bluetooth services while in the background state.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbmanagermbs-const.html#4">kAuthorizationStatusRestricted </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+This app is not authorized to share data using Bluetooth services while in the background state. The user cannot change this app&rsquo;s status, possibly due to active restrictions such as parental controls being in place.<BR>
+</td>
+</tr>
+</table>
+<h3 lang="en">States</h3>
+<table cellpadding=2 cellspacing=2>
+<tr>
+<th bgcolor="#DDDDDD">Constant</th>
+<th bgcolor="#DDDDDD">Value</th>
+<th bgcolor="#DDDDDD">Description</th>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbmanagermbs-const.html#5">kStatePoweredOff </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 4</td>
+<td bgcolor="#DDDDDD" valign=top>
+Bluetooth is currently powered off.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbmanagermbs-const.html#6">kStatePoweredOn </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 5</td>
+<td bgcolor="#DDDDDD" valign=top>
+Bluetooth is currently powered on and available to use.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbmanagermbs-const.html#7">kStateResetting </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 1</td>
+<td bgcolor="#DDDDDD" valign=top>
+The connection with the system service was momentarily lost, update imminent.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbmanagermbs-const.html#8">kStateUnauthorized </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 3</td>
+<td bgcolor="#DDDDDD" valign=top>
+The application is not authorized to use the Bluetooth Low Energy role.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbmanagermbs-const.html#9">kStateUnknown </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 0</td>
+<td bgcolor="#DDDDDD" valign=top>
+State unknown, update imminent.<BR>
+</td>
+</tr>
+<tr class="M">
+<td bgcolor="#DDDDDD" valign=top><a href="bluetooth-cbmanagermbs-const.html#10">kStateUnsupported </a></td>
+<td bgcolor="#DDDDDD" valign=top align=Right> 2</td>
+<td bgcolor="#DDDDDD" valign=top>
+The platform doesn&#39;t support the Bluetooth Low Energy Central/Client role.<BR>
+</td>
+</tr>
+</table>
+<p>This class has no sub classes.</p>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-bluetooth-macbluetooth-bluetoothleheartratemac.html">/Bluetooth/Mac Bluetooth/Bluetooth LE Heart Rate Mac</A></li>
+<li class=""><A href="example-bluetooth-macbluetooth-corebluetoothdevices.html">/Bluetooth/Mac Bluetooth/CoreBluetooth Devices</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2021-12-14/MBS_Xojo_Plugins_version_216pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 21.6pr3</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsbluetoothplugin.html">MBS Bluetooth Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-cbattributembs.html">CBAttributeMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-cbcentralmbs.html">CBCentralMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-cbcentralmanagermbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

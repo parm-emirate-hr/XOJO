@@ -1,0 +1,933 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Mac64bit/eidReader/eidReader v2</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Mac64bit/eidReader/eidReader v2</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Mac64bit/eidReader/eidReader v2</A></b><br>
+<B>Function:</B> 
+<br>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Mac64bit/eidReader/eidReader v2<BR>
+This example is the version from Fri, 16th Jan 2020.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;eidReader</span> <span style="color:#6500FE">v2.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">register</span> <span style="color:#7F0000;text-style:italic">MBS</span> <span style="color:#7F0000;text-style:italic">Plugin</span> <span style="color:#7F0000;text-style:italic">here</span>
+			
+			debugModule.init
+			debugModule.start
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> UnhandledException(error <span style="color:#0000FF;font-weight: bold">As</span> RuntimeException) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#0000FF;font-weight: bold">If</span> error &lt;&gt; <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#0000FF;font-weight: bold">Dim</span> type <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = Introspection.GetType(error).Name
+				debugModule.Log(type + EndOfLine + EndOfLine + Join(error.Stack, EndOfLine))
+				MsgBox(type + EndOfLine + EndOfLine + Join(error.Stack, EndOfLine))
+				
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	EnableSmartCard</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> EnableSmartCard</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	SetSandBoxFalse</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> SetSandBoxFalse</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> wMain <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_Code">		ComputedProperty CardStatus <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">			<span style="color:#0000FF;font-weight: bold">Sub</span> <span style="color:#0000FF;font-weight: bold">Set</span>()
+				<span style="color:#0000FF;font-weight: bold">If</span> value = <span style="color:#0000FF;font-weight: bold">True</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+					OnRead
+				<span style="color:#0000FF;font-weight: bold">Else</span>
+					OffRead
+					ClearField
+				<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Set</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> ComputedProperty</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control bbeID <span style="color:#0000FF;font-weight: bold">Inherits</span> BevelButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance bbeID <span style="color:#0000FF;font-weight: bold">Inherits</span> BevelButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">Me</span>.Enabled = <span style="color:#0000FF;font-weight: bold">False</span>
+				<span style="color:#0000FF;font-weight: bold">Me</span>.CaptionDelta = -<span style="color:#326598">3</span>
+				pwRC.Visible = <span style="color:#0000FF;font-weight: bold">True</span>
+				
+				slotManager = <span style="color:#0000FF;font-weight: bold">New</span> scsm
+				
+				slotManager.OpenFirstSlot
+				lblOSlot.Text = slotManager.SlotID
+				
+				tmrCard.Period = <span style="color:#326598">5000</span>
+				tmrCard.Mode = Timer.ModeSingle
+				tmrCard.Enabled = <span style="color:#0000FF;font-weight: bold">True</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+				<span style="color:#0000FF;font-weight: bold">Me</span>.Bold = <span style="color:#0000FF;font-weight: bold">True</span>
+				<span style="color:#7F0000;text-style:italic">&#39;OffRead</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control pwRC <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressWheel</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance pwRC <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressWheel</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control cPhoto <span style="color:#0000FF;font-weight: bold">Inherits</span> Canvas</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance cPhoto <span style="color:#0000FF;font-weight: bold">Inherits</span> Canvas</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label2 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label2 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label3 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label3 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label4 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label4 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label5 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label5 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label6 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label6 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label7 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label7 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label8 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label8 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label9 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label9 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label10 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label10 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label11 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label11 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control tfName <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance tfName <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control tfGN <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance tfGN <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control tfPoB <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance tfPoB <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control tfBirthDate <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance tfBirthDate <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control tfSex <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance tfSex <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control tfNISS <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance tfNISS <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control tfNationality <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance tfNationality <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control tfTitle <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance tfTitle <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control tfStreet <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance tfStreet <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control tfPostalCode <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance tfPostalCode <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control tfMunicipality <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance tfMunicipality <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control pbSavePict <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance pbSavePict <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">If</span> PhotoID &lt;&gt; <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+					<span style="color:#0000FF;font-weight: bold">Dim</span> f <span style="color:#0000FF;font-weight: bold">As</span> FolderItem = GetSaveFolderItem(<span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#6500FE">&quot;portrait.jpg&quot;</span>)
+					
+					<span style="color:#0000FF;font-weight: bold">If</span> f &lt;&gt; <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+						PhotoID.Save(f, Picture.SaveAsJPEG)
+					<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+				<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Label12 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Label12 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control lblOSlot <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance lblOSlot <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control lblReadCard <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance lblReadCard <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control pwReadCard <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressWheel</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance pwReadCard <span style="color:#0000FF;font-weight: bold">Inherits</span> ProgressWheel</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control tmrCard <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance tmrCard <span style="color:#0000FF;font-weight: bold">Inherits</span> Timer</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				dh = slotManager.Dict
+				
+				<span style="color:#0000FF;font-weight: bold">If</span> dh &lt;&gt; <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+					<span style="color:#0000FF;font-weight: bold">If</span> dh.HasKey(<span style="color:#6500FE">&quot;LastName&quot;</span>) <span style="color:#0000FF;font-weight: bold">Then</span>
+						wmain.tfName.Text = dh.Value(<span style="color:#6500FE">&quot;LastName&quot;</span>).StringValue
+					<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+					
+					<span style="color:#0000FF;font-weight: bold">If</span> dh.HasKey(<span style="color:#6500FE">&quot;FirstName&quot;</span>) <span style="color:#0000FF;font-weight: bold">Then</span>
+						wmain.tfGN.Text = dh.Value(<span style="color:#6500FE">&quot;FirstName&quot;</span>).StringValue
+					<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+					
+					<span style="color:#0000FF;font-weight: bold">If</span> dh.HasKey(<span style="color:#6500FE">&quot;PoB&quot;</span>) <span style="color:#0000FF;font-weight: bold">Then</span>
+						wmain.tfPoB.Text = dh.Value(<span style="color:#6500FE">&quot;PoB&quot;</span>).StringValue
+					<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+					
+					<span style="color:#0000FF;font-weight: bold">If</span> dh.HasKey(<span style="color:#6500FE">&quot;DoB&quot;</span>) <span style="color:#0000FF;font-weight: bold">Then</span>
+						wmain.tfBirthDate.Text = dh.Value(<span style="color:#6500FE">&quot;DoB&quot;</span>).StringValue
+					<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+					
+					<span style="color:#0000FF;font-weight: bold">If</span> dh.HasKey(<span style="color:#6500FE">&quot;Sex&quot;</span>) <span style="color:#0000FF;font-weight: bold">Then</span>
+						wmain.tfSex.Text = dh.Value(<span style="color:#6500FE">&quot;Sex&quot;</span>).StringValue
+					<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+					
+					<span style="color:#0000FF;font-weight: bold">If</span> dh.HasKey(<span style="color:#6500FE">&quot;NISS&quot;</span>) <span style="color:#0000FF;font-weight: bold">Then</span>
+						wmain.tfNISS.Text = dh.Value(<span style="color:#6500FE">&quot;NISS&quot;</span>).StringValue
+					<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+					
+					<span style="color:#0000FF;font-weight: bold">If</span> dh.HasKey(<span style="color:#6500FE">&quot;Nationality&quot;</span>) <span style="color:#0000FF;font-weight: bold">Then</span>
+						wmain.tfNationality.Text = dh.Value(<span style="color:#6500FE">&quot;Nationality&quot;</span>).StringValue
+					<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+					
+					<span style="color:#0000FF;font-weight: bold">If</span> dh.HasKey(<span style="color:#6500FE">&quot;Street&quot;</span>) <span style="color:#0000FF;font-weight: bold">Then</span>
+						wmain.tfStreet.Text = dh.Value(<span style="color:#6500FE">&quot;Street&quot;</span>).StringValue
+					<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+					
+					<span style="color:#0000FF;font-weight: bold">If</span> dh.HasKey(<span style="color:#6500FE">&quot;PostalCode&quot;</span>) <span style="color:#0000FF;font-weight: bold">Then</span>
+						wmain.tfPostalCode.Text = dh.Value(<span style="color:#6500FE">&quot;PostalCode&quot;</span>).StringValue
+					<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+					
+					<span style="color:#0000FF;font-weight: bold">If</span> dh.HasKey(<span style="color:#6500FE">&quot;City&quot;</span>) <span style="color:#0000FF;font-weight: bold">Then</span>
+						wmain.tfMunicipality.Text = dh.Value(<span style="color:#6500FE">&quot;City&quot;</span>).StringValue
+					<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+					
+					PhotoID = slotManager.IDPict
+					
+					<span style="color:#0000FF;font-weight: bold">If</span> PhotoID &lt;&gt; <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+						GetPicture
+					<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+					
+					
+				<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+				
+				<span style="color:#7F0000;text-style:italic">&#39;bbeID.Enabled</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">True</span>
+				
+				bbeID.CaptionDelta = <span style="color:#326598">10</span>
+				pwRC.Visible = <span style="color:#0000FF;font-weight: bold">False</span>
+				
+				<span style="color:#0000FF;font-weight: bold">Me</span>.Enabled = <span style="color:#0000FF;font-weight: bold">False</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Close()
+			<span style="color:#0000FF;font-weight: bold">Self</span>.Close
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			App.AutoQuit = <span style="color:#0000FF;font-weight: bold">True</span>
+			<span style="color:#7F0000;text-style:italic">&#39;Dim</span> <span style="color:#7F0000;text-style:italic">i</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Integer</span>
+			
+			<span style="color:#7F0000;text-style:italic">&#39;OnRead</span>
+			<span style="color:#0000FF;font-weight: bold">If</span> scsm.available <span style="color:#0000FF;font-weight: bold">Then</span>
+				slotManager = <span style="color:#0000FF;font-weight: bold">New</span> scsm
+				slotManager.OpenFirstSlot
+				<span style="color:#7F0000;text-style:italic">&#39;lblOSlot.Text</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">slotManager.SlotID</span>
+				
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;slotManager.OpenFirstSlot</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				
+				
+				<span style="color:#7F0000;text-style:italic">&#39;Dim</span> <span style="color:#7F0000;text-style:italic">SlotList()</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">String</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">slotManager.SlotNames</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;If</span> <span style="color:#7F0000;text-style:italic">SlotList.Ubound</span> <span style="color:#7F0000;text-style:italic">&lt;&gt;</span> <span style="color:#7F0000;text-style:italic">-1</span> <span style="color:#7F0000;text-style:italic">Then</span>
+				<span style="color:#7F0000;text-style:italic">&#39;For</span> <span style="color:#7F0000;text-style:italic">i</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">SlotList.Ubound</span> <span style="color:#7F0000;text-style:italic">DownTo</span> <span style="color:#7F0000;text-style:italic">0</span>
+				<span style="color:#7F0000;text-style:italic">&#39;pmCardList.AddRow(SlotList(i))</span>
+				<span style="color:#7F0000;text-style:italic">&#39;Next</span>
+				<span style="color:#7F0000;text-style:italic">&#39;End</span> <span style="color:#7F0000;text-style:italic">If</span>
+				
+			<span style="color:#0000FF;font-weight: bold">Else</span>
+				<span style="color:#7F0000;text-style:italic">&#39;OffRead</span>
+				<span style="color:#7F0000;text-style:italic">&#39;ClearField</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			<span style="color:#7F0000;text-style:italic">&#39;OnRead</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Exception</span> r <span style="color:#0000FF;font-weight: bold">As</span> UnsupportedOperationException
+			MsgBox r.message
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> ClearField()
+			cPhoto.Backdrop = <span style="color:#0000FF;font-weight: bold">Nil</span>
+			cPhoto.Invalidate
+			PhotoID = <span style="color:#0000FF;font-weight: bold">Nil</span>
+			tfBirthDate.Text = <span style="color:#6500FE">&quot;&quot;</span>
+			tfGN.Text = <span style="color:#6500FE">&quot;&quot;</span>
+			tfMunicipality.Text = <span style="color:#6500FE">&quot;&quot;</span>
+			tfName.Text = <span style="color:#6500FE">&quot;&quot;</span>
+			tfMunicipality.Text = <span style="color:#6500FE">&quot;&quot;</span>
+			tfName.Text = <span style="color:#6500FE">&quot;&quot;</span>
+			tfNationality.Text = <span style="color:#6500FE">&quot;&quot;</span>
+			tfNISS.Text = <span style="color:#6500FE">&quot;&quot;</span>
+			tfPoB.Text = <span style="color:#6500FE">&quot;&quot;</span>
+			tfPostalCode.Text = <span style="color:#6500FE">&quot;&quot;</span>
+			tfSex.Text = <span style="color:#6500FE">&quot;&quot;</span>
+			tfStreet.Text = <span style="color:#6500FE">&quot;&quot;</span>
+			tfTitle.Text = <span style="color:#6500FE">&quot;&quot;</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> GetPicture()
+			<span style="color:#0000FF;font-weight: bold">If</span> PhotoID &lt;&gt; <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				cPhoto.Backdrop = PhotoID
+				cPhoto.Invalidate
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> OffRead()
+			bbeID.Enabled = <span style="color:#0000FF;font-weight: bold">False</span>
+			bbeID.TextColor = &amp;c<span style="color:#FF0000">C1</span><span style="color:#00FF00">C1</span><span style="color:#0000FF">C1</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> OnRead()
+			bbeID.Enabled = <span style="color:#0000FF;font-weight: bold">True</span>
+			bbeID.TextColor = &amp;c<span style="color:#FF0000">00</span><span style="color:#00FF00">00</span><span style="color:#0000FF">00</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Note">		Note <span style="color:#6500FE">&quot;Note&quot;</span>
+<div class="RB_Comment">			So basically the project workflow is like this : 
+			
+			1. BeID card read button is disabled; 
+			2. They insert the card in the reader and the button gets enabled ;
+			3. They press on it, it reads all the data and it populates the form, then it disables the button ; 
+			4. Once the card is removed the button gets deactivated; 
+			
+			All the steps with disabled and deactivated is to avoid crash, as apparently we have to start the app only with the reader connected to the usb, if we start the app without the reader In the usb then the reader will not work anymore until we restart the app.</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> PhotoID <span style="color:#0000FF;font-weight: bold">As</span> Picture</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> ReaderID <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> dh <span style="color:#0000FF;font-weight: bold">As</span> Dictionary</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> slotManager <span style="color:#0000FF;font-weight: bold">As</span> scsm</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> scsm <span style="color:#0000FF;font-weight: bold">Inherits</span> TKSmartCardSlotManagerMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> gotSlotWithName(name <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, slot <span style="color:#0000FF;font-weight: bold">as</span> TKSmartCardSlotMBS, tag <span style="color:#0000FF;font-weight: bold">as</span> variant)
+			debugModule.Log(CurrentMethodName)
+			
+			<span style="color:#0000FF;font-weight: bold">Self</span>.currentSlot = slot
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">connect</span> <span style="color:#7F0000;text-style:italic">event</span>
+			<span style="color:#0000FF;font-weight: bold">AddHandler</span> slot.StateChanged, WeakAddressOf SlotStateChanged
+			slot.SetDelegate
+			
+			<span style="color:#0000FF;font-weight: bold">If</span> slot.State = slot.kStateValidCard <span style="color:#0000FF;font-weight: bold">Then</span>
+				Dict = <span style="color:#0000FF;font-weight: bold">New</span> Dictionary
+				IDPict = <span style="color:#0000FF;font-weight: bold">Nil</span>
+				
+				debugModule.Log(<span style="color:#6500FE">&quot;SmartCardInitiated</span> <span style="color:#6500FE">-&gt;</span> <span style="color:#6500FE">New</span> <span style="color:#6500FE">Dictionary&quot;</span>)
+				
+				ReadSlot slot
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> slotNamesChanged()
+			debugModule.Log(CurrentMethodName)
+			
+			debugModule.Log(CurrentMethodName + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">|</span> <span style="color:#6500FE">Before</span> <span style="color:#6500FE">|</span> <span style="color:#6500FE">OpenFirstSlot&quot;</span>)
+			OpenFirstSlot
+			debugModule.Log(CurrentMethodName + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">|</span> <span style="color:#6500FE">After</span> <span style="color:#6500FE">|</span> <span style="color:#6500FE">OpenFirstSlot&quot;</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> GetString(items <span style="color:#0000FF;font-weight: bold">as</span> Dictionary, id <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> m <span style="color:#0000FF;font-weight: bold">As</span> MemoryBlock = items.Lookup(id, <span style="color:#0000FF;font-weight: bold">Nil</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> m &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				debugModule.Log(CurrentMethodName)
+				
+				debugModule.Log(<span style="color:#6500FE">&quot;Result</span> <span style="color:#6500FE">:</span> <span style="color:#6500FE">&quot;</span> + DefineEncoding(m, encodings.UTF8))
+				
+				<span style="color:#0000FF;font-weight: bold">Return</span> DefineEncoding(m, encodings.UTF8)
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> OpenFirstSlot()
+			debugModule.Log(CurrentMethodName)
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> slotNames() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = <span style="color:#0000FF;font-weight: bold">Me</span>.slotNames
+			
+			<span style="color:#0000FF;font-weight: bold">If</span> <span style="color:#0000FF;font-weight: bold">Me</span>.slotNames.Ubound = -<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">no</span> <span style="color:#7F0000;text-style:italic">slot?</span>
+				
+				debugModule.Log(<span style="color:#6500FE">&quot;No</span> <span style="color:#6500FE">Slot&quot;</span>)
+				
+				<span style="color:#7F0000;text-style:italic">&#39;&#39;log</span> <span style="color:#7F0000;text-style:italic">&quot;No</span> <span style="color:#7F0000;text-style:italic">slot?&quot;</span>
+				
+			<span style="color:#0000FF;font-weight: bold">Else</span>
+				<span style="color:#0000FF;font-weight: bold">Dim</span> SlotName <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = slotNames(<span style="color:#326598">0</span>)
+				SlotID = SlotName
+				<span style="color:#7F0000;text-style:italic">&#39;Dim</span> <span style="color:#7F0000;text-style:italic">SlotName</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">String</span>
+				
+				debugModule.Log(<span style="color:#6500FE">&quot;Selected</span> <span style="color:#6500FE">Slot</span> <span style="color:#6500FE">Name</span> <span style="color:#6500FE">:</span> <span style="color:#6500FE">&quot;</span> + SlotID)
+				
+				<span style="color:#7F0000;text-style:italic">&#39;SlotName</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">SlotID</span>
+				
+				
+				<span style="color:#7F0000;text-style:italic">&#39;If</span> <span style="color:#7F0000;text-style:italic">currentSlot</span> <span style="color:#7F0000;text-style:italic">&lt;&gt;</span> <span style="color:#7F0000;text-style:italic">Nil</span> <span style="color:#7F0000;text-style:italic">Then</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span>
+				<span style="color:#7F0000;text-style:italic">&#39;If</span> <span style="color:#7F0000;text-style:italic">currentSlot.Name</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">SlotName</span> <span style="color:#7F0000;text-style:italic">Then</span>
+				<span style="color:#7F0000;text-style:italic">&#39;//</span> <span style="color:#7F0000;text-style:italic">already</span> <span style="color:#7F0000;text-style:italic">selected</span>
+				<span style="color:#7F0000;text-style:italic">&#39;Return</span>
+				<span style="color:#7F0000;text-style:italic">&#39;End</span> <span style="color:#7F0000;text-style:italic">If</span>
+				<span style="color:#7F0000;text-style:italic">&#39;End</span> <span style="color:#7F0000;text-style:italic">If</span>
+				
+				
+				debugModule.Log(<span style="color:#6500FE">&quot;SmartCardInitiated</span> <span style="color:#6500FE">-&gt;</span> <span style="color:#6500FE">|Before|</span> <span style="color:#6500FE">Me.getSlotWithName</span> <span style="color:#6500FE">SlotName&quot;</span>)
+				
+				<span style="color:#0000FF;font-weight: bold">Me</span>.getSlotWithName SlotName
+				
+				debugModule.Log(<span style="color:#6500FE">&quot;SmartCardInitiated</span> <span style="color:#6500FE">-&gt;</span> <span style="color:#6500FE">|After|</span> <span style="color:#6500FE">Me.getSlotWithName</span> <span style="color:#6500FE">SlotName&quot;</span>)
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> ReadSlot(slot <span style="color:#0000FF;font-weight: bold">as</span> TKSmartCardSlotMBS)
+			debugModule.Log(CurrentMethodName)
+			
+			debugModule.Log(<span style="color:#6500FE">&quot;SmartCardInitiated</span> <span style="color:#6500FE">-&gt;</span> <span style="color:#6500FE">|Before|</span> <span style="color:#6500FE">smartcard</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">slot.makeSmartCard&quot;</span>)
+			
+			smartcard = slot.makeSmartCard
+			
+			debugModule.Log(<span style="color:#6500FE">&quot;SmartCardInitiated</span> <span style="color:#6500FE">-&gt;</span> <span style="color:#6500FE">|After|</span> <span style="color:#6500FE">smartcard</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">slot.makeSmartCard&quot;</span>)
+			
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">connect</span> <span style="color:#7F0000;text-style:italic">event</span>
+			<span style="color:#7F0000;text-style:italic">&#39;AddHandler</span> <span style="color:#7F0000;text-style:italic">smartcard.BeginSessionCompleted,</span> <span style="color:#7F0000;text-style:italic">WeakAddressOf</span> <span style="color:#7F0000;text-style:italic">SmartcardBeginSessionCompleted</span>
+			<span style="color:#7F0000;text-style:italic">&#39;smartcard.SetDelegate</span>
+			<span style="color:#7F0000;text-style:italic">&#39;smartcard.beginSession</span>
+			
+			
+			
+			smartcard.beginSessionWithDelegate WeakAddressOf SmartcardBeginSessionCompleted
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> SlotStateChanged(slot <span style="color:#0000FF;font-weight: bold">as</span> TKSmartCardSlotMBS)
+			debugModule.Log(CurrentMethodName)
+			
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">Case</span> slot.State
+			<span style="color:#0000FF;font-weight: bold">Case</span> slot.kStateEmpty
+				<span style="color:#7F0000;text-style:italic">&#39;&#39;log</span> <span style="color:#7F0000;text-style:italic">&quot;Slot</span> <span style="color:#7F0000;text-style:italic">&quot;+slot.Name+&quot;</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">empty.&quot;</span>
+				debugModule.Log(<span style="color:#6500FE">&quot;Slot</span> <span style="color:#6500FE">&quot;</span>+slot.Name+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">empty.&quot;</span>)
+				
+				wMain.CardStatus = <span style="color:#0000FF;font-weight: bold">False</span>
+				
+				
+			<span style="color:#0000FF;font-weight: bold">Case</span> slot.kStateMissing
+				<span style="color:#7F0000;text-style:italic">&#39;&#39;log</span> <span style="color:#7F0000;text-style:italic">&quot;Slot</span> <span style="color:#7F0000;text-style:italic">&quot;+slot.Name+&quot;</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">missing.&quot;</span>
+				debugModule.Log(<span style="color:#6500FE">&quot;Slot</span> <span style="color:#6500FE">&quot;</span>+slot.Name+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">missing.&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">Self</span>.currentSlot = <span style="color:#0000FF;font-weight: bold">Nil</span>
+				wMain.CardStatus = <span style="color:#0000FF;font-weight: bold">False</span>
+				
+				
+			<span style="color:#0000FF;font-weight: bold">Case</span> slot.kStateValidCard
+				<span style="color:#7F0000;text-style:italic">&#39;&#39;log</span> <span style="color:#7F0000;text-style:italic">&quot;Slot</span> <span style="color:#7F0000;text-style:italic">&quot;+slot.Name+&quot;</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">valid</span> <span style="color:#7F0000;text-style:italic">card.&quot;</span>
+				debugModule.Log(<span style="color:#6500FE">&quot;Slot</span> <span style="color:#6500FE">&quot;</span>+slot.Name+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">valid</span> <span style="color:#6500FE">card.&quot;</span>)
+				wMain.CardStatus = <span style="color:#0000FF;font-weight: bold">True</span>
+				
+				
+			<span style="color:#0000FF;font-weight: bold">Case</span> slot.kStateProbing
+				<span style="color:#7F0000;text-style:italic">&#39;&#39;log</span> <span style="color:#7F0000;text-style:italic">&quot;Slot</span> <span style="color:#7F0000;text-style:italic">&quot;+slot.Name+&quot;</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">probing.&quot;</span>
+				debugModule.Log(<span style="color:#6500FE">&quot;Slot</span> <span style="color:#6500FE">&quot;</span>+slot.Name+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">probing.&quot;</span>)
+				
+				
+			<span style="color:#0000FF;font-weight: bold">Case</span> slot.kStateMuteCard
+				<span style="color:#7F0000;text-style:italic">&#39;&#39;log</span> <span style="color:#7F0000;text-style:italic">&quot;Slot</span> <span style="color:#7F0000;text-style:italic">&quot;+slot.Name+&quot;</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">mute</span> <span style="color:#7F0000;text-style:italic">card.&quot;</span>
+				debugModule.Log(<span style="color:#6500FE">&quot;Slot</span> <span style="color:#6500FE">&quot;</span>+slot.Name+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">mute</span> <span style="color:#6500FE">card.&quot;</span>)
+				
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Select</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> SmartcardBeginSessionCompleted(success <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>, error <span style="color:#0000FF;font-weight: bold">as</span> NSErrorMBS, tag <span style="color:#0000FF;font-weight: bold">as</span> Variant)
+			debugModule.Log(CurrentMethodName)
+			debugModule.Log(<span style="color:#6500FE">&quot;success:</span> <span style="color:#6500FE">&quot;</span>+Str(success))
+			
+			<span style="color:#7F0000;text-style:italic">&#39;&#39;log</span> <span style="color:#7F0000;text-style:italic">CurrentMethodName</span>
+			<span style="color:#7F0000;text-style:italic">&#39;&#39;log</span> <span style="color:#7F0000;text-style:italic">&quot;success:</span> <span style="color:#7F0000;text-style:italic">&quot;+str(success)</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> success <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				
+				smartcard.readFileWithDelegate(basicInfoFile, WeakAddressOf basicInfoFileReadCompleted)
+				
+				
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Shared</span> <span style="color:#0000FF;font-weight: bold">Function</span> addressFile() <span style="color:#0000FF;font-weight: bold">As</span> MemoryBlock
+			<span style="color:#0000FF;font-weight: bold">Dim</span> m <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> MemoryBlock(<span style="color:#326598">4</span>)
+			
+			m.UInt8Value(<span style="color:#326598">0</span>) = <span style="color:#326598">&amp;hDF</span>
+			m.UInt8Value(<span style="color:#326598">1</span>) = <span style="color:#326598">&amp;h01</span>
+			m.UInt8Value(<span style="color:#326598">2</span>) = <span style="color:#326598">&amp;h40</span>
+			m.UInt8Value(<span style="color:#326598">3</span>) = <span style="color:#326598">&amp;h33</span>
+			
+			<span style="color:#0000FF;font-weight: bold">return</span> m
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> addressFileReadCompleted(FileName <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock, Content <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock, error <span style="color:#0000FF;font-weight: bold">as</span> NSErrorMBS, tag <span style="color:#0000FF;font-weight: bold">as</span> Variant)
+			<span style="color:#7F0000;text-style:italic">&#39;&#39;log</span> <span style="color:#7F0000;text-style:italic">CurrentMethodName</span>
+			
+			debugModule.Log(CurrentMethodName)
+			
+			
+			<span style="color:#0000FF;font-weight: bold">If</span> Content &lt;&gt; <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#7F0000;text-style:italic">&#39;Dim</span> <span style="color:#7F0000;text-style:italic">items</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">New</span> <span style="color:#7F0000;text-style:italic">Dictionary</span>
+				
+				<span style="color:#0000FF;font-weight: bold">Dim</span> cursor <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">2</span>
+				<span style="color:#0000FF;font-weight: bold">If</span> cursor &lt; content.Size <span style="color:#0000FF;font-weight: bold">And</span> content.UInt8Value(cursor-<span style="color:#326598">2</span>) &lt;&gt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+					<span style="color:#7F0000;text-style:italic">&#39;Dim</span> <span style="color:#7F0000;text-style:italic">length</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Integer</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">content.UInt8Value(cursor-1)</span>
+					<span style="color:#7F0000;text-style:italic">&#39;Dim</span> <span style="color:#7F0000;text-style:italic">t</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">Integer</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">content.UInt8Value(cursor-2)</span>
+					
+					<span style="color:#7F0000;text-style:italic">&#39;items.Value(t)</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">content.MidB(cursor,</span> <span style="color:#7F0000;text-style:italic">length)</span>
+					<span style="color:#7F0000;text-style:italic">&#39;cursor</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">cursor</span> <span style="color:#7F0000;text-style:italic">+</span> <span style="color:#7F0000;text-style:italic">length</span> <span style="color:#7F0000;text-style:italic">+</span> <span style="color:#7F0000;text-style:italic">2</span>
+					
+					<span style="color:#0000FF;font-weight: bold">Dim</span> StreetLen <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = content.UInt8Value(<span style="color:#326598">1</span>)
+					<span style="color:#0000FF;font-weight: bold">Dim</span> Street    <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = DefineEncoding(content.MidB(<span style="color:#326598">2</span>, StreetLen), encodings.UTF8)
+					
+					Dict.Value(<span style="color:#6500FE">&quot;Street&quot;</span>) = Street
+					
+					debugModule.Log(CurrentMethodName + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">:</span> <span style="color:#6500FE">&quot;</span> + <span style="color:#6500FE">&quot;Street</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">&quot;</span> + Street )
+					
+					<span style="color:#7F0000;text-style:italic">&#39;&#39;log</span> <span style="color:#7F0000;text-style:italic">&quot;Street:</span> <span style="color:#7F0000;text-style:italic">&quot;+Street</span>
+					
+					<span style="color:#0000FF;font-weight: bold">Dim</span> postalCodeLen <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = content.UInt8Value(<span style="color:#326598">1</span>+<span style="color:#326598">2</span>+StreetLen)
+					<span style="color:#0000FF;font-weight: bold">Dim</span> postalCode    <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = DefineEncoding(content.MidB(<span style="color:#326598">2</span>+<span style="color:#326598">2</span>+StreetLen, postalCodeLen), encodings.UTF8)
+					
+					Dict.Value(<span style="color:#6500FE">&quot;PostalCode&quot;</span>) = postalCode
+					<span style="color:#7F0000;text-style:italic">&#39;&#39;log</span> <span style="color:#7F0000;text-style:italic">&quot;PostalCode:</span> <span style="color:#7F0000;text-style:italic">&quot;+postalCode</span>
+					
+					debugModule.Log(CurrentMethodName + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">:</span> <span style="color:#6500FE">&quot;</span> + <span style="color:#6500FE">&quot;PostalCode</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">&quot;</span> + postalCode )
+					
+					<span style="color:#0000FF;font-weight: bold">Dim</span> cityLen <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = content.UInt8Value(<span style="color:#326598">1</span>+<span style="color:#326598">2</span>+<span style="color:#326598">2</span>+postalCodeLen+StreetLen)
+					<span style="color:#0000FF;font-weight: bold">Dim</span> city    <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = DefineEncoding(content.MidB(<span style="color:#326598">2</span>+<span style="color:#326598">2</span>+<span style="color:#326598">2</span>+postalCodeLen+StreetLen, cityLen), encodings.UTF8)
+					
+					Dict.Value(<span style="color:#6500FE">&quot;City&quot;</span>) = city
+					<span style="color:#7F0000;text-style:italic">&#39;&#39;log</span> <span style="color:#7F0000;text-style:italic">&quot;City:</span> <span style="color:#7F0000;text-style:italic">&quot;+city</span>
+					
+					debugModule.Log(CurrentMethodName + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">:</span> <span style="color:#6500FE">&quot;</span> + <span style="color:#6500FE">&quot;City</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">&quot;</span> + city )
+					
+					debugModule.Log(<span style="color:#6500FE">&quot;SmartCardInitiated</span> <span style="color:#6500FE">-&gt;</span> <span style="color:#6500FE">|Before|</span> <span style="color:#6500FE">smartcard.readFileWithDelegate(photoFile,</span> <span style="color:#6500FE">WeakAddressOf</span> <span style="color:#6500FE">photoFileReadCompleted)&quot;</span>)
+					
+					smartcard.readFileWithDelegate(photoFile, WeakAddressOf photoFileReadCompleted)
+					
+					debugModule.Log(<span style="color:#6500FE">&quot;SmartCardInitiated</span> <span style="color:#6500FE">-&gt;</span> <span style="color:#6500FE">|After|</span> <span style="color:#6500FE">smartcard.readFileWithDelegate(photoFile,</span> <span style="color:#6500FE">WeakAddressOf</span> <span style="color:#6500FE">photoFileReadCompleted)&quot;</span>)
+					
+					
+				<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			<span style="color:#0000FF;font-weight: bold">Else</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			
+			
+			
+			
+			
+			
+			<span style="color:#7F0000;text-style:italic">&#39;debugModule.Log(&quot;SmartCardInitiated</span> <span style="color:#7F0000;text-style:italic">-&gt;</span> <span style="color:#7F0000;text-style:italic">|Before|</span> <span style="color:#7F0000;text-style:italic">smartcard.readFileWithDelegate(photoFile,</span> <span style="color:#7F0000;text-style:italic">WeakAddressOf</span> <span style="color:#7F0000;text-style:italic">photoFileReadCompleted)&quot;)</span>
+			<span style="color:#7F0000;text-style:italic">&#39;</span>
+			<span style="color:#7F0000;text-style:italic">&#39;smartcard.readFileWithDelegate(photoFile,</span> <span style="color:#7F0000;text-style:italic">WeakAddressOf</span> <span style="color:#7F0000;text-style:italic">photoFileReadCompleted)</span>
+			<span style="color:#7F0000;text-style:italic">&#39;</span>
+			<span style="color:#7F0000;text-style:italic">&#39;debugModule.Log(&quot;SmartCardInitiated</span> <span style="color:#7F0000;text-style:italic">-&gt;</span> <span style="color:#7F0000;text-style:italic">|After|</span> <span style="color:#7F0000;text-style:italic">smartcard.readFileWithDelegate(photoFile,</span> <span style="color:#7F0000;text-style:italic">WeakAddressOf</span> <span style="color:#7F0000;text-style:italic">photoFileReadCompleted)&quot;)</span>
+			<span style="color:#7F0000;text-style:italic">&#39;</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Shared</span> <span style="color:#0000FF;font-weight: bold">Function</span> basicInfoFile() <span style="color:#0000FF;font-weight: bold">As</span> MemoryBlock
+			<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MemoryBlock(<span style="color:#326598">4</span>)
+			
+			m.UInt8Value(<span style="color:#326598">0</span>) = <span style="color:#326598">&amp;hDF</span>
+			m.UInt8Value(<span style="color:#326598">1</span>) = <span style="color:#326598">&amp;h01</span>
+			m.UInt8Value(<span style="color:#326598">2</span>) = <span style="color:#326598">&amp;h40</span>
+			m.UInt8Value(<span style="color:#326598">3</span>) = <span style="color:#326598">&amp;h31</span>
+			
+			<span style="color:#0000FF;font-weight: bold">return</span> m
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> basicInfoFileReadCompleted(FileName <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock, Content <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock, error <span style="color:#0000FF;font-weight: bold">as</span> NSErrorMBS, tag <span style="color:#0000FF;font-weight: bold">as</span> Variant)
+			debugModule.Log(CurrentMethodName)
+			
+			
+			<span style="color:#7F0000;text-style:italic">&#39;&#39;log</span> <span style="color:#7F0000;text-style:italic">CurrentMethodName</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">split</span> <span style="color:#7F0000;text-style:italic">items</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> items <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">New</span> Dictionary
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> cursor <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">2</span>
+			<span style="color:#0000FF;font-weight: bold">while</span> cursor &lt; content.Size <span style="color:#0000FF;font-weight: bold">and</span> content.UInt8Value(cursor-<span style="color:#326598">2</span>) &lt;&gt; <span style="color:#326598">0</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> length <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = content.UInt8Value(cursor-<span style="color:#326598">1</span>)
+				<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = content.UInt8Value(cursor-<span style="color:#326598">2</span>)
+				
+				items.Value(t) = content.MidB(cursor, length)
+				cursor = cursor + length + <span style="color:#326598">2</span>
+				
+			<span style="color:#0000FF;font-weight: bold">wend</span>
+			
+			<span style="color:#0000FF;font-weight: bold">const</span> kfileStructureVersion = <span style="color:#326598">0</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> kcardNumber = <span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> kchipNumber = <span style="color:#326598">2</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> kvalidityStart = <span style="color:#326598">3</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> kvalidityEnd = <span style="color:#326598">4</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> kreleasePlace = <span style="color:#326598">5</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> knationalIdNumber = <span style="color:#326598">6</span>
+			<span style="color:#0000FF;font-weight: bold">Const</span> klastName = <span style="color:#326598">7</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> kfirstName = <span style="color:#326598">8</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> kotherName = <span style="color:#326598">9</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> knationality = <span style="color:#326598">10</span>
+			<span style="color:#0000FF;font-weight: bold">Const</span> kbirthPlace = <span style="color:#326598">11</span>
+			<span style="color:#0000FF;font-weight: bold">Const</span> kbirthDate = <span style="color:#326598">12</span>
+			<span style="color:#0000FF;font-weight: bold">Const</span> ksex = <span style="color:#326598">13</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> knobleCondition = <span style="color:#326598">14</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> kdocumentType = <span style="color:#326598">15</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> kspecialStatus = <span style="color:#326598">16</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> kpictureHash = <span style="color:#326598">17</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> kduplicate = <span style="color:#326598">18</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> kspecialOrganisation = <span style="color:#326598">19</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> kmemberOfFamily = <span style="color:#326598">20</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> kprotection = <span style="color:#326598">21</span>
+			
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> cardNumber       <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = GetString(items, kcardNumber)
+			<span style="color:#7F0000;text-style:italic">&#39;dim</span> <span style="color:#7F0000;text-style:italic">validityStart</span>    <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">string</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">GetString(items,</span> <span style="color:#7F0000;text-style:italic">kvalidityStart)</span>
+			<span style="color:#7F0000;text-style:italic">&#39;dim</span> <span style="color:#7F0000;text-style:italic">validityEnd</span>      <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">string</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">GetString(items,</span> <span style="color:#7F0000;text-style:italic">kvalidityEnd)</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> birthPlace       <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = GetString(items, kbirthPlace)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> birthDate        <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = GetString(items, kbirthDate)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> nationalIdNumber <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = GetString(items, knationalIdNumber)
+			<span style="color:#0000FF;font-weight: bold">dim</span> lastName         <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = GetString(items, klastName)
+			<span style="color:#0000FF;font-weight: bold">dim</span> firstName        <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = GetString(items, kfirstName)
+			<span style="color:#7F0000;text-style:italic">&#39;Dim</span> <span style="color:#7F0000;text-style:italic">otherName</span>        <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">String</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">GetString(items,</span> <span style="color:#7F0000;text-style:italic">kotherName)</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> nationality      <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = GetString(items, knationality)
+			<span style="color:#7F0000;text-style:italic">&#39;Dim</span> <span style="color:#7F0000;text-style:italic">releasePlace</span>     <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">String</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">GetString(items,</span> <span style="color:#7F0000;text-style:italic">kreleasePlace)</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> Sex              <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = GetString(items, ksex)
+			
+			Dict.Value(<span style="color:#6500FE">&quot;CardNo&quot;</span>) = cardNumber
+			Dict.Value(<span style="color:#6500FE">&quot;FirstName&quot;</span>) = firstName
+			Dict.Value(<span style="color:#6500FE">&quot;LastName&quot;</span>) = lastName
+			Dict.Value(<span style="color:#6500FE">&quot;PoB&quot;</span>) = birthPlace
+			Dict.Value(<span style="color:#6500FE">&quot;DoB&quot;</span>) = birthDate
+			Dict.Value(<span style="color:#6500FE">&quot;Sex&quot;</span>) = Sex
+			Dict.Value(<span style="color:#6500FE">&quot;NISS&quot;</span>) = nationalIdNumber
+			Dict.Value(<span style="color:#6500FE">&quot;Nationality&quot;</span>) = nationality
+			
+			debugModule.Log(CurrentMethodName + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">:</span> <span style="color:#6500FE">&quot;</span> + <span style="color:#6500FE">&quot;CardNo</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">&quot;</span> + cardNumber )
+			debugModule.Log(CurrentMethodName + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">:</span> <span style="color:#6500FE">&quot;</span> + <span style="color:#6500FE">&quot;FirstName</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">&quot;</span> + firstName )
+			debugModule.Log(CurrentMethodName + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">:</span> <span style="color:#6500FE">&quot;</span> + <span style="color:#6500FE">&quot;LastName</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">&quot;</span> + lastName )
+			debugModule.Log(CurrentMethodName + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">:</span> <span style="color:#6500FE">&quot;</span> + <span style="color:#6500FE">&quot;PoB</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">&quot;</span> + birthPlace )
+			debugModule.Log(CurrentMethodName + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">:</span> <span style="color:#6500FE">&quot;</span> + <span style="color:#6500FE">&quot;DoB</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">&quot;</span> + birthDate )
+			debugModule.Log(CurrentMethodName + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">:</span> <span style="color:#6500FE">&quot;</span> + <span style="color:#6500FE">&quot;Sex</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">&quot;</span> + Sex )
+			debugModule.Log(CurrentMethodName + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">:</span> <span style="color:#6500FE">&quot;</span> + <span style="color:#6500FE">&quot;NISS</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">&quot;</span> + nationalIdNumber )
+			debugModule.Log(CurrentMethodName + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">:</span> <span style="color:#6500FE">&quot;</span> + <span style="color:#6500FE">&quot;Nationality</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">&quot;</span> + nationality )
+			
+			
+			
+			<span style="color:#7F0000;text-style:italic">&#39;&#39;log</span> <span style="color:#7F0000;text-style:italic">&quot;cardNumber:</span> <span style="color:#7F0000;text-style:italic">&quot;+cardNumber</span>
+			<span style="color:#7F0000;text-style:italic">&#39;&#39;log</span> <span style="color:#7F0000;text-style:italic">&quot;validityStart:</span> <span style="color:#7F0000;text-style:italic">&quot;+validityStart</span>
+			<span style="color:#7F0000;text-style:italic">&#39;&#39;log</span> <span style="color:#7F0000;text-style:italic">&quot;validityEnd:</span> <span style="color:#7F0000;text-style:italic">&quot;+validityEnd</span>
+			<span style="color:#7F0000;text-style:italic">&#39;&#39;log</span> <span style="color:#7F0000;text-style:italic">&quot;birthPlace:</span> <span style="color:#7F0000;text-style:italic">&quot;+birthPlace</span>
+			<span style="color:#7F0000;text-style:italic">&#39;&#39;log</span> <span style="color:#7F0000;text-style:italic">&quot;nationalIdNumber:</span> <span style="color:#7F0000;text-style:italic">&quot;+nationalIdNumber</span>
+			<span style="color:#7F0000;text-style:italic">&#39;&#39;log</span> <span style="color:#7F0000;text-style:italic">&quot;lastName:</span> <span style="color:#7F0000;text-style:italic">&quot;+lastName</span>
+			<span style="color:#7F0000;text-style:italic">&#39;&#39;log</span> <span style="color:#7F0000;text-style:italic">&quot;firstName:</span> <span style="color:#7F0000;text-style:italic">&quot;+firstName</span>
+			<span style="color:#7F0000;text-style:italic">&#39;&#39;log</span> <span style="color:#7F0000;text-style:italic">&quot;otherName:</span> <span style="color:#7F0000;text-style:italic">&quot;+otherName</span>
+			<span style="color:#7F0000;text-style:italic">&#39;&#39;log</span> <span style="color:#7F0000;text-style:italic">&quot;nationality:</span> <span style="color:#7F0000;text-style:italic">&quot;+nationality</span>
+			<span style="color:#7F0000;text-style:italic">&#39;&#39;log</span> <span style="color:#7F0000;text-style:italic">&quot;releasePlace:</span> <span style="color:#7F0000;text-style:italic">&quot;+releasePlace</span>
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">next,</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">address</span>
+			
+			debugModule.Log(<span style="color:#6500FE">&quot;SmartCardInitiated</span> <span style="color:#6500FE">-&gt;</span> <span style="color:#6500FE">|Before|</span> <span style="color:#6500FE">smartcard.readFileWithDelegate(addressFile,</span> <span style="color:#6500FE">WeakAddressOf</span> <span style="color:#6500FE">addressFileReadCompleted)&quot;</span>)
+			
+			smartcard.readFileWithDelegate(addressFile, WeakAddressOf addressFileReadCompleted)
+			
+			debugModule.Log(<span style="color:#6500FE">&quot;SmartCardInitiated</span> <span style="color:#6500FE">-&gt;</span> <span style="color:#6500FE">|After|</span> <span style="color:#6500FE">smartcard.readFileWithDelegate(addressFile,</span> <span style="color:#6500FE">WeakAddressOf</span> <span style="color:#6500FE">addressFileReadCompleted)&quot;</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Shared</span> <span style="color:#0000FF;font-weight: bold">Function</span> idFile() <span style="color:#0000FF;font-weight: bold">As</span> MemoryBlock
+			<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MemoryBlock(<span style="color:#326598">4</span>)
+			
+			m.UInt8Value(<span style="color:#326598">0</span>) = <span style="color:#326598">&amp;hDF</span>
+			m.UInt8Value(<span style="color:#326598">1</span>) = <span style="color:#326598">&amp;h01</span>
+			m.UInt8Value(<span style="color:#326598">2</span>) = <span style="color:#326598">&amp;h40</span>
+			m.UInt8Value(<span style="color:#326598">3</span>) = <span style="color:#326598">&amp;h38</span>
+			
+			<span style="color:#0000FF;font-weight: bold">return</span> m
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Shared</span> <span style="color:#0000FF;font-weight: bold">Function</span> photoFile() <span style="color:#0000FF;font-weight: bold">As</span> MemoryBlock
+			<span style="color:#0000FF;font-weight: bold">dim</span> m <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MemoryBlock(<span style="color:#326598">4</span>)
+			
+			m.UInt8Value(<span style="color:#326598">0</span>) = <span style="color:#326598">&amp;hDF</span>
+			m.UInt8Value(<span style="color:#326598">1</span>) = <span style="color:#326598">&amp;h01</span>
+			m.UInt8Value(<span style="color:#326598">2</span>) = <span style="color:#326598">&amp;h40</span>
+			m.UInt8Value(<span style="color:#326598">3</span>) = <span style="color:#326598">&amp;h35</span>
+			
+			<span style="color:#0000FF;font-weight: bold">return</span> m
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> photoFileReadCompleted(FileName <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock, Content <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock, error <span style="color:#0000FF;font-weight: bold">as</span> NSErrorMBS, tag <span style="color:#0000FF;font-weight: bold">as</span> Variant)
+			debugModule.Log(CurrentMethodName)
+			
+			debugModule.Log(<span style="color:#6500FE">&quot;Get</span> <span style="color:#6500FE">Picture&quot;</span>)
+			
+			
+			
+			<span style="color:#0000FF;font-weight: bold">If</span> Content &lt;&gt; <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+				<span style="color:#7F0000;text-style:italic">&#39;Dim</span> <span style="color:#7F0000;text-style:italic">items</span> <span style="color:#7F0000;text-style:italic">As</span> <span style="color:#7F0000;text-style:italic">New</span> <span style="color:#7F0000;text-style:italic">Dictionary</span>
+				
+				<span style="color:#0000FF;font-weight: bold">Dim</span> cursor <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = <span style="color:#326598">2</span>
+				<span style="color:#0000FF;font-weight: bold">If</span> cursor &lt; content.Size <span style="color:#0000FF;font-weight: bold">And</span> content.UInt8Value(cursor-<span style="color:#326598">2</span>) &lt;&gt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">Then</span>
+					
+					IDPict = Picture.FromData(content)
+					
+					
+					debugModule.Log(<span style="color:#6500FE">&quot;SmartCardInitiated</span> <span style="color:#6500FE">-&gt;</span> <span style="color:#6500FE">|Before|</span> <span style="color:#6500FE">smartcard.endSession&quot;</span>)
+					
+					smartcard.endSession
+					
+					debugModule.Log(<span style="color:#6500FE">&quot;SmartCardInitiated</span> <span style="color:#6500FE">-&gt;</span> <span style="color:#6500FE">|After|</span> <span style="color:#6500FE">smartcard.endSession&quot;</span>)
+					
+					smartcard = <span style="color:#0000FF;font-weight: bold">Nil</span>
+					
+					debugModule.Log(<span style="color:#6500FE">&quot;Set</span> <span style="color:#6500FE">SmartCard</span> <span style="color:#6500FE">to</span> <span style="color:#6500FE">nil&quot;</span>)
+				<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+			<span style="color:#0000FF;font-weight: bold">Else</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">If</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> Dict <span style="color:#0000FF;font-weight: bold">As</span> Dictionary</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> IDPict <span style="color:#0000FF;font-weight: bold">As</span> Picture</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> SlotDict <span style="color:#0000FF;font-weight: bold">As</span> Dictionary</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> SlotID <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> currentSlot <span style="color:#0000FF;font-weight: bold">As</span> TKSmartCardSlotMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> smartcard <span style="color:#0000FF;font-weight: bold">As</span> TKSmartCardMBS</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Module</span> debugModule</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> init()
+			destFolder = SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;eidReaderDebugLog&quot;</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">Not</span>(destFolder.Exists) <span style="color:#0000FF;font-weight: bold">then</span>
+				
+				destFolder.CreateAsFolder
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> log(line <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> t <span style="color:#0000FF;font-weight: bold">As</span> textOutputStream
+			<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> date
+			
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> active <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> destFile &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					d = <span style="color:#0000FF;font-weight: bold">new</span> Date
+					t = TextOutputStream.Append(destFile)
+					t.WriteLine(d.SQLDateTime + chr(<span style="color:#326598">9</span>) + line)
+					t.Close
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> start()
+			<span style="color:#0000FF;font-weight: bold">Dim</span> dte <span style="color:#0000FF;font-weight: bold">As</span> date
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> textOutputStream
+			
+			active = <span style="color:#0000FF;font-weight: bold">true</span>
+			
+			dte = <span style="color:#0000FF;font-weight: bold">new</span> date()
+			
+			
+			destFile = destFolder.Child(<span style="color:#6500FE">&quot;eidReader-&quot;</span> + Format(dte.Year - <span style="color:#326598">2000</span>, <span style="color:#6500FE">&quot;00&quot;</span>) + Format(dte.Month, <span style="color:#6500FE">&quot;00&quot;</span>) + Format(dte.Day, <span style="color:#6500FE">&quot;00&quot;</span>) + <span style="color:#6500FE">&quot;-&quot;</span> + Format(dte.Hour, <span style="color:#6500FE">&quot;00&quot;</span>) + Format(dte.Minute, <span style="color:#6500FE">&quot;00&quot;</span>) + Format(dte.Second, <span style="color:#6500FE">&quot;00&quot;</span>) + <span style="color:#6500FE">&quot;.debug&quot;</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> destFile &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				t = TextOutputStream.Create(destFile)
+				t.Close
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> active <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">boolean</span> = <span style="color:#0000FF;font-weight: bold">false</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> destFile <span style="color:#0000FF;font-weight: bold">As</span> folderItem</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> destFolder <span style="color:#0000FF;font-weight: bold">As</span> folderItem</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Module</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-mac64bit-eidreader-eidreader.html">/Mac64bit/eidReader/eidReader</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmac64bitplugin.html">MBS Mac64bit Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-mac64bit-eidreader-eidreaderv2">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

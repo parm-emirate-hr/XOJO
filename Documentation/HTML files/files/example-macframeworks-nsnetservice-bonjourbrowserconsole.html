@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /MacFrameworks/NSNetService/Bonjour Browser Console</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /MacFrameworks/NSNetService/Bonjour Browser Console</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/MacFrameworks/NSNetService/Bonjour Browser Console</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS MacFrameworks Plugin, MBS MacCocoa Plugin, MBS MacBase Plugin, MBS Main Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /MacFrameworks/NSNetService/Bonjour Browser Console<BR>
+This example is the version from Sat, 19th Feb 2021.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Bonjour</span> <span style="color:#6500FE">Browser</span> <span style="color:#6500FE">Console.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> ConsoleApplication</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> Run(args() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">String</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+			<span style="color:#0000FF;font-weight: bold">Const</span> domain = <span style="color:#6500FE">&quot;local.&quot;</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">default</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> type = <span style="color:#6500FE">&quot;_test._tcp.&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> name = <span style="color:#6500FE">&quot;My</span> <span style="color:#6500FE">Test</span> <span style="color:#6500FE">Service&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">const</span> port = <span style="color:#326598">12345</span>
+			
+			testService = <span style="color:#0000FF;font-weight: bold">new</span> NetworkService(domain, type, name, port)
+			testService.publish
+			
+			<span style="color:#0000FF;font-weight: bold">do</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">run</span> <span style="color:#7F0000;text-style:italic">event</span> <span style="color:#7F0000;text-style:italic">loop</span> <span style="color:#7F0000;text-style:italic">once</span>
+				NSRunLoopMBS.currentRunLoop.runOnce
+				
+				DoEvents
+			<span style="color:#0000FF;font-weight: bold">loop</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> UnhandledException(error <span style="color:#0000FF;font-weight: bold">As</span> RuntimeException) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> testService <span style="color:#0000FF;font-weight: bold">As</span> Networkservice</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> NetworkService <span style="color:#0000FF;font-weight: bold">Inherits</span> NSNetServiceMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> DidNotPublish(Error <span style="color:#0000FF;font-weight: bold">as</span> Dictionary)
+			Print CurrentMethodName
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> ErrorCode  <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = error.Lookup(NSNetServicesErrorCode, <span style="color:#6500FE">&quot;&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> errorDomain <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = error.Lookup(NSNetServicesErrorDomain, <span style="color:#6500FE">&quot;&quot;</span>)
+			
+			
+			Print <span style="color:#6500FE">&quot;Did</span> <span style="color:#6500FE">not</span> <span style="color:#6500FE">publish</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">errorcode:</span> <span style="color:#6500FE">&quot;</span>+Str(ErrorCode)
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> DidNotResolve(Error <span style="color:#0000FF;font-weight: bold">as</span> Dictionary)
+			print CurrentMethodName
+			
+			<span style="color:#0000FF;font-weight: bold">Dim</span> ErrorCode  <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span> = error.Lookup(NSNetServicesErrorCode, <span style="color:#6500FE">&quot;&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">Dim</span> errorDomain <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span> = error.Lookup(NSNetServicesErrorDomain, <span style="color:#6500FE">&quot;&quot;</span>)
+			
+			
+			Print <span style="color:#6500FE">&quot;Did</span> <span style="color:#6500FE">not</span> <span style="color:#6500FE">resolve</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">errorcode:</span> <span style="color:#6500FE">&quot;</span>+Str(ErrorCode)
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> DidPublish()
+			print CurrentMethodName
+			
+			print <span style="color:#6500FE">&quot;Did</span> <span style="color:#6500FE">publish&quot;</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> DidResolveAddress()
+			print CurrentMethodName
+			
+			print <span style="color:#6500FE">&quot;Did</span> <span style="color:#6500FE">resolve</span> <span style="color:#6500FE">address</span> <span style="color:#6500FE">for</span> <span style="color:#6500FE">&quot;</span>+<span style="color:#0000FF;font-weight: bold">me</span>.name+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">type</span> <span style="color:#6500FE">&quot;</span>+<span style="color:#0000FF;font-weight: bold">me</span>.type+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+<span style="color:#0000FF;font-weight: bold">me</span>.addressIPv4+<span style="color:#6500FE">&quot;:&quot;</span>+str(<span style="color:#0000FF;font-weight: bold">me</span>.port)
+			<span style="color:#7F0000;text-style:italic">&#39;+Join(me.addresses,</span> <span style="color:#7F0000;text-style:italic">&quot;,</span> <span style="color:#7F0000;text-style:italic">&quot;)</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> DidStop()
+			print CurrentMethodName
+			
+			print <span style="color:#6500FE">&quot;Did</span> <span style="color:#6500FE">stop&quot;</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> DidUpdateTXTRecordData(data <span style="color:#0000FF;font-weight: bold">as</span> MemoryBlock)
+			print CurrentMethodName
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = data
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> encodings.UTF8.IsValidData(s) <span style="color:#0000FF;font-weight: bold">then</span>
+				s = DefineEncoding(S, encodings.UTF8)
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				s = DefineEncoding(s, encodings.ISOLatin1)
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			print <span style="color:#6500FE">&quot;Did</span> <span style="color:#6500FE">update</span> <span style="color:#6500FE">text</span> <span style="color:#6500FE">record:</span> <span style="color:#6500FE">&quot;</span>+s
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> WillPublish()
+			print CurrentMethodName
+			
+			print <span style="color:#6500FE">&quot;Will</span> <span style="color:#6500FE">publish&quot;</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> WillResolve()
+			print CurrentMethodName
+			
+			print <span style="color:#6500FE">&quot;Will</span> <span style="color:#6500FE">resolve</span> <span style="color:#6500FE">&quot;</span>+<span style="color:#0000FF;font-weight: bold">me</span>.name+<span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">of</span> <span style="color:#6500FE">type</span> <span style="color:#6500FE">&quot;</span>+<span style="color:#0000FF;font-weight: bold">me</span>.type
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-macframeworks-nsnetservice-bonjourbrowserdesktop.html">/MacFrameworks/NSNetService/Bonjour Browser Desktop</A></li>
+<li><A href="example-macframeworks-nsnetservice-bonjourbrowserweb.html">/MacFrameworks/NSNetService/Bonjour Browser Web</A></li>
+<li><A href="example-macframeworks-nsnetservice-bonjourios.html">/MacFrameworks/NSNetService/Bonjour iOS</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-macframeworks-nsnetservice-bonjourbrowserconsole">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

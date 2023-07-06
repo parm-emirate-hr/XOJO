@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /ChartDirector/Tracking Cursor/Crosshair with Axis Labels</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /ChartDirector/Tracking Cursor/Crosshair with Axis Labels</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/ChartDirector/Tracking Cursor/Crosshair with Axis Labels</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS ChartDirector Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /ChartDirector/Tracking Cursor/Crosshair with Axis Labels<BR>
+This example is the version from Wed, 13th Dec 2016.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Crosshair</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">Axis</span> <span style="color:#6500FE">Labels.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;L&ouml;schen&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;Beenden&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Window1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control Canvas1 <span style="color:#0000FF;font-weight: bold">Inherits</span> MyControl</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance Canvas1 <span style="color:#0000FF;font-weight: bold">Inherits</span> MyControl</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;Ablage&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Bearbeiten&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;R&uuml;ckg&auml;ngig&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;&amp;Ausschneiden&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Kopieren&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Einf&uuml;gen&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;&amp;Alles</span> <span style="color:#6500FE">ausw&auml;hlen&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyControl <span style="color:#0000FF;font-weight: bold">Inherits</span> Canvas</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> MouseMove(X <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, Y <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+			crosshair x,y
+			
+			pic = c.makeChartPicture
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.Invalidate
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">XY</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">first</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">series</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> dataX() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = <span style="color:#0000FF;font-weight: bold">array</span>(<span style="color:#006532">50.0</span>, <span style="color:#326598">55</span>, <span style="color:#326598">37</span>, <span style="color:#326598">24</span>, <span style="color:#326598">42</span>, <span style="color:#326598">49</span>, <span style="color:#326598">63</span>, <span style="color:#326598">72</span>, <span style="color:#326598">83</span>, <span style="color:#326598">59</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> dataY() <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span> = <span style="color:#0000FF;font-weight: bold">array</span>(<span style="color:#006532">3.6</span>, <span style="color:#006532">2.8</span>, <span style="color:#006532">2.5</span>, <span style="color:#006532">2.3</span>, <span style="color:#006532">3.8</span>, <span style="color:#006532">3.0</span>, <span style="color:#006532">3.8</span>, <span style="color:#006532">5.0</span>, <span style="color:#006532">6.0</span>, <span style="color:#006532">3.3</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> noOfPoints <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = UBound(dataX)+<span style="color:#326598">1</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Create</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">XYChart</span> <span style="color:#7F0000;text-style:italic">object</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">size</span> <span style="color:#7F0000;text-style:italic">520</span> <span style="color:#7F0000;text-style:italic">x</span> <span style="color:#7F0000;text-style:italic">490</span> <span style="color:#7F0000;text-style:italic">pixels</span>
+			c = <span style="color:#0000FF;font-weight: bold">new</span> CDXYChartMBS(<span style="color:#326598">520</span>, <span style="color:#326598">490</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">plotarea</span> <span style="color:#7F0000;text-style:italic">at</span> <span style="color:#7F0000;text-style:italic">(60,</span> <span style="color:#7F0000;text-style:italic">40)</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">size</span> <span style="color:#7F0000;text-style:italic">450</span> <span style="color:#7F0000;text-style:italic">x</span> <span style="color:#7F0000;text-style:italic">400</span> <span style="color:#7F0000;text-style:italic">pixels,</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">white</span> <span style="color:#7F0000;text-style:italic">background</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">light</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">grey</span> <span style="color:#7F0000;text-style:italic">border</span> <span style="color:#7F0000;text-style:italic">(&amp;hc0c0c0).</span> <span style="color:#7F0000;text-style:italic">Turn</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">both</span> <span style="color:#7F0000;text-style:italic">horizontal</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">vertical</span> <span style="color:#7F0000;text-style:italic">grid</span> <span style="color:#7F0000;text-style:italic">lines</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">light</span> <span style="color:#7F0000;text-style:italic">grey</span> <span style="color:#7F0000;text-style:italic">color</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">(&amp;hc0c0c0)</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> c.setPlotArea(<span style="color:#326598">60</span>, <span style="color:#326598">40</span>, <span style="color:#326598">450</span>, <span style="color:#326598">400</span>, <span style="color:#326598">&amp;hffffff</span>, -<span style="color:#326598">1</span>, <span style="color:#326598">&amp;hc0c0c0</span>, <span style="color:#326598">&amp;hc0c0c0</span>, -<span style="color:#326598">1</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">title</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">chart</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">18</span> <span style="color:#7F0000;text-style:italic">point</span> <span style="color:#7F0000;text-style:italic">Times</span> <span style="color:#7F0000;text-style:italic">Bold</span> <span style="color:#7F0000;text-style:italic">Itatic</span> <span style="color:#7F0000;text-style:italic">font.</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> c.addTitle(<span style="color:#6500FE">&quot;</span>      <span style="color:#6500FE">Chemical</span> <span style="color:#6500FE">X</span> <span style="color:#6500FE">Thermal</span> <span style="color:#6500FE">Conductivity&quot;</span>, <span style="color:#6500FE">&quot;timesbi.ttf&quot;</span>, <span style="color:#326598">18</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">titles</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">axes</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">12</span> <span style="color:#7F0000;text-style:italic">pts</span> <span style="color:#7F0000;text-style:italic">Arial</span> <span style="color:#7F0000;text-style:italic">Bold</span> <span style="color:#7F0000;text-style:italic">Italic</span> <span style="color:#7F0000;text-style:italic">font</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> c.yAxis.setTitle(<span style="color:#6500FE">&quot;Thermal</span> <span style="color:#6500FE">Conductivity</span> <span style="color:#6500FE">(W/K)&quot;</span>, <span style="color:#6500FE">&quot;arialbi.ttf&quot;</span>, <span style="color:#326598">12</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> c.xAxis.setTitle(<span style="color:#6500FE">&quot;Concentration</span> <span style="color:#6500FE">(g/liter)&quot;</span>, <span style="color:#6500FE">&quot;arialbi.ttf&quot;</span>, <span style="color:#326598">12</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">axes</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">width</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">3</span> <span style="color:#7F0000;text-style:italic">pixels</span>
+			c.yAxis.setWidth(<span style="color:#326598">3</span>)
+			c.xAxis.setWidth(<span style="color:#326598">3</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">scatter</span> <span style="color:#7F0000;text-style:italic">layer</span> <span style="color:#7F0000;text-style:italic">using</span> <span style="color:#7F0000;text-style:italic">(dataX,</span> <span style="color:#7F0000;text-style:italic">dataY)</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> scatterLayer <span style="color:#0000FF;font-weight: bold">as</span> CDScatterLayerMBS = c.addScatterLayer(dataX, dataY, <span style="color:#6500FE">&quot;&quot;</span>, c.kGlassSphereShape, <span style="color:#326598">13</span>, <span style="color:#326598">&amp;hcc0000</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Tooltip</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">scatter</span> <span style="color:#7F0000;text-style:italic">layer</span>
+			scatterLayer.setHTMLImageMap(<span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#6500FE">&quot;title=&#39;Concentration:</span> <span style="color:#6500FE">{x}</span> <span style="color:#6500FE">g/liter,</span> <span style="color:#6500FE">Conductivity:</span> <span style="color:#6500FE">{value}</span> <span style="color:#6500FE">W/K&#39;&quot;</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">trend</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">layer</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">(dataX,</span> <span style="color:#7F0000;text-style:italic">dataY)</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> trendLayer <span style="color:#0000FF;font-weight: bold">as</span> CDTrendLayerMBS = c.addTrendLayer(dataX, dataY, <span style="color:#326598">&amp;hcc0000</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">width</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">3</span> <span style="color:#7F0000;text-style:italic">pixels</span>
+			trendLayer.setLineWidth(<span style="color:#326598">3</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">95%</span> <span style="color:#7F0000;text-style:italic">confidence</span> <span style="color:#7F0000;text-style:italic">band</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">line</span>
+			trendLayer.addConfidenceBand(<span style="color:#006532">0.95</span>, <span style="color:#326598">&amp;h806666ff</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">95%</span> <span style="color:#7F0000;text-style:italic">confidence</span> <span style="color:#7F0000;text-style:italic">band</span> <span style="color:#7F0000;text-style:italic">(prediction</span> <span style="color:#7F0000;text-style:italic">band)</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">points</span>
+			trendLayer.addPredictionBand(<span style="color:#006532">0.95</span>, <span style="color:#326598">&amp;h8066ff66</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Tool</span> <span style="color:#7F0000;text-style:italic">tip</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">trend</span> <span style="color:#7F0000;text-style:italic">layer</span>
+			trendLayer.setHTMLImageMap(<span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#6500FE">&quot;&quot;</span>, <span style="color:#6500FE">&quot;title=&#39;Trend</span> <span style="color:#6500FE">Line:</span> <span style="color:#6500FE">y</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">{slope|P4}</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">+</span> <span style="color:#6500FE">{intercept|P4}&#39;&quot;</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">legend</span> <span style="color:#7F0000;text-style:italic">box</span> <span style="color:#7F0000;text-style:italic">at</span> <span style="color:#7F0000;text-style:italic">(60,</span> <span style="color:#7F0000;text-style:italic">35)</span> <span style="color:#7F0000;text-style:italic">(top</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">chart)</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">horizontal</span> <span style="color:#7F0000;text-style:italic">layout.</span> <span style="color:#7F0000;text-style:italic">Use</span> <span style="color:#7F0000;text-style:italic">10</span> <span style="color:#7F0000;text-style:italic">pts</span> <span style="color:#7F0000;text-style:italic">Arial</span> <span style="color:#7F0000;text-style:italic">Bold</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Italic</span> <span style="color:#7F0000;text-style:italic">font.</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">background</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">border</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">Transparent</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">style</span> <span style="color:#7F0000;text-style:italic">legend</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">icons.</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> legendBox <span style="color:#0000FF;font-weight: bold">as</span> CDLegendBoxMBS = c.addLegend(<span style="color:#326598">60</span>, <span style="color:#326598">35</span>, <span style="color:#0000FF;font-weight: bold">false</span>, <span style="color:#6500FE">&quot;arialbi.ttf&quot;</span>, <span style="color:#326598">9</span>)
+			legendBox.setBackground(c.kTransparent)
+			legendBox.setLineStyleKey(<span style="color:#0000FF;font-weight: bold">true</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Add</span> <span style="color:#7F0000;text-style:italic">entries</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">legend</span> <span style="color:#7F0000;text-style:italic">box</span>
+			legendBox.addKey(<span style="color:#6500FE">&quot;95%</span> <span style="color:#6500FE">Line</span> <span style="color:#6500FE">Confidence&quot;</span>, <span style="color:#326598">&amp;h806666ff</span>)
+			legendBox.addKey(<span style="color:#6500FE">&quot;95%</span> <span style="color:#6500FE">Point</span> <span style="color:#6500FE">Confidence&quot;</span>, <span style="color:#326598">&amp;h8066ff66</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> trendLegend <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			trendLegend = <span style="color:#6500FE">&quot;Trend</span> <span style="color:#6500FE">Line:</span> <span style="color:#6500FE">y</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">&quot;</span> + c.formatValue(trendLayer.getSlope, <span style="color:#6500FE">&quot;{value|4}&quot;</span>) + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">x</span> <span style="color:#6500FE">=</span> <span style="color:#6500FE">&quot;</span> + c.formatValue(trendLayer.getIntercept, <span style="color:#6500FE">&quot;{value|4}&quot;</span>)
+			legendBox.addKey(trendLegend, <span style="color:#326598">&amp;hcc0000</span>, <span style="color:#326598">3</span>)
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Include</span> <span style="color:#7F0000;text-style:italic">tool</span> <span style="color:#7F0000;text-style:italic">tip</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">chart</span>
+			<span style="color:#7F0000;text-style:italic">&#39;viewer.setImageMap(c.getHTMLImageMap(&quot;&quot;))</span>
+			
+			pic = c.makeChartPicture
+			<span style="color:#0000FF;font-weight: bold">me</span>.Invalidate
+			
+			
+			
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">fix</span> <span style="color:#7F0000;text-style:italic">some</span> <span style="color:#7F0000;text-style:italic">properties</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">wrong</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">IDE</span>
+			
+			<span style="color:#0000FF;font-weight: bold">me</span>.DoubleBuffer = <span style="color:#0000FF;font-weight: bold">false</span>
+			<span style="color:#0000FF;font-weight: bold">me</span>.EraseBackground = <span style="color:#0000FF;font-weight: bold">false</span>
+			
+			<span style="color:#0000FF">#if</span> RBVersion &gt;= <span style="color:#006532">2013.0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Transparent = <span style="color:#0000FF;font-weight: bold">False</span>
+			<span style="color:#0000FF">#endif</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Paint(g <span style="color:#0000FF;font-weight: bold">As</span> Graphics, areas() <span style="color:#0000FF;font-weight: bold">As</span> REALbasic.Rect)
+			<span style="color:#0000FF;font-weight: bold">if</span> pic &lt;&gt; <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				g.DrawPicture pic, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> crosshair(MouseX <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, MouseY <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Clear</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">current</span> <span style="color:#7F0000;text-style:italic">dynamic</span> <span style="color:#7F0000;text-style:italic">layer</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">DrawArea</span> <span style="color:#7F0000;text-style:italic">object</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">draw</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">it.</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> CDDrawAreaMBS = c.initDynamicLayer
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">plot</span> <span style="color:#7F0000;text-style:italic">area</span> <span style="color:#7F0000;text-style:italic">object</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> plotArea <span style="color:#0000FF;font-weight: bold">as</span> CDPlotAreaMBS = c.getPlotArea
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">check</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">outside</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">plotArea</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> mousex&lt;plotArea.getLeftX   <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> mousey&lt;plotArea.getTopY    <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> mousex&gt;plotArea.getRightX  <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> mousey&gt;plotArea.getBottomY <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Draw</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">vertical</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">horizontal</span> <span style="color:#7F0000;text-style:italic">line</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">cross</span> <span style="color:#7F0000;text-style:italic">hair</span>
+			d.vline(plotArea.getTopY, plotArea.getBottomY, mouseX, d.dashLineColor(<span style="color:#326598">&amp;h000000</span>, <span style="color:#326598">&amp;h0101</span>))
+			d.hline(plotArea.getLeftX, plotArea.getRightX, mouseY, d.dashLineColor(<span style="color:#326598">&amp;h000000</span>, <span style="color:#326598">&amp;h0101</span>))
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Draw</span> <span style="color:#7F0000;text-style:italic">y-axis</span> <span style="color:#7F0000;text-style:italic">label</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> ylabel <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			ylabel = <span style="color:#6500FE">&quot;&lt;*block,bgColor=FFFFDD,margin=3,edgeColor=000000*&gt;&quot;</span> + c.formatValue(c.getYValue(mouseY, c.yAxis), <span style="color:#6500FE">&quot;{value|P4}&quot;</span>) + <span style="color:#6500FE">&quot;&lt;*/*&gt;&quot;</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> t <span style="color:#0000FF;font-weight: bold">as</span> CDTTFTextMBS = d.text(ylabel, <span style="color:#6500FE">&quot;arialbd.ttf&quot;</span>, <span style="color:#326598">8</span>)
+			t.draw(plotArea.getLeftX - <span style="color:#326598">5</span>, mouseY, <span style="color:#326598">&amp;h000000</span>, c.kRight)
+			t.destroy
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Draw</span> <span style="color:#7F0000;text-style:italic">x-axis</span> <span style="color:#7F0000;text-style:italic">label</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> xlabel <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			xlabel = <span style="color:#6500FE">&quot;&lt;*block,bgColor=FFFFDD,margin=3,edgeColor=000000*&gt;&quot;</span> + c.formatValue(c.getXValue(mouseX), <span style="color:#6500FE">&quot;{value|P4}&quot;</span>) + <span style="color:#6500FE">&quot;&lt;*/*&gt;&quot;</span>
+			
+			t = d.text(xlabel, <span style="color:#6500FE">&quot;arialbd.ttf&quot;</span>, <span style="color:#326598">8</span>)
+			t.draw(mouseX, plotArea.getBottomY + <span style="color:#326598">5</span>, <span style="color:#326598">&amp;h000000</span>, c.kTop)
+			t.destroy
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Note">		Note <span style="color:#6500FE">&quot;Notes&quot;</span>
+<div class="RB_Comment">			This sample program demonstrates a track cursor programmed as a crosshair cursor with axis labels.
+			
+			The code first draws the chart. 
+			We hide tracking if mouse is out of plotarea.
+			The track cursor is configured to automatically hide itself when the mouse leaves the plot area.
+			
+			The crossHair method is the routine that draws the track cursor. Its key elements are:
+			
+			* To draw dynamic contents on the chart, the code obtains the DrawArea object for drawing on the dynamic layer of the chart using BaseChart.initDynamicLayer.
+			* The code draws a vertical line (using DrawArea.vline) and a horizontal line (using DrawArea.hline) at the mouse cursor position. This creates the crosshair.
+			* The code also draws x and y axis labels using DrawArea.text.</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> c <span style="color:#0000FF;font-weight: bold">As</span> CDXYChartMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> pic <span style="color:#0000FF;font-weight: bold">As</span> Picture</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-chartdirector-trackingcursor-financecharttrackline.html">/ChartDirector/Tracking Cursor/Finance Chart Track Line</A></li>
+<li><A href="example-chartdirector-trackingcursor-trackboxwithlegend.html">/ChartDirector/Tracking Cursor/Track Box with Legend</A></li>
+<li><A href="example-chartdirector-trackingcursor-tracklineweb.html">/ChartDirector/Tracking Cursor/Track Line Web</A></li>
+<li><A href="example-chartdirector-trackingcursor-tracklinewithaxislabels.html">/ChartDirector/Tracking Cursor/Track Line with Axis Labels</A></li>
+<li><A href="example-chartdirector-trackingcursor-tracklinewithdatalabels.html">/ChartDirector/Tracking Cursor/Track Line with Data Labels</A></li>
+<li><A href="example-chartdirector-trackingcursor-tracklinewithdatalabelsretina.html">/ChartDirector/Tracking Cursor/Track Line with Data Labels Retina</A></li>
+<li><A href="example-chartdirector-trackingcursor-tracklinewithlegend.html">/ChartDirector/Tracking Cursor/Track Line with Legend</A></li>
+<li><A href="example-chartdirector-trackingcursor-tracklinewithlegendretina.html">/ChartDirector/Tracking Cursor/Track Line with Legend Retina</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-chartdirector-trackingcursor-crosshairwithaxislabels">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

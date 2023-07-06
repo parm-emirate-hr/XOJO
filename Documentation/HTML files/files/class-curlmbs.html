@@ -1,0 +1,529 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - CURLMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="CURLMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">CURLMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>CURLMBS class</H3>
+<div class="WLM">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-curl.html" translate="no">CURL</A></td>
+<td class=grau><a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a></td>
+<td class=grau><a href="newinversion98.shtml" class=version>9.8</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>Desktop, Console & Web</td>
+</tr>
+</table>
+<B>Function:</B> 
+A class to wrap libCURL.<BR>
+<B>Example:</B> 
+<div class=CodeExample translate="no">
+<pre>
+
+<span style="color: #000000;"><span style="color: #0000FF;">Dim</span> d <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">New</span> CURLMBS<br /><br /><span style="color: #800000;">// download here</span><br />d.OptionURL = URL<br /><br /><span style="color: #800000;">// if you use SSL, maybe put in a certificate or disable verification?</span><br />d.OptionSSLVerifyHost = <span style="color: #336698;">0</span><br />d.OptionSSLVerifyPeer = <span style="color: #336698;">0</span><br /><br /><span style="color: #800000;">// run download</span><br /><span style="color: #0000FF;">dim</span> e <span style="color: #0000FF;">as</span> <span style="color: #0000FF;">integer</span> = d.Perform<br /><br /><span style="color: #800000;">// check result</span><br /><span style="color: #0000FF;">Dim</span> data <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">String</span> = d.OutputData<br /><span style="color: #0000FF;">Dim</span> DebugMessage <span style="color: #0000FF;">As</span> <span style="color: #0000FF;">String</span> = d.DebugMessages <span style="color: #800000;">// check in debugger on error</span><br /><br />ResultText.text=<span style="color: #6600FE;">&quot;Result: &quot;</span>+str(e) <span style="color: #800000;">// 0 = Okay, others are error codes, so check debug messsages</span></span>
+</pre>
+</div>
+<B>Notes:</B> 
+<BR>
+We have three variants:<BR>
+<BR>
+CURLS* classes include a static CURL library with SSL and SSH.<BR>
+CURLN* classes include a static CURL library with native SSL on Mac and Windows.<BR>
+CURL* classes without S need you to supply your own CURL library.<BR>
+<BR>
+All variants can load a custom CURL library or use the one from the system on Mac and Linux.<BR>
+If no library is loaded or included, the plugin will try to load the system one in constructor.<BR>
+<BR>
+from the website libCURL website:<BR>
+<a href="https://curl.haxx.se/libcurl/" target=_blank>https://curl.haxx.se/libcurl/</a><BR>
+<BR>
+libCURL is a free and easy-to-use client-side URL transfer library, supporting FTP, FTPS, HTTP, HTTPS, SCP, SFTP, TFTP, TELNET, DICT, FILE and LDAP. libCURL supports SSL certificates, HTTP POST, HTTP PUT, FTP uploading, HTTP form based upload, proxies, cookies, user+password authentication (Basic, Digest, NTLM, Negotiate, Kerberos4), file transfer resume, http proxy tunneling and more!<BR>
+<BR>
+libCURL is highly portable, it builds and works identically on numerous platforms, including Solaris, NetBSD, FreeBSD, OpenBSD, Darwin, HPUX, IRIX, AIX, Tru64, Linux, UnixWare, HURD, Windows, Amiga, OS/2, BeOs, Mac OS X, Ultrix, QNX, OpenVMS, RISC OS, Novell NetWare, DOS and more...<BR>
+<BR>
+libCURL is free, thread-safe, IPv6 compatible, feature rich, well supported, fast, thoroughly documented and is already used by many known, big and successful companies and numerous applications.<BR>
+<BR>
+On Linux you may need to install libraries like ldap: apt-get install libldap-2.4.2:i386<BR>
+</div>
+<ul>
+<LI>12 events<UL>
+<li class="WLM">event <A href="curl-curlmbs-event.html">ChunkBegin</A>(FileInfo as <A href="class-curlfileinfombs.html">CURLFileInfoMBS</A>, Remains as Integer) as Integer</li>
+<li class="WLM">event <A href="curl-curlmbs-event.html#2">ChunkEnd</A>(FileInfo as <A href="class-curlfileinfombs.html">CURLFileInfoMBS</A>, Remains as Integer) as Integer</li>
+<li class="WLM">event <A href="curl-curlmbs-event.html#3">DebugMessage</A>(infotype as Integer, data as string, dataSize as Integer)</li>
+<li class="WLM">event <A href="curl-curlmbs-event.html#4">FileNameMatch</A>(Pattern as String, Name as String) as Integer</li>
+<li class="WLM">event <A href="curl-curlmbs-event.html#5">Finished</A>(Result as Integer)</li>
+<li class="WLM">event <A href="curl-curlmbs-event.html#6">Header</A>(data as string, dataSize as Integer) as Integer</li>
+<li class="WLM">event <A href="curl-curlmbs-event.html#7">Progress</A>(dltotal as Int64, dlnow as Int64, ultotal as Int64, ulnow as Int64, percent as Double) as boolean</li>
+<li class="WLM">event <A href="curl-curlmbs-event.html#8">Read</A>(count as Integer) as string</li>
+<li class="WLM">event <A href="curl-curlmbs-event.html#9">RestartRead</A>() as boolean</li>
+<li class="WLM">event <A href="curl-curlmbs-event.html#10">Seek</A>(pos as Int64, whence as Integer) as Integer</li>
+<li class="WLM">event <A href="curl-curlmbs-event.html#11">SSHKey</A>(KnownKey as string, KnownKeyLength as Integer, KnownKeyType as Integer, FoundKey as string, FoundKeyLength as Integer, FoundKeyType as Integer, MatchStatus as Integer) as Integer</li>
+<li class="WLM">event <A href="curl-curlmbs-event.html#12">Write</A>(data as string, dataSize as Integer) as Integer</li>
+</UL></LI>
+<LI>258 properties<UL>
+<li class="WLM">property <A href="curl-curlmbs-property.html">Cancel</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#3">CollectDebugMessages</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#5">CollectHeaders</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#6">CollectOutputData</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#8">DebugMessages</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#9">DebugWithData</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#10">Handle</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#11">HeaderData</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#13">InputData</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#14">Lasterror</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#15">LastErrorMessage</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#16">LasterrorText</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#17">OptionAbstractUnixSocket</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#18">OptionAcceptEncoding</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#19">OptionAcceptTimeoutMS</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#20">OptionAddressScope</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#21">OptionAppend</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#22">OptionAutoReferer</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#23">OptionAWSSigV4</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#24">OptionBufferSize</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#25">OptionCACacheTimeout</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#26">OptionCAInfo</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#27">OptionCAInfoBlob</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#28">OptionCAPath</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property.html#29">OptionCertInfo</A> as boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html">OptionConnectionTimeout</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#2">OptionConnectionTimeOutMS</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#3">OptionConnectOnly</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#4">OptionCookie</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#5">OptionCookieFile</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#6">OptionCookieJar</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#7">OptionCookieList</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#8">OptionCookieSession</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#9">OptionCRLF</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#10">OptionCRLFile</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#11">OptionCustomRequest</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#12">OptionDefaultProtocol</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#13">OptionDirListOnly</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#14">OptionDisableUserNameInURL</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#15">OptionDNSCacheTimeout</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#16">OptionDNSInterface</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#17">OptionDNSLocalIPv4</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#18">OptionDNSLocalIPv6</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#19">OptionDNSServers</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#20">OptionDNSShuffleAddresses</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#21">OptionDOHSSLVerifyHost</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#22">OptionDOHSSLVerifyPeer</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#23">OptionDOHSSLVerifyStatus</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#24">OptionDOHURL</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#26">OptionExpect100TimeoutMS</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#27">OptionFailOnError</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#28">OptionFileTime</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#29">OptionFollowLocation</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property1.html#30">OptionForbitReuse</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html">OptionFreshConnect</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#2">OptionFTPAccount</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#3">OptionFTPAlternativeToUser</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#5">OptionFTPCreateMissingDirs</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#6">OptionFTPFileMethod</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#8">OptionFTPPort</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#10">OptionFTPSkipPasvIP</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#12">OptionFTPSSLAuth</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#13">OptionFTPSSLCCC</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#14">OptionFTPUseEPRT</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#15">OptionFTPUseEPSV</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#16">OptionFTPusePret</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#17">OptionGet</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#18">OptionGSSAPIDelegation</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#19">OptionHappyEyeballsTimeOutMS</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#20">OptionHAProxyProtocol</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#21">OptionHeader</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#22">OptionHeaderOptions</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#23">OptionHTTPAuth</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#24">OptionHTTPContentDecoding</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#25">OptionHTTPProxyTunnel</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#26">OptionHTTPTransferDecoding</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#27">OptionHTTPVersion</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#28">OptionIgnoreContentLength</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property2.html#29">OptionInFileSize</A> as Int64</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html">OptionInterface</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#2">OptionIPResolve</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#3">OptionIssuerCert</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#4">OptionIssuerCertBlob</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#5">OptionKeepSendingOnError</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#6">OptionKeyPassword</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#8">OptionKRBLevel</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#9">OptionLocalPort</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#10">OptionLocalPortRange</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#11">OptionLoginOptions</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#12">OptionLowSpeedLimit</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#13">OptionLowSpeedTime</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#14">OptionMailAuth</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#15">OptionMailFrom</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#16">OptionMaxAgeConn</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#17">OptionMaxConnects</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#18">OptionMaxFileSize</A> as Int64</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#20">OptionMaxLifeTimeConnection</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#21">OptionMaxRecvSpeed</A> as Int64</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#23">OptionMaxRedirs</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#24">OptionMaxSendSpeed</A> as Int64</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#26">OptionMimeOptions</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#27">OptionNetRC</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#28">OptionNetRCFile</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#29">OptionNewDirectoryPerms</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property3.html#30">OptionNewFilePerms</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html">OptionNoBody</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#2">OptionNoProxy</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#3">OptionNoSignal</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#4">OptionPassword</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#5">OptionPathAsIs</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#6">OptionPinnedPublicKey</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#7">OptionPipeWait</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#8">OptionPort</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#9">OptionPost</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#10">OptionPostFields</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#11">OptionPostFieldSize</A> as Int64</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#13">OptionPostRedir</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#14">OptionPreProxy</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#16">OptionProtocolsString</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#17">OptionProxy</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#18">OptionProxyAuth</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#19">OptionProxyCAInfo</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#20">OptionProxyCAInfoBlob</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#21">OptionProxyCAPath</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#22">OptionProxyCRLFile</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#23">OptionProxyIssuerCert</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#24">OptionProxyIssuerCertBlob</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#25">OptionProxyKeyPassword</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#26">OptionProxyPassword</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#27">OptionProxyPinnedPublicKey</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#28">OptionProxyPort</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#29">OptionProxyServiceName</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property4.html#30">OptionProxySSLCert</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html">OptionProxySSLCertBlob</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#2">OptionProxySSLCertType</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#3">OptionProxySSLCipherList</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#4">OptionProxySSLKey</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#5">OptionProxySSLKeyBlob</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#6">OptionProxySSLKeyType</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#7">OptionProxySSLOptions</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#8">OptionProxySSLVerifyHost</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#9">OptionProxySSLVerifyPeer</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#10">OptionProxySSLVersion</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#11">OptionProxyTLS13Ciphers</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#12">OptionProxyTLSAuthPassword</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#13">OptionProxyTLSAuthType</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#14">OptionProxyTLSAuthUsername</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#15">OptionProxyTransferMode</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#16">OptionProxyType</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#17">OptionProxyUsername</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#19">OptionQuickExit</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#21">OptionRange</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#23">OptionReditProtocolsString</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#24">OptionReferer</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#25">OptionRequestTarget</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#26">OptionResumeFrom</A> as Int64</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#28">OptionRTSPClientCSEQ</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#29">OptionRTSPRequest</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property5.html#30">OptionRTSPServerCSEQ</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html">OptionRTSPSessionID</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html#2">OptionRTSPStreamURI</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html#3">OptionRTSPTransport</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html#4">OptionSASLAuthZID</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html#5">OptionSASLIR</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html#6">OptionServerResponseTimeout</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html#7">OptionServiceName</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html#8">OptionSocks5Auth</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html#9">OptionSocks5GSSAPINEC</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html#11">OptionSSHAuthTypes</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html#12">OptionSSHCompression</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html#13">OptionSSHHostPublicKeyMD5</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html#14">OptionSSHHostPublicKeySHA256</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html#15">OptionSSHKnownhosts</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html#16">OptionSSHPrivateKeyfile</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html#17">OptionSSHPublicKeyfile</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html#18">OptionSSLCert</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html#19">OptionSSLCertBlob</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html#21">OptionSSLCertType</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html#22">OptionSSLCipherList</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html#23">OptionSSLEnableALPN</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html#27">OptionSSLFalseStart</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html#28">OptionSSLKey</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property6.html#29">OptionSSLKeyBlob</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html">OptionSSLKeyType</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#2">OptionSSLOptions</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#3">OptionSSLSessionIDCache</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#4">OptionSSLVerifyHost</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#5">OptionSSLVerifyPeer</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#6">OptionSSLVerifyStatus</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#7">OptionSSLVersion</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#8">OptionStreamDepends</A> as CURLMBS</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#9">OptionStreamDependsE</A> as CURLMBS</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#10">OptionStreamWeight</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#11">OptionSuppressConnectHeaders</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#12">OptionTCPFastOpen</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#13">OptionTCPKeepAlive</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#14">OptionTCPKeepIdle</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#15">OptionTCPKeepInterval</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#16">OptionTCPNoDelay</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#17">OptionTFTPBlockSize</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#18">OptionTFTPNoOptions</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#19">OptionTimeCondition</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#20">OptionTimeOut</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#21">OptionTimeOutMS</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#22">OptionTimeValue</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#23">OptionTLS13Ciphers</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#24">OptionTLSAuthPassword</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#25">OptionTLSAuthType</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#26">OptionTLSAuthUsername</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#27">OptionTransferEncoding</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#28">OptionTransferText</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#29">OptionUnixSocketPath</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property7.html#30">OptionUnrestrictedAuth</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property8.html">OptionUpkeepIntervalMS</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property8.html#2">OptionUpload</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property8.html#3">OptionUploadBufferSize</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property8.html#4">OptionURL</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property8.html#5">OptionUserAgent</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property8.html#6">OptionUsername</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property8.html#7">OptionUseSSL</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property8.html#8">OptionVerbose</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property8.html#9">OptionWildCardMatch</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property8.html#10">OptionXOAuth2Bearer</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property8.html#11">OutputData</A> as String</li>
+<li class="WLM">property <A href="curl-curlmbs-property8.html#12">Paused</A> as Boolean</li>
+<li class="WLM">property <A href="curl-curlmbs-property8.html#13">ProgressDownloadCurrent</A> as Int64</li>
+<li class="WLM">property <A href="curl-curlmbs-property8.html#14">ProgressDownloadTotal</A> as Int64</li>
+<li class="WLM">property <A href="curl-curlmbs-property8.html#15">ProgressPercent</A> as Double</li>
+<li class="WLM">property <A href="curl-curlmbs-property8.html#16">ProgressUploadCurrent</A> as Int64</li>
+<li class="WLM">property <A href="curl-curlmbs-property8.html#17">ProgressUploadTotal</A> as Int64</li>
+<li class="WLM">property <A href="curl-curlmbs-property8.html#18">WebSocketOptions</A> as Integer</li>
+<li class="WLM">property <A href="curl-curlmbs-property8.html#19">YieldTime</A> as Boolean</li>
+</UL></LI>
+<LI>4 shared properties<UL>
+<li class="WLM">shared property <A href="curl-curlmbs-shared-property.html">APILoaded</A> as Boolean</li>
+<li class="WLM">shared property <A href="curl-curlmbs-shared-property.html#2">LibraryUsed</A> as String</li>
+<li class="WLM">shared property <A href="curl-curlmbs-shared-property.html#3">LibVersion</A> as string</li>
+<li class="WLM">shared property <A href="curl-curlmbs-shared-property.html#4">Version</A> as <A href="class-curlversionmbs.html">CURLVersionMBS</A></li>
+</UL></LI>
+<LI>111 methods<UL>
+<li class="WLM">method <A href="curl-curlmbs-method.html">AddMimePart</A> as <A href="class-curlmimepartmbs.html">CURLMimePartMBS</A></li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#2">ClearData</A></li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#3">CloseMTDebugOutputFile</A></li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#4">CloseMTHeaderOutputFile</A></li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#5">CloseMTInputFile</A></li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#6">CloseMTOutputFile</A></li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#7">CreateMTDebugOutputFile</A>(file as folderitem) as boolean</li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#8">CreateMTDebugOutputFile</A>(Path as String) as boolean</li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#9">CreateMTHeaderOutputFile</A>(file as folderitem) as boolean</li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#10">CreateMTHeaderOutputFile</A>(Path as String) as boolean</li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#11">CreateMTOutputFile</A>(file as folderitem) as boolean</li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#12">CreateMTOutputFile</A>(Path as String) as boolean</li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#13">FileInfos</A> as <A href="class-curlfileinfombs.html">CURLFileInfoMBS</A>()</li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#14">FinishMime</A></li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#15">FormAdd</A>(FormOption1 as Integer, Text1 as string, FormOption2 as Integer, FormOptions() as Integer, Texts() as string)</li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#16">FormAdd</A>(FormOption1 as Integer, Text1 as string, FormOption2 as Integer, Text2 as string)</li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#17">FormAdd</A>(FormOption1 as Integer, Text1 as string, FormOption2 as Integer, Text2 as string, FormOption3 as Integer, Number3 as Integer)</li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#18">FormAdd</A>(FormOption1 as Integer, Text1 as string, FormOption2 as Integer, Text2 as string, FormOption3 as Integer, Number3 as Integer, FormOption4 as Integer, Number4 as Integer)</li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#19">FormAdd</A>(FormOption1 as Integer, Text1 as string, FormOption2 as Integer, Text2 as string, FormOption3 as Integer, Number3 as Integer, FormOption4 as Integer, Text4 as string)</li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#20">FormAdd</A>(FormOption1 as Integer, Text1 as string, FormOption2 as Integer, Text2 as string, FormOption3 as Integer, Text3 as string)</li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#21">FormAdd</A>(FormOption1 as Integer, Text1 as string, FormOption2 as Integer, Text2 as string, FormOption3 as Integer, Text3 as string, FormOption4 as Integer, Number4 as Integer)</li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#22">FormAdd</A>(FormOption1 as integer, Text1 as string, FormOption2 as integer, Text2 as string, FormOption3 as integer, Text3 as string, FormOption4 as integer, Number4 as integer, FormOption5 as integer, Text5 as string)</li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#23">FormAddField</A>(fieldName as String, fieldValue as String, ContentType as String = "")</li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#24">FormAddFile</A>(fieldName as String, fileName as String, fileContent as string, ContentType as String = "")</li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#25">FormClear</A></li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#26">FormData</A> as String</li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#27">FormFinish</A></li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#28">GetInfoActiveSocket</A> as integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method.html#29">GetInfoAppConnectTime</A> as Double</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html">GetInfoCAInfo</A> as string</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#2">GetInfoCAPath</A> as string</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#3">GetInfoCertInfo</A> as <A href="class-curllistmbs.html">CURLListMBS</A>()</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#4">GetInfoConditionUnmet</A> as Integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#5">GetInfoConnectTime</A> as Double</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#6">GetInfoContentLengthDownload</A> as Double</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#7">GetInfoContentLengthUpload</A> as Double</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#8">GetInfoContentType</A> as string</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#9">GetInfoCookieList</A> as <A href="class-curllistmbs.html">CURLListMBS</A></li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#10">GetInfoEffectiveMethod</A> as string</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#11">GetInfoEffectiveURL</A> as string</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#12">GetInfoFileTime</A> as Integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#13">GetInfoFTPEntryPath</A> as string</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#14">GetInfoHeaderSize</A> as Integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#15">GetInfoHTTPAuthAvail</A> as Integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#16">GetInfoHTTPConnectCode</A> as Integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#17">GetInfoHTTPVersion</A> as integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#19">GetInfoLocalIP</A> as string</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#20">GetInfoLocalPort</A> as Integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#21">GetInfoNameLookupTime</A> as Double</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#22">GetInfoNumConnects</A> as Integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#23">GetInfoOSErrno</A> as Integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#24">GetInfoPreTransferTime</A> as Double</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#25">GetInfoPrimaryIP</A> as string</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#26">GetInfoPrimaryPort</A> as Integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#28">GetInfoProxyAuthAvail</A> as Integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#29">GetInfoProxyError</A> as integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method1.html#30">GetInfoProxySSLVerifyResult</A> as integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html">GetInfoRedirectCount</A> as Integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#2">GetInfoRedirectTime</A> as Double</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#3">GetInfoRedirectURL</A> as string</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#4">GetInfoReferer</A> as string</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#5">GetInfoRequestSize</A> as Integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#6">GetInfoResponseCode</A> as Integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#7">GetInfoRetryAfter</A> as integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#8">GetInfoRTSPClientCSEQ</A> as Integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#9">GetInfoRTSPCSEQRecv</A> as Integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#10">GetInfoRTSPServerCSEQ</A> as Integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#11">GetInfoRTSPSessionID</A> as string</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#12">GetInfoScheme</A> as string</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#13">GetInfoSizeDownload</A> as Double</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#14">GetInfoSizeUpload</A> as Double</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#15">GetInfoSpeedDownload</A> as Double</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#16">GetInfoSpeedUpload</A> as Double</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#17">GetInfoSSLEngines</A> as <A href="class-curllistmbs.html">CURLListMBS</A></li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#18">GetInfoSSLVerifyResult</A> as Integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#19">GetInfoStartTransferTime</A> as Double</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#20">GetInfoTotalTime</A> as Double</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#21">OpenMTInputFile</A>(file as folderitem, Offset as Integer = 0) as boolean</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#22">OpenMTInputFile</A>(Path as String, Offset as Integer = 0) as boolean</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#23">Perform</A> as Integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#24">PerformMT</A> as Integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#25">ReceiveData</A>(byref data as Memoryblock, BytesToRead as Int64) as Int64</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#26">Reset</A></li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#27">SendData</A>(data as Memoryblock) as Integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#28">SendData</A>(data as string) as Integer</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#29">SetInputData</A>(data as MemoryBlock)</li>
+<li class="WLM">method <A href="curl-curlmbs-method2.html#30">SetInputData</A>(data as string)</li>
+<li class="WLM">method <A href="curl-curlmbs-method3.html">SetOptionConnectTo</A>(list() as string)</li>
+<li class="WLM">method <A href="curl-curlmbs-method3.html#2">SetOptionEmptyPassword</A></li>
+<li class="WLM">method <A href="curl-curlmbs-method3.html#3">SetOptionHTTP200Aliases</A>(list() as string)</li>
+<li class="WLM">method <A href="curl-curlmbs-method3.html#4">SetOptionHTTPHeader</A>(list() as string)</li>
+<li class="WLM">method <A href="curl-curlmbs-method3.html#5">SetOptionMailRecipients</A>(list() as string)</li>
+<li class="WLM">method <A href="curl-curlmbs-method3.html#6">SetOptionPostQuote</A>(list() as string)</li>
+<li class="WLM">method <A href="curl-curlmbs-method3.html#7">SetOptionPreQuote</A>(list() as string)</li>
+<li class="WLM">method <A href="curl-curlmbs-method3.html#8">SetOptionProxyHeader</A>(list() as string)</li>
+<li class="WLM">method <A href="curl-curlmbs-method3.html#9">SetOptionQuote</A>(list() as string)</li>
+<li class="WLM">method <A href="curl-curlmbs-method3.html#10">SetOptionResolve</A>(list() as string)</li>
+<li class="WLM">method <A href="curl-curlmbs-method3.html#11">SetOptionTelnetOptions</A>(list() as string)</li>
+<li class="WLM">method <A href="curl-curlmbs-method3.html#12">SetPathCAInfo</A>(path as folderitem)</li>
+<li class="WLM">method <A href="curl-curlmbs-method3.html#13">SetPathCAPath</A>(path as folderitem)</li>
+<li class="WLM">method <A href="curl-curlmbs-method3.html#14">SetPathCRLFile</A>(path as folderitem)</li>
+<li class="WLM">method <A href="curl-curlmbs-method3.html#15">SetPathIssuerCert</A>(path as folderitem)</li>
+<li class="WLM">method <A href="curl-curlmbs-method3.html#16">SetPathNetRCFile</A>(path as folderitem)</li>
+<li class="WLM">method <A href="curl-curlmbs-method3.html#17">SetPathProxyIssuerCert</A>(path as folderitem)</li>
+<li class="WLM">method <A href="curl-curlmbs-method3.html#18">SetupEmail</A>(email as Variant) as boolean</li>
+<li class="WLM">method <A href="curl-curlmbs-method3.html#19">UpKeep</A></li>
+<li class="WLM">method <A href="curl-curlmbs-method3.html#20">WebSocketMeta</A> as <A href="class-curlwebsocketframembs.html">CURLWebSocketFrameMBS</A></li>
+<li class="WLM">method <A href="curl-curlmbs-method3.html#21">WebSocketReceive</A>(BufferSize as Integer = 65536) as <A href="class-curlwebsocketframembs.html">CURLWebSocketFrameMBS</A></li>
+<li class="WLM">method <A href="curl-curlmbs-method3.html#22">WebSocketSend</A>(Data as MemoryBlock, FrameSize as Integer = 0, SendFlags as Integer = 0) as Integer</li>
+</UL></LI>
+<LI>5 shared methods<UL>
+<li class="WLM">shared method <A href="curl-curlmbs-shared-method.html">AWSPresignURL</A>(AWSAccessKeyId as String, AWSSecretAccessKey as String, Region as String, Service as String, Path as String, Domain as String, Verb as String = "GET", Expires as Integer = 86400, QueryParameters() as String = nil, Headers() as String = nil) as String</li>
+<li class="WLM">shared method <A href="curl-curlmbs-shared-method.html#2">LoadAPI</A></li>
+<li class="WLM">shared method <A href="curl-curlmbs-shared-method.html#3">LoadErrorString</A> as string</li>
+<li class="WLM">shared method <A href="curl-curlmbs-shared-method.html#4">LoadLibrary</A>(file as folderitem) as boolean</li>
+<li class="WLM">shared method <A href="curl-curlmbs-shared-method.html#5">LoadLibrary</A>(path as string) as boolean</li>
+</UL></LI>
+<LI><a href="class-curlmbs-const.html">239 constants</A></LI>
+</ul>
+<p>This class has no sub classes.</p>
+<h4>Some methods using this class:</h4><ul>
+<li class="WLM"><A href="curl-curlmultimbs-method.html" translate="no">CURLMultiMBS.AddCURL</A>(curl as CURLMBS, handler as <A href="delegate-curlmultimbs-curltransferfinishedmbs.html">CURLTransferFinishedMBS</A> = nil) as boolean</li>
+<li class="WLM"><A href="curl-curlmultimbs-method.html#2" translate="no">CURLMultiMBS.CURLs</A> as CURLMBS()</li>
+<li class="WLM"><A href="curl-curlmultimbs-method.html#4" translate="no">CURLMultiMBS.RemoveCURL</A>(CURL as CURLMBS) as boolean</li>
+</ul>
+<h4>Some properties using for this class:</h4><ul>
+<li class="WLM"><A href="curl-curlmbs-property7.html#8" translate="no">CURLMBS.OptionStreamDepends</A> as CURLMBS</li>
+<li class="WLM"><A href="curl-curlmbs-property7.html#9" translate="no">CURLMBS.OptionStreamDependsE</A> as CURLMBS</li>
+</ul>
+<h4>Some events using this class:</h4><ul>
+<li class="WLM"><A href="curl-curlmultimbs-event.html">CURLMultiMBS.TransferFinished</A>(CURL as CURLMBS, result as Integer, RemainingFinishedTransfers as Integer)</li>
+</ul>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-curl-curlinfo.html">/CURL/CURL info</A></li>
+<li class=""><A href="example-curl-curltextdownload.html">/CURL/CURL text download</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2014-05-28/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 14.2pr8</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2014-01-08/MBS_Xojo__Real_Studio_Plugins_/monkeybreadsoftware_blog_xojo">MBS Xojo / Real Studio Plugins, version 14.0pr2</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2013-03-10/MBS_Real_Studio_Plugins_versio/monkeybreadsoftware_blog_xojo">MBS Real Studio Plugins, version 13.1pr7</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2013-02-13/Multithreaded_plugin_functions/monkeybreadsoftware_blog_xojo">Multithreaded plugin functions can increase speed of Real Studio application</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2013-01-30/MBS_Real_Studio_Plugins_versio/monkeybreadsoftware_blog_xojo">MBS Real Studio Plugins, version 13.0pr9</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2012-06-06/MBS_Real_Studio_Plugins_versio/monkeybreadsoftware_blog_xojo">MBS Real Studio Plugins, version 12.3pr4</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2012-02-09/MBS_Real_Studio_Plugins_versio/monkeybreadsoftware_blog_xojo">MBS Real Studio Plugins, version 12.1pr3</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2010-08-24/MBS_REALbasic_Plugins_Version_/monkeybreadsoftware_blog_xojo">MBS REALbasic Plugins Version 10.4 release notes</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2010-06-30/APIs_change_but_dont_worry/monkeybreadsoftware_blog_xojo">APIs change, but don&#39;t worry</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2009-09-17/MBS_REALbasic_plug-in_96/monkeybreadsoftware_blog_xojo">MBS REALbasic plug-in 9.6</a></li>
+</ul>
+<h4>Xojo Developer Magazine</h4>
+<ul>
+<li><a href="http://www.xdevmag.com/browse/5.3/">5.3, page 50: Poetry in Motion, Movin&#39;, movin&#39;, movin&#39;, get those icons movin&#39;... by Toby Rush</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbscurlplugin.html">MBS CURL Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-curllistmbs.html">CURLListMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-curlmimepartmbs.html">CURLMimePartMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-curlmbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

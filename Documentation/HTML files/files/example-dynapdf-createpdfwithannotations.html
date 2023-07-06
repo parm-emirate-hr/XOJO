@@ -1,0 +1,340 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /DynaPDF/Create PDF with Annotations</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /DynaPDF/Create PDF with Annotations</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/DynaPDF/Create PDF with Annotations</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS DynaPDF Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /DynaPDF/Create PDF with Annotations<BR>
+This example is the version from Wed, 14th Sep 2021.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Create</span> <span style="color:#6500FE">PDF</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">Annotations.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	FileTypes</div>
+<div class="RB_Code">		Filetype text</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> FileTypes</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;Quit&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu5 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;Clear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu4 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu3 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">		MenuItem UntitledMenu2 = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#0000FF;font-weight: bold">dim</span> pdf <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MyDynapdfMBS
+			<span style="color:#0000FF;font-weight: bold">dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> date
+			<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = SpecialFolder.Desktop.Child(<span style="color:#6500FE">&quot;Create</span> <span style="color:#6500FE">PDF</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">Annotations.pdf&quot;</span>)
+			
+			pdf.SetLicenseKey <span style="color:#6500FE">&quot;Starter&quot;</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">For</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">example</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">Starter,</span> <span style="color:#7F0000;text-style:italic">Lite,</span> <span style="color:#7F0000;text-style:italic">Pro</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">Enterprise</span> <span style="color:#7F0000;text-style:italic">License</span>
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CreateNewPDF f
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetDocInfo pdf.kdiSubject, <span style="color:#6500FE">&quot;My</span> <span style="color:#6500FE">first</span> <span style="color:#6500FE">Xojo</span> <span style="color:#6500FE">output&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetDocInfo pdf.kdiProducer, <span style="color:#6500FE">&quot;Xojo</span> <span style="color:#6500FE">test</span> <span style="color:#6500FE">application&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetDocInfo pdf.kdiTitle, <span style="color:#6500FE">&quot;My</span> <span style="color:#6500FE">first</span> <span style="color:#6500FE">Xojo</span> <span style="color:#6500FE">output&quot;</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">We</span> <span style="color:#7F0000;text-style:italic">want</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">top-down</span> <span style="color:#7F0000;text-style:italic">coordinates</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetPageCoords pdf.kpcTopDown
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.Append
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> y <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span> = <span style="color:#326598">50</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Call</span> pdf.SetFont( <span style="color:#6500FE">&quot;Helvetica&quot;</span>, pdf.kfsRegular, <span style="color:#006532">20.0</span>, <span style="color:#0000FF;font-weight: bold">False</span>, pdf.kcpUnicode)
+			AddHighlightAnnot pdf, pdf.katHighlight, pdf.kPDF_YELLOW,  <span style="color:#006532">50.0</span>, y, <span style="color:#6500FE">&quot;Highlight</span> <span style="color:#6500FE">Annotation&quot;</span>, <span style="color:#6500FE">&quot;Highlight</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">highlight</span> <span style="color:#6500FE">annotation&quot;</span>
+			AddHighlightAnnot pdf, pdf.katSquiggly,  pdf.kPDF_RED,    <span style="color:#006532">300.0</span>, y, <span style="color:#6500FE">&quot;Squiggly</span> <span style="color:#6500FE">Annotation&quot;</span>,  <span style="color:#6500FE">&quot;Highlight</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">squiggly</span> <span style="color:#6500FE">annotation&quot;</span>
+			y = y + <span style="color:#006532">30.0</span>
+			AddHighlightAnnot pdf, pdf.katStrikeOut, pdf.kPDF_RED,     <span style="color:#006532">50.0</span>, y, <span style="color:#6500FE">&quot;Strikeout</span> <span style="color:#6500FE">Annotation&quot;</span>,  <span style="color:#6500FE">&quot;Highlight</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">strikeout</span> <span style="color:#6500FE">annotation&quot;</span>
+			AddHighlightAnnot pdf, pdf.katUnderline, pdf.kPDF_RED,    <span style="color:#006532">300.0</span>, y, <span style="color:#6500FE">&quot;Underline</span> <span style="color:#6500FE">Annotation&quot;</span>,  <span style="color:#6500FE">&quot;Highlight</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">underline</span> <span style="color:#6500FE">annotation&quot;</span>
+			
+			y = y + <span style="color:#006532">40.0</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CircleAnnot( <span style="color:#006532">50.0</span>, y, <span style="color:#006532">200.0</span>, <span style="color:#006532">100.0</span>, <span style="color:#006532">1.0</span>, pdf.kPDF_CREAM, pdf.kPDF_BLACK, pdf.kcsDeviceRGB, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Circle</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">circle</span> <span style="color:#6500FE">annotation&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SquareAnnot(<span style="color:#006532">300.0</span>, y, <span style="color:#006532">200.0</span>, <span style="color:#006532">100.0</span>, <span style="color:#006532">1.0</span>, pdf.kPDF_CREAM, pdf.kPDF_BLACK, pdf.kcsDeviceRGB, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Square</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">square</span> <span style="color:#6500FE">annotation&quot;</span>)
+			
+			y = y + <span style="color:#006532">130.0</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.ChangeFontSize(<span style="color:#006532">12.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.WriteFTextEx(<span style="color:#006532">50.0</span>, y, pdf.GetPageWidth - <span style="color:#006532">100.0</span>, -<span style="color:#006532">1.0</span>, pdf.ktaLeft, _
+					<span style="color:#6500FE">&quot;The</span> <span style="color:#6500FE">icon</span> <span style="color:#6500FE">color</span> <span style="color:#6500FE">of</span> <span style="color:#6500FE">text</span> <span style="color:#6500FE">and</span> <span style="color:#6500FE">file</span> <span style="color:#6500FE">attachment</span> <span style="color:#6500FE">annotations</span> <span style="color:#6500FE">can</span> <span style="color:#6500FE">be</span> <span style="color:#6500FE">changed</span> <span style="color:#6500FE">if</span> <span style="color:#6500FE">&quot;</span>+_
+					<span style="color:#6500FE">&quot;necessary</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">SetAnnotColor().</span> <span style="color:#6500FE">The</span> <span style="color:#6500FE">background</span> <span style="color:#6500FE">color</span> <span style="color:#6500FE">must</span> <span style="color:#6500FE">be</span> <span style="color:#6500FE">set.\n\nText</span> <span style="color:#6500FE">Annotations:&quot;</span>)
+			
+			y = pdf.GetPageHeight - pdf.GetLastTextPosY + <span style="color:#006532">10.0</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> a <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">default</span> <span style="color:#7F0000;text-style:italic">icon</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">changed</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">necessary</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.TextAnnot( <span style="color:#006532">50.0</span>, y, <span style="color:#006532">200.0</span>, <span style="color:#006532">100.0</span>, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">text</span> <span style="color:#6500FE">annotation&quot;</span>, pdf.kaiComment, <span style="color:#0000FF;font-weight: bold">false</span>)
+			a = pdf.TextAnnot(<span style="color:#006532">100.0</span>, y, <span style="color:#006532">200.0</span>, <span style="color:#006532">100.0</span>, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">text</span> <span style="color:#6500FE">annotation&quot;</span>, pdf.kaiHelp, <span style="color:#0000FF;font-weight: bold">false</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetAnnotColor(a, pdf.kfcBackColor, pdf.kcsDeviceRGB, PDF.RGB(<span style="color:#326598">200</span>, <span style="color:#326598">20</span>, <span style="color:#326598">30</span>))
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.TextAnnot(<span style="color:#006532">150.0</span>, y, <span style="color:#006532">200.0</span>, <span style="color:#006532">100.0</span>, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">text</span> <span style="color:#6500FE">annotation&quot;</span>, pdf.kaiInsert, <span style="color:#0000FF;font-weight: bold">false</span>)
+			a = pdf.TextAnnot(<span style="color:#006532">200.0</span>, y, <span style="color:#006532">200.0</span>, <span style="color:#006532">100.0</span>, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">text</span> <span style="color:#6500FE">annotation&quot;</span>, pdf.kaiKey, <span style="color:#0000FF;font-weight: bold">false</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetAnnotColor(a, pdf.kfcBackColor, pdf.kcsDeviceRGB, PDF.RGB(<span style="color:#326598">50</span>, <span style="color:#326598">200</span>, <span style="color:#326598">30</span>))
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.TextAnnot(<span style="color:#006532">250.0</span>, y, <span style="color:#006532">200.0</span>, <span style="color:#006532">100.0</span>, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">text</span> <span style="color:#6500FE">annotation&quot;</span>, pdf.kaiNewParagraph, <span style="color:#0000FF;font-weight: bold">false</span>)
+			a = pdf.TextAnnot(<span style="color:#006532">300.0</span>, y, <span style="color:#006532">200.0</span>, <span style="color:#006532">100.0</span>, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">text</span> <span style="color:#6500FE">annotation&quot;</span>, pdf.kaiNote, <span style="color:#0000FF;font-weight: bold">false</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetAnnotColor(a, pdf.kfcBackColor, pdf.kcsDeviceRGB, PDF.RGB(<span style="color:#326598">70</span>, <span style="color:#326598">120</span>, <span style="color:#326598">210</span>))
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.TextAnnot( <span style="color:#006532">350.0</span>, y, <span style="color:#006532">200.0</span>, <span style="color:#006532">100.0</span>, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">text</span> <span style="color:#6500FE">annotation&quot;</span>, pdf.kaiParagraph, <span style="color:#0000FF;font-weight: bold">false</span>)
+			
+			y = y + <span style="color:#006532">50.0</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.WriteText(<span style="color:#006532">50.0</span>, y, <span style="color:#6500FE">&quot;File</span> <span style="color:#6500FE">Attachment</span> <span style="color:#6500FE">Annotations:&quot;</span>)
+			
+			y = y + <span style="color:#006532">20.0</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> path <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = FindFile(<span style="color:#6500FE">&quot;gdi.emf&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.FileAttachAnnot( <span style="color:#006532">50.0</span>, y, pdf.kfaiGraph,     <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;An</span> <span style="color:#6500FE">example</span> <span style="color:#6500FE">attachment&quot;</span>, path, <span style="color:#0000FF;font-weight: bold">true</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.FileAttachAnnot(<span style="color:#006532">100.0</span>, y, pdf.kfaiPaperClip, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;An</span> <span style="color:#6500FE">example</span> <span style="color:#6500FE">attachment&quot;</span>, path, <span style="color:#0000FF;font-weight: bold">true</span>)
+			a =  pdf.FileAttachAnnot(<span style="color:#006532">150.0</span>, y, pdf.kfaiPushPin, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;An</span> <span style="color:#6500FE">example</span> <span style="color:#6500FE">attachment&quot;</span>, path, <span style="color:#0000FF;font-weight: bold">true</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetAnnotColor(a, pdf.kfcBackColor, pdf.kcsDeviceRGB, PDF.RGB(<span style="color:#326598">70</span>, <span style="color:#326598">120</span>, <span style="color:#326598">210</span>))
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.FileAttachAnnot(<span style="color:#006532">200.0</span>, y, pdf.kfaiTag,       <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;An</span> <span style="color:#6500FE">example</span> <span style="color:#6500FE">attachment&quot;</span>, path, <span style="color:#0000FF;font-weight: bold">true</span>)
+			
+			y = y + <span style="color:#006532">60.0</span>
+			a = pdf.FreeTextAnnot(<span style="color:#006532">50.0</span>, y, <span style="color:#006532">300.0</span>, <span style="color:#006532">80.0</span>, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">FreeText</span> <span style="color:#6500FE">Annotation.&quot;</span>, pdf.ktaCenter)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetAnnotBorderWidth(a, <span style="color:#006532">3.0</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetAnnotColor(a, pdf.kfcBorderColor, pdf.kcsDeviceRGB, pdf.kPDF_GRAY)
+			
+			y = y + <span style="color:#006532">120.0</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.WriteText(<span style="color:#006532">50.0</span>, y, <span style="color:#6500FE">&quot;Line</span> <span style="color:#6500FE">Annotations:&quot;</span>)
+			
+			y = y + <span style="color:#006532">30.0</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.LineAnnot(<span style="color:#006532">50.0</span>, y, <span style="color:#006532">350.0</span>, y, <span style="color:#006532">1.0</span>, pdf.kleNone,         pdf.kleNone, pdf.kPDF_RED, pdf.kPDF_BLACK, pdf.kcsDeviceRGB, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Line</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">line</span> <span style="color:#6500FE">annotation&quot;</span>)
+			y = y + <span style="color:#006532">20.0</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.LineAnnot(<span style="color:#006532">50.0</span>, y, <span style="color:#006532">350.0</span>, y, <span style="color:#006532">1.0</span>, pdf.kleButt,         pdf.kleButt, pdf.kPDF_RED, pdf.kPDF_BLACK, pdf.kcsDeviceRGB, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Line</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">line</span> <span style="color:#6500FE">annotation&quot;</span>)
+			y = y + <span style="color:#006532">20.0</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.LineAnnot(<span style="color:#006532">50.0</span>, y, <span style="color:#006532">350.0</span>, y, <span style="color:#006532">1.0</span>, pdf.kleCircle,       pdf.kleCircle, pdf.kPDF_RED, pdf.kPDF_BLACK, pdf.kcsDeviceRGB, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Line</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">line</span> <span style="color:#6500FE">annotation&quot;</span>)
+			y = y + <span style="color:#006532">20.0</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.LineAnnot(<span style="color:#006532">50.0</span>, y, <span style="color:#006532">350.0</span>, y, <span style="color:#006532">1.0</span>, pdf.kleClosedArrow,  pdf.kleClosedArrow, pdf.kPDF_RED, pdf.kPDF_BLACK, pdf.kcsDeviceRGB, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Line</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">line</span> <span style="color:#6500FE">annotation&quot;</span>)
+			y = y + <span style="color:#006532">20.0</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.LineAnnot(<span style="color:#006532">50.0</span>, y, <span style="color:#006532">350.0</span>, y, <span style="color:#006532">1.0</span>, pdf.kleRClosedArrow, pdf.kleRClosedArrow, pdf.kPDF_RED, pdf.kPDF_BLACK, pdf.kcsDeviceRGB, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Line</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">line</span> <span style="color:#6500FE">annotation&quot;</span>)
+			y = y + <span style="color:#006532">20.0</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.LineAnnot(<span style="color:#006532">50.0</span>, y, <span style="color:#006532">350.0</span>, y, <span style="color:#006532">1.0</span>, pdf.kleDiamond,      pdf.kleDiamond, pdf.kPDF_RED, pdf.kPDF_BLACK, pdf.kcsDeviceRGB, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Line</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">line</span> <span style="color:#6500FE">annotation&quot;</span>)
+			y = y + <span style="color:#006532">20.0</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.LineAnnot(<span style="color:#006532">50.0</span>, y, <span style="color:#006532">350.0</span>, y, <span style="color:#006532">1.0</span>, pdf.kleOpenArrow,    pdf.kleOpenArrow, pdf.kPDF_RED, pdf.kPDF_BLACK, pdf.kcsDeviceRGB, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Line</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">line</span> <span style="color:#6500FE">annotation&quot;</span>)
+			y = y + <span style="color:#006532">20.0</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.LineAnnot(<span style="color:#006532">50.0</span>, y, <span style="color:#006532">350.0</span>, y, <span style="color:#006532">1.0</span>, pdf.kleROpenArrow,   pdf.kleROpenArrow, pdf.kPDF_RED, pdf.kPDF_BLACK, pdf.kcsDeviceRGB, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Line</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">line</span> <span style="color:#6500FE">annotation&quot;</span>)
+			y = y + <span style="color:#006532">20.0</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.LineAnnot(<span style="color:#006532">50.0</span>, y, <span style="color:#006532">350.0</span>, y, <span style="color:#006532">1.0</span>, pdf.kleSlash,        pdf.kleSlash, pdf.kPDF_RED, pdf.kPDF_BLACK, pdf.kcsDeviceRGB, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Line</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">line</span> <span style="color:#6500FE">annotation&quot;</span>)
+			y = y + <span style="color:#006532">20.0</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.LineAnnot(<span style="color:#006532">50.0</span>, y, <span style="color:#006532">350.0</span>, y, <span style="color:#006532">1.0</span>, pdf.kleSquare,       pdf.kleSquare, pdf.kPDF_RED, pdf.kPDF_BLACK, pdf.kcsDeviceRGB, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Line</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">line</span> <span style="color:#6500FE">annotation&quot;</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.EndPage
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.Append
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> points() <span style="color:#0000FF;font-weight: bold">as</span> DynapdfPointMBS
+			points.Append <span style="color:#0000FF;font-weight: bold">new</span> DynapdfPointMBS(<span style="color:#006532">50.0</span>, <span style="color:#006532">200.0</span>)
+			points.Append <span style="color:#0000FF;font-weight: bold">new</span> DynapdfPointMBS(<span style="color:#006532">50.0</span>, <span style="color:#006532">100.0</span>)
+			points.Append <span style="color:#0000FF;font-weight: bold">new</span> DynapdfPointMBS(<span style="color:#006532">150.0</span>, <span style="color:#006532">50.0</span>)
+			points.Append <span style="color:#0000FF;font-weight: bold">new</span> DynapdfPointMBS(<span style="color:#006532">250.0</span>, <span style="color:#006532">100.0</span>)
+			points.Append <span style="color:#0000FF;font-weight: bold">new</span> DynapdfPointMBS(<span style="color:#006532">250.0</span>, <span style="color:#006532">200.0</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> count <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = points.Ubound + <span style="color:#326598">1</span>
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.PolyLineAnnot(points, <span style="color:#006532">1.0</span>, pdf.kleDiamond, pdf.kleCircle, pdf.kPDF_WHITE, pdf.kPDF_RED, pdf.kcsDeviceRGB, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Polyline</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">polyline</span> <span style="color:#6500FE">annotation&quot;</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> points.Ubound
+				points(i).x = points(i).x + <span style="color:#006532">250.0</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.PolygonAnnot(points, <span style="color:#006532">1.0</span>, pdf.kPDF_CREAM, pdf.kPDF_RED, pdf.kcsDeviceRGB, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Polygon</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">polygon</span> <span style="color:#6500FE">annotation&quot;</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> points.Ubound
+				points(i).x = points(i).x - <span style="color:#006532">250.0</span>
+				points(i).y = points(i).x + <span style="color:#006532">230.0</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			y = <span style="color:#006532">230.0</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetFont(<span style="color:#6500FE">&quot;Helvetica&quot;</span>, pdf.kfsRegular, <span style="color:#006532">12.0</span>, <span style="color:#0000FF;font-weight: bold">false</span>, pdf.kcpUnicode)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.WriteFTextEx(<span style="color:#006532">50.0</span>, y, pdf.GetPageWidth - <span style="color:#006532">100.0</span>, -<span style="color:#006532">1.0</span>, pdf.ktaLeft, <span style="color:#6500FE">&quot;The</span> <span style="color:#6500FE">points</span> <span style="color:#6500FE">of</span> <span style="color:#6500FE">an</span> <span style="color:#6500FE">Ink</span> <span style="color:#6500FE">Annotation</span> <span style="color:#6500FE">will</span> <span style="color:#6500FE">be</span> <span style="color:#6500FE">approximated</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">bezier</span> <span style="color:#6500FE">curves.&quot;</span> +_
+					<span style="color:#6500FE">&quot;The</span> <span style="color:#6500FE">result</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">smooth</span> <span style="color:#6500FE">path.</span> <span style="color:#6500FE">A</span> <span style="color:#6500FE">polyline</span> <span style="color:#6500FE">annotation</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">almost</span> <span style="color:#6500FE">the</span> <span style="color:#6500FE">same</span> <span style="color:#6500FE">annotation</span> <span style="color:#6500FE">type</span> <span style="color:#6500FE">without</span> <span style="color:#6500FE">the</span> <span style="color:#6500FE">approximation</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">bezier</span> <span style="color:#6500FE">curves.&quot;</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.InkAnnot(points, <span style="color:#006532">1.0</span>, pdf.kPDF_BLUE, pdf.kcsDeviceRGB, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Ink</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">an</span> <span style="color:#6500FE">ink</span> <span style="color:#6500FE">annotation&quot;</span>)
+			
+			y = y + <span style="color:#006532">230.0</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.WriteText(<span style="color:#006532">50.0</span>, y, <span style="color:#6500FE">&quot;Stamp</span> <span style="color:#6500FE">Annotations:&quot;</span>)
+			y = y + <span style="color:#006532">20.0</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.WriteFTextEx(<span style="color:#006532">50.0</span>, y, pdf.GetPageWidth - <span style="color:#006532">100.0</span>, -<span style="color:#006532">1.0</span>, pdf.ktaLeft, <span style="color:#6500FE">&quot;The</span> <span style="color:#6500FE">default</span> <span style="color:#6500FE">color</span> <span style="color:#6500FE">of</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">stamp</span> <span style="color:#6500FE">annotation</span> <span style="color:#6500FE">can</span> <span style="color:#6500FE">be</span> <span style="color:#6500FE">changed</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">SetAnnotColor().</span> <span style="color:#6500FE">The</span> <span style="color:#6500FE">border</span> <span style="color:#6500FE">or</span> <span style="color:#6500FE">text</span> <span style="color:#6500FE">color</span> <span style="color:#6500FE">must</span> <span style="color:#6500FE">be</span> <span style="color:#6500FE">set.&quot;</span>)
+			
+			y = pdf.GetPageHeight - pdf.GetLastTextPosY + <span style="color:#006532">10.0</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.StampAnnot(pdf.krsApproved,             <span style="color:#006532">50.0</span>, y, <span style="color:#006532">150.0</span>, <span style="color:#006532">50.0</span>, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Stamp</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">stamp</span> <span style="color:#6500FE">annotation&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.StampAnnot(pdf.krsAsIs,                <span style="color:#006532">220.0</span>, y, <span style="color:#006532">150.0</span>, <span style="color:#006532">50.0</span>, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Stamp</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">stamp</span> <span style="color:#6500FE">annotation&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.StampAnnot(pdf.krsConfidential,        <span style="color:#006532">390.0</span>, y, <span style="color:#006532">150.0</span>, <span style="color:#006532">50.0</span>, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Stamp</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">stamp</span> <span style="color:#6500FE">annotation&quot;</span>)
+			
+			y = y + <span style="color:#006532">60.0</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.StampAnnot(pdf.krsDepartmental,         <span style="color:#006532">50.0</span>, y, <span style="color:#006532">150.0</span>, <span style="color:#006532">50.0</span>, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Stamp</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">stamp</span> <span style="color:#6500FE">annotation&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.StampAnnot(pdf.krsDraft,               <span style="color:#006532">220.0</span>, y, <span style="color:#006532">150.0</span>, <span style="color:#006532">50.0</span>, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Stamp</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">stamp</span> <span style="color:#6500FE">annotation&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.StampAnnot(pdf.krsExperimental,        <span style="color:#006532">390.0</span>, y, <span style="color:#006532">150.0</span>, <span style="color:#006532">50.0</span>, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Stamp</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">stamp</span> <span style="color:#6500FE">annotation&quot;</span>)
+			
+			y = y + <span style="color:#006532">60.0</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.StampAnnot(pdf.krsExpired,              <span style="color:#006532">50.0</span>, y, <span style="color:#006532">150.0</span>, <span style="color:#006532">50.0</span>, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Stamp</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">stamp</span> <span style="color:#6500FE">annotation&quot;</span>)
+			a = pdf.StampAnnot(pdf.krsFinal,            <span style="color:#006532">220.0</span>, y, <span style="color:#006532">150.0</span>, <span style="color:#006532">50.0</span>, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Stamp</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">stamp</span> <span style="color:#6500FE">annotation&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.SetAnnotColor(a, pdf.kfcBorderColor, pdf.kcsDeviceRGB, PDF.RGB(<span style="color:#326598">170</span>, <span style="color:#326598">10</span>, <span style="color:#326598">160</span>))
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.StampAnnot(pdf.krsForComment,          <span style="color:#006532">390.0</span>, y, <span style="color:#006532">150.0</span>, <span style="color:#006532">50.0</span>, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Stamp</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">stamp</span> <span style="color:#6500FE">annotation&quot;</span>)
+			
+			y = y + <span style="color:#006532">60.0</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.StampAnnot(pdf.krsForPublicRelease,     <span style="color:#006532">50.0</span>, y, <span style="color:#006532">150.0</span>, <span style="color:#006532">50.0</span>, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Stamp</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">stamp</span> <span style="color:#6500FE">annotation&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.StampAnnot(pdf.krsNotApproved,         <span style="color:#006532">220.0</span>, y, <span style="color:#006532">150.0</span>, <span style="color:#006532">50.0</span>, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Stamp</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">stamp</span> <span style="color:#6500FE">annotation&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.StampAnnot(pdf.krsNotForPublicRelease, <span style="color:#006532">390.0</span>, y, <span style="color:#006532">150.0</span>, <span style="color:#006532">50.0</span>, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Stamp</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">stamp</span> <span style="color:#6500FE">annotation&quot;</span>)
+			
+			y = y + <span style="color:#006532">60.0</span>
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.StampAnnot(pdf.krsSold,                 <span style="color:#006532">50.0</span>, y, <span style="color:#006532">150.0</span>, <span style="color:#006532">50.0</span>, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Stamp</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">stamp</span> <span style="color:#6500FE">annotation&quot;</span>)
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.StampAnnot(pdf.krsTopSecret,           <span style="color:#006532">220.0</span>, y, <span style="color:#006532">150.0</span>, <span style="color:#006532">50.0</span>, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, <span style="color:#6500FE">&quot;Stamp</span> <span style="color:#6500FE">Annotations&quot;</span>, <span style="color:#6500FE">&quot;This</span> <span style="color:#6500FE">is</span> <span style="color:#6500FE">a</span> <span style="color:#6500FE">stamp</span> <span style="color:#6500FE">annotation&quot;</span>)
+			
+			
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.EndPage
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.CloseFile
+			
+			f.Launch
+			
+			quit
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> AddHighlightAnnot(pdf <span style="color:#0000FF;font-weight: bold">as</span> DynaPDFMBS, Type <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, ColorValue <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">UInt32</span>, x <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>, y <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span>, Text <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, subject <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, comment <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			<span style="color:#0000FF;font-weight: bold">dim</span> w <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Double</span> = pdf.GetTextWidth(text)
+			
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.WriteText x, y, text
+			<span style="color:#0000FF;font-weight: bold">call</span> pdf.HighlightAnnot(type, x, y + pdf.GetDescent, w, <span style="color:#006532">20.0</span>, ColorValue, <span style="color:#6500FE">&quot;Test</span> <span style="color:#6500FE">app&quot;</span>, Subject, Comment)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> FindFile(name <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>) <span style="color:#0000FF;font-weight: bold">As</span> FolderItem
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Look</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">file</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">parent</span> <span style="color:#7F0000;text-style:italic">folders</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">executable</span> <span style="color:#7F0000;text-style:italic">on</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> parent <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = app.ExecutableFile.Parent
+			
+			<span style="color:#0000FF;font-weight: bold">while</span> parent&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> file <span style="color:#0000FF;font-weight: bold">as</span> FolderItem = parent.Child(name)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> file&lt;&gt;<span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">and</span> file.Exists <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> file
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				parent = parent.Parent
+			<span style="color:#0000FF;font-weight: bold">wend</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyDynaPDFMBS <span style="color:#0000FF;font-weight: bold">Inherits</span> DynaPDFMBS</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> Error(ErrorCode <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, ErrorMessage <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>, ErrorType <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">output</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">messages</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">console:</span>
+			System.DebugLog str(ErrorCode)+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+ErrorMessage
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">dialog:</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> d <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">New</span> MessageDialog <span style="color:#7F0000;text-style:italic">//declare</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">MessageDialog</span> <span style="color:#7F0000;text-style:italic">object</span>
+			<span style="color:#0000FF;font-weight: bold">Dim</span> b <span style="color:#0000FF;font-weight: bold">as</span> MessageDialogButton <span style="color:#7F0000;text-style:italic">//for</span> <span style="color:#7F0000;text-style:italic">handling</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">result</span>
+			
+			d.icon=MessageDialog.GraphicCaution <span style="color:#7F0000;text-style:italic">//display</span> <span style="color:#7F0000;text-style:italic">warning</span> <span style="color:#7F0000;text-style:italic">icon</span>
+			d.ActionButton.Caption=<span style="color:#6500FE">&quot;Continue&quot;</span>
+			d.CancelButton.Visible=<span style="color:#0000FF;font-weight: bold">True</span>    <span style="color:#7F0000;text-style:italic">//show</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Cancel</span> <span style="color:#7F0000;text-style:italic">button</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">warning</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">error?</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> BitAnd(ErrorType, <span style="color:#0000FF;font-weight: bold">me</span>.kE_WARNING) = <span style="color:#0000FF;font-weight: bold">me</span>.kE_WARNING <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">user</span> <span style="color:#7F0000;text-style:italic">decided</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">ignore,</span> <span style="color:#7F0000;text-style:italic">we&#39;ll</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> IgnoreWarnings <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span>
+				
+				d.Message=<span style="color:#6500FE">&quot;A</span> <span style="color:#6500FE">warning</span> <span style="color:#6500FE">occurred</span> <span style="color:#6500FE">while</span> <span style="color:#6500FE">processing</span> <span style="color:#6500FE">your</span> <span style="color:#6500FE">PDF</span> <span style="color:#6500FE">code.&quot;</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">third</span> <span style="color:#7F0000;text-style:italic">button</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">warnings</span>
+				d.AlternateActionButton.Caption = <span style="color:#6500FE">&quot;Ignore</span> <span style="color:#6500FE">warnings&quot;</span>
+				d.AlternateActionButton.Visible = <span style="color:#0000FF;font-weight: bold">true</span>
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				d.Message=<span style="color:#6500FE">&quot;An</span> <span style="color:#6500FE">error</span> <span style="color:#6500FE">occurred</span> <span style="color:#6500FE">while</span> <span style="color:#6500FE">processing</span> <span style="color:#6500FE">your</span> <span style="color:#6500FE">PDF</span> <span style="color:#6500FE">code.&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			d.Explanation = str(ErrorCode)+<span style="color:#6500FE">&quot;:</span> <span style="color:#6500FE">&quot;</span>+ErrorMessage
+			
+			b=d.ShowModal <span style="color:#7F0000;text-style:italic">//display</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">dialog</span>
+			
+			<span style="color:#0000FF;font-weight: bold">Select</span> <span style="color:#0000FF;font-weight: bold">Case</span> b <span style="color:#7F0000;text-style:italic">//determine</span> <span style="color:#7F0000;text-style:italic">which</span> <span style="color:#7F0000;text-style:italic">button</span> <span style="color:#7F0000;text-style:italic">was</span> <span style="color:#7F0000;text-style:italic">pressed.</span>
+			<span style="color:#0000FF;font-weight: bold">Case</span> d.ActionButton
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+			<span style="color:#0000FF;font-weight: bold">Case</span> d.AlternateActionButton
+				IgnoreWarnings = <span style="color:#0000FF;font-weight: bold">true</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#326598">0</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">ignore</span>
+			<span style="color:#0000FF;font-weight: bold">Case</span> d.CancelButton
+				<span style="color:#0000FF;font-weight: bold">Return</span> -<span style="color:#326598">1</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">stop</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">select</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> IgnoreWarnings <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-dynapdf-createpdfwithangletext.html">/DynaPDF/Create PDF with Angle Text</A></li>
+<li><A href="example-dynapdf-createpdfwithbarcodes.html">/DynaPDF/Create PDF with Barcodes</A></li>
+<li><A href="example-dynapdf-createpdfwithcmyk.html">/DynaPDF/Create PDF with CMYK</A></li>
+<li><A href="example-dynapdf-createpdfwithcolors.html">/DynaPDF/Create PDF with Colors</A></li>
+<li><A href="example-dynapdf-createpdfwithembeddedfont.html">/DynaPDF/Create PDF with embedded font</A></li>
+<li><A href="example-dynapdf-createpdfwithfilelink.html">/DynaPDF/Create PDF with FileLink</A></li>
+<li><A href="example-dynapdf-createpdfwithlayers.html">/DynaPDF/Create PDF with Layers</A></li>
+<li><A href="example-dynapdf-createpdfwithsetfillcolorex.html">/DynaPDF/Create PDF with SetFillColorEx</A></li>
+<li><A href="example-dynapdf-createpdfwithsumformfield.html">/DynaPDF/Create PDF with sum form field</A></li>
+<li><A href="example-dynapdf-createpdfwithtextstyles.html">/DynaPDF/Create PDF with text styles</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsdynapdfplugin.html">MBS DynaPDF Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-dynapdf-createpdfwithannotations">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

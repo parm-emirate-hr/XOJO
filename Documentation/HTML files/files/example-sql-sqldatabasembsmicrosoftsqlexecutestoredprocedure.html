@@ -1,0 +1,264 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /SQL/SQLDatabaseMBS Microsoft SQL Execute Stored Procedure</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /SQL/SQLDatabaseMBS Microsoft SQL Execute Stored Procedure</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/SQL/<A href="class-sqldatabasembs.html">SQLDatabaseMBS</A> Microsoft SQL Execute Stored Procedure</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS SQL Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /SQL/<A href="class-sqldatabasembs.html">SQLDatabaseMBS</A> Microsoft SQL Execute Stored Procedure<BR>
+This example is the version from Sun, 20th Aug 2016.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;SQLDatabaseMBS</span> <span style="color:#6500FE">Microsoft</span> <span style="color:#6500FE">SQL</span> <span style="color:#6500FE">Execute</span> <span style="color:#6500FE">Stored</span> <span style="color:#6500FE">Procedure.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;L&ouml;schen&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;Beenden&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Window1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control server <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance server <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control PushButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance PushButton1 <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> con <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> SQLDatabaseMBS
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">connects</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">Microsoft</span> <span style="color:#7F0000;text-style:italic">SQL</span> <span style="color:#7F0000;text-style:italic">Server</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">Windows</span>
+				<span style="color:#7F0000;text-style:italic">//</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">e.g.</span> <span style="color:#7F0000;text-style:italic">localhost\SQLEXPRESS@test</span>
+				
+				
+				<span style="color:#0000FF;font-weight: bold">try</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">connect</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">database</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">example</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">Microsoft</span> <span style="color:#7F0000;text-style:italic">SQL</span> <span style="color:#7F0000;text-style:italic">Server,</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">but</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">also</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">Sybase,</span> <span style="color:#7F0000;text-style:italic">Informix,</span> <span style="color:#7F0000;text-style:italic">DB2</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Oracle,</span> <span style="color:#7F0000;text-style:italic">InterBase,</span> <span style="color:#7F0000;text-style:italic">SQLBase</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">ODBC</span>
+					
+					con.Option(<span style="color:#6500FE">&quot;OLEDBProvider&quot;</span>) = <span style="color:#6500FE">&quot;SQLNCLI&quot;</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">SQLNCLI</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">SQL</span> <span style="color:#7F0000;text-style:italic">Server</span> <span style="color:#7F0000;text-style:italic">2005,</span> <span style="color:#7F0000;text-style:italic">SQLNCLI10</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">newer</span> <span style="color:#7F0000;text-style:italic">version.</span>
+					<span style="color:#7F0000;text-style:italic">&#39;con.Option(&quot;UseAPI&quot;)</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">&quot;DB-Library&quot;</span>
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">server</span> <span style="color:#7F0000;text-style:italic">format</span> <span style="color:#7F0000;text-style:italic">should</span> <span style="color:#7F0000;text-style:italic">be:</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">PcName\SqlServerInstanceName@DatabaseName</span>
+					
+					con.DatabaseName = <span style="color:#6500FE">&quot;SQLServer:&quot;</span>+server.Text
+					con.UserName = user.text
+					con.Password = password.text
+					
+					con.RaiseExceptions = <span style="color:#0000FF;font-weight: bold">true</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">you</span> <span style="color:#7F0000;text-style:italic">like</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">exceptions</span> <span style="color:#7F0000;text-style:italic">instead</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">checking</span> <span style="color:#7F0000;text-style:italic">error</span> <span style="color:#7F0000;text-style:italic">property</span>
+					
+					con.Scrollable = <span style="color:#0000FF;font-weight: bold">false</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">disabling</span> <span style="color:#7F0000;text-style:italic">scrolling</span> <span style="color:#7F0000;text-style:italic">cursors</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">much</span> <span style="color:#7F0000;text-style:italic">faster</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">Microsoft</span> <span style="color:#7F0000;text-style:italic">SQL</span> <span style="color:#7F0000;text-style:italic">Server...</span>
+					
+					<span style="color:#0000FF;font-weight: bold">if</span> con.Connect <span style="color:#0000FF;font-weight: bold">then</span>
+						
+						
+						<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">call</span> <span style="color:#7F0000;text-style:italic">stored</span> <span style="color:#7F0000;text-style:italic">procedure</span>
+						
+						<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">normal</span>
+						<span style="color:#7F0000;text-style:italic">&#39;dim</span> <span style="color:#7F0000;text-style:italic">sql</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">string</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">&quot;EXEC</span> <span style="color:#7F0000;text-style:italic">dbo.Test</span> <span style="color:#7F0000;text-style:italic">6&quot;</span>
+						<span style="color:#7F0000;text-style:italic">&#39;dim</span> <span style="color:#7F0000;text-style:italic">r</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">RecordSet</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">con.SQLSelect(sql)</span>
+						
+						<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">prepared</span> <span style="color:#7F0000;text-style:italic">statement</span>
+						<span style="color:#0000FF;font-weight: bold">dim</span> sql <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = <span style="color:#6500FE">&quot;dbo.Test&quot;</span>
+						<span style="color:#0000FF;font-weight: bold">dim</span> ps <span style="color:#0000FF;font-weight: bold">as</span> SQLPreparedStatementMBS = con.Prepare(sql)
+						
+						ps.Bind(<span style="color:#6500FE">&quot;Param1&quot;</span>, <span style="color:#326598">7</span>)
+						ps.BindType(<span style="color:#6500FE">&quot;Param1&quot;</span>, ps.kTypeLong)
+						
+						<span style="color:#0000FF;font-weight: bold">dim</span> r <span style="color:#0000FF;font-weight: bold">as</span> RecordSet = ps.SQLSelect
+						
+						<span style="color:#0000FF;font-weight: bold">if</span> r&lt;&gt;<span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+							MsgBox r.IdxField(<span style="color:#326598">1</span>).StringValue
+						<span style="color:#0000FF;font-weight: bold">else</span>
+							MsgBox <span style="color:#6500FE">&quot;Failed&quot;</span>
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+						
+						
+						<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Disconnect</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">optional</span>
+						<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">autodisconnect</span> <span style="color:#7F0000;text-style:italic">will</span> <span style="color:#7F0000;text-style:italic">ocur</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">destructor</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">needed</span>
+						con.Close
+						
+						
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+				<span style="color:#0000FF;font-weight: bold">catch</span> r <span style="color:#0000FF;font-weight: bold">as</span> RuntimeException
+					MsgBox r.message
+					
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">try</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control user <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance user <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText2 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText2 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control password <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance password <span style="color:#0000FF;font-weight: bold">Inherits</span> TextField</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText3 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText3 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText4 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText4 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Note">		Note <span style="color:#6500FE">&quot;Stored</span> <span style="color:#6500FE">Procedure&quot;</span>
+<div class="RB_Comment">			-- below our test stored procedure for Microsoft SQL Server. Returns number plus 5
+			
+			
+			-- ================================================
+			-- Template generated from Template Explorer using:
+			-- Create Procedure (New Menu).SQL
+			--
+			-- Use the Specify Values for Template Parameters 
+			-- command (Ctrl-Shift-M) to fill in the parameter 
+			-- values below.
+			--
+			-- This block of comments will not be included in
+			-- the definition of the procedure.
+			-- ================================================
+			SET ANSI_NULLS ON
+			GO
+			SET QUOTED_IDENTIFIER ON
+			GO
+			-- =============================================
+			-- Author:        <Author,,Name>
+			-- Create date: <Create Date,,>
+			-- Description:    <Description,,>
+			-- =============================================
+			CREATE PROCEDURE Test
+			    -- Add the parameters for the stored procedure here
+			    @Param1 VARCHAR
+			AS
+			BEGIN
+			    -- SET NOCOUNT ON added to prevent extra result sets from
+			    -- interfering with SELECT statements.
+			    SET NOCOUNT ON;
+			
+			    -- Insert statements for procedure here
+			    SELECT @Param1 + 5;
+			END
+			GO</div>
+</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;Ablage&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Bearbeiten&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;R&uuml;ckg&auml;ngig&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;&amp;Ausschneiden&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Kopieren&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Einf&uuml;gen&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;&amp;Alles</span> <span style="color:#6500FE">ausw&auml;hlen&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-sql-sqldatabasembsduckdb.html">/SQL/SQLDatabaseMBS DuckDB</A></li>
+<li><A href="example-sql-sqldatabasembsmicrosoftaccessconnect.html">/SQL/SQLDatabaseMBS Microsoft Access Connect</A></li>
+<li><A href="example-sql-sqldatabasembsmicrosoftsqlconnect.html">/SQL/SQLDatabaseMBS Microsoft SQL Connect</A></li>
+<li><A href="example-sql-sqldatabasembsmicrosoftsqlserverdatatypes.html">/SQL/SQLDatabaseMBS Microsoft SQL Server Data Types</A></li>
+<li><A href="example-sql-sqldatabasembsmicrosoftsqlviaodbconlinux.html">/SQL/SQLDatabaseMBS Microsoft SQL via ODBC on Linux</A></li>
+<li><A href="example-sql-sqldatabasembsmssqlexecute.html">/SQL/SQLDatabaseMBS MSSQL Execute</A></li>
+<li><A href="example-sql-sqldatabasembspostgresqlnotifyandlisten.html">/SQL/SQLDatabaseMBS PostgreSQL Notify and Listen</A></li>
+<li><A href="example-sql-sqldatabasembssqliteexecutesql.html">/SQL/SQLDatabaseMBS SQLite ExecuteSQL</A></li>
+<li><A href="example-sql-sqldatabasembssqliteexecutesqlthreaded.html">/SQL/SQLDatabaseMBS SQLite ExecuteSQL threaded</A></li>
+<li><A href="example-sql-sqldatabasembssqliteinsertrecord.html">/SQL/SQLDatabaseMBS SQLite insert record</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbssqlplugin.html">MBS SQL Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-sql-sqldatabasembsmicrosoftsqlexecutestoredprocedure">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

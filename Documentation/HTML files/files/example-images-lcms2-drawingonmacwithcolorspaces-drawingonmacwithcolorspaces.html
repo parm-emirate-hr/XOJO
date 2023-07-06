@@ -1,0 +1,593 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /Images/LCMS2/Drawing on Mac with Colorspaces/Drawing on Mac with Colorspaces</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /Images/LCMS2/Drawing on Mac with Colorspaces/Drawing on Mac with Colorspaces</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/Images/LCMS2/Drawing on Mac with Colorspaces/Drawing on Mac with Colorspaces</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS MacBase Plugin, MBS Main Plugin, MBS MacCocoa Plugin, MBS Picture Plugin, MBS MacCG Plugin, MBS MacCF Plugin, MBS Images Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /Images/LCMS2/Drawing on Mac with Colorspaces/Drawing on Mac with Colorspaces<BR>
+This example is the version from Sat, 28th May 2021.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;Drawing</span> <span style="color:#6500FE">on</span> <span style="color:#6500FE">Mac</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">Colorspaces.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MiscFileTypes</div>
+<div class="RB_Code">		Filetype ICC profile (*.ICC)</div>
+<div class="RB_Code">		Filetype ICC profile (*.ICM)</div>
+<div class="RB_Code">		Filetype All profiles</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MiscFileTypes</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> Window1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CanvasCarbon <span style="color:#0000FF;font-weight: bold">Inherits</span> Canvas</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CanvasCarbon <span style="color:#0000FF;font-weight: bold">Inherits</span> Canvas</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> MouseExit()
+				<span style="color:#7F0000;text-style:italic">&#39;set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">number</span> <span style="color:#7F0000;text-style:italic">out-of-range</span>
+				newPatchNumber = -<span style="color:#326598">1</span>
+				
+				<span style="color:#7F0000;text-style:italic">&#39;redraw</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">picture</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">update</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span>
+				DrawCanvasPict
+				<span style="color:#0000FF;font-weight: bold">me</span>.Invalidate
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> MouseMove(X <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, Y <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+				<span style="color:#0000FF;font-weight: bold">Dim</span> column, row <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				
+				<span style="color:#7F0000;text-style:italic">&#39;determine</span> <span style="color:#7F0000;text-style:italic">row</span>
+				row = floor(Y / patchDim)
+				
+				<span style="color:#7F0000;text-style:italic">&#39;determine</span> <span style="color:#7F0000;text-style:italic">column</span>
+				column = floor(X / patchDim)
+				
+				<span style="color:#7F0000;text-style:italic">&#39;check</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mouse</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">over</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">patch</span>
+				newPatchNumber = (column * patchRows) + row
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> newPatchNumber &lt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">&#39;the</span> <span style="color:#7F0000;text-style:italic">mouse</span> <span style="color:#7F0000;text-style:italic">position</span> <span style="color:#7F0000;text-style:italic">corresponds</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">negative</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">number;</span> <span style="color:#7F0000;text-style:italic">assign</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">out-of-range</span> <span style="color:#7F0000;text-style:italic">value</span>
+					newPatchNumber = -<span style="color:#326598">1</span>
+					
+				<span style="color:#0000FF;font-weight: bold">elseif</span> newPatchNumber &lt; patchQTY <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mouse</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">over</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">patch;</span> <span style="color:#7F0000;text-style:italic">check</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">number</span> <span style="color:#7F0000;text-style:italic">changed</span> <span style="color:#7F0000;text-style:italic">since</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">last</span> <span style="color:#7F0000;text-style:italic">move</span>
+					<span style="color:#0000FF;font-weight: bold">if</span> newPatchNumber &lt;&gt; oldPatchNumber <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#7F0000;text-style:italic">&#39;redraw</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">picture</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">update</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span>
+						<span style="color:#7F0000;text-style:italic">&#39;Note</span> <span style="color:#7F0000;text-style:italic">:</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">old</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">number</span> <span style="color:#7F0000;text-style:italic">will</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">re-assigned</span> <span style="color:#7F0000;text-style:italic">when</span> <span style="color:#7F0000;text-style:italic">redrawing</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span>
+						DrawCanvasPict
+						<span style="color:#0000FF;font-weight: bold">me</span>.Invalidate
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					<span style="color:#7F0000;text-style:italic">&#39;the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">number</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">higher</span> <span style="color:#7F0000;text-style:italic">than</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">quantity</span>
+					newPatchNumber = -<span style="color:#326598">1</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+				<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">assign</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">out-of-range</span> <span style="color:#7F0000;text-style:italic">value</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">index</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">under</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mouse</span>
+				newPatchNumber = -<span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Paint(g <span style="color:#0000FF;font-weight: bold">As</span> Graphics, areas() <span style="color:#0000FF;font-weight: bold">As</span> REALbasic.Rect)
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Note:</span> <span style="color:#7F0000;text-style:italic">This</span> <span style="color:#7F0000;text-style:italic">event</span> <span style="color:#7F0000;text-style:italic">redraws</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">picture</span> <span style="color:#7F0000;text-style:italic">(CanvasPict).</span>
+				<span style="color:#7F0000;text-style:italic">//</span>           <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">background</span> <span style="color:#7F0000;text-style:italic">(CanvasBackground)</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">made</span> <span style="color:#7F0000;text-style:italic">(Method/DrawCanvasBackground)</span> <span style="color:#7F0000;text-style:italic">only</span> <span style="color:#7F0000;text-style:italic">when</span>
+				<span style="color:#7F0000;text-style:italic">//</span>                  <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">resized</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patches</span> <span style="color:#7F0000;text-style:italic">positions</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">changed</span> <span style="color:#7F0000;text-style:italic">(these</span> <span style="color:#7F0000;text-style:italic">events</span> <span style="color:#7F0000;text-style:italic">cannot</span> <span style="color:#7F0000;text-style:italic">happen</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">demo).</span>
+				<span style="color:#7F0000;text-style:italic">//</span>          <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">picture</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">made</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">background</span> <span style="color:#7F0000;text-style:italic">picture</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">which</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">added</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">borders</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span>
+				<span style="color:#7F0000;text-style:italic">//</span>                 <span style="color:#7F0000;text-style:italic">under</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mouse</span> <span style="color:#7F0000;text-style:italic">cursor</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">Method/DrawCanvasPict.</span>
+				<span style="color:#7F0000;text-style:italic">//</span>           <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">picture</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">redrawn</span> <span style="color:#7F0000;text-style:italic">when</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mouse</span> <span style="color:#7F0000;text-style:italic">cursor</span> <span style="color:#7F0000;text-style:italic">moves</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">another</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">out</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas.</span>
+				<span style="color:#7F0000;text-style:italic">//</span>           <span style="color:#7F0000;text-style:italic">Because</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">background</span> <span style="color:#7F0000;text-style:italic">does</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">need</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">redrawn</span> <span style="color:#7F0000;text-style:italic">each</span> <span style="color:#7F0000;text-style:italic">time,</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">method</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">rapidly</span> <span style="color:#7F0000;text-style:italic">refresh</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span>
+				<span style="color:#7F0000;text-style:italic">//</span>                 <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">many</span> <span style="color:#7F0000;text-style:italic">thousand</span> <span style="color:#7F0000;text-style:italic">patches.</span>
+				<span style="color:#7F0000;text-style:italic">//</span>           <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">code</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">based</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Carbon</span> <span style="color:#7F0000;text-style:italic">Framework</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">colors</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">NOT</span> <span style="color:#7F0000;text-style:italic">displayed</span> <span style="color:#7F0000;text-style:italic">accurately</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">relation</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">monitor</span> <span style="color:#7F0000;text-style:italic">profile.</span>
+				
+				<span style="color:#7F0000;text-style:italic">&#39;check</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">first</span> <span style="color:#7F0000;text-style:italic">instance</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">event</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> CanvasBackground = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">&#39;prepare</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">buffer</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">redraw</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">picture;</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">picture</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patches</span>
+					DrawCanvasBackground
+					
+					<span style="color:#7F0000;text-style:italic">&#39;add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">frame</span> <span style="color:#7F0000;text-style:italic">indicating</span> <span style="color:#7F0000;text-style:italic">over</span> <span style="color:#7F0000;text-style:italic">which</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mouse</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">located</span>
+					DrawCanvasPict
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#7F0000;text-style:italic">&#39;transfer</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">picture</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span>
+				g.DrawPicture CanvasPict, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CanvasCocoaSlow <span style="color:#0000FF;font-weight: bold">Inherits</span> Canvas</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CanvasCocoaSlow <span style="color:#0000FF;font-weight: bold">Inherits</span> Canvas</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> MouseExit()
+				<span style="color:#7F0000;text-style:italic">&#39;set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">number</span> <span style="color:#7F0000;text-style:italic">out-of-range</span>
+				newPatchNumber = -<span style="color:#326598">1</span>
+				
+				<span style="color:#7F0000;text-style:italic">&#39;redraw</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">picture</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">update</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span>
+				<span style="color:#0000FF;font-weight: bold">me</span>.Invalidate
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> MouseMove(X <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, Y <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+				<span style="color:#0000FF;font-weight: bold">Dim</span> column, row <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				
+				<span style="color:#7F0000;text-style:italic">&#39;determine</span> <span style="color:#7F0000;text-style:italic">row</span>
+				row = floor(Y / patchDim)
+				
+				<span style="color:#7F0000;text-style:italic">&#39;determine</span> <span style="color:#7F0000;text-style:italic">column</span>
+				column = floor(X / patchDim)
+				
+				<span style="color:#7F0000;text-style:italic">&#39;check</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mouse</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">over</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">patch</span>
+				newPatchNumber = (column * patchRows) + row
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> newPatchNumber &lt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">&#39;the</span> <span style="color:#7F0000;text-style:italic">mouse</span> <span style="color:#7F0000;text-style:italic">position</span> <span style="color:#7F0000;text-style:italic">corresponds</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">negative</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">number;</span> <span style="color:#7F0000;text-style:italic">assign</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">out-of-range</span> <span style="color:#7F0000;text-style:italic">value</span>
+					newPatchNumber = -<span style="color:#326598">1</span>
+					
+				<span style="color:#0000FF;font-weight: bold">elseif</span> newPatchNumber &lt; patchQTY <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mouse</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">over</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">patch;</span> <span style="color:#7F0000;text-style:italic">check</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">number</span> <span style="color:#7F0000;text-style:italic">changed</span> <span style="color:#7F0000;text-style:italic">since</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">last</span> <span style="color:#7F0000;text-style:italic">move</span>
+					<span style="color:#0000FF;font-weight: bold">if</span> newPatchNumber &lt;&gt; oldPatchNumber <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#7F0000;text-style:italic">&#39;redraw</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">picture</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">update</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span>
+						<span style="color:#7F0000;text-style:italic">&#39;Note</span> <span style="color:#7F0000;text-style:italic">:</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">old</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">number</span> <span style="color:#7F0000;text-style:italic">will</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">re-assigned</span> <span style="color:#7F0000;text-style:italic">when</span> <span style="color:#7F0000;text-style:italic">redrawing</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span>
+						<span style="color:#0000FF;font-weight: bold">me</span>.Invalidate
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					<span style="color:#7F0000;text-style:italic">&#39;the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">number</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">higher</span> <span style="color:#7F0000;text-style:italic">than</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">quantity</span>
+					newPatchNumber = -<span style="color:#326598">1</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+				<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">assign</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">out-of-range</span> <span style="color:#7F0000;text-style:italic">value</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">index</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">under</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mouse</span>
+				newPatchNumber = -<span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Paint(g <span style="color:#0000FF;font-weight: bold">As</span> Graphics, areas() <span style="color:#0000FF;font-weight: bold">As</span> REALbasic.Rect)
+				<span style="color:#0000FF;font-weight: bold">dim</span> CanvasGraphics <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> NSGraphicsMBS
+				<span style="color:#0000FF;font-weight: bold">dim</span> NSspace <span style="color:#0000FF;font-weight: bold">as</span> NSColorSpaceMBS
+				<span style="color:#0000FF;font-weight: bold">dim</span> c1 <span style="color:#0000FF;font-weight: bold">as</span> NSColorMBS
+				<span style="color:#0000FF;font-weight: bold">Dim</span> RectMBS <span style="color:#0000FF;font-weight: bold">As</span> NSRectMBS
+				<span style="color:#0000FF;font-weight: bold">dim</span> row, column <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				<span style="color:#0000FF;font-weight: bold">Dim</span> sampleRow, sampleColumn <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Note:</span> <span style="color:#7F0000;text-style:italic">This</span> <span style="color:#7F0000;text-style:italic">event</span> <span style="color:#7F0000;text-style:italic">redraws</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">background</span> <span style="color:#7F0000;text-style:italic">AND</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">borders</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">under</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mouse</span> <span style="color:#7F0000;text-style:italic">cursor</span> <span style="color:#7F0000;text-style:italic">at</span> <span style="color:#7F0000;text-style:italic">every</span> <span style="color:#7F0000;text-style:italic">refresh.</span>
+				<span style="color:#7F0000;text-style:italic">//</span>           <span style="color:#7F0000;text-style:italic">It</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">fast</span> <span style="color:#7F0000;text-style:italic">enough</span> <span style="color:#7F0000;text-style:italic">up</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">many</span> <span style="color:#7F0000;text-style:italic">hundred</span> <span style="color:#7F0000;text-style:italic">patches</span> <span style="color:#7F0000;text-style:italic">but</span> <span style="color:#7F0000;text-style:italic">will</span> <span style="color:#7F0000;text-style:italic">show</span> <span style="color:#7F0000;text-style:italic">delays</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">more</span> <span style="color:#7F0000;text-style:italic">patches.</span>
+				<span style="color:#7F0000;text-style:italic">//</span>           <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">code</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">optimized</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Cocoa</span> <span style="color:#7F0000;text-style:italic">Framework</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">colors</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">displayed</span> <span style="color:#7F0000;text-style:italic">accurately</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">relation</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">monitor</span> <span style="color:#7F0000;text-style:italic">profile.</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">define</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">space</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Note:</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">assign</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">since</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">computed</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">RGB</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">profile</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> profileFolderItem = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">was</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">found;</span> <span style="color:#7F0000;text-style:italic">use</span> <span style="color:#7F0000;text-style:italic">sRGB</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">default</span> <span style="color:#7F0000;text-style:italic">space</span>
+					NSspace = NSColorSpaceMBS.sRGBColorSpace
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					<span style="color:#7F0000;text-style:italic">&#39;NSspace</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">NSColorSpaceMBS.adobeRGB1998ColorSpace</span>
+					NSspace = NSColorSpaceMBS.ColorSpaceWithICCProfileData(profileFolderItem)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#7F0000;text-style:italic">&#39;define</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">rectangle</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">filled</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">each</span> <span style="color:#7F0000;text-style:italic">patch</span>
+				RectMBS = <span style="color:#0000FF;font-weight: bold">New</span> NSRectMBS
+				RectMBS.Width = patchDim
+				RectMBS.Height = patchDim
+				
+				<span style="color:#0000FF;font-weight: bold">for</span> row = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">1</span>
+					<span style="color:#0000FF;font-weight: bold">for</span> column = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">1</span>
+						<span style="color:#7F0000;text-style:italic">&#39;set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch/rectangle</span> <span style="color:#7F0000;text-style:italic">position</span>
+						RectMBS.X = patchDim * column
+						RectMBS.Y = (CanvasCocoaSlow.Height - patchDim) - (patchDim * row)
+						
+						<span style="color:#7F0000;text-style:italic">&#39;define</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">color</span>
+						c1 = NSColorMBS.colorWithColorSpace(NSspace, patchColors(<span style="color:#326598">0</span>, row+<span style="color:#326598">2</span>*column)/<span style="color:#326598">255</span>, patchColors(<span style="color:#326598">1</span>, row+<span style="color:#326598">2</span>*column)/<span style="color:#326598">255</span>, patchColors(<span style="color:#326598">2</span>, row+<span style="color:#326598">2</span>*column)/<span style="color:#326598">255</span>,<span style="color:#006532">1.0</span>)
+						CanvasGraphics.setColor(c1)
+						
+						<span style="color:#7F0000;text-style:italic">&#39;draw</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">filled</span> <span style="color:#7F0000;text-style:italic">rectangle</span>
+						CanvasGraphics.fillRect(RectMBS)
+					<span style="color:#0000FF;font-weight: bold">next</span> column
+				<span style="color:#0000FF;font-weight: bold">next</span> row
+				
+				<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">border</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">under</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mouse;</span> <span style="color:#7F0000;text-style:italic">check</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mouse</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">over</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">patch</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> newPatchNumber &lt;&gt; -<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">&#39;the</span> <span style="color:#7F0000;text-style:italic">mouse</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">over</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">patch;</span> <span style="color:#7F0000;text-style:italic">define</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">border</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">(black)</span>
+					c1 = NSColorMBS.colorWithColorSpace(NSspace, <span style="color:#326598">0</span>/<span style="color:#326598">255</span>, <span style="color:#326598">0</span>/<span style="color:#326598">255</span>, <span style="color:#326598">0</span>/<span style="color:#326598">255</span>,<span style="color:#006532">1.0</span>)
+					CanvasGraphics.setColor(c1)
+					
+					<span style="color:#7F0000;text-style:italic">&#39;derive</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">row</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">column</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Note:</span> <span style="color:#7F0000;text-style:italic">computing</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">row</span> <span style="color:#7F0000;text-style:italic">must</span> <span style="color:#7F0000;text-style:italic">take</span> <span style="color:#7F0000;text-style:italic">into</span> <span style="color:#7F0000;text-style:italic">account</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">reversed</span> <span style="color:#7F0000;text-style:italic">Y</span> <span style="color:#7F0000;text-style:italic">origin</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Cocoa</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">relative</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">how</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patches</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">displayed</span> <span style="color:#7F0000;text-style:italic">(from</span> <span style="color:#7F0000;text-style:italic">top</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">bottom)</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">sampleRow</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">(NumberOfRows</span> <span style="color:#7F0000;text-style:italic">-</span> <span style="color:#7F0000;text-style:italic">1)</span> <span style="color:#7F0000;text-style:italic">-</span> <span style="color:#7F0000;text-style:italic">newPatchNumber</span> <span style="color:#7F0000;text-style:italic">Mod</span> <span style="color:#7F0000;text-style:italic">patchRows</span>
+					sampleRow = <span style="color:#326598">1</span> - newPatchNumber <span style="color:#0000FF;font-weight: bold">Mod</span> patchRows
+					sampleColumn = floor (newPatchNumber / patchRows)
+					
+					<span style="color:#7F0000;text-style:italic">&#39;draw</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">border</span>
+					CanvasGraphics.drawRect(sampleColumn * patchDim, sampleRow * patchDim, patchDim, patchDim)
+					CanvasGraphics.drawRect((sampleColumn * patchDim)+<span style="color:#326598">1</span>, (sampleRow * patchDim)+<span style="color:#326598">1</span>, patchDim-<span style="color:#326598">2</span>, patchDim-<span style="color:#326598">2</span>)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#7F0000;text-style:italic">&#39;assign</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">number</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">old</span> <span style="color:#7F0000;text-style:italic">number</span>
+				oldPatchNumber = newPatchNumber
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control CanvasCocoaFast <span style="color:#0000FF;font-weight: bold">Inherits</span> Canvas</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance CanvasCocoaFast <span style="color:#0000FF;font-weight: bold">Inherits</span> Canvas</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> MouseExit()
+				<span style="color:#7F0000;text-style:italic">&#39;set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">number</span> <span style="color:#7F0000;text-style:italic">out-of-range</span>
+				newPatchNumber = -<span style="color:#326598">1</span>
+				
+				<span style="color:#7F0000;text-style:italic">&#39;redraw</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">picture</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">update</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span>
+				DrawCanvasPict
+				CanvasCocoaFast.Invalidate
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> MouseMove(X <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, Y <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>)
+				<span style="color:#0000FF;font-weight: bold">Dim</span> column, row <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+				
+				<span style="color:#7F0000;text-style:italic">&#39;determine</span> <span style="color:#7F0000;text-style:italic">row</span>
+				row = floor(Y / patchDim)
+				
+				<span style="color:#7F0000;text-style:italic">&#39;determine</span> <span style="color:#7F0000;text-style:italic">column</span>
+				column = floor(X / patchDim)
+				
+				<span style="color:#7F0000;text-style:italic">&#39;check</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mouse</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">over</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">patch</span>
+				newPatchNumber = (column * patchRows) + row
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> newPatchNumber &lt; <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">&#39;the</span> <span style="color:#7F0000;text-style:italic">mouse</span> <span style="color:#7F0000;text-style:italic">position</span> <span style="color:#7F0000;text-style:italic">corresponds</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">negative</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">number;</span> <span style="color:#7F0000;text-style:italic">assign</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">out-of-range</span> <span style="color:#7F0000;text-style:italic">value</span>
+					newPatchNumber = -<span style="color:#326598">1</span>
+					
+				<span style="color:#0000FF;font-weight: bold">elseif</span> newPatchNumber &lt; patchQTY <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mouse</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">over</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">patch;</span> <span style="color:#7F0000;text-style:italic">check</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">number</span> <span style="color:#7F0000;text-style:italic">changed</span> <span style="color:#7F0000;text-style:italic">since</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">last</span> <span style="color:#7F0000;text-style:italic">move</span>
+					<span style="color:#0000FF;font-weight: bold">if</span> newPatchNumber &lt;&gt; oldPatchNumber <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#7F0000;text-style:italic">&#39;redraw</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">picture</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">update</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span>
+						<span style="color:#7F0000;text-style:italic">&#39;Note</span> <span style="color:#7F0000;text-style:italic">:</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">old</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">number</span> <span style="color:#7F0000;text-style:italic">will</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">re-assigned</span> <span style="color:#7F0000;text-style:italic">when</span> <span style="color:#7F0000;text-style:italic">redrawing</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span>
+						DrawCanvasPict
+						CanvasCocoaFast.Invalidate
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					<span style="color:#7F0000;text-style:italic">&#39;the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">number</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">higher</span> <span style="color:#7F0000;text-style:italic">than</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">quantity</span>
+					newPatchNumber = -<span style="color:#326598">1</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+				<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">assign</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">out-of-range</span> <span style="color:#7F0000;text-style:italic">value</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">index</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">under</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mouse</span>
+				newPatchNumber = -<span style="color:#326598">1</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Paint(g <span style="color:#0000FF;font-weight: bold">As</span> Graphics, areas() <span style="color:#0000FF;font-weight: bold">As</span> REALbasic.Rect)
+				<span style="color:#0000FF;font-weight: bold">Dim</span> BitmapContext <span style="color:#0000FF;font-weight: bold">As</span> CGBitmapContextMBS
+				<span style="color:#0000FF;font-weight: bold">Dim</span> BitmapImageCG <span style="color:#0000FF;font-weight: bold">As</span> CGImageMBS
+				<span style="color:#0000FF;font-weight: bold">Dim</span> BitmapMB <span style="color:#0000FF;font-weight: bold">As</span> MemoryBlock
+				<span style="color:#0000FF;font-weight: bold">dim</span> ICCProfileData <span style="color:#0000FF;font-weight: bold">as</span> memoryblock
+				<span style="color:#0000FF;font-weight: bold">dim</span> ICCProfile <span style="color:#0000FF;font-weight: bold">As</span> LCMS2ProfileMBS
+				<span style="color:#0000FF;font-weight: bold">dim</span> w <span style="color:#0000FF;font-weight: bold">as</span> CGContextMBS <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">window</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Note:</span> <span style="color:#7F0000;text-style:italic">This</span> <span style="color:#7F0000;text-style:italic">event</span> <span style="color:#7F0000;text-style:italic">redraws</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">picture</span> <span style="color:#7F0000;text-style:italic">(CanvasPict).</span>
+				<span style="color:#7F0000;text-style:italic">//</span>           <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">background</span> <span style="color:#7F0000;text-style:italic">(CanvasBackground)</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">made</span> <span style="color:#7F0000;text-style:italic">(Method/DrawCanvasBackground)</span> <span style="color:#7F0000;text-style:italic">only</span> <span style="color:#7F0000;text-style:italic">when</span>
+				<span style="color:#7F0000;text-style:italic">//</span>                  <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">resized</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patches</span> <span style="color:#7F0000;text-style:italic">positions</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">changed</span> <span style="color:#7F0000;text-style:italic">(these</span> <span style="color:#7F0000;text-style:italic">events</span> <span style="color:#7F0000;text-style:italic">cannot</span> <span style="color:#7F0000;text-style:italic">happen</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">demo).</span>
+				<span style="color:#7F0000;text-style:italic">//</span>          <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">picture</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">made</span> <span style="color:#7F0000;text-style:italic">from</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">background</span> <span style="color:#7F0000;text-style:italic">picture</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">which</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">added</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">borders</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span>
+				<span style="color:#7F0000;text-style:italic">//</span>                 <span style="color:#7F0000;text-style:italic">under</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mouse</span> <span style="color:#7F0000;text-style:italic">cursor</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">Method/DrawCanvasPict.</span>
+				<span style="color:#7F0000;text-style:italic">//</span>           <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">picture</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">redrawn</span> <span style="color:#7F0000;text-style:italic">when</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mouse</span> <span style="color:#7F0000;text-style:italic">cursor</span> <span style="color:#7F0000;text-style:italic">moves</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">another</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">out</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas.</span>
+				<span style="color:#7F0000;text-style:italic">//</span>           <span style="color:#7F0000;text-style:italic">Because</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">background</span> <span style="color:#7F0000;text-style:italic">does</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">need</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">redrawn</span> <span style="color:#7F0000;text-style:italic">each</span> <span style="color:#7F0000;text-style:italic">time,</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">method</span> <span style="color:#7F0000;text-style:italic">can</span> <span style="color:#7F0000;text-style:italic">rapidly</span> <span style="color:#7F0000;text-style:italic">refresh</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span>
+				<span style="color:#7F0000;text-style:italic">//</span>                 <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">many</span> <span style="color:#7F0000;text-style:italic">thousand</span> <span style="color:#7F0000;text-style:italic">patches.</span>
+				<span style="color:#7F0000;text-style:italic">//</span>           <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">code</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">optimized</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Cocoa</span> <span style="color:#7F0000;text-style:italic">Framework</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">colors</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">displayed</span> <span style="color:#7F0000;text-style:italic">accurately</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">relation</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">monitor</span> <span style="color:#7F0000;text-style:italic">profile.</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">get</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">info</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">MemoryBlock</span> <span style="color:#7F0000;text-style:italic">form</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">order</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">define</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">space</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> profileFolderItem = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">display</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">was</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">found;</span> <span style="color:#7F0000;text-style:italic">define</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">sRGB</span> <span style="color:#7F0000;text-style:italic">profile</span>
+					ICCProfile = LCMS2ProfileMBS.CreateSRGBProfile()
+				<span style="color:#0000FF;font-weight: bold">else</span>
+					ICCProfile = LCMS2ProfileMBS.OpenProfileFromFile(profileFolderItem)
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				ICCProfileData = ICCProfile.SaveProfileToMemory
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">define</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">space</span>
+				<span style="color:#0000FF;font-weight: bold">dim</span> colorspace <span style="color:#0000FF;font-weight: bold">as</span> CGColorSpaceMBS = CGColorSpaceMBS.CreateWithICCProfile(ICCProfileData)
+				
+				<span style="color:#7F0000;text-style:italic">&#39;check</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">first</span> <span style="color:#7F0000;text-style:italic">instance</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">event</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> CanvasBackground = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">&#39;prepare</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">buffer</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">redraw</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">picture;</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">picture</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">all</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patches</span>
+					DrawCanvasBackground
+					
+					<span style="color:#7F0000;text-style:italic">&#39;add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">frame</span> <span style="color:#7F0000;text-style:italic">indicating</span> <span style="color:#7F0000;text-style:italic">over</span> <span style="color:#7F0000;text-style:italic">which</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mouse</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">located</span>
+					DrawCanvasPict
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">define</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">MemoryBlock</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">bitmap</span>
+				BitmapMB = <span style="color:#0000FF;font-weight: bold">new</span> MemoryBlock(<span style="color:#326598">200</span>*<span style="color:#326598">3</span>*<span style="color:#326598">200</span>)
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Method-A</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">paint</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Canvas</span> <span style="color:#7F0000;text-style:italic">Picture</span> <span style="color:#7F0000;text-style:italic">(using</span> <span style="color:#7F0000;text-style:italic">CGImageMBS)</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Note:</span> <span style="color:#7F0000;text-style:italic">drawing</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">done</span> <span style="color:#7F0000;text-style:italic">through</span> <span style="color:#7F0000;text-style:italic">CGContextMBS</span>
+				<span style="color:#0000FF;font-weight: bold">if</span> CanvasPict.CopyRGBtoMemoryblockMBS(BitmapMB, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>, -<span style="color:#326598">1</span>, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>) <span style="color:#0000FF;font-weight: bold">then</span>
+					BitmapContext = CGBitmapContextMBS.CreateRGB(BitmapMB, <span style="color:#326598">200</span>, <span style="color:#326598">200</span>, <span style="color:#326598">600</span>, colorspace)
+					BitmapImageCG = BitmapContext.CGImage(<span style="color:#0000FF;font-weight: bold">False</span>, <span style="color:#326598">0</span>)
+					
+					<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">we</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">inside</span> <span style="color:#7F0000;text-style:italic">paint</span> <span style="color:#7F0000;text-style:italic">event!</span>
+					w = CGContextMBS.contextWithCGContext(g.Handle(g.HandleTypeCGContextRef))
+					w.DrawPicture(BitmapImageCG, CGMakeRectMBS(<span style="color:#326598">0</span>,<span style="color:#326598">0</span>,<span style="color:#326598">200</span>,<span style="color:#326598">200</span>))
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Method-B</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">paint</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Canvas</span> <span style="color:#7F0000;text-style:italic">Picture</span> <span style="color:#7F0000;text-style:italic">(using</span> <span style="color:#7F0000;text-style:italic">NSImageMBS)</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Note:</span> <span style="color:#7F0000;text-style:italic">drawing</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">done</span> <span style="color:#7F0000;text-style:italic">through</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Paint</span> <span style="color:#7F0000;text-style:italic">event</span> <span style="color:#7F0000;text-style:italic">g</span> <span style="color:#7F0000;text-style:italic">(Graphics)</span> <span style="color:#7F0000;text-style:italic">class</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">CanvasPict.CopyRGBtoMemoryblockMBS(BitmapMB,</span> <span style="color:#7F0000;text-style:italic">0,</span> <span style="color:#7F0000;text-style:italic">0,</span> <span style="color:#7F0000;text-style:italic">-1,</span> <span style="color:#7F0000;text-style:italic">0,</span> <span style="color:#7F0000;text-style:italic">0)</span> <span style="color:#7F0000;text-style:italic">then</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">BitmapContext</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">CGBitmapContextMBS.CreateRGB(BitmapMB,</span> <span style="color:#7F0000;text-style:italic">200,</span> <span style="color:#7F0000;text-style:italic">200,</span> <span style="color:#7F0000;text-style:italic">600,</span> <span style="color:#7F0000;text-style:italic">colorspace)</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">BitmapImageCG</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">BitmapContext.CGImage(False,</span> <span style="color:#7F0000;text-style:italic">0)</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">create</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">instance</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">NSImageMBS</span> <span style="color:#7F0000;text-style:italic">with</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">content</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">CGImageMBS</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">BitmapImageNS</span> <span style="color:#7F0000;text-style:italic">=</span> <span style="color:#7F0000;text-style:italic">NSImageMBS.imageWithCGImage(BitmapImageCG)</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">g.DrawPicture</span> <span style="color:#7F0000;text-style:italic">BitmapImageNS.CopyPicture,</span> <span style="color:#7F0000;text-style:italic">0,</span> <span style="color:#7F0000;text-style:italic">0</span>
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">end</span> <span style="color:#7F0000;text-style:italic">if</span>
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control TestLabel <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance TestLabel(<span style="color:#326598">0</span>) <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance TestLabel(<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance TestLabel(<span style="color:#326598">2</span>) <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control RGBlabel <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance RGBlabel(<span style="color:#326598">0</span>) <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance RGBlabel(<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance RGBlabel(<span style="color:#326598">2</span>) <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance RGBlabel(<span style="color:#326598">3</span>) <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control SelectProfileButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance SelectProfileButton <span style="color:#0000FF;font-weight: bold">Inherits</span> PushButton</div>
+</div>
+<div class="RB_Code">			EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Action()
+				<span style="color:#0000FF;font-weight: bold">dim</span> f <span style="color:#0000FF;font-weight: bold">As</span> FolderItem
+				<span style="color:#0000FF;font-weight: bold">dim</span> dlg <span style="color:#0000FF;font-weight: bold">As</span> OpenDialog
+				
+				<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">let</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">user</span> <span style="color:#7F0000;text-style:italic">browse</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">external</span> <span style="color:#7F0000;text-style:italic">profile</span>
+				
+				
+				<span style="color:#7F0000;text-style:italic">&#39;*************************</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">define</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">OpenDialog</span>
+				dlg= <span style="color:#0000FF;font-weight: bold">New</span> OpenDialog
+				<span style="color:#0000FF">#If</span> TargetMachO <span style="color:#0000FF;font-weight: bold">Then</span>
+					dlg.Filter = MiscFileTypes.ICCProfileICC + MiscFileTypes.ICCProfileICM
+				<span style="color:#0000FF">#else</span>
+					<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">Windows</span>
+					dlg.Filter = MiscFileTypes.AllProfiles + MiscFileTypes.ICCProfileICC + MiscFileTypes.ICCProfileICM <span style="color:#7F0000;text-style:italic">//</span>  <span style="color:#7F0000;text-style:italic">All</span> <span style="color:#7F0000;text-style:italic">profiles</span> <span style="color:#7F0000;text-style:italic">or</span> <span style="color:#7F0000;text-style:italic">separate</span> <span style="color:#7F0000;text-style:italic">categories</span>
+				<span style="color:#0000FF">#endif</span>
+				dlg.Title = <span style="color:#6500FE">&quot;Open</span> <span style="color:#6500FE">an</span> <span style="color:#6500FE">RGB</span> <span style="color:#6500FE">profile</span> <span style="color:#6500FE">(*.icc,</span> <span style="color:#6500FE">*.icm)&quot;</span>
+				
+				<span style="color:#7F0000;text-style:italic">&#39;*************************</span>
+				<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">open</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">dialog</span>
+				f = dlg.ShowModal
+				
+				<span style="color:#0000FF;font-weight: bold">If</span> f = <span style="color:#0000FF;font-weight: bold">Nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">user</span> <span style="color:#7F0000;text-style:italic">did</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">select</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">file</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span>
+				<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> <span style="color:#0000FF;font-weight: bold">Not</span> f.IsReadable <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">file</span> <span style="color:#7F0000;text-style:italic">cannot</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">read;</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">may</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">locked</span> <span style="color:#7F0000;text-style:italic">by</span> <span style="color:#7F0000;text-style:italic">another</span> <span style="color:#7F0000;text-style:italic">application</span>
+					MsgBox <span style="color:#6500FE">&quot;ERROR:</span> <span style="color:#6500FE">The</span> <span style="color:#6500FE">&lt;</span> <span style="color:#6500FE">&quot;</span> + f.DisplayName + <span style="color:#6500FE">&quot;</span> <span style="color:#6500FE">&gt;</span> <span style="color:#6500FE">file</span> <span style="color:#6500FE">cannot</span> <span style="color:#6500FE">be</span> <span style="color:#6500FE">read!&quot;</span> + EndOfLine + <span style="color:#6500FE">&quot;It</span> <span style="color:#6500FE">may</span> <span style="color:#6500FE">be</span> <span style="color:#6500FE">opened</span> <span style="color:#6500FE">in</span> <span style="color:#6500FE">another</span> <span style="color:#6500FE">program.&quot;</span>
+					
+					<span style="color:#0000FF;font-weight: bold">Return</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+				<span style="color:#7F0000;text-style:italic">&#39;*************************</span>
+				<span style="color:#7F0000;text-style:italic">&#39;*************************</span>
+				profileFolderItem = f
+				
+				ProfileNameLabel.Text = f.DisplayName
+				
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">update</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">display</span>
+				CanvasCarbon.Invalidate
+				CanvasCocoaSlow.Invalidate
+				CanvasCocoaFast.Invalidate
+			<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control ProfileNameLabel <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance ProfileNameLabel <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Close()
+			<span style="color:#0000FF">#if</span> TargetMacOS <span style="color:#0000FF;font-weight: bold">then</span>
+				Quit
+			<span style="color:#0000FF">#endif</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			<span style="color:#0000FF;font-weight: bold">Dim</span> i <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+			
+			<span style="color:#7F0000;text-style:italic">&#39;load</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">4</span> <span style="color:#7F0000;text-style:italic">patches</span> <span style="color:#7F0000;text-style:italic">colors;</span> <span style="color:#7F0000;text-style:italic">these</span> <span style="color:#7F0000;text-style:italic">values</span> <span style="color:#7F0000;text-style:italic">presume</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">they</span> <span style="color:#7F0000;text-style:italic">were</span> <span style="color:#7F0000;text-style:italic">computed</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">correspond</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">specific</span> <span style="color:#7F0000;text-style:italic">RGB</span> <span style="color:#7F0000;text-style:italic">space</span>
+			<span style="color:#7F0000;text-style:italic">&#39;Note:</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">ICC</span> <span style="color:#7F0000;text-style:italic">computation</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">&quot;Carbon&quot;</span> <span style="color:#7F0000;text-style:italic">case</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">included;</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">&quot;Cocoa&quot;</span> <span style="color:#7F0000;text-style:italic">case</span> <span style="color:#7F0000;text-style:italic">requires</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">user</span> <span style="color:#7F0000;text-style:italic">selects</span> <span style="color:#7F0000;text-style:italic">an</span> <span style="color:#7F0000;text-style:italic">external</span> <span style="color:#7F0000;text-style:italic">profile</span>
+			patchColors(<span style="color:#326598">0</span>,<span style="color:#326598">0</span>) = <span style="color:#326598">65</span>
+			patchColors(<span style="color:#326598">1</span>,<span style="color:#326598">0</span>) = <span style="color:#326598">135</span>
+			patchColors(<span style="color:#326598">2</span>,<span style="color:#326598">0</span>) = <span style="color:#326598">164</span>
+			
+			patchColors(<span style="color:#326598">0</span>,<span style="color:#326598">1</span>) = <span style="color:#326598">165</span>
+			patchColors(<span style="color:#326598">1</span>,<span style="color:#326598">1</span>) = <span style="color:#326598">85</span>
+			patchColors(<span style="color:#326598">2</span>,<span style="color:#326598">1</span>) = <span style="color:#326598">147</span>
+			
+			patchColors(<span style="color:#326598">0</span>,<span style="color:#326598">2</span>) = <span style="color:#326598">227</span>
+			patchColors(<span style="color:#326598">1</span>,<span style="color:#326598">2</span>) = <span style="color:#326598">198</span>
+			patchColors(<span style="color:#326598">2</span>,<span style="color:#326598">2</span>) = <span style="color:#326598">53</span>
+			
+			patchColors(<span style="color:#326598">0</span>,<span style="color:#326598">3</span>) = <span style="color:#326598">182</span>
+			patchColors(<span style="color:#326598">1</span>,<span style="color:#326598">3</span>) = <span style="color:#326598">148</span>
+			patchColors(<span style="color:#326598">2</span>,<span style="color:#326598">3</span>) = <span style="color:#326598">129</span>
+			
+			<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">write</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">RGB</span> <span style="color:#7F0000;text-style:italic">values</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">window</span>
+			<span style="color:#0000FF;font-weight: bold">for</span> i = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> <span style="color:#326598">3</span>
+				RGBlabel(i).text = Str(patchColors(<span style="color:#326598">0</span>, i)) + <span style="color:#6500FE">&quot;,</span> <span style="color:#6500FE">&quot;</span> + Str(patchColors(<span style="color:#326598">1</span>, i)) + <span style="color:#6500FE">&quot;,</span> <span style="color:#6500FE">&quot;</span> + Str(patchColors(<span style="color:#326598">2</span>, i))
+			<span style="color:#0000FF;font-weight: bold">next</span> i
+			
+			<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">size</span>
+			patchDim = <span style="color:#326598">100</span>
+			
+			<span style="color:#7F0000;text-style:italic">&#39;set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">qty</span>
+			patchQty = <span style="color:#326598">4</span>
+			
+			<span style="color:#7F0000;text-style:italic">&#39;set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">number</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">rows</span>
+			patchRows = <span style="color:#326598">2</span>
+			
+			<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">refresh</span> <span style="color:#7F0000;text-style:italic">only</span> <span style="color:#7F0000;text-style:italic">CanvasCarbon</span> <span style="color:#7F0000;text-style:italic">since</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">other</span> <span style="color:#7F0000;text-style:italic">two</span> <span style="color:#7F0000;text-style:italic">canvases</span> <span style="color:#7F0000;text-style:italic">require</span> <span style="color:#7F0000;text-style:italic">that</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">profile</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">loaded</span> <span style="color:#7F0000;text-style:italic">beforehand</span>
+			CanvasCarbon.Refresh
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> DrawCanvasBackground()
+			<span style="color:#0000FF;font-weight: bold">Dim</span> i, xpos, ypos <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+			
+			<span style="color:#7F0000;text-style:italic">&#39;define</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">Canvas</span> <span style="color:#7F0000;text-style:italic">background</span>
+			CanvasBackground = <span style="color:#0000FF;font-weight: bold">New</span> Picture(CanvasCarbon.width, CanvasCarbon.height, <span style="color:#326598">32</span>)
+			
+			<span style="color:#7F0000;text-style:italic">&#39;define</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">Canvas</span> <span style="color:#7F0000;text-style:italic">Picture</span>
+			CanvasPict = <span style="color:#0000FF;font-weight: bold">New</span> Picture(CanvasCarbon.width, CanvasCarbon.height, Screen(<span style="color:#326598">0</span>).Depth)
+			
+			<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">draw</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patches</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Canvas</span> <span style="color:#7F0000;text-style:italic">background</span>
+			<span style="color:#0000FF;font-weight: bold">for</span> i = <span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> patchQty -<span style="color:#326598">1</span>
+				ypos = (i <span style="color:#0000FF;font-weight: bold">Mod</span> patchRows) * patchDim
+				xpos = Floor(i / patchRows) * patchDim
+				CanvasBackground.Graphics.ForeColor = RGB(patchColors(<span style="color:#326598">0</span>,i), patchColors(<span style="color:#326598">1</span>,i), patchColors(<span style="color:#326598">2</span>,i))
+				CanvasBackground.Graphics.FillRect(xpos, ypos, patchDim, patchDim)
+			<span style="color:#0000FF;font-weight: bold">next</span> i
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> DrawCanvasPict()
+			<span style="color:#0000FF;font-weight: bold">Dim</span> sampleRow, sampleColumn <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>
+			
+			<span style="color:#7F0000;text-style:italic">&#39;check</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">canvas</span> <span style="color:#7F0000;text-style:italic">picture</span> <span style="color:#7F0000;text-style:italic">was</span> <span style="color:#7F0000;text-style:italic">defined</span>
+			<span style="color:#7F0000;text-style:italic">&#39;Note:</span> <span style="color:#7F0000;text-style:italic">it</span> <span style="color:#7F0000;text-style:italic">will</span> <span style="color:#7F0000;text-style:italic">not</span> <span style="color:#7F0000;text-style:italic">be</span> <span style="color:#7F0000;text-style:italic">defined</span> <span style="color:#7F0000;text-style:italic">when</span> <span style="color:#7F0000;text-style:italic">this</span> <span style="color:#7F0000;text-style:italic">Method</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">called</span> <span style="color:#7F0000;text-style:italic">during</span> <span style="color:#7F0000;text-style:italic">window</span> <span style="color:#7F0000;text-style:italic">initialization</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> CanvasPict = <span style="color:#0000FF;font-weight: bold">nil</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#0000FF;font-weight: bold">Return</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">&#39;transfer</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Canvas</span> <span style="color:#7F0000;text-style:italic">background</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Canvas</span> <span style="color:#7F0000;text-style:italic">Picture</span>
+			CanvasPict.Graphics.DrawPicture CanvasBackground, <span style="color:#326598">0</span>, <span style="color:#326598">0</span>
+			
+			<span style="color:#7F0000;text-style:italic">&#39;*****************************************************</span>
+			<span style="color:#7F0000;text-style:italic">&#39;</span> <span style="color:#7F0000;text-style:italic">add</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">border</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">under</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mouse;</span> <span style="color:#7F0000;text-style:italic">check</span> <span style="color:#7F0000;text-style:italic">if</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">mouse</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">over</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">patch</span>
+			<span style="color:#0000FF;font-weight: bold">if</span> newPatchNumber &lt;&gt; -<span style="color:#326598">1</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				<span style="color:#7F0000;text-style:italic">&#39;the</span> <span style="color:#7F0000;text-style:italic">mouse</span> <span style="color:#7F0000;text-style:italic">is</span> <span style="color:#7F0000;text-style:italic">over</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">patch;</span> <span style="color:#7F0000;text-style:italic">select</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">border</span> <span style="color:#7F0000;text-style:italic">color</span> <span style="color:#7F0000;text-style:italic">(black)</span>
+				CanvasPict.Graphics.foreColor = RGB(<span style="color:#326598">0</span>,<span style="color:#326598">0</span>,<span style="color:#326598">0</span>)
+				
+				<span style="color:#7F0000;text-style:italic">&#39;draw</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">border</span>
+				sampleRow = newPatchNumber <span style="color:#0000FF;font-weight: bold">Mod</span> patchRows
+				sampleColumn = floor (newPatchNumber / patchRows)
+				CanvasPict.Graphics.drawRect (sampleColumn * patchDim), (sampleRow * patchDim), patchDim, patchDim
+				CanvasPict.Graphics.drawRect (sampleColumn * patchDim)+<span style="color:#326598">1</span>, (sampleRow * patchDim)+<span style="color:#326598">1</span>, patchDim-<span style="color:#326598">2</span>, patchDim-<span style="color:#326598">2</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			<span style="color:#7F0000;text-style:italic">&#39;assign</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">new</span> <span style="color:#7F0000;text-style:italic">patch</span> <span style="color:#7F0000;text-style:italic">number</span> <span style="color:#7F0000;text-style:italic">as</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">old</span> <span style="color:#7F0000;text-style:italic">number</span>
+			oldPatchNumber = newPatchNumber
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Note">		Note <span style="color:#6500FE">&quot;About&quot;</span>
+<div class="RB_Comment">			This example is provided by Danny Pascal
+			
+			dpascale@babelcolor.com
+			
+			
+			It shows various ways to draw color measurement patch fields using color spaces.</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> CanvasBackground <span style="color:#0000FF;font-weight: bold">As</span> Picture</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> CanvasPict <span style="color:#0000FF;font-weight: bold">As</span> Picture</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> newPatchNumber <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> oldPatchNumber <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> profileFolderItem <span style="color:#0000FF;font-weight: bold">As</span> FolderItem</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MainMenuBar</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSeparator2 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Module</span> common</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> PrefLastFolderProfile <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">String</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> patchColors(<span style="color:#326598">2</span>,<span style="color:#326598">3</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> patchDim <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> patchQty <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> patchRows <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Module</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsimagesplugin.html">MBS Images Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-images-lcms2-drawingonmacwithcolorspaces-drawingonmacwithcolorspaces">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

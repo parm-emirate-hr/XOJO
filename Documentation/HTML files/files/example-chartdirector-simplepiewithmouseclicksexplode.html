@@ -1,0 +1,275 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - Example: /ChartDirector/simplePie with MouseClicks explode</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="Example">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">Example: /ChartDirector/simplePie with MouseClicks explode</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<div class="">
+<b><A name="1">/ChartDirector/simplePie with MouseClicks explode</A></b><br>
+<B>Function:</B> 
+<br>
+Required plugins for this example: MBS ChartDirector Plugin<BR>
+You find this example project in your Plugins Download as a Xojo project file within the examples folder: /ChartDirector/simplePie with MouseClicks explode<BR>
+This example is the version from Sun, 17th Mar 2012.<BR>
+
+<div class="RB_Code">Project <span style="color:#6500FE">&quot;simplePie</span> <span style="color:#6500FE">with</span> <span style="color:#6500FE">MouseClicks</span> <span style="color:#6500FE">explode.xojo_binary_project&quot;</span></div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> App <span style="color:#0000FF;font-weight: bold">Inherits</span> Application</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kEditClear = <span style="color:#6500FE">&quot;&amp;Delete&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuit = <span style="color:#6500FE">&quot;&amp;Quit&quot;</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Const</span> kFileQuitShortcut = <span style="color:#6500FE">&quot;&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> PicWindow <span style="color:#0000FF;font-weight: bold">Inherits</span> Window</div>
+<div class="RB_MainItem">
+<div class="RB_Code">		Control StaticText1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+<div class="RB_MainItem">
+<div class="RB_Code">			ControlInstance StaticText1 <span style="color:#0000FF;font-weight: bold">Inherits</span> Label</div>
+</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">End</span> Control</div>
+</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Function</span> MouseDown(X <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>, Y <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> sector <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span> = findsector(x,y)
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> sector&gt;=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				Title=<span style="color:#6500FE">&quot;Sector</span> <span style="color:#6500FE">&quot;</span>+Str(sector)
+			<span style="color:#0000FF;font-weight: bold">else</span>
+				Title=<span style="color:#6500FE">&quot;&quot;</span>
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			run sector
+			
+			<span style="color:#0000FF;font-weight: bold">Return</span> <span style="color:#0000FF;font-weight: bold">true</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		EventHandler <span style="color:#0000FF;font-weight: bold">Sub</span> Open()
+			run -<span style="color:#326598">1</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> EventHandler</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Protected</span> <span style="color:#0000FF;font-weight: bold">Sub</span> Parse(s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Parse</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">html</span> <span style="color:#7F0000;text-style:italic">map</span>
+			s=ReplaceLineEndings(s,EndOfLine)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> lines(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = split(s,EndOfLine)
+			
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> line <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> <span style="color:#0000FF;font-weight: bold">in</span> lines
+				<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">&lt;area</span> <span style="color:#7F0000;text-style:italic">shape=&quot;poly&quot;</span> <span style="color:#7F0000;text-style:italic">coords=&quot;350,145,428,166,484,222,505,300,504,320,350,300&quot;</span> <span style="color:#7F0000;text-style:italic">href=&quot;a?sector=0&amp;label=Germany&amp;value=55&amp;percent=27.09&quot;&gt;</span>
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> parts(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span> = split(line,<span style="color:#6500FE">&quot;&quot;</span><span style="color:#6500FE">&quot;&quot;</span>)
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> UBound(parts)&gt;=<span style="color:#326598">6</span> <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">if</span> parts(<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;poly&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#0000FF;font-weight: bold">dim</span> po <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MyPoly
+						po.setCoords parts(<span style="color:#326598">3</span>)
+						po.setSector parts(<span style="color:#326598">5</span>)
+						polys.Append po
+					<span style="color:#0000FF;font-weight: bold">elseif</span> parts(<span style="color:#326598">1</span>)=<span style="color:#6500FE">&quot;Rect&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#0000FF;font-weight: bold">dim</span> re <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">new</span> MyRect
+						re.setCoords parts(<span style="color:#326598">3</span>)
+						re.setSector parts(<span style="color:#326598">5</span>)
+						rects.Append re
+						
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Function</span> findsector(x <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>, y <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>) <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">integer</span>
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">click</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">on</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">Rectangles?</span>
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> re <span style="color:#0000FF;font-weight: bold">as</span> MyRect <span style="color:#0000FF;font-weight: bold">in</span> rects
+				<span style="color:#0000FF;font-weight: bold">if</span> x&gt;=re.left <span style="color:#0000FF;font-weight: bold">and</span> x&lt;=re.right <span style="color:#0000FF;font-weight: bold">and</span> y&gt;=re.top <span style="color:#0000FF;font-weight: bold">and</span> y&lt;=re.bottom <span style="color:#0000FF;font-weight: bold">then</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> re.sector
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">click</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">polygon?</span>
+			<span style="color:#0000FF;font-weight: bold">for</span> <span style="color:#0000FF;font-weight: bold">each</span> po <span style="color:#0000FF;font-weight: bold">as</span> MyPoly <span style="color:#0000FF;font-weight: bold">in</span> polys
+				<span style="color:#0000FF;font-weight: bold">dim</span> polysides <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>=UBound(po.x)
+				
+				<span style="color:#0000FF;font-weight: bold">dim</span> j <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>=polySides
+				<span style="color:#0000FF;font-weight: bold">dim</span> oddNodes <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">Boolean</span>=<span style="color:#0000FF;font-weight: bold">False</span>
+				
+				<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> polySides
+					<span style="color:#0000FF;font-weight: bold">if</span> (po.y(i)&lt;y <span style="color:#0000FF;font-weight: bold">and</span> po.y(j)&gt;=y) <span style="color:#0000FF;font-weight: bold">or</span> (po.y(j)&lt;y <span style="color:#0000FF;font-weight: bold">and</span> po.y(i)&gt;=y) <span style="color:#0000FF;font-weight: bold">then</span>
+						<span style="color:#0000FF;font-weight: bold">if</span> (po.x(i)+(y-po.y(i))/(po.y(j)-po.y(i))*(po.x(j)-po.x(i))&lt;x) <span style="color:#0000FF;font-weight: bold">then</span>
+							oddNodes=<span style="color:#0000FF;font-weight: bold">not</span> oddNodes
+						<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+					j=i
+					
+				<span style="color:#0000FF;font-weight: bold">next</span>
+				
+				<span style="color:#0000FF;font-weight: bold">if</span> oddNodes <span style="color:#0000FF;font-weight: bold">then</span> <span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">found</span> <span style="color:#7F0000;text-style:italic">it!</span>
+					<span style="color:#0000FF;font-weight: bold">Return</span> po.sector
+				<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+				
+			<span style="color:#0000FF;font-weight: bold">next</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">nothing</span> <span style="color:#7F0000;text-style:italic">found</span>
+			<span style="color:#0000FF;font-weight: bold">Return</span> -<span style="color:#326598">1</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Function</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> run(HighLightSector <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">pie</span> <span style="color:#7F0000;text-style:italic">chart</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> data(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">double</span>=<span style="color:#0000FF;font-weight: bold">array</span>(<span style="color:#006532">55.0</span>, <span style="color:#006532">18.0</span>, <span style="color:#006532">25.0</span>, <span style="color:#006532">22.0</span>, <span style="color:#006532">18.0</span>, <span style="color:#006532">30.0</span>, <span style="color:#006532">35.0</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">The</span> <span style="color:#7F0000;text-style:italic">labels</span> <span style="color:#7F0000;text-style:italic">for</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">pie</span> <span style="color:#7F0000;text-style:italic">chart,</span> <span style="color:#7F0000;text-style:italic">Words</span> <span style="color:#7F0000;text-style:italic">are</span> <span style="color:#7F0000;text-style:italic">choosen</span> <span style="color:#7F0000;text-style:italic">random</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">check</span> <span style="color:#7F0000;text-style:italic">font!</span>
+			<span style="color:#0000FF;font-weight: bold">dim</span> labels(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>=<span style="color:#0000FF;font-weight: bold">array</span>(<span style="color:#6500FE">&quot;Germany&quot;</span>,<span style="color:#6500FE">&quot;Italy&quot;</span>,<span style="color:#6500FE">&quot;France&quot;</span>,<span style="color:#6500FE">&quot;Spain&quot;</span>,<span style="color:#6500FE">&quot;UK&quot;</span>,<span style="color:#6500FE">&quot;Poland&quot;</span>,<span style="color:#6500FE">&quot;Russia&quot;</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Create</span> <span style="color:#7F0000;text-style:italic">a</span> <span style="color:#7F0000;text-style:italic">PieChart</span> <span style="color:#7F0000;text-style:italic">object</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">size</span> <span style="color:#7F0000;text-style:italic">360</span> <span style="color:#7F0000;text-style:italic">x</span> <span style="color:#7F0000;text-style:italic">300</span> <span style="color:#7F0000;text-style:italic">pixels</span>
+			c = <span style="color:#0000FF;font-weight: bold">new</span> CDPieChartMBS(<span style="color:#326598">700</span>, <span style="color:#326598">600</span>)
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">center</span> <span style="color:#7F0000;text-style:italic">of</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">pie</span> <span style="color:#7F0000;text-style:italic">at</span> <span style="color:#7F0000;text-style:italic">(180,</span> <span style="color:#7F0000;text-style:italic">140)</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">radius</span> <span style="color:#7F0000;text-style:italic">to</span> <span style="color:#7F0000;text-style:italic">100</span> <span style="color:#7F0000;text-style:italic">pixels</span>
+			c.setPieSize <span style="color:#326598">350</span>,<span style="color:#326598">300</span>,<span style="color:#326598">150</span>
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">Set</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">pie</span> <span style="color:#7F0000;text-style:italic">data</span> <span style="color:#7F0000;text-style:italic">and</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">pie</span> <span style="color:#7F0000;text-style:italic">labels</span>
+			c.setData data,labels
+			<span style="color:#0000FF;font-weight: bold">call</span> c.setLabelStyle <span style="color:#6500FE">&quot;Times</span> <span style="color:#6500FE">New</span> <span style="color:#6500FE">Roman&quot;</span>,<span style="color:#326598">18</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> HighLightSector&gt;=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				c.setExplode HighLightSector
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+			
+			pic=c.makeChartPicture
+			Backdrop=pic
+			
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">read</span> <span style="color:#7F0000;text-style:italic">in</span> <span style="color:#7F0000;text-style:italic">the</span> <span style="color:#7F0000;text-style:italic">html</span> <span style="color:#7F0000;text-style:italic">map</span>
+			Parse C.getHTMLImageMap(<span style="color:#6500FE">&quot;a&quot;</span>)
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> c <span style="color:#0000FF;font-weight: bold">As</span> CDPieChartMBS</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> pic <span style="color:#0000FF;font-weight: bold">As</span> picture</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> polys() <span style="color:#0000FF;font-weight: bold">As</span> MyPoly</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> <span style="color:#0000FF;font-weight: bold">Protected</span> rects() <span style="color:#0000FF;font-weight: bold">As</span> MyRect</div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	MenuBar MenuBar1</div>
+<div class="RB_Code">		MenuItem FileMenu = <span style="color:#6500FE">&quot;&amp;File&quot;</span></div>
+<div class="RB_Code">			MenuItem FileQuit = <span style="color:#6500FE">&quot;#App.kFileQuit&quot;</span></div>
+<div class="RB_Code">		MenuItem EditMenu = <span style="color:#6500FE">&quot;&amp;Edit&quot;</span></div>
+<div class="RB_Code">			MenuItem EditUndo = <span style="color:#6500FE">&quot;&amp;Undo&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu1 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCut = <span style="color:#6500FE">&quot;Cu&amp;t&quot;</span></div>
+<div class="RB_Code">			MenuItem EditCopy = <span style="color:#6500FE">&quot;&amp;Copy&quot;</span></div>
+<div class="RB_Code">			MenuItem EditPaste = <span style="color:#6500FE">&quot;&amp;Paste&quot;</span></div>
+<div class="RB_Code">			MenuItem EditClear = <span style="color:#6500FE">&quot;#App.kEditClear&quot;</span></div>
+<div class="RB_Code">			MenuItem UntitledMenu0 = <span style="color:#6500FE">&quot;-&quot;</span></div>
+<div class="RB_Code">			MenuItem EditSelectAll = <span style="color:#6500FE">&quot;Select</span> <span style="color:#6500FE">&amp;All&quot;</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> MenuBar</div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyRect</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> setCoords(s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">coordinates</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> co(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			
+			co=split(s,<span style="color:#6500FE">&quot;,&quot;</span>)
+			
+			left=val(co(<span style="color:#326598">0</span>))
+			top=val(co(<span style="color:#326598">1</span>))
+			right=val(co(<span style="color:#326598">2</span>))
+			bottom=val(co(<span style="color:#326598">3</span>))
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> setSector(s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">sector</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> left(s,<span style="color:#326598">9</span>)=<span style="color:#6500FE">&quot;a?sector=&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				sector=val(mid(s,<span style="color:#326598">10</span>))
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> bottom <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> left <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> right <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> sector <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> top <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_MainItem">
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">Class</span> MyPoly</div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> setCoords(s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">coordinates</span>
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> co(-<span style="color:#326598">1</span>) <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>
+			
+			co=split(s,<span style="color:#6500FE">&quot;,&quot;</span>)
+			
+			<span style="color:#0000FF;font-weight: bold">dim</span> u <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>=UBound(co)
+			<span style="color:#0000FF;font-weight: bold">for</span> i <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">integer</span>=<span style="color:#326598">0</span> <span style="color:#0000FF;font-weight: bold">to</span> u
+				x.Append val(co(i))
+				i=i+<span style="color:#326598">1</span>
+				y.Append val(co(i))
+			<span style="color:#0000FF;font-weight: bold">next</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Sub</span> setSector(s <span style="color:#0000FF;font-weight: bold">as</span> <span style="color:#0000FF;font-weight: bold">string</span>)
+			<span style="color:#7F0000;text-style:italic">//</span> <span style="color:#7F0000;text-style:italic">set</span> <span style="color:#7F0000;text-style:italic">sector</span>
+			
+			<span style="color:#0000FF;font-weight: bold">if</span> left(s,<span style="color:#326598">9</span>)=<span style="color:#6500FE">&quot;a?sector=&quot;</span> <span style="color:#0000FF;font-weight: bold">then</span>
+				sector=val(mid(s,<span style="color:#326598">10</span>))
+			<span style="color:#0000FF;font-weight: bold">end</span> <span style="color:#0000FF;font-weight: bold">if</span>
+		<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Sub</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> sector <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">Integer</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> x() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">double</span></div>
+<div class="RB_Code">		<span style="color:#0000FF;font-weight: bold">Property</span> y() <span style="color:#0000FF;font-weight: bold">As</span> <span style="color:#0000FF;font-weight: bold">double</span></div>
+<div class="RB_Code">	<span style="color:#0000FF;font-weight: bold">End</span> <span style="color:#0000FF;font-weight: bold">Class</span></div>
+</div>
+<div class="RB_Code"><span style="color:#0000FF;font-weight: bold">End</span> Project</div>
+
+<p>See also:<ul>
+<li><A href="example-chartdirector-simplepie.html">/ChartDirector/simplePie</A></li>
+<li><A href="example-chartdirector-simplepiekorean.html">/ChartDirector/simplePie Korean</A></li>
+<li><A href="example-chartdirector-simplepiewithcyrillic.html">/ChartDirector/simplePie with Cyrillic</A></li>
+<li><A href="example-chartdirector-simplepiewithdynapdf.html">/ChartDirector/simplePie with DynaPDF</A></li>
+<li><A href="example-chartdirector-simplepiewithjapanese.html">/ChartDirector/simplePie with Japanese</A></li>
+<li><A href="example-chartdirector-simplepiewithmouseclicks.html">/ChartDirector/simplePie with MouseClicks</A></li>
+<li><A href="example-chartdirector-simplepiewithsvgoutput.html">/ChartDirector/simplePie with SVG output</A></li>
+<li><A href="example-chartdirector-simplepiewiththai.html">/ChartDirector/simplePie with Thai</A></li>
+<li><A href="example-chartdirector-simplepiewithtransparentbackground.html">/ChartDirector/simplePie with transparent background</A></li>
+</ul></p>
+</div>
+<p>The items on this page are in the following plugins: <a href="plugins-mbschartdirectorplugin.html">MBS ChartDirector Plugin</a>.</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=example-chartdirector-simplepiewithmouseclicksexplode">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+

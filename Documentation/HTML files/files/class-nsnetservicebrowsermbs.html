@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Frameset//EN" >
+<HTML>
+<HEAD>
+<TITLE>Monkeybread Xojo plugin - NSNetServiceBrowserMBS class</TITLE>
+<script src="../platforms.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../help.css" >
+<link rel="stylesheet" type="text/css" href="../screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../print.css" media="print">
+<link rel="stylesheet" type="text/css" href="../allitems.css" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="../macitems.css" title="Mac">
+<link rel="alternate stylesheet" type="text/css" href="../winitems.css" title="Win">
+<link rel="alternate stylesheet" type="text/css" href="../linuxitems.css" title="Linux">
+<link rel="alternate stylesheet" type="text/css" href="../crossitems.css" title="Crossplatform">
+<meta http-equiv="content-type" content="text/html; charset=x-mac-roman">
+<META NAME="description" CONTENT="NSNetServiceBrowserMBS">
+</head>
+<BODY BGCOLOR="#FFFFFF">
+<H2 lang="en">NSNetServiceBrowserMBS class</h2>
+<p><a href="http://www.monkeybreadsoftware.net">Online Documentation</a> &nbsp; - &nbsp; <a href="stats.html">Statistics</a> &nbsp; - &nbsp; <a href="topic-faq.html">FAQ</a> &nbsp; - &nbsp; <a href="parts.html">Plugin Parts</a> (<a href="partsall.html">All</a>, <a href="plugindeps.html">Dependencies</a>) &nbsp; - &nbsp; <a href="hierarchy.html">Class hierarchy</a></p>
+<p>New in Version 
+<a href="newinversion213.html">21.3</a> 
+<a href="newinversion214.html">21.4</a> 
+<a href="newinversion215.html">21.5</a> 
+<a href="newinversion220.html">22.0</a> 
+<a href="newinversion221.html">22.1</a> 
+<a href="newinversion222.html">22.2</a> 
+<a href="newinversion223.html">22.3</a> 
+<a href="newinversion224.html">22.4</a> 
+<a href="newinversion225.html">22.5</a> 
+<a href="newinversion230.html">23.0</a> 
+<a href="newinversion231.html">23.1</a> 
+<a href="newinversion232.html">23.2</a> 
+</p>
+<p>The list of the &nbsp; <a href="themes.html">topics</a>, 
+ &nbsp; <a href="classes.html">classes</a>,
+ &nbsp; <a href="interfaces.html">interfaces</a>,
+ &nbsp; <a href="controls.html">controls</a>,
+ &nbsp; <a href="modules.html">modules</a>,
+ &nbsp; <a href="globaltopic.html">global methods by category</a>,
+ &nbsp; <a href="globalname.html">global methods by name</a>,
+ &nbsp; <a href="screenshots.html">screenshots</a>,
+ &nbsp; <a href="licenses.html">licenses</a> &nbsp;
+ and &nbsp; <a href="examples.html">examples</a>.</p>
+<p id=PlatformChooserMBS>Platforms to show: <a class="isA" href="javascript:all();">All</a> <a class="isM" href="javascript:mac();">Mac</a> <a class="isW" href="javascript:win();">Windows</a> <a class="isL" href="javascript:linux();">Linux</a> <a class="isC" href="javascript:crossplatform();">Cross-Platform</a></p>
+<H3>NSNetServiceBrowserMBS class</H3>
+<div class="MI">
+
+<table cellpadding=3>
+<tr>
+<td class=grau>Type</td>
+<td class=grau>Topic</td>
+<td class=grau>Plugin</td>
+<td class=grau>Version</td>
+<td class=grau>macOS</td>
+<td class=grau>Windows</td>
+<td class=grau>Linux</td>
+<td class=grau>iOS</td>
+<td class=grau>Targets</td>
+</tr>
+<tr>
+<td class=grau>class</td>
+<td class=grau><A href="topic-cocoanetworking.html" translate="no">Cocoa Networking</A></td>
+<td class=grau><a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a></td>
+<td class=grau><a href="newinversion211.shtml" class=version>21.1</a></td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#10060; No</td>
+<td class=grau>&#9989; Yes</td>
+<td class=grau>All</td>
+</tr>
+</table>
+<B>Function:</B> 
+A network service browser that finds published services on a network using multicast DNS.<BR>
+<B>Notes:</B> 
+<BR>
+Services can range from standard services, such as HTTP and FTP, to custom services defined by other applications. You can use a network service browser in your code to obtain the list of accessible domains and then to obtain an <A href="class-nsnetservicembs.html">NSNetServiceMBS</A> object for each discovered service. Each network service browser performs one search at a time, so if you want to perform multiple simultaneous searches, use multiple network service browsers.<BR>
+<BR>
+A network service browser performs all searches asynchronously using the current run loop to execute the search in the background. Results from a search are returned through the associated delegate object, which your client application must provide. Searching proceeds in the background until the object receives a stop message.<BR>
+<BR>
+To use an NSNetServiceBrowserMBS object to search for services, use the constructor. Once your object is ready, you begin by gathering the list of accessible domains using either the searchForRegistrationDomains or searchForBrowsableDomains methods. From the list of returned domains, you can pick one and use the searchForServicesOfType method to search for services in that domain.<BR>
+<BR>
+The NSNetServiceBrowserMBS class provides two ways to search for domains. In most cases, your client should use the searchForRegistrationDomains method to search only for local domains to which the host machine has registration authority. This is the preferred method for accessing domains as it guarantees that the host machine can connect to services in the returned domains. Access to domains outside this list may be more limited.<BR>
+</div>
+<ul>
+<LI>7 events<UL>
+<li class="MI">event <A href="cocoanetworking-nsnetservicebrowsermbs-event.html">DidFindDomain</A>(domainName as String, moreComing as Boolean)</li>
+<li class="MI">event <A href="cocoanetworking-nsnetservicebrowsermbs-event.html#2">DidFindService</A>(service as <A href="class-nsnetservicembs.html">NSNetServiceMBS</A>, moreComing as Boolean)</li>
+<li class="MI">event <A href="cocoanetworking-nsnetservicebrowsermbs-event.html#3">DidNotSearch</A>(error as Dictionary)</li>
+<li class="MI">event <A href="cocoanetworking-nsnetservicebrowsermbs-event.html#4">DidRemoveDomain</A>(domainName as String, moreComing as Boolean)</li>
+<li class="MI">event <A href="cocoanetworking-nsnetservicebrowsermbs-event.html#5">DidRemoveService</A>(service as <A href="class-nsnetservicembs.html">NSNetServiceMBS</A>, moreComing as Boolean)</li>
+<li class="MI">event <A href="cocoanetworking-nsnetservicebrowsermbs-event.html#6">DidStopSearch</A></li>
+<li class="MI">event <A href="cocoanetworking-nsnetservicebrowsermbs-event.html#7">WillSearch</A></li>
+</UL></LI>
+<LI>2 properties<UL>
+<li class="MI">property <A href="cocoanetworking-nsnetservicebrowsermbs-property.html">Handle</A> as Integer</li>
+<li class="MI">property <A href="cocoanetworking-nsnetservicebrowsermbs-property.html#2">includesPeerToPeer</A> as Boolean</li>
+</UL></LI>
+<LI>6 methods<UL>
+<li class="MI">method <A href="cocoanetworking-nsnetservicebrowsermbs-method.html">Constructor</A></li>
+<li class="MI">method <A href="cocoanetworking-nsnetservicebrowsermbs-method.html#2">Destructor</A></li>
+<li class="MI">method <A href="cocoanetworking-nsnetservicebrowsermbs-method.html#3">searchForBrowsableDomains</A></li>
+<li class="MI">method <A href="cocoanetworking-nsnetservicebrowsermbs-method.html#4">searchForRegistrationDomains</A></li>
+<li class="MI">method <A href="cocoanetworking-nsnetservicebrowsermbs-method.html#5">searchForServicesOfType</A>(serviceType as string, domainName as string = "")</li>
+<li class="MI">method <A href="cocoanetworking-nsnetservicebrowsermbs-method.html#6">stop</A></li>
+</UL></LI>
+</ul>
+<p>This class has no sub classes.</p>
+<h4>Some examples using this class:</h4>
+<ul translate="no">
+<li class=""><A href="example-macframeworks-nsnetservice-bonjourbrowserdesktop.html">/MacFrameworks/NSNetService/Bonjour Browser Desktop</A></li>
+<li class=""><A href="example-macframeworks-nsnetservice-bonjourbrowserweb.html">/MacFrameworks/NSNetService/Bonjour Browser Web</A></li>
+<li class=""><A href="example-macframeworks-nsnetservice-bonjourios.html">/MacFrameworks/NSNetService/Bonjour iOS</A></li>
+</ul>
+<h4>Blog Entries</h4>
+<ul>
+<li><a href="https://www.mbsplugins.de/archive/2021-03-16/News_from_the_MBS_Xojo_Plugins/monkeybreadsoftware_blog_xojo">News from the MBS Xojo Plugins Version 21.1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2021-03-09/MonkeyBread_Software_Releases_/monkeybreadsoftware_blog_xojo">MonkeyBread Software Releases the MBS Xojo Plugins in version 21.1</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2021-02-20/MBS_Xojo_Plugins_version_211pr/monkeybreadsoftware_blog_xojo">MBS Xojo Plugins, version 21.1pr5</a></li>
+<li><a href="https://www.mbsplugins.de/archive/2021-02-19/NSNetService_classes_for_Xojo/monkeybreadsoftware_blog_xojo">NSNetService classes for Xojo</a></li>
+</ul>
+<BR>
+<p>The items on this page are in the following plugins: <a href="plugins-mbsmacframeworksplugin.html">MBS MacFrameworks Plugin</a>.</p>
+<br clear=all><p>
+<a href="class-nsmutableurlrequestmbs.html">NSMutableURLRequestMBS</a>
+ &nbsp; - &nbsp; 
+<a href="class-nsnetservicembs.html">NSNetServiceMBS</a>
+</p>
+<!-- Ende Content-->
+
+<br>
+<div style="width: 200pt; margin: 0pt; padding: 5pt; border-color:#ccc; border-style:solid; background-color: #eee; border-width: 2pt; border-radius: 10pt; " lang="en">
+&#128172; <a href="https://www.monkeybreadsoftware.com/feedback/?what=xojo&path=class-nsnetservicebrowsermbs">Ask a question or report a problem</a>
+</div>
+
+</BODY>
+</HTML>
+
